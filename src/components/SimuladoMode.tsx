@@ -8,7 +8,8 @@ import {
   BarChart2, 
   ChevronRight, 
   ChevronLeft,
-  BookOpen
+  BookOpen,
+  Zap
 } from 'lucide-react';
 import type { Question, UserProfile, SubjectType } from '../types/study';
 import { recordQuestionAnswer } from '../services/storageService';
@@ -27,7 +28,7 @@ export const SimuladoMode: React.FC<SimuladoModeProps> = ({
   onReviewErrors
 }) => {
   const [examState, setExamState] = useState<'idle' | 'running' | 'finished'>('idle');
-  const [examQuestionCount, setExamQuestionCount] = useState<number>(10);
+  const [examQuestionCount, setExamQuestionCount] = useState<number>(15);
   const [simuladoQuestions, setSimuladoQuestions] = useState<Question[]>([]);
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [userAnswers, setUserAnswers] = useState<Record<string, string>>({});
@@ -39,9 +40,8 @@ export const SimuladoMode: React.FC<SimuladoModeProps> = ({
     subjectStats: Record<SubjectType, { total: number; correct: number }>;
   } | null>(null);
 
-  // Inicializar questões aleatórias para o simulado
+  // Inicializar questões para o simulado
   const startSimulado = (count: number) => {
-    // Embaralhar questões
     const shuffled = [...questions].sort(() => 0.5 - Math.random());
     const selected = shuffled.slice(0, Math.min(count, questions.length));
     
@@ -142,12 +142,31 @@ export const SimuladoMode: React.FC<SimuladoModeProps> = ({
           <div className="w-16 h-16 rounded-2xl bg-indigo-600/20 border border-indigo-500/30 flex items-center justify-center mx-auto mb-6">
             <Clock className="w-8 h-8 text-indigo-400 animate-pulse" />
           </div>
+
+          <div className="inline-flex items-center space-x-2 px-3 py-1 bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 rounded-full text-xs font-bold mb-4">
+            <Zap className="w-3.5 h-3.5 text-emerald-400" />
+            <span>Estrutura Oficial Banca IBFC (60 Questões)</span>
+          </div>
+
           <h2 className="text-2xl sm:text-3xl font-extrabold text-white mb-3">
-            Simulado Reta Final - IBGE Agente de Informática
+            Simulado IBGE - Agente Censitário de Informática
           </h2>
-          <p className="text-slate-400 max-w-xl mx-auto mb-8 text-sm sm:text-base leading-relaxed">
-            Teste seus conhecimentos em condições reais de prova. As questões serão selecionadas aleatoriamente entre as matérias de Informática, Português e Raciocínio Lógico.
+          <p className="text-slate-400 max-w-xl mx-auto mb-6 text-sm sm:text-base leading-relaxed">
+            Prova oficial da banca **IBFC** com 60 questões no total: **35 de Noções de Informática** (peso principal), **15 de Língua Portuguesa** e **10 de Raciocínio Lógico**.
           </p>
+
+          {/* ESTRUTURA DA PROVA IBFC */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 max-w-2xl mx-auto mb-8 text-xs font-semibold">
+            <div className="p-3 bg-indigo-950/60 border border-indigo-500/30 rounded-xl text-indigo-200">
+              ⚡ 35 Questões<br/><span className="text-slate-400 font-normal">Informática (60% da Prova)</span>
+            </div>
+            <div className="p-3 bg-slate-950 border border-slate-800 rounded-xl text-slate-300">
+              📝 15 Questões<br/><span className="text-slate-400 font-normal">Língua Portuguesa</span>
+            </div>
+            <div className="p-3 bg-slate-950 border border-slate-800 rounded-xl text-slate-300">
+              📐 10 Questões<br/><span className="text-slate-400 font-normal">Raciocínio Lógico</span>
+            </div>
+          </div>
 
           {/* ESCOLHA DA QUANTIDADE DE QUESTÕES */}
           <div className="flex flex-wrap justify-center gap-4 mb-8">
@@ -161,18 +180,18 @@ export const SimuladoMode: React.FC<SimuladoModeProps> = ({
                   {count} Questões
                 </div>
                 <div className="text-xs text-slate-500 font-mono">
-                  Tempo estimado: {Math.round(count * 1.5)} min
+                  Simulado Rápido (~{Math.round(count * 1.5)} min)
                 </div>
               </button>
             ))}
           </div>
 
           <button
-            onClick={() => startSimulado(10)}
+            onClick={() => startSimulado(15)}
             className="px-8 py-4 bg-gradient-to-r from-indigo-600 to-indigo-500 hover:from-indigo-500 hover:to-indigo-400 text-white font-bold text-base rounded-2xl shadow-xl shadow-indigo-600/30 border border-indigo-400/30 transition-all flex items-center space-x-2 mx-auto"
           >
             <Play className="w-5 h-5 fill-current" />
-            <span>Iniciar Simulado de 10 Questões</span>
+            <span>Iniciar Simulado Proporcional IBFC</span>
           </button>
         </div>
       </div>
@@ -195,7 +214,7 @@ export const SimuladoMode: React.FC<SimuladoModeProps> = ({
               <Award className="w-10 h-10" />
             </div>
             <h2 className="text-2xl sm:text-3xl font-bold text-white">Simulado Concluído!</h2>
-            <p className="text-slate-400 text-sm mt-1">Confira seu relatório detalhado de aproveitamento:</p>
+            <p className="text-slate-400 text-sm mt-1">Confira seu relatório detalhado da banca IBFC:</p>
           </div>
 
           {/* BIG STATS CARDS */}
@@ -218,7 +237,7 @@ export const SimuladoMode: React.FC<SimuladoModeProps> = ({
           <div className="bg-slate-950 p-6 rounded-2xl border border-slate-800 space-y-4">
             <h3 className="text-sm font-bold text-slate-300 uppercase tracking-wider flex items-center gap-2">
               <BarChart2 className="w-4 h-4 text-indigo-400" />
-              Desempenho por Disciplina
+              Desempenho por Disciplina (Banca IBFC)
             </h3>
             {Object.entries(scoreResult.subjectStats).map(([subj, stat]) => {
               if (stat.total === 0) return null;

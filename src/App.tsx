@@ -13,6 +13,7 @@ import { SimuladoMode } from './components/SimuladoMode';
 import { CadernoErrosMode } from './components/CadernoErrosMode';
 import { BizusQuickRead } from './components/BizusQuickRead';
 import { Dashboard } from './components/Dashboard';
+import { AIChatbot } from './components/AIChatbot';
 
 export function App() {
   const [profiles, setProfiles] = useState<UserProfile[]>([]);
@@ -81,6 +82,10 @@ export function App() {
             onUpdateProfile={handleUpdateProfile}
             onReviewErrors={() => setActiveTab('caderno_erros')}
           />
+        )}
+
+        {activeTab === 'tutor_ia' && (
+          <AIChatbot />
         )}
 
         {activeTab === 'caderno_erros' && (

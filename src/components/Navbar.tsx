@@ -9,7 +9,8 @@ import {
   Clock, 
   BookOpen, 
   Award, 
-  BookMarked
+  BookMarked,
+  Bot
 } from 'lucide-react';
 import type { UserProfile } from '../types/study';
 import { exportAllDataJSON, importAllDataJSON } from '../services/storageService';
@@ -138,6 +139,18 @@ export const Navbar: React.FC<NavbarProps> = ({
             </button>
 
             <button
+              onClick={() => setActiveTab('tutor_ia')}
+              className={`flex items-center space-x-2 px-3.5 py-1.5 rounded-lg text-sm font-medium transition-all ${
+                activeTab === 'tutor_ia'
+                  ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/30'
+                  : 'text-slate-400 hover:text-slate-200 hover:bg-slate-900'
+              }`}
+            >
+              <Bot className="w-4 h-4 text-emerald-400" />
+              <span>Tutor IA</span>
+            </button>
+
+            <button
               onClick={() => setActiveTab('caderno_erros')}
               className={`flex items-center space-x-2 px-3.5 py-1.5 rounded-lg text-sm font-medium transition-all ${
                 activeTab === 'caderno_erros'
@@ -244,6 +257,14 @@ export const Navbar: React.FC<NavbarProps> = ({
             }`}
           >
             <Clock className="w-3.5 h-3.5 mr-1" /> Simulado
+          </button>
+          <button
+            onClick={() => setActiveTab('tutor_ia')}
+            className={`flex items-center whitespace-nowrap px-3 py-1.5 rounded-lg text-xs font-semibold ${
+              activeTab === 'tutor_ia' ? 'bg-indigo-600 text-white' : 'bg-slate-800 text-slate-300'
+            }`}
+          >
+            <Bot className="w-3.5 h-3.5 mr-1 text-emerald-400" /> Tutor IA
           </button>
           <button
             onClick={() => setActiveTab('caderno_erros')}

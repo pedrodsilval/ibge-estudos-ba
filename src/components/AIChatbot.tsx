@@ -17,32 +17,40 @@ interface ChatMessage {
 }
 
 const PRESET_QUESTIONS = [
-  'Diferença entre SSH e Telnet?',
-  'Como funciona o comando chmod 755?',
-  'Qual a diferença entre Criptografia Simétrica e Assimétrica?',
-  'O que é Ransomware e como cai em prova?',
-  'Como aplicar a Regra do Mané na negação do "Se...Então"?',
+  'Quais os principais atalhos do Windows 10/11?',
+  'O que mudou nas permissões do Android 13+?',
+  'Diferença entre Backup Full, Incremental e Diferencial?',
+  'Qual a diferença entre `=MÉDIA()` e `=MED()` no Excel?',
+  'Diferença entre os campos Para, Cc e Cco no E-mail?',
   'Quais são as 4 regras de Crase Proibida?',
-  'Diferença de INNER JOIN para LEFT JOIN em SQL?'
+  'Como aplicar a Regra do Mané na negação do "Se...Então"?'
 ];
 
-// Respostas inteligentes instantâneas para os tópicos do edital IBGE
+// Respostas inteligentes alinhadas 100% ao edital oficial do IBGE (Windows 10/11, Android 13+, Word, Excel, Hardware, Backup, Redes, Português, RLM)
 const KNOWLEDGE_BASE: Record<string, { answer: string; bizu?: string }> = {
-  'ssh': {
-    answer: 'O **SSH (Secure Shell)** opera na **porta 22 TCP** e fornece acesso remoto criptografado a servidores. O **Telnet** opera na **porta 23 TCP** e envia dados em texto puro (sem criptografia), sendo considerado totalmente inseguro.',
-    bizu: '💡 Telnet (Porta 23 = Texto Puro/Inseguro) vs SSH (Porta 22 = Criptografado/Seguro).'
+  'windows': {
+    answer: 'Atalhos fundamentais do **Windows 10/11** para a prova:\n- `Ctrl + Shift + N`: Cria uma Nova Pasta\n- `Win + E`: Abre o Explorador de Arquivos\n- `F2`: Renomeia arquivo/pasta selecionada\n- `Shift + Delete`: Exclui arquivo permanentemente (sem mandar para a Lixeira)',
+    bizu: '💡 Lixeira: Arquivos excluídos com `Delete` simples vão para a Lixeira. Com `Shift + Delete` são apagados direto!'
   },
-  'chmod': {
-    answer: 'O comando `chmod 755` altera as permissões de um arquivo no Linux:\n- **7 (Dono):** Leitura(4) + Escrita(2) + Execução(1) = rwx\n- **5 (Grupo):** Leitura(4) + Execução(1) = r-x\n- **5 (Outros):** Leitura(4) + Execução(1) = r-x',
-    bizu: '💡 chmod = MODifica Permissões | chown = Altera o OWNER (Proprietário).'
+  'android': {
+    answer: 'No **Android 13 ou superior** (usado em pesquisas de campo), o foco do edital é a **Segurança e Permissões**:\n- Controle granular de privacidade para acesso à Câmera, Microfone e Localização (GPS).\n- Permissões específicas de fotos/vídeos e autorização prévia para notificações de aplicativos.',
+    bizu: '💡 Android 13+: O usuário deve autorizar explicitamente cada permissão sensível de mídia e localização.'
   },
-  'criptografia': {
-    answer: 'A **Criptografia Simétrica** usa a MESMA chave para cifrar e decifrar (muito rápida, ex: AES). A **Criptografia Assimétrica** usa um PAR de chaves: a Chave Pública (cifra) e a Chave Privada (decifra) (mais lenta, ex: RSA).',
-    bizu: '💡 SIMÉTRICA = 1 Chave Única | ASSIMÉTRICA = 2 Chaves (Pública + Privada).'
+  'excel': {
+    answer: 'Principais funções do **Microsoft Excel** no edital:\n- `=MÉDIA(A1:A3)`: Média Aritmética\n- `=MED(A1:A3)`: Mediana (Valor Central)\n- Sintaxe: Dois pontos `:` significa ATÉ. Ponto e vírgula `;` significa E.\n- O símbolo de cifrão `$` trava a referência (ex: `$A$1` não muda ao arrastar).',
+    bizu: '💡 `=MÉDIA()` = Média Aritmética | `=MED()` = Mediana! Não confundir na prova.'
   },
-  'ransomware': {
-    answer: 'O **Ransomware** é um código malicioso que criptografa os arquivos da vítima e exige o pagamento de um **resgate** (geralmente em Bitcoin/criptomoedas) para fornecer a chave de descriptografia.',
-    bizu: '💡 Ransom = Resgate! Ransomware sequestra dados e cobra resgate.'
+  'word': {
+    answer: 'Atalhos de formatação no **Microsoft Word em Português**:\n- `Ctrl + N`: NEGRITO\n- `Ctrl + I`: ITÁLICO\n- `Ctrl + S`: SUBLINHADO\n- `Ctrl + B`: SALVAR o documento',
+    bizu: '💡 CUIDADO: `Ctrl + B` no Word PT-BR é para SALVAR (Bold é no inglês).'
+  },
+  'backup': {
+    answer: 'Tipos de Backup de Segurança:\n- **Backup Completo (Full):** Copia 100% dos dados selecionados.\n- **Backup Incremental:** Copia apenas o que mudou desde o último backup de qualquer tipo.\n- **Backup Diferencial:** Copia o que mudou desde o último backup FULL.',
+    bizu: '💡 FULL = Copia Tudo | INCREMENTAL = Copia alterado desde último backup | DIFERENCIAL = Copia alterado desde último FULL.'
+  },
+  'email': {
+    answer: 'Campos de envio de Correio Eletrônico:\n- **Para:** Destinatário principal (Visível a todos).\n- **Cc (Com Cópia):** Destinatário secundário (Visível a todos).\n- **Cco (Com Cópia Oculta):** Recebe o e-mail sem revelar seu endereço para os demais.',
+    bizu: '💡 Ninguém nos campos `Para` ou `Cc` consegue enxergar quem está no `Cco`.'
   },
   'mané': {
     answer: 'Para negar a condicional $P \\rightarrow Q$ ("Se P, então Q"), usa-se a **Regra do MANÉ**:\n1. **MA**ntém a primeira proposição ($P$).\n2. Troca o "Se...Então" pelo conectivo **E** ($\\land$).\n3. **NE**ga a segunda proposição ($\\neg Q$).',
@@ -51,10 +59,6 @@ const KNOWLEDGE_BASE: Record<string, { answer: string; bizu?: string }> = {
   'crase': {
     answer: 'Principais casos de **Crase Proibida** para a prova:\n1. Antes de **Verbos** (ex: "Passou a estudar").\n2. Antes de palavras **Masculinas** (ex: "Andar a pé").\n3. Antes de **Uma/Todas** (ex: "Chegou a uma conclusão").\n4. Entre palavras **Repetidas** (ex: "Dia a dia").',
     bizu: '💡 NUNCA use crase antes de verbo, palavra masculina ou expressão repetida!'
-  },
-  'join': {
-    answer: 'Em SQL:\n- **INNER JOIN:** Retorna apenas as linhas que possuem correspondência em AMBAS as tabelas.\n- **LEFT JOIN:** Retorna TODAS as linhas da tabela da esquerda, preenchendo com NULL onde não houver correspondência na tabela da direita.',
-    bizu: '💡 LEFT JOIN = Prioriza e preserva 100% dos dados da tabela da esquerda.'
   }
 };
 
@@ -63,7 +67,7 @@ export const AIChatbot: React.FC = () => {
     {
       id: 'welcome',
       sender: 'ai',
-      text: 'Olá! Sou o seu **Tutor IA da Reta Final IBGE**. Pode me fazer qualquer pergunta sobre Informática/TI, Português ou Raciocínio Lógico do edital!',
+      text: 'Olá! Sou o seu **Tutor IA Reta Final IBGE**. Estou 100% atualizado com o edital oficial de Noções de Informática (Windows 10/11, Android 13+, Word, Excel, Hardware, Backup, Redes), Português e Raciocínio Lógico!',
       bizu: '💡 Dica: Clique nas perguntas rápidas sugeridas abaixo ou digite sua dúvida.',
       timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
     }
@@ -91,7 +95,6 @@ export const AIChatbot: React.FC = () => {
     if (!questionText) setInput('');
     setIsTyping(true);
 
-    // Simular busca de resposta inteligente da IA
     setTimeout(() => {
       const queryLower = textToSend.toLowerCase();
       let matchKey = Object.keys(KNOWLEDGE_BASE).find(key => queryLower.includes(key));
@@ -102,13 +105,11 @@ export const AIChatbot: React.FC = () => {
       if (matchKey && KNOWLEDGE_BASE[matchKey]) {
         aiText = KNOWLEDGE_BASE[matchKey].answer;
         aiBizu = KNOWLEDGE_BASE[matchKey].bizu;
-      } else if (queryLower.includes('linux')) {
-        aiText = 'No Linux para o IBGE, os comandos mais cobrados são:\n- `chmod`: Altera permissões\n- `chown`: Altera proprietário\n- `grep`: Busca padrões em texto\n- `find`: Localiza arquivos no sistema\n- `ps / top`: Processos';
-        aiBizu = '💡 Diretório `/etc` = Configurações | `/var` = Logs variáveis | `/home` = Usuários.';
-      } else if (queryLower.includes('portas') || queryLower.includes('rede')) {
-        aiText = 'Principais portas de rede para a prova do IBGE:\n- **SSH:** 22 (TCP)\n- **Telnet:** 23 (TCP)\n- **SMTP:** 25/587 (Envio de email)\n- **POP3:** 110 (Recebimento)\n- **IMAP:** 143 (Sincronização de email)\n- **DNS:** 53 (UDP/TCP)\n- **HTTP/HTTPS:** 80 / 443';
+      } else if (queryLower.includes('hardware') || queryLower.includes('cpu')) {
+        aiText = 'Conceitos de Hardware do Edital:\n- **CPU (Processador):** Executa os cálculos e instruções (Cérebro).\n- **Memória RAM:** Memória temporária volátil de trabalho.\n- **SSD / HD:** Armazenamento não volátil permanente.';
+        aiBizu = '💡 Periféricos de Entrada: Teclado, Mouse, Scanner | Saída: Monitor comum, Impressora.';
       } else {
-        aiText = `Para **"${textToSend}"**: no contexto da banca do IBGE, mantenha o foco nos conceitos fundamentais. Verifique se sua dúvida envolve os protocolos de rede (TCP/IP), comandos Linux de segurança ou regras de crase e concordância!`;
+        aiText = `Para **"${textToSend}"**: no edital oficial de Noções de Informática, foque nos aspectos operacionais do **Windows 10/11**, permissões no **Android 13+**, fórmulas no **Excel**, formatação no **Word**, práticas de **Backup/Senhas** e regras de **Crase/Concordância**.`;
         aiBizu = '💡 Consulte a aba "Paredão de Bizus" para rever as tabelas de alta incidência.';
       }
 
@@ -122,7 +123,7 @@ export const AIChatbot: React.FC = () => {
 
       setMessages(prev => [...prev, aiMsg]);
       setIsTyping(false);
-    }, 600);
+    }, 500);
   };
 
   return (
@@ -142,7 +143,7 @@ export const AIChatbot: React.FC = () => {
               </span>
             </h2>
             <p className="text-xs text-slate-300">
-              Tire dúvidas de Informática, Português e Raciocínio Lógico em segundos.
+              Perguntas e bizus 100% alinhados ao edital oficial do concurso.
             </p>
           </div>
         </div>

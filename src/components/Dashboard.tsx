@@ -47,9 +47,12 @@ export const Dashboard: React.FC<DashboardProps> = ({
     }
   });
 
-  // Metas da Zona de Aprovação Prova IBFC (60 Questões)
-  const isApprovalZone = accuracyPercentage >= 75;
-  const isAttentionZone = accuracyPercentage >= 50 && accuracyPercentage < 75;
+  // Region target (Salvador default: 83% / 50q)
+  const [selectedRegion, setSelectedRegion] = React.useState<'salvador' | 'interior'>('salvador');
+
+  const targetPct = selectedRegion === 'salvador' ? 83 : 75;
+  const isApprovalZone = accuracyPercentage >= targetPct;
+  const isAttentionZone = accuracyPercentage >= (targetPct - 20) && accuracyPercentage < targetPct;
 
   return (
     <div className="max-w-5xl mx-auto px-4 py-8 space-y-8">
@@ -65,7 +68,7 @@ export const Dashboard: React.FC<DashboardProps> = ({
               Olá, {activeProfile.name}! 👋
             </h2>
             <p className="text-xs sm:text-sm text-slate-300 mt-1">
-              Reta final para o Concurso do IBGE (Agente Censitário de Informática - Banca IBFC).
+              Reta final para o Concurso do IBGE (Agente Censitário de Informática - Salvador / Bahia).
             </p>
           </div>
         </div>
@@ -126,42 +129,70 @@ export const Dashboard: React.FC<DashboardProps> = ({
       <div className="bg-slate-900 border border-slate-800 p-6 sm:p-8 rounded-3xl shadow-xl space-y-6">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-800 pb-4">
           <div>
-            <h3 className="text-base sm:text-lg font-bold text-white flex items-center gap-2">
-              <Target className="w-5 h-5 text-amber-400" />
-              Simulador da Zona de Aprovação (Banca IBFC)
-            </h3>
+            <div className="flex items-center gap-2">
+              <h3 className="text-base sm:text-lg font-bold text-white flex items-center gap-2">
+                <Target className="w-5 h-5 text-amber-400" />
+                Simulador da Zona de Aprovação (Banca IBFC)
+              </h3>
+            </div>
             <p className="text-xs text-slate-400 mt-1">
-              Meta estimada de acertos recomendada para garantir a vaga de Agente de Informática.
+              Metas calculadas com base na nota de corte histórica para o polo escolhido.
             </p>
           </div>
 
-          <div className={`px-4 py-2 rounded-2xl border text-xs font-bold flex items-center space-x-2 ${
-            isApprovalZone 
-              ? 'bg-emerald-500/10 border-emerald-500/40 text-emerald-300' 
-              : isAttentionZone 
-              ? 'bg-amber-500/10 border-amber-500/40 text-amber-300' 
-              : 'bg-rose-500/10 border-rose-500/40 text-rose-300'
-          }`}>
-            {isApprovalZone ? (
-              <>
-                <ShieldCheck className="w-4 h-4 text-emerald-400" />
-                <span>🏆 ZONA DE APROVAÇÃO</span>
-              </>
-            ) : isAttentionZone ? (
-              <>
-                <AlertTriangle className="w-4 h-4 text-amber-400" />
-                <span>⚠️ ZONA DE ATENÇÃO (REVISAR)</span>
-              </>
-            ) : (
-              <>
-                <XCircle className="w-4 h-4 text-rose-400" />
-                <span>🚨 ZONA DE REFORÇO URGENTE</span>
-              </>
-            )}
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3">
+            {/* Seletor de Polo */}
+            <div className="bg-slate-950 p-1 rounded-xl border border-slate-800 flex text-xs">
+              <button
+                onClick={() => setSelectedRegion('salvador')}
+                className={`px-3 py-1.5 rounded-lg font-semibold transition-all ${
+                  selectedRegion === 'salvador'
+                    ? 'bg-indigo-600 text-white shadow-md'
+                    : 'text-slate-400 hover:text-white'
+                }`}
+              >
+                📍 Salvador (83% / 50q)
+              </button>
+              <button
+                onClick={() => setSelectedRegion('interior')}
+                className={`px-3 py-1.5 rounded-lg font-semibold transition-all ${
+                  selectedRegion === 'interior'
+                    ? 'bg-indigo-600 text-white shadow-md'
+                    : 'text-slate-400 hover:text-white'
+                }`}
+              >
+                🌾 Interior (75% / 45q)
+              </button>
+            </div>
+
+            <div className={`px-4 py-2 rounded-2xl border text-xs font-bold flex items-center space-x-2 ${
+              isApprovalZone 
+                ? 'bg-emerald-500/10 border-emerald-500/40 text-emerald-300' 
+                : isAttentionZone 
+                ? 'bg-amber-500/10 border-amber-500/40 text-amber-300' 
+                : 'bg-rose-500/10 border-rose-500/40 text-rose-300'
+            }`}>
+              {isApprovalZone ? (
+                <>
+                  <ShieldCheck className="w-4 h-4 text-emerald-400" />
+                  <span>🏆 ZONA DE APROVAÇÃO</span>
+                </>
+              ) : isAttentionZone ? (
+                <>
+                  <AlertTriangle className="w-4 h-4 text-amber-400" />
+                  <span>⚠️ ZONA DE ATENÇÃO</span>
+                </>
+              ) : (
+                <>
+                  <XCircle className="w-4 h-4 text-rose-400" />
+                  <span>🚨 ZONA DE REFORÇO URGENTE</span>
+                </>
+              )}
+            </div>
           </div>
         </div>
 
-        {/* METAS POR MATÉRIA */}
+        {/* METAS POR MATÉRIA (DINÂMICAS) */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           
           <div className="p-4 bg-slate-950 rounded-2xl border border-indigo-500/30">
@@ -169,8 +200,12 @@ export const Dashboard: React.FC<DashboardProps> = ({
               <span className="text-xs font-bold text-indigo-300">⚡ Informática</span>
               <span className="text-xs font-mono text-slate-400">Peso 35q</span>
             </div>
-            <div className="text-lg font-extrabold text-white">Meta: 28+ acertos</div>
-            <p className="text-[11px] text-slate-400 mt-1">Representa 58% do total da prova.</p>
+            <div className="text-lg font-extrabold text-white">
+              Meta: {selectedRegion === 'salvador' ? '30+' : '28+'} acertos
+            </div>
+            <p className="text-[11px] text-slate-400 mt-1">
+              {selectedRegion === 'salvador' ? '85%+ em Informática é essencial!' : 'Representa 58% do total da prova.'}
+            </p>
           </div>
 
           <div className="p-4 bg-slate-950 rounded-2xl border border-slate-800">
@@ -178,7 +213,9 @@ export const Dashboard: React.FC<DashboardProps> = ({
               <span className="text-xs font-bold text-slate-300">📝 Português</span>
               <span className="text-xs font-mono text-slate-400">Peso 15q</span>
             </div>
-            <div className="text-lg font-extrabold text-white">Meta: 11+ acertos</div>
+            <div className="text-lg font-extrabold text-white">
+              Meta: {selectedRegion === 'salvador' ? '12+' : '11+'} acertos
+            </div>
             <p className="text-[11px] text-slate-400 mt-1">Foco em Crase e Concordância.</p>
           </div>
 
@@ -187,7 +224,9 @@ export const Dashboard: React.FC<DashboardProps> = ({
               <span className="text-xs font-bold text-slate-300">📐 Raciocínio Lógico</span>
               <span className="text-xs font-mono text-slate-400">Peso 10q</span>
             </div>
-            <div className="text-lg font-extrabold text-white">Meta: 7+ acertos</div>
+            <div className="text-lg font-extrabold text-white">
+              Meta: {selectedRegion === 'salvador' ? '8+' : '7+'} acertos
+            </div>
             <p className="text-[11px] text-slate-400 mt-1">Foco em Negação do Se...Então.</p>
           </div>
 

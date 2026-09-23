@@ -7,11 +7,36 @@ import {
   AlertOctagon,
   Sparkles,
   Monitor,
-  FileSpreadsheet
+  FileSpreadsheet,
+  Volume2,
+  VolumeX
 } from 'lucide-react';
 
 export const BizusQuickRead: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState<'inf' | 'port' | 'rlm'>('inf');
+  const [isSpeaking, setIsSpeaking] = useState<boolean>(false);
+
+  const speakText = (text: string) => {
+    if (!('speechSynthesis' in window)) return;
+
+    if (isSpeaking) {
+      window.speechSynthesis.cancel();
+      setIsSpeaking(false);
+      return;
+    }
+
+    window.speechSynthesis.cancel();
+    const cleanText = text.replace(/[*_#$`\\~]/g, '');
+    const utterance = new SpeechSynthesisUtterance(cleanText);
+    utterance.lang = 'pt-BR';
+    utterance.rate = 1.05;
+    
+    utterance.onend = () => setIsSpeaking(false);
+    utterance.onerror = () => setIsSpeaking(false);
+
+    setIsSpeaking(true);
+    window.speechSynthesis.speak(utterance);
+  };
 
   return (
     <div className="max-w-5xl mx-auto px-4 py-8">
@@ -22,18 +47,45 @@ export const BizusQuickRead: React.FC = () => {
           <Zap className="w-4 h-4 fill-amber-400 text-amber-400" />
           <span>Edital Oficial IBGE • Reta Final</span>
         </div>
-        <h2 className="text-2xl sm:text-3xl font-extrabold text-white">
-          Paredão de Bizus de Alta Incidência (100% Edital)
-        </h2>
-        <p className="text-xs sm:text-sm text-slate-400 mt-2 max-w-xl mx-auto">
-          Resumos focados estritamente no edital: Noções de Informática (Windows 10/11, Android 13+, Word, Excel, Hardware, Segurança, Redes), Português e RLM.
+        
+        <div className="flex items-center justify-center space-x-3 mb-2">
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-white">
+            Paredão de Bizus de Alta Incidência
+          </h2>
+          
+          <button
+            onClick={() => {
+              const textToSpeak = activeCategory === 'inf'
+                ? "Bizus de Informática: CPU é o cérebro. Memória RAM é temporária. No Windows, Control Shift N cria nova pasta. Win mais E abre o explorador. No Word, Control N coloca em negrito. Control B salva. No Excel, fórmula média calcula a média. E C c o no e-mail oculta os destinatários."
+                : activeCategory === 'port'
+                ? "Bizus de Português: Crase é proibida antes de verbos, palavras masculinas, antes de uma ou todas, e entre palavras repetidas. Verbos haver no sentido de existir e fazer no sentido de tempo decorrido são impessoais e ficam sempre no singular."
+                : "Bizus de Raciocínio Lógico: Negação do Se...Então é a regra do MANÉ: mantém a primeira e nega a segunda. Equivalência do Se...Então é a contrapositiva: volta negando.";
+              speakText(textToSpeak);
+            }}
+            className={`p-2 rounded-xl border transition-all ${
+              isSpeaking 
+                ? 'bg-emerald-500/20 border-emerald-500/50 text-emerald-400 animate-pulse' 
+                : 'bg-slate-900 border-slate-800 text-amber-300 hover:bg-slate-800'
+            }`}
+            title="Ouvir Resumo Narração por Áudio (Estudo Auditivo)"
+          >
+            {isSpeaking ? <VolumeX className="w-5 h-5" /> : <Volume2 className="w-5 h-5" />}
+          </button>
+        </div>
+
+        <p className="text-xs sm:text-sm text-slate-400 max-w-xl mx-auto">
+          Resumos focados estritamente no edital (Windows 10/11, Android 13+, Word, Excel, Hardware, Segurança, Redes, Português e RLM).
         </p>
       </div>
 
       {/* TABS DAS MATÉRIAS */}
       <div className="flex justify-center space-x-2 mb-8">
         <button
-          onClick={() => setActiveCategory('inf')}
+          onClick={() => {
+            if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+            setIsSpeaking(false);
+            setActiveCategory('inf');
+          }}
           className={`px-5 py-2.5 rounded-2xl text-xs sm:text-sm font-bold transition-all ${
             activeCategory === 'inf'
               ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/30 border border-indigo-400/30'
@@ -43,7 +95,11 @@ export const BizusQuickRead: React.FC = () => {
           💻 Noções de Informática
         </button>
         <button
-          onClick={() => setActiveCategory('port')}
+          onClick={() => {
+            if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+            setIsSpeaking(false);
+            setActiveCategory('port');
+          }}
           className={`px-5 py-2.5 rounded-2xl text-xs sm:text-sm font-bold transition-all ${
             activeCategory === 'port'
               ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/30 border border-indigo-400/30'
@@ -53,7 +109,11 @@ export const BizusQuickRead: React.FC = () => {
           📝 Língua Portuguesa
         </button>
         <button
-          onClick={() => setActiveCategory('rlm')}
+          onClick={() => {
+            if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+            setIsSpeaking(false);
+            setActiveCategory('rlm');
+          }}
           className={`px-5 py-2.5 rounded-2xl text-xs sm:text-sm font-bold transition-all ${
             activeCategory === 'rlm'
               ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/30 border border-indigo-400/30'
@@ -70,9 +130,18 @@ export const BizusQuickRead: React.FC = () => {
           
           {/* CARD 1: HARDWARE & SISTEMAS (WINDOWS 10/11 E ANDROID 13+) */}
           <div className="bg-slate-900 border border-slate-800 rounded-3xl p-6 shadow-xl space-y-4">
-            <h3 className="text-base font-bold text-white flex items-center gap-2 border-b border-slate-800 pb-3">
-              <Monitor className="w-5 h-5 text-indigo-400" />
-              Hardware, Windows 10/11 & Android 13+
+            <h3 className="text-base font-bold text-white flex items-center justify-between border-b border-slate-800 pb-3">
+              <span className="flex items-center gap-2">
+                <Monitor className="w-5 h-5 text-indigo-400" />
+                Hardware, Windows 10/11 & Android 13+
+              </span>
+              <button
+                onClick={() => speakText("Hardware e Sistemas. CPU é o cérebro. RAM é a memória de trabalho volátil. No Windows, Control Shift N cria nova pasta. Win mais E abre o explorador de arquivos. F2 renomeia. Shift Delete exclui sem ir para a lixeira. Android 13 tem controle granular de localização, câmera e notificações.")}
+                className="text-slate-400 hover:text-amber-300 transition-colors"
+                title="Ouvir este card"
+              >
+                <Volume2 className="w-4 h-4" />
+              </button>
             </h3>
             <div className="space-y-2 text-xs text-slate-300">
               <p><strong className="text-indigo-300">CPU (Processador):</strong> Cérebro do microcomputador.</p>
@@ -84,9 +153,18 @@ export const BizusQuickRead: React.FC = () => {
 
           {/* CARD 2: WORD & EXCEL */}
           <div className="bg-slate-900 border border-slate-800 rounded-3xl p-6 shadow-xl space-y-4">
-            <h3 className="text-base font-bold text-white flex items-center gap-2 border-b border-slate-800 pb-3">
-              <FileSpreadsheet className="w-5 h-5 text-emerald-400" />
-              Word & Excel (Padrão PT-BR)
+            <h3 className="text-base font-bold text-white flex items-center justify-between border-b border-slate-800 pb-3">
+              <span className="flex items-center gap-2">
+                <FileSpreadsheet className="w-5 h-5 text-emerald-400" />
+                Word & Excel (Padrão PT-BR)
+              </span>
+              <button
+                onClick={() => speakText("Word e Excel. No Word em Português, Control N aplica Negrito. Control I aplica Itálico. Control S Sublinhado. Control B salva o arquivo. No Excel, a função média calcula a média aritmética. A função MED calcula a mediana. Dois pontos significa ATÉ. Ponto e vírgula significa E. O cifrão trava a célula ao copiar.")}
+                className="text-slate-400 hover:text-amber-300 transition-colors"
+                title="Ouvir este card"
+              >
+                <Volume2 className="w-4 h-4" />
+              </button>
             </h3>
             <div className="space-y-2 text-xs text-slate-300">
               <p><strong className="text-emerald-300">Word (Atalhos):</strong> `Ctrl+N` = Negrito | `Ctrl+I` = Itálico | `Ctrl+S` = Sublinhado | `Ctrl+B` = Salvar.</p>
@@ -98,9 +176,18 @@ export const BizusQuickRead: React.FC = () => {
 
           {/* CARD 3: SEGURANÇA DA INFORMAÇÃO, VÍRUS E BACKUP */}
           <div className="bg-slate-900 border border-slate-800 rounded-3xl p-6 shadow-xl space-y-4">
-            <h3 className="text-base font-bold text-white flex items-center gap-2 border-b border-slate-800 pb-3">
-              <ShieldCheck className="w-5 h-5 text-amber-400" />
-              Segurança, Vírus, Antivírus & Backup
+            <h3 className="text-base font-bold text-white flex items-center justify-between border-b border-slate-800 pb-3">
+              <span className="flex items-center gap-2">
+                <ShieldCheck className="w-5 h-5 text-amber-400" />
+                Segurança, Vírus, Antivírus & Backup
+              </span>
+              <button
+                onClick={() => speakText("Segurança e Backup. Backup Completo ou Full copia cem por cento dos dados. Backup Incremental copia o que mudou desde o último backup. Backup Diferencial copia o que mudou desde o último backup Full. Senhas fortes misturam maiúsculas, minúsculas, números e caracteres especiais.")}
+                className="text-slate-400 hover:text-amber-300 transition-colors"
+                title="Ouvir este card"
+              >
+                <Volume2 className="w-4 h-4" />
+              </button>
             </h3>
             <div className="space-y-2 text-xs leading-relaxed text-slate-300">
               <p><strong className="text-amber-300">Backup Completo (Full):</strong> Copia 100% dos dados selecionados.</p>
@@ -112,9 +199,18 @@ export const BizusQuickRead: React.FC = () => {
 
           {/* CARD 4: REDES, INTRANET, INTERNET E CORREIO ELETRÔNICO */}
           <div className="bg-slate-900 border border-slate-800 rounded-3xl p-6 shadow-xl space-y-4">
-            <h3 className="text-base font-bold text-white flex items-center gap-2 border-b border-slate-800 pb-3">
-              <Globe className="w-5 h-5 text-sky-400" />
-              Navegadores, E-mail & Intranet
+            <h3 className="text-base font-bold text-white flex items-center justify-between border-b border-slate-800 pb-3">
+              <span className="flex items-center gap-2">
+                <Globe className="w-5 h-5 text-sky-400" />
+                Navegadores, E-mail & Intranet
+              </span>
+              <button
+                onClick={() => speakText("E-mail e Navegadores. O campo C c o envia cópia oculta e esconde o e-mail dos destinatários nos campos Para e C c. Cookies são arquivos de texto que guardam preferências e sessões de login no navegador. O cache guarda páginas locais para carregar mais rápido.")}
+                className="text-slate-400 hover:text-amber-300 transition-colors"
+                title="Ouvir este card"
+              >
+                <Volume2 className="w-4 h-4" />
+              </button>
             </h3>
             <div className="space-y-2 text-xs text-slate-300">
               <p><strong className="text-sky-300">Campos de E-mail:</strong> `Para` e `Cc` = Visíveis | `Cco` = Com Cópia Oculta (Ninguém no Para/Cc descobre).</p>
@@ -132,9 +228,18 @@ export const BizusQuickRead: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 animate-fadeIn">
           
           <div className="bg-slate-900 border border-slate-800 rounded-3xl p-6 shadow-xl space-y-4">
-            <h3 className="text-base font-bold text-white flex items-center gap-2 border-b border-slate-800 pb-3">
-              <AlertOctagon className="w-5 h-5 text-rose-400" />
-              Crase Proibida (4 Regras de Ouro)
+            <h3 className="text-base font-bold text-white flex items-center justify-between border-b border-slate-800 pb-3">
+              <span className="flex items-center gap-2">
+                <AlertOctagon className="w-5 h-5 text-rose-400" />
+                Crase Proibida (4 Regras de Ouro)
+              </span>
+              <button
+                onClick={() => speakText("Quatro regras de crase proibida. Nunca usar crase antes de verbos, antes de palavras masculinas, antes de artigo uma ou todas, e entre palavras repetidas como dia a dia.")}
+                className="text-slate-400 hover:text-amber-300 transition-colors"
+                title="Ouvir este card"
+              >
+                <Volume2 className="w-4 h-4" />
+              </button>
             </h3>
             <ul className="space-y-2 text-xs sm:text-sm text-slate-300 list-disc list-inside">
               <li>1. Antes de <strong>Verbos</strong> (ex: "Passou a estudar").</li>
@@ -145,9 +250,18 @@ export const BizusQuickRead: React.FC = () => {
           </div>
 
           <div className="bg-slate-900 border border-slate-800 rounded-3xl p-6 shadow-xl space-y-4">
-            <h3 className="text-base font-bold text-white flex items-center gap-2 border-b border-slate-800 pb-3">
-              <CheckCircle className="w-5 h-5 text-emerald-400" />
-              Verbos Haver e Fazer (Impessoais)
+            <h3 className="text-base font-bold text-white flex items-center justify-between border-b border-slate-800 pb-3">
+              <span className="flex items-center gap-2">
+                <CheckCircle className="w-5 h-5 text-emerald-400" />
+                Verbos Haver e Fazer (Impessoais)
+              </span>
+              <button
+                onClick={() => speakText("Verbos haver e fazer. O verbo haver no sentido de existir ou ocorrer é impessoal e fica sempre no singular: havia problemas. O verbo fazer indicando tempo decorrido também fica no singular: faz dois anos.")}
+                className="text-slate-400 hover:text-amber-300 transition-colors"
+                title="Ouvir este card"
+              >
+                <Volume2 className="w-4 h-4" />
+              </button>
             </h3>
             <div className="space-y-3 text-xs sm:text-sm text-slate-300">
               <p>O verbo <strong>HAVER</strong> no sentido de <i>existir, ocorrer ou tempo decorrido</i> fica <strong>SEMPRE NO SINGULAR</strong>!</p>
@@ -170,9 +284,18 @@ export const BizusQuickRead: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 animate-fadeIn">
           
           <div className="bg-slate-900 border border-slate-800 rounded-3xl p-6 shadow-xl space-y-4">
-            <h3 className="text-base font-bold text-white flex items-center gap-2 border-b border-slate-800 pb-3">
-              <Sparkles className="w-5 h-5 text-amber-400" />
-              Negação do "SE... ENTÃO" ($P \rightarrow Q$)
+            <h3 className="text-base font-bold text-white flex items-center justify-between border-b border-slate-800 pb-3">
+              <span className="flex items-center gap-2">
+                <Sparkles className="w-5 h-5 text-amber-400" />
+                Negação do "SE... ENTÃO" ($P \rightarrow Q$)
+              </span>
+              <button
+                onClick={() => speakText("Negação do Se Então. Regra do MANÉ: mantém a primeira proposição e nega a segunda. Exemplo: Se estuda, passa. Negação: Estuda e não passa.")}
+                className="text-slate-400 hover:text-amber-300 transition-colors"
+                title="Ouvir este card"
+              >
+                <Volume2 className="w-4 h-4" />
+              </button>
             </h3>
             <div className="p-4 bg-slate-950 rounded-2xl border border-slate-800 text-xs sm:text-sm space-y-2">
               <p className="font-bold text-amber-300">REGRA DO MANÉ:</p>
@@ -186,9 +309,18 @@ export const BizusQuickRead: React.FC = () => {
           </div>
 
           <div className="bg-slate-900 border border-slate-800 rounded-3xl p-6 shadow-xl space-y-4">
-            <h3 className="text-base font-bold text-white flex items-center gap-2 border-b border-slate-800 pb-3">
-              <Sparkles className="w-5 h-5 text-indigo-400" />
-              Equivalência do "SE... ENTÃO"
+            <h3 className="text-base font-bold text-white flex items-center justify-between border-b border-slate-800 pb-3">
+              <span className="flex items-center gap-2">
+                <Sparkles className="w-5 h-5 text-indigo-400" />
+                Equivalência do "SE... ENTÃO"
+              </span>
+              <button
+                onClick={() => speakText("Equivalência do Se Então. Primeira opção: contrapositiva, volta negando. Segunda opção: regra do Neumar, nega a primeira proposição ou mantém a segunda.")}
+                className="text-slate-400 hover:text-amber-300 transition-colors"
+                title="Ouvir este card"
+              >
+                <Volume2 className="w-4 h-4" />
+              </button>
             </h3>
             <div className="p-4 bg-slate-950 rounded-2xl border border-slate-800 text-xs sm:text-sm space-y-3">
               <div>

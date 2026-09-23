@@ -9,7 +9,12 @@ import {
   Star, 
   Lightbulb, 
   BookOpen, 
-  HelpCircle 
+  HelpCircle,
+  Volume2,
+  VolumeX,
+  ThumbsUp,
+  Meh,
+  AlertTriangle
 } from 'lucide-react';
 import type { Question, UserProfile } from '../types/study';
 import { recordQuestionAnswer, toggleBookmarkQuestion } from '../services/storageService';
@@ -30,6 +35,7 @@ export const FlashcardMode: React.FC<FlashcardModeProps> = ({
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
   const [isFlipped, setIsFlipped] = useState<boolean>(false);
   const [filterOnlyErrors, setFilterOnlyErrors] = useState<boolean>(false);
+  const [isSpeaking, setIsSpeaking] = useState<boolean>(false);
 
   // Filtrar lista de questões conforme seleção
   const filteredQuestions = React.useMemo(() => {
@@ -45,18 +51,18 @@ export const FlashcardMode: React.FC<FlashcardModeProps> = ({
     });
   }, [questions, selectedSubject, filterOnlyErrors, activeProfile.answers]);
 
-  // Garantir que o índice atual seja válido ao mudar os filtros
   useEffect(() => {
     setCurrentIndex(0);
     setIsFlipped(false);
     setSelectedOption(null);
+    if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+    setIsSpeaking(false);
   }, [selectedSubject, filterOnlyErrors]);
 
   const currentQuestion = filteredQuestions[currentIndex] || null;
   const isBookmarked = currentQuestion ? activeProfile.bookmarkedQuestionIds.includes(currentQuestion.id) : false;
   const existingAnswer = currentQuestion ? activeProfile.answers[currentQuestion.id] : null;
 
-  // Atualizar opção selecionada quando houver histórico existente
   useEffect(() => {
     if (existingAnswer) {
       setSelectedOption(existingAnswer.selectedOption);
@@ -65,6 +71,28 @@ export const FlashcardMode: React.FC<FlashcardModeProps> = ({
       setIsFlipped(false);
     }
   }, [currentIndex, currentQuestion, existingAnswer]);
+
+  const speakText = (text: string) => {
+    if (!('speechSynthesis' in window)) return;
+
+    if (isSpeaking) {
+      window.speechSynthesis.cancel();
+      setIsSpeaking(false);
+      return;
+    }
+
+    window.speechSynthesis.cancel();
+    const cleanText = text.replace(/[*_#$`\\~]/g, '');
+    const utterance = new SpeechSynthesisUtterance(cleanText);
+    utterance.lang = 'pt-BR';
+    utterance.rate = 1.05;
+    
+    utterance.onend = () => setIsSpeaking(false);
+    utterance.onerror = () => setIsSpeaking(false);
+
+    setIsSpeaking(true);
+    window.speechSynthesis.speak(utterance);
+  };
 
   const handleSelectOption = (key: string) => {
     if (!currentQuestion) return;
@@ -84,6 +112,14 @@ export const FlashcardMode: React.FC<FlashcardModeProps> = ({
     setIsFlipped(true);
   };
 
+  const handleRateDifficulty = (rating: 'easy' | 'medium' | 'hard') => {
+    if (!currentQuestion || !selectedOption) return;
+    const isCorrect = selectedOption === currentQuestion.correctOption;
+    const updated = recordQuestionAnswer(currentQuestion.id, selectedOption, isCorrect, rating);
+    onUpdateProfile(updated);
+    handleNext();
+  };
+
   const handleToggleBookmark = () => {
     if (!currentQuestion) return;
     const updated = toggleBookmarkQuestion(currentQuestion.id);
@@ -91,6 +127,8 @@ export const FlashcardMode: React.FC<FlashcardModeProps> = ({
   };
 
   const handleNext = useCallback(() => {
+    if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+    setIsSpeaking(false);
     if (currentIndex < filteredQuestions.length - 1) {
       setCurrentIndex(prev => prev + 1);
       setIsFlipped(false);
@@ -99,6 +137,8 @@ export const FlashcardMode: React.FC<FlashcardModeProps> = ({
   }, [currentIndex, filteredQuestions.length]);
 
   const handlePrev = useCallback(() => {
+    if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+    setIsSpeaking(false);
     if (currentIndex > 0) {
       setCurrentIndex(prev => prev - 1);
       setIsFlipped(false);
@@ -106,12 +146,10 @@ export const FlashcardMode: React.FC<FlashcardModeProps> = ({
     }
   }, [currentIndex]);
 
-  // Suporte a Atalhos de Teclado (1-5/A-E, Espaço, Setas)
+  // Suporte a Atalhos de Teclado
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      // Ignorar atalhos se estiver digitando em campos de input
       if (['INPUT', 'TEXTAREA', 'SELECT'].includes((e.target as HTMLElement).tagName)) return;
-
       if (!currentQuestion) return;
 
       const key = e.key.toUpperCase();
@@ -180,7 +218,7 @@ export const FlashcardMode: React.FC<FlashcardModeProps> = ({
                   : 'bg-slate-900/90 text-slate-400 hover:text-slate-200 border border-slate-800 hover:border-slate-700'
               }`}
             >
-              {sub === 'Informática' ? '⚡ Informática (Foco TI)' : sub}
+              {sub === 'Informática' ? '⚡ Informática (Peso 35)' : sub}
             </button>
           ))}
         </div>
@@ -206,7 +244,7 @@ export const FlashcardMode: React.FC<FlashcardModeProps> = ({
 
       </div>
 
-      {/* CARD PRINCIPAL DA QUESTÃO (ESTILO FLASHCARD COM INTERAÇÃO 3D) */}
+      {/* CARD PRINCIPAL DA QUESTÃO */}
       <div className="relative bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 shadow-2xl backdrop-blur-xl">
         
         {/* CABEÇALHO DO CARD */}
@@ -224,6 +262,26 @@ export const FlashcardMode: React.FC<FlashcardModeProps> = ({
           </div>
 
           <div className="flex items-center space-x-2">
+            
+            {/* BOTÃO NARRAR ÁUDIO (TEXT-TO-SPEECH) */}
+            <button
+              onClick={() => {
+                const textToRead = isFlipped
+                  ? `Bizu da Prova: ${currentQuestion.explanation.bizu}. Explicação: ${currentQuestion.explanation.summary}`
+                  : `${currentQuestion.statement}. Alternativas: ${currentQuestion.options.map(o => `${o.key}: ${o.text}`).join('. ')}`;
+                speakText(textToRead);
+              }}
+              className={`p-2 rounded-xl border transition-all ${
+                isSpeaking 
+                  ? 'bg-emerald-500/20 border-emerald-500/50 text-emerald-400 animate-pulse'
+                  : 'bg-slate-950/60 border-slate-800 text-slate-400 hover:text-slate-200'
+              }`}
+              title="Ouvir Áudio da Questão / Bizu (Estudo Auditivo)"
+            >
+              {isSpeaking ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
+            </button>
+
+            {/* BOOKMARK */}
             <button
               onClick={handleToggleBookmark}
               className={`p-2 rounded-xl border transition-all ${
@@ -236,6 +294,7 @@ export const FlashcardMode: React.FC<FlashcardModeProps> = ({
               <Star className={`w-4 h-4 ${isBookmarked ? 'fill-amber-400' : ''}`} />
             </button>
 
+            {/* VIRAR CARD */}
             <button
               onClick={() => setIsFlipped(!isFlipped)}
               className="flex items-center space-x-1.5 px-3 py-1.5 bg-indigo-500/10 hover:bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 rounded-xl text-xs font-semibold transition-all"
@@ -247,17 +306,15 @@ export const FlashcardMode: React.FC<FlashcardModeProps> = ({
           </div>
         </div>
 
-        {/* CORPO DO CARD - FRENTE (ENUNCIADO E ALTERNATIVAS) */}
+        {/* FRENTE DO CARD (ENUNCIADO E ALTERNATIVAS) */}
         {!isFlipped ? (
           <div>
-            {/* ENUNCIADO */}
             <div className="mb-6">
               <p className="text-base sm:text-lg text-slate-100 leading-relaxed font-normal">
                 {currentQuestion.statement}
               </p>
             </div>
 
-            {/* ALTERNATIVAS A, B, C, D, E */}
             <div className="space-y-3 mb-8">
               {currentQuestion.options.map((opt, idx) => {
                 const isSelected = selectedOption === opt.key;
@@ -323,9 +380,15 @@ export const FlashcardMode: React.FC<FlashcardModeProps> = ({
                     </p>
                   </div>
                 </div>
-                <div className="text-xs text-right font-mono hidden sm:block">
-                  Sua escolha: <span className="font-bold">{selectedOption}</span>
-                </div>
+                
+                {/* BOTÃO OUVIR BIZU */}
+                <button
+                  onClick={() => speakText(`Bizu da Prova IBGE: ${currentQuestion.explanation.bizu}`)}
+                  className="hidden sm:flex items-center space-x-1 px-3 py-1.5 bg-slate-950 hover:bg-slate-800 text-amber-300 border border-amber-500/30 rounded-xl text-xs font-semibold"
+                >
+                  <Volume2 className="w-3.5 h-3.5" />
+                  <span>Ouvir Bizu</span>
+                </button>
               </div>
             ) : (
               <div className="p-4 bg-amber-500/10 border border-amber-500/30 rounded-2xl text-amber-300 flex items-center space-x-3">
@@ -372,13 +435,13 @@ export const FlashcardMode: React.FC<FlashcardModeProps> = ({
               ))}
             </div>
 
-            {/* BOX DE BIZU DA PROVA (RETENÇÃO RELÂMPAGO) */}
+            {/* BOX DE BIZU DA PROVA */}
             <div className="p-5 rounded-2xl bg-gradient-to-r from-indigo-950/90 via-slate-900 to-indigo-950/90 border border-indigo-500/40 shadow-xl glow-pulse">
               <div className="flex items-start space-x-3">
                 <div className="w-9 h-9 rounded-xl bg-amber-500/20 border border-amber-500/40 flex items-center justify-center shrink-0">
                   <Lightbulb className="w-5 h-5 text-amber-300 animate-pulse" />
                 </div>
-                <div>
+                <div className="flex-1">
                   <h4 className="text-xs font-bold text-amber-300 uppercase tracking-wider mb-1 flex items-center gap-1">
                     Bizu da Prova IBGE
                   </h4>
@@ -389,25 +452,53 @@ export const FlashcardMode: React.FC<FlashcardModeProps> = ({
               </div>
             </div>
 
+            {/* RATING DE REPETIÇÃO ESPAÇADA */}
+            {isAnswered && (
+              <div className="p-4 bg-slate-950 border border-slate-800 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-3">
+                <span className="text-xs text-slate-400 font-semibold">Como foi essa questão para você?</span>
+                <div className="flex items-center space-x-2">
+                  <button
+                    onClick={() => handleRateDifficulty('easy')}
+                    className="flex items-center space-x-1 px-3 py-1.5 bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 rounded-xl text-xs font-bold transition-all"
+                  >
+                    <ThumbsUp className="w-3.5 h-3.5" />
+                    <span>Fácil</span>
+                  </button>
+                  <button
+                    onClick={() => handleRateDifficulty('medium')}
+                    className="flex items-center space-x-1 px-3 py-1.5 bg-amber-500/10 hover:bg-amber-500/20 text-amber-300 border border-amber-500/30 rounded-xl text-xs font-bold transition-all"
+                  >
+                    <Meh className="w-3.5 h-3.5" />
+                    <span>Médio</span>
+                  </button>
+                  <button
+                    onClick={() => handleRateDifficulty('hard')}
+                    className="flex items-center space-x-1 px-3 py-1.5 bg-rose-500/10 hover:bg-rose-500/20 text-rose-300 border border-rose-500/30 rounded-xl text-xs font-bold transition-all"
+                  >
+                    <AlertTriangle className="w-3.5 h-3.5" />
+                    <span>Difícil</span>
+                  </button>
+                </div>
+              </div>
+            )}
+
           </div>
         )}
 
-        {/* RODAPÉ DO CARD - CONTROLES DE NAVEGAÇÃO E ATALHOS */}
+        {/* RODAPÉ DO CARD */}
         <div className="mt-8 pt-6 border-t border-slate-800/80 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           
-          {/* ATALHOS TECLADO HELP */}
           <div className="hidden md:flex items-center space-x-3 text-[11px] text-slate-500 font-mono">
             <span><kbd className="px-1.5 py-0.5 bg-slate-800 rounded border border-slate-700 text-slate-300">1-5</kbd> Responder</span>
             <span><kbd className="px-1.5 py-0.5 bg-slate-800 rounded border border-slate-700 text-slate-300">Espaço</kbd> Virar Card</span>
             <span><kbd className="px-1.5 py-0.5 bg-slate-800 rounded border border-slate-700 text-slate-300">N / →</kbd> Próxima</span>
           </div>
 
-          {/* BOTÕES ANTERIOR E PRÓXIMA */}
           <div className="flex items-center space-x-3 w-full sm:w-auto justify-end">
             <button
               onClick={handlePrev}
               disabled={currentIndex === 0}
-              className="flex-1 sm:flex-none flex items-center justify-center space-x-1 px-4 py-2.5 bg-slate-950 hover:bg-slate-800 text-slate-300 disabled:opacity-40 disabled:hover:bg-slate-950 border border-slate-800 rounded-xl text-xs font-semibold transition-all"
+              className="flex-1 sm:flex-none flex items-center justify-center space-x-1 px-4 py-2.5 bg-slate-950 hover:bg-slate-800 text-slate-300 disabled:opacity-40 border border-slate-800 rounded-xl text-xs font-semibold transition-all"
             >
               <ChevronLeft className="w-4 h-4" />
               <span>Anterior</span>

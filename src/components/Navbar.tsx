@@ -10,7 +10,11 @@ import {
   BookOpen, 
   Award, 
   BookMarked,
-  Bot
+  Bot,
+  Play,
+  Pause,
+  RotateCcw,
+  Timer
 } from 'lucide-react';
 import type { UserProfile } from '../types/study';
 import { exportAllDataJSON, importAllDataJSON } from '../services/storageService';
@@ -35,8 +39,36 @@ export const Navbar: React.FC<NavbarProps> = ({
   const [daysLeft, setDaysLeft] = useState<number>(0);
   const [isExporting, setIsExporting] = useState(false);
 
+  // ESTADO DO POMODORO DE FOCO
+  const [showPomodoro, setShowPomodoro] = useState<boolean>(false);
+  const [pomodoroSeconds, setPomodoroSeconds] = useState<number>(1500); // 25 minutos
+  const [isPomodoroRunning, setIsPomodoroRunning] = useState<boolean>(false);
+  const [pomodoroMode, setPomodoroMode] = useState<'focus' | 'break'>('focus');
+
   useEffect(() => {
-    // Calcular dias até domingo (dia da prova)
+    let interval: ReturnType<typeof setInterval>;
+    if (isPomodoroRunning) {
+      interval = setInterval(() => {
+        setPomodoroSeconds(prev => {
+          if (prev <= 1) {
+            if (pomodoroMode === 'focus') {
+              alert('🔔 Tempo de foco concluído! Faça uma pausa de 5 minutos.');
+              setPomodoroMode('break');
+              return 300; // 5 minutos de pausa
+            } else {
+              alert('⚡ Pausa concluída! De volta aos estudos de reta final.');
+              setPomodoroMode('focus');
+              return 1500; // 25 minutos de foco
+            }
+          }
+          return prev - 1;
+        });
+      }, 1000);
+    }
+    return () => clearInterval(interval);
+  }, [isPomodoroRunning, pomodoroMode]);
+
+  useEffect(() => {
     const now = new Date();
     const sunday = new Date();
     const dayOfWeek = now.getDay();
@@ -48,6 +80,12 @@ export const Navbar: React.FC<NavbarProps> = ({
     const diffDays = Math.ceil(diffMs / (1000 * 60 * 60 * 24));
     setDaysLeft(diffDays <= 0 ? 0 : diffDays);
   }, []);
+
+  const formatPomodoro = (seconds: number) => {
+    const m = Math.floor(seconds / 60);
+    const s = seconds % 60;
+    return `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+  };
 
   const handleExport = () => {
     setIsExporting(true);
@@ -89,7 +127,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         {/* LINHA SUPERIOR DO HEADER */}
         <div className="flex items-center justify-between py-3 gap-2 sm:gap-4">
           
-          {/* LOGO & TITULO (FLEX-SHRINK-0 PARA NUNCA SOBREPOR) */}
+          {/* LOGO & TITULO */}
           <div 
             className="flex items-center space-x-3 cursor-pointer shrink-0 select-none"
             onClick={() => setActiveTab('flashcards')}
@@ -118,9 +156,54 @@ export const Navbar: React.FC<NavbarProps> = ({
             </div>
           </div>
 
-          {/* PERFIL & PORTABILIDADE (EXPORT / IMPORT JSON) - CANTO DIREITO */}
+          {/* PERFIL & POMODORO FOCO - CANTO DIREITO */}
           <div className="flex items-center space-x-2 shrink-0">
             
+            {/* POMODORO CONTROLLER */}
+            <div className="relative">
+              <button
+                onClick={() => setShowPomodoro(!showPomodoro)}
+                className={`flex items-center space-x-1.5 px-2.5 py-1.5 rounded-xl border text-xs font-bold transition-all ${
+                  isPomodoroRunning 
+                    ? 'bg-emerald-500/20 text-emerald-300 border-emerald-500/40 animate-pulse'
+                    : 'bg-slate-950 text-slate-300 border-slate-800 hover:border-slate-700'
+                }`}
+                title="Cronômetro Pomodoro de Foco (25 min)"
+              >
+                <Timer className="w-3.5 h-3.5 text-indigo-400" />
+                <span className="font-mono">{formatPomodoro(pomodoroSeconds)}</span>
+              </button>
+
+              {showPomodoro && (
+                <div className="absolute right-0 top-10 mt-2 w-56 bg-slate-900 border border-slate-800 rounded-2xl p-4 shadow-2xl z-50 text-xs space-y-3">
+                  <div className="flex justify-between items-center font-bold text-slate-200">
+                    <span>{pomodoroMode === 'focus' ? '🎯 Foco Absoluto' : '☕ Pausa'}</span>
+                    <span className="font-mono text-indigo-400 text-sm">{formatPomodoro(pomodoroSeconds)}</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <button
+                      onClick={() => setIsPomodoroRunning(!isPomodoroRunning)}
+                      className="flex-1 py-2 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl font-bold flex items-center justify-center space-x-1"
+                    >
+                      {isPomodoroRunning ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5" />}
+                      <span>{isPomodoroRunning ? 'Pausar' : 'Iniciar'}</span>
+                    </button>
+                    <button
+                      onClick={() => {
+                        setIsPomodoroRunning(false);
+                        setPomodoroSeconds(1500);
+                        setPomodoroMode('focus');
+                      }}
+                      className="p-2 bg-slate-950 text-slate-400 hover:text-slate-200 border border-slate-800 rounded-xl"
+                      title="Reiniciar Pomodoro"
+                    >
+                      <RotateCcw className="w-3.5 h-3.5" />
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
+
             {/* STREAK */}
             <div className="hidden md:flex items-center space-x-1.5 px-2.5 py-1.5 bg-amber-500/10 border border-amber-500/30 text-amber-400 rounded-xl text-xs font-bold shadow-inner">
               <Flame className="w-4 h-4 fill-amber-500 text-amber-500 animate-pulse" />

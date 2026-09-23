@@ -6,7 +6,10 @@ import {
   XCircle, 
   BarChart2, 
   BookOpen, 
-  Sparkles
+  Sparkles,
+  Target,
+  ShieldCheck,
+  AlertTriangle
 } from 'lucide-react';
 import type { Question, UserProfile, SubjectType } from '../types/study';
 
@@ -44,6 +47,10 @@ export const Dashboard: React.FC<DashboardProps> = ({
     }
   });
 
+  // Metas da Zona de Aprovação Prova IBFC (60 Questões)
+  const isApprovalZone = accuracyPercentage >= 75;
+  const isAttentionZone = accuracyPercentage >= 50 && accuracyPercentage < 75;
+
   return (
     <div className="max-w-5xl mx-auto px-4 py-8 space-y-8">
       
@@ -58,7 +65,7 @@ export const Dashboard: React.FC<DashboardProps> = ({
               Olá, {activeProfile.name}! 👋
             </h2>
             <p className="text-xs sm:text-sm text-slate-300 mt-1">
-              Reta final para o Concurso do IBGE (Agente de Informática). Mantenha o foco!
+              Reta final para o Concurso do IBGE (Agente Censitário de Informática - Banca IBFC).
             </p>
           </div>
         </div>
@@ -88,10 +95,10 @@ export const Dashboard: React.FC<DashboardProps> = ({
 
         <div className="bg-slate-900 border border-slate-800 p-5 rounded-2xl shadow-xl">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-semibold text-slate-400 uppercase">Questões Resolvidas</span>
+            <span className="text-xs font-semibold text-slate-400 uppercase">Questões Feitas</span>
             <CheckCircle2 className="w-5 h-5 text-emerald-400" />
           </div>
-          <div className="text-3xl font-extrabold text-emerald-400 mt-2">{totalAnswered} / {questions.length}</div>
+          <div className="text-3xl font-extrabold text-emerald-400 mt-2">{totalAnswered}</div>
           <p className="text-xs text-slate-500 mt-1">Total acumulado</p>
         </div>
 
@@ -115,11 +122,84 @@ export const Dashboard: React.FC<DashboardProps> = ({
 
       </div>
 
+      {/* CALCULADORA DA ZONA DE APROVAÇÃO IBFC (60 QUESTÕES) */}
+      <div className="bg-slate-900 border border-slate-800 p-6 sm:p-8 rounded-3xl shadow-xl space-y-6">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-800 pb-4">
+          <div>
+            <h3 className="text-base sm:text-lg font-bold text-white flex items-center gap-2">
+              <Target className="w-5 h-5 text-amber-400" />
+              Simulador da Zona de Aprovação (Banca IBFC)
+            </h3>
+            <p className="text-xs text-slate-400 mt-1">
+              Meta estimada de acertos recomendada para garantir a vaga de Agente de Informática.
+            </p>
+          </div>
+
+          <div className={`px-4 py-2 rounded-2xl border text-xs font-bold flex items-center space-x-2 ${
+            isApprovalZone 
+              ? 'bg-emerald-500/10 border-emerald-500/40 text-emerald-300' 
+              : isAttentionZone 
+              ? 'bg-amber-500/10 border-amber-500/40 text-amber-300' 
+              : 'bg-rose-500/10 border-rose-500/40 text-rose-300'
+          }`}>
+            {isApprovalZone ? (
+              <>
+                <ShieldCheck className="w-4 h-4 text-emerald-400" />
+                <span>🏆 ZONA DE APROVAÇÃO</span>
+              </>
+            ) : isAttentionZone ? (
+              <>
+                <AlertTriangle className="w-4 h-4 text-amber-400" />
+                <span>⚠️ ZONA DE ATENÇÃO (REVISAR)</span>
+              </>
+            ) : (
+              <>
+                <XCircle className="w-4 h-4 text-rose-400" />
+                <span>🚨 ZONA DE REFORÇO URGENTE</span>
+              </>
+            )}
+          </div>
+        </div>
+
+        {/* METAS POR MATÉRIA */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          
+          <div className="p-4 bg-slate-950 rounded-2xl border border-indigo-500/30">
+            <div className="flex justify-between items-center mb-1">
+              <span className="text-xs font-bold text-indigo-300">⚡ Informática</span>
+              <span className="text-xs font-mono text-slate-400">Peso 35q</span>
+            </div>
+            <div className="text-lg font-extrabold text-white">Meta: 28+ acertos</div>
+            <p className="text-[11px] text-slate-400 mt-1">Representa 58% do total da prova.</p>
+          </div>
+
+          <div className="p-4 bg-slate-950 rounded-2xl border border-slate-800">
+            <div className="flex justify-between items-center mb-1">
+              <span className="text-xs font-bold text-slate-300">📝 Português</span>
+              <span className="text-xs font-mono text-slate-400">Peso 15q</span>
+            </div>
+            <div className="text-lg font-extrabold text-white">Meta: 11+ acertos</div>
+            <p className="text-[11px] text-slate-400 mt-1">Foco em Crase e Concordância.</p>
+          </div>
+
+          <div className="p-4 bg-slate-950 rounded-2xl border border-slate-800">
+            <div className="flex justify-between items-center mb-1">
+              <span className="text-xs font-bold text-slate-300">📐 Raciocínio Lógico</span>
+              <span className="text-xs font-mono text-slate-400">Peso 10q</span>
+            </div>
+            <div className="text-lg font-extrabold text-white">Meta: 7+ acertos</div>
+            <p className="text-[11px] text-slate-400 mt-1">Foco em Negação do Se...Então.</p>
+          </div>
+
+        </div>
+
+      </div>
+
       {/* TERMÔMETRO DE DESEMPENHO POR MATÉRIA */}
       <div className="bg-slate-900 border border-slate-800 p-6 sm:p-8 rounded-3xl shadow-xl space-y-6">
         <h3 className="text-base font-bold text-white flex items-center gap-2">
           <BarChart2 className="w-5 h-5 text-indigo-400" />
-          Termômetro de Domínio do Edital
+          Termômetro de Domínio por Disciplina
         </h3>
 
         <div className="space-y-5">
@@ -162,7 +242,7 @@ export const Dashboard: React.FC<DashboardProps> = ({
           className="flex-1 py-4 bg-slate-900 hover:bg-slate-800 text-slate-200 font-bold rounded-2xl border border-slate-800 flex items-center justify-center space-x-2 transition-all"
         >
           <BookOpen className="w-5 h-5 text-indigo-400" />
-          <span>Fazer Simulado Completo</span>
+          <span>Fazer Simulado Completo IBFC</span>
         </button>
       </div>
 

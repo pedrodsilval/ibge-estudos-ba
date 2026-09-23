@@ -5,7 +5,7 @@ export const QUESTIONS_DATABASE: Question[] = [
   // --- INFORMÁTICA (35 QUESTÕES NA PROVA IBFC) ---
   // ==========================================
   
-  // 1. Hardware, CPU, Memória e Periféricos
+  // --- HARDWARE & MICROCOMPUTADORES ---
   {
     id: 'inf-hw-01',
     subject: 'Informática',
@@ -88,11 +88,38 @@ export const QUESTIONS_DATABASE: Question[] = [
     }
   },
 
-  // 3 e 4. Windows 10/11 e Android 13+
+  // --- WINDOWS 10/11 & ANDROID 13+ ---
   {
     id: 'inf-so-01',
     subject: 'Informática',
-    topic: '4. Sistemas Operacionais (Windows 10/11)',
+    topic: '4 e 10. Windows 10/11 - Barra de Tarefas e Atalhos',
+    source: 'IBFC / IBGE',
+    difficulty: 'Fácil',
+    statement: 'No Windows 10/11, a barra localizada (geralmente) na parte inferior da tela, que permite alternar entre janelas abertas, fixar aplicativos de uso frequente e acessar a área de notificação é chamada de:',
+    options: [
+      { key: 'A', text: 'Barra de ferramentas' },
+      { key: 'B', text: 'Barra de tarefas' },
+      { key: 'C', text: 'Barra de trabalho' },
+      { key: 'D', text: 'Barra de navegação' },
+      { key: 'E', text: 'Barra de status' }
+    ],
+    correctOption: 'B',
+    explanation: {
+      summary: 'A Barra de Tarefas é o componente principal do Windows para gerenciamento visual de janelas abertas e aplicativos fixados.',
+      optionsAnalysis: [
+        { key: 'A', isCorrect: false, reason: 'Barra de ferramentas é termo interno de aplicativos.' },
+        { key: 'B', isCorrect: true, reason: 'Barra de Tarefas = Gerencia janelas ativas, menu iniciar e ícones fixados.' },
+        { key: 'C', isCorrect: false, reason: 'Área de Trabalho é o Desktop.' },
+        { key: 'D', isCorrect: false, reason: 'Incorreto.' },
+        { key: 'E', isCorrect: false, reason: 'Barra de status fica no rodapé de janelas.' }
+      ],
+      bizu: '💡 BIZU IBFC: Barra de Tarefas = Ícones fixados, janelas ativas, relógio e área de notificação.'
+    }
+  },
+  {
+    id: 'inf-so-02',
+    subject: 'Informática',
+    topic: '4. Atalhos de Teclado do Windows 10/11',
     source: 'IBFC / IBGE',
     difficulty: 'Fácil',
     statement: 'No Sistema Operacional Windows 10 ou superior, qual o atalho padrão de teclado para criar uma NOVA PASTA na janela do Explorador de Arquivos?',
@@ -117,7 +144,7 @@ export const QUESTIONS_DATABASE: Question[] = [
     }
   },
   {
-    id: 'inf-so-02',
+    id: 'inf-so-03',
     subject: 'Informática',
     topic: '4. Sistemas Operacionais (Android 13 ou superior)',
     source: 'IBFC / IBGE',
@@ -144,9 +171,9 @@ export const QUESTIONS_DATABASE: Question[] = [
     }
   },
   {
-    id: 'inf-so-03',
+    id: 'inf-so-04',
     subject: 'Informática',
-    topic: '10. Manuseio de Pastas no Windows 10/11',
+    topic: '10. Manuseio de Pastas e Atalhos no Windows 10/11',
     source: 'IBFC / IBGE',
     difficulty: 'Fácil',
     statement: 'Ao selecionar um arquivo no Explorador de Arquivos do Windows 10/11 e pressionar a tecla de atalho F2, o sistema operacional irá:',
@@ -167,11 +194,11 @@ export const QUESTIONS_DATABASE: Question[] = [
         { key: 'D', isCorrect: false, reason: 'Imprimir = Ctrl + P.' },
         { key: 'E', isCorrect: false, reason: 'Compactar requer menu de contexto.' }
       ],
-      bizu: '💡 BIZU IBFC: F2 = RENOMEAR | F3 = BUSCAR | F5 = ATUALIZAR | F11 = TELA CHEIA.'
+      bizu: '💡 BIZU IBFC: F2 = RENOMEAR | F3 = BUSCAR | F5 = ATUALIZAR | F11 = TELA CHEIA | Shift + Delete = EXCLUIR DEFINITIVO.'
     }
   },
 
-  // 6. Segurança, Antivírus, Vírus, Backup e Senhas
+  // --- SEGURANÇA DA INFORMAÇÃO, BACKUP E VÍRUS ---
   {
     id: 'inf-seg-01',
     subject: 'Informática',
@@ -254,38 +281,38 @@ export const QUESTIONS_DATABASE: Question[] = [
     }
   },
 
-  // 7. Aplicativos Computacionais (Word e Excel)
+  // --- WORD E EXCEL ---
   {
     id: 'inf-app-01',
     subject: 'Informática',
-    topic: '7. Aplicativos Computacionais (Microsoft Excel - Fórmulas)',
+    topic: '7. Aplicativos Computacionais (Microsoft Excel - Fórmulas de Média)',
     source: 'IBFC / IBGE',
     difficulty: 'Médio',
-    statement: 'Em uma planilha do Microsoft Excel em Português, os valores das células A1=100, A2=200 e A3=300 representam dados de campo. Qual fórmula deve ser inserida para calcular a MÉDIA aritmética desses valores?',
+    statement: 'Assinale a alternativa correta sobre qual fórmula do Microsoft Excel, idioma Português, calcula a média de gastos mensais considerando os valores nas células B2:B7 e D2:D7:',
     options: [
-      { key: 'A', text: '=MED(A1:A3)' },
-      { key: 'B', text: '=MÉDIA(A1:A3)' },
-      { key: 'C', text: '=SUM(A1:A3)/3' },
-      { key: 'D', text: '=CALCULAR.MEDIA(A1;A3)' },
-      { key: 'E', text: '=AVERAGE.PT(A1:A3)' }
+      { key: 'A', text: '=(B2+B3+B4+B5+B6+B7+D2+D3+D4+D5+D6+D7)/6' },
+      { key: 'B', text: '=MÉDIA(B2:B7;D2:D7)' },
+      { key: 'C', text: '=SOMA(A2:A7;C2:C7)/12' },
+      { key: 'D', text: '=CONT.NÚM(A2:A7;C2:C7)/12' },
+      { key: 'E', text: '=MED(B2:B7;D2:D7)' }
     ],
     correctOption: 'B',
     explanation: {
-      summary: 'A função `=MÉDIA(início:fim)` calcula a média aritmética do intervalo no Excel em português. `=MED()` calcula a mediana.',
+      summary: 'A função `=MÉDIA(intervalo1; intervalo2)` calcula a média aritmética. O ponto e vírgula (;) separa os dois intervalos distintos.',
       optionsAnalysis: [
-        { key: 'A', isCorrect: false, reason: '`MED()` calcula a Mediana estatística, não a Média.' },
-        { key: 'B', isCorrect: true, reason: '`=MÉDIA(A1:A3)` soma os valores e divide pela quantidade (100+200+300)/3 = 200.' },
-        { key: 'C', isCorrect: false, reason: 'Função de soma em português é `SOMA()`, não `SUM()`.' },
-        { key: 'D', isCorrect: false, reason: 'Função inexistente.' },
-        { key: 'E', isCorrect: false, reason: 'Função inexistente.' }
+        { key: 'A', isCorrect: false, reason: 'Dividiu por 6 em vez de 12 células.' },
+        { key: 'B', isCorrect: true, reason: '`=MÉDIA(B2:B7;D2:D7)` calcula a média aritmética exata dos dois intervalos.' },
+        { key: 'C', isCorrect: false, reason: 'Intervalos errados A e C.' },
+        { key: 'D', isCorrect: false, reason: '`CONT.NÚM()` conta células numéricas, não soma.' },
+        { key: 'E', isCorrect: false, reason: '`MED()` calcula a mediana, não a média.' }
       ],
-      bizu: '💡 BIZU IBFC (EXCEL): `=MÉDIA()` = Média Aritmética | `=MED()` = Mediana (Valor Central) | `:` significa ATÉ (A1 até A3). `;` significa E (A1 e A3).'
+      bizu: '💡 BIZU IBFC (EXCEL): `=MÉDIA()` = Média Aritmética | `=MED()` = Mediana (Valor Central) | Ponto e vírgula `;` separa argumentos/intervalos distintos.'
     }
   },
   {
     id: 'inf-app-02',
     subject: 'Informática',
-    topic: '7. Aplicativos Computacionais (Microsoft Word - Atalhos)',
+    topic: '7. Aplicativos Computacionais (Microsoft Word - Atalhos PT-BR)',
     source: 'IBFC / IBGE',
     difficulty: 'Fácil',
     statement: 'Ao redigir um relatório no Microsoft Word em português, qual atalho de teclado é utilizado para aplicar o estilo NEGRITO ao texto selecionado?',
@@ -325,19 +352,19 @@ export const QUESTIONS_DATABASE: Question[] = [
     ],
     correctOption: 'A',
     explanation: {
-      summary: 'O cifrão `$A$1` fixa a coluna A e a linha 1 (não muda). A referência relativa `B1` (uma coluna à esquerda, uma linha acima) deslocada para C3 vira `C2`.',
+      summary: 'O cifrão `$A$1` fixa a coluna A e a linha 1 (não muda). A referência relativa `B1` deslocada para C3 (1 coluna a direita, 1 linha abaixo) vira `C2`.',
       optionsAnalysis: [
-        { key: 'A', isCorrect: true, reason: '`$A$1` permanece travado. `B1` se desloca para `C2` ao ir de B2 para C3.' },
+        { key: 'A', isCorrect: true, reason: '`$A$1` permanece travado. `B1` se desloca para `C2`.' },
         { key: 'B', isCorrect: false, reason: 'Incorreto.' },
         { key: 'C', isCorrect: false, reason: 'Incorreto.' },
         { key: 'D', isCorrect: false, reason: 'Incorreto.' },
         { key: 'E', isCorrect: false, reason: 'Incorreto.' }
       ],
-      bizu: '💡 BIZU IBFC: Cifrão `$` TRAVA a linha/coluna! O que tem `$` não muda ao copiar. O que não tem `$` se desloca.'
+      bizu: '💡 BIZU IBFC: Cifrão `$` TRAVA a linha/coluna! O que tem `$` não muda ao copiar.'
     }
   },
 
-  // 8 & 9. Redes, Internet, Intranet e Correio Eletrônico
+  // --- REDES, INTRANET, INTERNET E CORREIO ELETRÔNICO ---
   {
     id: 'inf-net-01',
     subject: 'Informática',
@@ -368,28 +395,28 @@ export const QUESTIONS_DATABASE: Question[] = [
   {
     id: 'inf-net-02',
     subject: 'Informática',
-    topic: '9. Organização de Intranet e Internet (Navegadores e Cookies)',
+    topic: '9. Organização de Intranet e Internet (Intranet x Internet)',
     source: 'IBFC / IBGE',
-    difficulty: 'Médio',
-    statement: 'Ao navegar na Internet ou na Intranet do IBGE usando Google Chrome ou Microsoft Edge, pequenos arquivos de texto são gravados no computador para armazenar preferências e dados de sessão do usuário. Como são chamados esses arquivos?',
+    difficulty: 'Fácil',
+    statement: 'Com relação à comunicação através de redes computacionais nas agências do IBGE, assinale a alternativa verdadeira:',
     options: [
-      { key: 'A', text: 'Cookies' },
-      { key: 'B', text: 'Firewalls' },
-      { key: 'C', text: 'Backdoors' },
-      { key: 'D', text: 'Plugins de PDF' },
-      { key: 'E', text: 'Spam' }
+      { key: 'A', text: 'A Intranet é uma rede privada de uso exclusivo de uma instituição, acessada internamente com tecnologias de internet.' },
+      { key: 'B', text: 'A Internet não utiliza endereços IP para identificação de computadores.' },
+      { key: 'C', text: 'A Intranet é pública e acessível livremente por qualquer usuário do mundo sem senha.' },
+      { key: 'D', text: 'O e-mail corporativo não funciona em redes de Intranet.' },
+      { key: 'E', text: 'Spam são mensagens enviadas de forma individual e exclusiva para contatos salvos.' }
     ],
     correctOption: 'A',
     explanation: {
-      summary: 'Cookies são arquivos de texto salvos pelos navegadores com preferências e estado de sessão.',
+      summary: 'Intranet é uma rede privada corporativa de acesso restrito que utiliza os mesmos protocolos e tecnologias da Internet (HTTP, TCP/IP).',
       optionsAnalysis: [
-        { key: 'A', isCorrect: true, reason: 'Cookies = Preferências e dados de sessão no navegador.' },
-        { key: 'B', isCorrect: false, reason: 'Firewall filtra tráfego de rede.' },
-        { key: 'C', isCorrect: false, reason: 'Backdoor é porta de invasão.' },
-        { key: 'D', isCorrect: false, reason: 'Plugin é extensão.' },
-        { key: 'E', isCorrect: false, reason: 'Spam é e-mail indesejado.' }
+        { key: 'A', isCorrect: true, reason: 'Intranet = Rede privada corporativa interna.' },
+        { key: 'B', isCorrect: false, reason: 'Internet usa endereços IP obrigatoriamente.' },
+        { key: 'C', isCorrect: false, reason: 'Intranet tem acesso restrito.' },
+        { key: 'D', isCorrect: false, reason: 'E-mail funciona normalmente na Intranet.' },
+        { key: 'E', isCorrect: false, reason: 'Spam é mensagem indesejada em massa.' }
       ],
-      bizu: '💡 BIZU IBFC: Cookies = Preferências/Login | Cache = Páginas/imagens gravadas localmente para velocidade.'
+      bizu: '💡 BIZU IBFC: Internet = Pública / Global | Intranet = Privada / Corporativa / Restrita.'
     }
   },
 

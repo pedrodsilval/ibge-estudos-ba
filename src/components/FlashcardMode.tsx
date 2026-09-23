@@ -34,7 +34,7 @@ export const FlashcardMode: React.FC<FlashcardModeProps> = ({
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
   const [isFlipped, setIsFlipped] = useState<boolean>(false);
-  const [filterOnlyErrors, setFilterOnlyErrors] = useState<boolean>(false);
+  const [filterMode, setFilterMode] = useState<'all' | 'unanswered' | 'errors'>('all');
   const [isSpeaking, setIsSpeaking] = useState<boolean>(false);
 
   // Filtrar lista de questões conforme seleção
@@ -43,13 +43,17 @@ export const FlashcardMode: React.FC<FlashcardModeProps> = ({
       const matchSubject = selectedSubject === 'TODAS' || q.subject === selectedSubject;
       if (!matchSubject) return false;
 
-      if (filterOnlyErrors) {
-        const history = activeProfile.answers[q.id];
+      const history = activeProfile.answers[q.id];
+
+      if (filterMode === 'errors') {
         return history && !history.isCorrect;
+      }
+      if (filterMode === 'unanswered') {
+        return !history;
       }
       return true;
     });
-  }, [questions, selectedSubject, filterOnlyErrors, activeProfile.answers]);
+  }, [questions, selectedSubject, filterMode, activeProfile.answers]);
 
   useEffect(() => {
     setCurrentIndex(0);
@@ -57,7 +61,7 @@ export const FlashcardMode: React.FC<FlashcardModeProps> = ({
     setSelectedOption(null);
     if ('speechSynthesis' in window) window.speechSynthesis.cancel();
     setIsSpeaking(false);
-  }, [selectedSubject, filterOnlyErrors]);
+  }, [selectedSubject, filterMode]);
 
   const currentQuestion = filteredQuestions[currentIndex] || null;
   const isBookmarked = currentQuestion ? activeProfile.bookmarkedQuestionIds.includes(currentQuestion.id) : false;
@@ -181,12 +185,20 @@ export const FlashcardMode: React.FC<FlashcardModeProps> = ({
       <div className="max-w-4xl mx-auto px-4 py-16 text-center">
         <div className="bg-slate-900 border border-slate-800 rounded-3xl p-10 shadow-2xl">
           <BookOpen className="w-16 h-16 text-indigo-400 mx-auto mb-4 animate-bounce" />
-          <h2 className="text-2xl font-bold text-white mb-2">Nenhuma questão encontrada para este filtro</h2>
-          <p className="text-slate-400 mb-6">Tente alterar os filtros de disciplina acima ou desativar o filtro de erros.</p>
+          <h2 className="text-2xl font-bold text-white mb-2">
+            {filterMode === 'unanswered'
+              ? '🎉 Parabéns! Você já respondeu todas as questões disponíveis neste filtro!'
+              : 'Nenhuma questão encontrada para este filtro'}
+          </h2>
+          <p className="text-slate-400 mb-6">
+            {filterMode === 'unanswered'
+              ? 'Você zerou o banco de questões inéditas! Alterne para "Todas" ou pratique com as que você errou.'
+              : 'Tente alterar os filtros de disciplina acima ou visualizar todas as questões.'}
+          </p>
           <button
             onClick={() => {
               setSelectedSubject('TODAS');
-              setFilterOnlyErrors(false);
+              setFilterMode('all');
             }}
             className="px-6 py-3 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold rounded-xl transition-all shadow-lg shadow-indigo-600/30"
           >
@@ -223,22 +235,43 @@ export const FlashcardMode: React.FC<FlashcardModeProps> = ({
           ))}
         </div>
 
-        {/* CONTROLES DIREITOS */}
-        <div className="flex items-center space-x-3 text-xs">
-          <button
-            onClick={() => setFilterOnlyErrors(!filterOnlyErrors)}
-            className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-xl border font-medium transition-all ${
-              filterOnlyErrors
-                ? 'bg-rose-500/20 text-rose-300 border-rose-500/40 shadow-sm shadow-rose-500/10'
-                : 'bg-slate-900 text-slate-400 border-slate-800 hover:border-slate-700'
-            }`}
-          >
-            <XCircle className="w-3.5 h-3.5 text-rose-400" />
-            <span>Somente Erradas</span>
-          </button>
+        {/* CONTROLES DIREITOS DE FILTRO */}
+        <div className="flex flex-wrap items-center gap-2 text-xs">
+          <div className="bg-slate-900 p-1 rounded-xl border border-slate-800 flex">
+            <button
+              onClick={() => setFilterMode('all')}
+              className={`px-3 py-1 rounded-lg font-medium transition-all ${
+                filterMode === 'all'
+                  ? 'bg-slate-800 text-white shadow-sm'
+                  : 'text-slate-400 hover:text-slate-200'
+              }`}
+            >
+              Todas
+            </button>
+            <button
+              onClick={() => setFilterMode('unanswered')}
+              className={`px-3 py-1 rounded-lg font-medium transition-all ${
+                filterMode === 'unanswered'
+                  ? 'bg-indigo-600 text-white shadow-sm font-semibold'
+                  : 'text-slate-400 hover:text-slate-200'
+              }`}
+            >
+              🆕 Inéditas / Não Feitas
+            </button>
+            <button
+              onClick={() => setFilterMode('errors')}
+              className={`px-3 py-1 rounded-lg font-medium transition-all ${
+                filterMode === 'errors'
+                  ? 'bg-rose-500/20 text-rose-300 border border-rose-500/30 font-semibold'
+                  : 'text-slate-400 hover:text-slate-200'
+              }`}
+            >
+              ❌ Somente Erradas
+            </button>
+          </div>
 
           <span className="text-slate-400 font-mono bg-slate-900 px-3 py-1.5 rounded-xl border border-slate-800">
-            {currentIndex + 1} / {filteredQuestions.length}
+            {filteredQuestions.length > 0 ? currentIndex + 1 : 0} / {filteredQuestions.length}
           </span>
         </div>
 

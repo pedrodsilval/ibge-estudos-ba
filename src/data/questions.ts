@@ -561,5 +561,469 @@ export const QUESTIONS_DATABASE: Question[] = [
       ],
       bizu: '💡 BIZU IBFC RLM: EQUIVALÊNCIA DO SE...ENTÃO = 1º Contrapositiva (Volta Negando) | 2º Regra do Neumar ($\neg P \lor Q$).'
     }
+  },
+  {
+    id: 'inf-hw-04',
+    subject: 'Informática',
+    topic: '1 e 2. Armazenamento SSD vs HD Rígido',
+    source: 'IBFC / IBGE',
+    difficulty: 'Fácil',
+    statement: 'Ao equipar as estações de trabalho do IBGE com SSDs (Solid State Drives) em substituição aos HDs mecânicos tradicionais, qual a principal vantagem física e de desempenho obtida?',
+    options: [
+      { key: 'A', text: 'Os SSDs utilizam discos magnéticos giratórios mais rápidos.' },
+      { key: 'B', text: 'Os SSDs utilizam memória flash sem partes mecânicas móveis, oferecendo maior velocidade de leitura/escrita e maior resistência a impactos.' },
+      { key: 'C', text: 'Os SSDs necessitam de constante desfragmentação semanal no Windows 11.' },
+      { key: 'D', text: 'Os SSDs apagam todos os dados ao desligar o computador por serem voláteis.' },
+      { key: 'E', text: 'Os SSDs só funcionam conectados diretamente a portas de som.' }
+    ],
+    correctOption: 'B',
+    explanation: {
+      summary: 'Os SSDs usam chips de memória Flash (NAND). Como não têm agulha ou discos giratórios como o HD, são muito mais rápidos e não sofrem danos mecânicos em quedas leves.',
+      optionsAnalysis: [
+        { key: 'A', isCorrect: false, reason: 'HDs usam discos magnéticos, SSDs usam memória flash.' },
+        { key: 'B', isCorrect: true, reason: 'Memória flash NAND = Sem partes móveis, mais rápido e resistente.' },
+        { key: 'C', isCorrect: false, reason: 'SSDs NÃO devem ser desfragmentados (desgasta as células flash).' },
+        { key: 'D', isCorrect: false, reason: 'SSDs são NÃO voláteis (armazenamento permanente).' },
+        { key: 'E', isCorrect: false, reason: 'Conectam-se via portas SATA ou M.2 / NVMe.' }
+      ],
+      bizu: '💡 BIZU IBFC: SSD = Memória Flash | Não volátil | Sem partes móveis | NUNCA desfragmentar SSD!'
+    }
+  },
+  {
+    id: 'inf-hw-05',
+    subject: 'Informática',
+    topic: '2. Barramentos e Conectores Periféricos (USB-C)',
+    source: 'IBFC / IBGE',
+    difficulty: 'Fácil',
+    statement: 'Dentre as conexões físicas modernas presentes em notebooks e tablets institucionais do IBGE, o conector USB Tipo-C (USB-C) destaca-se por:',
+    options: [
+      { key: 'A', text: 'Permitir encaixe apenas em um sentido rígido, exigindo cuidado ao inserir.' },
+      { key: 'B', text: 'Ser um conector reversível que suporta alta velocidade de transferência de dados, vídeo e alimentação de energia num único cabo.' },
+      { key: 'C', text: 'Servir exclusivamente para transmissão de sinal analógico de rádio AM/FM.' },
+      { key: 'D', text: 'Substituir a memória RAM interna dos celulares.' },
+      { key: 'E', text: 'Ser incompatível com smartphones modernos.' }
+    ],
+    correctOption: 'B',
+    explanation: {
+      summary: 'O padrão USB-C é reversível (pode ser inserido de qualquer lado) e versátil (transmite dados, sinal de vídeo DisplayPort e recarrega bateria Power Delivery).',
+      optionsAnalysis: [
+        { key: 'A', isCorrect: false, reason: 'O USB-C é REVERSÍVEL (não tem lado errado).' },
+        { key: 'B', isCorrect: true, reason: 'USB-C = Reversível, transmite dados, vídeo e energia.' },
+        { key: 'C', isCorrect: false, reason: 'Incorreto.' },
+        { key: 'D', isCorrect: false, reason: 'Conector de cabo não é memória RAM.' },
+        { key: 'E', isCorrect: false, reason: 'É o padrão universal em dispositivos Android modernos.' }
+      ],
+      bizu: '💡 BIZU IBFC: USB-C = Reversível + Transmissão universal (Dados + Vídeo + Energia).'
+    }
+  },
+  {
+    id: 'inf-so-05',
+    subject: 'Informática',
+    topic: '4. Recursos do Windows 10/11 (Área de Transferência com Histórico)',
+    source: 'IBFC / IBGE',
+    difficulty: 'Médio',
+    statement: 'No Windows 10/11, qual atalho de teclado permite abrir o Histórico da Área de Transferência, exibindo múltiplos textos e imagens copiados anteriormente?',
+    options: [
+      { key: 'A', text: 'Ctrl + V' },
+      { key: 'B', text: 'Win + V' },
+      { key: 'C', text: 'Alt + V' },
+      { key: 'D', text: 'Ctrl + Shift + V' },
+      { key: 'E', text: 'Win + H' }
+    ],
+    correctOption: 'B',
+    explanation: {
+      summary: 'O atalho `Win + V` abre a janela flutuante do Histórico da Área de Transferência no Windows 10/11, permitindo colar itens copiados no passado.',
+      optionsAnalysis: [
+        { key: 'A', isCorrect: false, reason: '`Ctrl + V` cola apenas o ÚLTIMO item copiado.' },
+        { key: 'B', isCorrect: true, reason: '`Win + V` abre o HISTÓRICO da área de transferência com vários itens salvos.' },
+        { key: 'C', isCorrect: false, reason: 'Atalho não padrão do sistema.' },
+        { key: 'D', isCorrect: false, reason: 'Usado em alguns apps para colar sem formatação.' },
+        { key: 'E', isCorrect: false, reason: '`Win + H` ativa a Digitação por Voz.' }
+      ],
+      bizu: '💡 BIZU IBFC: `Ctrl + V` = Cola 1 item | `Win + V` = Histórico de vários itens copiados!'
+    }
+  },
+  {
+    id: 'inf-so-06',
+    subject: 'Informática',
+    topic: '4 e 10. Gerenciador de Tarefas no Windows 10/11',
+    source: 'IBFC / IBGE',
+    difficulty: 'Fácil',
+    statement: 'Quando um aplicativo no Windows 10/11 trava e para de responder, qual o atalho direto de teclado para abrir diretamente o GERENCIADOR DE TAREFAS e finalizar a aplicação travada?',
+    options: [
+      { key: 'A', text: 'Ctrl + Shift + Esc' },
+      { key: 'B', text: 'Ctrl + Alt + Del' },
+      { key: 'C', text: 'Win + Tab' },
+      { key: 'D', text: 'Alt + Tab' },
+      { key: 'E', text: 'Win + R' }
+    ],
+    correctOption: 'A',
+    explanation: {
+      summary: '`Ctrl + Shift + Esc` abre DIRETO o Gerenciador de Tarefas sem passar por telas intermediárias. `Ctrl + Alt + Del` abre a tela de opções de segurança do sistema.',
+      optionsAnalysis: [
+        { key: 'A', isCorrect: true, reason: '`Ctrl + Shift + Esc` = Abre DIRETO o Gerenciador de Tarefas.' },
+        { key: 'B', isCorrect: false, reason: '`Ctrl + Alt + Del` abre a tela de segurança (Bloquear, Alternar usuário, Gerenciador).' },
+        { key: 'C', isCorrect: false, reason: '`Win + Tab` abre a Visão de Tarefas (Desktops virtuais).' },
+        { key: 'D', isCorrect: false, reason: '`Alt + Tab` alterna rapidamente entre janelas.' },
+        { key: 'E', isCorrect: false, reason: '`Win + R` abre a caixa Executar.' }
+      ],
+      bizu: '💡 BIZU IBFC: Gerenciador de Tarefas DIRETO = `Ctrl + Shift + Esc` | Tela de Segurança = `Ctrl + Alt + Del`.'
+    }
+  },
+  {
+    id: 'inf-so-07',
+    subject: 'Informática',
+    topic: '4. Recursos do Android 13 ou superior',
+    source: 'IBFC / IBGE',
+    difficulty: 'Médio',
+    statement: 'No sistema operacional móvel Android 13 ou superior, qual importante mudança de segurança em relação às NOTIFICAÇÕES de aplicativos foi introduzida?',
+    options: [
+      { key: 'A', text: 'As notificações são proibidas em qualquer aplicativo de mensagens.' },
+      { key: 'B', text: 'Os aplicativos recém-instalados devem solicitar EXPLICITAMENTE permissão ao usuário antes de enviar notificações.' },
+      { key: 'C', text: 'Todas as notificações são enviadas obrigatoriamente por e-mail.' },
+      { key: 'D', text: 'O Bluetooth precisa ficar ligado para receber notificações.' },
+      { key: 'E', text: 'Notificações só funcionam se o aparelho estiver carregando na tomada.' }
+    ],
+    correctOption: 'B',
+    explanation: {
+      summary: 'A partir do Android 13 (API 33), o envio de Notificações tornou-se uma permissão runtime explícita (`POST_NOTIFICATIONS`), exigindo aceite do usuário.',
+      optionsAnalysis: [
+        { key: 'A', isCorrect: false, reason: 'Incorreto.' },
+        { key: 'B', isCorrect: true, reason: 'No Android 13+, apps precisam de autorização prévia para enviar notificações.' },
+        { key: 'C', isCorrect: false, reason: 'Incorreto.' },
+        { key: 'D', isCorrect: false, reason: 'Notificação não depende de Bluetooth.' },
+        { key: 'E', isCorrect: false, reason: 'Incorreto.' }
+      ],
+      bizu: '💡 BIZU IBFC (ANDROID 13+): Notificação agora é PERMISSÃO EXPLICITA! O usuário escolhe se autoriza ou bloqueia.'
+    }
+  },
+  {
+    id: 'inf-seg-04',
+    subject: 'Informática',
+    topic: '6. Pragas Virtuais e Malwares (Ransomware)',
+    source: 'IBFC / IBGE',
+    difficulty: 'Médio',
+    statement: 'Assinale o tipo de código malicioso (malware) que criptografa os arquivos do computador da vítima e exige o pagamento de um resgate (geralmente em criptomoedas) para fornecer a chave de descriptografia:',
+    options: [
+      { key: 'A', text: 'Adware' },
+      { key: 'B', text: 'Ransomware' },
+      { key: 'C', text: 'Spyware' },
+      { key: 'D', text: 'Keylogger' },
+      { key: 'E', text: 'Rootkit' }
+    ],
+    correctOption: 'B',
+    explanation: {
+      summary: 'Ransomware vem da palavra "Ransom" (resgate). É um malware que sequestra arquivos usando criptografia forte e cobra resgate.',
+      optionsAnalysis: [
+        { key: 'A', isCorrect: false, reason: 'Adware exibe anúncios indesejados.' },
+        { key: 'B', isCorrect: true, reason: 'Ransomware = Criptografa arquivos e exige resgate.' },
+        { key: 'C', isCorrect: false, reason: 'Spyware espiona atividades do usuário.' },
+        { key: 'D', isCorrect: false, reason: 'Keylogger captura teclas digitadas.' },
+        { key: 'E', isCorrect: false, reason: 'Rootkit esconde a presença de ameaças no sistema.' }
+      ],
+      bizu: '💡 BIZU IBFC: Ransomware = Sequestro por Criptografia / Cobrança de Resgate | Keylogger = Captura Teclas | Phishing = Pescaria de Senhas.'
+    }
+  },
+  {
+    id: 'inf-seg-05',
+    subject: 'Informática',
+    topic: '6. Golpes na Internet e Engenharia Social (Phishing)',
+    source: 'IBFC / IBGE',
+    difficulty: 'Fácil',
+    statement: 'Um agente recebe um e-mail falso com o logotipo de um grande banco, informando que sua conta será bloqueada se ele não clicar num link para atualizar dados cadastrais. Essa técnica fraudulenta de engenharia social é conhecida como:',
+    options: [
+      { key: 'A', text: 'Phishing' },
+      { key: 'B', text: 'Firewall' },
+      { key: 'C', text: 'Defragmentação' },
+      { key: 'D', text: 'Screenlogger' },
+      { key: 'E', text: 'Spoofing de impressora' }
+    ],
+    correctOption: 'A',
+    explanation: {
+      summary: 'Phishing ("pescaria") induz a vítima a revelar dados confidenciais (senhas, dados bancários) através de mensagens/sites falsos persuasivos.',
+      optionsAnalysis: [
+        { key: 'A', isCorrect: true, reason: 'Phishing = E-mails/sites falsos que enganam o usuário para roubar credenciais.' },
+        { key: 'B', isCorrect: false, reason: 'Firewall é ferramenta de proteção de rede.' },
+        { key: 'C', isCorrect: false, reason: 'Desfragmentação é manutenção de disco.' },
+        { key: 'D', isCorrect: false, reason: 'Screenlogger tira prints da tela.' },
+        { key: 'E', isCorrect: false, reason: 'Incorreto.' }
+      ],
+      bizu: '💡 BIZU IBFC: Phishing = Pescaria de dados pessoais via e-mail ou link falso que imita site verdadeiro!'
+    }
+  },
+  {
+    id: 'inf-seg-06',
+    subject: 'Informática',
+    topic: '6. Ferramentas de Defesa (Firewall de Rede/Host)',
+    source: 'IBFC / IBGE',
+    difficulty: 'Médio',
+    statement: 'Assinale a alternativa correta a respeito do funcionamento de um FIREWALL em um sistema operacional como o Windows 10/11:',
+    options: [
+      { key: 'A', text: 'O Firewall elimina vírus já instalados no disco rígido.' },
+      { key: 'B', text: 'O Firewall atua como um filtro de tráfego, bloqueando ou permitindo conexões de rede de acordo com regras de segurança estabelecidas.' },
+      { key: 'C', text: 'O Firewall substitui a necessidade de ter cópias de backup.' },
+      { key: 'D', text: 'O Firewall serve para acelerar o tempo de inicialização do computador.' },
+      { key: 'E', text: 'O Firewall é um dispositivo de entrada de dados como o teclado.' }
+    ],
+    correctOption: 'B',
+    explanation: {
+      summary: 'O Firewall é uma barreira de proteção de rede. Ele examina portas e pacotes de dados de entrada e saída, bloqueando acessos não autorizados.',
+      optionsAnalysis: [
+        { key: 'A', isCorrect: false, reason: 'Quem remove vírus é o Antivírus, não o Firewall.' },
+        { key: 'B', isCorrect: true, reason: 'Firewall = Filtro de tráfego de rede (Portas e Protocolos de entrada/saída).' },
+        { key: 'C', isCorrect: false, reason: 'Backup é cópia de segurança.' },
+        { key: 'D', isCorrect: false, reason: 'Não acelera boot.' },
+        { key: 'E', isCorrect: false, reason: 'Firewall é solução de segurança de rede.' }
+      ],
+      bizu: '💡 BIZU IBFC: Firewall = Muro de proteção de REDE (Filtra Portas/Pacotes) | Antivírus = Remove PRAGAS do sistema.'
+    }
+  },
+  {
+    id: 'inf-app-04',
+    subject: 'Informática',
+    topic: '7. Microsoft Word - Formatando Parágrafos (Atalho Justificar)',
+    source: 'IBFC / IBGE',
+    difficulty: 'Fácil',
+    statement: 'No Microsoft Word (em português), qual a tecla de atalho utilizada para aplicar o alinhamento JUSTIFICADO (alinhado a ambas as margens esquerda e direita) a um parágrafo selecionado?',
+    options: [
+      { key: 'A', text: 'Ctrl + J' },
+      { key: 'B', text: 'Ctrl + E' },
+      { key: 'C', text: 'Ctrl + Q' },
+      { key: 'D', text: 'Ctrl + G' },
+      { key: 'E', text: 'Ctrl + T' }
+    ],
+    correctOption: 'A',
+    explanation: {
+      summary: 'No Word PT-BR: `Ctrl + J` = Justificado, `Ctrl + E` = Centralizado, `Ctrl + Q` = Alinhado à Esquerda, `Ctrl + G` = Alinhado à Direita.',
+      optionsAnalysis: [
+        { key: 'A', isCorrect: true, reason: '`Ctrl + J` = Alinhamento JUSTIFICADO.' },
+        { key: 'B', isCorrect: false, reason: '`Ctrl + E` = cEntralizado.' },
+        { key: 'C', isCorrect: false, reason: '`Ctrl + Q` = Alinhado à Esquerda.' },
+        { key: 'D', isCorrect: false, reason: '`Ctrl + G` = Alinhado à Direita.' },
+        { key: 'E', isCorrect: false, reason: '`Ctrl + T` = Selecionar Tudo no Word PT-BR.' }
+      ],
+      bizu: '💡 BIZU IBFC (WORD ALINHAMENTO): `Ctrl + J` = Justificado | `Ctrl + E` = cEntralizado | `Ctrl + Q` = EsQueldo (Esquerda) | `Ctrl + G` = Direita | `Ctrl + T` = Tudo!'
+    }
+  },
+  {
+    id: 'inf-app-05',
+    subject: 'Informática',
+    topic: '7. Microsoft Excel - Função CONT.SE',
+    source: 'IBFC / IBGE',
+    difficulty: 'Médio',
+    statement: 'Em uma planilha do Microsoft Excel, a função `=CONT.SE(A1:A10; ">50")` tem como objetivo:',
+    options: [
+      { key: 'A', text: 'Somar todos os valores maiores que 50 no intervalo A1:A10.' },
+      { key: 'B', text: 'Contar a quantidade de células no intervalo A1:A10 que contêm valores maiores que 50.' },
+      { key: 'C', text: 'Calcular a média dos valores menores que 50.' },
+      { key: 'D', text: 'Substituir os valores maiores que 50 pelo número 10.' },
+      { key: 'E', text: 'Multiplicar todas as células por 50.' }
+    ],
+    correctOption: 'B',
+    explanation: {
+      summary: 'A função `CONT.SE(intervalo; critério)` CONTA o número de células que atendem à condição especificada.',
+      optionsAnalysis: [
+        { key: 'A', isCorrect: false, reason: 'Quem soma com condição é a função `SOMASE()`.' },
+        { key: 'B', isCorrect: true, reason: '`CONT.SE` = Conta quantas células satisfazem o critério (`>50`).' },
+        { key: 'C', isCorrect: false, reason: 'Quem calcula média com condição é `MÉDIASE()`.' },
+        { key: 'D', isCorrect: false, reason: 'Incorreto.' },
+        { key: 'E', isCorrect: false, reason: 'Incorreto.' }
+      ],
+      bizu: '💡 BIZU IBFC (EXCEL): `CONT.SE` = CONTA células com filtro | `SOMASE` = SOMA valores com filtro | `CONT.NÚM` = CONTA células que contêm números.'
+    }
+  },
+  {
+    id: 'inf-net-03',
+    subject: 'Informática',
+    topic: '8. Protocolos da Internet (HTTP vs HTTPS)',
+    source: 'IBFC / IBGE',
+    difficulty: 'Fácil',
+    statement: 'Ao navegar na web, qual a principal diferença de segurança entre o protocolo HTTP e o protocolo HTTPS?',
+    options: [
+      { key: 'A', text: 'O HTTP é mais rápido por utilizar criptografia de ponta a ponta.' },
+      { key: 'B', text: 'O HTTPS utiliza camada de criptografia (SSL/TLS), garantindo confidencialidade e segurança na transmissão dos dados.' },
+      { key: 'C', text: 'O HTTPS é exclusivo para envio de arquivos de vídeo via torrent.' },
+      { key: 'D', text: 'O HTTP não necessita de conexão com a rede de internet.' },
+      { key: 'E', text: 'Ambos os protocolos oferecem exatamente o mesmo nível de proteção sem nenhuma criptografia.' }
+    ],
+    correctOption: 'B',
+    explanation: {
+      summary: 'O HTTPS é a versão segura do HTTP. Ele utiliza protocolos TLS/SSL para criptografar o tráfego entre o navegador e o servidor web (porta 443).',
+      optionsAnalysis: [
+        { key: 'A', isCorrect: false, reason: 'HTTP não usa criptografia.' },
+        { key: 'B', isCorrect: true, reason: 'HTTPS = HTTP + Criptografia SSL/TLS (Seguro, ícone do cadeado).' },
+        { key: 'C', isCorrect: false, reason: 'HTTPS é para navegação web segura.' },
+        { key: 'D', isCorrect: false, reason: 'Ambos precisam de internet.' },
+        { key: 'E', isCorrect: false, reason: 'Incorreto.' }
+      ],
+      bizu: '💡 BIZU IBFC: HTTPS = HTTP + Criptografia SSL/TLS | Porta 80 (HTTP) vs Porta 443 (HTTPS).'
+    }
+  },
+  {
+    id: 'inf-net-04',
+    subject: 'Informática',
+    topic: '8. Protocolos de Correio Eletrônico (SMTP, POP3, IMAP)',
+    source: 'IBFC / IBGE',
+    difficulty: 'Médio',
+    statement: 'Assinale a alternativa que associa corretamente o protocolo de e-mail à sua função principal:',
+    options: [
+      { key: 'A', text: 'SMTP é utilizado para RECEBER mensagens e salvá-las no computador.' },
+      { key: 'B', text: 'POP3 é utilizado para ENVIAR mensagens para outros servidores.' },
+      { key: 'C', text: 'SMTP é o protocolo responsável pelo ENVIO (saída) de e-mails, enquanto POP3 e IMAP são para RECEBIMENTO (entrada).' },
+      { key: 'D', text: 'IMAP impede a leitura de e-mails no navegador da web.' },
+      { key: 'E', text: 'DNS é o protocolo padrão para anexo de imagens em e-mails.' }
+    ],
+    correctOption: 'C',
+    explanation: {
+      summary: 'SMTP (Sua Mensagem Tá Partindo) = Envio. POP3 = Baixa o e-mail pro PC e apaga do servidor. IMAP = Sincroniza e mantém no servidor.',
+      optionsAnalysis: [
+        { key: 'A', isCorrect: false, reason: 'SMTP é para ENVIO.' },
+        { key: 'B', isCorrect: false, reason: 'POP3 é para RECEBER.' },
+        { key: 'C', isCorrect: true, reason: 'SMTP = Envio (Saída) | POP3/IMAP = Recebimento (Entrada).' },
+        { key: 'D', isCorrect: false, reason: 'IMAP permite sincronização em múltiplos aparelhos.' },
+        { key: 'E', isCorrect: false, reason: 'DNS converte nomes de domínio em IPs.' }
+      ],
+      bizu: '💡 BIZU IBFC: SMTP = Sua Mensagem Tá Partindo (ENVIO) | POP3 = Baixa pro PC (RECEBER) | IMAP = Sincroniza na Nuvem (RECEBER).'
+    }
+  },
+
+  // --- PORTUGUÊS COMPLEMENTAR IBFC ---
+  {
+    id: 'port-crase-02',
+    subject: 'Língua Portuguesa',
+    topic: '7. Casos Facultativos de Crase',
+    source: 'IBFC / IBGE',
+    difficulty: 'Médio',
+    statement: 'Assinale a alternativa em que o emprego do sinal indicativo de crase é FACULTATIVO segundo a norma-padrão:',
+    options: [
+      { key: 'A', text: 'Entreguei o documento à diretora do setor.' },
+      { key: 'B', text: 'Enviei o relatório à minha supervisora.' },
+      { key: 'C', text: 'O candidato chegou à noite para a prova.' },
+      { key: 'D', text: 'Refiro-me à professora de informática.' },
+      { key: 'E', text: 'Fomos à praia no domingo.' }
+    ],
+    correctOption: 'B',
+    explanation: {
+      summary: 'Crase é FACULTATIVA em 3 casos principais: 1) Antes de pronome possessivo feminino singular (minha, tua, sua); 2) Antes de nomes próprios femininos; 3) Após a preposição "até".',
+      optionsAnalysis: [
+        { key: 'A', isCorrect: false, reason: 'Crase obrigatória (à diretora).' },
+        { key: 'B', isCorrect: true, reason: 'FACULTATIVA antes de pronome possessivo feminino ("à minha supervisora" ou "a minha supervisora").' },
+        { key: 'C', isCorrect: false, reason: 'Crase obrigatória em locução adverbial feminina ("à noite").' },
+        { key: 'D', isCorrect: false, reason: 'Crase obrigatória.' },
+        { key: 'E', isCorrect: false, reason: 'Crase obrigatória.' }
+      ],
+      bizu: '💡 BIZU IBFC PORTUGUÊS (Crase Facultativa): 1. Pronome Possessivo Feminino (minha/sua) | 2. Nome Próprio Feminino (Maria) | 3. Após "Até".'
+    }
+  },
+  {
+    id: 'port-regencia-01',
+    subject: 'Língua Portuguesa',
+    topic: '7. Regência Verbal do Verbo ASSISTIR',
+    source: 'IBFC / IBGE',
+    difficulty: 'Médio',
+    statement: 'Quanto à regência verbal da norma-padrão, assinale a opção em que o verbo ASSISTIR foi empregado no sentido de "ver / presenciar" com a regência correta:',
+    options: [
+      { key: 'A', text: 'Assistimos o treinamento de informática na semana passada.' },
+      { key: 'B', text: 'Assistimos ao treinamento de informática na semana passada.' },
+      { key: 'C', text: 'O médico assistiu ao paciente ferido com dedicação.' },
+      { key: 'D', text: 'Os alunos assistiram o filme sem fazer barulho.' },
+      { key: 'E', text: 'Nós assistimos ele durante a palestra do IBGE.' }
+    ],
+    correctOption: 'B',
+    explanation: {
+      summary: 'O verbo ASSISTIR no sentido de VER/PRESENCIAR é Transitivo Indireto e exige a preposição A ("Assistir AO jogo", "Assistir À aula").',
+      optionsAnalysis: [
+        { key: 'A', isCorrect: false, reason: 'Falta a preposição A.' },
+        { key: 'B', isCorrect: true, reason: '`Assistir a` + `o treinamento` = `Assistimos ao treinamento` (Correto).' },
+        { key: 'C', isCorrect: false, reason: 'Assistir no sentido de prestar socorro é VTD (assistiu o paciente).' },
+        { key: 'D', isCorrect: false, reason: 'Deveria ser "assistiram ao filme".' },
+        { key: 'E', isCorrect: false, reason: 'Deveria ser "assistimos a ele".' }
+      ],
+      bizu: '💡 BIZU IBFC: ASSISTIR (Ver/Presenciar) = Exige Preposição A! "Assistir AO jogo", "Assistir À palestra".'
+    }
+  },
+  {
+    id: 'port-regencia-02',
+    subject: 'Língua Portuguesa',
+    topic: '7. Regência do Verbo PREFERIR',
+    source: 'IBFC / IBGE',
+    difficulty: 'Fácil',
+    statement: 'Assinale a alternativa que apresenta a regência do verbo PREFERIR em conformidade com a norma-padrão da língua portuguesa:',
+    options: [
+      { key: 'A', text: 'Prefiro estudar informática do que fazer resumos longos.' },
+      { key: 'B', text: 'Prefiro mais a teoria do que a prática.' },
+      { key: 'C', text: 'Prefiro estudar informática a fazer resumos longos.' },
+      { key: 'D', text: 'Prefiro mil vezes resolver simulados do que ler apostilas.' },
+      { key: 'E', text: 'Prefiro antes o curso online do que o presencial.' }
+    ],
+    correctOption: 'C',
+    explanation: {
+      summary: 'O verbo PREFERIR exige a preposição A ("Preferir X A Y"). É erro gramatical usar "do que", "mais que" ou "mil vezes".',
+      optionsAnalysis: [
+        { key: 'A', isCorrect: false, reason: 'Erro: "do que" não é aceito.' },
+        { key: 'B', isCorrect: false, reason: 'Erro: "mais" e "do que" são redundantes/proibidos.' },
+        { key: 'C', isCorrect: true, reason: 'Correto: "Prefiro X A Y" (Sem "do que").' },
+        { key: 'D', isCorrect: false, reason: 'Erro: "mil vezes" e "do que".' },
+        { key: 'E', isCorrect: false, reason: 'Erro.' }
+      ],
+      bizu: '💡 BIZU IBFC: PREFERIR = "Prefiro X A Y"! Proibido usar "do que", "mais" ou "antes".'
+    }
+  },
+
+  // --- RACIOCÍNIO LÓGICO COMPLEMENTAR IBFC ---
+  {
+    id: 'rlm-03',
+    subject: 'Raciocínio Lógico',
+    topic: '2. Negação de Proposições Compostas (Leis de De Morgan)',
+    source: 'IBFC / IBGE',
+    difficulty: 'Médio',
+    statement: 'Assinale a alternativa que apresenta a NEGAÇÃO LÓGICA correta da proposição: "Pedro é agente de informática E a prova é fácil".',
+    options: [
+      { key: 'A', text: 'Pedro não é agente de informática E a prova não é fácil.' },
+      { key: 'B', text: 'Pedro não é agente de informática OU a prova não é fácil.' },
+      { key: 'C', text: 'Se Pedro é agente de informática, então a prova é fácil.' },
+      { key: 'D', text: 'Pedro é agente de informática OU a prova é fácil.' },
+      { key: 'E', text: 'Pedro não é agente de informática e a prova é fácil.' }
+    ],
+    correctOption: 'B',
+    explanation: {
+      summary: 'Lei de De Morgan para negar o "E": Nega a 1ª, Troca o "E" por "OU", e Nega a 2ª: $\neg(P \land Q) \equiv \neg P \lor \neg Q$.',
+      optionsAnalysis: [
+        { key: 'A', isCorrect: false, reason: 'Esqueceu de trocar o "E" pelo "OU".' },
+        { key: 'B', isCorrect: true, reason: 'Negou a 1ª, trocou "E" por "OU" e negou a 2ª.' },
+        { key: 'C', isCorrect: false, reason: 'Incorreto.' },
+        { key: 'D', isCorrect: false, reason: 'Incorreto.' },
+        { key: 'E', isCorrect: false, reason: 'Incorreto.' }
+      ],
+      bizu: '💡 BIZU IBFC RLM (Lei de De Morgan): Negação do "E" = Nega tudo e troca por "OU"! Negação do "OU" = Nega tudo e troca por "E"!'
+    }
+  },
+  {
+    id: 'rlm-04',
+    subject: 'Raciocínio Lógico',
+    topic: '1. Tabela Verdade da Bicondicional (Se e somente se)',
+    source: 'IBFC / IBGE',
+    difficulty: 'Fácil',
+    statement: 'Uma proposição bicondicional do tipo "P se e somente se Q" ($P \leftrightarrow Q$) possui valor lógico VERDADEIRO quando:',
+    options: [
+      { key: 'A', text: 'Apenas a primeira proposição P for verdadeira.' },
+      { key: 'B', text: 'Ambas as proposições P e Q tiverem o MESMO valor lógico (ambas verdadeiras ou ambas falsas).' },
+      { key: 'C', text: 'Apenas a segunda proposição Q for verdadeira.' },
+      { key: 'D', text: 'Uma for verdadeira e a outra for falsa.' },
+      { key: 'E', text: 'Ambas as proposições forem obrigatoriamente falsas.' }
+    ],
+    correctOption: 'B',
+    explanation: {
+      summary: 'A bicondicional ($\leftrightarrow$) é Verdadeira se P e Q tiverem valorações IGUAIS (V e V = V; F e F = V). Se forem diferentes, é Falsa.',
+      optionsAnalysis: [
+        { key: 'A', isCorrect: false, reason: 'Incorreto.' },
+        { key: 'B', isCorrect: true, reason: 'Bicondicional é V quando P e Q possuem o MESMO valor lógico.' },
+        { key: 'C', isCorrect: false, reason: 'Incorreto.' },
+        { key: 'D', isCorrect: false, reason: 'Valores diferentes resultam em FALSO (Ou Exclusivo).' },
+        { key: 'E', isCorrect: false, reason: 'Incorreto.' }
+      ],
+      bizu: '💡 BIZU IBFC RLM: BICONDICIONAL ($P \leftrightarrow Q$) = IGUAIS dá VERDADEIRO (V-V=V, F-F=V) | DIFERENTES dá FALSO!'
+    }
   }
 ];
+

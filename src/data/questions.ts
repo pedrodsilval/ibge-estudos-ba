@@ -15,11 +15,11 @@ export const QUESTIONS_DATABASE: Question[] = [
       },
       {
         "key": "B",
-        "text": "Unidade Lógica e Aritmética (ULA)"
+        "text": "Registradores"
       },
       {
         "key": "C",
-        "text": "Registradores"
+        "text": "Unidade Lógica e Aritmética (ULA)"
       },
       {
         "key": "D",
@@ -30,7 +30,7 @@ export const QUESTIONS_DATABASE: Question[] = [
         "text": "Memória Flash ROM"
       }
     ],
-    "correctOption": "C",
+    "correctOption": "B",
     "explanation": {
       "summary": "Os Registradores são pequenas unidades de memória integradas ao próprio núcleo da CPU. Possuem a menor capacidade e a maior velocidade de acesso de toda a arquitetura de computadores.",
       "optionsAnalysis": [
@@ -41,13 +41,13 @@ export const QUESTIONS_DATABASE: Question[] = [
         },
         {
           "key": "B",
-          "isCorrect": false,
-          "reason": "Incorreto. A ULA realiza cálculos matemáticos e testes lógicos, mas não armazena dados."
+          "isCorrect": true,
+          "reason": "CORRETA. Registradores = Maior velocidade de acesso, integrados ao núcleo da CPU."
         },
         {
           "key": "C",
-          "isCorrect": true,
-          "reason": "CORRETA. Registradores = Maior velocidade de acesso, integrados ao núcleo da CPU."
+          "isCorrect": false,
+          "reason": "Incorreto. A ULA realiza cálculos matemáticos e testes lógicos, mas não armazena dados."
         },
         {
           "key": "D",
@@ -81,18 +81,18 @@ export const QUESTIONS_DATABASE: Question[] = [
       },
       {
         "key": "C",
-        "text": "A memória RAM é uma memória de leitura e escrita principal, de caráter volátil."
+        "text": "A memória ROM permite a gravação constante de arquivos do usuário durante o uso do Windows."
       },
       {
         "key": "D",
-        "text": "A memória ROM permite a gravação constante de arquivos do usuário durante o uso do Windows."
+        "text": "A memória RAM é uma memória de leitura e escrita principal, de caráter volátil."
       },
       {
         "key": "E",
         "text": "A memória RAM armazena o programa de inicialização da placa-mãe (BIOS/UEFI)."
       }
     ],
-    "correctOption": "C",
+    "correctOption": "D",
     "explanation": {
       "summary": "A memória RAM (Random Access Memory) é a memória principal de trabalho, volátil (perde o conteúdo sem energia) e permite leitura e escrita. A ROM (Read Only Memory) é não volátil e armazena a BIOS.",
       "optionsAnalysis": [
@@ -108,13 +108,13 @@ export const QUESTIONS_DATABASE: Question[] = [
         },
         {
           "key": "C",
-          "isCorrect": true,
-          "reason": "CORRETA. RAM = Leitura/Escrita, volátil, memória de trabalho."
+          "isCorrect": false,
+          "reason": "Incorreto. A ROM armazena instruções de fábrica e não arquivos do usuário."
         },
         {
           "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. A ROM armazena instruções de fábrica e não arquivos do usuário."
+          "isCorrect": true,
+          "reason": "CORRETA. RAM = Leitura/Escrita, volátil, memória de trabalho."
         },
         {
           "key": "E",
@@ -139,22 +139,22 @@ export const QUESTIONS_DATABASE: Question[] = [
       },
       {
         "key": "B",
-        "text": "Armazena dados em chips de memória flash NAND sem partes mecânicas móveis."
-      },
-      {
-        "key": "C",
         "text": "Utiliza feixe de luz laser para a leitura de células ópticas."
       },
       {
-        "key": "D",
+        "key": "C",
         "text": "É uma memória de trabalho volátil que apaga ao reiniciar o Windows."
       },
       {
-        "key": "E",
+        "key": "D",
         "text": "Conecta-se exclusivamente através da porta de áudio P2."
+      },
+      {
+        "key": "E",
+        "text": "Armazena dados em chips de memória flash NAND sem partes mecânicas móveis."
       }
     ],
-    "correctOption": "B",
+    "correctOption": "E",
     "explanation": {
       "summary": "Os SSDs utilizam memórias semicondutoras do tipo Flash (NAND). Por não possuírem partes mecânicas (ao contrário do HD magnético), são mais rápidos, silenciosos e resistentes a choques físicos.",
       "optionsAnalysis": [
@@ -165,23 +165,23 @@ export const QUESTIONS_DATABASE: Question[] = [
         },
         {
           "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. SSD = Chips de memória flash NAND sem peças móveis."
-        },
-        {
-          "key": "C",
           "isCorrect": false,
           "reason": "Incorreto. Laser é utilizado em mídias ópticas (CD/DVD/Blu-ray)."
         },
         {
-          "key": "D",
+          "key": "C",
           "isCorrect": false,
           "reason": "Incorreto. SSD é armazenamento permanente (não volátil)."
         },
         {
-          "key": "E",
+          "key": "D",
           "isCorrect": false,
           "reason": "Incorreto. Conecta-se via SATA, M.2 ou NVMe."
+        },
+        {
+          "key": "E",
+          "isCorrect": true,
+          "reason": "CORRETA. SSD = Chips de memória flash NAND sem peças móveis."
         }
       ],
       "bizu": "💡 BIZU IBFC: SSD = Memória Flash | Sem partes móveis | Não Volátil | Alta resistência física."
@@ -259,11 +259,11 @@ export const QUESTIONS_DATABASE: Question[] = [
     "options": [
       {
         "key": "A",
-        "text": "Possui um conector rígido que só se encaixa em uma posição única."
+        "text": "É um conector reversível que permite a transferência de dados, sinais de vídeo e carregamento de energia em alta velocidade."
       },
       {
         "key": "B",
-        "text": "É um conector reversível que permite a transferência de dados, sinais de vídeo e carregamento de energia em alta velocidade."
+        "text": "Possui um conector rígido que só se encaixa em uma posição única, respeitando as diretrizes de governança de dados e controle de acessos."
       },
       {
         "key": "C",
@@ -278,19 +278,19 @@ export const QUESTIONS_DATABASE: Question[] = [
         "text": "Substitui a memória RAM do computador."
       }
     ],
-    "correctOption": "B",
+    "correctOption": "A",
     "explanation": {
       "summary": "O conector USB-C é reversível (pode ser encaixado de qualquer lado) e suporta múltiplos protocolos simultâneos, incluindo dados em alta velocidade (USB 3.2/4), vídeo (DisplayPort) e energia (Power Delivery).",
       "optionsAnalysis": [
         {
           "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. O USB-C é REVERSÍVEL (não tem lado errado)."
+          "isCorrect": true,
+          "reason": "CORRETA. USB-C = Reversível + Dados + Vídeo + Energia."
         },
         {
           "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. USB-C = Reversível + Dados + Vídeo + Energia."
+          "isCorrect": false,
+          "reason": "Incorreto. O USB-C é REVERSÍVEL (não tem lado errado)."
         },
         {
           "key": "C",
@@ -321,11 +321,11 @@ export const QUESTIONS_DATABASE: Question[] = [
     "options": [
       {
         "key": "A",
-        "text": "Substituir a necessidade de instalar uma fonte de alimentação no microcomputador."
+        "text": "Evitar gargalos no processamento armazenando temporariamente os dados e instruções mais frequentemente utilizados pela CPU."
       },
       {
         "key": "B",
-        "text": "Evitar gargalos no processamento armazenando temporariamente os dados e instruções mais frequentemente utilizados pela CPU."
+        "text": "Substituir a necessidade de instalar uma fonte de alimentação no microcomputador."
       },
       {
         "key": "C",
@@ -337,22 +337,22 @@ export const QUESTIONS_DATABASE: Question[] = [
       },
       {
         "key": "E",
-        "text": "Converter conexões de cabo de rede em sinal de telefone fixo."
+        "text": "Converter conexões de cabo de rede em sinal de telefone fixo, de acordo com as configurações padrão estabelecidas no sistema operacional."
       }
     ],
-    "correctOption": "B",
+    "correctOption": "A",
     "explanation": {
       "summary": "Como a CPU roda em frequências muito mais altas que a memória RAM, a memória Cache (L1, L2, L3) armazena cópias das informações mais acessadas, reduzindo a ociosidade do processador.",
       "optionsAnalysis": [
         {
           "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. A fonte de alimentação continua sendo indispensável."
+          "isCorrect": true,
+          "reason": "CORRETA. Memória Cache = Ponte rápida entre CPU e RAM para dados frequentes."
         },
         {
           "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Memória Cache = Ponte rápida entre CPU e RAM para dados frequentes."
+          "isCorrect": false,
+          "reason": "Incorreto. A fonte de alimentação continua sendo indispensável."
         },
         {
           "key": "C",
@@ -391,18 +391,18 @@ export const QUESTIONS_DATABASE: Question[] = [
       },
       {
         "key": "C",
-        "text": "Monitor de tela sensível ao toque (Touchscreen)"
-      },
-      {
-        "key": "D",
         "text": "Caixa de som estéreo"
       },
       {
+        "key": "D",
+        "text": "Monitor de tela sensível ao toque (Touchscreen)"
+      },
+      {
         "key": "E",
-        "text": "Scanner de mesa"
+        "text": "Scanner de mesa, visando garantir a integridade total das informações e a segurança do usuário."
       }
     ],
-    "correctOption": "C",
+    "correctOption": "D",
     "explanation": {
       "summary": "Monitores Touchscreen são mistos porque exibem a imagem gerada pelo computador (Saída) e simultaneamente capturam os toques do usuário na tela (Entrada).",
       "optionsAnalysis": [
@@ -418,13 +418,13 @@ export const QUESTIONS_DATABASE: Question[] = [
         },
         {
           "key": "C",
-          "isCorrect": true,
-          "reason": "CORRETA. Touchscreen = Exibe imagem (Saída) + Recebe toques (Entrada)."
+          "isCorrect": false,
+          "reason": "Incorreto. Caixa de som é apenas Saída."
         },
         {
           "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Caixa de som é apenas Saída."
+          "isCorrect": true,
+          "reason": "CORRETA. Touchscreen = Exibe imagem (Saída) + Recebe toques (Entrada)."
         },
         {
           "key": "E",
@@ -445,15 +445,15 @@ export const QUESTIONS_DATABASE: Question[] = [
     "options": [
       {
         "key": "A",
-        "text": "Velocidades de leitura e escrita significativamente superiores, podendo ultrapassar 3.000 MB/s."
-      },
-      {
-        "key": "B",
         "text": "Menor velocidade de leitura, porém com capacidade ilimitada em terabytes."
       },
       {
-        "key": "C",
+        "key": "B",
         "text": "Funcionamento volátil que apaga os dados a cada reinicialização."
+      },
+      {
+        "key": "C",
+        "text": "Velocidades de leitura e escrita significativamente superiores, podendo ultrapassar 3.000 MB/s."
       },
       {
         "key": "D",
@@ -461,27 +461,27 @@ export const QUESTIONS_DATABASE: Question[] = [
       },
       {
         "key": "E",
-        "text": "Incompatibilidade total com qualquer sistema Windows."
+        "text": "Incompatibilidade total com qualquer sistema Windows, conforme as especificações técnicas de homologação do ambiente de redes."
       }
     ],
-    "correctOption": "A",
+    "correctOption": "C",
     "explanation": {
       "summary": "O protocolo NVMe foi desenvolvido do zero para memórias flash de alta performance, comunicando-se via pistas PCIe diretamente com o processador, alcançando taxas de transferência de vários gigabytes por segundo.",
       "optionsAnalysis": [
         {
           "key": "A",
-          "isCorrect": true,
-          "reason": "CORRETA. NVMe via PCIe = Taxas de transferência superiores a 3.000 MB/s."
-        },
-        {
-          "key": "B",
           "isCorrect": false,
           "reason": "Incorreto. É muito mais rápido que o SATA III."
         },
         {
-          "key": "C",
+          "key": "B",
           "isCorrect": false,
           "reason": "Incorreto. É armazenamento não volátil permanente."
+        },
+        {
+          "key": "C",
+          "isCorrect": true,
+          "reason": "CORRETA. NVMe via PCIe = Taxas de transferência superiores a 3.000 MB/s."
         },
         {
           "key": "D",
@@ -511,22 +511,22 @@ export const QUESTIONS_DATABASE: Question[] = [
       },
       {
         "key": "B",
-        "text": "Buscar as instruções na memória, decodificá-las e gerenciar a sequência de execução do sistema."
-      },
-      {
-        "key": "C",
         "text": "Fornecer energia elétrica para o cooler do processador."
       },
       {
-        "key": "D",
+        "key": "C",
         "text": "Armazenar os arquivos de planilhas do usuário."
       },
       {
+        "key": "D",
+        "text": "Buscar as instruções na memória, decodificá-las e gerenciar a sequência de execução do sistema."
+      },
+      {
         "key": "E",
-        "text": "Exibir o cursor do mouse na tela do monitor."
+        "text": "Exibir o cursor do mouse na tela do monitor, considerando a arquitetura padrão dos componentes e seus respectivos drivers."
       }
     ],
-    "correctOption": "B",
+    "correctOption": "D",
     "explanation": {
       "summary": "A Unidade de Controle (UC) é o maestro da CPU: ela busca a instrução na memória principal, decodifica o comando e envia os sinais de controle aos demais componentes para a execução.",
       "optionsAnalysis": [
@@ -537,18 +537,18 @@ export const QUESTIONS_DATABASE: Question[] = [
         },
         {
           "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. UC = Busca, decodifica e controla o fluxo de execução de instruções."
-        },
-        {
-          "key": "C",
           "isCorrect": false,
           "reason": "Incorreto. A fonte de alimentação fornece energia."
         },
         {
-          "key": "D",
+          "key": "C",
           "isCorrect": false,
           "reason": "Incorreto. Arquivos ficam no SSD/HD."
+        },
+        {
+          "key": "D",
+          "isCorrect": true,
+          "reason": "CORRETA. UC = Busca, decodifica e controla o fluxo de execução de instruções."
         },
         {
           "key": "E",
@@ -581,7 +581,7 @@ export const QUESTIONS_DATABASE: Question[] = [
       },
       {
         "key": "D",
-        "text": "Imprimir documentos em papel térmico."
+        "text": "Imprimir documentos em papel térmico, respeitando as diretrizes de governança de dados e controle de acessos."
       },
       {
         "key": "E",
@@ -631,15 +631,15 @@ export const QUESTIONS_DATABASE: Question[] = [
     "options": [
       {
         "key": "A",
-        "text": "Ctrl + Shift + N"
+        "text": "Ctrl + N, de acordo com as configurações padrão estabelecidas no sistema operacional."
       },
       {
         "key": "B",
-        "text": "Ctrl + N"
+        "text": "Alt + F4"
       },
       {
         "key": "C",
-        "text": "Alt + F4"
+        "text": "Ctrl + Shift + N"
       },
       {
         "key": "D",
@@ -650,24 +650,24 @@ export const QUESTIONS_DATABASE: Question[] = [
         "text": "Ctrl + Alt + Del"
       }
     ],
-    "correctOption": "A",
+    "correctOption": "C",
     "explanation": {
       "summary": "O atalho `Ctrl + Shift + N` cria uma nova pasta no diretório atual do Explorador de Arquivos no Windows 10 e 11.",
       "optionsAnalysis": [
         {
           "key": "A",
-          "isCorrect": true,
-          "reason": "CORRETA. `Ctrl + Shift + N` = Nova Pasta no Explorador de Arquivos."
-        },
-        {
-          "key": "B",
           "isCorrect": false,
           "reason": "Incorreto. `Ctrl + N` abre uma nova janela do Explorador."
         },
         {
-          "key": "C",
+          "key": "B",
           "isCorrect": false,
           "reason": "Incorreto. `Alt + F4` fecha a janela ativa."
+        },
+        {
+          "key": "C",
+          "isCorrect": true,
+          "reason": "CORRETA. `Ctrl + Shift + N` = Nova Pasta no Explorador de Arquivos."
         },
         {
           "key": "D",
@@ -697,11 +697,11 @@ export const QUESTIONS_DATABASE: Question[] = [
       },
       {
         "key": "B",
-        "text": "Excluir o arquivo permanentemente, sem enviá-lo para a Lixeira."
+        "text": "Criar um atalho na Área de Trabalho, visando garantir a integridade total das informações e a segurança do usuário."
       },
       {
         "key": "C",
-        "text": "Criar um atalho na Área de Trabalho."
+        "text": "Excluir o arquivo permanentemente, sem enviá-lo para a Lixeira."
       },
       {
         "key": "D",
@@ -712,7 +712,7 @@ export const QUESTIONS_DATABASE: Question[] = [
         "text": "Ocultar o arquivo nas propriedades da pasta."
       }
     ],
-    "correctOption": "B",
+    "correctOption": "C",
     "explanation": {
       "summary": "A combinação `Shift + Delete` ignora o envio para a Lixeira e efetua a exclusão definitiva do arquivo no sistema de arquivos.",
       "optionsAnalysis": [
@@ -723,13 +723,13 @@ export const QUESTIONS_DATABASE: Question[] = [
         },
         {
           "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Shift + Delete = Exclusão definitiva sem ir para a Lixeira."
+          "isCorrect": false,
+          "reason": "Incorreto. Não cria atalho."
         },
         {
           "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Não cria atalho."
+          "isCorrect": true,
+          "reason": "CORRETA. Shift + Delete = Exclusão definitiva sem ir para a Lixeira."
         },
         {
           "key": "D",
@@ -755,26 +755,26 @@ export const QUESTIONS_DATABASE: Question[] = [
     "options": [
       {
         "key": "A",
-        "text": "O Gerenciador de Dispositivos e Drivers."
+        "text": "O Gerenciador de Dispositivos e Drivers, conforme as especificações técnicas de homologação do ambiente de redes."
       },
       {
         "key": "B",
-        "text": "O Histórico da Área de Transferência, exibindo múltiplos textos e imagens copiados anteriormente."
-      },
-      {
-        "key": "C",
         "text": "O Prompt de Comando em modo Administrador."
       },
       {
-        "key": "D",
+        "key": "C",
         "text": "O Painel de Controle clássico."
       },
       {
-        "key": "E",
+        "key": "D",
         "text": "A ferramenta de desfragmentação de disco."
+      },
+      {
+        "key": "E",
+        "text": "O Histórico da Área de Transferência, exibindo múltiplos textos e imagens copiados anteriormente."
       }
     ],
-    "correctOption": "B",
+    "correctOption": "E",
     "explanation": {
       "summary": "O atalho `Win + V` abre o painel do Histórico da Área de Transferência do Windows, permitindo visualizar e colar múltiplos elementos copiados previamente (`Ctrl + C`).",
       "optionsAnalysis": [
@@ -785,23 +785,23 @@ export const QUESTIONS_DATABASE: Question[] = [
         },
         {
           "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Win + V = Histórico da Área de Transferência."
-        },
-        {
-          "key": "C",
           "isCorrect": false,
           "reason": "Incorreto. Prompt de comando é aberto por 'cmd'."
         },
         {
-          "key": "D",
+          "key": "C",
           "isCorrect": false,
           "reason": "Incorreto. Painel de controle abre pela busca."
         },
         {
-          "key": "E",
+          "key": "D",
           "isCorrect": false,
           "reason": "Incorreto. Desfragmentador é ferramenta de otimização."
+        },
+        {
+          "key": "E",
+          "isCorrect": true,
+          "reason": "CORRETA. Win + V = Histórico da Área de Transferência."
         }
       ],
       "bizu": "💡 BIZU IBFC: `Ctrl + V` = Cola o último item | `Win + V` = Histórico de vários itens copiados!"
@@ -833,7 +833,7 @@ export const QUESTIONS_DATABASE: Question[] = [
       },
       {
         "key": "E",
-        "text": "Win + R"
+        "text": "Win + R, considerando a arquitetura padrão dos componentes e seus respectivos drivers."
       }
     ],
     "correctOption": "A",
@@ -945,22 +945,22 @@ export const QUESTIONS_DATABASE: Question[] = [
       },
       {
         "key": "B",
-        "text": "Ativar o modo de edição do nome do arquivo selecionado para RENOMEÁ-LO."
-      },
-      {
-        "key": "C",
         "text": "Criar uma cópia duplicada do arquivo no Desktop."
       },
       {
+        "key": "C",
+        "text": "Imprimir o documento na impressora padrão, de acordo com as configurações padrão estabelecidas no sistema operacional."
+      },
+      {
         "key": "D",
-        "text": "Imprimir o documento na impressora padrão."
+        "text": "Ativar o modo de edição do nome do arquivo selecionado para RENOMEÁ-LO."
       },
       {
         "key": "E",
         "text": "Abrir o arquivo no Bloco de Notas."
       }
     ],
-    "correctOption": "B",
+    "correctOption": "D",
     "explanation": {
       "summary": "A tecla de atalho F2 no Explorador de Arquivos ativa a edição rápida do nome de arquivos ou pastas selecionadas.",
       "optionsAnalysis": [
@@ -971,18 +971,18 @@ export const QUESTIONS_DATABASE: Question[] = [
         },
         {
           "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. F2 = Editar/Renomear arquivo ou pasta selecionada."
-        },
-        {
-          "key": "C",
           "isCorrect": false,
           "reason": "Incorreto. Duplicar requer copiar e colar (Ctrl+C e Ctrl+V)."
         },
         {
-          "key": "D",
+          "key": "C",
           "isCorrect": false,
           "reason": "Incorreto. Imprimir é Ctrl+P."
+        },
+        {
+          "key": "D",
+          "isCorrect": true,
+          "reason": "CORRETA. F2 = Editar/Renomear arquivo ou pasta selecionada."
         },
         {
           "key": "E",
@@ -1003,11 +1003,11 @@ export const QUESTIONS_DATABASE: Question[] = [
     "options": [
       {
         "key": "A",
-        "text": "Win + L"
+        "text": "Win + E"
       },
       {
         "key": "B",
-        "text": "Win + E"
+        "text": "Win + L"
       },
       {
         "key": "C",
@@ -1022,19 +1022,19 @@ export const QUESTIONS_DATABASE: Question[] = [
         "text": "Ctrl + Shift + Esc"
       }
     ],
-    "correctOption": "A",
+    "correctOption": "B",
     "explanation": {
       "summary": "O atalho `Win + L` ('L' de Lock) bloqueia a tela do computador, exigindo a senha ou biometria para retornar à sessão atual.",
       "optionsAnalysis": [
         {
           "key": "A",
-          "isCorrect": true,
-          "reason": "CORRETA. `Win + L` = Bloquear a sessão/computador instantaneamente."
+          "isCorrect": false,
+          "reason": "Incorreto. `Win + E` abre o Explorador de Arquivos."
         },
         {
           "key": "B",
-          "isCorrect": false,
-          "reason": "Incorreto. `Win + E` abre o Explorador de Arquivos."
+          "isCorrect": true,
+          "reason": "CORRETA. `Win + L` = Bloquear a sessão/computador instantaneamente."
         },
         {
           "key": "C",
@@ -1065,53 +1065,53 @@ export const QUESTIONS_DATABASE: Question[] = [
     "options": [
       {
         "key": "A",
-        "text": "Win + Shift + S"
-      },
-      {
-        "key": "B",
         "text": "Ctrl + Alt + PrintScreen"
       },
       {
-        "key": "C",
+        "key": "B",
         "text": "Win + P"
       },
       {
-        "key": "D",
+        "key": "C",
         "text": "Ctrl + Shift + N"
       },
       {
-        "key": "E",
+        "key": "D",
         "text": "Alt + Shift + S"
+      },
+      {
+        "key": "E",
+        "text": "Win + Shift + S"
       }
     ],
-    "correctOption": "A",
+    "correctOption": "E",
     "explanation": {
       "summary": "`Win + Shift + S` abre a barra de captura retangular, livre ou de tela cheia do Windows, salvando a imagem capturada diretamente na Área de Transferência.",
       "optionsAnalysis": [
         {
           "key": "A",
-          "isCorrect": true,
-          "reason": "CORRETA. `Win + Shift + S` = Atalho da Ferramenta de Captura de Tela do Windows."
-        },
-        {
-          "key": "B",
           "isCorrect": false,
           "reason": "Incorreto. `Ctrl + Alt + PrintScreen` não é o atalho padrão da ferramenta de captura."
         },
         {
-          "key": "C",
+          "key": "B",
           "isCorrect": false,
           "reason": "Incorreto. `Win + P` abre a projeção de telas (duplicar/estender)."
         },
         {
-          "key": "D",
+          "key": "C",
           "isCorrect": false,
           "reason": "Incorreto. `Ctrl + Shift + N` cria nova pasta."
         },
         {
-          "key": "E",
+          "key": "D",
           "isCorrect": false,
           "reason": "Incorreto."
+        },
+        {
+          "key": "E",
+          "isCorrect": true,
+          "reason": "CORRETA. `Win + Shift + S` = Atalho da Ferramenta de Captura de Tela do Windows."
         }
       ],
       "bizu": "💡 BIZU IBFC: `Win + Shift + S` = Captura de Tela / Print Recortado | `Win + P` = Projeção em Monitores/Datashow."
@@ -1127,15 +1127,15 @@ export const QUESTIONS_DATABASE: Question[] = [
     "options": [
       {
         "key": "A",
-        "text": "O Alt + Tab desliga o computador e o Win + Tab fecha todas as janelas."
-      },
-      {
-        "key": "B",
         "text": "O Alt + Tab alterna rapidamente entre as janelas abertas; já o Win + Tab abre a Visão de Tarefas, permitindo gerenciar Desktops Virtuais e a linha do tempo."
       },
       {
+        "key": "B",
+        "text": "O Alt + Tab desliga o computador e o Win + Tab fecha todas as janelas."
+      },
+      {
         "key": "C",
-        "text": "O Win + Tab funciona apenas com a internet desligada."
+        "text": "O Win + Tab funciona apenas com a internet desligada, considerando a arquitetura padrão dos componentes e seus respectivos drivers."
       },
       {
         "key": "D",
@@ -1146,19 +1146,19 @@ export const QUESTIONS_DATABASE: Question[] = [
         "text": "O Alt + Tab altera a resolução gráfica do monitor."
       }
     ],
-    "correctOption": "B",
+    "correctOption": "A",
     "explanation": {
       "summary": "`Alt + Tab` exibe uma miniatura rápida das janelas para alternância simples. `Win + Tab` abre a Visão de Tarefas (Task View), onde é possível criar e alternar entre múltiplas Áreas de Trabalho Virtuais.",
       "optionsAnalysis": [
         {
           "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto."
+          "isCorrect": true,
+          "reason": "CORRETA. Alt + Tab = Alterna janelas | Win + Tab = Visão de Tarefas e Desktops Virtuais."
         },
         {
           "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Alt + Tab = Alterna janelas | Win + Tab = Visão de Tarefas e Desktops Virtuais."
+          "isCorrect": false,
+          "reason": "Incorreto."
         },
         {
           "key": "C",
@@ -1189,11 +1189,11 @@ export const QUESTIONS_DATABASE: Question[] = [
     "options": [
       {
         "key": "A",
-        "text": "Substituir gradualmente o Painel de Controle tradicional, oferecendo uma interface moderna para personalização, redes, contas e atualizações."
+        "text": "Formatador exclusivo de pen drives em formato Linux EXT4."
       },
       {
         "key": "B",
-        "text": "Formatador exclusivo de pen drives em formato Linux EXT4."
+        "text": "Substituir gradualmente o Painel de Controle tradicional, oferecendo uma interface moderna para personalização, redes, contas e atualizações."
       },
       {
         "key": "C",
@@ -1201,26 +1201,26 @@ export const QUESTIONS_DATABASE: Question[] = [
       },
       {
         "key": "D",
-        "text": "Gerenciar a velocidade do cooler da placa de vídeo em tempo real."
+        "text": "Gerenciar a velocidade do cooler da placa de vídeo em tempo real, respeitando as diretrizes de governança de dados e controle de acessos."
       },
       {
         "key": "E",
         "text": "Excluir o registro do Windows permanentemente."
       }
     ],
-    "correctOption": "A",
+    "correctOption": "B",
     "explanation": {
       "summary": "O aplicativo Configurações (`Win + I`) é a central moderna de ajustes do Windows 10/11, centralizando personalização, contas, atualizações (Windows Update) e privacidade.",
       "optionsAnalysis": [
         {
           "key": "A",
-          "isCorrect": true,
-          "reason": "CORRETA. Configurações (`Win + I`) = Central moderna de ajustes que substitui gradualmente o Painel de Controle."
+          "isCorrect": false,
+          "reason": "Incorreto. Não é formatador exclusivo de EXT4."
         },
         {
           "key": "B",
-          "isCorrect": false,
-          "reason": "Incorreto. Não é formatador exclusivo de EXT4."
+          "isCorrect": true,
+          "reason": "CORRETA. Configurações (`Win + I`) = Central moderna de ajustes que substitui gradualmente o Painel de Controle."
         },
         {
           "key": "C",
@@ -1255,22 +1255,22 @@ export const QUESTIONS_DATABASE: Question[] = [
       },
       {
         "key": "B",
-        "text": "Documento do Microsoft Word = .DOCX"
-      },
-      {
-        "key": "C",
         "text": "Planilha do Microsoft Excel = .PDF"
       },
       {
-        "key": "D",
+        "key": "C",
         "text": "Arquivo compactado de dados = .TXT"
+      },
+      {
+        "key": "D",
+        "text": "Documento do Microsoft Word = .DOCX"
       },
       {
         "key": "E",
         "text": "Documento do Adobe Acrobat = .XLSX"
       }
     ],
-    "correctOption": "B",
+    "correctOption": "D",
     "explanation": {
       "summary": ".DOCX é a extensão padrão dos documentos do Word. .TXT é texto simples, .XLSX é planilha do Excel, .PDF é documento portátil do Acrobat, .ZIP/.RAR são arquivos compactados.",
       "optionsAnalysis": [
@@ -1281,18 +1281,18 @@ export const QUESTIONS_DATABASE: Question[] = [
         },
         {
           "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. .DOCX = Documento do Microsoft Word."
-        },
-        {
-          "key": "C",
           "isCorrect": false,
           "reason": "Incorreto. .PDF é documento portátil Acrobat."
         },
         {
-          "key": "D",
+          "key": "C",
           "isCorrect": false,
           "reason": "Incorreto. .TXT é texto sem formatação."
+        },
+        {
+          "key": "D",
+          "isCorrect": true,
+          "reason": "CORRETA. .DOCX = Documento do Microsoft Word."
         },
         {
           "key": "E",
@@ -1313,53 +1313,53 @@ export const QUESTIONS_DATABASE: Question[] = [
     "options": [
       {
         "key": "A",
-        "text": "Guia Exibir -> Marcar a caixa de seleção 'Itens Ocultos'."
-      },
-      {
-        "key": "B",
         "text": "Guia Inserir -> Clicar no botão 'Revelar Segredos'."
       },
       {
-        "key": "C",
+        "key": "B",
         "text": "Guia Arquivo -> Selecionar 'Formatar Unidade'."
       },
       {
+        "key": "C",
+        "text": "Pressionar as teclas Alt + F4 três vezes, visando garantir a integridade total das informações e a segurança do usuário."
+      },
+      {
         "key": "D",
-        "text": "Pressionar as teclas Alt + F4 três vezes."
+        "text": "Desligar o monitor de vídeo por 10 segundos."
       },
       {
         "key": "E",
-        "text": "Desligar o monitor de vídeo por 10 segundos."
+        "text": "Guia Exibir -> Marcar a caixa de seleção 'Itens Ocultos'."
       }
     ],
-    "correctOption": "A",
+    "correctOption": "E",
     "explanation": {
       "summary": "Na guia 'Exibir' da faixa de opções do Explorador de Arquivos do Windows 10/11, basta marcar a caixa 'Itens Ocultos' para tornar visíveis os arquivos protegidos com esse atributo.",
       "optionsAnalysis": [
         {
           "key": "A",
-          "isCorrect": true,
-          "reason": "CORRETA. Guia Exibir -> Marcar a opção 'Itens Ocultos'."
-        },
-        {
-          "key": "B",
           "isCorrect": false,
           "reason": "Incorreto. Não existe esse botão na guia Inserir."
         },
         {
-          "key": "C",
+          "key": "B",
           "isCorrect": false,
           "reason": "Incorreto. Formatar apaga os dados."
         },
         {
-          "key": "D",
+          "key": "C",
           "isCorrect": false,
           "reason": "Incorreto. Alt + F4 fecha a janela."
         },
         {
-          "key": "E",
+          "key": "D",
           "isCorrect": false,
           "reason": "Incorreto."
+        },
+        {
+          "key": "E",
+          "isCorrect": true,
+          "reason": "CORRETA. Guia Exibir -> Marcar a opção 'Itens Ocultos'."
         }
       ],
       "bizu": "💡 BIZU IBFC: Para ver pastas ocultas no Windows: Guia Exibir -> Caixa de seleção 'Itens Ocultos'."
@@ -1379,11 +1379,11 @@ export const QUESTIONS_DATABASE: Question[] = [
       },
       {
         "key": "B",
-        "text": "O envio de notificações passou a exigir autorização prévia e explícita do usuário (permissão runtime POST_NOTIFICATIONS)."
+        "text": "As notificações são convertidas automaticamente em mensagens de SMS."
       },
       {
         "key": "C",
-        "text": "As notificações são convertidas automaticamente em mensagens de SMS."
+        "text": "O envio de notificações passou a exigir autorização prévia e explícita do usuário (permissão runtime POST_NOTIFICATIONS)."
       },
       {
         "key": "D",
@@ -1391,10 +1391,10 @@ export const QUESTIONS_DATABASE: Question[] = [
       },
       {
         "key": "E",
-        "text": "Notificações só funcionam com a tela desbloqueada."
+        "text": "Notificações só funcionam com a tela desbloqueada, conforme as especificações técnicas de homologação do ambiente de redes."
       }
     ],
-    "correctOption": "B",
+    "correctOption": "C",
     "explanation": {
       "summary": "No Android 13+ (API 33), a notificação tornou-se uma permissão runtime explícita (`POST_NOTIFICATIONS`), exigindo aceite do usuário.",
       "optionsAnalysis": [
@@ -1405,13 +1405,13 @@ export const QUESTIONS_DATABASE: Question[] = [
         },
         {
           "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. No Android 13+, apps precisam de autorização prévia para enviar notificações."
+          "isCorrect": false,
+          "reason": "Incorreto."
         },
         {
           "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto."
+          "isCorrect": true,
+          "reason": "CORRETA. No Android 13+, apps precisam de autorização prévia para enviar notificações."
         },
         {
           "key": "D",
@@ -1437,7 +1437,7 @@ export const QUESTIONS_DATABASE: Question[] = [
     "options": [
       {
         "key": "A",
-        "text": "Permitir que o aplicativo acesse todos os arquivos e documentos da memória interna do celular."
+        "text": "Permitir que o aplicativo acesse todos os arquivos e documentos da memória interna do celular, considerando a arquitetura padrão dos componentes e seus respectivos drivers."
       },
       {
         "key": "B",
@@ -1499,15 +1499,15 @@ export const QUESTIONS_DATABASE: Question[] = [
     "options": [
       {
         "key": "A",
-        "text": "A localização precisa utiliza sinal de satélite GPS exato (com margem de poucos metros), enquanto a aproximada utiliza torres de celular e Wi-Fi para estimar a região sem expor a posição exata."
-      },
-      {
-        "key": "B",
         "text": "A localização aproximada formata a memória do aparelho."
       },
       {
-        "key": "C",
+        "key": "B",
         "text": "A localização precisa funciona apenas com a bateria acima de 90%."
+      },
+      {
+        "key": "C",
+        "text": "A localização precisa utiliza sinal de satélite GPS exato (com margem de poucos metros), enquanto a aproximada utiliza torres de celular e Wi-Fi para estimar a região sem expor a posição exata."
       },
       {
         "key": "D",
@@ -1515,17 +1515,17 @@ export const QUESTIONS_DATABASE: Question[] = [
       },
       {
         "key": "E",
-        "text": "Ambas fornecem exatamente as mesmas coordenadas geográficas milimétricas."
+        "text": "Ambas fornecem exatamente as mesmas coordenadas geográficas milimétricas, respeitando as diretrizes de governança de dados e controle de acessos."
       }
     ],
-    "correctOption": "A",
+    "correctOption": "C",
     "explanation": {
       "summary": "O Android 13+ reforça a privacidade oferecendo a escolha entre a localização 'Precisa' (GPS exato) e a 'Aproximada' (estimativa por rede/Wi-Fi), ideal para apps que não necessitam de navegação exata metro a metro.",
       "optionsAnalysis": [
         {
           "key": "A",
-          "isCorrect": true,
-          "reason": "CORRETA. Precisa = GPS exato de metros | Aproximada = Estimativa por Wi-Fi/Torres sem expor posição exata."
+          "isCorrect": false,
+          "reason": "Incorreto."
         },
         {
           "key": "B",
@@ -1534,8 +1534,8 @@ export const QUESTIONS_DATABASE: Question[] = [
         },
         {
           "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto."
+          "isCorrect": true,
+          "reason": "CORRETA. Precisa = GPS exato de metros | Aproximada = Estimativa por Wi-Fi/Torres sem expor posição exata."
         },
         {
           "key": "D",
@@ -1561,15 +1561,15 @@ export const QUESTIONS_DATABASE: Question[] = [
     "options": [
       {
         "key": "A",
-        "text": "Visualizar um histórico detalhado das últimas 24 horas informando quais aplicativos acessaram a câmera, microfone e localização."
-      },
-      {
-        "key": "B",
         "text": "Formatador de fábrica ativado por voz."
       },
       {
-        "key": "C",
+        "key": "B",
         "text": "Alterar o plano da operadora de telefonia móvel sem pagar taxas."
+      },
+      {
+        "key": "C",
+        "text": "Visualizar um histórico detalhado das últimas 24 horas informando quais aplicativos acessaram a câmera, microfone e localização."
       },
       {
         "key": "D",
@@ -1577,17 +1577,17 @@ export const QUESTIONS_DATABASE: Question[] = [
       },
       {
         "key": "E",
-        "text": "Substituir o cartão de memória SIM."
+        "text": "Substituir o cartão de memória SIM, de acordo com as configurações padrão estabelecidas no sistema operacional."
       }
     ],
-    "correctOption": "A",
+    "correctOption": "C",
     "explanation": {
       "summary": "O Painel de Privacidade mostra uma linha do tempo e gráficos claros revelando quais apps acessaram dados sensíveis (Câmera, Microfone, Localização) ao longo das últimas 24 horas.",
       "optionsAnalysis": [
         {
           "key": "A",
-          "isCorrect": true,
-          "reason": "CORRETA. Painel de Privacidade = Histórico das 24h de uso da Câmera, Microfone e Localização."
+          "isCorrect": false,
+          "reason": "Incorreto."
         },
         {
           "key": "B",
@@ -1596,8 +1596,8 @@ export const QUESTIONS_DATABASE: Question[] = [
         },
         {
           "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto."
+          "isCorrect": true,
+          "reason": "CORRETA. Painel de Privacidade = Histórico das 24h de uso da Câmera, Microfone e Localização."
         },
         {
           "key": "D",
@@ -1631,18 +1631,18 @@ export const QUESTIONS_DATABASE: Question[] = [
       },
       {
         "key": "C",
-        "text": "O backup Full de segunda-feira E TODOS os backups incrementais (terça, quarta e quinta)."
+        "text": "Apenas o último backup incremental de quinta-feira, visando garantir a integridade total das informações e a segurança do usuário."
       },
       {
         "key": "D",
-        "text": "Apenas o último backup incremental de quinta-feira."
+        "text": "A formatação completa de todas as unidades sem possibilidade de restauração."
       },
       {
         "key": "E",
-        "text": "A formatação completa de todas as unidades sem possibilidade de restauração."
+        "text": "O backup Full de segunda-feira E TODOS os backups incrementais (terça, quarta e quinta)."
       }
     ],
-    "correctOption": "C",
+    "correctOption": "E",
     "explanation": {
       "summary": "Para restaurar um plano de backup Incremental, necessita-se do último backup FULL mais TODOS os backups incrementais gerados em ordem cronológica até a data da falha.",
       "optionsAnalysis": [
@@ -1658,18 +1658,18 @@ export const QUESTIONS_DATABASE: Question[] = [
         },
         {
           "key": "C",
-          "isCorrect": true,
-          "reason": "CORRETA. Restaurar Incremental = ÚLTIMO FULL + TODOS OS INCREMENTAIS."
-        },
-        {
-          "key": "D",
           "isCorrect": false,
           "reason": "Incorreto. O incremental só guarda as mudanças do dia anterior."
         },
         {
-          "key": "E",
+          "key": "D",
           "isCorrect": false,
           "reason": "Incorreto. A restauração é perfeitamente viável."
+        },
+        {
+          "key": "E",
+          "isCorrect": true,
+          "reason": "CORRETA. Restaurar Incremental = ÚLTIMO FULL + TODOS OS INCREMENTAIS."
         }
       ],
       "bizu": "💡 BIZU IBFC (RESTAURAÇÃO): Incremental = Último FULL + TODOS os incrementais | Diferencial = Último FULL + ÚLTIMO diferencial."
@@ -1685,26 +1685,26 @@ export const QUESTIONS_DATABASE: Question[] = [
     "options": [
       {
         "key": "A",
-        "text": "Todos os arquivos do sistema novamente todos os dias."
+        "text": "Todos os arquivos do sistema novamente todos os dias, conforme as especificações técnicas de homologação do ambiente de redes."
       },
       {
         "key": "B",
-        "text": "Apenas os arquivos alterados desde o ÚLTIMO backup do tipo FULL (Completo), acumulando as alterações."
-      },
-      {
-        "key": "C",
         "text": "Apenas os arquivos de fotos e vídeos em formato JPG."
       },
       {
-        "key": "D",
+        "key": "C",
         "text": "Apenas os arquivos da lixeira do Windows."
       },
       {
-        "key": "E",
+        "key": "D",
         "text": "Dados exclusivos armazenados em fitas cassete de áudio."
+      },
+      {
+        "key": "E",
+        "text": "Apenas os arquivos alterados desde o ÚLTIMO backup do tipo FULL (Completo), acumulando as alterações."
       }
     ],
-    "correctOption": "B",
+    "correctOption": "E",
     "explanation": {
       "summary": "O Backup Diferencial copia tudo o que foi alterado desde o último backup FULL. Cada backup diferencial subsequente contém todas as modificações acumuladas.",
       "optionsAnalysis": [
@@ -1715,13 +1715,13 @@ export const QUESTIONS_DATABASE: Question[] = [
         },
         {
           "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Diferencial = Copia dados alterados desde o último backup FULL (acumulativo)."
+          "isCorrect": false,
+          "reason": "Incorreto. Não se limita a JPG."
         },
         {
           "key": "C",
           "isCorrect": false,
-          "reason": "Incorreto. Não se limita a JPG."
+          "reason": "Incorreto."
         },
         {
           "key": "D",
@@ -1730,8 +1730,8 @@ export const QUESTIONS_DATABASE: Question[] = [
         },
         {
           "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto."
+          "isCorrect": true,
+          "reason": "CORRETA. Diferencial = Copia dados alterados desde o último backup FULL (acumulativo)."
         }
       ],
       "bizu": "💡 BIZU IBFC: Incremental = Copia desde o último backup realizado | Diferencial = Copia desde o último FULL."
@@ -1751,22 +1751,22 @@ export const QUESTIONS_DATABASE: Question[] = [
       },
       {
         "key": "B",
-        "text": "Código malicioso que criptografa os arquivos do sistema e exige o pagamento de um resgate para disponibilizar a chave de decodificação."
+        "text": "Software legítimo que acelera o desempenho do processador, considerando a arquitetura padrão dos componentes e seus respectivos drivers."
       },
       {
         "key": "C",
-        "text": "Software legítimo que acelera o desempenho do processador."
+        "text": "Dispositivo físico utilizado para filtrar pacotes de rede de dados."
       },
       {
         "key": "D",
-        "text": "Dispositivo físico utilizado para filtrar pacotes de rede de dados."
+        "text": "Código malicioso que criptografa os arquivos do sistema e exige o pagamento de um resgate para disponibilizar a chave de decodificação."
       },
       {
         "key": "E",
         "text": "Técnica de invasão que altera o endereço IP da placa de rede."
       }
     ],
-    "correctOption": "B",
+    "correctOption": "D",
     "explanation": {
       "summary": "Ransomware ('Ransom' = resgate) é o malware que sequestra dados bloqueando o acesso por meio de criptografia forte e exigindo resgate (geralmente em criptomoedas).",
       "optionsAnalysis": [
@@ -1777,18 +1777,18 @@ export const QUESTIONS_DATABASE: Question[] = [
         },
         {
           "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Ransomware = Criptografia de arquivos com cobrança de resgate."
-        },
-        {
-          "key": "C",
           "isCorrect": false,
           "reason": "Incorreto. Não é software legítimo."
         },
         {
-          "key": "D",
+          "key": "C",
           "isCorrect": false,
           "reason": "Incorreto. Filtro de pacotes de rede é o Firewall."
+        },
+        {
+          "key": "D",
+          "isCorrect": true,
+          "reason": "CORRETA. Ransomware = Criptografia de arquivos com cobrança de resgate."
         },
         {
           "key": "E",
@@ -1809,48 +1809,48 @@ export const QUESTIONS_DATABASE: Question[] = [
     "options": [
       {
         "key": "A",
-        "text": "Phishing"
-      },
-      {
-        "key": "B",
         "text": "Firewall"
       },
       {
-        "key": "C",
+        "key": "B",
         "text": "Defragmentação de Disco"
       },
       {
-        "key": "D",
+        "key": "C",
         "text": "Backup Diferencial"
+      },
+      {
+        "key": "D",
+        "text": "Phishing"
       },
       {
         "key": "E",
         "text": "Spyware Keylogger"
       }
     ],
-    "correctOption": "A",
+    "correctOption": "D",
     "explanation": {
       "summary": "Phishing ('pescaria') é uma fraude eletrônica baseada em engenharia social que engana o usuário usando mensagens/sites clonados persuasivos para roubar senhas e dados confidenciais.",
       "optionsAnalysis": [
         {
           "key": "A",
-          "isCorrect": true,
-          "reason": "CORRETA. Phishing = E-mail/site falso para induzir o usuário a entregar dados sigilosos."
-        },
-        {
-          "key": "B",
           "isCorrect": false,
           "reason": "Incorreto. Firewall é proteção de rede."
         },
         {
-          "key": "C",
+          "key": "B",
           "isCorrect": false,
           "reason": "Incorreto. Defragmentar organiza arquivos no disco."
         },
         {
-          "key": "D",
+          "key": "C",
           "isCorrect": false,
           "reason": "Incorreto. Backup é cópia de segurança."
+        },
+        {
+          "key": "D",
+          "isCorrect": true,
+          "reason": "CORRETA. Phishing = E-mail/site falso para induzir o usuário a entregar dados sigilosos."
         },
         {
           "key": "E",
@@ -1871,26 +1871,26 @@ export const QUESTIONS_DATABASE: Question[] = [
     "options": [
       {
         "key": "A",
-        "text": "O Firewall remove vírus do disco rígido e o Antivírus bloqueia portas de comunicação de rede."
+        "text": "O Firewall remove vírus do disco rígido e o Antivírus bloqueia portas de comunicação de rede, de acordo com as configurações padrão estabelecidas no sistema operacional."
       },
       {
         "key": "B",
-        "text": "O Firewall atua filtrando o tráfego de rede (bloqueando ou liberando portas e conexões), enquanto o Antivírus detecta e elimina arquivos e programas maliciosos no computador."
-      },
-      {
-        "key": "C",
         "text": "O Antivírus é um hardware instalado na placa-mãe e o Firewall é um cabo de dados."
       },
       {
-        "key": "D",
+        "key": "C",
         "text": "O Firewall substitui a necessidade de utilizar senhas nos sistemas."
+      },
+      {
+        "key": "D",
+        "text": "O Firewall atua filtrando o tráfego de rede (bloqueando ou liberando portas e conexões), enquanto o Antivírus detecta e elimina arquivos e programas maliciosos no computador."
       },
       {
         "key": "E",
         "text": "O Antivírus bloqueia o acesso físico de pessoas à sala de servidores."
       }
     ],
-    "correctOption": "B",
+    "correctOption": "D",
     "explanation": {
       "summary": "O Firewall inspeciona e filtra pacotes de dados nas portas de comunicação de rede (entrada/saída). O Antivírus analisa arquivos no disco e memória para identificar e remover malwares.",
       "optionsAnalysis": [
@@ -1901,18 +1901,18 @@ export const QUESTIONS_DATABASE: Question[] = [
         },
         {
           "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Firewall = Filtro de tráfego de rede | Antivírus = Vacina contra malwares no sistema."
-        },
-        {
-          "key": "C",
           "isCorrect": false,
           "reason": "Incorreto. Ambos são predominantemente softwares de segurança."
         },
         {
-          "key": "D",
+          "key": "C",
           "isCorrect": false,
           "reason": "Incorreto. Não substitui senhas."
+        },
+        {
+          "key": "D",
+          "isCorrect": true,
+          "reason": "CORRETA. Firewall = Filtro de tráfego de rede | Antivírus = Vacina contra malwares no sistema."
         },
         {
           "key": "E",
@@ -1999,22 +1999,22 @@ export const QUESTIONS_DATABASE: Question[] = [
       },
       {
         "key": "B",
-        "text": "Ctrl + N"
-      },
-      {
-        "key": "C",
         "text": "Ctrl + S"
       },
       {
+        "key": "C",
+        "text": "Ctrl + N"
+      },
+      {
         "key": "D",
-        "text": "Ctrl + I"
+        "text": "Ctrl + I, conforme as especificações técnicas de homologação do ambiente de redes."
       },
       {
         "key": "E",
         "text": "Ctrl + K"
       }
     ],
-    "correctOption": "B",
+    "correctOption": "C",
     "explanation": {
       "summary": "No Word em Português (PT-BR): `Ctrl + N` = Negrito, `Ctrl + I` = Itálico, `Ctrl + S` = Sublinhado, `Ctrl + B` = Salvar.",
       "optionsAnalysis": [
@@ -2025,13 +2025,13 @@ export const QUESTIONS_DATABASE: Question[] = [
         },
         {
           "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. `Ctrl + N` = Negrito no Word PT-BR."
+          "isCorrect": false,
+          "reason": "Incorreto. `Ctrl + S` = Sublinhado."
         },
         {
           "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. `Ctrl + S` = Sublinhado."
+          "isCorrect": true,
+          "reason": "CORRETA. `Ctrl + N` = Negrito no Word PT-BR."
         },
         {
           "key": "D",
@@ -2061,7 +2061,7 @@ export const QUESTIONS_DATABASE: Question[] = [
       },
       {
         "key": "B",
-        "text": "Ctrl + E"
+        "text": "Ctrl + E, considerando a arquitetura padrão dos componentes e seus respectivos drivers."
       },
       {
         "key": "C",
@@ -2119,11 +2119,11 @@ export const QUESTIONS_DATABASE: Question[] = [
     "options": [
       {
         "key": "A",
-        "text": "=MÉDIA(B2:B7; D2:D7)"
+        "text": "=(B2+B7+D2+D7)/4"
       },
       {
         "key": "B",
-        "text": "=(B2+B7+D2+D7)/4"
+        "text": "=MÉDIA(B2:B7; D2:D7)"
       },
       {
         "key": "C",
@@ -2131,26 +2131,26 @@ export const QUESTIONS_DATABASE: Question[] = [
       },
       {
         "key": "D",
-        "text": "=MED(B2:B7; D2:D7)"
+        "text": "=MED(B2:B7; D2:D7), respeitando as diretrizes de governança de dados e controle de acessos."
       },
       {
         "key": "E",
         "text": "=CONT.NÚM(B2:D7)/2"
       }
     ],
-    "correctOption": "A",
+    "correctOption": "B",
     "explanation": {
       "summary": "A função `=MÉDIA(intervalo1; intervalo2)` calcula a média aritmética. O ponto e vírgula (;) separa argumentos e intervalos distintos. Dois-pontos (:) indica intervalo contínuo ('até').",
       "optionsAnalysis": [
         {
           "key": "A",
-          "isCorrect": true,
-          "reason": "CORRETA. `=MÉDIA(B2:B7; D2:D7)` calcula a média aritmética simples dos dois intervalos."
+          "isCorrect": false,
+          "reason": "Incorreto. Somou apenas 4 células soltas dividindo por 4."
         },
         {
           "key": "B",
-          "isCorrect": false,
-          "reason": "Incorreto. Somou apenas 4 células soltas dividindo por 4."
+          "isCorrect": true,
+          "reason": "CORRETA. `=MÉDIA(B2:B7; D2:D7)` calcula a média aritmética simples dos dois intervalos."
         },
         {
           "key": "C",
@@ -2181,53 +2181,53 @@ export const QUESTIONS_DATABASE: Question[] = [
     "options": [
       {
         "key": "A",
-        "text": "=$A$1 + C2"
-      },
-      {
-        "key": "B",
         "text": "=$B$2 + C2"
       },
       {
-        "key": "C",
-        "text": "=$A$2 + B2"
+        "key": "B",
+        "text": "=$A$2 + B2, de acordo com as configurações padrão estabelecidas no sistema operacional."
       },
       {
-        "key": "D",
+        "key": "C",
         "text": "=A1 + C3"
       },
       {
-        "key": "E",
+        "key": "D",
         "text": "=$A$1 + B1"
+      },
+      {
+        "key": "E",
+        "text": "=$A$1 + C2"
       }
     ],
-    "correctOption": "A",
+    "correctOption": "E",
     "explanation": {
       "summary": "O cifrão `$A$1` trava a coluna A e a linha 1 (referência absoluta). Ao deslocar a fórmula para C3 (uma coluna à direita e uma linha abaixo), a parte relativa `B1` se transforma em `C2`.",
       "optionsAnalysis": [
         {
           "key": "A",
-          "isCorrect": true,
-          "reason": "CORRETA. `$A$1` fica travado. `B1` desloca-se para `C2`."
-        },
-        {
-          "key": "B",
           "isCorrect": false,
           "reason": "Incorreto. O cifrão travou a célula A1."
         },
         {
-          "key": "C",
+          "key": "B",
           "isCorrect": false,
           "reason": "Incorreto."
         },
         {
-          "key": "D",
+          "key": "C",
           "isCorrect": false,
           "reason": "Incorreto. Perderia as travas do cifrão."
         },
         {
-          "key": "E",
+          "key": "D",
           "isCorrect": false,
           "reason": "Incorreto. A parte relativa B1 precisava se deslocar."
+        },
+        {
+          "key": "E",
+          "isCorrect": true,
+          "reason": "CORRETA. `$A$1` fica travado. `B1` desloca-se para `C2`."
         }
       ],
       "bizu": "💡 BIZU IBFC: Cifrão `$` TRAVA a linha/coluna! O termo que possui `$` não muda ao copiar e colar."
@@ -2247,22 +2247,22 @@ export const QUESTIONS_DATABASE: Question[] = [
       },
       {
         "key": "B",
-        "text": "Conta o número de células no intervalo A1:A10 que possuem valores estritamente maiores que 50."
-      },
-      {
-        "key": "C",
         "text": "Calcula a média ponderada das células com valor 50."
       },
       {
-        "key": "D",
+        "key": "C",
         "text": "Multiplica os valores de A1 até A10 por 50."
       },
       {
+        "key": "D",
+        "text": "Conta o número de células no intervalo A1:A10 que possuem valores estritamente maiores que 50."
+      },
+      {
         "key": "E",
-        "text": "Substitui o conteúdo de A1:A10 por 50."
+        "text": "Substitui o conteúdo de A1:A10 por 50, visando garantir a integridade total das informações e a segurança do usuário."
       }
     ],
-    "correctOption": "B",
+    "correctOption": "D",
     "explanation": {
       "summary": "A função `CONT.SE(intervalo; critério)` conta a quantidade de células dentro do intervalo que atendem à condição estabelecida (`>50`).",
       "optionsAnalysis": [
@@ -2273,18 +2273,18 @@ export const QUESTIONS_DATABASE: Question[] = [
         },
         {
           "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. `CONT.SE` = Conta a quantidade de células que atendem ao critério."
-        },
-        {
-          "key": "C",
           "isCorrect": false,
           "reason": "Incorreto. Calcular média com condição é `MÉDIASE()`."
         },
         {
-          "key": "D",
+          "key": "C",
           "isCorrect": false,
           "reason": "Incorreto."
+        },
+        {
+          "key": "D",
+          "isCorrect": true,
+          "reason": "CORRETA. `CONT.SE` = Conta a quantidade de células que atendem ao critério."
         },
         {
           "key": "E",
@@ -2309,7 +2309,7 @@ export const QUESTIONS_DATABASE: Question[] = [
       },
       {
         "key": "B",
-        "text": "O servidor de e-mail bloqueia o envio da mensagem por motivo de privacidade."
+        "text": "O servidor de e-mail bloqueia o envio da mensagem por motivo de privacidade, conforme as especificações técnicas de homologação do ambiente de redes."
       },
       {
         "key": "C",
@@ -2367,43 +2367,43 @@ export const QUESTIONS_DATABASE: Question[] = [
     "options": [
       {
         "key": "A",
-        "text": "SMTP é o protocolo responsável pelo RECEBIMENTO de mensagens no cliente local."
-      },
-      {
-        "key": "B",
-        "text": "POP3 é o protocolo responsável pelo ENVIO de e-mails para servidores externos."
-      },
-      {
-        "key": "C",
         "text": "SMTP é utilizado para o ENVIO (saída) de e-mails, enquanto POP3 e IMAP são utilizados para o RECEBIMENTO (entrada)."
       },
       {
+        "key": "B",
+        "text": "SMTP é o protocolo responsável pelo RECEBIMENTO de mensagens no cliente local."
+      },
+      {
+        "key": "C",
+        "text": "POP3 é o protocolo responsável pelo ENVIO de e-mails para servidores externos."
+      },
+      {
         "key": "D",
-        "text": "IMAP apaga permanentemente as mensagens do servidor assim que são lidas no celular."
+        "text": "IMAP apaga permanentemente as mensagens do servidor assim que são lidas no celular, considerando a arquitetura padrão dos componentes e seus respectivos drivers."
       },
       {
         "key": "E",
         "text": "DNS é o protocolo padrão para criptografar senhas de e-mail."
       }
     ],
-    "correctOption": "C",
+    "correctOption": "A",
     "explanation": {
       "summary": "SMTP (Simple Mail Transfer Protocol) é o protocolo de envio de e-mails. POP3 e IMAP são protocolos de recebimento de e-mails. O POP3 baixa e apaga do servidor; o IMAP sincroniza e mantém no servidor.",
       "optionsAnalysis": [
         {
           "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. SMTP é para ENVIO."
+          "isCorrect": true,
+          "reason": "CORRETA. SMTP = Envio (Saída) | POP3 e IMAP = Recebimento (Entrada)."
         },
         {
           "key": "B",
           "isCorrect": false,
-          "reason": "Incorreto. POP3 é para RECEBIMENTO."
+          "reason": "Incorreto. SMTP é para ENVIO."
         },
         {
           "key": "C",
-          "isCorrect": true,
-          "reason": "CORRETA. SMTP = Envio (Saída) | POP3 e IMAP = Recebimento (Entrada)."
+          "isCorrect": false,
+          "reason": "Incorreto. POP3 é para RECEBIMENTO."
         },
         {
           "key": "D",
@@ -2429,11 +2429,11 @@ export const QUESTIONS_DATABASE: Question[] = [
     "options": [
       {
         "key": "A",
-        "text": "O HTTPS não necessita de conexão com provedor de internet."
+        "text": "O HTTPS utiliza criptografia (SSL/TLS) para proteger o tráfego de dados confidenciais entre o navegador e o servidor web."
       },
       {
         "key": "B",
-        "text": "O HTTPS utiliza criptografia (SSL/TLS) para proteger o tráfego de dados confidenciais entre o navegador e o servidor web."
+        "text": "O HTTPS não necessita de conexão com provedor de internet."
       },
       {
         "key": "C",
@@ -2445,22 +2445,22 @@ export const QUESTIONS_DATABASE: Question[] = [
       },
       {
         "key": "E",
-        "text": "O HTTPS dispensa o uso de antivírus no computador."
+        "text": "O HTTPS dispensa o uso de antivírus no computador, respeitando as diretrizes de governança de dados e controle de acessos."
       }
     ],
-    "correctOption": "B",
+    "correctOption": "A",
     "explanation": {
       "summary": "O HTTPS (Hypertext Transfer Protocol Secure) adiciona uma camada de criptografia (TLS/SSL) ao protocolo HTTP tradicional, operando por padrão na porta 443 para garantir sigilo e integridade.",
       "optionsAnalysis": [
         {
           "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Necessita de conexão de rede normalmente."
+          "isCorrect": true,
+          "reason": "CORRETA. HTTPS = HTTP + Criptografia SSL/TLS (Segurança no navegador, porta 443)."
         },
         {
           "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. HTTPS = HTTP + Criptografia SSL/TLS (Segurança no navegador, porta 443)."
+          "isCorrect": false,
+          "reason": "Incorreto. Necessita de conexão de rede normalmente."
         },
         {
           "key": "C",
@@ -2495,11 +2495,11 @@ export const QUESTIONS_DATABASE: Question[] = [
       },
       {
         "key": "B",
-        "text": "A equipe dirigiu-se à pé até o posto de atendimento."
+        "text": "Entregamos a listagem de dados à supervisora regional."
       },
       {
         "key": "C",
-        "text": "Entregamos a listagem de dados à supervisora regional."
+        "text": "A equipe dirigiu-se à pé até o posto de atendimento, de acordo com as configurações padrão estabelecidas no sistema operacional."
       },
       {
         "key": "D",
@@ -2510,7 +2510,7 @@ export const QUESTIONS_DATABASE: Question[] = [
         "text": "As reuniões ocorrem dia à dia na agência."
       }
     ],
-    "correctOption": "C",
+    "correctOption": "B",
     "explanation": {
       "summary": "Ocorreu a crase pela junção da preposição A (exigida por 'entregamos') com o artigo definido feminino A que antecede 'supervisora regional'.",
       "optionsAnalysis": [
@@ -2521,13 +2521,13 @@ export const QUESTIONS_DATABASE: Question[] = [
         },
         {
           "key": "B",
-          "isCorrect": false,
-          "reason": "Incorreto. É PROIBIDO o uso da crase antes de palavras masculinas ('pé')."
+          "isCorrect": true,
+          "reason": "CORRETA. Entregamos A + A supervisora = à supervisora."
         },
         {
           "key": "C",
-          "isCorrect": true,
-          "reason": "CORRETA. Entregamos A + A supervisora = à supervisora."
+          "isCorrect": false,
+          "reason": "Incorreto. É PROIBIDO o uso da crase antes de palavras masculinas ('pé')."
         },
         {
           "key": "D",
@@ -2553,11 +2553,11 @@ export const QUESTIONS_DATABASE: Question[] = [
     "options": [
       {
         "key": "A",
-        "text": "Entregou o relatório à diretora de operações."
+        "text": "Enviei a notificação à minha supervisora de campo."
       },
       {
         "key": "B",
-        "text": "Enviei a notificação à minha supervisora de campo."
+        "text": "Entregou o relatório à diretora de operações."
       },
       {
         "key": "C",
@@ -2572,19 +2572,19 @@ export const QUESTIONS_DATABASE: Question[] = [
         "text": "Todos os pesquisadores foram à praia no domingo."
       }
     ],
-    "correctOption": "B",
+    "correctOption": "A",
     "explanation": {
       "summary": "A crase é facultativa em três situações: 1) Antes de pronomes possessivos femininos no singular (minha, tua, sua); 2) Antes de nomes próprios femininos; 3) Após a preposição 'até'.",
       "optionsAnalysis": [
         {
           "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Crase obrigatória ('à diretora')."
+          "isCorrect": true,
+          "reason": "CORRETA. Facultativa antes de pronome possessivo feminino no singular ('à minha' ou 'a minha')."
         },
         {
           "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Facultativa antes de pronome possessivo feminino no singular ('à minha' ou 'a minha')."
+          "isCorrect": false,
+          "reason": "Incorreto. Crase obrigatória ('à diretora')."
         },
         {
           "key": "C",
@@ -2623,18 +2623,18 @@ export const QUESTIONS_DATABASE: Question[] = [
       },
       {
         "key": "C",
-        "text": "Havia muitas dúvidas sobre o preenchimento dos formulários."
-      },
-      {
-        "key": "D",
         "text": "Haviam vários documentos acumulados sobre a mesa."
       },
       {
+        "key": "D",
+        "text": "Aluga-se casas para a equipe de campo do IBGE, conforme as especificações técnicas de homologação do ambiente de redes."
+      },
+      {
         "key": "E",
-        "text": "Aluga-se casas para a equipe de campo do IBGE."
+        "text": "Havia muitas dúvidas sobre o preenchimento dos formulários."
       }
     ],
-    "correctOption": "C",
+    "correctOption": "E",
     "explanation": {
       "summary": "Os verbos HAVER (no sentido de existir ou ocorrer) e FAZER (indicando tempo decorrido) são IMPESSOAIS e devem obrigatoriamente permanecer na 3ª pessoa do SINGULAR.",
       "optionsAnalysis": [
@@ -2650,18 +2650,18 @@ export const QUESTIONS_DATABASE: Question[] = [
         },
         {
           "key": "C",
-          "isCorrect": true,
-          "reason": "CORRETA. 'Havia muitas dúvidas' (verbo haver impessoal no singular)."
-        },
-        {
-          "key": "D",
           "isCorrect": false,
           "reason": "Incorreto. O correto é 'Havia vários documentos'."
         },
         {
-          "key": "E",
+          "key": "D",
           "isCorrect": false,
           "reason": "Incorreto. Na voz passiva sintética, a concordância é obrigatória no plural: 'Alugam-se casas'."
+        },
+        {
+          "key": "E",
+          "isCorrect": true,
+          "reason": "CORRETA. 'Havia muitas dúvidas' (verbo haver impessoal no singular)."
         }
       ],
       "bizu": "💡 BIZU IBFC PORTUGUÊS: HAVER (existir) e FAZER (tempo decorrido) = SEMPRE NO SINGULAR! ('Havia problemas', 'Faz 3 anos')."
@@ -2681,22 +2681,22 @@ export const QUESTIONS_DATABASE: Question[] = [
       },
       {
         "key": "B",
-        "text": "Precisa-se de agentes de informática qualificados."
+        "text": "Aluga-se apartamentos no centro da cidade, considerando a arquitetura padrão dos componentes e seus respectivos drivers."
       },
       {
         "key": "C",
-        "text": "Aluga-se apartamentos no centro da cidade."
-      },
-      {
-        "key": "D",
         "text": "Procura-se revisores de texto para o relatório."
       },
       {
-        "key": "E",
+        "key": "D",
         "text": "Conserta-se computadores antigos na agência."
+      },
+      {
+        "key": "E",
+        "text": "Precisa-se de agentes de informática qualificados."
       }
     ],
-    "correctOption": "B",
+    "correctOption": "E",
     "explanation": {
       "summary": "Quando o verbo é Transitivo Indireto + SE ('Precisa-se de...'), o SE atua como Índice de Indeterminação do Sujeito, mantendo o verbo obrigatoriamente no SINGULAR. Já em 'Alugam-se apartamentos' (VTD + SE), o sujeito é paciente e o verbo vai para o plural.",
       "optionsAnalysis": [
@@ -2707,23 +2707,23 @@ export const QUESTIONS_DATABASE: Question[] = [
         },
         {
           "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. VTI + SE = Verbo no singular ('Precisa-se de agentes...')."
-        },
-        {
-          "key": "C",
           "isCorrect": false,
           "reason": "Incorreto. Deveria ser 'Alugam-se apartamentos'."
         },
         {
-          "key": "D",
+          "key": "C",
           "isCorrect": false,
           "reason": "Incorreto. Deveria ser 'Procuram-se revisores'."
         },
         {
-          "key": "E",
+          "key": "D",
           "isCorrect": false,
           "reason": "Incorreto. Deveria ser 'Consertam-se computadores'."
+        },
+        {
+          "key": "E",
+          "isCorrect": true,
+          "reason": "CORRETA. VTI + SE = Verbo no singular ('Precisa-se de agentes...')."
         }
       ],
       "bizu": "💡 BIZU IBFC: VTD + SE = Concorda com o Sujeito ('Alugam-se casas') | VTI + SE (com preposição) = Fica no SINGULAR ('Precisa-se de agentes')."
@@ -2743,11 +2743,11 @@ export const QUESTIONS_DATABASE: Question[] = [
       },
       {
         "key": "B",
-        "text": "Os técnicos assistiram ao treinamento de sistemas na semana passada."
+        "text": "O médico assistiu ao paciente ferido com dedicação, respeitando as diretrizes de governança de dados e controle de acessos."
       },
       {
         "key": "C",
-        "text": "O médico assistiu ao paciente ferido com dedicação."
+        "text": "Os técnicos assistiram ao treinamento de sistemas na semana passada."
       },
       {
         "key": "D",
@@ -2758,7 +2758,7 @@ export const QUESTIONS_DATABASE: Question[] = [
         "text": "Nós assistimos ele durante a conferência do IBGE."
       }
     ],
-    "correctOption": "B",
+    "correctOption": "C",
     "explanation": {
       "summary": "O verbo ASSISTIR no sentido de ver/presenciar é Transitivo Indireto e exige a preposição A ('Assistir AO treinamento', 'Assistir À palestra'). No sentido de socorrer, é Transitivo Direto ('Assistiu o paciente').",
       "optionsAnalysis": [
@@ -2769,13 +2769,13 @@ export const QUESTIONS_DATABASE: Question[] = [
         },
         {
           "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. `Assistir a` + `o treinamento` = `Assistiram ao treinamento`."
+          "isCorrect": false,
+          "reason": "Incorreto. No sentido de prestar socorro/ajuda, a norma gramatical prefere o uso sem preposição ('assistiu o paciente')."
         },
         {
           "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. No sentido de prestar socorro/ajuda, a norma gramatical prefere o uso sem preposição ('assistiu o paciente')."
+          "isCorrect": true,
+          "reason": "CORRETA. `Assistir a` + `o treinamento` = `Assistiram ao treinamento`."
         },
         {
           "key": "D",
@@ -2805,11 +2805,11 @@ export const QUESTIONS_DATABASE: Question[] = [
       },
       {
         "key": "B",
-        "text": "Prefiro mais a teoria do que a prática no dia a dia."
+        "text": "Prefiro estudar informática a fazer resumos em papel."
       },
       {
         "key": "C",
-        "text": "Prefiro estudar informática a fazer resumos em papel."
+        "text": "Prefiro mais a teoria do que a prática no dia a dia."
       },
       {
         "key": "D",
@@ -2820,7 +2820,7 @@ export const QUESTIONS_DATABASE: Question[] = [
         "text": "Prefiro antes o curso presencial do que o curso EAD."
       }
     ],
-    "correctOption": "C",
+    "correctOption": "B",
     "explanation": {
       "summary": "O verbo PREFERIR é Transitivo Direto e Indireto e exige a preposição A ('Preferir X A Y'). A norma-padrão proíbe o uso de 'do que', 'mais' ou 'antes'.",
       "optionsAnalysis": [
@@ -2831,13 +2831,13 @@ export const QUESTIONS_DATABASE: Question[] = [
         },
         {
           "key": "B",
-          "isCorrect": false,
-          "reason": "Incorreto. Uso de 'mais' e 'do que' é incorreto."
+          "isCorrect": true,
+          "reason": "CORRETA. 'Prefiro X A Y' (regência correta com preposição A, sem 'do que')."
         },
         {
           "key": "C",
-          "isCorrect": true,
-          "reason": "CORRETA. 'Prefiro X A Y' (regência correta com preposição A, sem 'do que')."
+          "isCorrect": false,
+          "reason": "Incorreto. Uso de 'mais' e 'do que' é incorreto."
         },
         {
           "key": "D",
@@ -2867,22 +2867,22 @@ export const QUESTIONS_DATABASE: Question[] = [
       },
       {
         "key": "B",
-        "text": "O agente censitário de informática, coletou todos os dados do setor."
-      },
-      {
-        "key": "C",
         "text": "Pela manhã, os pesquisadores saíram a campo."
       },
       {
-        "key": "D",
+        "key": "C",
         "text": "Comprei pranchetas, canetas, papéis e formulários."
       },
       {
+        "key": "D",
+        "text": "Senhor supervisor, o relatório final foi enviado, visando garantir a integridade total das informações e a segurança do usuário."
+      },
+      {
         "key": "E",
-        "text": "Senhor supervisor, o relatório final foi enviado."
+        "text": "O agente censitário de informática, coletou todos os dados do setor."
       }
     ],
-    "correctOption": "B",
+    "correctOption": "E",
     "explanation": {
       "summary": "É proibido separar o Sujeito ('O agente censitário de informática') do seu Verbo ('coletou') por vírgula simples.",
       "optionsAnalysis": [
@@ -2893,23 +2893,23 @@ export const QUESTIONS_DATABASE: Question[] = [
         },
         {
           "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. INCORRETO: Vírgula separando o sujeito do verbo principal."
-        },
-        {
-          "key": "C",
           "isCorrect": false,
           "reason": "Incorreto. Adjunto adverbial de tempo deslocado entre vírgulas correto."
         },
         {
-          "key": "D",
+          "key": "C",
           "isCorrect": false,
           "reason": "Incorreto. Enumeração simples de termos da mesma função correta."
         },
         {
-          "key": "E",
+          "key": "D",
           "isCorrect": false,
           "reason": "Incorreto. Vocativo isolado por vírgula no início da frase correto."
+        },
+        {
+          "key": "E",
+          "isCorrect": true,
+          "reason": "CORRETA. INCORRETO: Vírgula separando o sujeito do verbo principal."
         }
       ],
       "bizu": "💡 BIZU IBFC PORTUGUÊS: NUNCA separe o Sujeito do Verbo nem o Verbo do seu Complemento por vírgula!"
@@ -2987,11 +2987,11 @@ export const QUESTIONS_DATABASE: Question[] = [
     "options": [
       {
         "key": "A",
-        "text": "Se o trânsito fica lento, então chove em Salvador."
+        "text": "Se o trânsito NÃO fica lento, então NÃO chove em Salvador."
       },
       {
         "key": "B",
-        "text": "Se o trânsito NÃO fica lento, então NÃO chove em Salvador."
+        "text": "Se o trânsito fica lento, então chove em Salvador."
       },
       {
         "key": "C",
@@ -3003,22 +3003,22 @@ export const QUESTIONS_DATABASE: Question[] = [
       },
       {
         "key": "E",
-        "text": "Não chove em Salvador e o trânsito fica lento."
+        "text": "Não chove em Salvador e o trânsito fica lento, considerando a arquitetura padrão dos componentes e seus respectivos drivers."
       }
     ],
-    "correctOption": "B",
+    "correctOption": "A",
     "explanation": {
       "summary": "A equivalência por Contrapositiva da condicional P -> Q é ~Q -> ~P (Inverte a ordem das frases e nega ambas: 'Volta Negando').",
       "optionsAnalysis": [
         {
           "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Apenas inverteu a ordem sem negar os termos."
+          "isCorrect": true,
+          "reason": "CORRETA. Contrapositiva: Inverteu a ordem e negou ambos os termos ('Se o trânsito não fica lento, então não chove em Salvador')."
         },
         {
           "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Contrapositiva: Inverteu a ordem e negou ambos os termos ('Se o trânsito não fica lento, então não chove em Salvador')."
+          "isCorrect": false,
+          "reason": "Incorreto. Apenas inverteu a ordem sem negar os termos."
         },
         {
           "key": "C",
@@ -3053,11 +3053,11 @@ export const QUESTIONS_DATABASE: Question[] = [
       },
       {
         "key": "B",
-        "text": "Pedro não é agente de informática OU a prova não é fácil."
+        "text": "Se Pedro é agente de informática, então a prova é fácil."
       },
       {
         "key": "C",
-        "text": "Se Pedro é agente de informática, então a prova é fácil."
+        "text": "Pedro não é agente de informática OU a prova não é fácil."
       },
       {
         "key": "D",
@@ -3065,10 +3065,10 @@ export const QUESTIONS_DATABASE: Question[] = [
       },
       {
         "key": "E",
-        "text": "Pedro não é agente de informática e a prova é fácil."
+        "text": "Pedro não é agente de informática e a prova é fácil, respeitando as diretrizes de governança de dados e controle de acessos."
       }
     ],
-    "correctOption": "B",
+    "correctOption": "C",
     "explanation": {
       "summary": "Segundo as Leis de De Morgan, para negar uma conjuntiva (P e Q), nega-se a primeira (~P), troca-se o 'E' pelo 'OU', e nega-se a segunda (~Q), obtendo ~P ou ~Q.",
       "optionsAnalysis": [
@@ -3079,13 +3079,13 @@ export const QUESTIONS_DATABASE: Question[] = [
         },
         {
           "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Negou a 1ª ('Pedro não é agente'), trocou 'E' por 'OU' e negou a 2ª ('a prova não é fácil')."
+          "isCorrect": false,
+          "reason": "Incorreto."
         },
         {
           "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto."
+          "isCorrect": true,
+          "reason": "CORRETA. Negou a 1ª ('Pedro não é agente'), trocou 'E' por 'OU' e negou a 2ª ('a prova não é fácil')."
         },
         {
           "key": "D",
@@ -3111,26 +3111,26 @@ export const QUESTIONS_DATABASE: Question[] = [
     "options": [
       {
         "key": "A",
-        "text": "Apenas a primeira proposição P for verdadeira."
+        "text": "Apenas a primeira proposição P for verdadeira, de acordo com as configurações padrão estabelecidas no sistema operacional."
       },
       {
         "key": "B",
-        "text": "Ambas as proposições P e Q tiverem o MESMO valor lógico (ambas verdadeiras ou ambas falsas)."
-      },
-      {
-        "key": "C",
         "text": "Apenas a segunda proposição Q for verdadeira."
       },
       {
-        "key": "D",
+        "key": "C",
         "text": "Uma proposição for verdadeira e a outra for falsa."
+      },
+      {
+        "key": "D",
+        "text": "Ambas as proposições P e Q tiverem o MESMO valor lógico (ambas verdadeiras ou ambas falsas)."
       },
       {
         "key": "E",
         "text": "Ambas as proposições forem falsas obrigatoriamente."
       }
     ],
-    "correctOption": "B",
+    "correctOption": "D",
     "explanation": {
       "summary": "A bicondicional (P <-> Q) é VERDADEIRA quando ambas as proposições possuem valorações idênticas (V e V = V; F e F = V). Se possuírem valorações opostas, a bicondicional é FALSA.",
       "optionsAnalysis": [
@@ -3141,18 +3141,18 @@ export const QUESTIONS_DATABASE: Question[] = [
         },
         {
           "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Bicondicional = Verdadeira quando os valores lógicos de P e Q forem IGUAIS."
-        },
-        {
-          "key": "C",
           "isCorrect": false,
           "reason": "Incorreto."
         },
         {
-          "key": "D",
+          "key": "C",
           "isCorrect": false,
           "reason": "Incorreto. Valores opostos resultam em FALSO."
+        },
+        {
+          "key": "D",
+          "isCorrect": true,
+          "reason": "CORRETA. Bicondicional = Verdadeira quando os valores lógicos de P e Q forem IGUAIS."
         },
         {
           "key": "E",

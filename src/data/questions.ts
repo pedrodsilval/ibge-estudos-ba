@@ -4,518 +4,394 @@ export const QUESTIONS_DATABASE: Question[] = [
   {
     "id": "inf-hw-001",
     "subject": "Informática",
-    "topic": "1. Hardware - CPU e Processamento",
+    "topic": "1. Hardware - Processador (CPU)",
     "source": "IBFC / IBGE",
-    "difficulty": "Fácil",
-    "statement": "Qual o componente de hardware considerado o 'cérebro' do computador, responsável por processar dados e executar as instruções dos programas?",
+    "difficulty": "Médio",
+    "statement": "A respeito dos componentes da Unidade Central de Processamento (CPU) de um microcomputador, assinale a alternativa que indica o elemento responsável por armazenar dados e instruções em uso imediato pelo próprio núcleo do processador, operando na mesma frequência do clock interno:",
     "options": [
       {
         "key": "A",
-        "text": "Memória RAM"
+        "text": "Memória RAM DDR4"
       },
       {
         "key": "B",
-        "text": "Processador (CPU)"
+        "text": "Unidade Lógica e Aritmética (ULA)"
       },
       {
         "key": "C",
-        "text": "Disco Rígido (HD)"
+        "text": "Registradores"
       },
       {
         "key": "D",
-        "text": "Placa de Vídeo"
+        "text": "Disco Rígido (HD)"
       },
       {
         "key": "E",
-        "text": "Fonte de Alimentação"
+        "text": "Memória Flash ROM"
       }
     ],
-    "correctOption": "B",
+    "correctOption": "C",
     "explanation": {
-      "summary": "A CPU (Central Processing Unit) é o componente principal responsável por interpretar e executar as instruções dos aplicativos e do sistema operacional.",
+      "summary": "Os Registradores são pequenas unidades de memória integradas ao próprio núcleo da CPU. Possuem a menor capacidade e a maior velocidade de acesso de toda a arquitetura de computadores.",
       "optionsAnalysis": [
         {
           "key": "A",
           "isCorrect": false,
-          "reason": "Incorreto. A memória RAM é a memória principal temporária."
+          "reason": "Incorreto. A RAM fica fora do núcleo do processador e é mais lenta que os registradores."
         },
         {
           "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. CPU = Central Processing Unit (Processador principal)."
+          "isCorrect": false,
+          "reason": "Incorreto. A ULA realiza cálculos matemáticos e testes lógicos, mas não armazena dados."
         },
         {
           "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. O HD é unidade de armazenamento secundário."
+          "isCorrect": true,
+          "reason": "CORRETA. Registradores = Maior velocidade de acesso, integrados ao núcleo da CPU."
         },
         {
           "key": "D",
           "isCorrect": false,
-          "reason": "Incorreto. A placa de vídeo processa gráficos."
+          "reason": "Incorreto. O HD é unidade de armazenamento secundário magnética externa."
         },
         {
           "key": "E",
           "isCorrect": false,
-          "reason": "Incorreto. A fonte fornece energia elétrica."
+          "reason": "Incorreto. A memória ROM armazena o firmware da BIOS."
         }
       ],
-      "bizu": "💡 BIZU IBFC: CPU = Processador (Cérebro do PC) | RAM = Memória Temporária | HD/SSD = Armazenamento Permanente."
+      "bizu": "💡 BIZU IBFC: Registradores > Cache (L1/L2/L3) > RAM > SSD > HD (Do mais rápido ao mais lento)."
     }
   },
   {
     "id": "inf-hw-002",
     "subject": "Informática",
-    "topic": "1. Hardware - ULA (Unidade Lógica e Aritmética)",
+    "topic": "1. Hardware - Memória RAM vs ROM",
     "source": "IBFC / IBGE",
-    "difficulty": "Médio",
-    "statement": "Dentro da estrutura interna da CPU, a ULA (Unidade Lógica e Aritmética) desempenha a função de:",
+    "difficulty": "Fácil",
+    "statement": "No que tange às características técnicas das memórias RAM e ROM em microcomputadores padrão PC, assinale a opção correta:",
     "options": [
       {
         "key": "A",
-        "text": "Gerenciar o tráfego de dados na rede local."
+        "text": "A memória RAM é não volátil e mantém seus dados preservados mesmo sem energia elétrica."
       },
       {
         "key": "B",
-        "text": "Executar operações matemáticas (soma, subtração) e comparações lógicas."
+        "text": "A memória ROM é volátil e perde seus dados quando o computador é desligado."
       },
       {
         "key": "C",
-        "text": "Armazenar a imagem da BIOS na memória ROM."
+        "text": "A memória RAM é uma memória de leitura e escrita principal, de caráter volátil."
       },
       {
         "key": "D",
-        "text": "Resfriar os componentes internos do gabinete."
+        "text": "A memória ROM permite a gravação constante de arquivos do usuário durante o uso do Windows."
       },
       {
         "key": "E",
-        "text": "Controlar o brilho e contraste do monitor."
+        "text": "A memória RAM armazena o programa de inicialização da placa-mãe (BIOS/UEFI)."
       }
     ],
-    "correctOption": "B",
+    "correctOption": "C",
     "explanation": {
-      "summary": "A ULA é o circuito digital interno do processador que executa cálculos matemáticos e testes condicionais lógicos.",
+      "summary": "A memória RAM (Random Access Memory) é a memória principal de trabalho, volátil (perde o conteúdo sem energia) e permite leitura e escrita. A ROM (Read Only Memory) é não volátil e armazena a BIOS.",
       "optionsAnalysis": [
         {
           "key": "A",
           "isCorrect": false,
-          "reason": "Incorreto. Placa de rede gerencia dados de rede."
+          "reason": "Incorreto. A RAM é volátil (perde os dados ao desligar)."
         },
         {
           "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. ULA = Cálculos Aritméticos e Testes Lógicos."
+          "isCorrect": false,
+          "reason": "Incorreto. A ROM é NÃO volátil."
         },
         {
           "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Chip ROM armazena a BIOS."
+          "isCorrect": true,
+          "reason": "CORRETA. RAM = Leitura/Escrita, volátil, memória de trabalho."
         },
         {
           "key": "D",
           "isCorrect": false,
-          "reason": "Incorreto. Cooler/Fan faz o resfriamento."
+          "reason": "Incorreto. A ROM armazena instruções de fábrica e não arquivos do usuário."
         },
         {
           "key": "E",
           "isCorrect": false,
-          "reason": "Incorreto. O monitor possui controles próprios."
+          "reason": "Incorreto. A BIOS fica gravada na ROM, não na RAM."
         }
       ],
-      "bizu": "💡 BIZU IBFC: CPU é composta por: 1) UC (Unidade de Controle), 2) ULA (Cálculos e Lógica) e 3) Registradores (Memória interna)."
+      "bizu": "💡 BIZU IBFC: RAM = Volátil (Apaga sem luz) | ROM = Read Only (Não volátil, grava a BIOS/UEFI)."
     }
   },
   {
     "id": "inf-hw-003",
     "subject": "Informática",
-    "topic": "1. Hardware - Memória RAM Volátil",
+    "topic": "2. Hardware - Armazenamento SSD vs HD",
     "source": "IBFC / IBGE",
-    "difficulty": "Difícil",
-    "statement": "A memória RAM (Random Access Memory) é classificada como uma memória VOLÁTIL porque:",
+    "difficulty": "Médio",
+    "statement": "Os discos de estado sólido (SSD) vêm substituindo os discos rígidos tradicionais (HD) nos computadores do IBGE. Qual das alternativas apresenta uma característica exclusiva e correta do SSD?",
     "options": [
       {
         "key": "A",
-        "text": "Seus dados são gravados permanentemente a laser."
+        "text": "Possui um prato magnético giratório que necessita de desfragmentação semanal."
       },
       {
         "key": "B",
-        "text": "Seu conteúdo é totalmente apagado quando a alimentação elétrica do computador é desligada."
+        "text": "Armazena dados em chips de memória flash NAND sem partes mecânicas móveis."
       },
       {
         "key": "C",
-        "text": "É imune a ataques de vírus e malwares."
+        "text": "Utiliza feixe de luz laser para a leitura de células ópticas."
       },
       {
         "key": "D",
-        "text": "Não permite a leitura de dados pelo processador."
+        "text": "É uma memória de trabalho volátil que apaga ao reiniciar o Windows."
       },
       {
         "key": "E",
-        "text": "Possui capacidade ilimitada de armazenamento de fotos."
+        "text": "Conecta-se exclusivamente através da porta de áudio P2."
       }
     ],
     "correctOption": "B",
     "explanation": {
-      "summary": "Memórias voláteis necessitam de energia elétrica constante para manter as informações armazenadas. Ao desligar a máquina, a RAM é limpa.",
+      "summary": "Os SSDs utilizam memórias semicondutoras do tipo Flash (NAND). Por não possuírem partes mecânicas (ao contrário do HD magnético), são mais rápidos, silenciosos e resistentes a choques físicos.",
       "optionsAnalysis": [
         {
           "key": "A",
           "isCorrect": false,
-          "reason": "Incorreto. Gravação a laser é mídia óptica."
+          "reason": "Incorreto. HDs possuem pratos magnéticos; SSDs não possuem discos e NUNCA devem ser desfragmentados."
         },
         {
           "key": "B",
           "isCorrect": true,
-          "reason": "CORRETA. Volátil = Perde o conteúdo ao desligar o computador."
+          "reason": "CORRETA. SSD = Chips de memória flash NAND sem peças móveis."
         },
         {
           "key": "C",
           "isCorrect": false,
-          "reason": "Incorreto. A RAM pode conter códigos maliciosos em execução."
+          "reason": "Incorreto. Laser é utilizado em mídias ópticas (CD/DVD/Blu-ray)."
         },
         {
           "key": "D",
           "isCorrect": false,
-          "reason": "Incorreto. O processador lê e escreve na RAM constantemente."
+          "reason": "Incorreto. SSD é armazenamento permanente (não volátil)."
         },
         {
           "key": "E",
           "isCorrect": false,
-          "reason": "Incorreto. A capacidade da RAM é limitada."
+          "reason": "Incorreto. Conecta-se via SATA, M.2 ou NVMe."
         }
       ],
-      "bizu": "💡 BIZU IBFC: RAM = Volátil (Apaga ao desligar) | ROM = Não Volátil (Permanece gravada sem energia)."
+      "bizu": "💡 BIZU IBFC: SSD = Memória Flash | Sem partes móveis | Não Volátil | Alta resistência física."
     }
   },
   {
     "id": "inf-hw-004",
     "subject": "Informática",
-    "topic": "1. Hardware - Memória ROM Não Volátil",
+    "topic": "2. Hardware - Dispositivos de Entrada e Saída",
     "source": "IBFC / IBGE",
     "difficulty": "Fácil",
-    "statement": "Diferente da memória RAM, a memória ROM (Read Only Memory) tem como característica principal:",
+    "statement": "No manuseio de periféricos conectados a um computador de trabalho, assinale a opção que indica um dispositivo classificado EXCLUSIVAMENTE como de Entrada de dados:",
     "options": [
       {
         "key": "A",
-        "text": "Ser volátil e apagar os dados rapidamente."
+        "text": "Monitor de vídeo LED comum (sem função de toque)"
       },
       {
         "key": "B",
-        "text": "Ser uma memória de apenas leitura, cujas informações são gravadas pelo fabricante e permanecem salvas sem energia."
+        "text": "Impressora Multifuncional jato de tinta"
       },
       {
         "key": "C",
-        "text": "Acelerar jogos 3D como uma placa gráfica."
+        "text": "Scanner de mesa para digitalização"
       },
       {
         "key": "D",
-        "text": "Conectar os periféricos USB ao computador."
+        "text": "Caixa de som estéreo USB"
       },
       {
         "key": "E",
-        "text": "Substituir o cabo de rede Ethernet."
+        "text": "Projetor datashow HDMI"
       }
     ],
-    "correctOption": "B",
+    "correctOption": "C",
     "explanation": {
-      "summary": "A memória ROM (Read Only Memory) vem gravada de fábrica com instruções básicas de inicialização (BIOS/UEFI) e é não volátil.",
+      "summary": "Dispositivos de Entrada (Input) enviam dados do mundo externo para o computador. O Scanner capta imagens/documentos e os envia ao sistema. Monitor comum, impressora simples e caixas de som são de saída.",
       "optionsAnalysis": [
         {
           "key": "A",
           "isCorrect": false,
-          "reason": "Incorreto. A ROM é NÃO volátil."
+          "reason": "Incorreto. Monitor comum é dispositivo de SAÍDA."
         },
         {
           "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. ROM = Read Only Memory (Apenas Leitura, Não Volátil)."
+          "isCorrect": false,
+          "reason": "Incorreto. Multifuncional possui scanner (entrada) e impressora (saída), sendo MISTO."
         },
         {
           "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Placa de vídeo acelera jogos."
+          "isCorrect": true,
+          "reason": "CORRETA. Scanner de mesa = Periférico exclusivo de ENTRADA."
         },
         {
           "key": "D",
           "isCorrect": false,
-          "reason": "Incorreto. Controladora USB conecta periféricos."
+          "reason": "Incorreto. Caixa de som é dispositivo de SAÍDA de áudio."
         },
         {
           "key": "E",
           "isCorrect": false,
-          "reason": "Incorreto. Cabo Ethernet é meio físico de rede."
+          "reason": "Incorreto. Projetor é dispositivo de SAÍDA de imagem."
         }
       ],
-      "bizu": "💡 BIZU IBFC: ROM = Read Only Memory (BIOS/UEFI gravada na placa-mãe, não apaga sem energia)."
+      "bizu": "💡 BIZU IBFC: ENTRADA = Teclado, Mouse, Scanner, Microfone | SAÍDA = Monitor comum, Impressora comum, Caixas de som | MISTO = Touchscreen, Multifuncional."
     }
   },
   {
     "id": "inf-hw-005",
     "subject": "Informática",
-    "topic": "1. Hardware - Memória Cache (L1, L2, L3)",
+    "topic": "2. Hardware - Conector USB Tipo-C",
     "source": "IBFC / IBGE",
-    "difficulty": "Médio",
-    "statement": "A memória CACHE é uma memória de altíssima velocidade localizada entre a CPU e a RAM. Sua função primária é:",
+    "difficulty": "Fácil",
+    "statement": "O conector USB Tipo-C (USB-C) tornou-se o padrão em notebooks e tablets modernos. Assinale a alternativa que apresenta uma vantagem do padrão USB-C:",
     "options": [
       {
         "key": "A",
-        "text": "Aumentar a capacidade de armazenamento do disco rígido."
+        "text": "Possui um conector rígido que só se encaixa em uma posição única."
       },
       {
         "key": "B",
-        "text": "Armazenar cópias de dados e instruções frequentemente utilizados pela CPU, reduzindo o tempo de espera no processamento."
+        "text": "É um conector reversível que permite a transferência de dados, sinais de vídeo e carregamento de energia em alta velocidade."
       },
       {
         "key": "C",
-        "text": "Imprimir relatórios em impressoras térmicas."
+        "text": "Funciona apenas para transmissão analógica de rádio FM."
       },
       {
         "key": "D",
-        "text": "Proteger o computador contra oscilações de voltagem elétrica."
+        "text": "Exige a instalação de pilhas internas no próprio cabo."
       },
       {
         "key": "E",
-        "text": "Conectar o computador à rede Bluetooth."
+        "text": "Substitui a memória RAM do computador."
       }
     ],
     "correctOption": "B",
     "explanation": {
-      "summary": "Como a RAM é mais lenta que a CPU, a memória Cache (L1, L2, L3) armazena os dados mais usados para evitar que a CPU fique ociosa esperando a RAM.",
+      "summary": "O conector USB-C é reversível (pode ser encaixado de qualquer lado) e suporta múltiplos protocolos simultâneos, incluindo dados em alta velocidade (USB 3.2/4), vídeo (DisplayPort) e energia (Power Delivery).",
       "optionsAnalysis": [
         {
           "key": "A",
           "isCorrect": false,
-          "reason": "Incorreto. Cache não expande o HD."
+          "reason": "Incorreto. O USB-C é REVERSÍVEL (não tem lado errado)."
         },
         {
           "key": "B",
           "isCorrect": true,
-          "reason": "CORRETA. Cache = Ponte de alta velocidade entre CPU e RAM para dados frequentes."
+          "reason": "CORRETA. USB-C = Reversível + Dados + Vídeo + Energia."
         },
         {
           "key": "C",
           "isCorrect": false,
-          "reason": "Incorreto. Impressora é periférico de saída."
+          "reason": "Incorreto. Transmite dados digitais."
         },
         {
           "key": "D",
           "isCorrect": false,
-          "reason": "Incorreto. Estabilizador/Nobreak protege contra surtos de energia."
+          "reason": "Incorreto. É um cabo passivo ou ativo alimentado pela própria porta."
         },
         {
           "key": "E",
           "isCorrect": false,
-          "reason": "Incorreto. Placa Bluetooth cuida da conexão sem fio."
+          "reason": "Incorreto. Não é memória RAM."
         }
       ],
-      "bizu": "💡 BIZU IBFC: Memória CACHE é estática (SRAM), ultra-rápida e dividida em níveis L1 (mais rápida), L2 e L3."
+      "bizu": "💡 BIZU IBFC: USB-C = Reversível (pode virar de cabeça para baixo) + Dados + Vídeo + Energia."
     }
   },
   {
     "id": "inf-hw-006",
     "subject": "Informática",
-    "topic": "1. Hardware - Registradores da CPU",
+    "topic": "1. Hardware - Memória Cache L1, L2 e L3",
     "source": "IBFC / IBGE",
-    "difficulty": "Difícil",
-    "statement": "Dentre todas as memórias presentes em um microcomputador, qual possui a MENOR capacidade de armazenamento e a MAIOR velocidade de acesso?",
+    "difficulty": "Médio",
+    "statement": "A memória Cache é uma memória estática intermediária posicionada entre o processador e a memória RAM. Qual a sua principal vantagem operacional?",
     "options": [
       {
         "key": "A",
-        "text": "Disco Rígido (HD)"
+        "text": "Substituir a necessidade de instalar uma fonte de alimentação no microcomputador."
       },
       {
         "key": "B",
-        "text": "Memória RAM DDR4"
+        "text": "Evitar gargalos no processamento armazenando temporariamente os dados e instruções mais frequentemente utilizados pela CPU."
       },
       {
         "key": "C",
-        "text": "Registradores da CPU"
+        "text": "Gravar permanentemente as fotos e arquivos do sistema operacional."
       },
       {
         "key": "D",
-        "text": "Pendrive USB 3.0"
+        "text": "Imprimir relatórios de erro da placa-mãe em tempo real."
       },
       {
         "key": "E",
-        "text": "Cartão SD Class 10"
+        "text": "Converter conexões de cabo de rede em sinal de telefone fixo."
       }
     ],
-    "correctOption": "C",
+    "correctOption": "B",
     "explanation": {
-      "summary": "Os Registradores ficam no topo da hierarquia de memórias: estão dentro do próprio núcleo da CPU, rodando na mesma velocidade do processador.",
+      "summary": "Como a CPU roda em frequências muito mais altas que a memória RAM, a memória Cache (L1, L2, L3) armazena cópias das informações mais acessadas, reduzindo a ociosidade do processador.",
       "optionsAnalysis": [
         {
           "key": "A",
           "isCorrect": false,
-          "reason": "Incorreto. HD é o mais lento da hierarquia."
+          "reason": "Incorreto. A fonte de alimentação continua sendo indispensável."
         },
         {
           "key": "B",
-          "isCorrect": false,
-          "reason": "Incorreto. RAM é mais lenta que Registradores e Cache."
+          "isCorrect": true,
+          "reason": "CORRETA. Memória Cache = Ponte rápida entre CPU e RAM para dados frequentes."
         },
         {
           "key": "C",
-          "isCorrect": true,
-          "reason": "CORRETA. Registradores = Maior velocidade, menor capacidade da hierarquia."
+          "isCorrect": false,
+          "reason": "Incorreto. Cache é volátil e não armazena arquivos do usuário permanentemente."
         },
         {
           "key": "D",
           "isCorrect": false,
-          "reason": "Incorreto. Pendrive é armazenamento secundário lento."
+          "reason": "Incorreto. Não faz impressão de relatórios."
         },
         {
           "key": "E",
           "isCorrect": false,
-          "reason": "Incorreto. Cartão SD é mídia externa lenta."
+          "reason": "Incorreto. Não altera sinal de telefonia."
         }
       ],
-      "bizu": "💡 BIZU IBFC (Hierarquia de Velocidade): Registradores > Cache (L1/L2/L3) > RAM > SSD > HD."
+      "bizu": "💡 BIZU IBFC: Memória Cache = Estática (SRAM), ultra-rápida, volátil e dividida em níveis L1 (interna), L2 e L3."
     }
   },
   {
     "id": "inf-hw-007",
     "subject": "Informática",
-    "topic": "2. Hardware - SSD vs HD (Resistência a Impactos)",
-    "source": "IBFC / IBGE",
-    "difficulty": "Fácil",
-    "statement": "Uma vantagem técnica determinante dos SSDs em relação aos HDs mecânicos tradicionais em notebooks de pesquisa de campo do IBGE é:",
-    "options": [
-      {
-        "key": "A",
-        "text": "Uso de discos magnéticos giratórios."
-      },
-      {
-        "key": "B",
-        "text": "Ausência de partes mecânicas móveis, proporcionando alta velocidade e resistência a choques físicos."
-      },
-      {
-        "key": "C",
-        "text": "Necessidade obrigatória de desfragmentação semanal."
-      },
-      {
-        "key": "D",
-        "text": "Perda de dados ao desligar o equipamento."
-      },
-      {
-        "key": "E",
-        "text": "Conexão exclusiva em portas de som."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Os SSDs utilizam memórias flash NAND sem peças móveis, o que evita falhas causadas por vibrações e impactos em pesquisas de campo.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Quem usa discos magnéticos giratórios é o HD."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. SSD = Memória Flash sem partes móveis (resistente a impactos)."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. SSDs NUNCA devem ser desfragmentados."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. SSDs são não voláteis."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Conectam-se via SATA ou M.2."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: SSD = Memória Flash | Não Volátil | Sem peças móveis | Jamais desfragmentar SSD!"
-    }
-  },
-  {
-    "id": "inf-hw-008",
-    "subject": "Informática",
-    "topic": "2. Hardware - Barramentos e Conector USB-C",
+    "topic": "2. Hardware - Dispositivos Mistos",
     "source": "IBFC / IBGE",
     "difficulty": "Médio",
-    "statement": "O padrão de conector USB Tipo-C (USB-C) presente em dispositivos modernos destaca-se por:",
+    "statement": "Assinale a alternativa que indica um periférico classificado como MISTO (dispositivo de Entrada e de Saída de dados simultaneamente):",
     "options": [
       {
         "key": "A",
-        "text": "Encaixar em apenas um sentido fixo."
+        "text": "Teclado numérico USB"
       },
       {
         "key": "B",
-        "text": "Ser um conector reversível capaz de transmitir dados, vídeo e energia em alta velocidade."
+        "text": "Mouse óptico sem fio"
       },
       {
         "key": "C",
-        "text": "Servir apenas para conectar mouses antigos PS/2."
-      },
-      {
-        "key": "D",
-        "text": "Exigir formatação de fábrica a cada uso."
-      },
-      {
-        "key": "E",
-        "text": "Transmitir apenas sinal de rádio FM."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "O USB-C é o conector moderno universal reversível (sem lado certo) que unifica transmissão de dados, sinal de vídeo DisplayPort e carregamento de energia (Power Delivery).",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. O USB-C é reversível."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. USB-C = Reversível + Dados + Vídeo + Energia num só cabo."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. PS/2 é um conector antigo roxo/verde."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Não exige formatação."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Transmite dados digitais."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: USB-C = Reversível (pode virar de ponta-cabeça) + Transmissão universal."
-    }
-  },
-  {
-    "id": "inf-hw-009",
-    "subject": "Informática",
-    "topic": "2. Hardware - Periféricos de Entrada",
-    "source": "IBFC / IBGE",
-    "difficulty": "Difícil",
-    "statement": "Qual dos seguintes itens é classificado EXCLUSIVAMENTE como dispositivo de entrada de dados?",
-    "options": [
-      {
-        "key": "A",
-        "text": "Monitor LCD comum"
-      },
-      {
-        "key": "B",
-        "text": "Impressora Jato de Tinta"
-      },
-      {
-        "key": "C",
-        "text": "Scanner de mesa"
+        "text": "Monitor de tela sensível ao toque (Touchscreen)"
       },
       {
         "key": "D",
@@ -523,1041 +399,235 @@ export const QUESTIONS_DATABASE: Question[] = [
       },
       {
         "key": "E",
-        "text": "Projetor multimídia"
+        "text": "Scanner de mesa"
       }
     ],
     "correctOption": "C",
     "explanation": {
-      "summary": "Dispositivos de Entrada (Input) capturam dados do ambiente/usuário e enviam para o PC. Ex: Scanner, Teclado, Mouse, Microfone.",
+      "summary": "Monitores Touchscreen são mistos porque exibem a imagem gerada pelo computador (Saída) e simultaneamente capturam os toques do usuário na tela (Entrada).",
       "optionsAnalysis": [
         {
           "key": "A",
           "isCorrect": false,
-          "reason": "Incorreto. Monitor comum é Saída."
+          "reason": "Incorreto. Teclado numérico é apenas Entrada."
         },
         {
           "key": "B",
           "isCorrect": false,
-          "reason": "Incorreto. Impressora comum é Saída."
+          "reason": "Incorreto. Mouse óptico é apenas Entrada."
         },
         {
           "key": "C",
           "isCorrect": true,
-          "reason": "CORRETA. Scanner = Entrada de imagens e documentos."
+          "reason": "CORRETA. Touchscreen = Exibe imagem (Saída) + Recebe toques (Entrada)."
         },
         {
           "key": "D",
           "isCorrect": false,
-          "reason": "Incorreto. Caixa de som é Saída."
+          "reason": "Incorreto. Caixa de som é apenas Saída."
         },
         {
           "key": "E",
           "isCorrect": false,
-          "reason": "Incorreto. Projetor é Saída."
+          "reason": "Incorreto. Scanner é apenas Entrada."
         }
       ],
-      "bizu": "💡 BIZU IBFC: ENTRADA = Teclado, Mouse, Scanner, Microfone, Leitor de código de barras."
+      "bizu": "💡 BIZU IBFC: MISTO (Entrada/Saída) = Touchscreen, Impressora Multifuncional, Modem, Pendrive, Headset."
+    }
+  },
+  {
+    "id": "inf-hw-008",
+    "subject": "Informática",
+    "topic": "2. Hardware - Protocolo NVMe",
+    "source": "IBFC / IBGE",
+    "difficulty": "Difícil",
+    "statement": "Em comparativo com os SSDs tradicionais conectados via interface SATA III (limite teórico de ~600 MB/s), os SSDs padrão NVMe (Non-Volatile Memory Express) conectam-se ao barramento PCIe e oferecem:",
+    "options": [
+      {
+        "key": "A",
+        "text": "Velocidades de leitura e escrita significativamente superiores, podendo ultrapassar 3.000 MB/s."
+      },
+      {
+        "key": "B",
+        "text": "Menor velocidade de leitura, porém com capacidade ilimitada em terabytes."
+      },
+      {
+        "key": "C",
+        "text": "Funcionamento volátil que apaga os dados a cada reinicialização."
+      },
+      {
+        "key": "D",
+        "text": "Leitura óptica por meio de feixes de laser infravermelho."
+      },
+      {
+        "key": "E",
+        "text": "Incompatibilidade total com qualquer sistema Windows."
+      }
+    ],
+    "correctOption": "A",
+    "explanation": {
+      "summary": "O protocolo NVMe foi desenvolvido do zero para memórias flash de alta performance, comunicando-se via pistas PCIe diretamente com o processador, alcançando taxas de transferência de vários gigabytes por segundo.",
+      "optionsAnalysis": [
+        {
+          "key": "A",
+          "isCorrect": true,
+          "reason": "CORRETA. NVMe via PCIe = Taxas de transferência superiores a 3.000 MB/s."
+        },
+        {
+          "key": "B",
+          "isCorrect": false,
+          "reason": "Incorreto. É muito mais rápido que o SATA III."
+        },
+        {
+          "key": "C",
+          "isCorrect": false,
+          "reason": "Incorreto. É armazenamento não volátil permanente."
+        },
+        {
+          "key": "D",
+          "isCorrect": false,
+          "reason": "Incorreto. Usa chips semicondutores, não laser."
+        },
+        {
+          "key": "E",
+          "isCorrect": false,
+          "reason": "Incorreto. É totalmente compatível com Windows 10/11."
+        }
+      ],
+      "bizu": "💡 BIZU IBFC: SSD SATA III = ~550 MB/s | SSD NVMe (PCIe) = +3.000 MB/s (Muito mais rápido!)."
+    }
+  },
+  {
+    "id": "inf-hw-009",
+    "subject": "Informática",
+    "topic": "1. Hardware - Unidade de Controle (UC)",
+    "source": "IBFC / IBGE",
+    "difficulty": "Médio",
+    "statement": "Na CPU, a Unidade de Controle (UC) é o componente interno encarregado de:",
+    "options": [
+      {
+        "key": "A",
+        "text": "Realizar somas, subtrações e operações lógicas AND e OR."
+      },
+      {
+        "key": "B",
+        "text": "Buscar as instruções na memória, decodificá-las e gerenciar a sequência de execução do sistema."
+      },
+      {
+        "key": "C",
+        "text": "Fornecer energia elétrica para o cooler do processador."
+      },
+      {
+        "key": "D",
+        "text": "Armazenar os arquivos de planilhas do usuário."
+      },
+      {
+        "key": "E",
+        "text": "Exibir o cursor do mouse na tela do monitor."
+      }
+    ],
+    "correctOption": "B",
+    "explanation": {
+      "summary": "A Unidade de Controle (UC) é o maestro da CPU: ela busca a instrução na memória principal, decodifica o comando e envia os sinais de controle aos demais componentes para a execução.",
+      "optionsAnalysis": [
+        {
+          "key": "A",
+          "isCorrect": false,
+          "reason": "Incorreto. Quem faz cálculos aritméticos e comparações lógicas é a ULA."
+        },
+        {
+          "key": "B",
+          "isCorrect": true,
+          "reason": "CORRETA. UC = Busca, decodifica e controla o fluxo de execução de instruções."
+        },
+        {
+          "key": "C",
+          "isCorrect": false,
+          "reason": "Incorreto. A fonte de alimentação fornece energia."
+        },
+        {
+          "key": "D",
+          "isCorrect": false,
+          "reason": "Incorreto. Arquivos ficam no SSD/HD."
+        },
+        {
+          "key": "E",
+          "isCorrect": false,
+          "reason": "Incorreto. A placa de vídeo gera o cursor na tela."
+        }
+      ],
+      "bizu": "💡 BIZU IBFC: CPU = ULA (Cálculos) + UC (Gerenciamento/Fluxo de Instruções) + Registradores (Memória interna)."
     }
   },
   {
     "id": "inf-hw-010",
     "subject": "Informática",
-    "topic": "2. Hardware - Periféricos de Saída",
+    "topic": "2. Hardware - Placa-Mãe (Motherboard)",
     "source": "IBFC / IBGE",
     "difficulty": "Fácil",
-    "statement": "Assinale o periférico classificado EXCLUSIVAMENTE como dispositivo de saída de dados:",
+    "statement": "A Placa-Mãe (Motherboard) de um microcomputador desempenha o papel central de:",
     "options": [
       {
         "key": "A",
-        "text": "Teclado ABNT2"
+        "text": "Substituir a memória RAM quando o computador está sem energia."
       },
       {
         "key": "B",
-        "text": "Mouse óptico"
+        "text": "Interconectar fisicamente e eletricamente todos os componentes internos (CPU, Memória, Disco, Placas) e periféricos."
       },
       {
         "key": "C",
-        "text": "Impressora Laser"
+        "text": "Executar os cálculos matemáticos do sistema operacional."
       },
       {
         "key": "D",
-        "text": "Microfone de lapela"
+        "text": "Imprimir documentos em papel térmico."
       },
       {
         "key": "E",
-        "text": "Leitor de código de barras"
-      }
-    ],
-    "correctOption": "C",
-    "explanation": {
-      "summary": "Dispositivos de Saída (Output) recebem dados processados pelo computador e os exibem/imprimem para o usuário. Ex: Impressora Laser, Monitor, Caixas de som.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Teclado é Entrada."
-        },
-        {
-          "key": "B",
-          "isCorrect": false,
-          "reason": "Incorreto. Mouse é Entrada."
-        },
-        {
-          "key": "C",
-          "isCorrect": true,
-          "reason": "CORRETA. Impressora Laser = Dispositivo exclusivo de Saída."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Microfone é Entrada."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Leitor de código de barras é Entrada."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: SAÍDA = Monitor comum, Impressora comum, Caixa de som, Projetor."
-    }
-  },
-  {
-    "id": "inf-hw-011",
-    "subject": "Informática",
-    "topic": "1 e 2. Hardware - Conceitos Avançados #11",
-    "source": "IBFC / IBGE",
-    "difficulty": "Médio",
-    "statement": "No manuseio e configuração de microcomputadores no IBGE (Questão de Hardware #11), assinale a afirmativa correta sobre a arquitetura física de computadores:",
-    "options": [
-      {
-        "key": "A",
-        "text": "A memória RAM é não volátil e armazena permanentemente os arquivos do usuário."
-      },
-      {
-        "key": "B",
-        "text": "A correta especificação dos barramentos e memórias na questão #11 garante o desempenho e a estabilidade das estações de trabalho."
-      },
-      {
-        "key": "C",
-        "text": "O SSD necessita de desfragmentação semanal obrigatória para não perder arquivos."
-      },
-      {
-        "key": "D",
-        "text": "A CPU armazena fotos e vídeos de forma ilimitada sem precisar de disco rígido."
-      },
-      {
-        "key": "E",
-        "text": "O teclado é um dispositivo de saída de dados impresso."
+        "text": "Converter arquivos MP3 em textos do Word."
       }
     ],
     "correctOption": "B",
     "explanation": {
-      "summary": "Domínio da arquitetura física de hardware, memórias e periféricos cobrados pela banca IBFC.",
+      "summary": "A Placa-Mãe é a placa de circuito impresso principal do computador. Nela estão os barramentos, soquete da CPU, slots de memória e conectores que interligam todos os periféricos.",
       "optionsAnalysis": [
         {
           "key": "A",
           "isCorrect": false,
-          "reason": "Incorreto. RAM é volátil."
+          "reason": "Incorreto. Não substitui a RAM."
         },
         {
           "key": "B",
           "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para a arquitetura de hardware na questão #11."
+          "reason": "CORRETA. Placa-Mãe = Interconecta fisicamente todos os componentes do sistema."
         },
         {
           "key": "C",
           "isCorrect": false,
-          "reason": "Incorreto. SSD jamais deve ser desfragmentado."
+          "reason": "Incorreto. Quem faz cálculos é a CPU/ULA."
         },
         {
           "key": "D",
           "isCorrect": false,
-          "reason": "Incorreto. CPU processa dados, não armazena arquivos."
+          "reason": "Incorreto. Impressora faz impressão."
         },
         {
           "key": "E",
           "isCorrect": false,
-          "reason": "Incorreto. Teclado é de entrada."
+          "reason": "Incorreto. Não converte arquivos."
         }
       ],
-      "bizu": "💡 BIZU IBFC: Guarde: RAM = Temporária/Volátil | ROM/SSD/HD = Permanente/Não Volátil | Entrada = Teclado/Mouse/Scanner | Saída = Monitor/Impressora."
-    }
-  },
-  {
-    "id": "inf-hw-012",
-    "subject": "Informática",
-    "topic": "1 e 2. Hardware - Conceitos Avançados #12",
-    "source": "IBFC / IBGE",
-    "difficulty": "Difícil",
-    "statement": "No manuseio e configuração de microcomputadores no IBGE (Questão de Hardware #12), assinale a afirmativa correta sobre a arquitetura física de computadores:",
-    "options": [
-      {
-        "key": "A",
-        "text": "A memória RAM é não volátil e armazena permanentemente os arquivos do usuário."
-      },
-      {
-        "key": "B",
-        "text": "A correta especificação dos barramentos e memórias na questão #12 garante o desempenho e a estabilidade das estações de trabalho."
-      },
-      {
-        "key": "C",
-        "text": "O SSD necessita de desfragmentação semanal obrigatória para não perder arquivos."
-      },
-      {
-        "key": "D",
-        "text": "A CPU armazena fotos e vídeos de forma ilimitada sem precisar de disco rígido."
-      },
-      {
-        "key": "E",
-        "text": "O teclado é um dispositivo de saída de dados impresso."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Domínio da arquitetura física de hardware, memórias e periféricos cobrados pela banca IBFC.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. RAM é volátil."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para a arquitetura de hardware na questão #12."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. SSD jamais deve ser desfragmentado."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. CPU processa dados, não armazena arquivos."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Teclado é de entrada."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Guarde: RAM = Temporária/Volátil | ROM/SSD/HD = Permanente/Não Volátil | Entrada = Teclado/Mouse/Scanner | Saída = Monitor/Impressora."
-    }
-  },
-  {
-    "id": "inf-hw-013",
-    "subject": "Informática",
-    "topic": "1 e 2. Hardware - Conceitos Avançados #13",
-    "source": "IBFC / IBGE",
-    "difficulty": "Fácil",
-    "statement": "No manuseio e configuração de microcomputadores no IBGE (Questão de Hardware #13), assinale a afirmativa correta sobre a arquitetura física de computadores:",
-    "options": [
-      {
-        "key": "A",
-        "text": "A memória RAM é não volátil e armazena permanentemente os arquivos do usuário."
-      },
-      {
-        "key": "B",
-        "text": "A correta especificação dos barramentos e memórias na questão #13 garante o desempenho e a estabilidade das estações de trabalho."
-      },
-      {
-        "key": "C",
-        "text": "O SSD necessita de desfragmentação semanal obrigatória para não perder arquivos."
-      },
-      {
-        "key": "D",
-        "text": "A CPU armazena fotos e vídeos de forma ilimitada sem precisar de disco rígido."
-      },
-      {
-        "key": "E",
-        "text": "O teclado é um dispositivo de saída de dados impresso."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Domínio da arquitetura física de hardware, memórias e periféricos cobrados pela banca IBFC.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. RAM é volátil."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para a arquitetura de hardware na questão #13."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. SSD jamais deve ser desfragmentado."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. CPU processa dados, não armazena arquivos."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Teclado é de entrada."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Guarde: RAM = Temporária/Volátil | ROM/SSD/HD = Permanente/Não Volátil | Entrada = Teclado/Mouse/Scanner | Saída = Monitor/Impressora."
-    }
-  },
-  {
-    "id": "inf-hw-014",
-    "subject": "Informática",
-    "topic": "1 e 2. Hardware - Conceitos Avançados #14",
-    "source": "IBFC / IBGE",
-    "difficulty": "Médio",
-    "statement": "No manuseio e configuração de microcomputadores no IBGE (Questão de Hardware #14), assinale a afirmativa correta sobre a arquitetura física de computadores:",
-    "options": [
-      {
-        "key": "A",
-        "text": "A memória RAM é não volátil e armazena permanentemente os arquivos do usuário."
-      },
-      {
-        "key": "B",
-        "text": "A correta especificação dos barramentos e memórias na questão #14 garante o desempenho e a estabilidade das estações de trabalho."
-      },
-      {
-        "key": "C",
-        "text": "O SSD necessita de desfragmentação semanal obrigatória para não perder arquivos."
-      },
-      {
-        "key": "D",
-        "text": "A CPU armazena fotos e vídeos de forma ilimitada sem precisar de disco rígido."
-      },
-      {
-        "key": "E",
-        "text": "O teclado é um dispositivo de saída de dados impresso."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Domínio da arquitetura física de hardware, memórias e periféricos cobrados pela banca IBFC.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. RAM é volátil."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para a arquitetura de hardware na questão #14."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. SSD jamais deve ser desfragmentado."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. CPU processa dados, não armazena arquivos."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Teclado é de entrada."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Guarde: RAM = Temporária/Volátil | ROM/SSD/HD = Permanente/Não Volátil | Entrada = Teclado/Mouse/Scanner | Saída = Monitor/Impressora."
-    }
-  },
-  {
-    "id": "inf-hw-015",
-    "subject": "Informática",
-    "topic": "1 e 2. Hardware - Conceitos Avançados #15",
-    "source": "IBFC / IBGE",
-    "difficulty": "Difícil",
-    "statement": "No manuseio e configuração de microcomputadores no IBGE (Questão de Hardware #15), assinale a afirmativa correta sobre a arquitetura física de computadores:",
-    "options": [
-      {
-        "key": "A",
-        "text": "A memória RAM é não volátil e armazena permanentemente os arquivos do usuário."
-      },
-      {
-        "key": "B",
-        "text": "A correta especificação dos barramentos e memórias na questão #15 garante o desempenho e a estabilidade das estações de trabalho."
-      },
-      {
-        "key": "C",
-        "text": "O SSD necessita de desfragmentação semanal obrigatória para não perder arquivos."
-      },
-      {
-        "key": "D",
-        "text": "A CPU armazena fotos e vídeos de forma ilimitada sem precisar de disco rígido."
-      },
-      {
-        "key": "E",
-        "text": "O teclado é um dispositivo de saída de dados impresso."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Domínio da arquitetura física de hardware, memórias e periféricos cobrados pela banca IBFC.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. RAM é volátil."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para a arquitetura de hardware na questão #15."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. SSD jamais deve ser desfragmentado."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. CPU processa dados, não armazena arquivos."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Teclado é de entrada."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Guarde: RAM = Temporária/Volátil | ROM/SSD/HD = Permanente/Não Volátil | Entrada = Teclado/Mouse/Scanner | Saída = Monitor/Impressora."
-    }
-  },
-  {
-    "id": "inf-hw-016",
-    "subject": "Informática",
-    "topic": "1 e 2. Hardware - Conceitos Avançados #16",
-    "source": "IBFC / IBGE",
-    "difficulty": "Fácil",
-    "statement": "No manuseio e configuração de microcomputadores no IBGE (Questão de Hardware #16), assinale a afirmativa correta sobre a arquitetura física de computadores:",
-    "options": [
-      {
-        "key": "A",
-        "text": "A memória RAM é não volátil e armazena permanentemente os arquivos do usuário."
-      },
-      {
-        "key": "B",
-        "text": "A correta especificação dos barramentos e memórias na questão #16 garante o desempenho e a estabilidade das estações de trabalho."
-      },
-      {
-        "key": "C",
-        "text": "O SSD necessita de desfragmentação semanal obrigatória para não perder arquivos."
-      },
-      {
-        "key": "D",
-        "text": "A CPU armazena fotos e vídeos de forma ilimitada sem precisar de disco rígido."
-      },
-      {
-        "key": "E",
-        "text": "O teclado é um dispositivo de saída de dados impresso."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Domínio da arquitetura física de hardware, memórias e periféricos cobrados pela banca IBFC.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. RAM é volátil."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para a arquitetura de hardware na questão #16."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. SSD jamais deve ser desfragmentado."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. CPU processa dados, não armazena arquivos."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Teclado é de entrada."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Guarde: RAM = Temporária/Volátil | ROM/SSD/HD = Permanente/Não Volátil | Entrada = Teclado/Mouse/Scanner | Saída = Monitor/Impressora."
-    }
-  },
-  {
-    "id": "inf-hw-017",
-    "subject": "Informática",
-    "topic": "1 e 2. Hardware - Conceitos Avançados #17",
-    "source": "IBFC / IBGE",
-    "difficulty": "Médio",
-    "statement": "No manuseio e configuração de microcomputadores no IBGE (Questão de Hardware #17), assinale a afirmativa correta sobre a arquitetura física de computadores:",
-    "options": [
-      {
-        "key": "A",
-        "text": "A memória RAM é não volátil e armazena permanentemente os arquivos do usuário."
-      },
-      {
-        "key": "B",
-        "text": "A correta especificação dos barramentos e memórias na questão #17 garante o desempenho e a estabilidade das estações de trabalho."
-      },
-      {
-        "key": "C",
-        "text": "O SSD necessita de desfragmentação semanal obrigatória para não perder arquivos."
-      },
-      {
-        "key": "D",
-        "text": "A CPU armazena fotos e vídeos de forma ilimitada sem precisar de disco rígido."
-      },
-      {
-        "key": "E",
-        "text": "O teclado é um dispositivo de saída de dados impresso."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Domínio da arquitetura física de hardware, memórias e periféricos cobrados pela banca IBFC.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. RAM é volátil."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para a arquitetura de hardware na questão #17."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. SSD jamais deve ser desfragmentado."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. CPU processa dados, não armazena arquivos."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Teclado é de entrada."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Guarde: RAM = Temporária/Volátil | ROM/SSD/HD = Permanente/Não Volátil | Entrada = Teclado/Mouse/Scanner | Saída = Monitor/Impressora."
-    }
-  },
-  {
-    "id": "inf-hw-018",
-    "subject": "Informática",
-    "topic": "1 e 2. Hardware - Conceitos Avançados #18",
-    "source": "IBFC / IBGE",
-    "difficulty": "Difícil",
-    "statement": "No manuseio e configuração de microcomputadores no IBGE (Questão de Hardware #18), assinale a afirmativa correta sobre a arquitetura física de computadores:",
-    "options": [
-      {
-        "key": "A",
-        "text": "A memória RAM é não volátil e armazena permanentemente os arquivos do usuário."
-      },
-      {
-        "key": "B",
-        "text": "A correta especificação dos barramentos e memórias na questão #18 garante o desempenho e a estabilidade das estações de trabalho."
-      },
-      {
-        "key": "C",
-        "text": "O SSD necessita de desfragmentação semanal obrigatória para não perder arquivos."
-      },
-      {
-        "key": "D",
-        "text": "A CPU armazena fotos e vídeos de forma ilimitada sem precisar de disco rígido."
-      },
-      {
-        "key": "E",
-        "text": "O teclado é um dispositivo de saída de dados impresso."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Domínio da arquitetura física de hardware, memórias e periféricos cobrados pela banca IBFC.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. RAM é volátil."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para a arquitetura de hardware na questão #18."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. SSD jamais deve ser desfragmentado."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. CPU processa dados, não armazena arquivos."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Teclado é de entrada."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Guarde: RAM = Temporária/Volátil | ROM/SSD/HD = Permanente/Não Volátil | Entrada = Teclado/Mouse/Scanner | Saída = Monitor/Impressora."
-    }
-  },
-  {
-    "id": "inf-hw-019",
-    "subject": "Informática",
-    "topic": "1 e 2. Hardware - Conceitos Avançados #19",
-    "source": "IBFC / IBGE",
-    "difficulty": "Fácil",
-    "statement": "No manuseio e configuração de microcomputadores no IBGE (Questão de Hardware #19), assinale a afirmativa correta sobre a arquitetura física de computadores:",
-    "options": [
-      {
-        "key": "A",
-        "text": "A memória RAM é não volátil e armazena permanentemente os arquivos do usuário."
-      },
-      {
-        "key": "B",
-        "text": "A correta especificação dos barramentos e memórias na questão #19 garante o desempenho e a estabilidade das estações de trabalho."
-      },
-      {
-        "key": "C",
-        "text": "O SSD necessita de desfragmentação semanal obrigatória para não perder arquivos."
-      },
-      {
-        "key": "D",
-        "text": "A CPU armazena fotos e vídeos de forma ilimitada sem precisar de disco rígido."
-      },
-      {
-        "key": "E",
-        "text": "O teclado é um dispositivo de saída de dados impresso."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Domínio da arquitetura física de hardware, memórias e periféricos cobrados pela banca IBFC.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. RAM é volátil."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para a arquitetura de hardware na questão #19."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. SSD jamais deve ser desfragmentado."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. CPU processa dados, não armazena arquivos."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Teclado é de entrada."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Guarde: RAM = Temporária/Volátil | ROM/SSD/HD = Permanente/Não Volátil | Entrada = Teclado/Mouse/Scanner | Saída = Monitor/Impressora."
-    }
-  },
-  {
-    "id": "inf-hw-020",
-    "subject": "Informática",
-    "topic": "1 e 2. Hardware - Conceitos Avançados #20",
-    "source": "IBFC / IBGE",
-    "difficulty": "Médio",
-    "statement": "No manuseio e configuração de microcomputadores no IBGE (Questão de Hardware #20), assinale a afirmativa correta sobre a arquitetura física de computadores:",
-    "options": [
-      {
-        "key": "A",
-        "text": "A memória RAM é não volátil e armazena permanentemente os arquivos do usuário."
-      },
-      {
-        "key": "B",
-        "text": "A correta especificação dos barramentos e memórias na questão #20 garante o desempenho e a estabilidade das estações de trabalho."
-      },
-      {
-        "key": "C",
-        "text": "O SSD necessita de desfragmentação semanal obrigatória para não perder arquivos."
-      },
-      {
-        "key": "D",
-        "text": "A CPU armazena fotos e vídeos de forma ilimitada sem precisar de disco rígido."
-      },
-      {
-        "key": "E",
-        "text": "O teclado é um dispositivo de saída de dados impresso."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Domínio da arquitetura física de hardware, memórias e periféricos cobrados pela banca IBFC.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. RAM é volátil."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para a arquitetura de hardware na questão #20."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. SSD jamais deve ser desfragmentado."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. CPU processa dados, não armazena arquivos."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Teclado é de entrada."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Guarde: RAM = Temporária/Volátil | ROM/SSD/HD = Permanente/Não Volátil | Entrada = Teclado/Mouse/Scanner | Saída = Monitor/Impressora."
-    }
-  },
-  {
-    "id": "inf-hw-021",
-    "subject": "Informática",
-    "topic": "1 e 2. Hardware - Conceitos Avançados #21",
-    "source": "IBFC / IBGE",
-    "difficulty": "Difícil",
-    "statement": "No manuseio e configuração de microcomputadores no IBGE (Questão de Hardware #21), assinale a afirmativa correta sobre a arquitetura física de computadores:",
-    "options": [
-      {
-        "key": "A",
-        "text": "A memória RAM é não volátil e armazena permanentemente os arquivos do usuário."
-      },
-      {
-        "key": "B",
-        "text": "A correta especificação dos barramentos e memórias na questão #21 garante o desempenho e a estabilidade das estações de trabalho."
-      },
-      {
-        "key": "C",
-        "text": "O SSD necessita de desfragmentação semanal obrigatória para não perder arquivos."
-      },
-      {
-        "key": "D",
-        "text": "A CPU armazena fotos e vídeos de forma ilimitada sem precisar de disco rígido."
-      },
-      {
-        "key": "E",
-        "text": "O teclado é um dispositivo de saída de dados impresso."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Domínio da arquitetura física de hardware, memórias e periféricos cobrados pela banca IBFC.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. RAM é volátil."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para a arquitetura de hardware na questão #21."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. SSD jamais deve ser desfragmentado."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. CPU processa dados, não armazena arquivos."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Teclado é de entrada."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Guarde: RAM = Temporária/Volátil | ROM/SSD/HD = Permanente/Não Volátil | Entrada = Teclado/Mouse/Scanner | Saída = Monitor/Impressora."
-    }
-  },
-  {
-    "id": "inf-hw-022",
-    "subject": "Informática",
-    "topic": "1 e 2. Hardware - Conceitos Avançados #22",
-    "source": "IBFC / IBGE",
-    "difficulty": "Fácil",
-    "statement": "No manuseio e configuração de microcomputadores no IBGE (Questão de Hardware #22), assinale a afirmativa correta sobre a arquitetura física de computadores:",
-    "options": [
-      {
-        "key": "A",
-        "text": "A memória RAM é não volátil e armazena permanentemente os arquivos do usuário."
-      },
-      {
-        "key": "B",
-        "text": "A correta especificação dos barramentos e memórias na questão #22 garante o desempenho e a estabilidade das estações de trabalho."
-      },
-      {
-        "key": "C",
-        "text": "O SSD necessita de desfragmentação semanal obrigatória para não perder arquivos."
-      },
-      {
-        "key": "D",
-        "text": "A CPU armazena fotos e vídeos de forma ilimitada sem precisar de disco rígido."
-      },
-      {
-        "key": "E",
-        "text": "O teclado é um dispositivo de saída de dados impresso."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Domínio da arquitetura física de hardware, memórias e periféricos cobrados pela banca IBFC.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. RAM é volátil."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para a arquitetura de hardware na questão #22."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. SSD jamais deve ser desfragmentado."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. CPU processa dados, não armazena arquivos."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Teclado é de entrada."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Guarde: RAM = Temporária/Volátil | ROM/SSD/HD = Permanente/Não Volátil | Entrada = Teclado/Mouse/Scanner | Saída = Monitor/Impressora."
-    }
-  },
-  {
-    "id": "inf-hw-023",
-    "subject": "Informática",
-    "topic": "1 e 2. Hardware - Conceitos Avançados #23",
-    "source": "IBFC / IBGE",
-    "difficulty": "Médio",
-    "statement": "No manuseio e configuração de microcomputadores no IBGE (Questão de Hardware #23), assinale a afirmativa correta sobre a arquitetura física de computadores:",
-    "options": [
-      {
-        "key": "A",
-        "text": "A memória RAM é não volátil e armazena permanentemente os arquivos do usuário."
-      },
-      {
-        "key": "B",
-        "text": "A correta especificação dos barramentos e memórias na questão #23 garante o desempenho e a estabilidade das estações de trabalho."
-      },
-      {
-        "key": "C",
-        "text": "O SSD necessita de desfragmentação semanal obrigatória para não perder arquivos."
-      },
-      {
-        "key": "D",
-        "text": "A CPU armazena fotos e vídeos de forma ilimitada sem precisar de disco rígido."
-      },
-      {
-        "key": "E",
-        "text": "O teclado é um dispositivo de saída de dados impresso."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Domínio da arquitetura física de hardware, memórias e periféricos cobrados pela banca IBFC.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. RAM é volátil."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para a arquitetura de hardware na questão #23."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. SSD jamais deve ser desfragmentado."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. CPU processa dados, não armazena arquivos."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Teclado é de entrada."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Guarde: RAM = Temporária/Volátil | ROM/SSD/HD = Permanente/Não Volátil | Entrada = Teclado/Mouse/Scanner | Saída = Monitor/Impressora."
-    }
-  },
-  {
-    "id": "inf-hw-024",
-    "subject": "Informática",
-    "topic": "1 e 2. Hardware - Conceitos Avançados #24",
-    "source": "IBFC / IBGE",
-    "difficulty": "Difícil",
-    "statement": "No manuseio e configuração de microcomputadores no IBGE (Questão de Hardware #24), assinale a afirmativa correta sobre a arquitetura física de computadores:",
-    "options": [
-      {
-        "key": "A",
-        "text": "A memória RAM é não volátil e armazena permanentemente os arquivos do usuário."
-      },
-      {
-        "key": "B",
-        "text": "A correta especificação dos barramentos e memórias na questão #24 garante o desempenho e a estabilidade das estações de trabalho."
-      },
-      {
-        "key": "C",
-        "text": "O SSD necessita de desfragmentação semanal obrigatória para não perder arquivos."
-      },
-      {
-        "key": "D",
-        "text": "A CPU armazena fotos e vídeos de forma ilimitada sem precisar de disco rígido."
-      },
-      {
-        "key": "E",
-        "text": "O teclado é um dispositivo de saída de dados impresso."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Domínio da arquitetura física de hardware, memórias e periféricos cobrados pela banca IBFC.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. RAM é volátil."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para a arquitetura de hardware na questão #24."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. SSD jamais deve ser desfragmentado."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. CPU processa dados, não armazena arquivos."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Teclado é de entrada."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Guarde: RAM = Temporária/Volátil | ROM/SSD/HD = Permanente/Não Volátil | Entrada = Teclado/Mouse/Scanner | Saída = Monitor/Impressora."
-    }
-  },
-  {
-    "id": "inf-hw-025",
-    "subject": "Informática",
-    "topic": "1 e 2. Hardware - Conceitos Avançados #25",
-    "source": "IBFC / IBGE",
-    "difficulty": "Fácil",
-    "statement": "No manuseio e configuração de microcomputadores no IBGE (Questão de Hardware #25), assinale a afirmativa correta sobre a arquitetura física de computadores:",
-    "options": [
-      {
-        "key": "A",
-        "text": "A memória RAM é não volátil e armazena permanentemente os arquivos do usuário."
-      },
-      {
-        "key": "B",
-        "text": "A correta especificação dos barramentos e memórias na questão #25 garante o desempenho e a estabilidade das estações de trabalho."
-      },
-      {
-        "key": "C",
-        "text": "O SSD necessita de desfragmentação semanal obrigatória para não perder arquivos."
-      },
-      {
-        "key": "D",
-        "text": "A CPU armazena fotos e vídeos de forma ilimitada sem precisar de disco rígido."
-      },
-      {
-        "key": "E",
-        "text": "O teclado é um dispositivo de saída de dados impresso."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Domínio da arquitetura física de hardware, memórias e periféricos cobrados pela banca IBFC.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. RAM é volátil."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para a arquitetura de hardware na questão #25."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. SSD jamais deve ser desfragmentado."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. CPU processa dados, não armazena arquivos."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Teclado é de entrada."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Guarde: RAM = Temporária/Volátil | ROM/SSD/HD = Permanente/Não Volátil | Entrada = Teclado/Mouse/Scanner | Saída = Monitor/Impressora."
+      "bizu": "💡 BIZU IBFC: Placa-Mãe = Espinha dorsal do PC (Conecta CPU, RAM, SSD, Fonte e Periféricos)."
     }
   },
   {
     "id": "inf-so-001",
     "subject": "Informática",
-    "topic": "4. Windows 10/11 - Criar Nova Pasta",
+    "topic": "4. Windows 10/11 - Atalho Nova Pasta",
     "source": "IBFC / IBGE",
     "difficulty": "Fácil",
-    "statement": "No Explorador de Arquivos do Windows 10/11, qual o atalho padrão de teclado utilizado para criar uma NOVA PASTA no diretório atual?",
+    "statement": "No Explorador de Arquivos do Windows 10/11, qual a combinação de teclas de atalho utilizada para criar instantaneamente uma NOVA PASTA no diretório aberto?",
     "options": [
       {
         "key": "A",
@@ -1582,12 +652,12 @@ export const QUESTIONS_DATABASE: Question[] = [
     ],
     "correctOption": "A",
     "explanation": {
-      "summary": "No Explorador de Arquivos do Windows, `Ctrl + Shift + N` cria uma nova pasta instantaneamente no diretório selecionado.",
+      "summary": "O atalho `Ctrl + Shift + N` cria uma nova pasta no diretório atual do Explorador de Arquivos no Windows 10 e 11.",
       "optionsAnalysis": [
         {
           "key": "A",
           "isCorrect": true,
-          "reason": "CORRETA. `Ctrl + Shift + N` cria uma Nova Pasta no Windows."
+          "reason": "CORRETA. `Ctrl + Shift + N` = Nova Pasta no Explorador de Arquivos."
         },
         {
           "key": "B",
@@ -1607,111 +677,49 @@ export const QUESTIONS_DATABASE: Question[] = [
         {
           "key": "E",
           "isCorrect": false,
-          "reason": "Incorreto. `Ctrl + Alt + Del` abre a tela de segurança."
+          "reason": "Incorreto. `Ctrl + Alt + Del` exibe a tela de segurança do sistema."
         }
       ],
-      "bizu": "💡 BIZU IBFC: Nova Pasta = `Ctrl + Shift + N` | Renomear = `F2` | Excluir sem ir para Lixeira = `Shift + Delete`."
+      "bizu": "💡 BIZU IBFC: Nova Pasta = `Ctrl + Shift + N` | Renomear = `F2` | Exclusão Definitiva = `Shift + Delete`."
     }
   },
   {
     "id": "inf-so-002",
     "subject": "Informática",
-    "topic": "4. Windows 10/11 - Renomear Arquivo (F2)",
+    "topic": "4. Windows 10/11 - Atalho Exclusão Definitiva",
     "source": "IBFC / IBGE",
-    "difficulty": "Médio",
-    "statement": "Ao selecionar um arquivo no Explorador de Arquivos do Windows 10/11 e pressionar a tecla F2, qual ação é executada pelo sistema?",
+    "difficulty": "Fácil",
+    "statement": "Ao selecionar um arquivo no Windows 10/11 e acionar as teclas SHIFT + DELETE, qual o comportamento executado pelo sistema operacional?",
     "options": [
       {
         "key": "A",
-        "text": "Exclui o arquivo para a Lixeira."
+        "text": "Mover o arquivo para a Lixeira, onde permanecerá por 30 dias."
       },
       {
         "key": "B",
-        "text": "Abre o modo de edição para RENOMEAR o arquivo."
+        "text": "Excluir o arquivo permanentemente, sem enviá-lo para a Lixeira."
       },
       {
         "key": "C",
-        "text": "Copia o arquivo para a Área de Transferência."
+        "text": "Criar um atalho na Área de Trabalho."
       },
       {
         "key": "D",
-        "text": "Imprime o arquivo."
+        "text": "Compactar o arquivo em formato .ZIP."
       },
       {
         "key": "E",
-        "text": "Compacta o arquivo em ZIP."
+        "text": "Ocultar o arquivo nas propriedades da pasta."
       }
     ],
     "correctOption": "B",
     "explanation": {
-      "summary": "A tecla F2 ativa o modo de edição do nome do arquivo ou pasta selecionada no Explorador de Arquivos.",
+      "summary": "A combinação `Shift + Delete` ignora o envio para a Lixeira e efetua a exclusão definitiva do arquivo no sistema de arquivos.",
       "optionsAnalysis": [
         {
           "key": "A",
           "isCorrect": false,
-          "reason": "Incorreto. Excluir = Delete."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. F2 = Renomear arquivo/pasta selecionada."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Copiar = Ctrl + C."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Imprimir = Ctrl + P."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Compactar requer menu contextual."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: F2 = RENOMEAR | F3 = BUSCAR | F5 = ATUALIZAR | F11 = TELA CHEIA."
-    }
-  },
-  {
-    "id": "inf-so-003",
-    "subject": "Informática",
-    "topic": "4. Windows 10/11 - Exclusão Definitiva (Shift + Delete)",
-    "source": "IBFC / IBGE",
-    "difficulty": "Difícil",
-    "statement": "Ao selecionar um arquivo no Windows 10/11 e pressionar o atalho SHIFT + DELETE, o arquivo será:",
-    "options": [
-      {
-        "key": "A",
-        "text": "Mover para a Lixeira e mantido por 30 dias."
-      },
-      {
-        "key": "B",
-        "text": "Excluído DEFINITIVAMENTE sem passar pela Lixeira."
-      },
-      {
-        "key": "C",
-        "text": "Copiado para uma nova pasta oculta."
-      },
-      {
-        "key": "D",
-        "text": "Enviado como anexo de e-mail."
-      },
-      {
-        "key": "E",
-        "text": "Convertido para o formato PDF."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "O atalho `Shift + Delete` ignora a Lixeira e remove o arquivo ou pasta permanentemente do sistema de arquivos.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Tecla Delete sozinha envia para a Lixeira."
+          "reason": "Incorreto. Apenas a tecla `Delete` envia o arquivo para a Lixeira."
         },
         {
           "key": "B",
@@ -1721,59 +729,59 @@ export const QUESTIONS_DATABASE: Question[] = [
         {
           "key": "C",
           "isCorrect": false,
-          "reason": "Incorreto. Não copia para pasta oculta."
+          "reason": "Incorreto. Não cria atalho."
         },
         {
           "key": "D",
           "isCorrect": false,
-          "reason": "Incorreto. Não envia e-mail."
+          "reason": "Incorreto. Não compacta o arquivo."
         },
         {
           "key": "E",
           "isCorrect": false,
-          "reason": "Incorreto. Não converte arquivo."
+          "reason": "Incorreto. Não altera o atributo de oculto."
         }
       ],
       "bizu": "💡 BIZU IBFC: Delete = Vai para a Lixeira | Shift + Delete = EXCLUSÃO DEFINITIVA (Não passa pela Lixeira!)."
     }
   },
   {
-    "id": "inf-so-004",
+    "id": "inf-so-003",
     "subject": "Informática",
-    "topic": "4. Windows 10/11 - Histórico de Transferência (Win + V)",
+    "topic": "4. Windows 10/11 - Histórico de Transferência",
     "source": "IBFC / IBGE",
-    "difficulty": "Fácil",
-    "statement": "No Windows 10/11, o atalho WIN + V é utilizado para abrir qual funcionalidade do sistema?",
+    "difficulty": "Médio",
+    "statement": "No Windows 10/11, a combinação de teclas WIN + V permite acessar qual importante recurso de produtividade?",
     "options": [
       {
         "key": "A",
-        "text": "Painel de Controle clássico."
+        "text": "O Gerenciador de Dispositivos e Drivers."
       },
       {
         "key": "B",
-        "text": "Histórico da Área de Transferência, permitindo visualizar múltiplos itens copiados."
+        "text": "O Histórico da Área de Transferência, exibindo múltiplos textos e imagens copiados anteriormente."
       },
       {
         "key": "C",
-        "text": "Gerenciador de Tarefas."
+        "text": "O Prompt de Comando em modo Administrador."
       },
       {
         "key": "D",
-        "text": "Configurações de rede sem fio."
+        "text": "O Painel de Controle clássico."
       },
       {
         "key": "E",
-        "text": "Calculadora do Windows."
+        "text": "A ferramenta de desfragmentação de disco."
       }
     ],
     "correctOption": "B",
     "explanation": {
-      "summary": "O atalho `Win + V` abre o painel do Histórico da Área de Transferência, exibindo textos e imagens copiados anteriormente com `Ctrl + C`.",
+      "summary": "O atalho `Win + V` abre o painel do Histórico da Área de Transferência do Windows, permitindo visualizar e colar múltiplos elementos copiados previamente (`Ctrl + C`).",
       "optionsAnalysis": [
         {
           "key": "A",
           "isCorrect": false,
-          "reason": "Incorreto. Painel de controle abre via menu ou busca."
+          "reason": "Incorreto. Gerenciador de dispositivos é aberto pelas propriedades do sistema ou Win+X."
         },
         {
           "key": "B",
@@ -1783,29 +791,29 @@ export const QUESTIONS_DATABASE: Question[] = [
         {
           "key": "C",
           "isCorrect": false,
-          "reason": "Incorreto. Gerenciador de tarefas = Ctrl + Shift + Esc."
+          "reason": "Incorreto. Prompt de comando é aberto por 'cmd'."
         },
         {
           "key": "D",
           "isCorrect": false,
-          "reason": "Incorreto. Configurações de rede = Win + I."
+          "reason": "Incorreto. Painel de controle abre pela busca."
         },
         {
           "key": "E",
           "isCorrect": false,
-          "reason": "Incorreto. Calculadora é aplicativo."
+          "reason": "Incorreto. Desfragmentador é ferramenta de otimização."
         }
       ],
       "bizu": "💡 BIZU IBFC: `Ctrl + V` = Cola o último item | `Win + V` = Histórico de vários itens copiados!"
     }
   },
   {
-    "id": "inf-so-005",
+    "id": "inf-so-004",
     "subject": "Informática",
-    "topic": "4 e 10. Windows 10/11 - Gerenciador de Tarefas (Ctrl + Shift + Esc)",
+    "topic": "4. Windows 10/11 - Gerenciador de Tarefas",
     "source": "IBFC / IBGE",
-    "difficulty": "Médio",
-    "statement": "Quando um aplicativo no Windows 10/11 trava e para de responder, qual o atalho DIRETO para abrir o Gerenciador de Tarefas e encerrar o processo?",
+    "difficulty": "Fácil",
+    "statement": "Quando um programa deixa de responder e trava a tela do Windows 10/11, qual atalho de teclado abre DIRETO o Gerenciador de Tarefas para encerrar o processo travado?",
     "options": [
       {
         "key": "A",
@@ -1830,7 +838,7 @@ export const QUESTIONS_DATABASE: Question[] = [
     ],
     "correctOption": "A",
     "explanation": {
-      "summary": "`Ctrl + Shift + Esc` abre DIRETO a janela do Gerenciador de Tarefas sem passar por menus intermediários.",
+      "summary": "O atalho `Ctrl + Shift + Esc` abre diretamente a janela do Gerenciador de Tarefas do Windows. `Ctrl + Alt + Del` exibe uma tela de segurança com várias opções.",
       "optionsAnalysis": [
         {
           "key": "A",
@@ -1840,7 +848,7 @@ export const QUESTIONS_DATABASE: Question[] = [
         {
           "key": "B",
           "isCorrect": false,
-          "reason": "Incorreto. Ctrl + Alt + Del abre a tela de opções de segurança do sistema."
+          "reason": "Incorreto. Ctrl + Alt + Del abre a tela intermediária de segurança (Bloquear, Alternar usuário, Gerenciador)."
         },
         {
           "key": "C",
@@ -1850,1565 +858,511 @@ export const QUESTIONS_DATABASE: Question[] = [
         {
           "key": "D",
           "isCorrect": false,
-          "reason": "Incorreto. Alt + Tab alterna entre janelas."
+          "reason": "Incorreto. Alt + Tab alterna entre janelas abertas."
         },
         {
           "key": "E",
           "isCorrect": false,
-          "reason": "Incorreto. Win + R abre o Executar."
+          "reason": "Incorreto. Win + R abre o diálogo Executar."
         }
       ],
       "bizu": "💡 BIZU IBFC: Gerenciador de Tarefas DIRETO = `Ctrl + Shift + Esc` | Tela de Segurança = `Ctrl + Alt + Del`."
     }
   },
   {
-    "id": "inf-so-006",
+    "id": "inf-so-005",
     "subject": "Informática",
-    "topic": "4 e 10. Windows 10/11 - Operações #6",
+    "topic": "4. Windows 10/11 - Lixeira do Windows",
     "source": "IBFC / IBGE",
-    "difficulty": "Difícil",
-    "statement": "Com relação às funcionalidades do Windows 10/11 e manuseio de arquivos no IBGE (Questão #6), assinale a opção correta:",
+    "difficulty": "Médio",
+    "statement": "Com relação às regras de funcionamento da Lixeira no Windows 10/11, assinale a afirmativa verdadeira:",
     "options": [
       {
         "key": "A",
-        "text": "A Lixeira do Windows armazena cópias de arquivos em pen drives externos automaticamente."
+        "text": "Arquivos excluídos de um pendrive USB conectado ao computador são enviados normalmente para a Lixeira."
       },
       {
         "key": "B",
-        "text": "O recurso do Windows testado na questão #6 otimiza o gerenciamento de janelas e o trabalho no sistema."
+        "text": "Ao esvaziar a Lixeira, o espaço em disco ocupado pelos arquivos é liberado para o sistema."
       },
       {
         "key": "C",
-        "text": "O atalho Shift + Delete envia os arquivos obrigatoriamente para a Lixeira antes de apagar."
+        "text": "Arquivos armazenados na Lixeira executam programas automaticamente em segundo plano."
       },
       {
         "key": "D",
-        "text": "A tecla F2 é utilizada exclusivamente para imprimir documentos em PDF."
+        "text": "A Lixeira não permite restaurar arquivos para a sua pasta de origem."
       },
       {
         "key": "E",
-        "text": "O Gerenciador de Tarefas impede a alteração de senhas no Windows."
+        "text": "Arquivos excluídos via rede local de outro computador ficam salvos na Lixeira local."
       }
     ],
     "correctOption": "B",
     "explanation": {
-      "summary": "Conhecimento prático dos atalhos, lixeira e ferramentas de sistema do Windows 10 e 11.",
+      "summary": "Os arquivos na Lixeira continuam ocupando espaço em disco. Somente ao 'Esvaziar a Lixeira' esse espaço é liberado. Arquivos apagados de mídias removíveis (pendrives) ou unidades de rede NÃO vão para a Lixeira.",
       "optionsAnalysis": [
         {
           "key": "A",
           "isCorrect": false,
-          "reason": "Incorreto. Arquivos de pen drives excluídos são apagados direto."
+          "reason": "Incorreto. Arquivos excluídos de pendrives são apagados permanentemente (não vão para a Lixeira)."
         },
         {
           "key": "B",
           "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para a utilização do Windows 10/11 na questão #6."
+          "reason": "CORRETA. Esvaziar a Lixeira libera o espaço no disco rígido."
         },
         {
           "key": "C",
           "isCorrect": false,
-          "reason": "Incorreto. Shift + Delete ignora a Lixeira."
+          "reason": "Incorreto. Arquivos na Lixeira não podem ser executados diretamente."
         },
         {
           "key": "D",
           "isCorrect": false,
-          "reason": "Incorreto. F2 renomeia arquivos."
+          "reason": "Incorreto. O recurso 'Restaurar' devolve o arquivo à pasta original."
         },
         {
           "key": "E",
           "isCorrect": false,
-          "reason": "Incorreto. Não impede."
+          "reason": "Incorreto. Exclusão pela rede ignora a Lixeira do computador remoto."
         }
       ],
-      "bizu": "💡 BIZU IBFC: `Win + E` = Explorador de Arquivos | `Win + L` = Bloquear Tela | `Win + Shift + S` = Captura de Tela / Print."
+      "bizu": "💡 BIZU IBFC (LIXEIRA): NÃO vão para a Lixeira: 1. Arquivos de Pen Drive / Cartão SD | 2. Arquivos de Rede | 3. Exclusão com Shift + Delete."
+    }
+  },
+  {
+    "id": "inf-so-006",
+    "subject": "Informática",
+    "topic": "4. Windows 10/11 - Tecla F2 (Renomear)",
+    "source": "IBFC / IBGE",
+    "difficulty": "Fácil",
+    "statement": "Ao selecionar um arquivo no Explorador de Arquivos do Windows e pressionar a tecla F2, o sistema operacional irá:",
+    "options": [
+      {
+        "key": "A",
+        "text": "Excluir o arquivo selecionado para a Lixeira."
+      },
+      {
+        "key": "B",
+        "text": "Ativar o modo de edição do nome do arquivo selecionado para RENOMEÁ-LO."
+      },
+      {
+        "key": "C",
+        "text": "Criar uma cópia duplicada do arquivo no Desktop."
+      },
+      {
+        "key": "D",
+        "text": "Imprimir o documento na impressora padrão."
+      },
+      {
+        "key": "E",
+        "text": "Abrir o arquivo no Bloco de Notas."
+      }
+    ],
+    "correctOption": "B",
+    "explanation": {
+      "summary": "A tecla de atalho F2 no Explorador de Arquivos ativa a edição rápida do nome de arquivos ou pastas selecionadas.",
+      "optionsAnalysis": [
+        {
+          "key": "A",
+          "isCorrect": false,
+          "reason": "Incorreto. Excluir é feito com a tecla Delete."
+        },
+        {
+          "key": "B",
+          "isCorrect": true,
+          "reason": "CORRETA. F2 = Editar/Renomear arquivo ou pasta selecionada."
+        },
+        {
+          "key": "C",
+          "isCorrect": false,
+          "reason": "Incorreto. Duplicar requer copiar e colar (Ctrl+C e Ctrl+V)."
+        },
+        {
+          "key": "D",
+          "isCorrect": false,
+          "reason": "Incorreto. Imprimir é Ctrl+P."
+        },
+        {
+          "key": "E",
+          "isCorrect": false,
+          "reason": "Incorreto. Abrir é Enter ou duplo clique."
+        }
+      ],
+      "bizu": "💡 BIZU IBFC: F2 = RENOMEAR | F3 = BUSCAR | F5 = ATUALIZAR | F11 = TELA CHEIA."
     }
   },
   {
     "id": "inf-so-007",
     "subject": "Informática",
-    "topic": "4 e 10. Windows 10/11 - Operações #7",
+    "topic": "4. Windows 10/11 - Atalho Bloquear Tela (Win + L)",
     "source": "IBFC / IBGE",
     "difficulty": "Fácil",
-    "statement": "Com relação às funcionalidades do Windows 10/11 e manuseio de arquivos no IBGE (Questão #7), assinale a opção correta:",
+    "statement": "Ao se ausentar temporariamente de sua mesa de trabalho no IBGE, qual atalho de teclado o agente deve utilizar para BLOQUEAR rapidamente a sessão do Windows sem fechar seus programas abertos?",
     "options": [
       {
         "key": "A",
-        "text": "A Lixeira do Windows armazena cópias de arquivos em pen drives externos automaticamente."
+        "text": "Win + L"
       },
       {
         "key": "B",
-        "text": "O recurso do Windows testado na questão #7 otimiza o gerenciamento de janelas e o trabalho no sistema."
+        "text": "Win + E"
       },
       {
         "key": "C",
-        "text": "O atalho Shift + Delete envia os arquivos obrigatoriamente para a Lixeira antes de apagar."
+        "text": "Ctrl + W"
       },
       {
         "key": "D",
-        "text": "A tecla F2 é utilizada exclusivamente para imprimir documentos em PDF."
+        "text": "Alt + F4"
       },
       {
         "key": "E",
-        "text": "O Gerenciador de Tarefas impede a alteração de senhas no Windows."
+        "text": "Ctrl + Shift + Esc"
       }
     ],
-    "correctOption": "B",
+    "correctOption": "A",
     "explanation": {
-      "summary": "Conhecimento prático dos atalhos, lixeira e ferramentas de sistema do Windows 10 e 11.",
+      "summary": "O atalho `Win + L` ('L' de Lock) bloqueia a tela do computador, exigindo a senha ou biometria para retornar à sessão atual.",
       "optionsAnalysis": [
         {
           "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Arquivos de pen drives excluídos são apagados direto."
+          "isCorrect": true,
+          "reason": "CORRETA. `Win + L` = Bloquear a sessão/computador instantaneamente."
         },
         {
           "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para a utilização do Windows 10/11 na questão #7."
+          "isCorrect": false,
+          "reason": "Incorreto. `Win + E` abre o Explorador de Arquivos."
         },
         {
           "key": "C",
           "isCorrect": false,
-          "reason": "Incorreto. Shift + Delete ignora a Lixeira."
+          "reason": "Incorreto. `Ctrl + W` fecha a aba ou janela ativa."
         },
         {
           "key": "D",
           "isCorrect": false,
-          "reason": "Incorreto. F2 renomeia arquivos."
+          "reason": "Incorreto. `Alt + F4` fecha o aplicativo ativo ou exibe o menu desligar."
         },
         {
           "key": "E",
           "isCorrect": false,
-          "reason": "Incorreto. Não impede."
+          "reason": "Incorreto. `Ctrl + Shift + Esc` abre o Gerenciador de Tarefas."
         }
       ],
-      "bizu": "💡 BIZU IBFC: `Win + E` = Explorador de Arquivos | `Win + L` = Bloquear Tela | `Win + Shift + S` = Captura de Tela / Print."
+      "bizu": "💡 BIZU IBFC: `Win + L` = Lock (Bloquear tela) | `Win + E` = Explorer (Explorador de Arquivos) | `Win + D` = Desktop (Mostrar Área de Trabalho)."
     }
   },
   {
     "id": "inf-so-008",
     "subject": "Informática",
-    "topic": "4 e 10. Windows 10/11 - Operações #8",
+    "topic": "4. Windows 10/11 - Ferramenta de Captura (Win + Shift + S)",
     "source": "IBFC / IBGE",
     "difficulty": "Médio",
-    "statement": "Com relação às funcionalidades do Windows 10/11 e manuseio de arquivos no IBGE (Questão #8), assinale a opção correta:",
+    "statement": "No Windows 10 e 11, qual a combinação de teclas utilizada para abrir a Ferramenta de Captura (Snip & Sketch), permitindo recortar uma área personalizada da tela?",
     "options": [
       {
         "key": "A",
-        "text": "A Lixeira do Windows armazena cópias de arquivos em pen drives externos automaticamente."
+        "text": "Win + Shift + S"
       },
       {
         "key": "B",
-        "text": "O recurso do Windows testado na questão #8 otimiza o gerenciamento de janelas e o trabalho no sistema."
+        "text": "Ctrl + Alt + PrintScreen"
       },
       {
         "key": "C",
-        "text": "O atalho Shift + Delete envia os arquivos obrigatoriamente para a Lixeira antes de apagar."
+        "text": "Win + P"
       },
       {
         "key": "D",
-        "text": "A tecla F2 é utilizada exclusivamente para imprimir documentos em PDF."
+        "text": "Ctrl + Shift + N"
       },
       {
         "key": "E",
-        "text": "O Gerenciador de Tarefas impede a alteração de senhas no Windows."
+        "text": "Alt + Shift + S"
       }
     ],
-    "correctOption": "B",
+    "correctOption": "A",
     "explanation": {
-      "summary": "Conhecimento prático dos atalhos, lixeira e ferramentas de sistema do Windows 10 e 11.",
+      "summary": "`Win + Shift + S` abre a barra de captura retangular, livre ou de tela cheia do Windows, salvando a imagem capturada diretamente na Área de Transferência.",
       "optionsAnalysis": [
         {
           "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Arquivos de pen drives excluídos são apagados direto."
+          "isCorrect": true,
+          "reason": "CORRETA. `Win + Shift + S` = Atalho da Ferramenta de Captura de Tela do Windows."
         },
         {
           "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para a utilização do Windows 10/11 na questão #8."
+          "isCorrect": false,
+          "reason": "Incorreto. `Ctrl + Alt + PrintScreen` não é o atalho padrão da ferramenta de captura."
         },
         {
           "key": "C",
           "isCorrect": false,
-          "reason": "Incorreto. Shift + Delete ignora a Lixeira."
+          "reason": "Incorreto. `Win + P` abre a projeção de telas (duplicar/estender)."
         },
         {
           "key": "D",
           "isCorrect": false,
-          "reason": "Incorreto. F2 renomeia arquivos."
+          "reason": "Incorreto. `Ctrl + Shift + N` cria nova pasta."
         },
         {
           "key": "E",
           "isCorrect": false,
-          "reason": "Incorreto. Não impede."
+          "reason": "Incorreto."
         }
       ],
-      "bizu": "💡 BIZU IBFC: `Win + E` = Explorador de Arquivos | `Win + L` = Bloquear Tela | `Win + Shift + S` = Captura de Tela / Print."
+      "bizu": "💡 BIZU IBFC: `Win + Shift + S` = Captura de Tela / Print Recortado | `Win + P` = Projeção em Monitores/Datashow."
     }
   },
   {
     "id": "inf-so-009",
     "subject": "Informática",
-    "topic": "4 e 10. Windows 10/11 - Operações #9",
+    "topic": "4. Windows 10/11 - Visão de Tarefas (Win + Tab)",
     "source": "IBFC / IBGE",
-    "difficulty": "Difícil",
-    "statement": "Com relação às funcionalidades do Windows 10/11 e manuseio de arquivos no IBGE (Questão #9), assinale a opção correta:",
+    "difficulty": "Médio",
+    "statement": "Qual a diferença principal entre as combinações de atalho ALT + TAB e WIN + TAB no Windows 10/11?",
     "options": [
       {
         "key": "A",
-        "text": "A Lixeira do Windows armazena cópias de arquivos em pen drives externos automaticamente."
+        "text": "O Alt + Tab desliga o computador e o Win + Tab fecha todas as janelas."
       },
       {
         "key": "B",
-        "text": "O recurso do Windows testado na questão #9 otimiza o gerenciamento de janelas e o trabalho no sistema."
+        "text": "O Alt + Tab alterna rapidamente entre as janelas abertas; já o Win + Tab abre a Visão de Tarefas, permitindo gerenciar Desktops Virtuais e a linha do tempo."
       },
       {
         "key": "C",
-        "text": "O atalho Shift + Delete envia os arquivos obrigatoriamente para a Lixeira antes de apagar."
+        "text": "O Win + Tab funciona apenas com a internet desligada."
       },
       {
         "key": "D",
-        "text": "A tecla F2 é utilizada exclusivamente para imprimir documentos em PDF."
+        "text": "Ambos realizam exatamente a mesma função sem nenhuma diferença visual."
       },
       {
         "key": "E",
-        "text": "O Gerenciador de Tarefas impede a alteração de senhas no Windows."
+        "text": "O Alt + Tab altera a resolução gráfica do monitor."
       }
     ],
     "correctOption": "B",
     "explanation": {
-      "summary": "Conhecimento prático dos atalhos, lixeira e ferramentas de sistema do Windows 10 e 11.",
+      "summary": "`Alt + Tab` exibe uma miniatura rápida das janelas para alternância simples. `Win + Tab` abre a Visão de Tarefas (Task View), onde é possível criar e alternar entre múltiplas Áreas de Trabalho Virtuais.",
       "optionsAnalysis": [
         {
           "key": "A",
           "isCorrect": false,
-          "reason": "Incorreto. Arquivos de pen drives excluídos são apagados direto."
+          "reason": "Incorreto."
         },
         {
           "key": "B",
           "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para a utilização do Windows 10/11 na questão #9."
+          "reason": "CORRETA. Alt + Tab = Alterna janelas | Win + Tab = Visão de Tarefas e Desktops Virtuais."
         },
         {
           "key": "C",
           "isCorrect": false,
-          "reason": "Incorreto. Shift + Delete ignora a Lixeira."
+          "reason": "Incorreto."
         },
         {
           "key": "D",
           "isCorrect": false,
-          "reason": "Incorreto. F2 renomeia arquivos."
+          "reason": "Incorreto."
         },
         {
           "key": "E",
           "isCorrect": false,
-          "reason": "Incorreto. Não impede."
+          "reason": "Incorreto."
         }
       ],
-      "bizu": "💡 BIZU IBFC: `Win + E` = Explorador de Arquivos | `Win + L` = Bloquear Tela | `Win + Shift + S` = Captura de Tela / Print."
+      "bizu": "💡 BIZU IBFC: `Alt + Tab` = Alternar janelas rápida | `Win + Tab` = Visão de Tarefas (Desktops Virtuais)."
     }
   },
   {
     "id": "inf-so-010",
     "subject": "Informática",
-    "topic": "4 e 10. Windows 10/11 - Operações #10",
+    "topic": "4. Windows 10/11 - Configurações vs Painel de Controle",
     "source": "IBFC / IBGE",
-    "difficulty": "Fácil",
-    "statement": "Com relação às funcionalidades do Windows 10/11 e manuseio de arquivos no IBGE (Questão #10), assinale a opção correta:",
+    "difficulty": "Médio",
+    "statement": "No Windows 10 e 11, o aplicativo 'Configurações' (acessado pelo atalho WIN + I) foi projetado para:",
     "options": [
       {
         "key": "A",
-        "text": "A Lixeira do Windows armazena cópias de arquivos em pen drives externos automaticamente."
+        "text": "Substituir gradualmente o Painel de Controle tradicional, oferecendo uma interface moderna para personalização, redes, contas e atualizações."
       },
       {
         "key": "B",
-        "text": "O recurso do Windows testado na questão #10 otimiza o gerenciamento de janelas e o trabalho no sistema."
+        "text": "Formatador exclusivo de pen drives em formato Linux EXT4."
       },
       {
         "key": "C",
-        "text": "O atalho Shift + Delete envia os arquivos obrigatoriamente para a Lixeira antes de apagar."
+        "text": "Impedir a instalação de antivírus terceiros."
       },
       {
         "key": "D",
-        "text": "A tecla F2 é utilizada exclusivamente para imprimir documentos em PDF."
+        "text": "Gerenciar a velocidade do cooler da placa de vídeo em tempo real."
       },
       {
         "key": "E",
-        "text": "O Gerenciador de Tarefas impede a alteração de senhas no Windows."
+        "text": "Excluir o registro do Windows permanentemente."
       }
     ],
-    "correctOption": "B",
+    "correctOption": "A",
     "explanation": {
-      "summary": "Conhecimento prático dos atalhos, lixeira e ferramentas de sistema do Windows 10 e 11.",
+      "summary": "O aplicativo Configurações (`Win + I`) é a central moderna de ajustes do Windows 10/11, centralizando personalização, contas, atualizações (Windows Update) e privacidade.",
       "optionsAnalysis": [
         {
           "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Arquivos de pen drives excluídos são apagados direto."
+          "isCorrect": true,
+          "reason": "CORRETA. Configurações (`Win + I`) = Central moderna de ajustes que substitui gradualmente o Painel de Controle."
         },
         {
           "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para a utilização do Windows 10/11 na questão #10."
+          "isCorrect": false,
+          "reason": "Incorreto. Não é formatador exclusivo de EXT4."
         },
         {
           "key": "C",
           "isCorrect": false,
-          "reason": "Incorreto. Shift + Delete ignora a Lixeira."
+          "reason": "Incorreto. Permite qualquer antivírus."
         },
         {
           "key": "D",
           "isCorrect": false,
-          "reason": "Incorreto. F2 renomeia arquivos."
+          "reason": "Incorreto. Ajustes de cooler dependem de softwares de hardware."
         },
         {
           "key": "E",
           "isCorrect": false,
-          "reason": "Incorreto. Não impede."
+          "reason": "Incorreto."
         }
       ],
-      "bizu": "💡 BIZU IBFC: `Win + E` = Explorador de Arquivos | `Win + L` = Bloquear Tela | `Win + Shift + S` = Captura de Tela / Print."
+      "bizu": "💡 BIZU IBFC: Atalho das Configurações = `Win + I` (I de Iniciar/Informações de Configuração)."
     }
   },
   {
     "id": "inf-so-011",
     "subject": "Informática",
-    "topic": "4 e 10. Windows 10/11 - Operações #11",
+    "topic": "10. Extensões de Arquivos Padrão",
     "source": "IBFC / IBGE",
-    "difficulty": "Médio",
-    "statement": "Com relação às funcionalidades do Windows 10/11 e manuseio de arquivos no IBGE (Questão #11), assinale a opção correta:",
+    "difficulty": "Fácil",
+    "statement": "Assinale a alternativa que associa corretamente o tipo de arquivo à sua extensão padrão no ambiente Windows:",
     "options": [
       {
         "key": "A",
-        "text": "A Lixeira do Windows armazena cópias de arquivos em pen drives externos automaticamente."
+        "text": "Arquivo de texto sem formatação = .EXE"
       },
       {
         "key": "B",
-        "text": "O recurso do Windows testado na questão #11 otimiza o gerenciamento de janelas e o trabalho no sistema."
+        "text": "Documento do Microsoft Word = .DOCX"
       },
       {
         "key": "C",
-        "text": "O atalho Shift + Delete envia os arquivos obrigatoriamente para a Lixeira antes de apagar."
+        "text": "Planilha do Microsoft Excel = .PDF"
       },
       {
         "key": "D",
-        "text": "A tecla F2 é utilizada exclusivamente para imprimir documentos em PDF."
+        "text": "Arquivo compactado de dados = .TXT"
       },
       {
         "key": "E",
-        "text": "O Gerenciador de Tarefas impede a alteração de senhas no Windows."
+        "text": "Documento do Adobe Acrobat = .XLSX"
       }
     ],
     "correctOption": "B",
     "explanation": {
-      "summary": "Conhecimento prático dos atalhos, lixeira e ferramentas de sistema do Windows 10 e 11.",
+      "summary": ".DOCX é a extensão padrão dos documentos do Word. .TXT é texto simples, .XLSX é planilha do Excel, .PDF é documento portátil do Acrobat, .ZIP/.RAR são arquivos compactados.",
       "optionsAnalysis": [
         {
           "key": "A",
           "isCorrect": false,
-          "reason": "Incorreto. Arquivos de pen drives excluídos são apagados direto."
+          "reason": "Incorreto. .EXE é executável de programa."
         },
         {
           "key": "B",
           "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para a utilização do Windows 10/11 na questão #11."
+          "reason": "CORRETA. .DOCX = Documento do Microsoft Word."
         },
         {
           "key": "C",
           "isCorrect": false,
-          "reason": "Incorreto. Shift + Delete ignora a Lixeira."
+          "reason": "Incorreto. .PDF é documento portátil Acrobat."
         },
         {
           "key": "D",
           "isCorrect": false,
-          "reason": "Incorreto. F2 renomeia arquivos."
+          "reason": "Incorreto. .TXT é texto sem formatação."
         },
         {
           "key": "E",
           "isCorrect": false,
-          "reason": "Incorreto. Não impede."
+          "reason": "Incorreto. .XLSX é planilha Excel."
         }
       ],
-      "bizu": "💡 BIZU IBFC: `Win + E` = Explorador de Arquivos | `Win + L` = Bloquear Tela | `Win + Shift + S` = Captura de Tela / Print."
+      "bizu": "💡 BIZU IBFC (EXTENSÕES): Word = .DOCX | Excel = .XLSX | Texto Simples = .TXT | Leitor PDF = .PDF | Executável = .EXE | Compactado = .ZIP / .RAR."
     }
   },
   {
     "id": "inf-so-012",
     "subject": "Informática",
-    "topic": "4 e 10. Windows 10/11 - Operações #12",
-    "source": "IBFC / IBGE",
-    "difficulty": "Difícil",
-    "statement": "Com relação às funcionalidades do Windows 10/11 e manuseio de arquivos no IBGE (Questão #12), assinale a opção correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "A Lixeira do Windows armazena cópias de arquivos em pen drives externos automaticamente."
-      },
-      {
-        "key": "B",
-        "text": "O recurso do Windows testado na questão #12 otimiza o gerenciamento de janelas e o trabalho no sistema."
-      },
-      {
-        "key": "C",
-        "text": "O atalho Shift + Delete envia os arquivos obrigatoriamente para a Lixeira antes de apagar."
-      },
-      {
-        "key": "D",
-        "text": "A tecla F2 é utilizada exclusivamente para imprimir documentos em PDF."
-      },
-      {
-        "key": "E",
-        "text": "O Gerenciador de Tarefas impede a alteração de senhas no Windows."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Conhecimento prático dos atalhos, lixeira e ferramentas de sistema do Windows 10 e 11.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Arquivos de pen drives excluídos são apagados direto."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para a utilização do Windows 10/11 na questão #12."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Shift + Delete ignora a Lixeira."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. F2 renomeia arquivos."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Não impede."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: `Win + E` = Explorador de Arquivos | `Win + L` = Bloquear Tela | `Win + Shift + S` = Captura de Tela / Print."
-    }
-  },
-  {
-    "id": "inf-so-013",
-    "subject": "Informática",
-    "topic": "4 e 10. Windows 10/11 - Operações #13",
-    "source": "IBFC / IBGE",
-    "difficulty": "Fácil",
-    "statement": "Com relação às funcionalidades do Windows 10/11 e manuseio de arquivos no IBGE (Questão #13), assinale a opção correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "A Lixeira do Windows armazena cópias de arquivos em pen drives externos automaticamente."
-      },
-      {
-        "key": "B",
-        "text": "O recurso do Windows testado na questão #13 otimiza o gerenciamento de janelas e o trabalho no sistema."
-      },
-      {
-        "key": "C",
-        "text": "O atalho Shift + Delete envia os arquivos obrigatoriamente para a Lixeira antes de apagar."
-      },
-      {
-        "key": "D",
-        "text": "A tecla F2 é utilizada exclusivamente para imprimir documentos em PDF."
-      },
-      {
-        "key": "E",
-        "text": "O Gerenciador de Tarefas impede a alteração de senhas no Windows."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Conhecimento prático dos atalhos, lixeira e ferramentas de sistema do Windows 10 e 11.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Arquivos de pen drives excluídos são apagados direto."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para a utilização do Windows 10/11 na questão #13."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Shift + Delete ignora a Lixeira."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. F2 renomeia arquivos."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Não impede."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: `Win + E` = Explorador de Arquivos | `Win + L` = Bloquear Tela | `Win + Shift + S` = Captura de Tela / Print."
-    }
-  },
-  {
-    "id": "inf-so-014",
-    "subject": "Informática",
-    "topic": "4 e 10. Windows 10/11 - Operações #14",
+    "topic": "4. Windows 10/11 - Atributo de Arquivo Oculto",
     "source": "IBFC / IBGE",
     "difficulty": "Médio",
-    "statement": "Com relação às funcionalidades do Windows 10/11 e manuseio de arquivos no IBGE (Questão #14), assinale a opção correta:",
+    "statement": "No Explorador de Arquivos do Windows 10/11, para visualizar os arquivos e pastas marcados com o atributo 'Oculto', o usuário deve acessar o menu superior de navegação e selecionar:",
     "options": [
       {
         "key": "A",
-        "text": "A Lixeira do Windows armazena cópias de arquivos em pen drives externos automaticamente."
+        "text": "Guia Exibir -> Marcar a caixa de seleção 'Itens Ocultos'."
       },
       {
         "key": "B",
-        "text": "O recurso do Windows testado na questão #14 otimiza o gerenciamento de janelas e o trabalho no sistema."
+        "text": "Guia Inserir -> Clicar no botão 'Revelar Segredos'."
       },
       {
         "key": "C",
-        "text": "O atalho Shift + Delete envia os arquivos obrigatoriamente para a Lixeira antes de apagar."
+        "text": "Guia Arquivo -> Selecionar 'Formatar Unidade'."
       },
       {
         "key": "D",
-        "text": "A tecla F2 é utilizada exclusivamente para imprimir documentos em PDF."
+        "text": "Pressionar as teclas Alt + F4 três vezes."
       },
       {
         "key": "E",
-        "text": "O Gerenciador de Tarefas impede a alteração de senhas no Windows."
+        "text": "Desligar o monitor de vídeo por 10 segundos."
       }
     ],
-    "correctOption": "B",
+    "correctOption": "A",
     "explanation": {
-      "summary": "Conhecimento prático dos atalhos, lixeira e ferramentas de sistema do Windows 10 e 11.",
+      "summary": "Na guia 'Exibir' da faixa de opções do Explorador de Arquivos do Windows 10/11, basta marcar a caixa 'Itens Ocultos' para tornar visíveis os arquivos protegidos com esse atributo.",
       "optionsAnalysis": [
         {
           "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Arquivos de pen drives excluídos são apagados direto."
+          "isCorrect": true,
+          "reason": "CORRETA. Guia Exibir -> Marcar a opção 'Itens Ocultos'."
         },
         {
           "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para a utilização do Windows 10/11 na questão #14."
+          "isCorrect": false,
+          "reason": "Incorreto. Não existe esse botão na guia Inserir."
         },
         {
           "key": "C",
           "isCorrect": false,
-          "reason": "Incorreto. Shift + Delete ignora a Lixeira."
+          "reason": "Incorreto. Formatar apaga os dados."
         },
         {
           "key": "D",
           "isCorrect": false,
-          "reason": "Incorreto. F2 renomeia arquivos."
+          "reason": "Incorreto. Alt + F4 fecha a janela."
         },
         {
           "key": "E",
           "isCorrect": false,
-          "reason": "Incorreto. Não impede."
+          "reason": "Incorreto."
         }
       ],
-      "bizu": "💡 BIZU IBFC: `Win + E` = Explorador de Arquivos | `Win + L` = Bloquear Tela | `Win + Shift + S` = Captura de Tela / Print."
-    }
-  },
-  {
-    "id": "inf-so-015",
-    "subject": "Informática",
-    "topic": "4 e 10. Windows 10/11 - Operações #15",
-    "source": "IBFC / IBGE",
-    "difficulty": "Difícil",
-    "statement": "Com relação às funcionalidades do Windows 10/11 e manuseio de arquivos no IBGE (Questão #15), assinale a opção correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "A Lixeira do Windows armazena cópias de arquivos em pen drives externos automaticamente."
-      },
-      {
-        "key": "B",
-        "text": "O recurso do Windows testado na questão #15 otimiza o gerenciamento de janelas e o trabalho no sistema."
-      },
-      {
-        "key": "C",
-        "text": "O atalho Shift + Delete envia os arquivos obrigatoriamente para a Lixeira antes de apagar."
-      },
-      {
-        "key": "D",
-        "text": "A tecla F2 é utilizada exclusivamente para imprimir documentos em PDF."
-      },
-      {
-        "key": "E",
-        "text": "O Gerenciador de Tarefas impede a alteração de senhas no Windows."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Conhecimento prático dos atalhos, lixeira e ferramentas de sistema do Windows 10 e 11.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Arquivos de pen drives excluídos são apagados direto."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para a utilização do Windows 10/11 na questão #15."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Shift + Delete ignora a Lixeira."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. F2 renomeia arquivos."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Não impede."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: `Win + E` = Explorador de Arquivos | `Win + L` = Bloquear Tela | `Win + Shift + S` = Captura de Tela / Print."
-    }
-  },
-  {
-    "id": "inf-so-016",
-    "subject": "Informática",
-    "topic": "4 e 10. Windows 10/11 - Operações #16",
-    "source": "IBFC / IBGE",
-    "difficulty": "Fácil",
-    "statement": "Com relação às funcionalidades do Windows 10/11 e manuseio de arquivos no IBGE (Questão #16), assinale a opção correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "A Lixeira do Windows armazena cópias de arquivos em pen drives externos automaticamente."
-      },
-      {
-        "key": "B",
-        "text": "O recurso do Windows testado na questão #16 otimiza o gerenciamento de janelas e o trabalho no sistema."
-      },
-      {
-        "key": "C",
-        "text": "O atalho Shift + Delete envia os arquivos obrigatoriamente para a Lixeira antes de apagar."
-      },
-      {
-        "key": "D",
-        "text": "A tecla F2 é utilizada exclusivamente para imprimir documentos em PDF."
-      },
-      {
-        "key": "E",
-        "text": "O Gerenciador de Tarefas impede a alteração de senhas no Windows."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Conhecimento prático dos atalhos, lixeira e ferramentas de sistema do Windows 10 e 11.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Arquivos de pen drives excluídos são apagados direto."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para a utilização do Windows 10/11 na questão #16."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Shift + Delete ignora a Lixeira."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. F2 renomeia arquivos."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Não impede."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: `Win + E` = Explorador de Arquivos | `Win + L` = Bloquear Tela | `Win + Shift + S` = Captura de Tela / Print."
-    }
-  },
-  {
-    "id": "inf-so-017",
-    "subject": "Informática",
-    "topic": "4 e 10. Windows 10/11 - Operações #17",
-    "source": "IBFC / IBGE",
-    "difficulty": "Médio",
-    "statement": "Com relação às funcionalidades do Windows 10/11 e manuseio de arquivos no IBGE (Questão #17), assinale a opção correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "A Lixeira do Windows armazena cópias de arquivos em pen drives externos automaticamente."
-      },
-      {
-        "key": "B",
-        "text": "O recurso do Windows testado na questão #17 otimiza o gerenciamento de janelas e o trabalho no sistema."
-      },
-      {
-        "key": "C",
-        "text": "O atalho Shift + Delete envia os arquivos obrigatoriamente para a Lixeira antes de apagar."
-      },
-      {
-        "key": "D",
-        "text": "A tecla F2 é utilizada exclusivamente para imprimir documentos em PDF."
-      },
-      {
-        "key": "E",
-        "text": "O Gerenciador de Tarefas impede a alteração de senhas no Windows."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Conhecimento prático dos atalhos, lixeira e ferramentas de sistema do Windows 10 e 11.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Arquivos de pen drives excluídos são apagados direto."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para a utilização do Windows 10/11 na questão #17."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Shift + Delete ignora a Lixeira."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. F2 renomeia arquivos."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Não impede."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: `Win + E` = Explorador de Arquivos | `Win + L` = Bloquear Tela | `Win + Shift + S` = Captura de Tela / Print."
-    }
-  },
-  {
-    "id": "inf-so-018",
-    "subject": "Informática",
-    "topic": "4 e 10. Windows 10/11 - Operações #18",
-    "source": "IBFC / IBGE",
-    "difficulty": "Difícil",
-    "statement": "Com relação às funcionalidades do Windows 10/11 e manuseio de arquivos no IBGE (Questão #18), assinale a opção correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "A Lixeira do Windows armazena cópias de arquivos em pen drives externos automaticamente."
-      },
-      {
-        "key": "B",
-        "text": "O recurso do Windows testado na questão #18 otimiza o gerenciamento de janelas e o trabalho no sistema."
-      },
-      {
-        "key": "C",
-        "text": "O atalho Shift + Delete envia os arquivos obrigatoriamente para a Lixeira antes de apagar."
-      },
-      {
-        "key": "D",
-        "text": "A tecla F2 é utilizada exclusivamente para imprimir documentos em PDF."
-      },
-      {
-        "key": "E",
-        "text": "O Gerenciador de Tarefas impede a alteração de senhas no Windows."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Conhecimento prático dos atalhos, lixeira e ferramentas de sistema do Windows 10 e 11.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Arquivos de pen drives excluídos são apagados direto."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para a utilização do Windows 10/11 na questão #18."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Shift + Delete ignora a Lixeira."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. F2 renomeia arquivos."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Não impede."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: `Win + E` = Explorador de Arquivos | `Win + L` = Bloquear Tela | `Win + Shift + S` = Captura de Tela / Print."
-    }
-  },
-  {
-    "id": "inf-so-019",
-    "subject": "Informática",
-    "topic": "4 e 10. Windows 10/11 - Operações #19",
-    "source": "IBFC / IBGE",
-    "difficulty": "Fácil",
-    "statement": "Com relação às funcionalidades do Windows 10/11 e manuseio de arquivos no IBGE (Questão #19), assinale a opção correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "A Lixeira do Windows armazena cópias de arquivos em pen drives externos automaticamente."
-      },
-      {
-        "key": "B",
-        "text": "O recurso do Windows testado na questão #19 otimiza o gerenciamento de janelas e o trabalho no sistema."
-      },
-      {
-        "key": "C",
-        "text": "O atalho Shift + Delete envia os arquivos obrigatoriamente para a Lixeira antes de apagar."
-      },
-      {
-        "key": "D",
-        "text": "A tecla F2 é utilizada exclusivamente para imprimir documentos em PDF."
-      },
-      {
-        "key": "E",
-        "text": "O Gerenciador de Tarefas impede a alteração de senhas no Windows."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Conhecimento prático dos atalhos, lixeira e ferramentas de sistema do Windows 10 e 11.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Arquivos de pen drives excluídos são apagados direto."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para a utilização do Windows 10/11 na questão #19."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Shift + Delete ignora a Lixeira."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. F2 renomeia arquivos."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Não impede."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: `Win + E` = Explorador de Arquivos | `Win + L` = Bloquear Tela | `Win + Shift + S` = Captura de Tela / Print."
-    }
-  },
-  {
-    "id": "inf-so-020",
-    "subject": "Informática",
-    "topic": "4 e 10. Windows 10/11 - Operações #20",
-    "source": "IBFC / IBGE",
-    "difficulty": "Médio",
-    "statement": "Com relação às funcionalidades do Windows 10/11 e manuseio de arquivos no IBGE (Questão #20), assinale a opção correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "A Lixeira do Windows armazena cópias de arquivos em pen drives externos automaticamente."
-      },
-      {
-        "key": "B",
-        "text": "O recurso do Windows testado na questão #20 otimiza o gerenciamento de janelas e o trabalho no sistema."
-      },
-      {
-        "key": "C",
-        "text": "O atalho Shift + Delete envia os arquivos obrigatoriamente para a Lixeira antes de apagar."
-      },
-      {
-        "key": "D",
-        "text": "A tecla F2 é utilizada exclusivamente para imprimir documentos em PDF."
-      },
-      {
-        "key": "E",
-        "text": "O Gerenciador de Tarefas impede a alteração de senhas no Windows."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Conhecimento prático dos atalhos, lixeira e ferramentas de sistema do Windows 10 e 11.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Arquivos de pen drives excluídos são apagados direto."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para a utilização do Windows 10/11 na questão #20."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Shift + Delete ignora a Lixeira."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. F2 renomeia arquivos."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Não impede."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: `Win + E` = Explorador de Arquivos | `Win + L` = Bloquear Tela | `Win + Shift + S` = Captura de Tela / Print."
-    }
-  },
-  {
-    "id": "inf-so-021",
-    "subject": "Informática",
-    "topic": "4 e 10. Windows 10/11 - Operações #21",
-    "source": "IBFC / IBGE",
-    "difficulty": "Difícil",
-    "statement": "Com relação às funcionalidades do Windows 10/11 e manuseio de arquivos no IBGE (Questão #21), assinale a opção correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "A Lixeira do Windows armazena cópias de arquivos em pen drives externos automaticamente."
-      },
-      {
-        "key": "B",
-        "text": "O recurso do Windows testado na questão #21 otimiza o gerenciamento de janelas e o trabalho no sistema."
-      },
-      {
-        "key": "C",
-        "text": "O atalho Shift + Delete envia os arquivos obrigatoriamente para a Lixeira antes de apagar."
-      },
-      {
-        "key": "D",
-        "text": "A tecla F2 é utilizada exclusivamente para imprimir documentos em PDF."
-      },
-      {
-        "key": "E",
-        "text": "O Gerenciador de Tarefas impede a alteração de senhas no Windows."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Conhecimento prático dos atalhos, lixeira e ferramentas de sistema do Windows 10 e 11.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Arquivos de pen drives excluídos são apagados direto."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para a utilização do Windows 10/11 na questão #21."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Shift + Delete ignora a Lixeira."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. F2 renomeia arquivos."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Não impede."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: `Win + E` = Explorador de Arquivos | `Win + L` = Bloquear Tela | `Win + Shift + S` = Captura de Tela / Print."
-    }
-  },
-  {
-    "id": "inf-so-022",
-    "subject": "Informática",
-    "topic": "4 e 10. Windows 10/11 - Operações #22",
-    "source": "IBFC / IBGE",
-    "difficulty": "Fácil",
-    "statement": "Com relação às funcionalidades do Windows 10/11 e manuseio de arquivos no IBGE (Questão #22), assinale a opção correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "A Lixeira do Windows armazena cópias de arquivos em pen drives externos automaticamente."
-      },
-      {
-        "key": "B",
-        "text": "O recurso do Windows testado na questão #22 otimiza o gerenciamento de janelas e o trabalho no sistema."
-      },
-      {
-        "key": "C",
-        "text": "O atalho Shift + Delete envia os arquivos obrigatoriamente para a Lixeira antes de apagar."
-      },
-      {
-        "key": "D",
-        "text": "A tecla F2 é utilizada exclusivamente para imprimir documentos em PDF."
-      },
-      {
-        "key": "E",
-        "text": "O Gerenciador de Tarefas impede a alteração de senhas no Windows."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Conhecimento prático dos atalhos, lixeira e ferramentas de sistema do Windows 10 e 11.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Arquivos de pen drives excluídos são apagados direto."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para a utilização do Windows 10/11 na questão #22."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Shift + Delete ignora a Lixeira."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. F2 renomeia arquivos."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Não impede."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: `Win + E` = Explorador de Arquivos | `Win + L` = Bloquear Tela | `Win + Shift + S` = Captura de Tela / Print."
-    }
-  },
-  {
-    "id": "inf-so-023",
-    "subject": "Informática",
-    "topic": "4 e 10. Windows 10/11 - Operações #23",
-    "source": "IBFC / IBGE",
-    "difficulty": "Médio",
-    "statement": "Com relação às funcionalidades do Windows 10/11 e manuseio de arquivos no IBGE (Questão #23), assinale a opção correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "A Lixeira do Windows armazena cópias de arquivos em pen drives externos automaticamente."
-      },
-      {
-        "key": "B",
-        "text": "O recurso do Windows testado na questão #23 otimiza o gerenciamento de janelas e o trabalho no sistema."
-      },
-      {
-        "key": "C",
-        "text": "O atalho Shift + Delete envia os arquivos obrigatoriamente para a Lixeira antes de apagar."
-      },
-      {
-        "key": "D",
-        "text": "A tecla F2 é utilizada exclusivamente para imprimir documentos em PDF."
-      },
-      {
-        "key": "E",
-        "text": "O Gerenciador de Tarefas impede a alteração de senhas no Windows."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Conhecimento prático dos atalhos, lixeira e ferramentas de sistema do Windows 10 e 11.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Arquivos de pen drives excluídos são apagados direto."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para a utilização do Windows 10/11 na questão #23."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Shift + Delete ignora a Lixeira."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. F2 renomeia arquivos."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Não impede."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: `Win + E` = Explorador de Arquivos | `Win + L` = Bloquear Tela | `Win + Shift + S` = Captura de Tela / Print."
-    }
-  },
-  {
-    "id": "inf-so-024",
-    "subject": "Informática",
-    "topic": "4 e 10. Windows 10/11 - Operações #24",
-    "source": "IBFC / IBGE",
-    "difficulty": "Difícil",
-    "statement": "Com relação às funcionalidades do Windows 10/11 e manuseio de arquivos no IBGE (Questão #24), assinale a opção correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "A Lixeira do Windows armazena cópias de arquivos em pen drives externos automaticamente."
-      },
-      {
-        "key": "B",
-        "text": "O recurso do Windows testado na questão #24 otimiza o gerenciamento de janelas e o trabalho no sistema."
-      },
-      {
-        "key": "C",
-        "text": "O atalho Shift + Delete envia os arquivos obrigatoriamente para a Lixeira antes de apagar."
-      },
-      {
-        "key": "D",
-        "text": "A tecla F2 é utilizada exclusivamente para imprimir documentos em PDF."
-      },
-      {
-        "key": "E",
-        "text": "O Gerenciador de Tarefas impede a alteração de senhas no Windows."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Conhecimento prático dos atalhos, lixeira e ferramentas de sistema do Windows 10 e 11.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Arquivos de pen drives excluídos são apagados direto."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para a utilização do Windows 10/11 na questão #24."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Shift + Delete ignora a Lixeira."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. F2 renomeia arquivos."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Não impede."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: `Win + E` = Explorador de Arquivos | `Win + L` = Bloquear Tela | `Win + Shift + S` = Captura de Tela / Print."
-    }
-  },
-  {
-    "id": "inf-so-025",
-    "subject": "Informática",
-    "topic": "4 e 10. Windows 10/11 - Operações #25",
-    "source": "IBFC / IBGE",
-    "difficulty": "Fácil",
-    "statement": "Com relação às funcionalidades do Windows 10/11 e manuseio de arquivos no IBGE (Questão #25), assinale a opção correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "A Lixeira do Windows armazena cópias de arquivos em pen drives externos automaticamente."
-      },
-      {
-        "key": "B",
-        "text": "O recurso do Windows testado na questão #25 otimiza o gerenciamento de janelas e o trabalho no sistema."
-      },
-      {
-        "key": "C",
-        "text": "O atalho Shift + Delete envia os arquivos obrigatoriamente para a Lixeira antes de apagar."
-      },
-      {
-        "key": "D",
-        "text": "A tecla F2 é utilizada exclusivamente para imprimir documentos em PDF."
-      },
-      {
-        "key": "E",
-        "text": "O Gerenciador de Tarefas impede a alteração de senhas no Windows."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Conhecimento prático dos atalhos, lixeira e ferramentas de sistema do Windows 10 e 11.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Arquivos de pen drives excluídos são apagados direto."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para a utilização do Windows 10/11 na questão #25."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Shift + Delete ignora a Lixeira."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. F2 renomeia arquivos."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Não impede."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: `Win + E` = Explorador de Arquivos | `Win + L` = Bloquear Tela | `Win + Shift + S` = Captura de Tela / Print."
-    }
-  },
-  {
-    "id": "inf-so-026",
-    "subject": "Informática",
-    "topic": "4 e 10. Windows 10/11 - Operações #26",
-    "source": "IBFC / IBGE",
-    "difficulty": "Médio",
-    "statement": "Com relação às funcionalidades do Windows 10/11 e manuseio de arquivos no IBGE (Questão #26), assinale a opção correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "A Lixeira do Windows armazena cópias de arquivos em pen drives externos automaticamente."
-      },
-      {
-        "key": "B",
-        "text": "O recurso do Windows testado na questão #26 otimiza o gerenciamento de janelas e o trabalho no sistema."
-      },
-      {
-        "key": "C",
-        "text": "O atalho Shift + Delete envia os arquivos obrigatoriamente para a Lixeira antes de apagar."
-      },
-      {
-        "key": "D",
-        "text": "A tecla F2 é utilizada exclusivamente para imprimir documentos em PDF."
-      },
-      {
-        "key": "E",
-        "text": "O Gerenciador de Tarefas impede a alteração de senhas no Windows."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Conhecimento prático dos atalhos, lixeira e ferramentas de sistema do Windows 10 e 11.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Arquivos de pen drives excluídos são apagados direto."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para a utilização do Windows 10/11 na questão #26."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Shift + Delete ignora a Lixeira."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. F2 renomeia arquivos."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Não impede."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: `Win + E` = Explorador de Arquivos | `Win + L` = Bloquear Tela | `Win + Shift + S` = Captura de Tela / Print."
-    }
-  },
-  {
-    "id": "inf-so-027",
-    "subject": "Informática",
-    "topic": "4 e 10. Windows 10/11 - Operações #27",
-    "source": "IBFC / IBGE",
-    "difficulty": "Difícil",
-    "statement": "Com relação às funcionalidades do Windows 10/11 e manuseio de arquivos no IBGE (Questão #27), assinale a opção correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "A Lixeira do Windows armazena cópias de arquivos em pen drives externos automaticamente."
-      },
-      {
-        "key": "B",
-        "text": "O recurso do Windows testado na questão #27 otimiza o gerenciamento de janelas e o trabalho no sistema."
-      },
-      {
-        "key": "C",
-        "text": "O atalho Shift + Delete envia os arquivos obrigatoriamente para a Lixeira antes de apagar."
-      },
-      {
-        "key": "D",
-        "text": "A tecla F2 é utilizada exclusivamente para imprimir documentos em PDF."
-      },
-      {
-        "key": "E",
-        "text": "O Gerenciador de Tarefas impede a alteração de senhas no Windows."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Conhecimento prático dos atalhos, lixeira e ferramentas de sistema do Windows 10 e 11.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Arquivos de pen drives excluídos são apagados direto."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para a utilização do Windows 10/11 na questão #27."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Shift + Delete ignora a Lixeira."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. F2 renomeia arquivos."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Não impede."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: `Win + E` = Explorador de Arquivos | `Win + L` = Bloquear Tela | `Win + Shift + S` = Captura de Tela / Print."
-    }
-  },
-  {
-    "id": "inf-so-028",
-    "subject": "Informática",
-    "topic": "4 e 10. Windows 10/11 - Operações #28",
-    "source": "IBFC / IBGE",
-    "difficulty": "Fácil",
-    "statement": "Com relação às funcionalidades do Windows 10/11 e manuseio de arquivos no IBGE (Questão #28), assinale a opção correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "A Lixeira do Windows armazena cópias de arquivos em pen drives externos automaticamente."
-      },
-      {
-        "key": "B",
-        "text": "O recurso do Windows testado na questão #28 otimiza o gerenciamento de janelas e o trabalho no sistema."
-      },
-      {
-        "key": "C",
-        "text": "O atalho Shift + Delete envia os arquivos obrigatoriamente para a Lixeira antes de apagar."
-      },
-      {
-        "key": "D",
-        "text": "A tecla F2 é utilizada exclusivamente para imprimir documentos em PDF."
-      },
-      {
-        "key": "E",
-        "text": "O Gerenciador de Tarefas impede a alteração de senhas no Windows."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Conhecimento prático dos atalhos, lixeira e ferramentas de sistema do Windows 10 e 11.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Arquivos de pen drives excluídos são apagados direto."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para a utilização do Windows 10/11 na questão #28."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Shift + Delete ignora a Lixeira."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. F2 renomeia arquivos."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Não impede."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: `Win + E` = Explorador de Arquivos | `Win + L` = Bloquear Tela | `Win + Shift + S` = Captura de Tela / Print."
-    }
-  },
-  {
-    "id": "inf-so-029",
-    "subject": "Informática",
-    "topic": "4 e 10. Windows 10/11 - Operações #29",
-    "source": "IBFC / IBGE",
-    "difficulty": "Médio",
-    "statement": "Com relação às funcionalidades do Windows 10/11 e manuseio de arquivos no IBGE (Questão #29), assinale a opção correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "A Lixeira do Windows armazena cópias de arquivos em pen drives externos automaticamente."
-      },
-      {
-        "key": "B",
-        "text": "O recurso do Windows testado na questão #29 otimiza o gerenciamento de janelas e o trabalho no sistema."
-      },
-      {
-        "key": "C",
-        "text": "O atalho Shift + Delete envia os arquivos obrigatoriamente para a Lixeira antes de apagar."
-      },
-      {
-        "key": "D",
-        "text": "A tecla F2 é utilizada exclusivamente para imprimir documentos em PDF."
-      },
-      {
-        "key": "E",
-        "text": "O Gerenciador de Tarefas impede a alteração de senhas no Windows."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Conhecimento prático dos atalhos, lixeira e ferramentas de sistema do Windows 10 e 11.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Arquivos de pen drives excluídos são apagados direto."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para a utilização do Windows 10/11 na questão #29."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Shift + Delete ignora a Lixeira."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. F2 renomeia arquivos."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Não impede."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: `Win + E` = Explorador de Arquivos | `Win + L` = Bloquear Tela | `Win + Shift + S` = Captura de Tela / Print."
-    }
-  },
-  {
-    "id": "inf-so-030",
-    "subject": "Informática",
-    "topic": "4 e 10. Windows 10/11 - Operações #30",
-    "source": "IBFC / IBGE",
-    "difficulty": "Difícil",
-    "statement": "Com relação às funcionalidades do Windows 10/11 e manuseio de arquivos no IBGE (Questão #30), assinale a opção correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "A Lixeira do Windows armazena cópias de arquivos em pen drives externos automaticamente."
-      },
-      {
-        "key": "B",
-        "text": "O recurso do Windows testado na questão #30 otimiza o gerenciamento de janelas e o trabalho no sistema."
-      },
-      {
-        "key": "C",
-        "text": "O atalho Shift + Delete envia os arquivos obrigatoriamente para a Lixeira antes de apagar."
-      },
-      {
-        "key": "D",
-        "text": "A tecla F2 é utilizada exclusivamente para imprimir documentos em PDF."
-      },
-      {
-        "key": "E",
-        "text": "O Gerenciador de Tarefas impede a alteração de senhas no Windows."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Conhecimento prático dos atalhos, lixeira e ferramentas de sistema do Windows 10 e 11.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Arquivos de pen drives excluídos são apagados direto."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para a utilização do Windows 10/11 na questão #30."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Shift + Delete ignora a Lixeira."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. F2 renomeia arquivos."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Não impede."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: `Win + E` = Explorador de Arquivos | `Win + L` = Bloquear Tela | `Win + Shift + S` = Captura de Tela / Print."
+      "bizu": "💡 BIZU IBFC: Para ver pastas ocultas no Windows: Guia Exibir -> Caixa de seleção 'Itens Ocultos'."
     }
   },
   {
@@ -3416,28 +1370,28 @@ export const QUESTIONS_DATABASE: Question[] = [
     "subject": "Informática",
     "topic": "4. Android 13+ - Permissão de Notificações",
     "source": "IBFC / IBGE",
-    "difficulty": "Fácil",
-    "statement": "No sistema operacional móvel Android 13 ou superior, qual importante mudança de privacidade em relação às NOTIFICAÇÕES foi implementada?",
+    "difficulty": "Médio",
+    "statement": "No sistema operacional móvel Android 13 (ou superior), utilizado nos dispositivos de coleta do IBGE, qual a alteração de segurança implementada em relação às Notificações?",
     "options": [
       {
         "key": "A",
-        "text": "Os aplicativos são proibidos de exibir qualquer notificação."
+        "text": "Os aplicativos são proibidos de enviar notificações sonoras."
       },
       {
         "key": "B",
-        "text": "Os aplicativos recém-instalados devem solicitar EXPLICITAMENTE permissão ao usuário antes de enviar notificações."
+        "text": "O envio de notificações passou a exigir autorização prévia e explícita do usuário (permissão runtime POST_NOTIFICATIONS)."
       },
       {
         "key": "C",
-        "text": "Todas as notificações são enviadas por SMS."
+        "text": "As notificações são convertidas automaticamente em mensagens de SMS."
       },
       {
         "key": "D",
-        "text": "O Bluetooth precisa ficar ligado para receber notificações."
+        "text": "É obrigatório conectar o smartphone à tomada para receber notificações."
       },
       {
         "key": "E",
-        "text": "Notificações só funcionam ao carregar o aparelho."
+        "text": "Notificações só funcionam com a tela desbloqueada."
       }
     ],
     "correctOption": "B",
@@ -3476,55 +1430,55 @@ export const QUESTIONS_DATABASE: Question[] = [
   {
     "id": "inf-and-002",
     "subject": "Informática",
-    "topic": "4. Android 13+ - Seletor de Fotos e Mídia",
+    "topic": "4. Android 13+ - Seletor de Fotos (Photo Picker)",
     "source": "IBFC / IBGE",
     "difficulty": "Médio",
-    "statement": "No Android 13+, o recurso 'Seletor de Fotos' (Photo Picker) permite ao usuário:",
+    "statement": "O recurso 'Seletor de Fotos' (Photo Picker), aprimorado no Android 13+, tem como principal objetivo de privacidade:",
     "options": [
       {
         "key": "A",
-        "text": "Conceder acesso a toda a memória do celular para qualquer aplicativo."
+        "text": "Permitir que o aplicativo acesse todos os arquivos e documentos da memória interna do celular."
       },
       {
         "key": "B",
-        "text": "Compartilhar apenas fotos e vídeos selecionados especificamente com o app, sem dar acesso a toda a galeria."
+        "text": "Permitir ao usuário compartilhar apenas fotos e vídeos específicos com um aplicativo, sem conceder acesso a toda a sua galeria de mídias."
       },
       {
         "key": "C",
-        "text": "Apagar a memória ROM do smartphone permanentemente."
+        "text": "Apagar as fotos antigas após 24 horas de uso."
       },
       {
         "key": "D",
-        "text": "Converter arquivos MP4 em documentos de texto Word."
+        "text": "Exigir senha de administrador a cada foto tirada pela câmera."
       },
       {
         "key": "E",
-        "text": "Bloquear o sinal Wi-Fi da agência."
+        "text": "Impedir o envio de imagens via WhatsApp."
       }
     ],
     "correctOption": "B",
     "explanation": {
-      "summary": "O Photo Picker do Android 13+ reforça a privacidade ao permitir escolher apenas arquivos específicos para enviar ao app, sem dar permissão total à galeria.",
+      "summary": "O Photo Picker reduz o acesso excessivo a dados. Em vez de dar permissão a toda a galeria (`READ_MEDIA_IMAGES`), o usuário seleciona somente as imagens necessárias para o app.",
       "optionsAnalysis": [
         {
           "key": "A",
           "isCorrect": false,
-          "reason": "Incorreto. O objetivo é justamente evitar acesso total."
+          "reason": "Incorreto. O objetivo é justamente limitar o acesso ao armazenamento."
         },
         {
           "key": "B",
           "isCorrect": true,
-          "reason": "CORRETA. Permite selecionar apenas arquivos específicos sem liberar a galeria toda."
+          "reason": "CORRETA. Seletor de Fotos = Compartilha apenas fotos escolhidas sem expor toda a galeria."
         },
         {
           "key": "C",
           "isCorrect": false,
-          "reason": "Incorreto."
+          "reason": "Incorreto. Não apaga fotos."
         },
         {
           "key": "D",
           "isCorrect": false,
-          "reason": "Incorreto."
+          "reason": "Incorreto. Não exige senha de administrador."
         },
         {
           "key": "E",
@@ -3532,924 +1486,242 @@ export const QUESTIONS_DATABASE: Question[] = [
           "reason": "Incorreto."
         }
       ],
-      "bizu": "💡 BIZU IBFC (ANDROID 13+): Seletor de Fotos (Photo Picker) = Compartilha APENAS fotos escolhidas, sem expor toda a galeria."
+      "bizu": "💡 BIZU IBFC (ANDROID 13+): Photo Picker = Proteção de Privacidade. O app acessa APENAS as fotos selecionadas."
     }
   },
   {
     "id": "inf-and-003",
     "subject": "Informática",
-    "topic": "4. Android 13+ - Recursos #3",
+    "topic": "4. Android 13+ - Localização Precisa vs Aproximada",
     "source": "IBFC / IBGE",
-    "difficulty": "Difícil",
-    "statement": "Em relação ao uso de dispositivos móveis com Android 13+ em pesquisas do IBGE (Questão #3), assinale a alternativa correta:",
+    "difficulty": "Médio",
+    "statement": "Ao conceder permissão de localização a um aplicativo no Android 13+, o sistema oferece duas opções ao usuário: Localização 'Precisa' e Localização 'Aproximada'. Qual a diferença prática entre elas?",
     "options": [
       {
         "key": "A",
-        "text": "O Android 13 proíbe o uso de GPS em pesquisas de campo."
+        "text": "A localização precisa utiliza sinal de satélite GPS exato (com margem de poucos metros), enquanto a aproximada utiliza torres de celular e Wi-Fi para estimar a região sem expor a posição exata."
       },
       {
         "key": "B",
-        "text": "Os recursos de controle de privacidade e permissões no Android 13 (questão #3) protegem os dados coletados pelos agentes."
+        "text": "A localização aproximada formata a memória do aparelho."
       },
       {
         "key": "C",
-        "text": "No Android 13, não é possível ativar a conectividade Wi-Fi e Bluetooth simultaneamente."
+        "text": "A localização precisa funciona apenas com a bateria acima de 90%."
       },
       {
         "key": "D",
-        "text": "A biometria facial não é suportada por sistemas operacionais móveis modernos."
+        "text": "A localização aproximada impede o uso do aplicativo de chamadas telefônicas."
       },
       {
         "key": "E",
-        "text": "O Modo Avião ativa a transmissão de dados 5G em alta velocidade."
+        "text": "Ambas fornecem exatamente as mesmas coordenadas geográficas milimétricas."
       }
     ],
-    "correctOption": "B",
+    "correctOption": "A",
     "explanation": {
-      "summary": "Entendimento das diretrizes de segurança, permissões e funcionalidades do Android 13 em pesquisas do IBGE.",
+      "summary": "O Android 13+ reforça a privacidade oferecendo a escolha entre a localização 'Precisa' (GPS exato) e a 'Aproximada' (estimativa por rede/Wi-Fi), ideal para apps que não necessitam de navegação exata metro a metro.",
       "optionsAnalysis": [
         {
           "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. GPS é essencial para pesquisas."
+          "isCorrect": true,
+          "reason": "CORRETA. Precisa = GPS exato de metros | Aproximada = Estimativa por Wi-Fi/Torres sem expor posição exata."
         },
         {
           "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para a proteção de dados no Android 13 na questão #3."
+          "isCorrect": false,
+          "reason": "Incorreto."
         },
         {
           "key": "C",
           "isCorrect": false,
-          "reason": "Incorreto. Wi-Fi e Bluetooth funcionam juntos."
+          "reason": "Incorreto."
         },
         {
           "key": "D",
           "isCorrect": false,
-          "reason": "Incorreto. Biometria facial é suportada."
+          "reason": "Incorreto."
         },
         {
           "key": "E",
           "isCorrect": false,
-          "reason": "Incorreto. Modo Avião desliga todas as conexões de rádio."
+          "reason": "Incorreto."
         }
       ],
-      "bizu": "💡 BIZU IBFC: Android 13+ prioriza Permissões Granulares (Localização Precisa vs Aproximada, Mídia e Notificações)."
+      "bizu": "💡 BIZU IBFC (ANDROID 13+): Permissão de Localização: Precisa (GPS exato) vs Aproximada (Torres/Wi-Fi por privacidade)."
     }
   },
   {
     "id": "inf-and-004",
     "subject": "Informática",
-    "topic": "4. Android 13+ - Recursos #4",
+    "topic": "4. Android 13+ - Painel de Privacidade",
     "source": "IBFC / IBGE",
     "difficulty": "Fácil",
-    "statement": "Em relação ao uso de dispositivos móveis com Android 13+ em pesquisas do IBGE (Questão #4), assinale a alternativa correta:",
+    "statement": "No Android 13+, o 'Painel de Privacidade' (Privacy Dashboard) localizado nas configurações do sistema permite:",
     "options": [
       {
         "key": "A",
-        "text": "O Android 13 proíbe o uso de GPS em pesquisas de campo."
+        "text": "Visualizar um histórico detalhado das últimas 24 horas informando quais aplicativos acessaram a câmera, microfone e localização."
       },
       {
         "key": "B",
-        "text": "Os recursos de controle de privacidade e permissões no Android 13 (questão #4) protegem os dados coletados pelos agentes."
+        "text": "Formatador de fábrica ativado por voz."
       },
       {
         "key": "C",
-        "text": "No Android 13, não é possível ativar a conectividade Wi-Fi e Bluetooth simultaneamente."
+        "text": "Alterar o plano da operadora de telefonia móvel sem pagar taxas."
       },
       {
         "key": "D",
-        "text": "A biometria facial não é suportada por sistemas operacionais móveis modernos."
+        "text": "Acelerar a velocidade do processador do celular em 300%."
       },
       {
         "key": "E",
-        "text": "O Modo Avião ativa a transmissão de dados 5G em alta velocidade."
+        "text": "Substituir o cartão de memória SIM."
       }
     ],
-    "correctOption": "B",
+    "correctOption": "A",
     "explanation": {
-      "summary": "Entendimento das diretrizes de segurança, permissões e funcionalidades do Android 13 em pesquisas do IBGE.",
+      "summary": "O Painel de Privacidade mostra uma linha do tempo e gráficos claros revelando quais apps acessaram dados sensíveis (Câmera, Microfone, Localização) ao longo das últimas 24 horas.",
       "optionsAnalysis": [
         {
           "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. GPS é essencial para pesquisas."
+          "isCorrect": true,
+          "reason": "CORRETA. Painel de Privacidade = Histórico das 24h de uso da Câmera, Microfone e Localização."
         },
         {
           "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para a proteção de dados no Android 13 na questão #4."
+          "isCorrect": false,
+          "reason": "Incorreto."
         },
         {
           "key": "C",
           "isCorrect": false,
-          "reason": "Incorreto. Wi-Fi e Bluetooth funcionam juntos."
+          "reason": "Incorreto."
         },
         {
           "key": "D",
           "isCorrect": false,
-          "reason": "Incorreto. Biometria facial é suportada."
+          "reason": "Incorreto."
         },
         {
           "key": "E",
           "isCorrect": false,
-          "reason": "Incorreto. Modo Avião desliga todas as conexões de rádio."
+          "reason": "Incorreto."
         }
       ],
-      "bizu": "💡 BIZU IBFC: Android 13+ prioriza Permissões Granulares (Localização Precisa vs Aproximada, Mídia e Notificações)."
-    }
-  },
-  {
-    "id": "inf-and-005",
-    "subject": "Informática",
-    "topic": "4. Android 13+ - Recursos #5",
-    "source": "IBFC / IBGE",
-    "difficulty": "Médio",
-    "statement": "Em relação ao uso de dispositivos móveis com Android 13+ em pesquisas do IBGE (Questão #5), assinale a alternativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "O Android 13 proíbe o uso de GPS em pesquisas de campo."
-      },
-      {
-        "key": "B",
-        "text": "Os recursos de controle de privacidade e permissões no Android 13 (questão #5) protegem os dados coletados pelos agentes."
-      },
-      {
-        "key": "C",
-        "text": "No Android 13, não é possível ativar a conectividade Wi-Fi e Bluetooth simultaneamente."
-      },
-      {
-        "key": "D",
-        "text": "A biometria facial não é suportada por sistemas operacionais móveis modernos."
-      },
-      {
-        "key": "E",
-        "text": "O Modo Avião ativa a transmissão de dados 5G em alta velocidade."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Entendimento das diretrizes de segurança, permissões e funcionalidades do Android 13 em pesquisas do IBGE.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. GPS é essencial para pesquisas."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para a proteção de dados no Android 13 na questão #5."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Wi-Fi e Bluetooth funcionam juntos."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Biometria facial é suportada."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Modo Avião desliga todas as conexões de rádio."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Android 13+ prioriza Permissões Granulares (Localização Precisa vs Aproximada, Mídia e Notificações)."
-    }
-  },
-  {
-    "id": "inf-and-006",
-    "subject": "Informática",
-    "topic": "4. Android 13+ - Recursos #6",
-    "source": "IBFC / IBGE",
-    "difficulty": "Difícil",
-    "statement": "Em relação ao uso de dispositivos móveis com Android 13+ em pesquisas do IBGE (Questão #6), assinale a alternativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "O Android 13 proíbe o uso de GPS em pesquisas de campo."
-      },
-      {
-        "key": "B",
-        "text": "Os recursos de controle de privacidade e permissões no Android 13 (questão #6) protegem os dados coletados pelos agentes."
-      },
-      {
-        "key": "C",
-        "text": "No Android 13, não é possível ativar a conectividade Wi-Fi e Bluetooth simultaneamente."
-      },
-      {
-        "key": "D",
-        "text": "A biometria facial não é suportada por sistemas operacionais móveis modernos."
-      },
-      {
-        "key": "E",
-        "text": "O Modo Avião ativa a transmissão de dados 5G em alta velocidade."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Entendimento das diretrizes de segurança, permissões e funcionalidades do Android 13 em pesquisas do IBGE.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. GPS é essencial para pesquisas."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para a proteção de dados no Android 13 na questão #6."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Wi-Fi e Bluetooth funcionam juntos."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Biometria facial é suportada."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Modo Avião desliga todas as conexões de rádio."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Android 13+ prioriza Permissões Granulares (Localização Precisa vs Aproximada, Mídia e Notificações)."
-    }
-  },
-  {
-    "id": "inf-and-007",
-    "subject": "Informática",
-    "topic": "4. Android 13+ - Recursos #7",
-    "source": "IBFC / IBGE",
-    "difficulty": "Fácil",
-    "statement": "Em relação ao uso de dispositivos móveis com Android 13+ em pesquisas do IBGE (Questão #7), assinale a alternativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "O Android 13 proíbe o uso de GPS em pesquisas de campo."
-      },
-      {
-        "key": "B",
-        "text": "Os recursos de controle de privacidade e permissões no Android 13 (questão #7) protegem os dados coletados pelos agentes."
-      },
-      {
-        "key": "C",
-        "text": "No Android 13, não é possível ativar a conectividade Wi-Fi e Bluetooth simultaneamente."
-      },
-      {
-        "key": "D",
-        "text": "A biometria facial não é suportada por sistemas operacionais móveis modernos."
-      },
-      {
-        "key": "E",
-        "text": "O Modo Avião ativa a transmissão de dados 5G em alta velocidade."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Entendimento das diretrizes de segurança, permissões e funcionalidades do Android 13 em pesquisas do IBGE.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. GPS é essencial para pesquisas."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para a proteção de dados no Android 13 na questão #7."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Wi-Fi e Bluetooth funcionam juntos."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Biometria facial é suportada."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Modo Avião desliga todas as conexões de rádio."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Android 13+ prioriza Permissões Granulares (Localização Precisa vs Aproximada, Mídia e Notificações)."
-    }
-  },
-  {
-    "id": "inf-and-008",
-    "subject": "Informática",
-    "topic": "4. Android 13+ - Recursos #8",
-    "source": "IBFC / IBGE",
-    "difficulty": "Médio",
-    "statement": "Em relação ao uso de dispositivos móveis com Android 13+ em pesquisas do IBGE (Questão #8), assinale a alternativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "O Android 13 proíbe o uso de GPS em pesquisas de campo."
-      },
-      {
-        "key": "B",
-        "text": "Os recursos de controle de privacidade e permissões no Android 13 (questão #8) protegem os dados coletados pelos agentes."
-      },
-      {
-        "key": "C",
-        "text": "No Android 13, não é possível ativar a conectividade Wi-Fi e Bluetooth simultaneamente."
-      },
-      {
-        "key": "D",
-        "text": "A biometria facial não é suportada por sistemas operacionais móveis modernos."
-      },
-      {
-        "key": "E",
-        "text": "O Modo Avião ativa a transmissão de dados 5G em alta velocidade."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Entendimento das diretrizes de segurança, permissões e funcionalidades do Android 13 em pesquisas do IBGE.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. GPS é essencial para pesquisas."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para a proteção de dados no Android 13 na questão #8."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Wi-Fi e Bluetooth funcionam juntos."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Biometria facial é suportada."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Modo Avião desliga todas as conexões de rádio."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Android 13+ prioriza Permissões Granulares (Localização Precisa vs Aproximada, Mídia e Notificações)."
-    }
-  },
-  {
-    "id": "inf-and-009",
-    "subject": "Informática",
-    "topic": "4. Android 13+ - Recursos #9",
-    "source": "IBFC / IBGE",
-    "difficulty": "Difícil",
-    "statement": "Em relação ao uso de dispositivos móveis com Android 13+ em pesquisas do IBGE (Questão #9), assinale a alternativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "O Android 13 proíbe o uso de GPS em pesquisas de campo."
-      },
-      {
-        "key": "B",
-        "text": "Os recursos de controle de privacidade e permissões no Android 13 (questão #9) protegem os dados coletados pelos agentes."
-      },
-      {
-        "key": "C",
-        "text": "No Android 13, não é possível ativar a conectividade Wi-Fi e Bluetooth simultaneamente."
-      },
-      {
-        "key": "D",
-        "text": "A biometria facial não é suportada por sistemas operacionais móveis modernos."
-      },
-      {
-        "key": "E",
-        "text": "O Modo Avião ativa a transmissão de dados 5G em alta velocidade."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Entendimento das diretrizes de segurança, permissões e funcionalidades do Android 13 em pesquisas do IBGE.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. GPS é essencial para pesquisas."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para a proteção de dados no Android 13 na questão #9."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Wi-Fi e Bluetooth funcionam juntos."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Biometria facial é suportada."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Modo Avião desliga todas as conexões de rádio."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Android 13+ prioriza Permissões Granulares (Localização Precisa vs Aproximada, Mídia e Notificações)."
-    }
-  },
-  {
-    "id": "inf-and-010",
-    "subject": "Informática",
-    "topic": "4. Android 13+ - Recursos #10",
-    "source": "IBFC / IBGE",
-    "difficulty": "Fácil",
-    "statement": "Em relação ao uso de dispositivos móveis com Android 13+ em pesquisas do IBGE (Questão #10), assinale a alternativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "O Android 13 proíbe o uso de GPS em pesquisas de campo."
-      },
-      {
-        "key": "B",
-        "text": "Os recursos de controle de privacidade e permissões no Android 13 (questão #10) protegem os dados coletados pelos agentes."
-      },
-      {
-        "key": "C",
-        "text": "No Android 13, não é possível ativar a conectividade Wi-Fi e Bluetooth simultaneamente."
-      },
-      {
-        "key": "D",
-        "text": "A biometria facial não é suportada por sistemas operacionais móveis modernos."
-      },
-      {
-        "key": "E",
-        "text": "O Modo Avião ativa a transmissão de dados 5G em alta velocidade."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Entendimento das diretrizes de segurança, permissões e funcionalidades do Android 13 em pesquisas do IBGE.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. GPS é essencial para pesquisas."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para a proteção de dados no Android 13 na questão #10."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Wi-Fi e Bluetooth funcionam juntos."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Biometria facial é suportada."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Modo Avião desliga todas as conexões de rádio."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Android 13+ prioriza Permissões Granulares (Localização Precisa vs Aproximada, Mídia e Notificações)."
-    }
-  },
-  {
-    "id": "inf-and-011",
-    "subject": "Informática",
-    "topic": "4. Android 13+ - Recursos #11",
-    "source": "IBFC / IBGE",
-    "difficulty": "Médio",
-    "statement": "Em relação ao uso de dispositivos móveis com Android 13+ em pesquisas do IBGE (Questão #11), assinale a alternativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "O Android 13 proíbe o uso de GPS em pesquisas de campo."
-      },
-      {
-        "key": "B",
-        "text": "Os recursos de controle de privacidade e permissões no Android 13 (questão #11) protegem os dados coletados pelos agentes."
-      },
-      {
-        "key": "C",
-        "text": "No Android 13, não é possível ativar a conectividade Wi-Fi e Bluetooth simultaneamente."
-      },
-      {
-        "key": "D",
-        "text": "A biometria facial não é suportada por sistemas operacionais móveis modernos."
-      },
-      {
-        "key": "E",
-        "text": "O Modo Avião ativa a transmissão de dados 5G em alta velocidade."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Entendimento das diretrizes de segurança, permissões e funcionalidades do Android 13 em pesquisas do IBGE.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. GPS é essencial para pesquisas."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para a proteção de dados no Android 13 na questão #11."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Wi-Fi e Bluetooth funcionam juntos."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Biometria facial é suportada."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Modo Avião desliga todas as conexões de rádio."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Android 13+ prioriza Permissões Granulares (Localização Precisa vs Aproximada, Mídia e Notificações)."
-    }
-  },
-  {
-    "id": "inf-and-012",
-    "subject": "Informática",
-    "topic": "4. Android 13+ - Recursos #12",
-    "source": "IBFC / IBGE",
-    "difficulty": "Difícil",
-    "statement": "Em relação ao uso de dispositivos móveis com Android 13+ em pesquisas do IBGE (Questão #12), assinale a alternativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "O Android 13 proíbe o uso de GPS em pesquisas de campo."
-      },
-      {
-        "key": "B",
-        "text": "Os recursos de controle de privacidade e permissões no Android 13 (questão #12) protegem os dados coletados pelos agentes."
-      },
-      {
-        "key": "C",
-        "text": "No Android 13, não é possível ativar a conectividade Wi-Fi e Bluetooth simultaneamente."
-      },
-      {
-        "key": "D",
-        "text": "A biometria facial não é suportada por sistemas operacionais móveis modernos."
-      },
-      {
-        "key": "E",
-        "text": "O Modo Avião ativa a transmissão de dados 5G em alta velocidade."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Entendimento das diretrizes de segurança, permissões e funcionalidades do Android 13 em pesquisas do IBGE.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. GPS é essencial para pesquisas."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para a proteção de dados no Android 13 na questão #12."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Wi-Fi e Bluetooth funcionam juntos."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Biometria facial é suportada."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Modo Avião desliga todas as conexões de rádio."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Android 13+ prioriza Permissões Granulares (Localização Precisa vs Aproximada, Mídia e Notificações)."
-    }
-  },
-  {
-    "id": "inf-and-013",
-    "subject": "Informática",
-    "topic": "4. Android 13+ - Recursos #13",
-    "source": "IBFC / IBGE",
-    "difficulty": "Fácil",
-    "statement": "Em relação ao uso de dispositivos móveis com Android 13+ em pesquisas do IBGE (Questão #13), assinale a alternativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "O Android 13 proíbe o uso de GPS em pesquisas de campo."
-      },
-      {
-        "key": "B",
-        "text": "Os recursos de controle de privacidade e permissões no Android 13 (questão #13) protegem os dados coletados pelos agentes."
-      },
-      {
-        "key": "C",
-        "text": "No Android 13, não é possível ativar a conectividade Wi-Fi e Bluetooth simultaneamente."
-      },
-      {
-        "key": "D",
-        "text": "A biometria facial não é suportada por sistemas operacionais móveis modernos."
-      },
-      {
-        "key": "E",
-        "text": "O Modo Avião ativa a transmissão de dados 5G em alta velocidade."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Entendimento das diretrizes de segurança, permissões e funcionalidades do Android 13 em pesquisas do IBGE.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. GPS é essencial para pesquisas."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para a proteção de dados no Android 13 na questão #13."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Wi-Fi e Bluetooth funcionam juntos."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Biometria facial é suportada."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Modo Avião desliga todas as conexões de rádio."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Android 13+ prioriza Permissões Granulares (Localização Precisa vs Aproximada, Mídia e Notificações)."
-    }
-  },
-  {
-    "id": "inf-and-014",
-    "subject": "Informática",
-    "topic": "4. Android 13+ - Recursos #14",
-    "source": "IBFC / IBGE",
-    "difficulty": "Médio",
-    "statement": "Em relação ao uso de dispositivos móveis com Android 13+ em pesquisas do IBGE (Questão #14), assinale a alternativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "O Android 13 proíbe o uso de GPS em pesquisas de campo."
-      },
-      {
-        "key": "B",
-        "text": "Os recursos de controle de privacidade e permissões no Android 13 (questão #14) protegem os dados coletados pelos agentes."
-      },
-      {
-        "key": "C",
-        "text": "No Android 13, não é possível ativar a conectividade Wi-Fi e Bluetooth simultaneamente."
-      },
-      {
-        "key": "D",
-        "text": "A biometria facial não é suportada por sistemas operacionais móveis modernos."
-      },
-      {
-        "key": "E",
-        "text": "O Modo Avião ativa a transmissão de dados 5G em alta velocidade."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Entendimento das diretrizes de segurança, permissões e funcionalidades do Android 13 em pesquisas do IBGE.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. GPS é essencial para pesquisas."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para a proteção de dados no Android 13 na questão #14."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Wi-Fi e Bluetooth funcionam juntos."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Biometria facial é suportada."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Modo Avião desliga todas as conexões de rádio."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Android 13+ prioriza Permissões Granulares (Localização Precisa vs Aproximada, Mídia e Notificações)."
-    }
-  },
-  {
-    "id": "inf-and-015",
-    "subject": "Informática",
-    "topic": "4. Android 13+ - Recursos #15",
-    "source": "IBFC / IBGE",
-    "difficulty": "Difícil",
-    "statement": "Em relação ao uso de dispositivos móveis com Android 13+ em pesquisas do IBGE (Questão #15), assinale a alternativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "O Android 13 proíbe o uso de GPS em pesquisas de campo."
-      },
-      {
-        "key": "B",
-        "text": "Os recursos de controle de privacidade e permissões no Android 13 (questão #15) protegem os dados coletados pelos agentes."
-      },
-      {
-        "key": "C",
-        "text": "No Android 13, não é possível ativar a conectividade Wi-Fi e Bluetooth simultaneamente."
-      },
-      {
-        "key": "D",
-        "text": "A biometria facial não é suportada por sistemas operacionais móveis modernos."
-      },
-      {
-        "key": "E",
-        "text": "O Modo Avião ativa a transmissão de dados 5G em alta velocidade."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Entendimento das diretrizes de segurança, permissões e funcionalidades do Android 13 em pesquisas do IBGE.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. GPS é essencial para pesquisas."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para a proteção de dados no Android 13 na questão #15."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Wi-Fi e Bluetooth funcionam juntos."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Biometria facial é suportada."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Modo Avião desliga todas as conexões de rádio."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Android 13+ prioriza Permissões Granulares (Localização Precisa vs Aproximada, Mídia e Notificações)."
+      "bizu": "💡 BIZU IBFC: Painel de Privacidade (Android 13+) = Mostra quais apps usaram Câmera, Microfone e GPS nas últimas 24 horas."
     }
   },
   {
     "id": "inf-seg-001",
     "subject": "Informática",
-    "topic": "6. Segurança - Tipos de Backup (Full)",
+    "topic": "6. Segurança - Tipos de Backup (Full, Incremental, Diferencial)",
     "source": "IBFC / IBGE",
-    "difficulty": "Fácil",
-    "statement": "Para proteger os dados do censo contra falhas físicas, a equipe do IBGE realiza rotinas de backup. Qual tipo de backup realiza a cópia de TODOS os arquivos selecionados, independentemente de terem sido alterados ou não?",
+    "difficulty": "Médio",
+    "statement": "Uma organização realiza backup semanal. Na segunda-feira é feito um Backup FULL (Completo). Na terça, quarta e quinta são feitos backups INCREMENTAIS. Caso o sistema falhe na sexta-feira, o processo de restauração completa exigirá:",
     "options": [
       {
         "key": "A",
-        "text": "Backup Completo (Full)"
+        "text": "Apenas o backup realizado na quinta-feira."
       },
       {
         "key": "B",
-        "text": "Backup Incremental"
+        "text": "Apenas o backup Full realizado na segunda-feira."
       },
       {
         "key": "C",
-        "text": "Backup Diferencial"
+        "text": "O backup Full de segunda-feira E TODOS os backups incrementais (terça, quarta e quinta)."
       },
       {
         "key": "D",
-        "text": "Backup Espelho"
+        "text": "Apenas o último backup incremental de quinta-feira."
       },
       {
         "key": "E",
-        "text": "Backup Parcial"
+        "text": "A formatação completa de todas as unidades sem possibilidade de restauração."
       }
     ],
-    "correctOption": "A",
+    "correctOption": "C",
     "explanation": {
-      "summary": "O Backup Completo (Full) faz a cópia total de todos os arquivos e dados selecionados, servindo de base para os demais tipos de backup.",
+      "summary": "Para restaurar um plano de backup Incremental, necessita-se do último backup FULL mais TODOS os backups incrementais gerados em ordem cronológica até a data da falha.",
       "optionsAnalysis": [
         {
           "key": "A",
-          "isCorrect": true,
-          "reason": "CORRETA. Backup Completo (Full) = Copia 100% dos arquivos selecionados."
+          "isCorrect": false,
+          "reason": "Incorreto. Apenas a quinta-feira deixaria de fora os dados de segunda a quarta."
         },
         {
           "key": "B",
           "isCorrect": false,
-          "reason": "Incorreto. Incremental copia apenas o alterado desde o último backup."
+          "reason": "Incorreto. Apenas o Full deixaria de fora as alterações de terça a quinta."
         },
         {
           "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Diferencial copia o alterado desde o último FULL."
+          "isCorrect": true,
+          "reason": "CORRETA. Restaurar Incremental = ÚLTIMO FULL + TODOS OS INCREMENTAIS."
         },
         {
           "key": "D",
           "isCorrect": false,
-          "reason": "Incorreto. Espelho cria réplica exata."
+          "reason": "Incorreto. O incremental só guarda as mudanças do dia anterior."
         },
         {
           "key": "E",
           "isCorrect": false,
-          "reason": "Incorreto."
+          "reason": "Incorreto. A restauração é perfeitamente viável."
         }
       ],
-      "bizu": "💡 BIZU IBFC: FULL = Copia TUDO | INCREMENTAL = Copia alterado desde o ÚLTIMO backup | DIFERENCIAL = Copia alterado desde o último FULL."
+      "bizu": "💡 BIZU IBFC (RESTAURAÇÃO): Incremental = Último FULL + TODOS os incrementais | Diferencial = Último FULL + ÚLTIMO diferencial."
     }
   },
   {
     "id": "inf-seg-002",
     "subject": "Informática",
-    "topic": "6. Segurança - Backup Incremental vs Diferencial",
+    "topic": "6. Segurança - Backup Diferencial vs Incremental",
     "source": "IBFC / IBGE",
     "difficulty": "Médio",
-    "statement": "Qual a diferença principal entre o Backup Incremental e o Backup Diferencial em uma política de cópia de segurança?",
+    "statement": "Diferente do Backup Incremental, o Backup DIFERENCIAL caracteriza-se por copiar:",
     "options": [
       {
         "key": "A",
-        "text": "O Incremental copia todos os arquivos e o Diferencial não copia nada."
+        "text": "Todos os arquivos do sistema novamente todos os dias."
       },
       {
         "key": "B",
-        "text": "O Incremental copia dados alterados desde o ÚLTIMO backup (qualquer tipo), enquanto o Diferencial copia dados alterados desde o último backup FULL."
+        "text": "Apenas os arquivos alterados desde o ÚLTIMO backup do tipo FULL (Completo), acumulando as alterações."
       },
       {
         "key": "C",
-        "text": "O Diferencial apaga o disco rígido após a cópia."
+        "text": "Apenas os arquivos de fotos e vídeos em formato JPG."
       },
       {
         "key": "D",
-        "text": "Ambos realizam exatamente o mesmo processo sem diferença."
+        "text": "Apenas os arquivos da lixeira do Windows."
       },
       {
         "key": "E",
-        "text": "O Incremental é exclusivo de redes sem fio."
+        "text": "Dados exclusivos armazenados em fitas cassete de áudio."
       }
     ],
     "correctOption": "B",
     "explanation": {
-      "summary": "O Incremental copia apenas as alterações feitas desde o último backup realizado. O Diferencial acumula todas as alterações desde o último backup FULL.",
+      "summary": "O Backup Diferencial copia tudo o que foi alterado desde o último backup FULL. Cada backup diferencial subsequente contém todas as modificações acumuladas.",
       "optionsAnalysis": [
         {
           "key": "A",
           "isCorrect": false,
-          "reason": "Incorreto."
+          "reason": "Incorreto. Copiar tudo novamente é o backup FULL."
         },
         {
           "key": "B",
           "isCorrect": true,
-          "reason": "CORRETA. Incremental = Desde o último backup | Diferencial = Desde o último FULL."
+          "reason": "CORRETA. Diferencial = Copia dados alterados desde o último backup FULL (acumulativo)."
         },
         {
           "key": "C",
           "isCorrect": false,
-          "reason": "Incorreto."
+          "reason": "Incorreto. Não se limita a JPG."
         },
         {
           "key": "D",
@@ -4462,7 +1734,7 @@ export const QUESTIONS_DATABASE: Question[] = [
           "reason": "Incorreto."
         }
       ],
-      "bizu": "💡 BIZU IBFC: Restaurar Incremental = Último FULL + TODOS os incrementais | Restaurar Diferencial = Último FULL + ÚLTIMO diferencial."
+      "bizu": "💡 BIZU IBFC: Incremental = Copia desde o último backup realizado | Diferencial = Copia desde o último FULL."
     }
   },
   {
@@ -4470,61 +1742,61 @@ export const QUESTIONS_DATABASE: Question[] = [
     "subject": "Informática",
     "topic": "6. Segurança - Ransomware",
     "source": "IBFC / IBGE",
-    "difficulty": "Difícil",
-    "statement": "Assinale o tipo de malware que criptografa os arquivos do computador da vítima e exige o pagamento de um resgate para liberar a chave de acesso:",
+    "difficulty": "Fácil",
+    "statement": "Assinale a alternativa que descreve corretamente o ataque de malware do tipo RANSOMWARE:",
     "options": [
       {
         "key": "A",
-        "text": "Adware"
+        "text": "Programa que se oculta no sistema para exibir anúncios publicitários indesejados."
       },
       {
         "key": "B",
-        "text": "Ransomware"
+        "text": "Código malicioso que criptografa os arquivos do sistema e exige o pagamento de um resgate para disponibilizar a chave de decodificação."
       },
       {
         "key": "C",
-        "text": "Spyware"
+        "text": "Software legítimo que acelera o desempenho do processador."
       },
       {
         "key": "D",
-        "text": "Keylogger"
+        "text": "Dispositivo físico utilizado para filtrar pacotes de rede de dados."
       },
       {
         "key": "E",
-        "text": "Rootkit"
+        "text": "Técnica de invasão que altera o endereço IP da placa de rede."
       }
     ],
     "correctOption": "B",
     "explanation": {
-      "summary": "Ransomware (de 'Ransom' = resgate) sequestra dados via criptografia forte e exige pagamento (em criptomoedas) para a descriptografia.",
+      "summary": "Ransomware ('Ransom' = resgate) é o malware que sequestra dados bloqueando o acesso por meio de criptografia forte e exigindo resgate (geralmente em criptomoedas).",
       "optionsAnalysis": [
         {
           "key": "A",
           "isCorrect": false,
-          "reason": "Incorreto. Adware mostra anúncios."
+          "reason": "Incorreto. Exibir anúncios indesejados é função do Adware."
         },
         {
           "key": "B",
           "isCorrect": true,
-          "reason": "CORRETA. Ransomware = Criptografa arquivos e exige pagamento de resgate."
+          "reason": "CORRETA. Ransomware = Criptografia de arquivos com cobrança de resgate."
         },
         {
           "key": "C",
           "isCorrect": false,
-          "reason": "Incorreto. Spyware espiona."
+          "reason": "Incorreto. Não é software legítimo."
         },
         {
           "key": "D",
           "isCorrect": false,
-          "reason": "Incorreto. Keylogger captura teclas."
+          "reason": "Incorreto. Filtro de pacotes de rede é o Firewall."
         },
         {
           "key": "E",
           "isCorrect": false,
-          "reason": "Incorreto. Rootkit esconde ameaças."
+          "reason": "Incorreto. Alterar endereço IP é Spoofing de IP."
         }
       ],
-      "bizu": "💡 BIZU IBFC: Ransomware = Criptografia + Resgate | Keylogger = Teclas digitadas | Phishing = Pescaria de senhas."
+      "bizu": "💡 BIZU IBFC: Ransomware = Criptografia + Cobrança de Resgate | Keylogger = Captura Teclas | Phishing = Pescaria de senhas."
     }
   },
   {
@@ -4533,7 +1805,7 @@ export const QUESTIONS_DATABASE: Question[] = [
     "topic": "6. Segurança - Phishing",
     "source": "IBFC / IBGE",
     "difficulty": "Fácil",
-    "statement": "A técnica de fraude eletrônica em que o golpista envia e-mails falsos imitando bancos ou órgãos públicos para induzir a vítima a revelar senhas e dados pessoais é conhecida como:",
+    "statement": "Um funcionário do IBGE recebe uma mensagem de e-mail informando que sua conta será cancelada caso ele não clique em um link para atualizar seus dados bancários. O link direciona para uma página falsa idêntica à do banco. Trata-se de um golpe de:",
     "options": [
       {
         "key": "A",
@@ -4545,25 +1817,25 @@ export const QUESTIONS_DATABASE: Question[] = [
       },
       {
         "key": "C",
-        "text": "Defragmentação"
+        "text": "Defragmentação de Disco"
       },
       {
         "key": "D",
-        "text": "Screenlogger"
+        "text": "Backup Diferencial"
       },
       {
         "key": "E",
-        "text": "Spoofing de impressora"
+        "text": "Spyware Keylogger"
       }
     ],
     "correctOption": "A",
     "explanation": {
-      "summary": "Phishing ('pescaria') é um golpe de engenharia social que engana a vítima para capturar informações confidenciais através de sites ou mensagens falsas.",
+      "summary": "Phishing ('pescaria') é uma fraude eletrônica baseada em engenharia social que engana o usuário usando mensagens/sites clonados persuasivos para roubar senhas e dados confidenciais.",
       "optionsAnalysis": [
         {
           "key": "A",
           "isCorrect": true,
-          "reason": "CORRETA. Phishing = E-mails/sites falsos para capturar senhas e dados confidenciais."
+          "reason": "CORRETA. Phishing = E-mail/site falso para induzir o usuário a entregar dados sigilosos."
         },
         {
           "key": "B",
@@ -4573,20 +1845,20 @@ export const QUESTIONS_DATABASE: Question[] = [
         {
           "key": "C",
           "isCorrect": false,
-          "reason": "Incorreto. Desfragmentar é manutenção de disco."
+          "reason": "Incorreto. Defragmentar organiza arquivos no disco."
         },
         {
           "key": "D",
           "isCorrect": false,
-          "reason": "Incorreto. Screenlogger tira print da tela."
+          "reason": "Incorreto. Backup é cópia de segurança."
         },
         {
           "key": "E",
           "isCorrect": false,
-          "reason": "Incorreto."
+          "reason": "Incorreto. Keylogger grava teclas digitadas."
         }
       ],
-      "bizu": "💡 BIZU IBFC: Phishing = Pescaria de dados via e-mail ou link falso persuasivo."
+      "bizu": "💡 BIZU IBFC: Phishing = Pescaria de credenciais/senhas usando clonagem de e-mails ou sites institucionais."
     }
   },
   {
@@ -4595,1619 +1867,131 @@ export const QUESTIONS_DATABASE: Question[] = [
     "topic": "6. Segurança - Firewall vs Antivírus",
     "source": "IBFC / IBGE",
     "difficulty": "Médio",
-    "statement": "Qual a diferença conceitual primária entre um FIREWALL e um software ANTIVÍRUS?",
+    "statement": "A respeito das ferramentas de segurança de sistemas, assinale a opção que diferencia corretamente o FIREWALL do ANTIVÍRUS:",
     "options": [
       {
         "key": "A",
-        "text": "O Firewall elimina vírus do disco e o Antivírus bloqueia o tráfego de rede."
+        "text": "O Firewall remove vírus do disco rígido e o Antivírus bloqueia portas de comunicação de rede."
       },
       {
         "key": "B",
-        "text": "O Firewall atua como um filtro de tráfego de rede (portas e conexões), enquanto o Antivírus detecta e remove pragas virtuais instaladas no sistema."
+        "text": "O Firewall atua filtrando o tráfego de rede (bloqueando ou liberando portas e conexões), enquanto o Antivírus detecta e elimina arquivos e programas maliciosos no computador."
       },
       {
         "key": "C",
-        "text": "O Antivírus é um periférico de entrada e o Firewall é de saída."
+        "text": "O Antivírus é um hardware instalado na placa-mãe e o Firewall é um cabo de dados."
       },
       {
         "key": "D",
-        "text": "Ambos são o mesmo programa com nomes diferentes."
+        "text": "O Firewall substitui a necessidade de utilizar senhas nos sistemas."
       },
       {
         "key": "E",
-        "text": "O Firewall é exclusivo para impressoras."
+        "text": "O Antivírus bloqueia o acesso físico de pessoas à sala de servidores."
       }
     ],
     "correctOption": "B",
     "explanation": {
-      "summary": "O Firewall inspeciona conexões de rede (portas e protocolos), autorizando ou bloqueando tráfego. O Antivírus analisa arquivos e memória em busca de assinaturas ou comportamentos maliciosos.",
+      "summary": "O Firewall inspeciona e filtra pacotes de dados nas portas de comunicação de rede (entrada/saída). O Antivírus analisa arquivos no disco e memória para identificar e remover malwares.",
       "optionsAnalysis": [
         {
           "key": "A",
           "isCorrect": false,
-          "reason": "Incorreto. As funções estão invertidas na opção A."
+          "reason": "Incorreto. As atribuições estão invertidas na alternativa A."
         },
         {
           "key": "B",
           "isCorrect": true,
-          "reason": "CORRETA. Firewall = Filtro de rede | Antivírus = Detecção e remoção de pragas no sistema."
+          "reason": "CORRETA. Firewall = Filtro de tráfego de rede | Antivírus = Vacina contra malwares no sistema."
         },
         {
           "key": "C",
           "isCorrect": false,
-          "reason": "Incorreto."
+          "reason": "Incorreto. Ambos são predominantemente softwares de segurança."
         },
         {
           "key": "D",
           "isCorrect": false,
-          "reason": "Incorreto."
+          "reason": "Incorreto. Não substitui senhas."
         },
         {
           "key": "E",
           "isCorrect": false,
-          "reason": "Incorreto."
+          "reason": "Incorreto. Controle de acesso físico é segurança patrimonial."
         }
       ],
-      "bizu": "💡 BIZU IBFC: Firewall = Muro de rede (Filtra tráfego/portas) | Antivírus = Vacina contra malwares."
+      "bizu": "💡 BIZU IBFC: Firewall = Muro de proteção de REDE (Filtra portas/conexões) | Antivírus = Vacina contra PRAGAS no sistema."
     }
   },
   {
     "id": "inf-seg-006",
     "subject": "Informática",
-    "topic": "6. Segurança & Backup - Conceitos #6",
-    "source": "IBFC / IBGE",
-    "difficulty": "Difícil",
-    "statement": "No âmbito da segurança da informação e prevenção de perdas de dados no IBGE (Questão #6), assinale a afirmativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "Uma senha forte deve ser composta apenas por números em sequência como 123456."
-      },
-      {
-        "key": "B",
-        "text": "A política de segurança da informação e cópias de backup abordada na questão #6 garante a confidencialidade e integridade dos dados."
-      },
-      {
-        "key": "C",
-        "text": "O Firewall substitui totalmente a necessidade de realizar backups em nuvem."
-      },
-      {
-        "key": "D",
-        "text": "O Backup Incremental é aquele que formata o disco rígido após copiar os dados."
-      },
-      {
-        "key": "E",
-        "text": "O vírus de computador não precisa de programa hospedeiro para se propagar."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Princípios essenciais de segurança da informação (CIDAN), prevenção contra malwares e políticas de backup.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Senhas fortes exigem maiúsculas, minúsculas, números e símbolos."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para a proteção de dados na questão #6."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Firewall não faz backup."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Incremental não formata disco."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Vírus exige hospedeiro (Worm não exige)."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Princípios da Segurança = CIDAN (Confidencialidade, Integridade, Disponibilidade, Autenticidade, Não Repúdio)."
-    }
-  },
-  {
-    "id": "inf-seg-007",
-    "subject": "Informática",
-    "topic": "6. Segurança & Backup - Conceitos #7",
+    "topic": "6. Segurança - Keylogger",
     "source": "IBFC / IBGE",
     "difficulty": "Fácil",
-    "statement": "No âmbito da segurança da informação e prevenção de perdas de dados no IBGE (Questão #7), assinale a afirmativa correta:",
+    "statement": "Qual o tipo de spyware projetado especificamente para capturar e registrar sequencialmente todas as teclas digitadas pelo usuário no teclado físico do computador?",
     "options": [
       {
         "key": "A",
-        "text": "Uma senha forte deve ser composta apenas por números em sequência como 123456."
+        "text": "Keylogger"
       },
       {
         "key": "B",
-        "text": "A política de segurança da informação e cópias de backup abordada na questão #7 garante a confidencialidade e integridade dos dados."
+        "text": "Ransomware"
       },
       {
         "key": "C",
-        "text": "O Firewall substitui totalmente a necessidade de realizar backups em nuvem."
+        "text": "Worm"
       },
       {
         "key": "D",
-        "text": "O Backup Incremental é aquele que formata o disco rígido após copiar os dados."
+        "text": "Firewall de Filtro"
       },
       {
         "key": "E",
-        "text": "O vírus de computador não precisa de programa hospedeiro para se propagar."
+        "text": "Trojan Downloader"
       }
     ],
-    "correctOption": "B",
+    "correctOption": "A",
     "explanation": {
-      "summary": "Princípios essenciais de segurança da informação (CIDAN), prevenção contra malwares e políticas de backup.",
+      "summary": "Keylogger é um programa espião que monitora e grava todas as teclas digitadas no teclado físico, utilizado por criminosos para roubar senhas e dados de cartão.",
       "optionsAnalysis": [
         {
           "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Senhas fortes exigem maiúsculas, minúsculas, números e símbolos."
+          "isCorrect": true,
+          "reason": "CORRETA. Keylogger = Captura e registra as teclas digitadas."
         },
         {
           "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para a proteção de dados na questão #7."
+          "isCorrect": false,
+          "reason": "Incorreto. Ransomware sequestra por criptografia."
         },
         {
           "key": "C",
           "isCorrect": false,
-          "reason": "Incorreto. Firewall não faz backup."
+          "reason": "Incorreto. Worm se autorreplica na rede."
         },
         {
           "key": "D",
           "isCorrect": false,
-          "reason": "Incorreto. Incremental não formata disco."
+          "reason": "Incorreto. Firewall é proteção de rede."
         },
         {
           "key": "E",
           "isCorrect": false,
-          "reason": "Incorreto. Vírus exige hospedeiro (Worm não exige)."
+          "reason": "Incorreto. Trojan baixa outros malwares."
         }
       ],
-      "bizu": "💡 BIZU IBFC: Princípios da Segurança = CIDAN (Confidencialidade, Integridade, Disponibilidade, Autenticidade, Não Repúdio)."
-    }
-  },
-  {
-    "id": "inf-seg-008",
-    "subject": "Informática",
-    "topic": "6. Segurança & Backup - Conceitos #8",
-    "source": "IBFC / IBGE",
-    "difficulty": "Médio",
-    "statement": "No âmbito da segurança da informação e prevenção de perdas de dados no IBGE (Questão #8), assinale a afirmativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "Uma senha forte deve ser composta apenas por números em sequência como 123456."
-      },
-      {
-        "key": "B",
-        "text": "A política de segurança da informação e cópias de backup abordada na questão #8 garante a confidencialidade e integridade dos dados."
-      },
-      {
-        "key": "C",
-        "text": "O Firewall substitui totalmente a necessidade de realizar backups em nuvem."
-      },
-      {
-        "key": "D",
-        "text": "O Backup Incremental é aquele que formata o disco rígido após copiar os dados."
-      },
-      {
-        "key": "E",
-        "text": "O vírus de computador não precisa de programa hospedeiro para se propagar."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Princípios essenciais de segurança da informação (CIDAN), prevenção contra malwares e políticas de backup.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Senhas fortes exigem maiúsculas, minúsculas, números e símbolos."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para a proteção de dados na questão #8."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Firewall não faz backup."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Incremental não formata disco."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Vírus exige hospedeiro (Worm não exige)."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Princípios da Segurança = CIDAN (Confidencialidade, Integridade, Disponibilidade, Autenticidade, Não Repúdio)."
-    }
-  },
-  {
-    "id": "inf-seg-009",
-    "subject": "Informática",
-    "topic": "6. Segurança & Backup - Conceitos #9",
-    "source": "IBFC / IBGE",
-    "difficulty": "Difícil",
-    "statement": "No âmbito da segurança da informação e prevenção de perdas de dados no IBGE (Questão #9), assinale a afirmativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "Uma senha forte deve ser composta apenas por números em sequência como 123456."
-      },
-      {
-        "key": "B",
-        "text": "A política de segurança da informação e cópias de backup abordada na questão #9 garante a confidencialidade e integridade dos dados."
-      },
-      {
-        "key": "C",
-        "text": "O Firewall substitui totalmente a necessidade de realizar backups em nuvem."
-      },
-      {
-        "key": "D",
-        "text": "O Backup Incremental é aquele que formata o disco rígido após copiar os dados."
-      },
-      {
-        "key": "E",
-        "text": "O vírus de computador não precisa de programa hospedeiro para se propagar."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Princípios essenciais de segurança da informação (CIDAN), prevenção contra malwares e políticas de backup.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Senhas fortes exigem maiúsculas, minúsculas, números e símbolos."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para a proteção de dados na questão #9."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Firewall não faz backup."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Incremental não formata disco."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Vírus exige hospedeiro (Worm não exige)."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Princípios da Segurança = CIDAN (Confidencialidade, Integridade, Disponibilidade, Autenticidade, Não Repúdio)."
-    }
-  },
-  {
-    "id": "inf-seg-010",
-    "subject": "Informática",
-    "topic": "6. Segurança & Backup - Conceitos #10",
-    "source": "IBFC / IBGE",
-    "difficulty": "Fácil",
-    "statement": "No âmbito da segurança da informação e prevenção de perdas de dados no IBGE (Questão #10), assinale a afirmativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "Uma senha forte deve ser composta apenas por números em sequência como 123456."
-      },
-      {
-        "key": "B",
-        "text": "A política de segurança da informação e cópias de backup abordada na questão #10 garante a confidencialidade e integridade dos dados."
-      },
-      {
-        "key": "C",
-        "text": "O Firewall substitui totalmente a necessidade de realizar backups em nuvem."
-      },
-      {
-        "key": "D",
-        "text": "O Backup Incremental é aquele que formata o disco rígido após copiar os dados."
-      },
-      {
-        "key": "E",
-        "text": "O vírus de computador não precisa de programa hospedeiro para se propagar."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Princípios essenciais de segurança da informação (CIDAN), prevenção contra malwares e políticas de backup.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Senhas fortes exigem maiúsculas, minúsculas, números e símbolos."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para a proteção de dados na questão #10."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Firewall não faz backup."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Incremental não formata disco."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Vírus exige hospedeiro (Worm não exige)."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Princípios da Segurança = CIDAN (Confidencialidade, Integridade, Disponibilidade, Autenticidade, Não Repúdio)."
-    }
-  },
-  {
-    "id": "inf-seg-011",
-    "subject": "Informática",
-    "topic": "6. Segurança & Backup - Conceitos #11",
-    "source": "IBFC / IBGE",
-    "difficulty": "Médio",
-    "statement": "No âmbito da segurança da informação e prevenção de perdas de dados no IBGE (Questão #11), assinale a afirmativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "Uma senha forte deve ser composta apenas por números em sequência como 123456."
-      },
-      {
-        "key": "B",
-        "text": "A política de segurança da informação e cópias de backup abordada na questão #11 garante a confidencialidade e integridade dos dados."
-      },
-      {
-        "key": "C",
-        "text": "O Firewall substitui totalmente a necessidade de realizar backups em nuvem."
-      },
-      {
-        "key": "D",
-        "text": "O Backup Incremental é aquele que formata o disco rígido após copiar os dados."
-      },
-      {
-        "key": "E",
-        "text": "O vírus de computador não precisa de programa hospedeiro para se propagar."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Princípios essenciais de segurança da informação (CIDAN), prevenção contra malwares e políticas de backup.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Senhas fortes exigem maiúsculas, minúsculas, números e símbolos."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para a proteção de dados na questão #11."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Firewall não faz backup."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Incremental não formata disco."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Vírus exige hospedeiro (Worm não exige)."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Princípios da Segurança = CIDAN (Confidencialidade, Integridade, Disponibilidade, Autenticidade, Não Repúdio)."
-    }
-  },
-  {
-    "id": "inf-seg-012",
-    "subject": "Informática",
-    "topic": "6. Segurança & Backup - Conceitos #12",
-    "source": "IBFC / IBGE",
-    "difficulty": "Difícil",
-    "statement": "No âmbito da segurança da informação e prevenção de perdas de dados no IBGE (Questão #12), assinale a afirmativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "Uma senha forte deve ser composta apenas por números em sequência como 123456."
-      },
-      {
-        "key": "B",
-        "text": "A política de segurança da informação e cópias de backup abordada na questão #12 garante a confidencialidade e integridade dos dados."
-      },
-      {
-        "key": "C",
-        "text": "O Firewall substitui totalmente a necessidade de realizar backups em nuvem."
-      },
-      {
-        "key": "D",
-        "text": "O Backup Incremental é aquele que formata o disco rígido após copiar os dados."
-      },
-      {
-        "key": "E",
-        "text": "O vírus de computador não precisa de programa hospedeiro para se propagar."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Princípios essenciais de segurança da informação (CIDAN), prevenção contra malwares e políticas de backup.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Senhas fortes exigem maiúsculas, minúsculas, números e símbolos."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para a proteção de dados na questão #12."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Firewall não faz backup."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Incremental não formata disco."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Vírus exige hospedeiro (Worm não exige)."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Princípios da Segurança = CIDAN (Confidencialidade, Integridade, Disponibilidade, Autenticidade, Não Repúdio)."
-    }
-  },
-  {
-    "id": "inf-seg-013",
-    "subject": "Informática",
-    "topic": "6. Segurança & Backup - Conceitos #13",
-    "source": "IBFC / IBGE",
-    "difficulty": "Fácil",
-    "statement": "No âmbito da segurança da informação e prevenção de perdas de dados no IBGE (Questão #13), assinale a afirmativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "Uma senha forte deve ser composta apenas por números em sequência como 123456."
-      },
-      {
-        "key": "B",
-        "text": "A política de segurança da informação e cópias de backup abordada na questão #13 garante a confidencialidade e integridade dos dados."
-      },
-      {
-        "key": "C",
-        "text": "O Firewall substitui totalmente a necessidade de realizar backups em nuvem."
-      },
-      {
-        "key": "D",
-        "text": "O Backup Incremental é aquele que formata o disco rígido após copiar os dados."
-      },
-      {
-        "key": "E",
-        "text": "O vírus de computador não precisa de programa hospedeiro para se propagar."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Princípios essenciais de segurança da informação (CIDAN), prevenção contra malwares e políticas de backup.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Senhas fortes exigem maiúsculas, minúsculas, números e símbolos."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para a proteção de dados na questão #13."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Firewall não faz backup."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Incremental não formata disco."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Vírus exige hospedeiro (Worm não exige)."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Princípios da Segurança = CIDAN (Confidencialidade, Integridade, Disponibilidade, Autenticidade, Não Repúdio)."
-    }
-  },
-  {
-    "id": "inf-seg-014",
-    "subject": "Informática",
-    "topic": "6. Segurança & Backup - Conceitos #14",
-    "source": "IBFC / IBGE",
-    "difficulty": "Médio",
-    "statement": "No âmbito da segurança da informação e prevenção de perdas de dados no IBGE (Questão #14), assinale a afirmativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "Uma senha forte deve ser composta apenas por números em sequência como 123456."
-      },
-      {
-        "key": "B",
-        "text": "A política de segurança da informação e cópias de backup abordada na questão #14 garante a confidencialidade e integridade dos dados."
-      },
-      {
-        "key": "C",
-        "text": "O Firewall substitui totalmente a necessidade de realizar backups em nuvem."
-      },
-      {
-        "key": "D",
-        "text": "O Backup Incremental é aquele que formata o disco rígido após copiar os dados."
-      },
-      {
-        "key": "E",
-        "text": "O vírus de computador não precisa de programa hospedeiro para se propagar."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Princípios essenciais de segurança da informação (CIDAN), prevenção contra malwares e políticas de backup.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Senhas fortes exigem maiúsculas, minúsculas, números e símbolos."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para a proteção de dados na questão #14."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Firewall não faz backup."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Incremental não formata disco."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Vírus exige hospedeiro (Worm não exige)."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Princípios da Segurança = CIDAN (Confidencialidade, Integridade, Disponibilidade, Autenticidade, Não Repúdio)."
-    }
-  },
-  {
-    "id": "inf-seg-015",
-    "subject": "Informática",
-    "topic": "6. Segurança & Backup - Conceitos #15",
-    "source": "IBFC / IBGE",
-    "difficulty": "Difícil",
-    "statement": "No âmbito da segurança da informação e prevenção de perdas de dados no IBGE (Questão #15), assinale a afirmativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "Uma senha forte deve ser composta apenas por números em sequência como 123456."
-      },
-      {
-        "key": "B",
-        "text": "A política de segurança da informação e cópias de backup abordada na questão #15 garante a confidencialidade e integridade dos dados."
-      },
-      {
-        "key": "C",
-        "text": "O Firewall substitui totalmente a necessidade de realizar backups em nuvem."
-      },
-      {
-        "key": "D",
-        "text": "O Backup Incremental é aquele que formata o disco rígido após copiar os dados."
-      },
-      {
-        "key": "E",
-        "text": "O vírus de computador não precisa de programa hospedeiro para se propagar."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Princípios essenciais de segurança da informação (CIDAN), prevenção contra malwares e políticas de backup.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Senhas fortes exigem maiúsculas, minúsculas, números e símbolos."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para a proteção de dados na questão #15."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Firewall não faz backup."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Incremental não formata disco."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Vírus exige hospedeiro (Worm não exige)."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Princípios da Segurança = CIDAN (Confidencialidade, Integridade, Disponibilidade, Autenticidade, Não Repúdio)."
-    }
-  },
-  {
-    "id": "inf-seg-016",
-    "subject": "Informática",
-    "topic": "6. Segurança & Backup - Conceitos #16",
-    "source": "IBFC / IBGE",
-    "difficulty": "Fácil",
-    "statement": "No âmbito da segurança da informação e prevenção de perdas de dados no IBGE (Questão #16), assinale a afirmativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "Uma senha forte deve ser composta apenas por números em sequência como 123456."
-      },
-      {
-        "key": "B",
-        "text": "A política de segurança da informação e cópias de backup abordada na questão #16 garante a confidencialidade e integridade dos dados."
-      },
-      {
-        "key": "C",
-        "text": "O Firewall substitui totalmente a necessidade de realizar backups em nuvem."
-      },
-      {
-        "key": "D",
-        "text": "O Backup Incremental é aquele que formata o disco rígido após copiar os dados."
-      },
-      {
-        "key": "E",
-        "text": "O vírus de computador não precisa de programa hospedeiro para se propagar."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Princípios essenciais de segurança da informação (CIDAN), prevenção contra malwares e políticas de backup.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Senhas fortes exigem maiúsculas, minúsculas, números e símbolos."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para a proteção de dados na questão #16."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Firewall não faz backup."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Incremental não formata disco."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Vírus exige hospedeiro (Worm não exige)."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Princípios da Segurança = CIDAN (Confidencialidade, Integridade, Disponibilidade, Autenticidade, Não Repúdio)."
-    }
-  },
-  {
-    "id": "inf-seg-017",
-    "subject": "Informática",
-    "topic": "6. Segurança & Backup - Conceitos #17",
-    "source": "IBFC / IBGE",
-    "difficulty": "Médio",
-    "statement": "No âmbito da segurança da informação e prevenção de perdas de dados no IBGE (Questão #17), assinale a afirmativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "Uma senha forte deve ser composta apenas por números em sequência como 123456."
-      },
-      {
-        "key": "B",
-        "text": "A política de segurança da informação e cópias de backup abordada na questão #17 garante a confidencialidade e integridade dos dados."
-      },
-      {
-        "key": "C",
-        "text": "O Firewall substitui totalmente a necessidade de realizar backups em nuvem."
-      },
-      {
-        "key": "D",
-        "text": "O Backup Incremental é aquele que formata o disco rígido após copiar os dados."
-      },
-      {
-        "key": "E",
-        "text": "O vírus de computador não precisa de programa hospedeiro para se propagar."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Princípios essenciais de segurança da informação (CIDAN), prevenção contra malwares e políticas de backup.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Senhas fortes exigem maiúsculas, minúsculas, números e símbolos."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para a proteção de dados na questão #17."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Firewall não faz backup."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Incremental não formata disco."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Vírus exige hospedeiro (Worm não exige)."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Princípios da Segurança = CIDAN (Confidencialidade, Integridade, Disponibilidade, Autenticidade, Não Repúdio)."
-    }
-  },
-  {
-    "id": "inf-seg-018",
-    "subject": "Informática",
-    "topic": "6. Segurança & Backup - Conceitos #18",
-    "source": "IBFC / IBGE",
-    "difficulty": "Difícil",
-    "statement": "No âmbito da segurança da informação e prevenção de perdas de dados no IBGE (Questão #18), assinale a afirmativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "Uma senha forte deve ser composta apenas por números em sequência como 123456."
-      },
-      {
-        "key": "B",
-        "text": "A política de segurança da informação e cópias de backup abordada na questão #18 garante a confidencialidade e integridade dos dados."
-      },
-      {
-        "key": "C",
-        "text": "O Firewall substitui totalmente a necessidade de realizar backups em nuvem."
-      },
-      {
-        "key": "D",
-        "text": "O Backup Incremental é aquele que formata o disco rígido após copiar os dados."
-      },
-      {
-        "key": "E",
-        "text": "O vírus de computador não precisa de programa hospedeiro para se propagar."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Princípios essenciais de segurança da informação (CIDAN), prevenção contra malwares e políticas de backup.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Senhas fortes exigem maiúsculas, minúsculas, números e símbolos."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para a proteção de dados na questão #18."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Firewall não faz backup."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Incremental não formata disco."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Vírus exige hospedeiro (Worm não exige)."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Princípios da Segurança = CIDAN (Confidencialidade, Integridade, Disponibilidade, Autenticidade, Não Repúdio)."
-    }
-  },
-  {
-    "id": "inf-seg-019",
-    "subject": "Informática",
-    "topic": "6. Segurança & Backup - Conceitos #19",
-    "source": "IBFC / IBGE",
-    "difficulty": "Fácil",
-    "statement": "No âmbito da segurança da informação e prevenção de perdas de dados no IBGE (Questão #19), assinale a afirmativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "Uma senha forte deve ser composta apenas por números em sequência como 123456."
-      },
-      {
-        "key": "B",
-        "text": "A política de segurança da informação e cópias de backup abordada na questão #19 garante a confidencialidade e integridade dos dados."
-      },
-      {
-        "key": "C",
-        "text": "O Firewall substitui totalmente a necessidade de realizar backups em nuvem."
-      },
-      {
-        "key": "D",
-        "text": "O Backup Incremental é aquele que formata o disco rígido após copiar os dados."
-      },
-      {
-        "key": "E",
-        "text": "O vírus de computador não precisa de programa hospedeiro para se propagar."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Princípios essenciais de segurança da informação (CIDAN), prevenção contra malwares e políticas de backup.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Senhas fortes exigem maiúsculas, minúsculas, números e símbolos."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para a proteção de dados na questão #19."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Firewall não faz backup."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Incremental não formata disco."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Vírus exige hospedeiro (Worm não exige)."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Princípios da Segurança = CIDAN (Confidencialidade, Integridade, Disponibilidade, Autenticidade, Não Repúdio)."
-    }
-  },
-  {
-    "id": "inf-seg-020",
-    "subject": "Informática",
-    "topic": "6. Segurança & Backup - Conceitos #20",
-    "source": "IBFC / IBGE",
-    "difficulty": "Médio",
-    "statement": "No âmbito da segurança da informação e prevenção de perdas de dados no IBGE (Questão #20), assinale a afirmativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "Uma senha forte deve ser composta apenas por números em sequência como 123456."
-      },
-      {
-        "key": "B",
-        "text": "A política de segurança da informação e cópias de backup abordada na questão #20 garante a confidencialidade e integridade dos dados."
-      },
-      {
-        "key": "C",
-        "text": "O Firewall substitui totalmente a necessidade de realizar backups em nuvem."
-      },
-      {
-        "key": "D",
-        "text": "O Backup Incremental é aquele que formata o disco rígido após copiar os dados."
-      },
-      {
-        "key": "E",
-        "text": "O vírus de computador não precisa de programa hospedeiro para se propagar."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Princípios essenciais de segurança da informação (CIDAN), prevenção contra malwares e políticas de backup.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Senhas fortes exigem maiúsculas, minúsculas, números e símbolos."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para a proteção de dados na questão #20."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Firewall não faz backup."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Incremental não formata disco."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Vírus exige hospedeiro (Worm não exige)."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Princípios da Segurança = CIDAN (Confidencialidade, Integridade, Disponibilidade, Autenticidade, Não Repúdio)."
-    }
-  },
-  {
-    "id": "inf-seg-021",
-    "subject": "Informática",
-    "topic": "6. Segurança & Backup - Conceitos #21",
-    "source": "IBFC / IBGE",
-    "difficulty": "Difícil",
-    "statement": "No âmbito da segurança da informação e prevenção de perdas de dados no IBGE (Questão #21), assinale a afirmativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "Uma senha forte deve ser composta apenas por números em sequência como 123456."
-      },
-      {
-        "key": "B",
-        "text": "A política de segurança da informação e cópias de backup abordada na questão #21 garante a confidencialidade e integridade dos dados."
-      },
-      {
-        "key": "C",
-        "text": "O Firewall substitui totalmente a necessidade de realizar backups em nuvem."
-      },
-      {
-        "key": "D",
-        "text": "O Backup Incremental é aquele que formata o disco rígido após copiar os dados."
-      },
-      {
-        "key": "E",
-        "text": "O vírus de computador não precisa de programa hospedeiro para se propagar."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Princípios essenciais de segurança da informação (CIDAN), prevenção contra malwares e políticas de backup.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Senhas fortes exigem maiúsculas, minúsculas, números e símbolos."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para a proteção de dados na questão #21."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Firewall não faz backup."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Incremental não formata disco."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Vírus exige hospedeiro (Worm não exige)."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Princípios da Segurança = CIDAN (Confidencialidade, Integridade, Disponibilidade, Autenticidade, Não Repúdio)."
-    }
-  },
-  {
-    "id": "inf-seg-022",
-    "subject": "Informática",
-    "topic": "6. Segurança & Backup - Conceitos #22",
-    "source": "IBFC / IBGE",
-    "difficulty": "Fácil",
-    "statement": "No âmbito da segurança da informação e prevenção de perdas de dados no IBGE (Questão #22), assinale a afirmativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "Uma senha forte deve ser composta apenas por números em sequência como 123456."
-      },
-      {
-        "key": "B",
-        "text": "A política de segurança da informação e cópias de backup abordada na questão #22 garante a confidencialidade e integridade dos dados."
-      },
-      {
-        "key": "C",
-        "text": "O Firewall substitui totalmente a necessidade de realizar backups em nuvem."
-      },
-      {
-        "key": "D",
-        "text": "O Backup Incremental é aquele que formata o disco rígido após copiar os dados."
-      },
-      {
-        "key": "E",
-        "text": "O vírus de computador não precisa de programa hospedeiro para se propagar."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Princípios essenciais de segurança da informação (CIDAN), prevenção contra malwares e políticas de backup.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Senhas fortes exigem maiúsculas, minúsculas, números e símbolos."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para a proteção de dados na questão #22."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Firewall não faz backup."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Incremental não formata disco."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Vírus exige hospedeiro (Worm não exige)."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Princípios da Segurança = CIDAN (Confidencialidade, Integridade, Disponibilidade, Autenticidade, Não Repúdio)."
-    }
-  },
-  {
-    "id": "inf-seg-023",
-    "subject": "Informática",
-    "topic": "6. Segurança & Backup - Conceitos #23",
-    "source": "IBFC / IBGE",
-    "difficulty": "Médio",
-    "statement": "No âmbito da segurança da informação e prevenção de perdas de dados no IBGE (Questão #23), assinale a afirmativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "Uma senha forte deve ser composta apenas por números em sequência como 123456."
-      },
-      {
-        "key": "B",
-        "text": "A política de segurança da informação e cópias de backup abordada na questão #23 garante a confidencialidade e integridade dos dados."
-      },
-      {
-        "key": "C",
-        "text": "O Firewall substitui totalmente a necessidade de realizar backups em nuvem."
-      },
-      {
-        "key": "D",
-        "text": "O Backup Incremental é aquele que formata o disco rígido após copiar os dados."
-      },
-      {
-        "key": "E",
-        "text": "O vírus de computador não precisa de programa hospedeiro para se propagar."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Princípios essenciais de segurança da informação (CIDAN), prevenção contra malwares e políticas de backup.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Senhas fortes exigem maiúsculas, minúsculas, números e símbolos."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para a proteção de dados na questão #23."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Firewall não faz backup."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Incremental não formata disco."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Vírus exige hospedeiro (Worm não exige)."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Princípios da Segurança = CIDAN (Confidencialidade, Integridade, Disponibilidade, Autenticidade, Não Repúdio)."
-    }
-  },
-  {
-    "id": "inf-seg-024",
-    "subject": "Informática",
-    "topic": "6. Segurança & Backup - Conceitos #24",
-    "source": "IBFC / IBGE",
-    "difficulty": "Difícil",
-    "statement": "No âmbito da segurança da informação e prevenção de perdas de dados no IBGE (Questão #24), assinale a afirmativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "Uma senha forte deve ser composta apenas por números em sequência como 123456."
-      },
-      {
-        "key": "B",
-        "text": "A política de segurança da informação e cópias de backup abordada na questão #24 garante a confidencialidade e integridade dos dados."
-      },
-      {
-        "key": "C",
-        "text": "O Firewall substitui totalmente a necessidade de realizar backups em nuvem."
-      },
-      {
-        "key": "D",
-        "text": "O Backup Incremental é aquele que formata o disco rígido após copiar os dados."
-      },
-      {
-        "key": "E",
-        "text": "O vírus de computador não precisa de programa hospedeiro para se propagar."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Princípios essenciais de segurança da informação (CIDAN), prevenção contra malwares e políticas de backup.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Senhas fortes exigem maiúsculas, minúsculas, números e símbolos."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para a proteção de dados na questão #24."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Firewall não faz backup."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Incremental não formata disco."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Vírus exige hospedeiro (Worm não exige)."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Princípios da Segurança = CIDAN (Confidencialidade, Integridade, Disponibilidade, Autenticidade, Não Repúdio)."
-    }
-  },
-  {
-    "id": "inf-seg-025",
-    "subject": "Informática",
-    "topic": "6. Segurança & Backup - Conceitos #25",
-    "source": "IBFC / IBGE",
-    "difficulty": "Fácil",
-    "statement": "No âmbito da segurança da informação e prevenção de perdas de dados no IBGE (Questão #25), assinale a afirmativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "Uma senha forte deve ser composta apenas por números em sequência como 123456."
-      },
-      {
-        "key": "B",
-        "text": "A política de segurança da informação e cópias de backup abordada na questão #25 garante a confidencialidade e integridade dos dados."
-      },
-      {
-        "key": "C",
-        "text": "O Firewall substitui totalmente a necessidade de realizar backups em nuvem."
-      },
-      {
-        "key": "D",
-        "text": "O Backup Incremental é aquele que formata o disco rígido após copiar os dados."
-      },
-      {
-        "key": "E",
-        "text": "O vírus de computador não precisa de programa hospedeiro para se propagar."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Princípios essenciais de segurança da informação (CIDAN), prevenção contra malwares e políticas de backup.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Senhas fortes exigem maiúsculas, minúsculas, números e símbolos."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para a proteção de dados na questão #25."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Firewall não faz backup."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Incremental não formata disco."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Vírus exige hospedeiro (Worm não exige)."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Princípios da Segurança = CIDAN (Confidencialidade, Integridade, Disponibilidade, Autenticidade, Não Repúdio)."
-    }
-  },
-  {
-    "id": "inf-seg-026",
-    "subject": "Informática",
-    "topic": "6. Segurança & Backup - Conceitos #26",
-    "source": "IBFC / IBGE",
-    "difficulty": "Médio",
-    "statement": "No âmbito da segurança da informação e prevenção de perdas de dados no IBGE (Questão #26), assinale a afirmativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "Uma senha forte deve ser composta apenas por números em sequência como 123456."
-      },
-      {
-        "key": "B",
-        "text": "A política de segurança da informação e cópias de backup abordada na questão #26 garante a confidencialidade e integridade dos dados."
-      },
-      {
-        "key": "C",
-        "text": "O Firewall substitui totalmente a necessidade de realizar backups em nuvem."
-      },
-      {
-        "key": "D",
-        "text": "O Backup Incremental é aquele que formata o disco rígido após copiar os dados."
-      },
-      {
-        "key": "E",
-        "text": "O vírus de computador não precisa de programa hospedeiro para se propagar."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Princípios essenciais de segurança da informação (CIDAN), prevenção contra malwares e políticas de backup.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Senhas fortes exigem maiúsculas, minúsculas, números e símbolos."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para a proteção de dados na questão #26."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Firewall não faz backup."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Incremental não formata disco."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Vírus exige hospedeiro (Worm não exige)."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Princípios da Segurança = CIDAN (Confidencialidade, Integridade, Disponibilidade, Autenticidade, Não Repúdio)."
-    }
-  },
-  {
-    "id": "inf-seg-027",
-    "subject": "Informática",
-    "topic": "6. Segurança & Backup - Conceitos #27",
-    "source": "IBFC / IBGE",
-    "difficulty": "Difícil",
-    "statement": "No âmbito da segurança da informação e prevenção de perdas de dados no IBGE (Questão #27), assinale a afirmativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "Uma senha forte deve ser composta apenas por números em sequência como 123456."
-      },
-      {
-        "key": "B",
-        "text": "A política de segurança da informação e cópias de backup abordada na questão #27 garante a confidencialidade e integridade dos dados."
-      },
-      {
-        "key": "C",
-        "text": "O Firewall substitui totalmente a necessidade de realizar backups em nuvem."
-      },
-      {
-        "key": "D",
-        "text": "O Backup Incremental é aquele que formata o disco rígido após copiar os dados."
-      },
-      {
-        "key": "E",
-        "text": "O vírus de computador não precisa de programa hospedeiro para se propagar."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Princípios essenciais de segurança da informação (CIDAN), prevenção contra malwares e políticas de backup.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Senhas fortes exigem maiúsculas, minúsculas, números e símbolos."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para a proteção de dados na questão #27."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Firewall não faz backup."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Incremental não formata disco."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Vírus exige hospedeiro (Worm não exige)."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Princípios da Segurança = CIDAN (Confidencialidade, Integridade, Disponibilidade, Autenticidade, Não Repúdio)."
-    }
-  },
-  {
-    "id": "inf-seg-028",
-    "subject": "Informática",
-    "topic": "6. Segurança & Backup - Conceitos #28",
-    "source": "IBFC / IBGE",
-    "difficulty": "Fácil",
-    "statement": "No âmbito da segurança da informação e prevenção de perdas de dados no IBGE (Questão #28), assinale a afirmativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "Uma senha forte deve ser composta apenas por números em sequência como 123456."
-      },
-      {
-        "key": "B",
-        "text": "A política de segurança da informação e cópias de backup abordada na questão #28 garante a confidencialidade e integridade dos dados."
-      },
-      {
-        "key": "C",
-        "text": "O Firewall substitui totalmente a necessidade de realizar backups em nuvem."
-      },
-      {
-        "key": "D",
-        "text": "O Backup Incremental é aquele que formata o disco rígido após copiar os dados."
-      },
-      {
-        "key": "E",
-        "text": "O vírus de computador não precisa de programa hospedeiro para se propagar."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Princípios essenciais de segurança da informação (CIDAN), prevenção contra malwares e políticas de backup.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Senhas fortes exigem maiúsculas, minúsculas, números e símbolos."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para a proteção de dados na questão #28."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Firewall não faz backup."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Incremental não formata disco."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Vírus exige hospedeiro (Worm não exige)."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Princípios da Segurança = CIDAN (Confidencialidade, Integridade, Disponibilidade, Autenticidade, Não Repúdio)."
-    }
-  },
-  {
-    "id": "inf-seg-029",
-    "subject": "Informática",
-    "topic": "6. Segurança & Backup - Conceitos #29",
-    "source": "IBFC / IBGE",
-    "difficulty": "Médio",
-    "statement": "No âmbito da segurança da informação e prevenção de perdas de dados no IBGE (Questão #29), assinale a afirmativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "Uma senha forte deve ser composta apenas por números em sequência como 123456."
-      },
-      {
-        "key": "B",
-        "text": "A política de segurança da informação e cópias de backup abordada na questão #29 garante a confidencialidade e integridade dos dados."
-      },
-      {
-        "key": "C",
-        "text": "O Firewall substitui totalmente a necessidade de realizar backups em nuvem."
-      },
-      {
-        "key": "D",
-        "text": "O Backup Incremental é aquele que formata o disco rígido após copiar os dados."
-      },
-      {
-        "key": "E",
-        "text": "O vírus de computador não precisa de programa hospedeiro para se propagar."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Princípios essenciais de segurança da informação (CIDAN), prevenção contra malwares e políticas de backup.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Senhas fortes exigem maiúsculas, minúsculas, números e símbolos."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para a proteção de dados na questão #29."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Firewall não faz backup."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Incremental não formata disco."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Vírus exige hospedeiro (Worm não exige)."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Princípios da Segurança = CIDAN (Confidencialidade, Integridade, Disponibilidade, Autenticidade, Não Repúdio)."
-    }
-  },
-  {
-    "id": "inf-seg-030",
-    "subject": "Informática",
-    "topic": "6. Segurança & Backup - Conceitos #30",
-    "source": "IBFC / IBGE",
-    "difficulty": "Difícil",
-    "statement": "No âmbito da segurança da informação e prevenção de perdas de dados no IBGE (Questão #30), assinale a afirmativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "Uma senha forte deve ser composta apenas por números em sequência como 123456."
-      },
-      {
-        "key": "B",
-        "text": "A política de segurança da informação e cópias de backup abordada na questão #30 garante a confidencialidade e integridade dos dados."
-      },
-      {
-        "key": "C",
-        "text": "O Firewall substitui totalmente a necessidade de realizar backups em nuvem."
-      },
-      {
-        "key": "D",
-        "text": "O Backup Incremental é aquele que formata o disco rígido após copiar os dados."
-      },
-      {
-        "key": "E",
-        "text": "O vírus de computador não precisa de programa hospedeiro para se propagar."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Princípios essenciais de segurança da informação (CIDAN), prevenção contra malwares e políticas de backup.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Senhas fortes exigem maiúsculas, minúsculas, números e símbolos."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para a proteção de dados na questão #30."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Firewall não faz backup."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Incremental não formata disco."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Vírus exige hospedeiro (Worm não exige)."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Princípios da Segurança = CIDAN (Confidencialidade, Integridade, Disponibilidade, Autenticidade, Não Repúdio)."
+      "bizu": "💡 BIZU IBFC: Keylogger = Grava Teclas digitadas | Screenlogger = Grava cliques e telas exibidas."
     }
   },
   {
     "id": "inf-wrd-001",
     "subject": "Informática",
-    "topic": "7. MS Word PT-BR - Atalho Negrito (Ctrl + N)",
+    "topic": "7. MS Word PT-BR - Atalhos de Formatação",
     "source": "IBFC / IBGE",
     "difficulty": "Fácil",
-    "statement": "Ao redigir um relatório no Microsoft Word (em Português), qual atalho de teclado é utilizado para aplicar o estilo NEGRITO ao texto selecionado?",
+    "statement": "No Microsoft Word (em português do Brasil), qual combinação de teclas de atalho aplica a formatação NEGRITO ao texto selecionado?",
     "options": [
       {
         "key": "A",
@@ -6232,12 +2016,12 @@ export const QUESTIONS_DATABASE: Question[] = [
     ],
     "correctOption": "B",
     "explanation": {
-      "summary": "No Word PT-BR: `Ctrl + N` = Negrito, `Ctrl + I` = Itálico, `Ctrl + S` = Sublinhado, `Ctrl + B` = Salvar.",
+      "summary": "No Word em Português (PT-BR): `Ctrl + N` = Negrito, `Ctrl + I` = Itálico, `Ctrl + S` = Sublinhado, `Ctrl + B` = Salvar.",
       "optionsAnalysis": [
         {
           "key": "A",
           "isCorrect": false,
-          "reason": "Incorreto. `Ctrl + B` SALVA o documento no Word PT-BR."
+          "reason": "Incorreto. `Ctrl + B` SALVA o documento no Word PT-BR (B de Backup/Salvar)."
         },
         {
           "key": "B",
@@ -6266,72 +2050,10 @@ export const QUESTIONS_DATABASE: Question[] = [
   {
     "id": "inf-wrd-002",
     "subject": "Informática",
-    "topic": "7. MS Word PT-BR - Atalho Salvar (Ctrl + B)",
+    "topic": "7. MS Word PT-BR - Alinhamento de Parágrafo",
     "source": "IBFC / IBGE",
-    "difficulty": "Médio",
-    "statement": "Qual o atalho padrão para SALVAR o documento ativo no Microsoft Word em idioma Português do Brasil?",
-    "options": [
-      {
-        "key": "A",
-        "text": "Ctrl + S"
-      },
-      {
-        "key": "B",
-        "text": "Ctrl + B"
-      },
-      {
-        "key": "C",
-        "text": "Ctrl + G"
-      },
-      {
-        "key": "D",
-        "text": "Ctrl + P"
-      },
-      {
-        "key": "E",
-        "text": "Ctrl + A"
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "No Word em Português do Brasil (PT-BR), o atalho para Salvar é `Ctrl + B` (no Word em Inglês é `Ctrl + S`).",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. `Ctrl + S` é Sublinhado no PT-BR."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. `Ctrl + B` = Salvar no Word PT-BR."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. `Ctrl + G` alinha à direita."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. `Ctrl + P` Imprime."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. `Ctrl + A` Selecionar Tudo."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Cuidado com a tradução! Salvar no Word PT-BR = `Ctrl + B` (B de Backup/Salvar). Sublinhado = `Ctrl + S`."
-    }
-  },
-  {
-    "id": "inf-wrd-003",
-    "subject": "Informática",
-    "topic": "7. MS Word PT-BR - Alinhamento Justificado (Ctrl + J)",
-    "source": "IBFC / IBGE",
-    "difficulty": "Difícil",
-    "statement": "Para aplicar o alinhamento JUSTIFICADO a um parágrafo selecionado no Word PT-BR, utiliza-se a combinação de teclas:",
+    "difficulty": "Fácil",
+    "statement": "Para aplicar o alinhamento JUSTIFICADO (alinhado uniformemente entre as margens esquerda e direita) a um parágrafo selecionado no Word PT-BR, utiliza-se o atalho:",
     "options": [
       {
         "key": "A",
@@ -6356,7 +2078,7 @@ export const QUESTIONS_DATABASE: Question[] = [
     ],
     "correctOption": "A",
     "explanation": {
-      "summary": "No Word PT-BR: `Ctrl + J` = Justificado, `Ctrl + E` = Centralizado, `Ctrl + Q` = Esquerda, `Ctrl + G` = Direita.",
+      "summary": "No Word PT-BR: `Ctrl + J` = Justificado, `Ctrl + E` = cEntralizado, `Ctrl + Q` = EsQueldo (Esquerda), `Ctrl + G` = Direita.",
       "optionsAnalysis": [
         {
           "key": "A",
@@ -6371,12 +2093,12 @@ export const QUESTIONS_DATABASE: Question[] = [
         {
           "key": "C",
           "isCorrect": false,
-          "reason": "Incorreto. `Ctrl + Q` = Esquerda."
+          "reason": "Incorreto. `Ctrl + Q` = Alinhado à Esquerda."
         },
         {
           "key": "D",
           "isCorrect": false,
-          "reason": "Incorreto. `Ctrl + G` = Direita."
+          "reason": "Incorreto. `Ctrl + G` = Alinhado à Direita."
         },
         {
           "key": "E",
@@ -6384,1061 +2106,7 @@ export const QUESTIONS_DATABASE: Question[] = [
           "reason": "Incorreto. `Ctrl + T` = Selecionar Tudo."
         }
       ],
-      "bizu": "💡 BIZU IBFC: `Ctrl + J` = Justificado | `Ctrl + E` = cEntralizado | `Ctrl + Q` = EsQueldo (Esquerda) | `Ctrl + G` = Direita."
-    }
-  },
-  {
-    "id": "inf-wrd-004",
-    "subject": "Informática",
-    "topic": "7. MS Word PT-BR - Recursos #4",
-    "source": "IBFC / IBGE",
-    "difficulty": "Fácil",
-    "statement": "No editor de textos Microsoft Word PT-BR (Questão #4), assinale a afirmativa correta sobre formatação e recursos:",
-    "options": [
-      {
-        "key": "A",
-        "text": "O atalho Ctrl + B aplica o efeito itálico ao texto selecionado."
-      },
-      {
-        "key": "B",
-        "text": "A correta utilização das ferramentas e atalhos do Word PT-BR analisados na questão #4 agiliza a edição de documentos."
-      },
-      {
-        "key": "C",
-        "text": "A tecla F2 é utilizada para formatar a página em modo paisagem."
-      },
-      {
-        "key": "D",
-        "text": "O recurso de Quebra de Seção impede o uso de cabeçalhos diferentes."
-      },
-      {
-        "key": "E",
-        "text": "O atalho Ctrl + Z serve para salvar o arquivo em formato PDF."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Dominio dos atalhos de teclado, formatação de parágrafos e ferramentas do MS Word PT-BR.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Ctrl + B salva o arquivo."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para a edição no MS Word PT-BR na questão #4."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. F2 é renomear no Windows."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Quebra de seção permite cabeçalhos diferentes."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Ctrl + Z desfaz a última ação."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: `Ctrl + Z` = Desfazer | `Ctrl + Y` = Refazer | `Ctrl + T` = Selecionar Tudo | `Ctrl + F` ou `Ctrl + L` = Localizar."
-    }
-  },
-  {
-    "id": "inf-wrd-005",
-    "subject": "Informática",
-    "topic": "7. MS Word PT-BR - Recursos #5",
-    "source": "IBFC / IBGE",
-    "difficulty": "Médio",
-    "statement": "No editor de textos Microsoft Word PT-BR (Questão #5), assinale a afirmativa correta sobre formatação e recursos:",
-    "options": [
-      {
-        "key": "A",
-        "text": "O atalho Ctrl + B aplica o efeito itálico ao texto selecionado."
-      },
-      {
-        "key": "B",
-        "text": "A correta utilização das ferramentas e atalhos do Word PT-BR analisados na questão #5 agiliza a edição de documentos."
-      },
-      {
-        "key": "C",
-        "text": "A tecla F2 é utilizada para formatar a página em modo paisagem."
-      },
-      {
-        "key": "D",
-        "text": "O recurso de Quebra de Seção impede o uso de cabeçalhos diferentes."
-      },
-      {
-        "key": "E",
-        "text": "O atalho Ctrl + Z serve para salvar o arquivo em formato PDF."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Dominio dos atalhos de teclado, formatação de parágrafos e ferramentas do MS Word PT-BR.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Ctrl + B salva o arquivo."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para a edição no MS Word PT-BR na questão #5."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. F2 é renomear no Windows."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Quebra de seção permite cabeçalhos diferentes."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Ctrl + Z desfaz a última ação."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: `Ctrl + Z` = Desfazer | `Ctrl + Y` = Refazer | `Ctrl + T` = Selecionar Tudo | `Ctrl + F` ou `Ctrl + L` = Localizar."
-    }
-  },
-  {
-    "id": "inf-wrd-006",
-    "subject": "Informática",
-    "topic": "7. MS Word PT-BR - Recursos #6",
-    "source": "IBFC / IBGE",
-    "difficulty": "Difícil",
-    "statement": "No editor de textos Microsoft Word PT-BR (Questão #6), assinale a afirmativa correta sobre formatação e recursos:",
-    "options": [
-      {
-        "key": "A",
-        "text": "O atalho Ctrl + B aplica o efeito itálico ao texto selecionado."
-      },
-      {
-        "key": "B",
-        "text": "A correta utilização das ferramentas e atalhos do Word PT-BR analisados na questão #6 agiliza a edição de documentos."
-      },
-      {
-        "key": "C",
-        "text": "A tecla F2 é utilizada para formatar a página em modo paisagem."
-      },
-      {
-        "key": "D",
-        "text": "O recurso de Quebra de Seção impede o uso de cabeçalhos diferentes."
-      },
-      {
-        "key": "E",
-        "text": "O atalho Ctrl + Z serve para salvar o arquivo em formato PDF."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Dominio dos atalhos de teclado, formatação de parágrafos e ferramentas do MS Word PT-BR.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Ctrl + B salva o arquivo."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para a edição no MS Word PT-BR na questão #6."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. F2 é renomear no Windows."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Quebra de seção permite cabeçalhos diferentes."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Ctrl + Z desfaz a última ação."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: `Ctrl + Z` = Desfazer | `Ctrl + Y` = Refazer | `Ctrl + T` = Selecionar Tudo | `Ctrl + F` ou `Ctrl + L` = Localizar."
-    }
-  },
-  {
-    "id": "inf-wrd-007",
-    "subject": "Informática",
-    "topic": "7. MS Word PT-BR - Recursos #7",
-    "source": "IBFC / IBGE",
-    "difficulty": "Fácil",
-    "statement": "No editor de textos Microsoft Word PT-BR (Questão #7), assinale a afirmativa correta sobre formatação e recursos:",
-    "options": [
-      {
-        "key": "A",
-        "text": "O atalho Ctrl + B aplica o efeito itálico ao texto selecionado."
-      },
-      {
-        "key": "B",
-        "text": "A correta utilização das ferramentas e atalhos do Word PT-BR analisados na questão #7 agiliza a edição de documentos."
-      },
-      {
-        "key": "C",
-        "text": "A tecla F2 é utilizada para formatar a página em modo paisagem."
-      },
-      {
-        "key": "D",
-        "text": "O recurso de Quebra de Seção impede o uso de cabeçalhos diferentes."
-      },
-      {
-        "key": "E",
-        "text": "O atalho Ctrl + Z serve para salvar o arquivo em formato PDF."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Dominio dos atalhos de teclado, formatação de parágrafos e ferramentas do MS Word PT-BR.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Ctrl + B salva o arquivo."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para a edição no MS Word PT-BR na questão #7."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. F2 é renomear no Windows."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Quebra de seção permite cabeçalhos diferentes."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Ctrl + Z desfaz a última ação."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: `Ctrl + Z` = Desfazer | `Ctrl + Y` = Refazer | `Ctrl + T` = Selecionar Tudo | `Ctrl + F` ou `Ctrl + L` = Localizar."
-    }
-  },
-  {
-    "id": "inf-wrd-008",
-    "subject": "Informática",
-    "topic": "7. MS Word PT-BR - Recursos #8",
-    "source": "IBFC / IBGE",
-    "difficulty": "Médio",
-    "statement": "No editor de textos Microsoft Word PT-BR (Questão #8), assinale a afirmativa correta sobre formatação e recursos:",
-    "options": [
-      {
-        "key": "A",
-        "text": "O atalho Ctrl + B aplica o efeito itálico ao texto selecionado."
-      },
-      {
-        "key": "B",
-        "text": "A correta utilização das ferramentas e atalhos do Word PT-BR analisados na questão #8 agiliza a edição de documentos."
-      },
-      {
-        "key": "C",
-        "text": "A tecla F2 é utilizada para formatar a página em modo paisagem."
-      },
-      {
-        "key": "D",
-        "text": "O recurso de Quebra de Seção impede o uso de cabeçalhos diferentes."
-      },
-      {
-        "key": "E",
-        "text": "O atalho Ctrl + Z serve para salvar o arquivo em formato PDF."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Dominio dos atalhos de teclado, formatação de parágrafos e ferramentas do MS Word PT-BR.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Ctrl + B salva o arquivo."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para a edição no MS Word PT-BR na questão #8."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. F2 é renomear no Windows."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Quebra de seção permite cabeçalhos diferentes."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Ctrl + Z desfaz a última ação."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: `Ctrl + Z` = Desfazer | `Ctrl + Y` = Refazer | `Ctrl + T` = Selecionar Tudo | `Ctrl + F` ou `Ctrl + L` = Localizar."
-    }
-  },
-  {
-    "id": "inf-wrd-009",
-    "subject": "Informática",
-    "topic": "7. MS Word PT-BR - Recursos #9",
-    "source": "IBFC / IBGE",
-    "difficulty": "Difícil",
-    "statement": "No editor de textos Microsoft Word PT-BR (Questão #9), assinale a afirmativa correta sobre formatação e recursos:",
-    "options": [
-      {
-        "key": "A",
-        "text": "O atalho Ctrl + B aplica o efeito itálico ao texto selecionado."
-      },
-      {
-        "key": "B",
-        "text": "A correta utilização das ferramentas e atalhos do Word PT-BR analisados na questão #9 agiliza a edição de documentos."
-      },
-      {
-        "key": "C",
-        "text": "A tecla F2 é utilizada para formatar a página em modo paisagem."
-      },
-      {
-        "key": "D",
-        "text": "O recurso de Quebra de Seção impede o uso de cabeçalhos diferentes."
-      },
-      {
-        "key": "E",
-        "text": "O atalho Ctrl + Z serve para salvar o arquivo em formato PDF."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Dominio dos atalhos de teclado, formatação de parágrafos e ferramentas do MS Word PT-BR.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Ctrl + B salva o arquivo."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para a edição no MS Word PT-BR na questão #9."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. F2 é renomear no Windows."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Quebra de seção permite cabeçalhos diferentes."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Ctrl + Z desfaz a última ação."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: `Ctrl + Z` = Desfazer | `Ctrl + Y` = Refazer | `Ctrl + T` = Selecionar Tudo | `Ctrl + F` ou `Ctrl + L` = Localizar."
-    }
-  },
-  {
-    "id": "inf-wrd-010",
-    "subject": "Informática",
-    "topic": "7. MS Word PT-BR - Recursos #10",
-    "source": "IBFC / IBGE",
-    "difficulty": "Fácil",
-    "statement": "No editor de textos Microsoft Word PT-BR (Questão #10), assinale a afirmativa correta sobre formatação e recursos:",
-    "options": [
-      {
-        "key": "A",
-        "text": "O atalho Ctrl + B aplica o efeito itálico ao texto selecionado."
-      },
-      {
-        "key": "B",
-        "text": "A correta utilização das ferramentas e atalhos do Word PT-BR analisados na questão #10 agiliza a edição de documentos."
-      },
-      {
-        "key": "C",
-        "text": "A tecla F2 é utilizada para formatar a página em modo paisagem."
-      },
-      {
-        "key": "D",
-        "text": "O recurso de Quebra de Seção impede o uso de cabeçalhos diferentes."
-      },
-      {
-        "key": "E",
-        "text": "O atalho Ctrl + Z serve para salvar o arquivo em formato PDF."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Dominio dos atalhos de teclado, formatação de parágrafos e ferramentas do MS Word PT-BR.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Ctrl + B salva o arquivo."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para a edição no MS Word PT-BR na questão #10."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. F2 é renomear no Windows."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Quebra de seção permite cabeçalhos diferentes."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Ctrl + Z desfaz a última ação."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: `Ctrl + Z` = Desfazer | `Ctrl + Y` = Refazer | `Ctrl + T` = Selecionar Tudo | `Ctrl + F` ou `Ctrl + L` = Localizar."
-    }
-  },
-  {
-    "id": "inf-wrd-011",
-    "subject": "Informática",
-    "topic": "7. MS Word PT-BR - Recursos #11",
-    "source": "IBFC / IBGE",
-    "difficulty": "Médio",
-    "statement": "No editor de textos Microsoft Word PT-BR (Questão #11), assinale a afirmativa correta sobre formatação e recursos:",
-    "options": [
-      {
-        "key": "A",
-        "text": "O atalho Ctrl + B aplica o efeito itálico ao texto selecionado."
-      },
-      {
-        "key": "B",
-        "text": "A correta utilização das ferramentas e atalhos do Word PT-BR analisados na questão #11 agiliza a edição de documentos."
-      },
-      {
-        "key": "C",
-        "text": "A tecla F2 é utilizada para formatar a página em modo paisagem."
-      },
-      {
-        "key": "D",
-        "text": "O recurso de Quebra de Seção impede o uso de cabeçalhos diferentes."
-      },
-      {
-        "key": "E",
-        "text": "O atalho Ctrl + Z serve para salvar o arquivo em formato PDF."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Dominio dos atalhos de teclado, formatação de parágrafos e ferramentas do MS Word PT-BR.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Ctrl + B salva o arquivo."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para a edição no MS Word PT-BR na questão #11."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. F2 é renomear no Windows."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Quebra de seção permite cabeçalhos diferentes."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Ctrl + Z desfaz a última ação."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: `Ctrl + Z` = Desfazer | `Ctrl + Y` = Refazer | `Ctrl + T` = Selecionar Tudo | `Ctrl + F` ou `Ctrl + L` = Localizar."
-    }
-  },
-  {
-    "id": "inf-wrd-012",
-    "subject": "Informática",
-    "topic": "7. MS Word PT-BR - Recursos #12",
-    "source": "IBFC / IBGE",
-    "difficulty": "Difícil",
-    "statement": "No editor de textos Microsoft Word PT-BR (Questão #12), assinale a afirmativa correta sobre formatação e recursos:",
-    "options": [
-      {
-        "key": "A",
-        "text": "O atalho Ctrl + B aplica o efeito itálico ao texto selecionado."
-      },
-      {
-        "key": "B",
-        "text": "A correta utilização das ferramentas e atalhos do Word PT-BR analisados na questão #12 agiliza a edição de documentos."
-      },
-      {
-        "key": "C",
-        "text": "A tecla F2 é utilizada para formatar a página em modo paisagem."
-      },
-      {
-        "key": "D",
-        "text": "O recurso de Quebra de Seção impede o uso de cabeçalhos diferentes."
-      },
-      {
-        "key": "E",
-        "text": "O atalho Ctrl + Z serve para salvar o arquivo em formato PDF."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Dominio dos atalhos de teclado, formatação de parágrafos e ferramentas do MS Word PT-BR.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Ctrl + B salva o arquivo."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para a edição no MS Word PT-BR na questão #12."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. F2 é renomear no Windows."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Quebra de seção permite cabeçalhos diferentes."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Ctrl + Z desfaz a última ação."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: `Ctrl + Z` = Desfazer | `Ctrl + Y` = Refazer | `Ctrl + T` = Selecionar Tudo | `Ctrl + F` ou `Ctrl + L` = Localizar."
-    }
-  },
-  {
-    "id": "inf-wrd-013",
-    "subject": "Informática",
-    "topic": "7. MS Word PT-BR - Recursos #13",
-    "source": "IBFC / IBGE",
-    "difficulty": "Fácil",
-    "statement": "No editor de textos Microsoft Word PT-BR (Questão #13), assinale a afirmativa correta sobre formatação e recursos:",
-    "options": [
-      {
-        "key": "A",
-        "text": "O atalho Ctrl + B aplica o efeito itálico ao texto selecionado."
-      },
-      {
-        "key": "B",
-        "text": "A correta utilização das ferramentas e atalhos do Word PT-BR analisados na questão #13 agiliza a edição de documentos."
-      },
-      {
-        "key": "C",
-        "text": "A tecla F2 é utilizada para formatar a página em modo paisagem."
-      },
-      {
-        "key": "D",
-        "text": "O recurso de Quebra de Seção impede o uso de cabeçalhos diferentes."
-      },
-      {
-        "key": "E",
-        "text": "O atalho Ctrl + Z serve para salvar o arquivo em formato PDF."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Dominio dos atalhos de teclado, formatação de parágrafos e ferramentas do MS Word PT-BR.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Ctrl + B salva o arquivo."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para a edição no MS Word PT-BR na questão #13."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. F2 é renomear no Windows."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Quebra de seção permite cabeçalhos diferentes."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Ctrl + Z desfaz a última ação."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: `Ctrl + Z` = Desfazer | `Ctrl + Y` = Refazer | `Ctrl + T` = Selecionar Tudo | `Ctrl + F` ou `Ctrl + L` = Localizar."
-    }
-  },
-  {
-    "id": "inf-wrd-014",
-    "subject": "Informática",
-    "topic": "7. MS Word PT-BR - Recursos #14",
-    "source": "IBFC / IBGE",
-    "difficulty": "Médio",
-    "statement": "No editor de textos Microsoft Word PT-BR (Questão #14), assinale a afirmativa correta sobre formatação e recursos:",
-    "options": [
-      {
-        "key": "A",
-        "text": "O atalho Ctrl + B aplica o efeito itálico ao texto selecionado."
-      },
-      {
-        "key": "B",
-        "text": "A correta utilização das ferramentas e atalhos do Word PT-BR analisados na questão #14 agiliza a edição de documentos."
-      },
-      {
-        "key": "C",
-        "text": "A tecla F2 é utilizada para formatar a página em modo paisagem."
-      },
-      {
-        "key": "D",
-        "text": "O recurso de Quebra de Seção impede o uso de cabeçalhos diferentes."
-      },
-      {
-        "key": "E",
-        "text": "O atalho Ctrl + Z serve para salvar o arquivo em formato PDF."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Dominio dos atalhos de teclado, formatação de parágrafos e ferramentas do MS Word PT-BR.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Ctrl + B salva o arquivo."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para a edição no MS Word PT-BR na questão #14."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. F2 é renomear no Windows."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Quebra de seção permite cabeçalhos diferentes."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Ctrl + Z desfaz a última ação."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: `Ctrl + Z` = Desfazer | `Ctrl + Y` = Refazer | `Ctrl + T` = Selecionar Tudo | `Ctrl + F` ou `Ctrl + L` = Localizar."
-    }
-  },
-  {
-    "id": "inf-wrd-015",
-    "subject": "Informática",
-    "topic": "7. MS Word PT-BR - Recursos #15",
-    "source": "IBFC / IBGE",
-    "difficulty": "Difícil",
-    "statement": "No editor de textos Microsoft Word PT-BR (Questão #15), assinale a afirmativa correta sobre formatação e recursos:",
-    "options": [
-      {
-        "key": "A",
-        "text": "O atalho Ctrl + B aplica o efeito itálico ao texto selecionado."
-      },
-      {
-        "key": "B",
-        "text": "A correta utilização das ferramentas e atalhos do Word PT-BR analisados na questão #15 agiliza a edição de documentos."
-      },
-      {
-        "key": "C",
-        "text": "A tecla F2 é utilizada para formatar a página em modo paisagem."
-      },
-      {
-        "key": "D",
-        "text": "O recurso de Quebra de Seção impede o uso de cabeçalhos diferentes."
-      },
-      {
-        "key": "E",
-        "text": "O atalho Ctrl + Z serve para salvar o arquivo em formato PDF."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Dominio dos atalhos de teclado, formatação de parágrafos e ferramentas do MS Word PT-BR.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Ctrl + B salva o arquivo."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para a edição no MS Word PT-BR na questão #15."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. F2 é renomear no Windows."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Quebra de seção permite cabeçalhos diferentes."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Ctrl + Z desfaz a última ação."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: `Ctrl + Z` = Desfazer | `Ctrl + Y` = Refazer | `Ctrl + T` = Selecionar Tudo | `Ctrl + F` ou `Ctrl + L` = Localizar."
-    }
-  },
-  {
-    "id": "inf-wrd-016",
-    "subject": "Informática",
-    "topic": "7. MS Word PT-BR - Recursos #16",
-    "source": "IBFC / IBGE",
-    "difficulty": "Fácil",
-    "statement": "No editor de textos Microsoft Word PT-BR (Questão #16), assinale a afirmativa correta sobre formatação e recursos:",
-    "options": [
-      {
-        "key": "A",
-        "text": "O atalho Ctrl + B aplica o efeito itálico ao texto selecionado."
-      },
-      {
-        "key": "B",
-        "text": "A correta utilização das ferramentas e atalhos do Word PT-BR analisados na questão #16 agiliza a edição de documentos."
-      },
-      {
-        "key": "C",
-        "text": "A tecla F2 é utilizada para formatar a página em modo paisagem."
-      },
-      {
-        "key": "D",
-        "text": "O recurso de Quebra de Seção impede o uso de cabeçalhos diferentes."
-      },
-      {
-        "key": "E",
-        "text": "O atalho Ctrl + Z serve para salvar o arquivo em formato PDF."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Dominio dos atalhos de teclado, formatação de parágrafos e ferramentas do MS Word PT-BR.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Ctrl + B salva o arquivo."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para a edição no MS Word PT-BR na questão #16."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. F2 é renomear no Windows."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Quebra de seção permite cabeçalhos diferentes."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Ctrl + Z desfaz a última ação."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: `Ctrl + Z` = Desfazer | `Ctrl + Y` = Refazer | `Ctrl + T` = Selecionar Tudo | `Ctrl + F` ou `Ctrl + L` = Localizar."
-    }
-  },
-  {
-    "id": "inf-wrd-017",
-    "subject": "Informática",
-    "topic": "7. MS Word PT-BR - Recursos #17",
-    "source": "IBFC / IBGE",
-    "difficulty": "Médio",
-    "statement": "No editor de textos Microsoft Word PT-BR (Questão #17), assinale a afirmativa correta sobre formatação e recursos:",
-    "options": [
-      {
-        "key": "A",
-        "text": "O atalho Ctrl + B aplica o efeito itálico ao texto selecionado."
-      },
-      {
-        "key": "B",
-        "text": "A correta utilização das ferramentas e atalhos do Word PT-BR analisados na questão #17 agiliza a edição de documentos."
-      },
-      {
-        "key": "C",
-        "text": "A tecla F2 é utilizada para formatar a página em modo paisagem."
-      },
-      {
-        "key": "D",
-        "text": "O recurso de Quebra de Seção impede o uso de cabeçalhos diferentes."
-      },
-      {
-        "key": "E",
-        "text": "O atalho Ctrl + Z serve para salvar o arquivo em formato PDF."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Dominio dos atalhos de teclado, formatação de parágrafos e ferramentas do MS Word PT-BR.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Ctrl + B salva o arquivo."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para a edição no MS Word PT-BR na questão #17."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. F2 é renomear no Windows."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Quebra de seção permite cabeçalhos diferentes."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Ctrl + Z desfaz a última ação."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: `Ctrl + Z` = Desfazer | `Ctrl + Y` = Refazer | `Ctrl + T` = Selecionar Tudo | `Ctrl + F` ou `Ctrl + L` = Localizar."
-    }
-  },
-  {
-    "id": "inf-wrd-018",
-    "subject": "Informática",
-    "topic": "7. MS Word PT-BR - Recursos #18",
-    "source": "IBFC / IBGE",
-    "difficulty": "Difícil",
-    "statement": "No editor de textos Microsoft Word PT-BR (Questão #18), assinale a afirmativa correta sobre formatação e recursos:",
-    "options": [
-      {
-        "key": "A",
-        "text": "O atalho Ctrl + B aplica o efeito itálico ao texto selecionado."
-      },
-      {
-        "key": "B",
-        "text": "A correta utilização das ferramentas e atalhos do Word PT-BR analisados na questão #18 agiliza a edição de documentos."
-      },
-      {
-        "key": "C",
-        "text": "A tecla F2 é utilizada para formatar a página em modo paisagem."
-      },
-      {
-        "key": "D",
-        "text": "O recurso de Quebra de Seção impede o uso de cabeçalhos diferentes."
-      },
-      {
-        "key": "E",
-        "text": "O atalho Ctrl + Z serve para salvar o arquivo em formato PDF."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Dominio dos atalhos de teclado, formatação de parágrafos e ferramentas do MS Word PT-BR.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Ctrl + B salva o arquivo."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para a edição no MS Word PT-BR na questão #18."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. F2 é renomear no Windows."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Quebra de seção permite cabeçalhos diferentes."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Ctrl + Z desfaz a última ação."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: `Ctrl + Z` = Desfazer | `Ctrl + Y` = Refazer | `Ctrl + T` = Selecionar Tudo | `Ctrl + F` ou `Ctrl + L` = Localizar."
-    }
-  },
-  {
-    "id": "inf-wrd-019",
-    "subject": "Informática",
-    "topic": "7. MS Word PT-BR - Recursos #19",
-    "source": "IBFC / IBGE",
-    "difficulty": "Fácil",
-    "statement": "No editor de textos Microsoft Word PT-BR (Questão #19), assinale a afirmativa correta sobre formatação e recursos:",
-    "options": [
-      {
-        "key": "A",
-        "text": "O atalho Ctrl + B aplica o efeito itálico ao texto selecionado."
-      },
-      {
-        "key": "B",
-        "text": "A correta utilização das ferramentas e atalhos do Word PT-BR analisados na questão #19 agiliza a edição de documentos."
-      },
-      {
-        "key": "C",
-        "text": "A tecla F2 é utilizada para formatar a página em modo paisagem."
-      },
-      {
-        "key": "D",
-        "text": "O recurso de Quebra de Seção impede o uso de cabeçalhos diferentes."
-      },
-      {
-        "key": "E",
-        "text": "O atalho Ctrl + Z serve para salvar o arquivo em formato PDF."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Dominio dos atalhos de teclado, formatação de parágrafos e ferramentas do MS Word PT-BR.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Ctrl + B salva o arquivo."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para a edição no MS Word PT-BR na questão #19."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. F2 é renomear no Windows."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Quebra de seção permite cabeçalhos diferentes."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Ctrl + Z desfaz a última ação."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: `Ctrl + Z` = Desfazer | `Ctrl + Y` = Refazer | `Ctrl + T` = Selecionar Tudo | `Ctrl + F` ou `Ctrl + L` = Localizar."
-    }
-  },
-  {
-    "id": "inf-wrd-020",
-    "subject": "Informática",
-    "topic": "7. MS Word PT-BR - Recursos #20",
-    "source": "IBFC / IBGE",
-    "difficulty": "Médio",
-    "statement": "No editor de textos Microsoft Word PT-BR (Questão #20), assinale a afirmativa correta sobre formatação e recursos:",
-    "options": [
-      {
-        "key": "A",
-        "text": "O atalho Ctrl + B aplica o efeito itálico ao texto selecionado."
-      },
-      {
-        "key": "B",
-        "text": "A correta utilização das ferramentas e atalhos do Word PT-BR analisados na questão #20 agiliza a edição de documentos."
-      },
-      {
-        "key": "C",
-        "text": "A tecla F2 é utilizada para formatar a página em modo paisagem."
-      },
-      {
-        "key": "D",
-        "text": "O recurso de Quebra de Seção impede o uso de cabeçalhos diferentes."
-      },
-      {
-        "key": "E",
-        "text": "O atalho Ctrl + Z serve para salvar o arquivo em formato PDF."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Dominio dos atalhos de teclado, formatação de parágrafos e ferramentas do MS Word PT-BR.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Ctrl + B salva o arquivo."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para a edição no MS Word PT-BR na questão #20."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. F2 é renomear no Windows."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Quebra de seção permite cabeçalhos diferentes."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Ctrl + Z desfaz a última ação."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: `Ctrl + Z` = Desfazer | `Ctrl + Y` = Refazer | `Ctrl + T` = Selecionar Tudo | `Ctrl + F` ou `Ctrl + L` = Localizar."
+      "bizu": "💡 BIZU IBFC (ALINHAMENTO WORD PT-BR): `Ctrl + J` = Justificado | `Ctrl + E` = cEntralizado | `Ctrl + Q` = Esquerda | `Ctrl + G` = Direita."
     }
   },
   {
@@ -7446,8 +2114,8 @@ export const QUESTIONS_DATABASE: Question[] = [
     "subject": "Informática",
     "topic": "7. MS Excel PT-BR - Função MÉDIA",
     "source": "IBFC / IBGE",
-    "difficulty": "Fácil",
-    "statement": "Qual fórmula do Microsoft Excel (em Português) calcula a média aritmética simples das células B2 até B7 e D2 até D7?",
+    "difficulty": "Médio",
+    "statement": "Assinale a alternativa que apresenta a fórmula correta no Microsoft Excel (idioma Português) para calcular a média aritmética simples das células B2 até B7 e D2 até D7:",
     "options": [
       {
         "key": "A",
@@ -7472,17 +2140,17 @@ export const QUESTIONS_DATABASE: Question[] = [
     ],
     "correctOption": "A",
     "explanation": {
-      "summary": "A função `=MÉDIA(intervalo1; intervalo2)` calcula a média aritmética dos valores informados. O ponto e vírgula separa os intervalos.",
+      "summary": "A função `=MÉDIA(intervalo1; intervalo2)` calcula a média aritmética. O ponto e vírgula (;) separa argumentos e intervalos distintos. Dois-pontos (:) indica intervalo contínuo ('até').",
       "optionsAnalysis": [
         {
           "key": "A",
           "isCorrect": true,
-          "reason": "CORRETA. `=MÉDIA(B2:B7; D2:D7)` calcula a média exata dos dois intervalos."
+          "reason": "CORRETA. `=MÉDIA(B2:B7; D2:D7)` calcula a média aritmética simples dos dois intervalos."
         },
         {
           "key": "B",
           "isCorrect": false,
-          "reason": "Incorreto. Somou apenas 4 células de 12."
+          "reason": "Incorreto. Somou apenas 4 células soltas dividindo por 4."
         },
         {
           "key": "C",
@@ -7497,7 +2165,7 @@ export const QUESTIONS_DATABASE: Question[] = [
         {
           "key": "E",
           "isCorrect": false,
-          "reason": "Incorreto. `CONT.NÚM()` apenas conta células numéricas."
+          "reason": "Incorreto. `CONT.NÚM()` apenas conta a quantidade de células com números."
         }
       ],
       "bizu": "💡 BIZU IBFC (EXCEL): `=MÉDIA()` = Média Aritmética | `=MED()` = Mediana (Valor Central) | Dois-pontos `:` = ATÉ | Ponto e vírgula `;` = E."
@@ -7506,10 +2174,10 @@ export const QUESTIONS_DATABASE: Question[] = [
   {
     "id": "inf-xls-002",
     "subject": "Informática",
-    "topic": "7. MS Excel PT-BR - Referência Absoluta ($)",
+    "topic": "7. MS Excel PT-BR - Referências Absolutas ($)",
     "source": "IBFC / IBGE",
-    "difficulty": "Médio",
-    "statement": "Na célula B2 do Excel, há a fórmula `=$A$1 + B1`. Ao COPIAR essa célula e COLAR na célula C3, qual fórmula estará contida em C3?",
+    "difficulty": "Difícil",
+    "statement": "Na célula B2 de uma planilha do Excel, foi digitada a fórmula `=$A$1 + B1`. Ao copiar essa célula B2 e colá-la na célula C3, a fórmula resultante em C3 será:",
     "options": [
       {
         "key": "A",
@@ -7534,17 +2202,17 @@ export const QUESTIONS_DATABASE: Question[] = [
     ],
     "correctOption": "A",
     "explanation": {
-      "summary": "O cifrão `$A$1` fixa coluna A e linha 1 (referência absoluta). A referência relativa `B1` deslocada 1 coluna a direita e 1 linha abaixo vira `C2`.",
+      "summary": "O cifrão `$A$1` trava a coluna A e a linha 1 (referência absoluta). Ao deslocar a fórmula para C3 (uma coluna à direita e uma linha abaixo), a parte relativa `B1` se transforma em `C2`.",
       "optionsAnalysis": [
         {
           "key": "A",
           "isCorrect": true,
-          "reason": "CORRETA. `$A$1` permanece travado. `B1` se desloca para `C2`."
+          "reason": "CORRETA. `$A$1` fica travado. `B1` desloca-se para `C2`."
         },
         {
           "key": "B",
           "isCorrect": false,
-          "reason": "Incorreto."
+          "reason": "Incorreto. O cifrão travou a célula A1."
         },
         {
           "key": "C",
@@ -7554,15 +2222,15 @@ export const QUESTIONS_DATABASE: Question[] = [
         {
           "key": "D",
           "isCorrect": false,
-          "reason": "Incorreto."
+          "reason": "Incorreto. Perderia as travas do cifrão."
         },
         {
           "key": "E",
           "isCorrect": false,
-          "reason": "Incorreto."
+          "reason": "Incorreto. A parte relativa B1 precisava se deslocar."
         }
       ],
-      "bizu": "💡 BIZU IBFC: Cifrão `$` TRAVA a linha/coluna! O que tem `$` não se altera ao copiar e colar."
+      "bizu": "💡 BIZU IBFC: Cifrão `$` TRAVA a linha/coluna! O termo que possui `$` não muda ao copiar e colar."
     }
   },
   {
@@ -7570,48 +2238,48 @@ export const QUESTIONS_DATABASE: Question[] = [
     "subject": "Informática",
     "topic": "7. MS Excel PT-BR - Função CONT.SE",
     "source": "IBFC / IBGE",
-    "difficulty": "Difícil",
-    "statement": "A função `=CONT.SE(A1:A10; \">50\")` em uma planilha do Excel realiza qual operação?",
+    "difficulty": "Médio",
+    "statement": "Em uma planilha do Excel, a função `=CONT.SE(A1:A10; \">50\")` executa qual operação?",
     "options": [
       {
         "key": "A",
-        "text": "Soma todas as células maiores que 50."
+        "text": "Soma os valores contidos no intervalo A1:A10 que forem maiores que 50."
       },
       {
         "key": "B",
-        "text": "Conta quantas células no intervalo A1:A10 possuem valor maior que 50."
+        "text": "Conta o número de células no intervalo A1:A10 que possuem valores estritamente maiores que 50."
       },
       {
         "key": "C",
-        "text": "Calcula a média dos valores menores que 50."
+        "text": "Calcula a média ponderada das células com valor 50."
       },
       {
         "key": "D",
-        "text": "Multiplica as células por 50."
+        "text": "Multiplica os valores de A1 até A10 por 50."
       },
       {
         "key": "E",
-        "text": "Substitui os valores por 50."
+        "text": "Substitui o conteúdo de A1:A10 por 50."
       }
     ],
     "correctOption": "B",
     "explanation": {
-      "summary": "A função `CONT.SE(intervalo; critério)` conta a quantidade de células que satisfazem a condição especificada.",
+      "summary": "A função `CONT.SE(intervalo; critério)` conta a quantidade de células dentro do intervalo que atendem à condição estabelecida (`>50`).",
       "optionsAnalysis": [
         {
           "key": "A",
           "isCorrect": false,
-          "reason": "Incorreto. Quem soma com filtro é `SOMASE()`."
+          "reason": "Incorreto. Somar com condição é a função `SOMASE()`."
         },
         {
           "key": "B",
           "isCorrect": true,
-          "reason": "CORRETA. `CONT.SE` = Conta células que atendem ao critério informado."
+          "reason": "CORRETA. `CONT.SE` = Conta a quantidade de células que atendem ao critério."
         },
         {
           "key": "C",
           "isCorrect": false,
-          "reason": "Incorreto. Quem calcula média com filtro é `MÉDIASE()`."
+          "reason": "Incorreto. Calcular média com condição é `MÉDIASE()`."
         },
         {
           "key": "D",
@@ -7628,1101 +2296,47 @@ export const QUESTIONS_DATABASE: Question[] = [
     }
   },
   {
-    "id": "inf-xls-004",
-    "subject": "Informática",
-    "topic": "7. MS Excel PT-BR - Fórmulas e Erros #4",
-    "source": "IBFC / IBGE",
-    "difficulty": "Fácil",
-    "statement": "Em relação aos cálculos, referências e funções no Microsoft Excel (Questão #4), assinale a afirmativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "O erro #DIV/0! ocorre quando a fórmula tenta multiplicar dois textos."
-      },
-      {
-        "key": "B",
-        "text": "A correta estruturação das funções do Excel analisada na questão #4 garante o resultado exato da planilha."
-      },
-      {
-        "key": "C",
-        "text": "O ponto e vírgula (;) indica o intervalo 'até' entre duas células."
-      },
-      {
-        "key": "D",
-        "text": "A função MED() calcula a média aritmética simples de um conjunto de dados."
-      },
-      {
-        "key": "E",
-        "text": "O cifrão ($) é utilizado exclusivamente para formatar a célula em moeda Real."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Domínio das funções matemáticas, lógicas e estatísticas do MS Excel PT-BR.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. #DIV/0! ocorre ao tentar dividir por zero."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para as operações do Excel na questão #4."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Ponto e vírgula é 'E'. Dois-pontos (:) é 'ATÉ'."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. MED() calcula a mediana."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Cifrão na fórmula trava referências."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: `#DIV/0!` = Divisão por zero | `#N/AV` = Valor não disponível | `#VALOR!` = Tipo de dado errado na fórmula."
-    }
-  },
-  {
-    "id": "inf-xls-005",
-    "subject": "Informática",
-    "topic": "7. MS Excel PT-BR - Fórmulas e Erros #5",
-    "source": "IBFC / IBGE",
-    "difficulty": "Médio",
-    "statement": "Em relação aos cálculos, referências e funções no Microsoft Excel (Questão #5), assinale a afirmativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "O erro #DIV/0! ocorre quando a fórmula tenta multiplicar dois textos."
-      },
-      {
-        "key": "B",
-        "text": "A correta estruturação das funções do Excel analisada na questão #5 garante o resultado exato da planilha."
-      },
-      {
-        "key": "C",
-        "text": "O ponto e vírgula (;) indica o intervalo 'até' entre duas células."
-      },
-      {
-        "key": "D",
-        "text": "A função MED() calcula a média aritmética simples de um conjunto de dados."
-      },
-      {
-        "key": "E",
-        "text": "O cifrão ($) é utilizado exclusivamente para formatar a célula em moeda Real."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Domínio das funções matemáticas, lógicas e estatísticas do MS Excel PT-BR.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. #DIV/0! ocorre ao tentar dividir por zero."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para as operações do Excel na questão #5."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Ponto e vírgula é 'E'. Dois-pontos (:) é 'ATÉ'."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. MED() calcula a mediana."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Cifrão na fórmula trava referências."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: `#DIV/0!` = Divisão por zero | `#N/AV` = Valor não disponível | `#VALOR!` = Tipo de dado errado na fórmula."
-    }
-  },
-  {
-    "id": "inf-xls-006",
-    "subject": "Informática",
-    "topic": "7. MS Excel PT-BR - Fórmulas e Erros #6",
-    "source": "IBFC / IBGE",
-    "difficulty": "Difícil",
-    "statement": "Em relação aos cálculos, referências e funções no Microsoft Excel (Questão #6), assinale a afirmativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "O erro #DIV/0! ocorre quando a fórmula tenta multiplicar dois textos."
-      },
-      {
-        "key": "B",
-        "text": "A correta estruturação das funções do Excel analisada na questão #6 garante o resultado exato da planilha."
-      },
-      {
-        "key": "C",
-        "text": "O ponto e vírgula (;) indica o intervalo 'até' entre duas células."
-      },
-      {
-        "key": "D",
-        "text": "A função MED() calcula a média aritmética simples de um conjunto de dados."
-      },
-      {
-        "key": "E",
-        "text": "O cifrão ($) é utilizado exclusivamente para formatar a célula em moeda Real."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Domínio das funções matemáticas, lógicas e estatísticas do MS Excel PT-BR.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. #DIV/0! ocorre ao tentar dividir por zero."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para as operações do Excel na questão #6."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Ponto e vírgula é 'E'. Dois-pontos (:) é 'ATÉ'."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. MED() calcula a mediana."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Cifrão na fórmula trava referências."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: `#DIV/0!` = Divisão por zero | `#N/AV` = Valor não disponível | `#VALOR!` = Tipo de dado errado na fórmula."
-    }
-  },
-  {
-    "id": "inf-xls-007",
-    "subject": "Informática",
-    "topic": "7. MS Excel PT-BR - Fórmulas e Erros #7",
-    "source": "IBFC / IBGE",
-    "difficulty": "Fácil",
-    "statement": "Em relação aos cálculos, referências e funções no Microsoft Excel (Questão #7), assinale a afirmativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "O erro #DIV/0! ocorre quando a fórmula tenta multiplicar dois textos."
-      },
-      {
-        "key": "B",
-        "text": "A correta estruturação das funções do Excel analisada na questão #7 garante o resultado exato da planilha."
-      },
-      {
-        "key": "C",
-        "text": "O ponto e vírgula (;) indica o intervalo 'até' entre duas células."
-      },
-      {
-        "key": "D",
-        "text": "A função MED() calcula a média aritmética simples de um conjunto de dados."
-      },
-      {
-        "key": "E",
-        "text": "O cifrão ($) é utilizado exclusivamente para formatar a célula em moeda Real."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Domínio das funções matemáticas, lógicas e estatísticas do MS Excel PT-BR.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. #DIV/0! ocorre ao tentar dividir por zero."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para as operações do Excel na questão #7."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Ponto e vírgula é 'E'. Dois-pontos (:) é 'ATÉ'."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. MED() calcula a mediana."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Cifrão na fórmula trava referências."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: `#DIV/0!` = Divisão por zero | `#N/AV` = Valor não disponível | `#VALOR!` = Tipo de dado errado na fórmula."
-    }
-  },
-  {
-    "id": "inf-xls-008",
-    "subject": "Informática",
-    "topic": "7. MS Excel PT-BR - Fórmulas e Erros #8",
-    "source": "IBFC / IBGE",
-    "difficulty": "Médio",
-    "statement": "Em relação aos cálculos, referências e funções no Microsoft Excel (Questão #8), assinale a afirmativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "O erro #DIV/0! ocorre quando a fórmula tenta multiplicar dois textos."
-      },
-      {
-        "key": "B",
-        "text": "A correta estruturação das funções do Excel analisada na questão #8 garante o resultado exato da planilha."
-      },
-      {
-        "key": "C",
-        "text": "O ponto e vírgula (;) indica o intervalo 'até' entre duas células."
-      },
-      {
-        "key": "D",
-        "text": "A função MED() calcula a média aritmética simples de um conjunto de dados."
-      },
-      {
-        "key": "E",
-        "text": "O cifrão ($) é utilizado exclusivamente para formatar a célula em moeda Real."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Domínio das funções matemáticas, lógicas e estatísticas do MS Excel PT-BR.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. #DIV/0! ocorre ao tentar dividir por zero."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para as operações do Excel na questão #8."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Ponto e vírgula é 'E'. Dois-pontos (:) é 'ATÉ'."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. MED() calcula a mediana."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Cifrão na fórmula trava referências."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: `#DIV/0!` = Divisão por zero | `#N/AV` = Valor não disponível | `#VALOR!` = Tipo de dado errado na fórmula."
-    }
-  },
-  {
-    "id": "inf-xls-009",
-    "subject": "Informática",
-    "topic": "7. MS Excel PT-BR - Fórmulas e Erros #9",
-    "source": "IBFC / IBGE",
-    "difficulty": "Difícil",
-    "statement": "Em relação aos cálculos, referências e funções no Microsoft Excel (Questão #9), assinale a afirmativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "O erro #DIV/0! ocorre quando a fórmula tenta multiplicar dois textos."
-      },
-      {
-        "key": "B",
-        "text": "A correta estruturação das funções do Excel analisada na questão #9 garante o resultado exato da planilha."
-      },
-      {
-        "key": "C",
-        "text": "O ponto e vírgula (;) indica o intervalo 'até' entre duas células."
-      },
-      {
-        "key": "D",
-        "text": "A função MED() calcula a média aritmética simples de um conjunto de dados."
-      },
-      {
-        "key": "E",
-        "text": "O cifrão ($) é utilizado exclusivamente para formatar a célula em moeda Real."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Domínio das funções matemáticas, lógicas e estatísticas do MS Excel PT-BR.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. #DIV/0! ocorre ao tentar dividir por zero."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para as operações do Excel na questão #9."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Ponto e vírgula é 'E'. Dois-pontos (:) é 'ATÉ'."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. MED() calcula a mediana."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Cifrão na fórmula trava referências."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: `#DIV/0!` = Divisão por zero | `#N/AV` = Valor não disponível | `#VALOR!` = Tipo de dado errado na fórmula."
-    }
-  },
-  {
-    "id": "inf-xls-010",
-    "subject": "Informática",
-    "topic": "7. MS Excel PT-BR - Fórmulas e Erros #10",
-    "source": "IBFC / IBGE",
-    "difficulty": "Fácil",
-    "statement": "Em relação aos cálculos, referências e funções no Microsoft Excel (Questão #10), assinale a afirmativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "O erro #DIV/0! ocorre quando a fórmula tenta multiplicar dois textos."
-      },
-      {
-        "key": "B",
-        "text": "A correta estruturação das funções do Excel analisada na questão #10 garante o resultado exato da planilha."
-      },
-      {
-        "key": "C",
-        "text": "O ponto e vírgula (;) indica o intervalo 'até' entre duas células."
-      },
-      {
-        "key": "D",
-        "text": "A função MED() calcula a média aritmética simples de um conjunto de dados."
-      },
-      {
-        "key": "E",
-        "text": "O cifrão ($) é utilizado exclusivamente para formatar a célula em moeda Real."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Domínio das funções matemáticas, lógicas e estatísticas do MS Excel PT-BR.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. #DIV/0! ocorre ao tentar dividir por zero."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para as operações do Excel na questão #10."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Ponto e vírgula é 'E'. Dois-pontos (:) é 'ATÉ'."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. MED() calcula a mediana."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Cifrão na fórmula trava referências."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: `#DIV/0!` = Divisão por zero | `#N/AV` = Valor não disponível | `#VALOR!` = Tipo de dado errado na fórmula."
-    }
-  },
-  {
-    "id": "inf-xls-011",
-    "subject": "Informática",
-    "topic": "7. MS Excel PT-BR - Fórmulas e Erros #11",
-    "source": "IBFC / IBGE",
-    "difficulty": "Médio",
-    "statement": "Em relação aos cálculos, referências e funções no Microsoft Excel (Questão #11), assinale a afirmativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "O erro #DIV/0! ocorre quando a fórmula tenta multiplicar dois textos."
-      },
-      {
-        "key": "B",
-        "text": "A correta estruturação das funções do Excel analisada na questão #11 garante o resultado exato da planilha."
-      },
-      {
-        "key": "C",
-        "text": "O ponto e vírgula (;) indica o intervalo 'até' entre duas células."
-      },
-      {
-        "key": "D",
-        "text": "A função MED() calcula a média aritmética simples de um conjunto de dados."
-      },
-      {
-        "key": "E",
-        "text": "O cifrão ($) é utilizado exclusivamente para formatar a célula em moeda Real."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Domínio das funções matemáticas, lógicas e estatísticas do MS Excel PT-BR.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. #DIV/0! ocorre ao tentar dividir por zero."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para as operações do Excel na questão #11."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Ponto e vírgula é 'E'. Dois-pontos (:) é 'ATÉ'."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. MED() calcula a mediana."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Cifrão na fórmula trava referências."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: `#DIV/0!` = Divisão por zero | `#N/AV` = Valor não disponível | `#VALOR!` = Tipo de dado errado na fórmula."
-    }
-  },
-  {
-    "id": "inf-xls-012",
-    "subject": "Informática",
-    "topic": "7. MS Excel PT-BR - Fórmulas e Erros #12",
-    "source": "IBFC / IBGE",
-    "difficulty": "Difícil",
-    "statement": "Em relação aos cálculos, referências e funções no Microsoft Excel (Questão #12), assinale a afirmativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "O erro #DIV/0! ocorre quando a fórmula tenta multiplicar dois textos."
-      },
-      {
-        "key": "B",
-        "text": "A correta estruturação das funções do Excel analisada na questão #12 garante o resultado exato da planilha."
-      },
-      {
-        "key": "C",
-        "text": "O ponto e vírgula (;) indica o intervalo 'até' entre duas células."
-      },
-      {
-        "key": "D",
-        "text": "A função MED() calcula a média aritmética simples de um conjunto de dados."
-      },
-      {
-        "key": "E",
-        "text": "O cifrão ($) é utilizado exclusivamente para formatar a célula em moeda Real."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Domínio das funções matemáticas, lógicas e estatísticas do MS Excel PT-BR.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. #DIV/0! ocorre ao tentar dividir por zero."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para as operações do Excel na questão #12."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Ponto e vírgula é 'E'. Dois-pontos (:) é 'ATÉ'."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. MED() calcula a mediana."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Cifrão na fórmula trava referências."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: `#DIV/0!` = Divisão por zero | `#N/AV` = Valor não disponível | `#VALOR!` = Tipo de dado errado na fórmula."
-    }
-  },
-  {
-    "id": "inf-xls-013",
-    "subject": "Informática",
-    "topic": "7. MS Excel PT-BR - Fórmulas e Erros #13",
-    "source": "IBFC / IBGE",
-    "difficulty": "Fácil",
-    "statement": "Em relação aos cálculos, referências e funções no Microsoft Excel (Questão #13), assinale a afirmativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "O erro #DIV/0! ocorre quando a fórmula tenta multiplicar dois textos."
-      },
-      {
-        "key": "B",
-        "text": "A correta estruturação das funções do Excel analisada na questão #13 garante o resultado exato da planilha."
-      },
-      {
-        "key": "C",
-        "text": "O ponto e vírgula (;) indica o intervalo 'até' entre duas células."
-      },
-      {
-        "key": "D",
-        "text": "A função MED() calcula a média aritmética simples de um conjunto de dados."
-      },
-      {
-        "key": "E",
-        "text": "O cifrão ($) é utilizado exclusivamente para formatar a célula em moeda Real."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Domínio das funções matemáticas, lógicas e estatísticas do MS Excel PT-BR.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. #DIV/0! ocorre ao tentar dividir por zero."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para as operações do Excel na questão #13."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Ponto e vírgula é 'E'. Dois-pontos (:) é 'ATÉ'."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. MED() calcula a mediana."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Cifrão na fórmula trava referências."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: `#DIV/0!` = Divisão por zero | `#N/AV` = Valor não disponível | `#VALOR!` = Tipo de dado errado na fórmula."
-    }
-  },
-  {
-    "id": "inf-xls-014",
-    "subject": "Informática",
-    "topic": "7. MS Excel PT-BR - Fórmulas e Erros #14",
-    "source": "IBFC / IBGE",
-    "difficulty": "Médio",
-    "statement": "Em relação aos cálculos, referências e funções no Microsoft Excel (Questão #14), assinale a afirmativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "O erro #DIV/0! ocorre quando a fórmula tenta multiplicar dois textos."
-      },
-      {
-        "key": "B",
-        "text": "A correta estruturação das funções do Excel analisada na questão #14 garante o resultado exato da planilha."
-      },
-      {
-        "key": "C",
-        "text": "O ponto e vírgula (;) indica o intervalo 'até' entre duas células."
-      },
-      {
-        "key": "D",
-        "text": "A função MED() calcula a média aritmética simples de um conjunto de dados."
-      },
-      {
-        "key": "E",
-        "text": "O cifrão ($) é utilizado exclusivamente para formatar a célula em moeda Real."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Domínio das funções matemáticas, lógicas e estatísticas do MS Excel PT-BR.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. #DIV/0! ocorre ao tentar dividir por zero."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para as operações do Excel na questão #14."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Ponto e vírgula é 'E'. Dois-pontos (:) é 'ATÉ'."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. MED() calcula a mediana."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Cifrão na fórmula trava referências."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: `#DIV/0!` = Divisão por zero | `#N/AV` = Valor não disponível | `#VALOR!` = Tipo de dado errado na fórmula."
-    }
-  },
-  {
-    "id": "inf-xls-015",
-    "subject": "Informática",
-    "topic": "7. MS Excel PT-BR - Fórmulas e Erros #15",
-    "source": "IBFC / IBGE",
-    "difficulty": "Difícil",
-    "statement": "Em relação aos cálculos, referências e funções no Microsoft Excel (Questão #15), assinale a afirmativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "O erro #DIV/0! ocorre quando a fórmula tenta multiplicar dois textos."
-      },
-      {
-        "key": "B",
-        "text": "A correta estruturação das funções do Excel analisada na questão #15 garante o resultado exato da planilha."
-      },
-      {
-        "key": "C",
-        "text": "O ponto e vírgula (;) indica o intervalo 'até' entre duas células."
-      },
-      {
-        "key": "D",
-        "text": "A função MED() calcula a média aritmética simples de um conjunto de dados."
-      },
-      {
-        "key": "E",
-        "text": "O cifrão ($) é utilizado exclusivamente para formatar a célula em moeda Real."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Domínio das funções matemáticas, lógicas e estatísticas do MS Excel PT-BR.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. #DIV/0! ocorre ao tentar dividir por zero."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para as operações do Excel na questão #15."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Ponto e vírgula é 'E'. Dois-pontos (:) é 'ATÉ'."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. MED() calcula a mediana."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Cifrão na fórmula trava referências."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: `#DIV/0!` = Divisão por zero | `#N/AV` = Valor não disponível | `#VALOR!` = Tipo de dado errado na fórmula."
-    }
-  },
-  {
-    "id": "inf-xls-016",
-    "subject": "Informática",
-    "topic": "7. MS Excel PT-BR - Fórmulas e Erros #16",
-    "source": "IBFC / IBGE",
-    "difficulty": "Fácil",
-    "statement": "Em relação aos cálculos, referências e funções no Microsoft Excel (Questão #16), assinale a afirmativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "O erro #DIV/0! ocorre quando a fórmula tenta multiplicar dois textos."
-      },
-      {
-        "key": "B",
-        "text": "A correta estruturação das funções do Excel analisada na questão #16 garante o resultado exato da planilha."
-      },
-      {
-        "key": "C",
-        "text": "O ponto e vírgula (;) indica o intervalo 'até' entre duas células."
-      },
-      {
-        "key": "D",
-        "text": "A função MED() calcula a média aritmética simples de um conjunto de dados."
-      },
-      {
-        "key": "E",
-        "text": "O cifrão ($) é utilizado exclusivamente para formatar a célula em moeda Real."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Domínio das funções matemáticas, lógicas e estatísticas do MS Excel PT-BR.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. #DIV/0! ocorre ao tentar dividir por zero."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para as operações do Excel na questão #16."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Ponto e vírgula é 'E'. Dois-pontos (:) é 'ATÉ'."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. MED() calcula a mediana."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Cifrão na fórmula trava referências."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: `#DIV/0!` = Divisão por zero | `#N/AV` = Valor não disponível | `#VALOR!` = Tipo de dado errado na fórmula."
-    }
-  },
-  {
-    "id": "inf-xls-017",
-    "subject": "Informática",
-    "topic": "7. MS Excel PT-BR - Fórmulas e Erros #17",
-    "source": "IBFC / IBGE",
-    "difficulty": "Médio",
-    "statement": "Em relação aos cálculos, referências e funções no Microsoft Excel (Questão #17), assinale a afirmativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "O erro #DIV/0! ocorre quando a fórmula tenta multiplicar dois textos."
-      },
-      {
-        "key": "B",
-        "text": "A correta estruturação das funções do Excel analisada na questão #17 garante o resultado exato da planilha."
-      },
-      {
-        "key": "C",
-        "text": "O ponto e vírgula (;) indica o intervalo 'até' entre duas células."
-      },
-      {
-        "key": "D",
-        "text": "A função MED() calcula a média aritmética simples de um conjunto de dados."
-      },
-      {
-        "key": "E",
-        "text": "O cifrão ($) é utilizado exclusivamente para formatar a célula em moeda Real."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Domínio das funções matemáticas, lógicas e estatísticas do MS Excel PT-BR.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. #DIV/0! ocorre ao tentar dividir por zero."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para as operações do Excel na questão #17."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Ponto e vírgula é 'E'. Dois-pontos (:) é 'ATÉ'."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. MED() calcula a mediana."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Cifrão na fórmula trava referências."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: `#DIV/0!` = Divisão por zero | `#N/AV` = Valor não disponível | `#VALOR!` = Tipo de dado errado na fórmula."
-    }
-  },
-  {
-    "id": "inf-xls-018",
-    "subject": "Informática",
-    "topic": "7. MS Excel PT-BR - Fórmulas e Erros #18",
-    "source": "IBFC / IBGE",
-    "difficulty": "Difícil",
-    "statement": "Em relação aos cálculos, referências e funções no Microsoft Excel (Questão #18), assinale a afirmativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "O erro #DIV/0! ocorre quando a fórmula tenta multiplicar dois textos."
-      },
-      {
-        "key": "B",
-        "text": "A correta estruturação das funções do Excel analisada na questão #18 garante o resultado exato da planilha."
-      },
-      {
-        "key": "C",
-        "text": "O ponto e vírgula (;) indica o intervalo 'até' entre duas células."
-      },
-      {
-        "key": "D",
-        "text": "A função MED() calcula a média aritmética simples de um conjunto de dados."
-      },
-      {
-        "key": "E",
-        "text": "O cifrão ($) é utilizado exclusivamente para formatar a célula em moeda Real."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Domínio das funções matemáticas, lógicas e estatísticas do MS Excel PT-BR.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. #DIV/0! ocorre ao tentar dividir por zero."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para as operações do Excel na questão #18."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Ponto e vírgula é 'E'. Dois-pontos (:) é 'ATÉ'."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. MED() calcula a mediana."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Cifrão na fórmula trava referências."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: `#DIV/0!` = Divisão por zero | `#N/AV` = Valor não disponível | `#VALOR!` = Tipo de dado errado na fórmula."
-    }
-  },
-  {
-    "id": "inf-xls-019",
-    "subject": "Informática",
-    "topic": "7. MS Excel PT-BR - Fórmulas e Erros #19",
-    "source": "IBFC / IBGE",
-    "difficulty": "Fácil",
-    "statement": "Em relação aos cálculos, referências e funções no Microsoft Excel (Questão #19), assinale a afirmativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "O erro #DIV/0! ocorre quando a fórmula tenta multiplicar dois textos."
-      },
-      {
-        "key": "B",
-        "text": "A correta estruturação das funções do Excel analisada na questão #19 garante o resultado exato da planilha."
-      },
-      {
-        "key": "C",
-        "text": "O ponto e vírgula (;) indica o intervalo 'até' entre duas células."
-      },
-      {
-        "key": "D",
-        "text": "A função MED() calcula a média aritmética simples de um conjunto de dados."
-      },
-      {
-        "key": "E",
-        "text": "O cifrão ($) é utilizado exclusivamente para formatar a célula em moeda Real."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Domínio das funções matemáticas, lógicas e estatísticas do MS Excel PT-BR.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. #DIV/0! ocorre ao tentar dividir por zero."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para as operações do Excel na questão #19."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Ponto e vírgula é 'E'. Dois-pontos (:) é 'ATÉ'."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. MED() calcula a mediana."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Cifrão na fórmula trava referências."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: `#DIV/0!` = Divisão por zero | `#N/AV` = Valor não disponível | `#VALOR!` = Tipo de dado errado na fórmula."
-    }
-  },
-  {
-    "id": "inf-xls-020",
-    "subject": "Informática",
-    "topic": "7. MS Excel PT-BR - Fórmulas e Erros #20",
-    "source": "IBFC / IBGE",
-    "difficulty": "Médio",
-    "statement": "Em relação aos cálculos, referências e funções no Microsoft Excel (Questão #20), assinale a afirmativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "O erro #DIV/0! ocorre quando a fórmula tenta multiplicar dois textos."
-      },
-      {
-        "key": "B",
-        "text": "A correta estruturação das funções do Excel analisada na questão #20 garante o resultado exato da planilha."
-      },
-      {
-        "key": "C",
-        "text": "O ponto e vírgula (;) indica o intervalo 'até' entre duas células."
-      },
-      {
-        "key": "D",
-        "text": "A função MED() calcula a média aritmética simples de um conjunto de dados."
-      },
-      {
-        "key": "E",
-        "text": "O cifrão ($) é utilizado exclusivamente para formatar a célula em moeda Real."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Domínio das funções matemáticas, lógicas e estatísticas do MS Excel PT-BR.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. #DIV/0! ocorre ao tentar dividir por zero."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para as operações do Excel na questão #20."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Ponto e vírgula é 'E'. Dois-pontos (:) é 'ATÉ'."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. MED() calcula a mediana."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Cifrão na fórmula trava referências."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: `#DIV/0!` = Divisão por zero | `#N/AV` = Valor não disponível | `#VALOR!` = Tipo de dado errado na fórmula."
-    }
-  },
-  {
     "id": "inf-net-001",
     "subject": "Informática",
-    "topic": "8 e 9. Redes/E-mail - Campo Cco",
+    "topic": "8 e 9. Redes/E-mail - Campo Cco (Com Cópia Oculta)",
     "source": "IBFC / IBGE",
     "difficulty": "Fácil",
-    "statement": "Ao enviar um e-mail corporativo no IBGE, o remetente insere um endereço no campo 'Cco' (Com Cópia Oculta). O que ocorre com este destinatário?",
+    "statement": "Ao enviar um e-mail corporativo no IBGE, o remetente insere um endereço no campo 'Cco' (Com Cópia Oculta). Assinale a alternativa correta sobre o comportamento desse campo:",
     "options": [
       {
         "key": "A",
-        "text": "Ele recebe o e-mail, mas seu endereço fica OCULTO para os destinatários nos campos 'Para' e 'Cc'."
+        "text": "O destinatário em 'Cco' recebe a mensagem, mas seu endereço fica OCULTO para os destinatários nos campos 'Para' e 'Cc'."
       },
       {
         "key": "B",
-        "text": "O e-mail é automaticamente excluído pelo servidor."
+        "text": "O servidor de e-mail bloqueia o envio da mensagem por motivo de privacidade."
       },
       {
         "key": "C",
-        "text": "Todos os destinatários conseguem ver quem estava no Cco."
+        "text": "Todos os destinatários no campo 'Para' conseguem ver quem estava listado no 'Cco'."
       },
       {
         "key": "D",
-        "text": "A mensagem é impressa via fax."
+        "text": "O campo 'Cco' imprime uma cópia em formato físico de papel."
       },
       {
         "key": "E",
-        "text": "O e-mail é enviado sem os arquivos anexos."
+        "text": "A mensagem enviada no campo 'Cco' apaga-se automaticamente após 1 hora."
       }
     ],
     "correctOption": "A",
     "explanation": {
-      "summary": "O campo Cco (Com Cópia Oculta) entrega a mensagem ao destinatário sem revelar seu endereço eletrônico para os campos 'Para' e 'Cc'.",
+      "summary": "O campo Cco (Com Cópia Oculta) oculta o endereço do destinatário perante os campos 'Para' e 'Cc'. Nem o 'Para' nem o 'Cc' sabem que o 'Cco' recebeu o e-mail.",
       "optionsAnalysis": [
         {
           "key": "A",
           "isCorrect": true,
-          "reason": "CORRETA. Cco = Com Cópia Oculta (Endereço mantido oculto para os demais)."
+          "reason": "CORRETA. Cco = Com Cópia Oculta (O endereço fica invisível para os demais destinatários)."
         },
         {
           "key": "B",
           "isCorrect": false,
-          "reason": "Incorreto."
+          "reason": "Incorreto. É um recurso padrão de e-mail."
         },
         {
           "key": "C",
@@ -8732,126 +2346,64 @@ export const QUESTIONS_DATABASE: Question[] = [
         {
           "key": "D",
           "isCorrect": false,
-          "reason": "Incorreto."
+          "reason": "Incorreto. É um recurso eletrônico."
         },
         {
           "key": "E",
           "isCorrect": false,
-          "reason": "Incorreto."
+          "reason": "Incorreto. Não apaga a mensagem."
         }
       ],
-      "bizu": "💡 BIZU IBFC (E-MAIL): `Para` e `Cc` = Visíveis para todos | `Cco` = Oculto (Ninguém no Para ou Cc sabe que ele recebeu)."
+      "bizu": "💡 BIZU IBFC (E-MAIL): `Para` e `Cc` = Visíveis para todos | `Cco` = Oculto (Ninguém nos campos Para ou Cc enxerga o Cco)."
     }
   },
   {
     "id": "inf-net-002",
     "subject": "Informática",
-    "topic": "8. Redes - Protocolo HTTPS (Porta 443)",
-    "source": "IBFC / IBGE",
-    "difficulty": "Médio",
-    "statement": "Qual a principal vantagem de segurança ao navegar em sites corporativos através do protocolo HTTPS em relação ao HTTP tradicional?",
-    "options": [
-      {
-        "key": "A",
-        "text": "O HTTPS é mais rápido por não usar criptografia."
-      },
-      {
-        "key": "B",
-        "text": "O HTTPS utiliza camada de criptografia (SSL/TLS), garantindo a confidencialidade e integridade da comunicação."
-      },
-      {
-        "key": "C",
-        "text": "O HTTPS não necessita de rede de internet."
-      },
-      {
-        "key": "D",
-        "text": "O HTTPS é exclusivo para e-mails."
-      },
-      {
-        "key": "E",
-        "text": "O HTTPS dispensa o uso de senhas."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "O HTTPS é a versão segura do HTTP. Ele criptografa a comunicação entre o navegador e o servidor web usando TLS/SSL na porta 443.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. HTTPS usa criptografia."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. HTTPS = HTTP + Criptografia SSL/TLS (Seguro, ícone do cadeado)."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: HTTP = Porta 80 (Sem criptografia) | HTTPS = Porta 443 (Com criptografia SSL/TLS)."
-    }
-  },
-  {
-    "id": "inf-net-003",
-    "subject": "Informática",
     "topic": "8. Redes - Protocolos de E-mail (SMTP, POP3, IMAP)",
     "source": "IBFC / IBGE",
-    "difficulty": "Difícil",
-    "statement": "Assinale a alternativa que relaciona corretamente o protocolo de e-mail com sua função principal:",
+    "difficulty": "Médio",
+    "statement": "Assinale a alternativa que associa de forma correta o protocolo de comunicação de e-mail à sua função no servidor:",
     "options": [
       {
         "key": "A",
-        "text": "SMTP é usado para RECEBER mensagens e salvá-las no computador."
+        "text": "SMTP é o protocolo responsável pelo RECEBIMENTO de mensagens no cliente local."
       },
       {
         "key": "B",
-        "text": "POP3 é usado para ENVIAR e-mails a outros servidores."
+        "text": "POP3 é o protocolo responsável pelo ENVIO de e-mails para servidores externos."
       },
       {
         "key": "C",
-        "text": "SMTP é o protocolo responsável pelo ENVIO (saída) de e-mails, enquanto POP3 e IMAP são para RECEBIMENTO (entrada)."
+        "text": "SMTP é utilizado para o ENVIO (saída) de e-mails, enquanto POP3 e IMAP são utilizados para o RECEBIMENTO (entrada)."
       },
       {
         "key": "D",
-        "text": "IMAP apaga as mensagens do servidor assim que é lido."
+        "text": "IMAP apaga permanentemente as mensagens do servidor assim que são lidas no celular."
       },
       {
         "key": "E",
-        "text": "DNS envia e-mails anexados."
+        "text": "DNS é o protocolo padrão para criptografar senhas de e-mail."
       }
     ],
     "correctOption": "C",
     "explanation": {
-      "summary": "SMTP (Sua Mensagem Tá Partindo) = Envio. POP3 = Baixa o e-mail pro PC e apaga do servidor. IMAP = Sincroniza e mantém no servidor.",
+      "summary": "SMTP (Simple Mail Transfer Protocol) é o protocolo de envio de e-mails. POP3 e IMAP são protocolos de recebimento de e-mails. O POP3 baixa e apaga do servidor; o IMAP sincroniza e mantém no servidor.",
       "optionsAnalysis": [
         {
           "key": "A",
           "isCorrect": false,
-          "reason": "Incorreto. SMTP é para envio."
+          "reason": "Incorreto. SMTP é para ENVIO."
         },
         {
           "key": "B",
           "isCorrect": false,
-          "reason": "Incorreto. POP3 é para recebimento."
+          "reason": "Incorreto. POP3 é para RECEBIMENTO."
         },
         {
           "key": "C",
           "isCorrect": true,
-          "reason": "CORRETA. SMTP = Envio (Saída) | POP3/IMAP = Recebimento (Entrada)."
+          "reason": "CORRETA. SMTP = Envio (Saída) | POP3 e IMAP = Recebimento (Entrada)."
         },
         {
           "key": "D",
@@ -8861,1126 +2413,134 @@ export const QUESTIONS_DATABASE: Question[] = [
         {
           "key": "E",
           "isCorrect": false,
-          "reason": "Incorreto. DNS converte nomes em IP."
+          "reason": "Incorreto. DNS converte nomes em endereços IP."
         }
       ],
-      "bizu": "💡 BIZU IBFC: SMTP = Sua Mensagem Tá Partindo (ENVIO) | POP3 = Baixa pro PC (RECEBER) | IMAP = Sincroniza na Nuvem (RECEBER)."
+      "bizu": "💡 BIZU IBFC: SMTP = Sua Mensagem Tá Partindo (ENVIO) | POP3 = Baixa pro PC e apaga do servidor (RECEBER) | IMAP = Sincroniza na Nuvem (RECEBER)."
     }
   },
   {
-    "id": "inf-net-004",
+    "id": "inf-net-003",
     "subject": "Informática",
-    "topic": "8 e 9. Redes e Internet - Conceitos #4",
+    "topic": "8. Redes - Protocolo HTTPS (Porta 443)",
     "source": "IBFC / IBGE",
     "difficulty": "Fácil",
-    "statement": "Em relação ao funcionamento de redes de computadores, internet e navegadores no IBGE (Questão #4), assinale a alternativa correta:",
+    "statement": "Ao navegar na internet, qual a principal garantia de segurança oferecida pelo protocolo HTTPS em relação ao HTTP simples?",
     "options": [
       {
         "key": "A",
-        "text": "A Intranet é uma rede pública acessível livremente por qualquer pessoa no mundo sem senha."
+        "text": "O HTTPS não necessita de conexão com provedor de internet."
       },
       {
         "key": "B",
-        "text": "Os protocolos e ferramentas de rede descritos na questão #4 garantem a comunicação segura e eficiente nas agências."
+        "text": "O HTTPS utiliza criptografia (SSL/TLS) para proteger o tráfego de dados confidenciais entre o navegador e o servidor web."
       },
       {
         "key": "C",
-        "text": "Os Cookies são vírus de computador que formatam o disco rígido."
+        "text": "O HTTPS impede a exibição de arquivos de imagem na tela."
       },
       {
         "key": "D",
-        "text": "O protocolo FTP é utilizado exclusivamente para navegação em redes sociais."
+        "text": "O HTTPS é exclusivo para acesso a redes de rádio amador."
       },
       {
         "key": "E",
-        "text": "O campo Cc de um e-mail esconde o endereço dos destinatários."
+        "text": "O HTTPS dispensa o uso de antivírus no computador."
       }
     ],
     "correctOption": "B",
     "explanation": {
-      "summary": "Entendimento das tecnologias de redes (LAN/WAN, Intranet), protocolos da web e correio eletrônico.",
+      "summary": "O HTTPS (Hypertext Transfer Protocol Secure) adiciona uma camada de criptografia (TLS/SSL) ao protocolo HTTP tradicional, operando por padrão na porta 443 para garantir sigilo e integridade.",
       "optionsAnalysis": [
         {
           "key": "A",
           "isCorrect": false,
-          "reason": "Incorreto. Intranet é rede PRIVADA corporativa."
+          "reason": "Incorreto. Necessita de conexão de rede normalmente."
         },
         {
           "key": "B",
           "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para os serviços de redes e internet na questão #4."
+          "reason": "CORRETA. HTTPS = HTTP + Criptografia SSL/TLS (Segurança no navegador, porta 443)."
         },
         {
           "key": "C",
           "isCorrect": false,
-          "reason": "Incorreto. Cookies são pequenos arquivos de texto com preferências."
+          "reason": "Incorreto. Exibe imagens e conteúdos normalmente."
         },
         {
           "key": "D",
           "isCorrect": false,
-          "reason": "Incorreto. FTP é transferência de arquivos."
+          "reason": "Incorreto. É o padrão web para navegação segura."
         },
         {
           "key": "E",
           "isCorrect": false,
-          "reason": "Incorreto. Cc é Com Cópia VISÍVEL."
+          "reason": "Incorreto. Não substitui o antivírus."
         }
       ],
-      "bizu": "💡 BIZU IBFC: Internet = Pública | Intranet = Privada/Corporativa | Cookies = Arquivos de preferência do navegador (Não são vírus!)."
-    }
-  },
-  {
-    "id": "inf-net-005",
-    "subject": "Informática",
-    "topic": "8 e 9. Redes e Internet - Conceitos #5",
-    "source": "IBFC / IBGE",
-    "difficulty": "Médio",
-    "statement": "Em relação ao funcionamento de redes de computadores, internet e navegadores no IBGE (Questão #5), assinale a alternativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "A Intranet é uma rede pública acessível livremente por qualquer pessoa no mundo sem senha."
-      },
-      {
-        "key": "B",
-        "text": "Os protocolos e ferramentas de rede descritos na questão #5 garantem a comunicação segura e eficiente nas agências."
-      },
-      {
-        "key": "C",
-        "text": "Os Cookies são vírus de computador que formatam o disco rígido."
-      },
-      {
-        "key": "D",
-        "text": "O protocolo FTP é utilizado exclusivamente para navegação em redes sociais."
-      },
-      {
-        "key": "E",
-        "text": "O campo Cc de um e-mail esconde o endereço dos destinatários."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Entendimento das tecnologias de redes (LAN/WAN, Intranet), protocolos da web e correio eletrônico.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Intranet é rede PRIVADA corporativa."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para os serviços de redes e internet na questão #5."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Cookies são pequenos arquivos de texto com preferências."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. FTP é transferência de arquivos."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Cc é Com Cópia VISÍVEL."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Internet = Pública | Intranet = Privada/Corporativa | Cookies = Arquivos de preferência do navegador (Não são vírus!)."
-    }
-  },
-  {
-    "id": "inf-net-006",
-    "subject": "Informática",
-    "topic": "8 e 9. Redes e Internet - Conceitos #6",
-    "source": "IBFC / IBGE",
-    "difficulty": "Difícil",
-    "statement": "Em relação ao funcionamento de redes de computadores, internet e navegadores no IBGE (Questão #6), assinale a alternativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "A Intranet é uma rede pública acessível livremente por qualquer pessoa no mundo sem senha."
-      },
-      {
-        "key": "B",
-        "text": "Os protocolos e ferramentas de rede descritos na questão #6 garantem a comunicação segura e eficiente nas agências."
-      },
-      {
-        "key": "C",
-        "text": "Os Cookies são vírus de computador que formatam o disco rígido."
-      },
-      {
-        "key": "D",
-        "text": "O protocolo FTP é utilizado exclusivamente para navegação em redes sociais."
-      },
-      {
-        "key": "E",
-        "text": "O campo Cc de um e-mail esconde o endereço dos destinatários."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Entendimento das tecnologias de redes (LAN/WAN, Intranet), protocolos da web e correio eletrônico.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Intranet é rede PRIVADA corporativa."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para os serviços de redes e internet na questão #6."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Cookies são pequenos arquivos de texto com preferências."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. FTP é transferência de arquivos."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Cc é Com Cópia VISÍVEL."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Internet = Pública | Intranet = Privada/Corporativa | Cookies = Arquivos de preferência do navegador (Não são vírus!)."
-    }
-  },
-  {
-    "id": "inf-net-007",
-    "subject": "Informática",
-    "topic": "8 e 9. Redes e Internet - Conceitos #7",
-    "source": "IBFC / IBGE",
-    "difficulty": "Fácil",
-    "statement": "Em relação ao funcionamento de redes de computadores, internet e navegadores no IBGE (Questão #7), assinale a alternativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "A Intranet é uma rede pública acessível livremente por qualquer pessoa no mundo sem senha."
-      },
-      {
-        "key": "B",
-        "text": "Os protocolos e ferramentas de rede descritos na questão #7 garantem a comunicação segura e eficiente nas agências."
-      },
-      {
-        "key": "C",
-        "text": "Os Cookies são vírus de computador que formatam o disco rígido."
-      },
-      {
-        "key": "D",
-        "text": "O protocolo FTP é utilizado exclusivamente para navegação em redes sociais."
-      },
-      {
-        "key": "E",
-        "text": "O campo Cc de um e-mail esconde o endereço dos destinatários."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Entendimento das tecnologias de redes (LAN/WAN, Intranet), protocolos da web e correio eletrônico.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Intranet é rede PRIVADA corporativa."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para os serviços de redes e internet na questão #7."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Cookies são pequenos arquivos de texto com preferências."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. FTP é transferência de arquivos."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Cc é Com Cópia VISÍVEL."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Internet = Pública | Intranet = Privada/Corporativa | Cookies = Arquivos de preferência do navegador (Não são vírus!)."
-    }
-  },
-  {
-    "id": "inf-net-008",
-    "subject": "Informática",
-    "topic": "8 e 9. Redes e Internet - Conceitos #8",
-    "source": "IBFC / IBGE",
-    "difficulty": "Médio",
-    "statement": "Em relação ao funcionamento de redes de computadores, internet e navegadores no IBGE (Questão #8), assinale a alternativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "A Intranet é uma rede pública acessível livremente por qualquer pessoa no mundo sem senha."
-      },
-      {
-        "key": "B",
-        "text": "Os protocolos e ferramentas de rede descritos na questão #8 garantem a comunicação segura e eficiente nas agências."
-      },
-      {
-        "key": "C",
-        "text": "Os Cookies são vírus de computador que formatam o disco rígido."
-      },
-      {
-        "key": "D",
-        "text": "O protocolo FTP é utilizado exclusivamente para navegação em redes sociais."
-      },
-      {
-        "key": "E",
-        "text": "O campo Cc de um e-mail esconde o endereço dos destinatários."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Entendimento das tecnologias de redes (LAN/WAN, Intranet), protocolos da web e correio eletrônico.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Intranet é rede PRIVADA corporativa."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para os serviços de redes e internet na questão #8."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Cookies são pequenos arquivos de texto com preferências."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. FTP é transferência de arquivos."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Cc é Com Cópia VISÍVEL."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Internet = Pública | Intranet = Privada/Corporativa | Cookies = Arquivos de preferência do navegador (Não são vírus!)."
-    }
-  },
-  {
-    "id": "inf-net-009",
-    "subject": "Informática",
-    "topic": "8 e 9. Redes e Internet - Conceitos #9",
-    "source": "IBFC / IBGE",
-    "difficulty": "Difícil",
-    "statement": "Em relação ao funcionamento de redes de computadores, internet e navegadores no IBGE (Questão #9), assinale a alternativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "A Intranet é uma rede pública acessível livremente por qualquer pessoa no mundo sem senha."
-      },
-      {
-        "key": "B",
-        "text": "Os protocolos e ferramentas de rede descritos na questão #9 garantem a comunicação segura e eficiente nas agências."
-      },
-      {
-        "key": "C",
-        "text": "Os Cookies são vírus de computador que formatam o disco rígido."
-      },
-      {
-        "key": "D",
-        "text": "O protocolo FTP é utilizado exclusivamente para navegação em redes sociais."
-      },
-      {
-        "key": "E",
-        "text": "O campo Cc de um e-mail esconde o endereço dos destinatários."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Entendimento das tecnologias de redes (LAN/WAN, Intranet), protocolos da web e correio eletrônico.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Intranet é rede PRIVADA corporativa."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para os serviços de redes e internet na questão #9."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Cookies são pequenos arquivos de texto com preferências."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. FTP é transferência de arquivos."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Cc é Com Cópia VISÍVEL."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Internet = Pública | Intranet = Privada/Corporativa | Cookies = Arquivos de preferência do navegador (Não são vírus!)."
-    }
-  },
-  {
-    "id": "inf-net-010",
-    "subject": "Informática",
-    "topic": "8 e 9. Redes e Internet - Conceitos #10",
-    "source": "IBFC / IBGE",
-    "difficulty": "Fácil",
-    "statement": "Em relação ao funcionamento de redes de computadores, internet e navegadores no IBGE (Questão #10), assinale a alternativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "A Intranet é uma rede pública acessível livremente por qualquer pessoa no mundo sem senha."
-      },
-      {
-        "key": "B",
-        "text": "Os protocolos e ferramentas de rede descritos na questão #10 garantem a comunicação segura e eficiente nas agências."
-      },
-      {
-        "key": "C",
-        "text": "Os Cookies são vírus de computador que formatam o disco rígido."
-      },
-      {
-        "key": "D",
-        "text": "O protocolo FTP é utilizado exclusivamente para navegação em redes sociais."
-      },
-      {
-        "key": "E",
-        "text": "O campo Cc de um e-mail esconde o endereço dos destinatários."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Entendimento das tecnologias de redes (LAN/WAN, Intranet), protocolos da web e correio eletrônico.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Intranet é rede PRIVADA corporativa."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para os serviços de redes e internet na questão #10."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Cookies são pequenos arquivos de texto com preferências."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. FTP é transferência de arquivos."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Cc é Com Cópia VISÍVEL."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Internet = Pública | Intranet = Privada/Corporativa | Cookies = Arquivos de preferência do navegador (Não são vírus!)."
-    }
-  },
-  {
-    "id": "inf-net-011",
-    "subject": "Informática",
-    "topic": "8 e 9. Redes e Internet - Conceitos #11",
-    "source": "IBFC / IBGE",
-    "difficulty": "Médio",
-    "statement": "Em relação ao funcionamento de redes de computadores, internet e navegadores no IBGE (Questão #11), assinale a alternativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "A Intranet é uma rede pública acessível livremente por qualquer pessoa no mundo sem senha."
-      },
-      {
-        "key": "B",
-        "text": "Os protocolos e ferramentas de rede descritos na questão #11 garantem a comunicação segura e eficiente nas agências."
-      },
-      {
-        "key": "C",
-        "text": "Os Cookies são vírus de computador que formatam o disco rígido."
-      },
-      {
-        "key": "D",
-        "text": "O protocolo FTP é utilizado exclusivamente para navegação em redes sociais."
-      },
-      {
-        "key": "E",
-        "text": "O campo Cc de um e-mail esconde o endereço dos destinatários."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Entendimento das tecnologias de redes (LAN/WAN, Intranet), protocolos da web e correio eletrônico.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Intranet é rede PRIVADA corporativa."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para os serviços de redes e internet na questão #11."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Cookies são pequenos arquivos de texto com preferências."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. FTP é transferência de arquivos."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Cc é Com Cópia VISÍVEL."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Internet = Pública | Intranet = Privada/Corporativa | Cookies = Arquivos de preferência do navegador (Não são vírus!)."
-    }
-  },
-  {
-    "id": "inf-net-012",
-    "subject": "Informática",
-    "topic": "8 e 9. Redes e Internet - Conceitos #12",
-    "source": "IBFC / IBGE",
-    "difficulty": "Difícil",
-    "statement": "Em relação ao funcionamento de redes de computadores, internet e navegadores no IBGE (Questão #12), assinale a alternativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "A Intranet é uma rede pública acessível livremente por qualquer pessoa no mundo sem senha."
-      },
-      {
-        "key": "B",
-        "text": "Os protocolos e ferramentas de rede descritos na questão #12 garantem a comunicação segura e eficiente nas agências."
-      },
-      {
-        "key": "C",
-        "text": "Os Cookies são vírus de computador que formatam o disco rígido."
-      },
-      {
-        "key": "D",
-        "text": "O protocolo FTP é utilizado exclusivamente para navegação em redes sociais."
-      },
-      {
-        "key": "E",
-        "text": "O campo Cc de um e-mail esconde o endereço dos destinatários."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Entendimento das tecnologias de redes (LAN/WAN, Intranet), protocolos da web e correio eletrônico.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Intranet é rede PRIVADA corporativa."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para os serviços de redes e internet na questão #12."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Cookies são pequenos arquivos de texto com preferências."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. FTP é transferência de arquivos."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Cc é Com Cópia VISÍVEL."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Internet = Pública | Intranet = Privada/Corporativa | Cookies = Arquivos de preferência do navegador (Não são vírus!)."
-    }
-  },
-  {
-    "id": "inf-net-013",
-    "subject": "Informática",
-    "topic": "8 e 9. Redes e Internet - Conceitos #13",
-    "source": "IBFC / IBGE",
-    "difficulty": "Fácil",
-    "statement": "Em relação ao funcionamento de redes de computadores, internet e navegadores no IBGE (Questão #13), assinale a alternativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "A Intranet é uma rede pública acessível livremente por qualquer pessoa no mundo sem senha."
-      },
-      {
-        "key": "B",
-        "text": "Os protocolos e ferramentas de rede descritos na questão #13 garantem a comunicação segura e eficiente nas agências."
-      },
-      {
-        "key": "C",
-        "text": "Os Cookies são vírus de computador que formatam o disco rígido."
-      },
-      {
-        "key": "D",
-        "text": "O protocolo FTP é utilizado exclusivamente para navegação em redes sociais."
-      },
-      {
-        "key": "E",
-        "text": "O campo Cc de um e-mail esconde o endereço dos destinatários."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Entendimento das tecnologias de redes (LAN/WAN, Intranet), protocolos da web e correio eletrônico.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Intranet é rede PRIVADA corporativa."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para os serviços de redes e internet na questão #13."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Cookies são pequenos arquivos de texto com preferências."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. FTP é transferência de arquivos."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Cc é Com Cópia VISÍVEL."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Internet = Pública | Intranet = Privada/Corporativa | Cookies = Arquivos de preferência do navegador (Não são vírus!)."
-    }
-  },
-  {
-    "id": "inf-net-014",
-    "subject": "Informática",
-    "topic": "8 e 9. Redes e Internet - Conceitos #14",
-    "source": "IBFC / IBGE",
-    "difficulty": "Médio",
-    "statement": "Em relação ao funcionamento de redes de computadores, internet e navegadores no IBGE (Questão #14), assinale a alternativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "A Intranet é uma rede pública acessível livremente por qualquer pessoa no mundo sem senha."
-      },
-      {
-        "key": "B",
-        "text": "Os protocolos e ferramentas de rede descritos na questão #14 garantem a comunicação segura e eficiente nas agências."
-      },
-      {
-        "key": "C",
-        "text": "Os Cookies são vírus de computador que formatam o disco rígido."
-      },
-      {
-        "key": "D",
-        "text": "O protocolo FTP é utilizado exclusivamente para navegação em redes sociais."
-      },
-      {
-        "key": "E",
-        "text": "O campo Cc de um e-mail esconde o endereço dos destinatários."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Entendimento das tecnologias de redes (LAN/WAN, Intranet), protocolos da web e correio eletrônico.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Intranet é rede PRIVADA corporativa."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para os serviços de redes e internet na questão #14."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Cookies são pequenos arquivos de texto com preferências."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. FTP é transferência de arquivos."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Cc é Com Cópia VISÍVEL."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Internet = Pública | Intranet = Privada/Corporativa | Cookies = Arquivos de preferência do navegador (Não são vírus!)."
-    }
-  },
-  {
-    "id": "inf-net-015",
-    "subject": "Informática",
-    "topic": "8 e 9. Redes e Internet - Conceitos #15",
-    "source": "IBFC / IBGE",
-    "difficulty": "Difícil",
-    "statement": "Em relação ao funcionamento de redes de computadores, internet e navegadores no IBGE (Questão #15), assinale a alternativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "A Intranet é uma rede pública acessível livremente por qualquer pessoa no mundo sem senha."
-      },
-      {
-        "key": "B",
-        "text": "Os protocolos e ferramentas de rede descritos na questão #15 garantem a comunicação segura e eficiente nas agências."
-      },
-      {
-        "key": "C",
-        "text": "Os Cookies são vírus de computador que formatam o disco rígido."
-      },
-      {
-        "key": "D",
-        "text": "O protocolo FTP é utilizado exclusivamente para navegação em redes sociais."
-      },
-      {
-        "key": "E",
-        "text": "O campo Cc de um e-mail esconde o endereço dos destinatários."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Entendimento das tecnologias de redes (LAN/WAN, Intranet), protocolos da web e correio eletrônico.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Intranet é rede PRIVADA corporativa."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para os serviços de redes e internet na questão #15."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Cookies são pequenos arquivos de texto com preferências."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. FTP é transferência de arquivos."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Cc é Com Cópia VISÍVEL."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Internet = Pública | Intranet = Privada/Corporativa | Cookies = Arquivos de preferência do navegador (Não são vírus!)."
-    }
-  },
-  {
-    "id": "inf-net-016",
-    "subject": "Informática",
-    "topic": "8 e 9. Redes e Internet - Conceitos #16",
-    "source": "IBFC / IBGE",
-    "difficulty": "Fácil",
-    "statement": "Em relação ao funcionamento de redes de computadores, internet e navegadores no IBGE (Questão #16), assinale a alternativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "A Intranet é uma rede pública acessível livremente por qualquer pessoa no mundo sem senha."
-      },
-      {
-        "key": "B",
-        "text": "Os protocolos e ferramentas de rede descritos na questão #16 garantem a comunicação segura e eficiente nas agências."
-      },
-      {
-        "key": "C",
-        "text": "Os Cookies são vírus de computador que formatam o disco rígido."
-      },
-      {
-        "key": "D",
-        "text": "O protocolo FTP é utilizado exclusivamente para navegação em redes sociais."
-      },
-      {
-        "key": "E",
-        "text": "O campo Cc de um e-mail esconde o endereço dos destinatários."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Entendimento das tecnologias de redes (LAN/WAN, Intranet), protocolos da web e correio eletrônico.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Intranet é rede PRIVADA corporativa."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para os serviços de redes e internet na questão #16."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Cookies são pequenos arquivos de texto com preferências."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. FTP é transferência de arquivos."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Cc é Com Cópia VISÍVEL."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Internet = Pública | Intranet = Privada/Corporativa | Cookies = Arquivos de preferência do navegador (Não são vírus!)."
-    }
-  },
-  {
-    "id": "inf-net-017",
-    "subject": "Informática",
-    "topic": "8 e 9. Redes e Internet - Conceitos #17",
-    "source": "IBFC / IBGE",
-    "difficulty": "Médio",
-    "statement": "Em relação ao funcionamento de redes de computadores, internet e navegadores no IBGE (Questão #17), assinale a alternativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "A Intranet é uma rede pública acessível livremente por qualquer pessoa no mundo sem senha."
-      },
-      {
-        "key": "B",
-        "text": "Os protocolos e ferramentas de rede descritos na questão #17 garantem a comunicação segura e eficiente nas agências."
-      },
-      {
-        "key": "C",
-        "text": "Os Cookies são vírus de computador que formatam o disco rígido."
-      },
-      {
-        "key": "D",
-        "text": "O protocolo FTP é utilizado exclusivamente para navegação em redes sociais."
-      },
-      {
-        "key": "E",
-        "text": "O campo Cc de um e-mail esconde o endereço dos destinatários."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Entendimento das tecnologias de redes (LAN/WAN, Intranet), protocolos da web e correio eletrônico.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Intranet é rede PRIVADA corporativa."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para os serviços de redes e internet na questão #17."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Cookies são pequenos arquivos de texto com preferências."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. FTP é transferência de arquivos."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Cc é Com Cópia VISÍVEL."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Internet = Pública | Intranet = Privada/Corporativa | Cookies = Arquivos de preferência do navegador (Não são vírus!)."
-    }
-  },
-  {
-    "id": "inf-net-018",
-    "subject": "Informática",
-    "topic": "8 e 9. Redes e Internet - Conceitos #18",
-    "source": "IBFC / IBGE",
-    "difficulty": "Difícil",
-    "statement": "Em relação ao funcionamento de redes de computadores, internet e navegadores no IBGE (Questão #18), assinale a alternativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "A Intranet é uma rede pública acessível livremente por qualquer pessoa no mundo sem senha."
-      },
-      {
-        "key": "B",
-        "text": "Os protocolos e ferramentas de rede descritos na questão #18 garantem a comunicação segura e eficiente nas agências."
-      },
-      {
-        "key": "C",
-        "text": "Os Cookies são vírus de computador que formatam o disco rígido."
-      },
-      {
-        "key": "D",
-        "text": "O protocolo FTP é utilizado exclusivamente para navegação em redes sociais."
-      },
-      {
-        "key": "E",
-        "text": "O campo Cc de um e-mail esconde o endereço dos destinatários."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Entendimento das tecnologias de redes (LAN/WAN, Intranet), protocolos da web e correio eletrônico.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Intranet é rede PRIVADA corporativa."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para os serviços de redes e internet na questão #18."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Cookies são pequenos arquivos de texto com preferências."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. FTP é transferência de arquivos."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Cc é Com Cópia VISÍVEL."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Internet = Pública | Intranet = Privada/Corporativa | Cookies = Arquivos de preferência do navegador (Não são vírus!)."
-    }
-  },
-  {
-    "id": "inf-net-019",
-    "subject": "Informática",
-    "topic": "8 e 9. Redes e Internet - Conceitos #19",
-    "source": "IBFC / IBGE",
-    "difficulty": "Fácil",
-    "statement": "Em relação ao funcionamento de redes de computadores, internet e navegadores no IBGE (Questão #19), assinale a alternativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "A Intranet é uma rede pública acessível livremente por qualquer pessoa no mundo sem senha."
-      },
-      {
-        "key": "B",
-        "text": "Os protocolos e ferramentas de rede descritos na questão #19 garantem a comunicação segura e eficiente nas agências."
-      },
-      {
-        "key": "C",
-        "text": "Os Cookies são vírus de computador que formatam o disco rígido."
-      },
-      {
-        "key": "D",
-        "text": "O protocolo FTP é utilizado exclusivamente para navegação em redes sociais."
-      },
-      {
-        "key": "E",
-        "text": "O campo Cc de um e-mail esconde o endereço dos destinatários."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Entendimento das tecnologias de redes (LAN/WAN, Intranet), protocolos da web e correio eletrônico.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Intranet é rede PRIVADA corporativa."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para os serviços de redes e internet na questão #19."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Cookies são pequenos arquivos de texto com preferências."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. FTP é transferência de arquivos."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Cc é Com Cópia VISÍVEL."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Internet = Pública | Intranet = Privada/Corporativa | Cookies = Arquivos de preferência do navegador (Não são vírus!)."
-    }
-  },
-  {
-    "id": "inf-net-020",
-    "subject": "Informática",
-    "topic": "8 e 9. Redes e Internet - Conceitos #20",
-    "source": "IBFC / IBGE",
-    "difficulty": "Médio",
-    "statement": "Em relação ao funcionamento de redes de computadores, internet e navegadores no IBGE (Questão #20), assinale a alternativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "A Intranet é uma rede pública acessível livremente por qualquer pessoa no mundo sem senha."
-      },
-      {
-        "key": "B",
-        "text": "Os protocolos e ferramentas de rede descritos na questão #20 garantem a comunicação segura e eficiente nas agências."
-      },
-      {
-        "key": "C",
-        "text": "Os Cookies são vírus de computador que formatam o disco rígido."
-      },
-      {
-        "key": "D",
-        "text": "O protocolo FTP é utilizado exclusivamente para navegação em redes sociais."
-      },
-      {
-        "key": "E",
-        "text": "O campo Cc de um e-mail esconde o endereço dos destinatários."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Entendimento das tecnologias de redes (LAN/WAN, Intranet), protocolos da web e correio eletrônico.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Intranet é rede PRIVADA corporativa."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para os serviços de redes e internet na questão #20."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Cookies são pequenos arquivos de texto com preferências."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. FTP é transferência de arquivos."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Cc é Com Cópia VISÍVEL."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Internet = Pública | Intranet = Privada/Corporativa | Cookies = Arquivos de preferência do navegador (Não são vírus!)."
+      "bizu": "💡 BIZU IBFC: HTTP = Porta 80 (Sem criptografia) | HTTPS = Porta 443 (Com criptografia SSL/TLS, ícone de cadeado)."
     }
   },
   {
     "id": "port-cra-001",
     "subject": "Língua Portuguesa",
-    "topic": "7. Crase - Uso Correto",
+    "topic": "7. Crase - Uso Correto e Proibições",
     "source": "IBFC / IBGE",
-    "difficulty": "Fácil",
-    "statement": "Assinale a alternativa em que o emprego do sinal indicativo de crase está CORRETO segundo a norma-padrão:",
+    "difficulty": "Médio",
+    "statement": "Assinale a frase em que o emprego do sinal indicativo de crase está CORRETO segundo a norma-padrão da Língua Portuguesa:",
     "options": [
       {
         "key": "A",
-        "text": "O agente começou à preencher o questionário."
+        "text": "O agente começou à preencher o formulário do censo."
       },
       {
         "key": "B",
-        "text": "Fomos à pé realizar a entrevista de campo."
+        "text": "A equipe dirigiu-se à pé até o posto de atendimento."
       },
       {
         "key": "C",
-        "text": "Entregamos a documentação à supervisora do IBGE."
+        "text": "Entregamos a listagem de dados à supervisora regional."
       },
       {
         "key": "D",
-        "text": "Referia-se à uma cidade da Bahia."
+        "text": "O pesquisador referia-se à uma cidade do interior."
       },
       {
         "key": "E",
-        "text": "As reuniões ocorrem dia à dia."
+        "text": "As reuniões ocorrem dia à dia na agência."
       }
     ],
     "correctOption": "C",
     "explanation": {
-      "summary": "Houve a fusão da preposição A (exigida por 'entregamos') com o artigo feminino A ('a supervisora') = à supervisora.",
+      "summary": "Ocorreu a crase pela junção da preposição A (exigida por 'entregamos') com o artigo definido feminino A que antecede 'supervisora regional'.",
       "optionsAnalysis": [
         {
           "key": "A",
           "isCorrect": false,
-          "reason": "Incorreto. PROIBIDO crase antes de verbo ('preencher')."
+          "reason": "Incorreto. É PROIBIDO o uso da crase antes de verbos ('preencher')."
         },
         {
           "key": "B",
           "isCorrect": false,
-          "reason": "Incorreto. PROIBIDO crase antes de palavra masculina ('pé')."
+          "reason": "Incorreto. É PROIBIDO o uso da crase antes de palavras masculinas ('pé')."
         },
         {
           "key": "C",
           "isCorrect": true,
-          "reason": "CORRETA. Entregar A + A supervisora = à supervisora."
+          "reason": "CORRETA. Entregamos A + A supervisora = à supervisora."
         },
         {
           "key": "D",
           "isCorrect": false,
-          "reason": "Incorreto. PROIBIDO crase antes do artigo 'uma'."
+          "reason": "Incorreto. É PROIBIDO o uso da crase antes do artigo indefinido 'uma'."
         },
         {
           "key": "E",
           "isCorrect": false,
-          "reason": "Incorreto. PROIBIDO crase entre palavras repetidas ('dia a dia')."
+          "reason": "Incorreto. É PROIBIDO o uso da crase entre palavras repetidas ('dia a dia')."
         }
       ],
-      "bizu": "💡 BIZU IBFC (Crase Proibida): NUNCA use crase antes de: 1. Verbo | 2. Palavra Masculina | 3. Artigo 'uma' | 4. Palavras repetidas."
+      "bizu": "💡 BIZU IBFC (Crase Proibida): NUNCA use crase antes de: 1. Verbos | 2. Palavras masculinas | 3. Artigo 'uma' | 4. Palavras repetidas (dia a dia, passo a passo)."
     }
   },
   {
@@ -9989,972 +2549,166 @@ export const QUESTIONS_DATABASE: Question[] = [
     "topic": "7. Crase - Casos Facultativos",
     "source": "IBFC / IBGE",
     "difficulty": "Médio",
-    "statement": "Assinale a frase em que o uso da crase é FACULTATIVO segundo a norma-padrão:",
+    "statement": "Assinale a alternativa em que o uso do sinal indicativo de crase é FACULTATIVO segundo a norma-padrão:",
     "options": [
       {
         "key": "A",
-        "text": "Entregou o relatório à diretora."
+        "text": "Entregou o relatório à diretora de operações."
       },
       {
         "key": "B",
-        "text": "Enviei a mensagem à minha supervisora."
+        "text": "Enviei a notificação à minha supervisora de campo."
       },
       {
         "key": "C",
-        "text": "O aluno chegou à noite."
+        "text": "O recenseador chegou à noite ao município."
       },
       {
         "key": "D",
-        "text": "Refiro-me à professora de informática."
+        "text": "O relatório referia-se à professora de estatística."
       },
       {
         "key": "E",
-        "text": "Chegamos à praia."
+        "text": "Todos os pesquisadores foram à praia no domingo."
       }
     ],
     "correctOption": "B",
     "explanation": {
-      "summary": "A crase é facultativa antes de pronomes possessivos femininos no singular (minha, tua, sua), nomes próprios femininos e após a preposição 'até'.",
+      "summary": "A crase é facultativa em três situações: 1) Antes de pronomes possessivos femininos no singular (minha, tua, sua); 2) Antes de nomes próprios femininos; 3) Após a preposição 'até'.",
       "optionsAnalysis": [
         {
           "key": "A",
           "isCorrect": false,
-          "reason": "Incorreto. Crase obrigatória."
+          "reason": "Incorreto. Crase obrigatória ('à diretora')."
         },
         {
           "key": "B",
           "isCorrect": true,
-          "reason": "CORRETA. Facultativa antes de pronome possessivo feminino ('à minha' ou 'a minha')."
+          "reason": "CORRETA. Facultativa antes de pronome possessivo feminino no singular ('à minha' ou 'a minha')."
         },
         {
           "key": "C",
           "isCorrect": false,
-          "reason": "Incorreto. Crase obrigatória em locução adverbial feminina ('à noite')."
+          "reason": "Incorreto. Crase obrigatória em locução adverbial feminina de tempo ('à noite')."
         },
         {
           "key": "D",
           "isCorrect": false,
-          "reason": "Incorreto. Crase obrigatória."
+          "reason": "Incorreto. Crase obrigatória ('à professora')."
         },
         {
           "key": "E",
           "isCorrect": false,
-          "reason": "Incorreto. Crase obrigatória."
+          "reason": "Incorreto. Crase obrigatória ('à praia')."
         }
       ],
-      "bizu": "💡 BIZU IBFC (Crase Facultativa): 1. Pronome Possessivo Feminino (minha/sua) | 2. Nome Próprio Feminino (Maria) | 3. Após 'Até'."
-    }
-  },
-  {
-    "id": "port-cra-003",
-    "subject": "Língua Portuguesa",
-    "topic": "7. Crase - Questão #3",
-    "source": "IBFC / IBGE",
-    "difficulty": "Difícil",
-    "statement": "Assinale a opção em que o emprego do sinal indicativo de crase obedece à norma-padrão da Língua Portuguesa (Questão #3):",
-    "options": [
-      {
-        "key": "A",
-        "text": "Ele se dispôs à ajudar todos os colegas."
-      },
-      {
-        "key": "B",
-        "text": "A aplicação das regras de regência e crase na frase da opção B (questão #3) está totalmente correta."
-      },
-      {
-        "key": "C",
-        "text": "O relatório foi entregue à um funcionário do setor."
-      },
-      {
-        "key": "D",
-        "text": "Eles caminharam passo à passo até a agência."
-      },
-      {
-        "key": "E",
-        "text": "O candidato dirigiu-se à ele com respeito."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Domínio das regras de crase obrigatória, proibida e facultativa exigidas pela banca IBFC.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Proibido crase antes de verbo."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Emprego perfeito da crase segundo a norma-padrão na questão #3."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Proibido crase antes de palavra masculina/uma."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Proibido crase entre palavras repetidas."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Proibido crase antes de pronome pessoal 'ele'."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Troque a palavra feminina por uma masculina (ex: 'à professora' -> 'ao professor'). Se virar 'AO', TEM CRASE!"
-    }
-  },
-  {
-    "id": "port-cra-004",
-    "subject": "Língua Portuguesa",
-    "topic": "7. Crase - Questão #4",
-    "source": "IBFC / IBGE",
-    "difficulty": "Fácil",
-    "statement": "Assinale a opção em que o emprego do sinal indicativo de crase obedece à norma-padrão da Língua Portuguesa (Questão #4):",
-    "options": [
-      {
-        "key": "A",
-        "text": "Ele se dispôs à ajudar todos os colegas."
-      },
-      {
-        "key": "B",
-        "text": "A aplicação das regras de regência e crase na frase da opção B (questão #4) está totalmente correta."
-      },
-      {
-        "key": "C",
-        "text": "O relatório foi entregue à um funcionário do setor."
-      },
-      {
-        "key": "D",
-        "text": "Eles caminharam passo à passo até a agência."
-      },
-      {
-        "key": "E",
-        "text": "O candidato dirigiu-se à ele com respeito."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Domínio das regras de crase obrigatória, proibida e facultativa exigidas pela banca IBFC.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Proibido crase antes de verbo."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Emprego perfeito da crase segundo a norma-padrão na questão #4."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Proibido crase antes de palavra masculina/uma."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Proibido crase entre palavras repetidas."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Proibido crase antes de pronome pessoal 'ele'."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Troque a palavra feminina por uma masculina (ex: 'à professora' -> 'ao professor'). Se virar 'AO', TEM CRASE!"
-    }
-  },
-  {
-    "id": "port-cra-005",
-    "subject": "Língua Portuguesa",
-    "topic": "7. Crase - Questão #5",
-    "source": "IBFC / IBGE",
-    "difficulty": "Médio",
-    "statement": "Assinale a opção em que o emprego do sinal indicativo de crase obedece à norma-padrão da Língua Portuguesa (Questão #5):",
-    "options": [
-      {
-        "key": "A",
-        "text": "Ele se dispôs à ajudar todos os colegas."
-      },
-      {
-        "key": "B",
-        "text": "A aplicação das regras de regência e crase na frase da opção B (questão #5) está totalmente correta."
-      },
-      {
-        "key": "C",
-        "text": "O relatório foi entregue à um funcionário do setor."
-      },
-      {
-        "key": "D",
-        "text": "Eles caminharam passo à passo até a agência."
-      },
-      {
-        "key": "E",
-        "text": "O candidato dirigiu-se à ele com respeito."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Domínio das regras de crase obrigatória, proibida e facultativa exigidas pela banca IBFC.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Proibido crase antes de verbo."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Emprego perfeito da crase segundo a norma-padrão na questão #5."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Proibido crase antes de palavra masculina/uma."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Proibido crase entre palavras repetidas."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Proibido crase antes de pronome pessoal 'ele'."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Troque a palavra feminina por uma masculina (ex: 'à professora' -> 'ao professor'). Se virar 'AO', TEM CRASE!"
-    }
-  },
-  {
-    "id": "port-cra-006",
-    "subject": "Língua Portuguesa",
-    "topic": "7. Crase - Questão #6",
-    "source": "IBFC / IBGE",
-    "difficulty": "Difícil",
-    "statement": "Assinale a opção em que o emprego do sinal indicativo de crase obedece à norma-padrão da Língua Portuguesa (Questão #6):",
-    "options": [
-      {
-        "key": "A",
-        "text": "Ele se dispôs à ajudar todos os colegas."
-      },
-      {
-        "key": "B",
-        "text": "A aplicação das regras de regência e crase na frase da opção B (questão #6) está totalmente correta."
-      },
-      {
-        "key": "C",
-        "text": "O relatório foi entregue à um funcionário do setor."
-      },
-      {
-        "key": "D",
-        "text": "Eles caminharam passo à passo até a agência."
-      },
-      {
-        "key": "E",
-        "text": "O candidato dirigiu-se à ele com respeito."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Domínio das regras de crase obrigatória, proibida e facultativa exigidas pela banca IBFC.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Proibido crase antes de verbo."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Emprego perfeito da crase segundo a norma-padrão na questão #6."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Proibido crase antes de palavra masculina/uma."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Proibido crase entre palavras repetidas."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Proibido crase antes de pronome pessoal 'ele'."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Troque a palavra feminina por uma masculina (ex: 'à professora' -> 'ao professor'). Se virar 'AO', TEM CRASE!"
-    }
-  },
-  {
-    "id": "port-cra-007",
-    "subject": "Língua Portuguesa",
-    "topic": "7. Crase - Questão #7",
-    "source": "IBFC / IBGE",
-    "difficulty": "Fácil",
-    "statement": "Assinale a opção em que o emprego do sinal indicativo de crase obedece à norma-padrão da Língua Portuguesa (Questão #7):",
-    "options": [
-      {
-        "key": "A",
-        "text": "Ele se dispôs à ajudar todos os colegas."
-      },
-      {
-        "key": "B",
-        "text": "A aplicação das regras de regência e crase na frase da opção B (questão #7) está totalmente correta."
-      },
-      {
-        "key": "C",
-        "text": "O relatório foi entregue à um funcionário do setor."
-      },
-      {
-        "key": "D",
-        "text": "Eles caminharam passo à passo até a agência."
-      },
-      {
-        "key": "E",
-        "text": "O candidato dirigiu-se à ele com respeito."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Domínio das regras de crase obrigatória, proibida e facultativa exigidas pela banca IBFC.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Proibido crase antes de verbo."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Emprego perfeito da crase segundo a norma-padrão na questão #7."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Proibido crase antes de palavra masculina/uma."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Proibido crase entre palavras repetidas."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Proibido crase antes de pronome pessoal 'ele'."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Troque a palavra feminina por uma masculina (ex: 'à professora' -> 'ao professor'). Se virar 'AO', TEM CRASE!"
-    }
-  },
-  {
-    "id": "port-cra-008",
-    "subject": "Língua Portuguesa",
-    "topic": "7. Crase - Questão #8",
-    "source": "IBFC / IBGE",
-    "difficulty": "Médio",
-    "statement": "Assinale a opção em que o emprego do sinal indicativo de crase obedece à norma-padrão da Língua Portuguesa (Questão #8):",
-    "options": [
-      {
-        "key": "A",
-        "text": "Ele se dispôs à ajudar todos os colegas."
-      },
-      {
-        "key": "B",
-        "text": "A aplicação das regras de regência e crase na frase da opção B (questão #8) está totalmente correta."
-      },
-      {
-        "key": "C",
-        "text": "O relatório foi entregue à um funcionário do setor."
-      },
-      {
-        "key": "D",
-        "text": "Eles caminharam passo à passo até a agência."
-      },
-      {
-        "key": "E",
-        "text": "O candidato dirigiu-se à ele com respeito."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Domínio das regras de crase obrigatória, proibida e facultativa exigidas pela banca IBFC.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Proibido crase antes de verbo."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Emprego perfeito da crase segundo a norma-padrão na questão #8."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Proibido crase antes de palavra masculina/uma."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Proibido crase entre palavras repetidas."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Proibido crase antes de pronome pessoal 'ele'."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Troque a palavra feminina por uma masculina (ex: 'à professora' -> 'ao professor'). Se virar 'AO', TEM CRASE!"
-    }
-  },
-  {
-    "id": "port-cra-009",
-    "subject": "Língua Portuguesa",
-    "topic": "7. Crase - Questão #9",
-    "source": "IBFC / IBGE",
-    "difficulty": "Difícil",
-    "statement": "Assinale a opção em que o emprego do sinal indicativo de crase obedece à norma-padrão da Língua Portuguesa (Questão #9):",
-    "options": [
-      {
-        "key": "A",
-        "text": "Ele se dispôs à ajudar todos os colegas."
-      },
-      {
-        "key": "B",
-        "text": "A aplicação das regras de regência e crase na frase da opção B (questão #9) está totalmente correta."
-      },
-      {
-        "key": "C",
-        "text": "O relatório foi entregue à um funcionário do setor."
-      },
-      {
-        "key": "D",
-        "text": "Eles caminharam passo à passo até a agência."
-      },
-      {
-        "key": "E",
-        "text": "O candidato dirigiu-se à ele com respeito."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Domínio das regras de crase obrigatória, proibida e facultativa exigidas pela banca IBFC.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Proibido crase antes de verbo."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Emprego perfeito da crase segundo a norma-padrão na questão #9."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Proibido crase antes de palavra masculina/uma."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Proibido crase entre palavras repetidas."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Proibido crase antes de pronome pessoal 'ele'."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Troque a palavra feminina por uma masculina (ex: 'à professora' -> 'ao professor'). Se virar 'AO', TEM CRASE!"
-    }
-  },
-  {
-    "id": "port-cra-010",
-    "subject": "Língua Portuguesa",
-    "topic": "7. Crase - Questão #10",
-    "source": "IBFC / IBGE",
-    "difficulty": "Fácil",
-    "statement": "Assinale a opção em que o emprego do sinal indicativo de crase obedece à norma-padrão da Língua Portuguesa (Questão #10):",
-    "options": [
-      {
-        "key": "A",
-        "text": "Ele se dispôs à ajudar todos os colegas."
-      },
-      {
-        "key": "B",
-        "text": "A aplicação das regras de regência e crase na frase da opção B (questão #10) está totalmente correta."
-      },
-      {
-        "key": "C",
-        "text": "O relatório foi entregue à um funcionário do setor."
-      },
-      {
-        "key": "D",
-        "text": "Eles caminharam passo à passo até a agência."
-      },
-      {
-        "key": "E",
-        "text": "O candidato dirigiu-se à ele com respeito."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Domínio das regras de crase obrigatória, proibida e facultativa exigidas pela banca IBFC.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Proibido crase antes de verbo."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Emprego perfeito da crase segundo a norma-padrão na questão #10."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Proibido crase antes de palavra masculina/uma."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Proibido crase entre palavras repetidas."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Proibido crase antes de pronome pessoal 'ele'."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Troque a palavra feminina por uma masculina (ex: 'à professora' -> 'ao professor'). Se virar 'AO', TEM CRASE!"
-    }
-  },
-  {
-    "id": "port-cra-011",
-    "subject": "Língua Portuguesa",
-    "topic": "7. Crase - Questão #11",
-    "source": "IBFC / IBGE",
-    "difficulty": "Médio",
-    "statement": "Assinale a opção em que o emprego do sinal indicativo de crase obedece à norma-padrão da Língua Portuguesa (Questão #11):",
-    "options": [
-      {
-        "key": "A",
-        "text": "Ele se dispôs à ajudar todos os colegas."
-      },
-      {
-        "key": "B",
-        "text": "A aplicação das regras de regência e crase na frase da opção B (questão #11) está totalmente correta."
-      },
-      {
-        "key": "C",
-        "text": "O relatório foi entregue à um funcionário do setor."
-      },
-      {
-        "key": "D",
-        "text": "Eles caminharam passo à passo até a agência."
-      },
-      {
-        "key": "E",
-        "text": "O candidato dirigiu-se à ele com respeito."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Domínio das regras de crase obrigatória, proibida e facultativa exigidas pela banca IBFC.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Proibido crase antes de verbo."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Emprego perfeito da crase segundo a norma-padrão na questão #11."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Proibido crase antes de palavra masculina/uma."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Proibido crase entre palavras repetidas."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Proibido crase antes de pronome pessoal 'ele'."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Troque a palavra feminina por uma masculina (ex: 'à professora' -> 'ao professor'). Se virar 'AO', TEM CRASE!"
-    }
-  },
-  {
-    "id": "port-cra-012",
-    "subject": "Língua Portuguesa",
-    "topic": "7. Crase - Questão #12",
-    "source": "IBFC / IBGE",
-    "difficulty": "Difícil",
-    "statement": "Assinale a opção em que o emprego do sinal indicativo de crase obedece à norma-padrão da Língua Portuguesa (Questão #12):",
-    "options": [
-      {
-        "key": "A",
-        "text": "Ele se dispôs à ajudar todos os colegas."
-      },
-      {
-        "key": "B",
-        "text": "A aplicação das regras de regência e crase na frase da opção B (questão #12) está totalmente correta."
-      },
-      {
-        "key": "C",
-        "text": "O relatório foi entregue à um funcionário do setor."
-      },
-      {
-        "key": "D",
-        "text": "Eles caminharam passo à passo até a agência."
-      },
-      {
-        "key": "E",
-        "text": "O candidato dirigiu-se à ele com respeito."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Domínio das regras de crase obrigatória, proibida e facultativa exigidas pela banca IBFC.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Proibido crase antes de verbo."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Emprego perfeito da crase segundo a norma-padrão na questão #12."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Proibido crase antes de palavra masculina/uma."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Proibido crase entre palavras repetidas."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Proibido crase antes de pronome pessoal 'ele'."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Troque a palavra feminina por uma masculina (ex: 'à professora' -> 'ao professor'). Se virar 'AO', TEM CRASE!"
-    }
-  },
-  {
-    "id": "port-cra-013",
-    "subject": "Língua Portuguesa",
-    "topic": "7. Crase - Questão #13",
-    "source": "IBFC / IBGE",
-    "difficulty": "Fácil",
-    "statement": "Assinale a opção em que o emprego do sinal indicativo de crase obedece à norma-padrão da Língua Portuguesa (Questão #13):",
-    "options": [
-      {
-        "key": "A",
-        "text": "Ele se dispôs à ajudar todos os colegas."
-      },
-      {
-        "key": "B",
-        "text": "A aplicação das regras de regência e crase na frase da opção B (questão #13) está totalmente correta."
-      },
-      {
-        "key": "C",
-        "text": "O relatório foi entregue à um funcionário do setor."
-      },
-      {
-        "key": "D",
-        "text": "Eles caminharam passo à passo até a agência."
-      },
-      {
-        "key": "E",
-        "text": "O candidato dirigiu-se à ele com respeito."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Domínio das regras de crase obrigatória, proibida e facultativa exigidas pela banca IBFC.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Proibido crase antes de verbo."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Emprego perfeito da crase segundo a norma-padrão na questão #13."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Proibido crase antes de palavra masculina/uma."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Proibido crase entre palavras repetidas."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Proibido crase antes de pronome pessoal 'ele'."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Troque a palavra feminina por uma masculina (ex: 'à professora' -> 'ao professor'). Se virar 'AO', TEM CRASE!"
-    }
-  },
-  {
-    "id": "port-cra-014",
-    "subject": "Língua Portuguesa",
-    "topic": "7. Crase - Questão #14",
-    "source": "IBFC / IBGE",
-    "difficulty": "Médio",
-    "statement": "Assinale a opção em que o emprego do sinal indicativo de crase obedece à norma-padrão da Língua Portuguesa (Questão #14):",
-    "options": [
-      {
-        "key": "A",
-        "text": "Ele se dispôs à ajudar todos os colegas."
-      },
-      {
-        "key": "B",
-        "text": "A aplicação das regras de regência e crase na frase da opção B (questão #14) está totalmente correta."
-      },
-      {
-        "key": "C",
-        "text": "O relatório foi entregue à um funcionário do setor."
-      },
-      {
-        "key": "D",
-        "text": "Eles caminharam passo à passo até a agência."
-      },
-      {
-        "key": "E",
-        "text": "O candidato dirigiu-se à ele com respeito."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Domínio das regras de crase obrigatória, proibida e facultativa exigidas pela banca IBFC.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Proibido crase antes de verbo."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Emprego perfeito da crase segundo a norma-padrão na questão #14."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Proibido crase antes de palavra masculina/uma."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Proibido crase entre palavras repetidas."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Proibido crase antes de pronome pessoal 'ele'."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Troque a palavra feminina por uma masculina (ex: 'à professora' -> 'ao professor'). Se virar 'AO', TEM CRASE!"
-    }
-  },
-  {
-    "id": "port-cra-015",
-    "subject": "Língua Portuguesa",
-    "topic": "7. Crase - Questão #15",
-    "source": "IBFC / IBGE",
-    "difficulty": "Difícil",
-    "statement": "Assinale a opção em que o emprego do sinal indicativo de crase obedece à norma-padrão da Língua Portuguesa (Questão #15):",
-    "options": [
-      {
-        "key": "A",
-        "text": "Ele se dispôs à ajudar todos os colegas."
-      },
-      {
-        "key": "B",
-        "text": "A aplicação das regras de regência e crase na frase da opção B (questão #15) está totalmente correta."
-      },
-      {
-        "key": "C",
-        "text": "O relatório foi entregue à um funcionário do setor."
-      },
-      {
-        "key": "D",
-        "text": "Eles caminharam passo à passo até a agência."
-      },
-      {
-        "key": "E",
-        "text": "O candidato dirigiu-se à ele com respeito."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Domínio das regras de crase obrigatória, proibida e facultativa exigidas pela banca IBFC.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Proibido crase antes de verbo."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Emprego perfeito da crase segundo a norma-padrão na questão #15."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Proibido crase antes de palavra masculina/uma."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Proibido crase entre palavras repetidas."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Proibido crase antes de pronome pessoal 'ele'."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Troque a palavra feminina por uma masculina (ex: 'à professora' -> 'ao professor'). Se virar 'AO', TEM CRASE!"
+      "bizu": "💡 BIZU IBFC (Crase Facultativa): 1. Pronome Possessivo Feminino (minha/sua) | 2. Nome Próprio Feminino (Maria) | 3. Após a palavra 'Até'."
     }
   },
   {
     "id": "port-con-001",
     "subject": "Língua Portuguesa",
-    "topic": "6. Concordância Verbal - Verbo Haver e Fazer",
+    "topic": "6. Concordância Verbal - Verbo Haver e Fazer Impessoais",
     "source": "IBFC / IBGE",
-    "difficulty": "Fácil",
-    "statement": "Assinale a frase correta quanto à concordância verbal segundo a norma-padrão:",
+    "difficulty": "Médio",
+    "statement": "Assinale a opção em que a concordância verbal está inteiramente CORRETA segundo a norma-padrão:",
     "options": [
       {
         "key": "A",
-        "text": "Houveram muitos problemas na coleta."
+        "text": "Houveram muitos atrasos no envio dos relatórios mensais."
       },
       {
         "key": "B",
-        "text": "Fazem dois anos que trabalho no IBGE."
+        "text": "Fazem dois anos que os pesquisadores atuam nesta região."
       },
       {
         "key": "C",
-        "text": "Havia muitas dúvidas sobre o questionário."
+        "text": "Havia muitas dúvidas sobre o preenchimento dos formulários."
       },
       {
         "key": "D",
-        "text": "Haviam vários relatórios na mesa."
+        "text": "Haviam vários documentos acumulados sobre a mesa."
       },
       {
         "key": "E",
-        "text": "Aluga-se casas no interior."
+        "text": "Aluga-se casas para a equipe de campo do IBGE."
       }
     ],
     "correctOption": "C",
     "explanation": {
-      "summary": "HAVER (no sentido de existir) e FAZER (indicando tempo decorrido) são verbos IMPESSOAIS e devem ficar no SINGULAR.",
+      "summary": "Os verbos HAVER (no sentido de existir ou ocorrer) e FAZER (indicando tempo decorrido) são IMPESSOAIS e devem obrigatoriamente permanecer na 3ª pessoa do SINGULAR.",
       "optionsAnalysis": [
         {
           "key": "A",
           "isCorrect": false,
-          "reason": "Incorreto. Deveria ser 'Houve muitos problemas'."
+          "reason": "Incorreto. O correto é 'Houve muitos atrasos'."
         },
         {
           "key": "B",
           "isCorrect": false,
-          "reason": "Incorreto. Deveria ser 'Faz dois anos'."
+          "reason": "Incorreto. O correto é 'Faz dois anos'."
         },
         {
           "key": "C",
           "isCorrect": true,
-          "reason": "CORRETA. 'Havia muitas dúvidas' (Singular obrigatório)."
+          "reason": "CORRETA. 'Havia muitas dúvidas' (verbo haver impessoal no singular)."
         },
         {
           "key": "D",
           "isCorrect": false,
-          "reason": "Incorreto. Deveria ser 'Havia vários relatórios'."
+          "reason": "Incorreto. O correto é 'Havia vários documentos'."
         },
         {
           "key": "E",
           "isCorrect": false,
-          "reason": "Incorreto. Deveria ser 'Alugam-se casas' (sujeito no plural)."
+          "reason": "Incorreto. Na voz passiva sintética, a concordância é obrigatória no plural: 'Alugam-se casas'."
         }
       ],
-      "bizu": "💡 BIZU IBFC PORTUGUÊS: HAVER (existir) e FAZER (tempo) = SEMPRE SINGULAR! ('Havia problemas', 'Faz 3 anos')."
+      "bizu": "💡 BIZU IBFC PORTUGUÊS: HAVER (existir) e FAZER (tempo decorrido) = SEMPRE NO SINGULAR! ('Havia problemas', 'Faz 3 anos')."
     }
   },
   {
     "id": "port-con-002",
     "subject": "Língua Portuguesa",
-    "topic": "6. Concordância Verbal - Partícula SE",
+    "topic": "6. Concordância Verbal - Partícula SE Apassivadora vs Indeterminação",
     "source": "IBFC / IBGE",
-    "difficulty": "Médio",
-    "statement": "Assinale a alternativa em que a concordância verbal com a partícula SE está CORRETA:",
+    "difficulty": "Difícil",
+    "statement": "Assinale a alternativa em que a concordância verbal com a partícula SE foi empregada em conformidade com a norma-padrão:",
     "options": [
       {
         "key": "A",
-        "text": "Vende-se casas na praia."
+        "text": "Vende-se casas populares no município."
       },
       {
         "key": "B",
-        "text": "Precisa-se de agentes de informática."
+        "text": "Precisa-se de agentes de informática qualificados."
       },
       {
         "key": "C",
-        "text": "Aluga-se apartamentos no centro."
+        "text": "Aluga-se apartamentos no centro da cidade."
       },
       {
         "key": "D",
-        "text": "Procura-se revisores de texto."
+        "text": "Procura-se revisores de texto para o relatório."
       },
       {
         "key": "E",
-        "text": "Conserta-se computadores velhos."
+        "text": "Conserta-se computadores antigos na agência."
       }
     ],
     "correctOption": "B",
     "explanation": {
-      "summary": "Com verbo transitivo indireto + SE ('Precisa-se de...'), o SE é Índice de Indeterminação do Sujeito e o verbo fica no SINGULAR.",
+      "summary": "Quando o verbo é Transitivo Indireto + SE ('Precisa-se de...'), o SE atua como Índice de Indeterminação do Sujeito, mantendo o verbo obrigatoriamente no SINGULAR. Já em 'Alugam-se apartamentos' (VTD + SE), o sujeito é paciente e o verbo vai para o plural.",
       "optionsAnalysis": [
         {
           "key": "A",
           "isCorrect": false,
-          "reason": "Incorreto. Deveria ser 'Vendem-se casas'."
+          "reason": "Incorreto. Verbo Transitivo Direto exige plural: 'Vendem-se casas'."
         },
         {
           "key": "B",
           "isCorrect": true,
-          "reason": "CORRETA. 'Precisa-se de agentes' (VTI + SE = Verbo no Singular)."
+          "reason": "CORRETA. VTI + SE = Verbo no singular ('Precisa-se de agentes...')."
         },
         {
           "key": "C",
@@ -10972,813 +2726,7 @@ export const QUESTIONS_DATABASE: Question[] = [
           "reason": "Incorreto. Deveria ser 'Consertam-se computadores'."
         }
       ],
-      "bizu": "💡 BIZU IBFC: VTD + SE = Sujeito Paciente (Verbo concorda: 'Alugam-se casas') | VTI + SE = Sujeito Indeterminado (Verbo no SINGULAR: 'Precisa-se de...')."
-    }
-  },
-  {
-    "id": "port-con-003",
-    "subject": "Língua Portuguesa",
-    "topic": "6. Concordância Verbal e Nominal - Questão #3",
-    "source": "IBFC / IBGE",
-    "difficulty": "Difícil",
-    "statement": "Assinale a opção em que a concordância verbal ou nominal está em conformidade com a norma-padrão (Questão #3):",
-    "options": [
-      {
-        "key": "A",
-        "text": "Fazem dez dias que não chove na região."
-      },
-      {
-        "key": "B",
-        "text": "A frase apresentada na alternativa B (questão #3) respeita perfeitamente as regras de concordância verbal da norma-padrão."
-      },
-      {
-        "key": "C",
-        "text": "Houveram bastantes candidatos inscritos no concurso."
-      },
-      {
-        "key": "D",
-        "text": "Segue anexo os documentos solicitados pelo supervisor."
-      },
-      {
-        "key": "E",
-        "text": "É proibido a entrada de pessoas estranhas."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Aplicação prática das regras de concordância verbal e nominal exigidas pela banca IBFC.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Verbo fazer indicando tempo fica no singular ('Faz dez dias')."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Concordância verbal irrepreensível na alternativa B da questão #3."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Verbo haver no sentido de existir fica no singular ('Houve bastantes')."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Deveria ser 'Seguem anexos os documentos'."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Sem artigo fica 'É proibido entrada' ou 'É proibida a entrada'."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: 'Anexo' concorda com o substantivo! 'Seguem anexos os relatórios' / 'Segue anexa a carta'."
-    }
-  },
-  {
-    "id": "port-con-004",
-    "subject": "Língua Portuguesa",
-    "topic": "6. Concordância Verbal e Nominal - Questão #4",
-    "source": "IBFC / IBGE",
-    "difficulty": "Fácil",
-    "statement": "Assinale a opção em que a concordância verbal ou nominal está em conformidade com a norma-padrão (Questão #4):",
-    "options": [
-      {
-        "key": "A",
-        "text": "Fazem dez dias que não chove na região."
-      },
-      {
-        "key": "B",
-        "text": "A frase apresentada na alternativa B (questão #4) respeita perfeitamente as regras de concordância verbal da norma-padrão."
-      },
-      {
-        "key": "C",
-        "text": "Houveram bastantes candidatos inscritos no concurso."
-      },
-      {
-        "key": "D",
-        "text": "Segue anexo os documentos solicitados pelo supervisor."
-      },
-      {
-        "key": "E",
-        "text": "É proibido a entrada de pessoas estranhas."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Aplicação prática das regras de concordância verbal e nominal exigidas pela banca IBFC.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Verbo fazer indicando tempo fica no singular ('Faz dez dias')."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Concordância verbal irrepreensível na alternativa B da questão #4."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Verbo haver no sentido de existir fica no singular ('Houve bastantes')."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Deveria ser 'Seguem anexos os documentos'."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Sem artigo fica 'É proibido entrada' ou 'É proibida a entrada'."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: 'Anexo' concorda com o substantivo! 'Seguem anexos os relatórios' / 'Segue anexa a carta'."
-    }
-  },
-  {
-    "id": "port-con-005",
-    "subject": "Língua Portuguesa",
-    "topic": "6. Concordância Verbal e Nominal - Questão #5",
-    "source": "IBFC / IBGE",
-    "difficulty": "Médio",
-    "statement": "Assinale a opção em que a concordância verbal ou nominal está em conformidade com a norma-padrão (Questão #5):",
-    "options": [
-      {
-        "key": "A",
-        "text": "Fazem dez dias que não chove na região."
-      },
-      {
-        "key": "B",
-        "text": "A frase apresentada na alternativa B (questão #5) respeita perfeitamente as regras de concordância verbal da norma-padrão."
-      },
-      {
-        "key": "C",
-        "text": "Houveram bastantes candidatos inscritos no concurso."
-      },
-      {
-        "key": "D",
-        "text": "Segue anexo os documentos solicitados pelo supervisor."
-      },
-      {
-        "key": "E",
-        "text": "É proibido a entrada de pessoas estranhas."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Aplicação prática das regras de concordância verbal e nominal exigidas pela banca IBFC.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Verbo fazer indicando tempo fica no singular ('Faz dez dias')."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Concordância verbal irrepreensível na alternativa B da questão #5."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Verbo haver no sentido de existir fica no singular ('Houve bastantes')."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Deveria ser 'Seguem anexos os documentos'."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Sem artigo fica 'É proibido entrada' ou 'É proibida a entrada'."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: 'Anexo' concorda com o substantivo! 'Seguem anexos os relatórios' / 'Segue anexa a carta'."
-    }
-  },
-  {
-    "id": "port-con-006",
-    "subject": "Língua Portuguesa",
-    "topic": "6. Concordância Verbal e Nominal - Questão #6",
-    "source": "IBFC / IBGE",
-    "difficulty": "Difícil",
-    "statement": "Assinale a opção em que a concordância verbal ou nominal está em conformidade com a norma-padrão (Questão #6):",
-    "options": [
-      {
-        "key": "A",
-        "text": "Fazem dez dias que não chove na região."
-      },
-      {
-        "key": "B",
-        "text": "A frase apresentada na alternativa B (questão #6) respeita perfeitamente as regras de concordância verbal da norma-padrão."
-      },
-      {
-        "key": "C",
-        "text": "Houveram bastantes candidatos inscritos no concurso."
-      },
-      {
-        "key": "D",
-        "text": "Segue anexo os documentos solicitados pelo supervisor."
-      },
-      {
-        "key": "E",
-        "text": "É proibido a entrada de pessoas estranhas."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Aplicação prática das regras de concordância verbal e nominal exigidas pela banca IBFC.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Verbo fazer indicando tempo fica no singular ('Faz dez dias')."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Concordância verbal irrepreensível na alternativa B da questão #6."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Verbo haver no sentido de existir fica no singular ('Houve bastantes')."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Deveria ser 'Seguem anexos os documentos'."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Sem artigo fica 'É proibido entrada' ou 'É proibida a entrada'."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: 'Anexo' concorda com o substantivo! 'Seguem anexos os relatórios' / 'Segue anexa a carta'."
-    }
-  },
-  {
-    "id": "port-con-007",
-    "subject": "Língua Portuguesa",
-    "topic": "6. Concordância Verbal e Nominal - Questão #7",
-    "source": "IBFC / IBGE",
-    "difficulty": "Fácil",
-    "statement": "Assinale a opção em que a concordância verbal ou nominal está em conformidade com a norma-padrão (Questão #7):",
-    "options": [
-      {
-        "key": "A",
-        "text": "Fazem dez dias que não chove na região."
-      },
-      {
-        "key": "B",
-        "text": "A frase apresentada na alternativa B (questão #7) respeita perfeitamente as regras de concordância verbal da norma-padrão."
-      },
-      {
-        "key": "C",
-        "text": "Houveram bastantes candidatos inscritos no concurso."
-      },
-      {
-        "key": "D",
-        "text": "Segue anexo os documentos solicitados pelo supervisor."
-      },
-      {
-        "key": "E",
-        "text": "É proibido a entrada de pessoas estranhas."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Aplicação prática das regras de concordância verbal e nominal exigidas pela banca IBFC.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Verbo fazer indicando tempo fica no singular ('Faz dez dias')."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Concordância verbal irrepreensível na alternativa B da questão #7."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Verbo haver no sentido de existir fica no singular ('Houve bastantes')."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Deveria ser 'Seguem anexos os documentos'."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Sem artigo fica 'É proibido entrada' ou 'É proibida a entrada'."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: 'Anexo' concorda com o substantivo! 'Seguem anexos os relatórios' / 'Segue anexa a carta'."
-    }
-  },
-  {
-    "id": "port-con-008",
-    "subject": "Língua Portuguesa",
-    "topic": "6. Concordância Verbal e Nominal - Questão #8",
-    "source": "IBFC / IBGE",
-    "difficulty": "Médio",
-    "statement": "Assinale a opção em que a concordância verbal ou nominal está em conformidade com a norma-padrão (Questão #8):",
-    "options": [
-      {
-        "key": "A",
-        "text": "Fazem dez dias que não chove na região."
-      },
-      {
-        "key": "B",
-        "text": "A frase apresentada na alternativa B (questão #8) respeita perfeitamente as regras de concordância verbal da norma-padrão."
-      },
-      {
-        "key": "C",
-        "text": "Houveram bastantes candidatos inscritos no concurso."
-      },
-      {
-        "key": "D",
-        "text": "Segue anexo os documentos solicitados pelo supervisor."
-      },
-      {
-        "key": "E",
-        "text": "É proibido a entrada de pessoas estranhas."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Aplicação prática das regras de concordância verbal e nominal exigidas pela banca IBFC.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Verbo fazer indicando tempo fica no singular ('Faz dez dias')."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Concordância verbal irrepreensível na alternativa B da questão #8."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Verbo haver no sentido de existir fica no singular ('Houve bastantes')."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Deveria ser 'Seguem anexos os documentos'."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Sem artigo fica 'É proibido entrada' ou 'É proibida a entrada'."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: 'Anexo' concorda com o substantivo! 'Seguem anexos os relatórios' / 'Segue anexa a carta'."
-    }
-  },
-  {
-    "id": "port-con-009",
-    "subject": "Língua Portuguesa",
-    "topic": "6. Concordância Verbal e Nominal - Questão #9",
-    "source": "IBFC / IBGE",
-    "difficulty": "Difícil",
-    "statement": "Assinale a opção em que a concordância verbal ou nominal está em conformidade com a norma-padrão (Questão #9):",
-    "options": [
-      {
-        "key": "A",
-        "text": "Fazem dez dias que não chove na região."
-      },
-      {
-        "key": "B",
-        "text": "A frase apresentada na alternativa B (questão #9) respeita perfeitamente as regras de concordância verbal da norma-padrão."
-      },
-      {
-        "key": "C",
-        "text": "Houveram bastantes candidatos inscritos no concurso."
-      },
-      {
-        "key": "D",
-        "text": "Segue anexo os documentos solicitados pelo supervisor."
-      },
-      {
-        "key": "E",
-        "text": "É proibido a entrada de pessoas estranhas."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Aplicação prática das regras de concordância verbal e nominal exigidas pela banca IBFC.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Verbo fazer indicando tempo fica no singular ('Faz dez dias')."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Concordância verbal irrepreensível na alternativa B da questão #9."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Verbo haver no sentido de existir fica no singular ('Houve bastantes')."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Deveria ser 'Seguem anexos os documentos'."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Sem artigo fica 'É proibido entrada' ou 'É proibida a entrada'."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: 'Anexo' concorda com o substantivo! 'Seguem anexos os relatórios' / 'Segue anexa a carta'."
-    }
-  },
-  {
-    "id": "port-con-010",
-    "subject": "Língua Portuguesa",
-    "topic": "6. Concordância Verbal e Nominal - Questão #10",
-    "source": "IBFC / IBGE",
-    "difficulty": "Fácil",
-    "statement": "Assinale a opção em que a concordância verbal ou nominal está em conformidade com a norma-padrão (Questão #10):",
-    "options": [
-      {
-        "key": "A",
-        "text": "Fazem dez dias que não chove na região."
-      },
-      {
-        "key": "B",
-        "text": "A frase apresentada na alternativa B (questão #10) respeita perfeitamente as regras de concordância verbal da norma-padrão."
-      },
-      {
-        "key": "C",
-        "text": "Houveram bastantes candidatos inscritos no concurso."
-      },
-      {
-        "key": "D",
-        "text": "Segue anexo os documentos solicitados pelo supervisor."
-      },
-      {
-        "key": "E",
-        "text": "É proibido a entrada de pessoas estranhas."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Aplicação prática das regras de concordância verbal e nominal exigidas pela banca IBFC.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Verbo fazer indicando tempo fica no singular ('Faz dez dias')."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Concordância verbal irrepreensível na alternativa B da questão #10."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Verbo haver no sentido de existir fica no singular ('Houve bastantes')."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Deveria ser 'Seguem anexos os documentos'."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Sem artigo fica 'É proibido entrada' ou 'É proibida a entrada'."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: 'Anexo' concorda com o substantivo! 'Seguem anexos os relatórios' / 'Segue anexa a carta'."
-    }
-  },
-  {
-    "id": "port-con-011",
-    "subject": "Língua Portuguesa",
-    "topic": "6. Concordância Verbal e Nominal - Questão #11",
-    "source": "IBFC / IBGE",
-    "difficulty": "Médio",
-    "statement": "Assinale a opção em que a concordância verbal ou nominal está em conformidade com a norma-padrão (Questão #11):",
-    "options": [
-      {
-        "key": "A",
-        "text": "Fazem dez dias que não chove na região."
-      },
-      {
-        "key": "B",
-        "text": "A frase apresentada na alternativa B (questão #11) respeita perfeitamente as regras de concordância verbal da norma-padrão."
-      },
-      {
-        "key": "C",
-        "text": "Houveram bastantes candidatos inscritos no concurso."
-      },
-      {
-        "key": "D",
-        "text": "Segue anexo os documentos solicitados pelo supervisor."
-      },
-      {
-        "key": "E",
-        "text": "É proibido a entrada de pessoas estranhas."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Aplicação prática das regras de concordância verbal e nominal exigidas pela banca IBFC.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Verbo fazer indicando tempo fica no singular ('Faz dez dias')."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Concordância verbal irrepreensível na alternativa B da questão #11."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Verbo haver no sentido de existir fica no singular ('Houve bastantes')."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Deveria ser 'Seguem anexos os documentos'."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Sem artigo fica 'É proibido entrada' ou 'É proibida a entrada'."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: 'Anexo' concorda com o substantivo! 'Seguem anexos os relatórios' / 'Segue anexa a carta'."
-    }
-  },
-  {
-    "id": "port-con-012",
-    "subject": "Língua Portuguesa",
-    "topic": "6. Concordância Verbal e Nominal - Questão #12",
-    "source": "IBFC / IBGE",
-    "difficulty": "Difícil",
-    "statement": "Assinale a opção em que a concordância verbal ou nominal está em conformidade com a norma-padrão (Questão #12):",
-    "options": [
-      {
-        "key": "A",
-        "text": "Fazem dez dias que não chove na região."
-      },
-      {
-        "key": "B",
-        "text": "A frase apresentada na alternativa B (questão #12) respeita perfeitamente as regras de concordância verbal da norma-padrão."
-      },
-      {
-        "key": "C",
-        "text": "Houveram bastantes candidatos inscritos no concurso."
-      },
-      {
-        "key": "D",
-        "text": "Segue anexo os documentos solicitados pelo supervisor."
-      },
-      {
-        "key": "E",
-        "text": "É proibido a entrada de pessoas estranhas."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Aplicação prática das regras de concordância verbal e nominal exigidas pela banca IBFC.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Verbo fazer indicando tempo fica no singular ('Faz dez dias')."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Concordância verbal irrepreensível na alternativa B da questão #12."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Verbo haver no sentido de existir fica no singular ('Houve bastantes')."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Deveria ser 'Seguem anexos os documentos'."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Sem artigo fica 'É proibido entrada' ou 'É proibida a entrada'."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: 'Anexo' concorda com o substantivo! 'Seguem anexos os relatórios' / 'Segue anexa a carta'."
-    }
-  },
-  {
-    "id": "port-con-013",
-    "subject": "Língua Portuguesa",
-    "topic": "6. Concordância Verbal e Nominal - Questão #13",
-    "source": "IBFC / IBGE",
-    "difficulty": "Fácil",
-    "statement": "Assinale a opção em que a concordância verbal ou nominal está em conformidade com a norma-padrão (Questão #13):",
-    "options": [
-      {
-        "key": "A",
-        "text": "Fazem dez dias que não chove na região."
-      },
-      {
-        "key": "B",
-        "text": "A frase apresentada na alternativa B (questão #13) respeita perfeitamente as regras de concordância verbal da norma-padrão."
-      },
-      {
-        "key": "C",
-        "text": "Houveram bastantes candidatos inscritos no concurso."
-      },
-      {
-        "key": "D",
-        "text": "Segue anexo os documentos solicitados pelo supervisor."
-      },
-      {
-        "key": "E",
-        "text": "É proibido a entrada de pessoas estranhas."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Aplicação prática das regras de concordância verbal e nominal exigidas pela banca IBFC.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Verbo fazer indicando tempo fica no singular ('Faz dez dias')."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Concordância verbal irrepreensível na alternativa B da questão #13."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Verbo haver no sentido de existir fica no singular ('Houve bastantes')."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Deveria ser 'Seguem anexos os documentos'."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Sem artigo fica 'É proibido entrada' ou 'É proibida a entrada'."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: 'Anexo' concorda com o substantivo! 'Seguem anexos os relatórios' / 'Segue anexa a carta'."
-    }
-  },
-  {
-    "id": "port-con-014",
-    "subject": "Língua Portuguesa",
-    "topic": "6. Concordância Verbal e Nominal - Questão #14",
-    "source": "IBFC / IBGE",
-    "difficulty": "Médio",
-    "statement": "Assinale a opção em que a concordância verbal ou nominal está em conformidade com a norma-padrão (Questão #14):",
-    "options": [
-      {
-        "key": "A",
-        "text": "Fazem dez dias que não chove na região."
-      },
-      {
-        "key": "B",
-        "text": "A frase apresentada na alternativa B (questão #14) respeita perfeitamente as regras de concordância verbal da norma-padrão."
-      },
-      {
-        "key": "C",
-        "text": "Houveram bastantes candidatos inscritos no concurso."
-      },
-      {
-        "key": "D",
-        "text": "Segue anexo os documentos solicitados pelo supervisor."
-      },
-      {
-        "key": "E",
-        "text": "É proibido a entrada de pessoas estranhas."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Aplicação prática das regras de concordância verbal e nominal exigidas pela banca IBFC.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Verbo fazer indicando tempo fica no singular ('Faz dez dias')."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Concordância verbal irrepreensível na alternativa B da questão #14."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Verbo haver no sentido de existir fica no singular ('Houve bastantes')."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Deveria ser 'Seguem anexos os documentos'."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Sem artigo fica 'É proibido entrada' ou 'É proibida a entrada'."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: 'Anexo' concorda com o substantivo! 'Seguem anexos os relatórios' / 'Segue anexa a carta'."
-    }
-  },
-  {
-    "id": "port-con-015",
-    "subject": "Língua Portuguesa",
-    "topic": "6. Concordância Verbal e Nominal - Questão #15",
-    "source": "IBFC / IBGE",
-    "difficulty": "Difícil",
-    "statement": "Assinale a opção em que a concordância verbal ou nominal está em conformidade com a norma-padrão (Questão #15):",
-    "options": [
-      {
-        "key": "A",
-        "text": "Fazem dez dias que não chove na região."
-      },
-      {
-        "key": "B",
-        "text": "A frase apresentada na alternativa B (questão #15) respeita perfeitamente as regras de concordância verbal da norma-padrão."
-      },
-      {
-        "key": "C",
-        "text": "Houveram bastantes candidatos inscritos no concurso."
-      },
-      {
-        "key": "D",
-        "text": "Segue anexo os documentos solicitados pelo supervisor."
-      },
-      {
-        "key": "E",
-        "text": "É proibido a entrada de pessoas estranhas."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Aplicação prática das regras de concordância verbal e nominal exigidas pela banca IBFC.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Verbo fazer indicando tempo fica no singular ('Faz dez dias')."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Concordância verbal irrepreensível na alternativa B da questão #15."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Verbo haver no sentido de existir fica no singular ('Houve bastantes')."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Deveria ser 'Seguem anexos os documentos'."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Sem artigo fica 'É proibido entrada' ou 'É proibida a entrada'."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: 'Anexo' concorda com o substantivo! 'Seguem anexos os relatórios' / 'Segue anexa a carta'."
+      "bizu": "💡 BIZU IBFC: VTD + SE = Concorda com o Sujeito ('Alugam-se casas') | VTI + SE (com preposição) = Fica no SINGULAR ('Precisa-se de agentes')."
     }
   },
   {
@@ -11786,53 +2734,53 @@ export const QUESTIONS_DATABASE: Question[] = [
     "subject": "Língua Portuguesa",
     "topic": "7. Regência Verbal - Verbo Assistir",
     "source": "IBFC / IBGE",
-    "difficulty": "Fácil",
-    "statement": "Quanto à regência do verbo ASSISTIR no sentido de 'ver/presenciar', assinale a frase correta segundo a norma-padrão:",
+    "difficulty": "Médio",
+    "statement": "Quanto à regência verbal de acordo com a norma-padrão, assinale a alternativa em que o verbo ASSISTIR foi empregado no sentido de 'ver / presenciar' com a regência adequada:",
     "options": [
       {
         "key": "A",
-        "text": "Assistimos o jogo da seleção ontem."
+        "text": "Os técnicos assistiram o treinamento de sistemas na semana passada."
       },
       {
         "key": "B",
-        "text": "Assistimos ao jogo da seleção ontem."
+        "text": "Os técnicos assistiram ao treinamento de sistemas na semana passada."
       },
       {
         "key": "C",
-        "text": "O médico assistiu ao paciente ferido com carinho."
+        "text": "O médico assistiu ao paciente ferido com dedicação."
       },
       {
         "key": "D",
-        "text": "Os alunos assistiram o filme na sala."
+        "text": "Os alunos assistiram o documentário em sala de aula."
       },
       {
         "key": "E",
-        "text": "Nós assistimos ele na palestra."
+        "text": "Nós assistimos ele durante a conferência do IBGE."
       }
     ],
     "correctOption": "B",
     "explanation": {
-      "summary": "O verbo ASSISTIR no sentido de VER/PRESENCIAR é Transitivo Indireto e exige a preposição A ('Assistir AO jogo', 'Assistir À aula').",
+      "summary": "O verbo ASSISTIR no sentido de ver/presenciar é Transitivo Indireto e exige a preposição A ('Assistir AO treinamento', 'Assistir À palestra'). No sentido de socorrer, é Transitivo Direto ('Assistiu o paciente').",
       "optionsAnalysis": [
         {
           "key": "A",
           "isCorrect": false,
-          "reason": "Incorreto. Falta a preposição A."
+          "reason": "Incorreto. Falta a preposição A exigida pelo sentido de ver."
         },
         {
           "key": "B",
           "isCorrect": true,
-          "reason": "CORRETA. `Assistir a` + `o jogo` = `Assistimos ao jogo` (Correto)."
+          "reason": "CORRETA. `Assistir a` + `o treinamento` = `Assistiram ao treinamento`."
         },
         {
           "key": "C",
           "isCorrect": false,
-          "reason": "Incorreto. Assistir no sentido de prestar socorro é VTD (assistiu o paciente)."
+          "reason": "Incorreto. No sentido de prestar socorro/ajuda, a norma gramatical prefere o uso sem preposição ('assistiu o paciente')."
         },
         {
           "key": "D",
           "isCorrect": false,
-          "reason": "Incorreto. Deveria ser 'assistiram ao filme'."
+          "reason": "Incorreto. Deveria ser 'assistiram ao documentário'."
         },
         {
           "key": "E",
@@ -11840,7 +2788,7 @@ export const QUESTIONS_DATABASE: Question[] = [
           "reason": "Incorreto. Deveria ser 'assistimos a ele'."
         }
       ],
-      "bizu": "💡 BIZU IBFC: ASSISTIR (Ver/Presenciar) = Exige Preposição A! ('Assistir AO filme', 'Assistir À palestra')."
+      "bizu": "💡 BIZU IBFC: ASSISTIR (Ver/Presenciar) = Exige Preposição A! ('Assistir AO jogo', 'Assistir À transmissão')."
     }
   },
   {
@@ -11848,867 +2796,61 @@ export const QUESTIONS_DATABASE: Question[] = [
     "subject": "Língua Portuguesa",
     "topic": "7. Regência Verbal - Verbo Preferir",
     "source": "IBFC / IBGE",
-    "difficulty": "Médio",
-    "statement": "Assinale a frase com a regência do verbo PREFERIR correta segundo a norma-padrão:",
+    "difficulty": "Fácil",
+    "statement": "Assinale a opção em que a regência do verbo PREFERIR obedece rigorosamente à norma-padrão da Língua Portuguesa:",
     "options": [
       {
         "key": "A",
-        "text": "Prefiro estudar informática do que fazer resumos."
+        "text": "Prefiro estudar informática do que fazer resumos em papel."
       },
       {
         "key": "B",
-        "text": "Prefiro mais a teoria do que a prática."
+        "text": "Prefiro mais a teoria do que a prática no dia a dia."
       },
       {
         "key": "C",
-        "text": "Prefiro estudar informática a fazer resumos."
+        "text": "Prefiro estudar informática a fazer resumos em papel."
       },
       {
         "key": "D",
-        "text": "Prefiro mil vezes simulados do que apostilas."
+        "text": "Prefiro mil vezes resolver questões do que ler apostilas."
       },
       {
         "key": "E",
-        "text": "Prefiro antes o curso online do que o presencial."
+        "text": "Prefiro antes o curso presencial do que o curso EAD."
       }
     ],
     "correctOption": "C",
     "explanation": {
-      "summary": "O verbo PREFERIR exige a preposição A ('Preferir X A Y'). É erro gramatical usar 'do que', 'mais' ou 'mil vezes'.",
+      "summary": "O verbo PREFERIR é Transitivo Direto e Indireto e exige a preposição A ('Preferir X A Y'). A norma-padrão proíbe o uso de 'do que', 'mais' ou 'antes'.",
       "optionsAnalysis": [
         {
           "key": "A",
           "isCorrect": false,
-          "reason": "Incorreto. Erro: 'do que' não é aceito."
+          "reason": "Incorreto. Uso de 'do que' é proibido pela norma-padrão com o verbo preferir."
         },
         {
           "key": "B",
           "isCorrect": false,
-          "reason": "Incorreto. Erro: 'mais' e 'do que' são proibidos."
+          "reason": "Incorreto. Uso de 'mais' e 'do que' é incorreto."
         },
         {
           "key": "C",
           "isCorrect": true,
-          "reason": "CORRETA. 'Prefiro X A Y' (Sem 'do que')."
+          "reason": "CORRETA. 'Prefiro X A Y' (regência correta com preposição A, sem 'do que')."
         },
         {
           "key": "D",
           "isCorrect": false,
-          "reason": "Incorreto. Erro: 'mil vezes' e 'do que'."
+          "reason": "Incorreto. Uso de 'mil vezes' e 'do que' é gramaticalmente incorreto."
         },
         {
           "key": "E",
           "isCorrect": false,
-          "reason": "Incorreto. Erro: 'antes' e 'do que'."
+          "reason": "Incorreto. Uso de 'antes' e 'do que' é incorreto."
         }
       ],
-      "bizu": "💡 BIZU IBFC: PREFERIR = 'Prefiro X A Y'! Jamais use 'do que', 'mais' ou 'antes'."
-    }
-  },
-  {
-    "id": "port-reg-003",
-    "subject": "Língua Portuguesa",
-    "topic": "7. Regência Verbal - Questão #3",
-    "source": "IBFC / IBGE",
-    "difficulty": "Difícil",
-    "statement": "Assinale a alternativa correta quanto à regência verbal da norma-padrão (Questão #3):",
-    "options": [
-      {
-        "key": "A",
-        "text": "Chegamos em Salvador no início da manhã."
-      },
-      {
-        "key": "B",
-        "text": "A regência do verbo empregado na alternativa B (questão #3) atende plenamente às exigências da norma-padrão."
-      },
-      {
-        "key": "C",
-        "text": "O candidato aspirava o cargo de agente com determinação."
-      },
-      {
-        "key": "D",
-        "text": "O policial visava o alvo antes de atirar."
-      },
-      {
-        "key": "E",
-        "text": "Esqueci do livro de português sobre a mesa."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Aplicação das regras de regência dos verbos Chegar/Ir (exigem preposição A), Aspirar, Visar e Esquecer.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Verbo chegar exige preposição A ('Chegamos A Salvador')."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Regência verbal perfeita na alternativa B da questão #3."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Aspirar no sentido de almejar é VTI ('aspirava AO cargo')."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Visar no sentido de mirar é VTD ('visava O alvo')."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Sem pronome fica 'Esqueci O livro' (com pronome: 'Esqueci-me DO livro')."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Chegar/Ir EXIGEM preposição A ('Cheguei A Salvador', 'Vou AO IBGE') | Esquecer O livro / Esquecer-se DO livro."
-    }
-  },
-  {
-    "id": "port-reg-004",
-    "subject": "Língua Portuguesa",
-    "topic": "7. Regência Verbal - Questão #4",
-    "source": "IBFC / IBGE",
-    "difficulty": "Fácil",
-    "statement": "Assinale a alternativa correta quanto à regência verbal da norma-padrão (Questão #4):",
-    "options": [
-      {
-        "key": "A",
-        "text": "Chegamos em Salvador no início da manhã."
-      },
-      {
-        "key": "B",
-        "text": "A regência do verbo empregado na alternativa B (questão #4) atende plenamente às exigências da norma-padrão."
-      },
-      {
-        "key": "C",
-        "text": "O candidato aspirava o cargo de agente com determinação."
-      },
-      {
-        "key": "D",
-        "text": "O policial visava o alvo antes de atirar."
-      },
-      {
-        "key": "E",
-        "text": "Esqueci do livro de português sobre a mesa."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Aplicação das regras de regência dos verbos Chegar/Ir (exigem preposição A), Aspirar, Visar e Esquecer.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Verbo chegar exige preposição A ('Chegamos A Salvador')."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Regência verbal perfeita na alternativa B da questão #4."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Aspirar no sentido de almejar é VTI ('aspirava AO cargo')."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Visar no sentido de mirar é VTD ('visava O alvo')."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Sem pronome fica 'Esqueci O livro' (com pronome: 'Esqueci-me DO livro')."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Chegar/Ir EXIGEM preposição A ('Cheguei A Salvador', 'Vou AO IBGE') | Esquecer O livro / Esquecer-se DO livro."
-    }
-  },
-  {
-    "id": "port-reg-005",
-    "subject": "Língua Portuguesa",
-    "topic": "7. Regência Verbal - Questão #5",
-    "source": "IBFC / IBGE",
-    "difficulty": "Médio",
-    "statement": "Assinale a alternativa correta quanto à regência verbal da norma-padrão (Questão #5):",
-    "options": [
-      {
-        "key": "A",
-        "text": "Chegamos em Salvador no início da manhã."
-      },
-      {
-        "key": "B",
-        "text": "A regência do verbo empregado na alternativa B (questão #5) atende plenamente às exigências da norma-padrão."
-      },
-      {
-        "key": "C",
-        "text": "O candidato aspirava o cargo de agente com determinação."
-      },
-      {
-        "key": "D",
-        "text": "O policial visava o alvo antes de atirar."
-      },
-      {
-        "key": "E",
-        "text": "Esqueci do livro de português sobre a mesa."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Aplicação das regras de regência dos verbos Chegar/Ir (exigem preposição A), Aspirar, Visar e Esquecer.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Verbo chegar exige preposição A ('Chegamos A Salvador')."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Regência verbal perfeita na alternativa B da questão #5."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Aspirar no sentido de almejar é VTI ('aspirava AO cargo')."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Visar no sentido de mirar é VTD ('visava O alvo')."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Sem pronome fica 'Esqueci O livro' (com pronome: 'Esqueci-me DO livro')."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Chegar/Ir EXIGEM preposição A ('Cheguei A Salvador', 'Vou AO IBGE') | Esquecer O livro / Esquecer-se DO livro."
-    }
-  },
-  {
-    "id": "port-reg-006",
-    "subject": "Língua Portuguesa",
-    "topic": "7. Regência Verbal - Questão #6",
-    "source": "IBFC / IBGE",
-    "difficulty": "Difícil",
-    "statement": "Assinale a alternativa correta quanto à regência verbal da norma-padrão (Questão #6):",
-    "options": [
-      {
-        "key": "A",
-        "text": "Chegamos em Salvador no início da manhã."
-      },
-      {
-        "key": "B",
-        "text": "A regência do verbo empregado na alternativa B (questão #6) atende plenamente às exigências da norma-padrão."
-      },
-      {
-        "key": "C",
-        "text": "O candidato aspirava o cargo de agente com determinação."
-      },
-      {
-        "key": "D",
-        "text": "O policial visava o alvo antes de atirar."
-      },
-      {
-        "key": "E",
-        "text": "Esqueci do livro de português sobre a mesa."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Aplicação das regras de regência dos verbos Chegar/Ir (exigem preposição A), Aspirar, Visar e Esquecer.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Verbo chegar exige preposição A ('Chegamos A Salvador')."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Regência verbal perfeita na alternativa B da questão #6."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Aspirar no sentido de almejar é VTI ('aspirava AO cargo')."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Visar no sentido de mirar é VTD ('visava O alvo')."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Sem pronome fica 'Esqueci O livro' (com pronome: 'Esqueci-me DO livro')."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Chegar/Ir EXIGEM preposição A ('Cheguei A Salvador', 'Vou AO IBGE') | Esquecer O livro / Esquecer-se DO livro."
-    }
-  },
-  {
-    "id": "port-reg-007",
-    "subject": "Língua Portuguesa",
-    "topic": "7. Regência Verbal - Questão #7",
-    "source": "IBFC / IBGE",
-    "difficulty": "Fácil",
-    "statement": "Assinale a alternativa correta quanto à regência verbal da norma-padrão (Questão #7):",
-    "options": [
-      {
-        "key": "A",
-        "text": "Chegamos em Salvador no início da manhã."
-      },
-      {
-        "key": "B",
-        "text": "A regência do verbo empregado na alternativa B (questão #7) atende plenamente às exigências da norma-padrão."
-      },
-      {
-        "key": "C",
-        "text": "O candidato aspirava o cargo de agente com determinação."
-      },
-      {
-        "key": "D",
-        "text": "O policial visava o alvo antes de atirar."
-      },
-      {
-        "key": "E",
-        "text": "Esqueci do livro de português sobre a mesa."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Aplicação das regras de regência dos verbos Chegar/Ir (exigem preposição A), Aspirar, Visar e Esquecer.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Verbo chegar exige preposição A ('Chegamos A Salvador')."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Regência verbal perfeita na alternativa B da questão #7."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Aspirar no sentido de almejar é VTI ('aspirava AO cargo')."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Visar no sentido de mirar é VTD ('visava O alvo')."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Sem pronome fica 'Esqueci O livro' (com pronome: 'Esqueci-me DO livro')."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Chegar/Ir EXIGEM preposição A ('Cheguei A Salvador', 'Vou AO IBGE') | Esquecer O livro / Esquecer-se DO livro."
-    }
-  },
-  {
-    "id": "port-reg-008",
-    "subject": "Língua Portuguesa",
-    "topic": "7. Regência Verbal - Questão #8",
-    "source": "IBFC / IBGE",
-    "difficulty": "Médio",
-    "statement": "Assinale a alternativa correta quanto à regência verbal da norma-padrão (Questão #8):",
-    "options": [
-      {
-        "key": "A",
-        "text": "Chegamos em Salvador no início da manhã."
-      },
-      {
-        "key": "B",
-        "text": "A regência do verbo empregado na alternativa B (questão #8) atende plenamente às exigências da norma-padrão."
-      },
-      {
-        "key": "C",
-        "text": "O candidato aspirava o cargo de agente com determinação."
-      },
-      {
-        "key": "D",
-        "text": "O policial visava o alvo antes de atirar."
-      },
-      {
-        "key": "E",
-        "text": "Esqueci do livro de português sobre a mesa."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Aplicação das regras de regência dos verbos Chegar/Ir (exigem preposição A), Aspirar, Visar e Esquecer.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Verbo chegar exige preposição A ('Chegamos A Salvador')."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Regência verbal perfeita na alternativa B da questão #8."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Aspirar no sentido de almejar é VTI ('aspirava AO cargo')."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Visar no sentido de mirar é VTD ('visava O alvo')."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Sem pronome fica 'Esqueci O livro' (com pronome: 'Esqueci-me DO livro')."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Chegar/Ir EXIGEM preposição A ('Cheguei A Salvador', 'Vou AO IBGE') | Esquecer O livro / Esquecer-se DO livro."
-    }
-  },
-  {
-    "id": "port-reg-009",
-    "subject": "Língua Portuguesa",
-    "topic": "7. Regência Verbal - Questão #9",
-    "source": "IBFC / IBGE",
-    "difficulty": "Difícil",
-    "statement": "Assinale a alternativa correta quanto à regência verbal da norma-padrão (Questão #9):",
-    "options": [
-      {
-        "key": "A",
-        "text": "Chegamos em Salvador no início da manhã."
-      },
-      {
-        "key": "B",
-        "text": "A regência do verbo empregado na alternativa B (questão #9) atende plenamente às exigências da norma-padrão."
-      },
-      {
-        "key": "C",
-        "text": "O candidato aspirava o cargo de agente com determinação."
-      },
-      {
-        "key": "D",
-        "text": "O policial visava o alvo antes de atirar."
-      },
-      {
-        "key": "E",
-        "text": "Esqueci do livro de português sobre a mesa."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Aplicação das regras de regência dos verbos Chegar/Ir (exigem preposição A), Aspirar, Visar e Esquecer.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Verbo chegar exige preposição A ('Chegamos A Salvador')."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Regência verbal perfeita na alternativa B da questão #9."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Aspirar no sentido de almejar é VTI ('aspirava AO cargo')."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Visar no sentido de mirar é VTD ('visava O alvo')."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Sem pronome fica 'Esqueci O livro' (com pronome: 'Esqueci-me DO livro')."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Chegar/Ir EXIGEM preposição A ('Cheguei A Salvador', 'Vou AO IBGE') | Esquecer O livro / Esquecer-se DO livro."
-    }
-  },
-  {
-    "id": "port-reg-010",
-    "subject": "Língua Portuguesa",
-    "topic": "7. Regência Verbal - Questão #10",
-    "source": "IBFC / IBGE",
-    "difficulty": "Fácil",
-    "statement": "Assinale a alternativa correta quanto à regência verbal da norma-padrão (Questão #10):",
-    "options": [
-      {
-        "key": "A",
-        "text": "Chegamos em Salvador no início da manhã."
-      },
-      {
-        "key": "B",
-        "text": "A regência do verbo empregado na alternativa B (questão #10) atende plenamente às exigências da norma-padrão."
-      },
-      {
-        "key": "C",
-        "text": "O candidato aspirava o cargo de agente com determinação."
-      },
-      {
-        "key": "D",
-        "text": "O policial visava o alvo antes de atirar."
-      },
-      {
-        "key": "E",
-        "text": "Esqueci do livro de português sobre a mesa."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Aplicação das regras de regência dos verbos Chegar/Ir (exigem preposição A), Aspirar, Visar e Esquecer.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Verbo chegar exige preposição A ('Chegamos A Salvador')."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Regência verbal perfeita na alternativa B da questão #10."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Aspirar no sentido de almejar é VTI ('aspirava AO cargo')."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Visar no sentido de mirar é VTD ('visava O alvo')."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Sem pronome fica 'Esqueci O livro' (com pronome: 'Esqueci-me DO livro')."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Chegar/Ir EXIGEM preposição A ('Cheguei A Salvador', 'Vou AO IBGE') | Esquecer O livro / Esquecer-se DO livro."
-    }
-  },
-  {
-    "id": "port-reg-011",
-    "subject": "Língua Portuguesa",
-    "topic": "7. Regência Verbal - Questão #11",
-    "source": "IBFC / IBGE",
-    "difficulty": "Médio",
-    "statement": "Assinale a alternativa correta quanto à regência verbal da norma-padrão (Questão #11):",
-    "options": [
-      {
-        "key": "A",
-        "text": "Chegamos em Salvador no início da manhã."
-      },
-      {
-        "key": "B",
-        "text": "A regência do verbo empregado na alternativa B (questão #11) atende plenamente às exigências da norma-padrão."
-      },
-      {
-        "key": "C",
-        "text": "O candidato aspirava o cargo de agente com determinação."
-      },
-      {
-        "key": "D",
-        "text": "O policial visava o alvo antes de atirar."
-      },
-      {
-        "key": "E",
-        "text": "Esqueci do livro de português sobre a mesa."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Aplicação das regras de regência dos verbos Chegar/Ir (exigem preposição A), Aspirar, Visar e Esquecer.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Verbo chegar exige preposição A ('Chegamos A Salvador')."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Regência verbal perfeita na alternativa B da questão #11."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Aspirar no sentido de almejar é VTI ('aspirava AO cargo')."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Visar no sentido de mirar é VTD ('visava O alvo')."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Sem pronome fica 'Esqueci O livro' (com pronome: 'Esqueci-me DO livro')."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Chegar/Ir EXIGEM preposição A ('Cheguei A Salvador', 'Vou AO IBGE') | Esquecer O livro / Esquecer-se DO livro."
-    }
-  },
-  {
-    "id": "port-reg-012",
-    "subject": "Língua Portuguesa",
-    "topic": "7. Regência Verbal - Questão #12",
-    "source": "IBFC / IBGE",
-    "difficulty": "Difícil",
-    "statement": "Assinale a alternativa correta quanto à regência verbal da norma-padrão (Questão #12):",
-    "options": [
-      {
-        "key": "A",
-        "text": "Chegamos em Salvador no início da manhã."
-      },
-      {
-        "key": "B",
-        "text": "A regência do verbo empregado na alternativa B (questão #12) atende plenamente às exigências da norma-padrão."
-      },
-      {
-        "key": "C",
-        "text": "O candidato aspirava o cargo de agente com determinação."
-      },
-      {
-        "key": "D",
-        "text": "O policial visava o alvo antes de atirar."
-      },
-      {
-        "key": "E",
-        "text": "Esqueci do livro de português sobre a mesa."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Aplicação das regras de regência dos verbos Chegar/Ir (exigem preposição A), Aspirar, Visar e Esquecer.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Verbo chegar exige preposição A ('Chegamos A Salvador')."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Regência verbal perfeita na alternativa B da questão #12."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Aspirar no sentido de almejar é VTI ('aspirava AO cargo')."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Visar no sentido de mirar é VTD ('visava O alvo')."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Sem pronome fica 'Esqueci O livro' (com pronome: 'Esqueci-me DO livro')."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Chegar/Ir EXIGEM preposição A ('Cheguei A Salvador', 'Vou AO IBGE') | Esquecer O livro / Esquecer-se DO livro."
-    }
-  },
-  {
-    "id": "port-reg-013",
-    "subject": "Língua Portuguesa",
-    "topic": "7. Regência Verbal - Questão #13",
-    "source": "IBFC / IBGE",
-    "difficulty": "Fácil",
-    "statement": "Assinale a alternativa correta quanto à regência verbal da norma-padrão (Questão #13):",
-    "options": [
-      {
-        "key": "A",
-        "text": "Chegamos em Salvador no início da manhã."
-      },
-      {
-        "key": "B",
-        "text": "A regência do verbo empregado na alternativa B (questão #13) atende plenamente às exigências da norma-padrão."
-      },
-      {
-        "key": "C",
-        "text": "O candidato aspirava o cargo de agente com determinação."
-      },
-      {
-        "key": "D",
-        "text": "O policial visava o alvo antes de atirar."
-      },
-      {
-        "key": "E",
-        "text": "Esqueci do livro de português sobre a mesa."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Aplicação das regras de regência dos verbos Chegar/Ir (exigem preposição A), Aspirar, Visar e Esquecer.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Verbo chegar exige preposição A ('Chegamos A Salvador')."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Regência verbal perfeita na alternativa B da questão #13."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Aspirar no sentido de almejar é VTI ('aspirava AO cargo')."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Visar no sentido de mirar é VTD ('visava O alvo')."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Sem pronome fica 'Esqueci O livro' (com pronome: 'Esqueci-me DO livro')."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Chegar/Ir EXIGEM preposição A ('Cheguei A Salvador', 'Vou AO IBGE') | Esquecer O livro / Esquecer-se DO livro."
-    }
-  },
-  {
-    "id": "port-reg-014",
-    "subject": "Língua Portuguesa",
-    "topic": "7. Regência Verbal - Questão #14",
-    "source": "IBFC / IBGE",
-    "difficulty": "Médio",
-    "statement": "Assinale a alternativa correta quanto à regência verbal da norma-padrão (Questão #14):",
-    "options": [
-      {
-        "key": "A",
-        "text": "Chegamos em Salvador no início da manhã."
-      },
-      {
-        "key": "B",
-        "text": "A regência do verbo empregado na alternativa B (questão #14) atende plenamente às exigências da norma-padrão."
-      },
-      {
-        "key": "C",
-        "text": "O candidato aspirava o cargo de agente com determinação."
-      },
-      {
-        "key": "D",
-        "text": "O policial visava o alvo antes de atirar."
-      },
-      {
-        "key": "E",
-        "text": "Esqueci do livro de português sobre a mesa."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Aplicação das regras de regência dos verbos Chegar/Ir (exigem preposição A), Aspirar, Visar e Esquecer.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Verbo chegar exige preposição A ('Chegamos A Salvador')."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Regência verbal perfeita na alternativa B da questão #14."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Aspirar no sentido de almejar é VTI ('aspirava AO cargo')."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Visar no sentido de mirar é VTD ('visava O alvo')."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Sem pronome fica 'Esqueci O livro' (com pronome: 'Esqueci-me DO livro')."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Chegar/Ir EXIGEM preposição A ('Cheguei A Salvador', 'Vou AO IBGE') | Esquecer O livro / Esquecer-se DO livro."
-    }
-  },
-  {
-    "id": "port-reg-015",
-    "subject": "Língua Portuguesa",
-    "topic": "7. Regência Verbal - Questão #15",
-    "source": "IBFC / IBGE",
-    "difficulty": "Difícil",
-    "statement": "Assinale a alternativa correta quanto à regência verbal da norma-padrão (Questão #15):",
-    "options": [
-      {
-        "key": "A",
-        "text": "Chegamos em Salvador no início da manhã."
-      },
-      {
-        "key": "B",
-        "text": "A regência do verbo empregado na alternativa B (questão #15) atende plenamente às exigências da norma-padrão."
-      },
-      {
-        "key": "C",
-        "text": "O candidato aspirava o cargo de agente com determinação."
-      },
-      {
-        "key": "D",
-        "text": "O policial visava o alvo antes de atirar."
-      },
-      {
-        "key": "E",
-        "text": "Esqueci do livro de português sobre a mesa."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Aplicação das regras de regência dos verbos Chegar/Ir (exigem preposição A), Aspirar, Visar e Esquecer.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Verbo chegar exige preposição A ('Chegamos A Salvador')."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Regência verbal perfeita na alternativa B da questão #15."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Aspirar no sentido de almejar é VTI ('aspirava AO cargo')."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Visar no sentido de mirar é VTD ('visava O alvo')."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Sem pronome fica 'Esqueci O livro' (com pronome: 'Esqueci-me DO livro')."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Chegar/Ir EXIGEM preposição A ('Cheguei A Salvador', 'Vou AO IBGE') | Esquecer O livro / Esquecer-se DO livro."
+      "bizu": "💡 BIZU IBFC: PREFERIR = 'Prefiro X A Y'! Proibido usar 'do que', 'mais' ou 'antes'."
     }
   },
   {
@@ -12717,15 +2859,15 @@ export const QUESTIONS_DATABASE: Question[] = [
     "topic": "3. Pontuação - Proibição de Vírgula entre Sujeito e Verbo",
     "source": "IBFC / IBGE",
     "difficulty": "Fácil",
-    "statement": "Assinale a opção em que o uso da vírgula está INCORRETO segundo a norma-padrão:",
+    "statement": "Assinale a alternativa em que o uso da vírgula está INCORRETO segundo a norma-padrão:",
     "options": [
       {
         "key": "A",
-        "text": "Salvador, capital da Bahia, recebeu a equipe."
+        "text": "Salvador, capital do Estado da Bahia, sediou o evento."
       },
       {
         "key": "B",
-        "text": "O agente de informática, coletou os dados rapidamente."
+        "text": "O agente censitário de informática, coletou todos os dados do setor."
       },
       {
         "key": "C",
@@ -12733,912 +2875,44 @@ export const QUESTIONS_DATABASE: Question[] = [
       },
       {
         "key": "D",
-        "text": "Comprei lápis, canetas e papéis."
+        "text": "Comprei pranchetas, canetas, papéis e formulários."
       },
       {
         "key": "E",
-        "text": "Senhor supervisor, o relatório está pronto."
+        "text": "Senhor supervisor, o relatório final foi enviado."
       }
     ],
     "correctOption": "B",
     "explanation": {
-      "summary": "É PROIBIDO por vírgula simples entre o Sujeito ('O agente de informática') e o seu Verbo ('coletou').",
+      "summary": "É proibido separar o Sujeito ('O agente censitário de informática') do seu Verbo ('coletou') por vírgula simples.",
       "optionsAnalysis": [
         {
           "key": "A",
           "isCorrect": false,
-          "reason": "Incorreto. Aposto explicativo entre vírgulas correto."
+          "reason": "Incorreto. Aposto explicativo isolado entre vírgulas correto."
         },
         {
           "key": "B",
           "isCorrect": true,
-          "reason": "CORRETA. INCORRETO: Vírgula separando o sujeito do verbo."
+          "reason": "CORRETA. INCORRETO: Vírgula separando o sujeito do verbo principal."
         },
         {
           "key": "C",
           "isCorrect": false,
-          "reason": "Incorreto. Adjunto adverbial deslocado correto."
+          "reason": "Incorreto. Adjunto adverbial de tempo deslocado entre vírgulas correto."
         },
         {
           "key": "D",
           "isCorrect": false,
-          "reason": "Incorreto. Enumeração correta."
+          "reason": "Incorreto. Enumeração simples de termos da mesma função correta."
         },
         {
           "key": "E",
           "isCorrect": false,
-          "reason": "Incorreto. Vocativo isolado correto."
+          "reason": "Incorreto. Vocativo isolado por vírgula no início da frase correto."
         }
       ],
-      "bizu": "💡 BIZU IBFC PORTUGUÊS: NUNCA separe o Sujeito do Verbo nem o Verbo do Complemento por vírgula!"
-    }
-  },
-  {
-    "id": "port-pon-002",
-    "subject": "Língua Portuguesa",
-    "topic": "3. Pontuação e Sintaxe - Questão #2",
-    "source": "IBFC / IBGE",
-    "difficulty": "Médio",
-    "statement": "Em relação ao emprego da pontuação segundo a norma-padrão (Questão #2), assinale a afirmativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "A vírgula deve ser usada para separar o sujeito diretamente do verbo principal."
-      },
-      {
-        "key": "B",
-        "text": "A pontuação da frase na alternativa B (questão #2) está em inteira conformidade com a norma gramatical."
-      },
-      {
-        "key": "C",
-        "text": "O vocativo não necessita de isolamento por vírgulas no início da frase."
-      },
-      {
-        "key": "D",
-        "text": "O aposto explicativo deve ser escrito sem nenhuma vírgula ao seu redor."
-      },
-      {
-        "key": "E",
-        "text": "Os dois-pontos são proibidos antes de enumerações explicativas."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Domínio das regras de vírgula (aposto, vocativo, adjuntos deslocados) e sinais de pontuação cobrados pela IBFC.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. É proibido separar sujeito e verbo por vírgula."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Emprego escorreito da pontuação na alternativa B da questão #2."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Vocativo DEVE ser isolado por vírgula."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Aposto explicativo vem entre vírgulas."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Dois-pontos introduzem enumerações."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Vocativo = Chamamento (Exige vírgula: 'Pedro, venha cá!') | Aposto = Explicação (Vem entre vírgulas)."
-    }
-  },
-  {
-    "id": "port-pon-003",
-    "subject": "Língua Portuguesa",
-    "topic": "3. Pontuação e Sintaxe - Questão #3",
-    "source": "IBFC / IBGE",
-    "difficulty": "Difícil",
-    "statement": "Em relação ao emprego da pontuação segundo a norma-padrão (Questão #3), assinale a afirmativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "A vírgula deve ser usada para separar o sujeito diretamente do verbo principal."
-      },
-      {
-        "key": "B",
-        "text": "A pontuação da frase na alternativa B (questão #3) está em inteira conformidade com a norma gramatical."
-      },
-      {
-        "key": "C",
-        "text": "O vocativo não necessita de isolamento por vírgulas no início da frase."
-      },
-      {
-        "key": "D",
-        "text": "O aposto explicativo deve ser escrito sem nenhuma vírgula ao seu redor."
-      },
-      {
-        "key": "E",
-        "text": "Os dois-pontos são proibidos antes de enumerações explicativas."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Domínio das regras de vírgula (aposto, vocativo, adjuntos deslocados) e sinais de pontuação cobrados pela IBFC.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. É proibido separar sujeito e verbo por vírgula."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Emprego escorreito da pontuação na alternativa B da questão #3."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Vocativo DEVE ser isolado por vírgula."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Aposto explicativo vem entre vírgulas."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Dois-pontos introduzem enumerações."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Vocativo = Chamamento (Exige vírgula: 'Pedro, venha cá!') | Aposto = Explicação (Vem entre vírgulas)."
-    }
-  },
-  {
-    "id": "port-pon-004",
-    "subject": "Língua Portuguesa",
-    "topic": "3. Pontuação e Sintaxe - Questão #4",
-    "source": "IBFC / IBGE",
-    "difficulty": "Fácil",
-    "statement": "Em relação ao emprego da pontuação segundo a norma-padrão (Questão #4), assinale a afirmativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "A vírgula deve ser usada para separar o sujeito diretamente do verbo principal."
-      },
-      {
-        "key": "B",
-        "text": "A pontuação da frase na alternativa B (questão #4) está em inteira conformidade com a norma gramatical."
-      },
-      {
-        "key": "C",
-        "text": "O vocativo não necessita de isolamento por vírgulas no início da frase."
-      },
-      {
-        "key": "D",
-        "text": "O aposto explicativo deve ser escrito sem nenhuma vírgula ao seu redor."
-      },
-      {
-        "key": "E",
-        "text": "Os dois-pontos são proibidos antes de enumerações explicativas."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Domínio das regras de vírgula (aposto, vocativo, adjuntos deslocados) e sinais de pontuação cobrados pela IBFC.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. É proibido separar sujeito e verbo por vírgula."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Emprego escorreito da pontuação na alternativa B da questão #4."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Vocativo DEVE ser isolado por vírgula."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Aposto explicativo vem entre vírgulas."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Dois-pontos introduzem enumerações."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Vocativo = Chamamento (Exige vírgula: 'Pedro, venha cá!') | Aposto = Explicação (Vem entre vírgulas)."
-    }
-  },
-  {
-    "id": "port-pon-005",
-    "subject": "Língua Portuguesa",
-    "topic": "3. Pontuação e Sintaxe - Questão #5",
-    "source": "IBFC / IBGE",
-    "difficulty": "Médio",
-    "statement": "Em relação ao emprego da pontuação segundo a norma-padrão (Questão #5), assinale a afirmativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "A vírgula deve ser usada para separar o sujeito diretamente do verbo principal."
-      },
-      {
-        "key": "B",
-        "text": "A pontuação da frase na alternativa B (questão #5) está em inteira conformidade com a norma gramatical."
-      },
-      {
-        "key": "C",
-        "text": "O vocativo não necessita de isolamento por vírgulas no início da frase."
-      },
-      {
-        "key": "D",
-        "text": "O aposto explicativo deve ser escrito sem nenhuma vírgula ao seu redor."
-      },
-      {
-        "key": "E",
-        "text": "Os dois-pontos são proibidos antes de enumerações explicativas."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Domínio das regras de vírgula (aposto, vocativo, adjuntos deslocados) e sinais de pontuação cobrados pela IBFC.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. É proibido separar sujeito e verbo por vírgula."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Emprego escorreito da pontuação na alternativa B da questão #5."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Vocativo DEVE ser isolado por vírgula."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Aposto explicativo vem entre vírgulas."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Dois-pontos introduzem enumerações."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Vocativo = Chamamento (Exige vírgula: 'Pedro, venha cá!') | Aposto = Explicação (Vem entre vírgulas)."
-    }
-  },
-  {
-    "id": "port-pon-006",
-    "subject": "Língua Portuguesa",
-    "topic": "3. Pontuação e Sintaxe - Questão #6",
-    "source": "IBFC / IBGE",
-    "difficulty": "Difícil",
-    "statement": "Em relação ao emprego da pontuação segundo a norma-padrão (Questão #6), assinale a afirmativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "A vírgula deve ser usada para separar o sujeito diretamente do verbo principal."
-      },
-      {
-        "key": "B",
-        "text": "A pontuação da frase na alternativa B (questão #6) está em inteira conformidade com a norma gramatical."
-      },
-      {
-        "key": "C",
-        "text": "O vocativo não necessita de isolamento por vírgulas no início da frase."
-      },
-      {
-        "key": "D",
-        "text": "O aposto explicativo deve ser escrito sem nenhuma vírgula ao seu redor."
-      },
-      {
-        "key": "E",
-        "text": "Os dois-pontos são proibidos antes de enumerações explicativas."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Domínio das regras de vírgula (aposto, vocativo, adjuntos deslocados) e sinais de pontuação cobrados pela IBFC.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. É proibido separar sujeito e verbo por vírgula."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Emprego escorreito da pontuação na alternativa B da questão #6."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Vocativo DEVE ser isolado por vírgula."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Aposto explicativo vem entre vírgulas."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Dois-pontos introduzem enumerações."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Vocativo = Chamamento (Exige vírgula: 'Pedro, venha cá!') | Aposto = Explicação (Vem entre vírgulas)."
-    }
-  },
-  {
-    "id": "port-pon-007",
-    "subject": "Língua Portuguesa",
-    "topic": "3. Pontuação e Sintaxe - Questão #7",
-    "source": "IBFC / IBGE",
-    "difficulty": "Fácil",
-    "statement": "Em relação ao emprego da pontuação segundo a norma-padrão (Questão #7), assinale a afirmativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "A vírgula deve ser usada para separar o sujeito diretamente do verbo principal."
-      },
-      {
-        "key": "B",
-        "text": "A pontuação da frase na alternativa B (questão #7) está em inteira conformidade com a norma gramatical."
-      },
-      {
-        "key": "C",
-        "text": "O vocativo não necessita de isolamento por vírgulas no início da frase."
-      },
-      {
-        "key": "D",
-        "text": "O aposto explicativo deve ser escrito sem nenhuma vírgula ao seu redor."
-      },
-      {
-        "key": "E",
-        "text": "Os dois-pontos são proibidos antes de enumerações explicativas."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Domínio das regras de vírgula (aposto, vocativo, adjuntos deslocados) e sinais de pontuação cobrados pela IBFC.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. É proibido separar sujeito e verbo por vírgula."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Emprego escorreito da pontuação na alternativa B da questão #7."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Vocativo DEVE ser isolado por vírgula."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Aposto explicativo vem entre vírgulas."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Dois-pontos introduzem enumerações."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Vocativo = Chamamento (Exige vírgula: 'Pedro, venha cá!') | Aposto = Explicação (Vem entre vírgulas)."
-    }
-  },
-  {
-    "id": "port-pon-008",
-    "subject": "Língua Portuguesa",
-    "topic": "3. Pontuação e Sintaxe - Questão #8",
-    "source": "IBFC / IBGE",
-    "difficulty": "Médio",
-    "statement": "Em relação ao emprego da pontuação segundo a norma-padrão (Questão #8), assinale a afirmativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "A vírgula deve ser usada para separar o sujeito diretamente do verbo principal."
-      },
-      {
-        "key": "B",
-        "text": "A pontuação da frase na alternativa B (questão #8) está em inteira conformidade com a norma gramatical."
-      },
-      {
-        "key": "C",
-        "text": "O vocativo não necessita de isolamento por vírgulas no início da frase."
-      },
-      {
-        "key": "D",
-        "text": "O aposto explicativo deve ser escrito sem nenhuma vírgula ao seu redor."
-      },
-      {
-        "key": "E",
-        "text": "Os dois-pontos são proibidos antes de enumerações explicativas."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Domínio das regras de vírgula (aposto, vocativo, adjuntos deslocados) e sinais de pontuação cobrados pela IBFC.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. É proibido separar sujeito e verbo por vírgula."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Emprego escorreito da pontuação na alternativa B da questão #8."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Vocativo DEVE ser isolado por vírgula."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Aposto explicativo vem entre vírgulas."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Dois-pontos introduzem enumerações."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Vocativo = Chamamento (Exige vírgula: 'Pedro, venha cá!') | Aposto = Explicação (Vem entre vírgulas)."
-    }
-  },
-  {
-    "id": "port-pon-009",
-    "subject": "Língua Portuguesa",
-    "topic": "3. Pontuação e Sintaxe - Questão #9",
-    "source": "IBFC / IBGE",
-    "difficulty": "Difícil",
-    "statement": "Em relação ao emprego da pontuação segundo a norma-padrão (Questão #9), assinale a afirmativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "A vírgula deve ser usada para separar o sujeito diretamente do verbo principal."
-      },
-      {
-        "key": "B",
-        "text": "A pontuação da frase na alternativa B (questão #9) está em inteira conformidade com a norma gramatical."
-      },
-      {
-        "key": "C",
-        "text": "O vocativo não necessita de isolamento por vírgulas no início da frase."
-      },
-      {
-        "key": "D",
-        "text": "O aposto explicativo deve ser escrito sem nenhuma vírgula ao seu redor."
-      },
-      {
-        "key": "E",
-        "text": "Os dois-pontos são proibidos antes de enumerações explicativas."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Domínio das regras de vírgula (aposto, vocativo, adjuntos deslocados) e sinais de pontuação cobrados pela IBFC.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. É proibido separar sujeito e verbo por vírgula."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Emprego escorreito da pontuação na alternativa B da questão #9."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Vocativo DEVE ser isolado por vírgula."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Aposto explicativo vem entre vírgulas."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Dois-pontos introduzem enumerações."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Vocativo = Chamamento (Exige vírgula: 'Pedro, venha cá!') | Aposto = Explicação (Vem entre vírgulas)."
-    }
-  },
-  {
-    "id": "port-pon-010",
-    "subject": "Língua Portuguesa",
-    "topic": "3. Pontuação e Sintaxe - Questão #10",
-    "source": "IBFC / IBGE",
-    "difficulty": "Fácil",
-    "statement": "Em relação ao emprego da pontuação segundo a norma-padrão (Questão #10), assinale a afirmativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "A vírgula deve ser usada para separar o sujeito diretamente do verbo principal."
-      },
-      {
-        "key": "B",
-        "text": "A pontuação da frase na alternativa B (questão #10) está em inteira conformidade com a norma gramatical."
-      },
-      {
-        "key": "C",
-        "text": "O vocativo não necessita de isolamento por vírgulas no início da frase."
-      },
-      {
-        "key": "D",
-        "text": "O aposto explicativo deve ser escrito sem nenhuma vírgula ao seu redor."
-      },
-      {
-        "key": "E",
-        "text": "Os dois-pontos são proibidos antes de enumerações explicativas."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Domínio das regras de vírgula (aposto, vocativo, adjuntos deslocados) e sinais de pontuação cobrados pela IBFC.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. É proibido separar sujeito e verbo por vírgula."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Emprego escorreito da pontuação na alternativa B da questão #10."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Vocativo DEVE ser isolado por vírgula."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Aposto explicativo vem entre vírgulas."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Dois-pontos introduzem enumerações."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Vocativo = Chamamento (Exige vírgula: 'Pedro, venha cá!') | Aposto = Explicação (Vem entre vírgulas)."
-    }
-  },
-  {
-    "id": "port-pon-011",
-    "subject": "Língua Portuguesa",
-    "topic": "3. Pontuação e Sintaxe - Questão #11",
-    "source": "IBFC / IBGE",
-    "difficulty": "Médio",
-    "statement": "Em relação ao emprego da pontuação segundo a norma-padrão (Questão #11), assinale a afirmativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "A vírgula deve ser usada para separar o sujeito diretamente do verbo principal."
-      },
-      {
-        "key": "B",
-        "text": "A pontuação da frase na alternativa B (questão #11) está em inteira conformidade com a norma gramatical."
-      },
-      {
-        "key": "C",
-        "text": "O vocativo não necessita de isolamento por vírgulas no início da frase."
-      },
-      {
-        "key": "D",
-        "text": "O aposto explicativo deve ser escrito sem nenhuma vírgula ao seu redor."
-      },
-      {
-        "key": "E",
-        "text": "Os dois-pontos são proibidos antes de enumerações explicativas."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Domínio das regras de vírgula (aposto, vocativo, adjuntos deslocados) e sinais de pontuação cobrados pela IBFC.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. É proibido separar sujeito e verbo por vírgula."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Emprego escorreito da pontuação na alternativa B da questão #11."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Vocativo DEVE ser isolado por vírgula."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Aposto explicativo vem entre vírgulas."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Dois-pontos introduzem enumerações."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Vocativo = Chamamento (Exige vírgula: 'Pedro, venha cá!') | Aposto = Explicação (Vem entre vírgulas)."
-    }
-  },
-  {
-    "id": "port-pon-012",
-    "subject": "Língua Portuguesa",
-    "topic": "3. Pontuação e Sintaxe - Questão #12",
-    "source": "IBFC / IBGE",
-    "difficulty": "Difícil",
-    "statement": "Em relação ao emprego da pontuação segundo a norma-padrão (Questão #12), assinale a afirmativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "A vírgula deve ser usada para separar o sujeito diretamente do verbo principal."
-      },
-      {
-        "key": "B",
-        "text": "A pontuação da frase na alternativa B (questão #12) está em inteira conformidade com a norma gramatical."
-      },
-      {
-        "key": "C",
-        "text": "O vocativo não necessita de isolamento por vírgulas no início da frase."
-      },
-      {
-        "key": "D",
-        "text": "O aposto explicativo deve ser escrito sem nenhuma vírgula ao seu redor."
-      },
-      {
-        "key": "E",
-        "text": "Os dois-pontos são proibidos antes de enumerações explicativas."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Domínio das regras de vírgula (aposto, vocativo, adjuntos deslocados) e sinais de pontuação cobrados pela IBFC.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. É proibido separar sujeito e verbo por vírgula."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Emprego escorreito da pontuação na alternativa B da questão #12."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Vocativo DEVE ser isolado por vírgula."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Aposto explicativo vem entre vírgulas."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Dois-pontos introduzem enumerações."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Vocativo = Chamamento (Exige vírgula: 'Pedro, venha cá!') | Aposto = Explicação (Vem entre vírgulas)."
-    }
-  },
-  {
-    "id": "port-pon-013",
-    "subject": "Língua Portuguesa",
-    "topic": "3. Pontuação e Sintaxe - Questão #13",
-    "source": "IBFC / IBGE",
-    "difficulty": "Fácil",
-    "statement": "Em relação ao emprego da pontuação segundo a norma-padrão (Questão #13), assinale a afirmativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "A vírgula deve ser usada para separar o sujeito diretamente do verbo principal."
-      },
-      {
-        "key": "B",
-        "text": "A pontuação da frase na alternativa B (questão #13) está em inteira conformidade com a norma gramatical."
-      },
-      {
-        "key": "C",
-        "text": "O vocativo não necessita de isolamento por vírgulas no início da frase."
-      },
-      {
-        "key": "D",
-        "text": "O aposto explicativo deve ser escrito sem nenhuma vírgula ao seu redor."
-      },
-      {
-        "key": "E",
-        "text": "Os dois-pontos são proibidos antes de enumerações explicativas."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Domínio das regras de vírgula (aposto, vocativo, adjuntos deslocados) e sinais de pontuação cobrados pela IBFC.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. É proibido separar sujeito e verbo por vírgula."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Emprego escorreito da pontuação na alternativa B da questão #13."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Vocativo DEVE ser isolado por vírgula."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Aposto explicativo vem entre vírgulas."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Dois-pontos introduzem enumerações."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Vocativo = Chamamento (Exige vírgula: 'Pedro, venha cá!') | Aposto = Explicação (Vem entre vírgulas)."
-    }
-  },
-  {
-    "id": "port-pon-014",
-    "subject": "Língua Portuguesa",
-    "topic": "3. Pontuação e Sintaxe - Questão #14",
-    "source": "IBFC / IBGE",
-    "difficulty": "Médio",
-    "statement": "Em relação ao emprego da pontuação segundo a norma-padrão (Questão #14), assinale a afirmativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "A vírgula deve ser usada para separar o sujeito diretamente do verbo principal."
-      },
-      {
-        "key": "B",
-        "text": "A pontuação da frase na alternativa B (questão #14) está em inteira conformidade com a norma gramatical."
-      },
-      {
-        "key": "C",
-        "text": "O vocativo não necessita de isolamento por vírgulas no início da frase."
-      },
-      {
-        "key": "D",
-        "text": "O aposto explicativo deve ser escrito sem nenhuma vírgula ao seu redor."
-      },
-      {
-        "key": "E",
-        "text": "Os dois-pontos são proibidos antes de enumerações explicativas."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Domínio das regras de vírgula (aposto, vocativo, adjuntos deslocados) e sinais de pontuação cobrados pela IBFC.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. É proibido separar sujeito e verbo por vírgula."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Emprego escorreito da pontuação na alternativa B da questão #14."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Vocativo DEVE ser isolado por vírgula."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Aposto explicativo vem entre vírgulas."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Dois-pontos introduzem enumerações."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Vocativo = Chamamento (Exige vírgula: 'Pedro, venha cá!') | Aposto = Explicação (Vem entre vírgulas)."
-    }
-  },
-  {
-    "id": "port-pon-015",
-    "subject": "Língua Portuguesa",
-    "topic": "3. Pontuação e Sintaxe - Questão #15",
-    "source": "IBFC / IBGE",
-    "difficulty": "Difícil",
-    "statement": "Em relação ao emprego da pontuação segundo a norma-padrão (Questão #15), assinale a afirmativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "A vírgula deve ser usada para separar o sujeito diretamente do verbo principal."
-      },
-      {
-        "key": "B",
-        "text": "A pontuação da frase na alternativa B (questão #15) está em inteira conformidade com a norma gramatical."
-      },
-      {
-        "key": "C",
-        "text": "O vocativo não necessita de isolamento por vírgulas no início da frase."
-      },
-      {
-        "key": "D",
-        "text": "O aposto explicativo deve ser escrito sem nenhuma vírgula ao seu redor."
-      },
-      {
-        "key": "E",
-        "text": "Os dois-pontos são proibidos antes de enumerações explicativas."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Domínio das regras de vírgula (aposto, vocativo, adjuntos deslocados) e sinais de pontuação cobrados pela IBFC.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. É proibido separar sujeito e verbo por vírgula."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Emprego escorreito da pontuação na alternativa B da questão #15."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Vocativo DEVE ser isolado por vírgula."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Aposto explicativo vem entre vírgulas."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Dois-pontos introduzem enumerações."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Vocativo = Chamamento (Exige vírgula: 'Pedro, venha cá!') | Aposto = Explicação (Vem entre vírgulas)."
+      "bizu": "💡 BIZU IBFC PORTUGUÊS: NUNCA separe o Sujeito do Verbo nem o Verbo do seu Complemento por vírgula!"
     }
   },
   {
@@ -13646,8 +2920,8 @@ export const QUESTIONS_DATABASE: Question[] = [
     "subject": "Raciocínio Lógico",
     "topic": "1 e 2. Negação da Condicional (Regra do MANÉ)",
     "source": "IBFC / IBGE",
-    "difficulty": "Fácil",
-    "statement": "Dada a proposição 'Se o agente estuda, então ele obtém a aprovação', assinale a sua NEGAÇÃO LÓGICA equivalente:",
+    "difficulty": "Médio",
+    "statement": "Dada a proposição composta: 'Se o agente estuda, então ele obtém a aprovação', assinale a sua NEGAÇÃO LÓGICA equivalente:",
     "options": [
       {
         "key": "A",
@@ -13672,27 +2946,27 @@ export const QUESTIONS_DATABASE: Question[] = [
     ],
     "correctOption": "B",
     "explanation": {
-      "summary": "Negação do 'Se...Então' (Regra do MANÉ): Mantém a 1ª (MA) E (NÉ) Nega a 2ª.",
+      "summary": "A negação da condicional P -> Q é obtida pela Regra do MANÉ: Mantém a primeira (P) E nega a segunda (~Q), resultando em P e ~Q.",
       "optionsAnalysis": [
         {
           "key": "A",
           "isCorrect": false,
-          "reason": "Incorreto."
+          "reason": "Incorreto. Apenas negou ambas sem trocar a condicional."
         },
         {
           "key": "B",
           "isCorrect": true,
-          "reason": "CORRETA. Mantém 'o agente estuda' E nega 'não obtém a aprovação'."
+          "reason": "CORRETA. Mantém a 1ª ('o agente estuda') E nega a 2ª ('não obtém a aprovação')."
         },
         {
           "key": "C",
           "isCorrect": false,
-          "reason": "Incorreto. Equivalência (Regra do Neumar), não negação."
+          "reason": "Incorreto. Essa é a equivalência lógica (Regra do Neumar: ~P ou Q), não a negação."
         },
         {
           "key": "D",
           "isCorrect": false,
-          "reason": "Incorreto."
+          "reason": "Incorreto. Apenas inverteu os termos."
         },
         {
           "key": "E",
@@ -13706,7 +2980,7 @@ export const QUESTIONS_DATABASE: Question[] = [
   {
     "id": "rlm-neg-002",
     "subject": "Raciocínio Lógico",
-    "topic": "2. Equivalência Lógica da Condicional (Contrapositiva)",
+    "topic": "2. Equivalência da Condicional (Contrapositiva)",
     "source": "IBFC / IBGE",
     "difficulty": "Médio",
     "statement": "Assinale a proposição que é logicamente EQUIVALENTE à afirmação: 'Se chove em Salvador, então o trânsito fica lento'.",
@@ -13734,27 +3008,27 @@ export const QUESTIONS_DATABASE: Question[] = [
     ],
     "correctOption": "B",
     "explanation": {
-      "summary": "Equivalência por Contrapositiva: inverte a ordem e nega ambas as proposições (Volta Negando: ~Q -> ~P).",
+      "summary": "A equivalência por Contrapositiva da condicional P -> Q é ~Q -> ~P (Inverte a ordem das frases e nega ambas: 'Volta Negando').",
       "optionsAnalysis": [
         {
           "key": "A",
           "isCorrect": false,
-          "reason": "Incorreto. Apenas inverteu."
+          "reason": "Incorreto. Apenas inverteu a ordem sem negar os termos."
         },
         {
           "key": "B",
           "isCorrect": true,
-          "reason": "CORRETA. Contrapositiva correta: 'Se NÃO fica lento, então NÃO chove'."
+          "reason": "CORRETA. Contrapositiva: Inverteu a ordem e negou ambos os termos ('Se o trânsito não fica lento, então não chove em Salvador')."
         },
         {
           "key": "C",
           "isCorrect": false,
-          "reason": "Incorreto. Apenas negou."
+          "reason": "Incorreto. Apenas negou os termos sem inverter a ordem."
         },
         {
           "key": "D",
           "isCorrect": false,
-          "reason": "Incorreto. Negação, não equivalência."
+          "reason": "Incorreto. Essa é a negação lógica da frase."
         },
         {
           "key": "E",
@@ -13768,45 +3042,45 @@ export const QUESTIONS_DATABASE: Question[] = [
   {
     "id": "rlm-neg-003",
     "subject": "Raciocínio Lógico",
-    "topic": "2. Negação do E / OU (Leis de De Morgan)",
+    "topic": "2. Negação do E e do OU (Leis de De Morgan)",
     "source": "IBFC / IBGE",
-    "difficulty": "Difícil",
-    "statement": "Assinale a NEGAÇÃO LÓGICA correta da proposição: 'Pedro é agente E a prova é fácil'.",
+    "difficulty": "Médio",
+    "statement": "Assinale a NEGAÇÃO LÓGICA correta da proposição composta: 'Pedro é agente de informática E a prova é fácil'.",
     "options": [
       {
         "key": "A",
-        "text": "Pedro não é agente E a prova não é fácil."
+        "text": "Pedro não é agente de informática E a prova não é fácil."
       },
       {
         "key": "B",
-        "text": "Pedro não é agente OU a prova não é fácil."
+        "text": "Pedro não é agente de informática OU a prova não é fácil."
       },
       {
         "key": "C",
-        "text": "Se Pedro é agente, então a prova é fácil."
+        "text": "Se Pedro é agente de informática, então a prova é fácil."
       },
       {
         "key": "D",
-        "text": "Pedro é agente OU a prova é fácil."
+        "text": "Pedro é agente de informática OU a prova é fácil."
       },
       {
         "key": "E",
-        "text": "Pedro não é agente e a prova é fácil."
+        "text": "Pedro não é agente de informática e a prova é fácil."
       }
     ],
     "correctOption": "B",
     "explanation": {
-      "summary": "Lei de De Morgan para negar o 'E': Nega a 1ª, Troca o 'E' por 'OU', e Nega a 2ª: ~(P e Q) = ~P ou ~Q.",
+      "summary": "Segundo as Leis de De Morgan, para negar uma conjuntiva (P e Q), nega-se a primeira (~P), troca-se o 'E' pelo 'OU', e nega-se a segunda (~Q), obtendo ~P ou ~Q.",
       "optionsAnalysis": [
         {
           "key": "A",
           "isCorrect": false,
-          "reason": "Incorreto. Esqueceu de trocar o 'E' por 'OU'."
+          "reason": "Incorreto. Esqueceu de trocar a conjunção 'E' pela disjunção 'OU'."
         },
         {
           "key": "B",
           "isCorrect": true,
-          "reason": "CORRETA. Negou a 1ª, trocou 'E' por 'OU' e negou a 2ª."
+          "reason": "CORRETA. Negou a 1ª ('Pedro não é agente'), trocou 'E' por 'OU' e negou a 2ª ('a prova não é fácil')."
         },
         {
           "key": "C",
@@ -13824,1061 +3098,7 @@ export const QUESTIONS_DATABASE: Question[] = [
           "reason": "Incorreto."
         }
       ],
-      "bizu": "💡 BIZU IBFC RLM (De Morgan): Negação do 'E' = Nega tudo e troca por 'OU'! Negação do 'OU' = Nega tudo e troca por 'E'!"
-    }
-  },
-  {
-    "id": "rlm-neg-004",
-    "subject": "Raciocínio Lógico",
-    "topic": "1 e 2. Negações e Equivalências #4",
-    "source": "IBFC / IBGE",
-    "difficulty": "Fácil",
-    "statement": "Considerando os princípios da lógica proposicional e tabelas-verdade (Questão #4), assinale a afirmativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "A negação de 'Todo homem é mortal' é 'Nenhum homem é mortal'."
-      },
-      {
-        "key": "B",
-        "text": "A proposição equivalente construída na alternativa B (questão #4) obedece rigorosamente às leis da lógica proposicional."
-      },
-      {
-        "key": "C",
-        "text": "A condicional (P -> Q) só é falsa quando P e Q forem ambas verdadeiras."
-      },
-      {
-        "key": "D",
-        "text": "A conjunção (P e Q) é verdadeira quando pelo menos uma das proposições for verdadeira."
-      },
-      {
-        "key": "E",
-        "text": "A negação da negação de uma proposição P resulta em uma proposição falsa."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Análise de validade de argumentos, negações e equivalências lógicas exigidas pela IBFC.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Negação de 'Todo' é 'Pelo menos um NÃO é' / 'Algum NÃO é'."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para as leis da lógica proposicional na questão #4."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Condicional só é FALSA na 'Vera Fischer' (V -> F = F)."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Conjunção (E) exige AMBAS verdadeiras."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Negação da negação volta à proposição original (Dupla Negação)."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Condicional P -> Q só é FALSA quando V -> F (Vera Fischer é Falsa!). Em todos os outros casos é VERDADEIRA!"
-    }
-  },
-  {
-    "id": "rlm-neg-005",
-    "subject": "Raciocínio Lógico",
-    "topic": "1 e 2. Negações e Equivalências #5",
-    "source": "IBFC / IBGE",
-    "difficulty": "Médio",
-    "statement": "Considerando os princípios da lógica proposicional e tabelas-verdade (Questão #5), assinale a afirmativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "A negação de 'Todo homem é mortal' é 'Nenhum homem é mortal'."
-      },
-      {
-        "key": "B",
-        "text": "A proposição equivalente construída na alternativa B (questão #5) obedece rigorosamente às leis da lógica proposicional."
-      },
-      {
-        "key": "C",
-        "text": "A condicional (P -> Q) só é falsa quando P e Q forem ambas verdadeiras."
-      },
-      {
-        "key": "D",
-        "text": "A conjunção (P e Q) é verdadeira quando pelo menos uma das proposições for verdadeira."
-      },
-      {
-        "key": "E",
-        "text": "A negação da negação de uma proposição P resulta em uma proposição falsa."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Análise de validade de argumentos, negações e equivalências lógicas exigidas pela IBFC.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Negação de 'Todo' é 'Pelo menos um NÃO é' / 'Algum NÃO é'."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para as leis da lógica proposicional na questão #5."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Condicional só é FALSA na 'Vera Fischer' (V -> F = F)."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Conjunção (E) exige AMBAS verdadeiras."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Negação da negação volta à proposição original (Dupla Negação)."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Condicional P -> Q só é FALSA quando V -> F (Vera Fischer é Falsa!). Em todos os outros casos é VERDADEIRA!"
-    }
-  },
-  {
-    "id": "rlm-neg-006",
-    "subject": "Raciocínio Lógico",
-    "topic": "1 e 2. Negações e Equivalências #6",
-    "source": "IBFC / IBGE",
-    "difficulty": "Difícil",
-    "statement": "Considerando os princípios da lógica proposicional e tabelas-verdade (Questão #6), assinale a afirmativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "A negação de 'Todo homem é mortal' é 'Nenhum homem é mortal'."
-      },
-      {
-        "key": "B",
-        "text": "A proposição equivalente construída na alternativa B (questão #6) obedece rigorosamente às leis da lógica proposicional."
-      },
-      {
-        "key": "C",
-        "text": "A condicional (P -> Q) só é falsa quando P e Q forem ambas verdadeiras."
-      },
-      {
-        "key": "D",
-        "text": "A conjunção (P e Q) é verdadeira quando pelo menos uma das proposições for verdadeira."
-      },
-      {
-        "key": "E",
-        "text": "A negação da negação de uma proposição P resulta em uma proposição falsa."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Análise de validade de argumentos, negações e equivalências lógicas exigidas pela IBFC.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Negação de 'Todo' é 'Pelo menos um NÃO é' / 'Algum NÃO é'."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para as leis da lógica proposicional na questão #6."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Condicional só é FALSA na 'Vera Fischer' (V -> F = F)."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Conjunção (E) exige AMBAS verdadeiras."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Negação da negação volta à proposição original (Dupla Negação)."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Condicional P -> Q só é FALSA quando V -> F (Vera Fischer é Falsa!). Em todos os outros casos é VERDADEIRA!"
-    }
-  },
-  {
-    "id": "rlm-neg-007",
-    "subject": "Raciocínio Lógico",
-    "topic": "1 e 2. Negações e Equivalências #7",
-    "source": "IBFC / IBGE",
-    "difficulty": "Fácil",
-    "statement": "Considerando os princípios da lógica proposicional e tabelas-verdade (Questão #7), assinale a afirmativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "A negação de 'Todo homem é mortal' é 'Nenhum homem é mortal'."
-      },
-      {
-        "key": "B",
-        "text": "A proposição equivalente construída na alternativa B (questão #7) obedece rigorosamente às leis da lógica proposicional."
-      },
-      {
-        "key": "C",
-        "text": "A condicional (P -> Q) só é falsa quando P e Q forem ambas verdadeiras."
-      },
-      {
-        "key": "D",
-        "text": "A conjunção (P e Q) é verdadeira quando pelo menos uma das proposições for verdadeira."
-      },
-      {
-        "key": "E",
-        "text": "A negação da negação de uma proposição P resulta em uma proposição falsa."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Análise de validade de argumentos, negações e equivalências lógicas exigidas pela IBFC.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Negação de 'Todo' é 'Pelo menos um NÃO é' / 'Algum NÃO é'."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para as leis da lógica proposicional na questão #7."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Condicional só é FALSA na 'Vera Fischer' (V -> F = F)."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Conjunção (E) exige AMBAS verdadeiras."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Negação da negação volta à proposição original (Dupla Negação)."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Condicional P -> Q só é FALSA quando V -> F (Vera Fischer é Falsa!). Em todos os outros casos é VERDADEIRA!"
-    }
-  },
-  {
-    "id": "rlm-neg-008",
-    "subject": "Raciocínio Lógico",
-    "topic": "1 e 2. Negações e Equivalências #8",
-    "source": "IBFC / IBGE",
-    "difficulty": "Médio",
-    "statement": "Considerando os princípios da lógica proposicional e tabelas-verdade (Questão #8), assinale a afirmativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "A negação de 'Todo homem é mortal' é 'Nenhum homem é mortal'."
-      },
-      {
-        "key": "B",
-        "text": "A proposição equivalente construída na alternativa B (questão #8) obedece rigorosamente às leis da lógica proposicional."
-      },
-      {
-        "key": "C",
-        "text": "A condicional (P -> Q) só é falsa quando P e Q forem ambas verdadeiras."
-      },
-      {
-        "key": "D",
-        "text": "A conjunção (P e Q) é verdadeira quando pelo menos uma das proposições for verdadeira."
-      },
-      {
-        "key": "E",
-        "text": "A negação da negação de uma proposição P resulta em uma proposição falsa."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Análise de validade de argumentos, negações e equivalências lógicas exigidas pela IBFC.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Negação de 'Todo' é 'Pelo menos um NÃO é' / 'Algum NÃO é'."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para as leis da lógica proposicional na questão #8."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Condicional só é FALSA na 'Vera Fischer' (V -> F = F)."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Conjunção (E) exige AMBAS verdadeiras."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Negação da negação volta à proposição original (Dupla Negação)."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Condicional P -> Q só é FALSA quando V -> F (Vera Fischer é Falsa!). Em todos os outros casos é VERDADEIRA!"
-    }
-  },
-  {
-    "id": "rlm-neg-009",
-    "subject": "Raciocínio Lógico",
-    "topic": "1 e 2. Negações e Equivalências #9",
-    "source": "IBFC / IBGE",
-    "difficulty": "Difícil",
-    "statement": "Considerando os princípios da lógica proposicional e tabelas-verdade (Questão #9), assinale a afirmativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "A negação de 'Todo homem é mortal' é 'Nenhum homem é mortal'."
-      },
-      {
-        "key": "B",
-        "text": "A proposição equivalente construída na alternativa B (questão #9) obedece rigorosamente às leis da lógica proposicional."
-      },
-      {
-        "key": "C",
-        "text": "A condicional (P -> Q) só é falsa quando P e Q forem ambas verdadeiras."
-      },
-      {
-        "key": "D",
-        "text": "A conjunção (P e Q) é verdadeira quando pelo menos uma das proposições for verdadeira."
-      },
-      {
-        "key": "E",
-        "text": "A negação da negação de uma proposição P resulta em uma proposição falsa."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Análise de validade de argumentos, negações e equivalências lógicas exigidas pela IBFC.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Negação de 'Todo' é 'Pelo menos um NÃO é' / 'Algum NÃO é'."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para as leis da lógica proposicional na questão #9."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Condicional só é FALSA na 'Vera Fischer' (V -> F = F)."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Conjunção (E) exige AMBAS verdadeiras."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Negação da negação volta à proposição original (Dupla Negação)."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Condicional P -> Q só é FALSA quando V -> F (Vera Fischer é Falsa!). Em todos os outros casos é VERDADEIRA!"
-    }
-  },
-  {
-    "id": "rlm-neg-010",
-    "subject": "Raciocínio Lógico",
-    "topic": "1 e 2. Negações e Equivalências #10",
-    "source": "IBFC / IBGE",
-    "difficulty": "Fácil",
-    "statement": "Considerando os princípios da lógica proposicional e tabelas-verdade (Questão #10), assinale a afirmativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "A negação de 'Todo homem é mortal' é 'Nenhum homem é mortal'."
-      },
-      {
-        "key": "B",
-        "text": "A proposição equivalente construída na alternativa B (questão #10) obedece rigorosamente às leis da lógica proposicional."
-      },
-      {
-        "key": "C",
-        "text": "A condicional (P -> Q) só é falsa quando P e Q forem ambas verdadeiras."
-      },
-      {
-        "key": "D",
-        "text": "A conjunção (P e Q) é verdadeira quando pelo menos uma das proposições for verdadeira."
-      },
-      {
-        "key": "E",
-        "text": "A negação da negação de uma proposição P resulta em uma proposição falsa."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Análise de validade de argumentos, negações e equivalências lógicas exigidas pela IBFC.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Negação de 'Todo' é 'Pelo menos um NÃO é' / 'Algum NÃO é'."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para as leis da lógica proposicional na questão #10."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Condicional só é FALSA na 'Vera Fischer' (V -> F = F)."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Conjunção (E) exige AMBAS verdadeiras."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Negação da negação volta à proposição original (Dupla Negação)."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Condicional P -> Q só é FALSA quando V -> F (Vera Fischer é Falsa!). Em todos os outros casos é VERDADEIRA!"
-    }
-  },
-  {
-    "id": "rlm-neg-011",
-    "subject": "Raciocínio Lógico",
-    "topic": "1 e 2. Negações e Equivalências #11",
-    "source": "IBFC / IBGE",
-    "difficulty": "Médio",
-    "statement": "Considerando os princípios da lógica proposicional e tabelas-verdade (Questão #11), assinale a afirmativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "A negação de 'Todo homem é mortal' é 'Nenhum homem é mortal'."
-      },
-      {
-        "key": "B",
-        "text": "A proposição equivalente construída na alternativa B (questão #11) obedece rigorosamente às leis da lógica proposicional."
-      },
-      {
-        "key": "C",
-        "text": "A condicional (P -> Q) só é falsa quando P e Q forem ambas verdadeiras."
-      },
-      {
-        "key": "D",
-        "text": "A conjunção (P e Q) é verdadeira quando pelo menos uma das proposições for verdadeira."
-      },
-      {
-        "key": "E",
-        "text": "A negação da negação de uma proposição P resulta em uma proposição falsa."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Análise de validade de argumentos, negações e equivalências lógicas exigidas pela IBFC.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Negação de 'Todo' é 'Pelo menos um NÃO é' / 'Algum NÃO é'."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para as leis da lógica proposicional na questão #11."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Condicional só é FALSA na 'Vera Fischer' (V -> F = F)."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Conjunção (E) exige AMBAS verdadeiras."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Negação da negação volta à proposição original (Dupla Negação)."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Condicional P -> Q só é FALSA quando V -> F (Vera Fischer é Falsa!). Em todos os outros casos é VERDADEIRA!"
-    }
-  },
-  {
-    "id": "rlm-neg-012",
-    "subject": "Raciocínio Lógico",
-    "topic": "1 e 2. Negações e Equivalências #12",
-    "source": "IBFC / IBGE",
-    "difficulty": "Difícil",
-    "statement": "Considerando os princípios da lógica proposicional e tabelas-verdade (Questão #12), assinale a afirmativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "A negação de 'Todo homem é mortal' é 'Nenhum homem é mortal'."
-      },
-      {
-        "key": "B",
-        "text": "A proposição equivalente construída na alternativa B (questão #12) obedece rigorosamente às leis da lógica proposicional."
-      },
-      {
-        "key": "C",
-        "text": "A condicional (P -> Q) só é falsa quando P e Q forem ambas verdadeiras."
-      },
-      {
-        "key": "D",
-        "text": "A conjunção (P e Q) é verdadeira quando pelo menos uma das proposições for verdadeira."
-      },
-      {
-        "key": "E",
-        "text": "A negação da negação de uma proposição P resulta em uma proposição falsa."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Análise de validade de argumentos, negações e equivalências lógicas exigidas pela IBFC.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Negação de 'Todo' é 'Pelo menos um NÃO é' / 'Algum NÃO é'."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para as leis da lógica proposicional na questão #12."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Condicional só é FALSA na 'Vera Fischer' (V -> F = F)."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Conjunção (E) exige AMBAS verdadeiras."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Negação da negação volta à proposição original (Dupla Negação)."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Condicional P -> Q só é FALSA quando V -> F (Vera Fischer é Falsa!). Em todos os outros casos é VERDADEIRA!"
-    }
-  },
-  {
-    "id": "rlm-neg-013",
-    "subject": "Raciocínio Lógico",
-    "topic": "1 e 2. Negações e Equivalências #13",
-    "source": "IBFC / IBGE",
-    "difficulty": "Fácil",
-    "statement": "Considerando os princípios da lógica proposicional e tabelas-verdade (Questão #13), assinale a afirmativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "A negação de 'Todo homem é mortal' é 'Nenhum homem é mortal'."
-      },
-      {
-        "key": "B",
-        "text": "A proposição equivalente construída na alternativa B (questão #13) obedece rigorosamente às leis da lógica proposicional."
-      },
-      {
-        "key": "C",
-        "text": "A condicional (P -> Q) só é falsa quando P e Q forem ambas verdadeiras."
-      },
-      {
-        "key": "D",
-        "text": "A conjunção (P e Q) é verdadeira quando pelo menos uma das proposições for verdadeira."
-      },
-      {
-        "key": "E",
-        "text": "A negação da negação de uma proposição P resulta em uma proposição falsa."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Análise de validade de argumentos, negações e equivalências lógicas exigidas pela IBFC.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Negação de 'Todo' é 'Pelo menos um NÃO é' / 'Algum NÃO é'."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para as leis da lógica proposicional na questão #13."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Condicional só é FALSA na 'Vera Fischer' (V -> F = F)."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Conjunção (E) exige AMBAS verdadeiras."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Negação da negação volta à proposição original (Dupla Negação)."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Condicional P -> Q só é FALSA quando V -> F (Vera Fischer é Falsa!). Em todos os outros casos é VERDADEIRA!"
-    }
-  },
-  {
-    "id": "rlm-neg-014",
-    "subject": "Raciocínio Lógico",
-    "topic": "1 e 2. Negações e Equivalências #14",
-    "source": "IBFC / IBGE",
-    "difficulty": "Médio",
-    "statement": "Considerando os princípios da lógica proposicional e tabelas-verdade (Questão #14), assinale a afirmativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "A negação de 'Todo homem é mortal' é 'Nenhum homem é mortal'."
-      },
-      {
-        "key": "B",
-        "text": "A proposição equivalente construída na alternativa B (questão #14) obedece rigorosamente às leis da lógica proposicional."
-      },
-      {
-        "key": "C",
-        "text": "A condicional (P -> Q) só é falsa quando P e Q forem ambas verdadeiras."
-      },
-      {
-        "key": "D",
-        "text": "A conjunção (P e Q) é verdadeira quando pelo menos uma das proposições for verdadeira."
-      },
-      {
-        "key": "E",
-        "text": "A negação da negação de uma proposição P resulta em uma proposição falsa."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Análise de validade de argumentos, negações e equivalências lógicas exigidas pela IBFC.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Negação de 'Todo' é 'Pelo menos um NÃO é' / 'Algum NÃO é'."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para as leis da lógica proposicional na questão #14."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Condicional só é FALSA na 'Vera Fischer' (V -> F = F)."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Conjunção (E) exige AMBAS verdadeiras."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Negação da negação volta à proposição original (Dupla Negação)."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Condicional P -> Q só é FALSA quando V -> F (Vera Fischer é Falsa!). Em todos os outros casos é VERDADEIRA!"
-    }
-  },
-  {
-    "id": "rlm-neg-015",
-    "subject": "Raciocínio Lógico",
-    "topic": "1 e 2. Negações e Equivalências #15",
-    "source": "IBFC / IBGE",
-    "difficulty": "Difícil",
-    "statement": "Considerando os princípios da lógica proposicional e tabelas-verdade (Questão #15), assinale a afirmativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "A negação de 'Todo homem é mortal' é 'Nenhum homem é mortal'."
-      },
-      {
-        "key": "B",
-        "text": "A proposição equivalente construída na alternativa B (questão #15) obedece rigorosamente às leis da lógica proposicional."
-      },
-      {
-        "key": "C",
-        "text": "A condicional (P -> Q) só é falsa quando P e Q forem ambas verdadeiras."
-      },
-      {
-        "key": "D",
-        "text": "A conjunção (P e Q) é verdadeira quando pelo menos uma das proposições for verdadeira."
-      },
-      {
-        "key": "E",
-        "text": "A negação da negação de uma proposição P resulta em uma proposição falsa."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Análise de validade de argumentos, negações e equivalências lógicas exigidas pela IBFC.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Negação de 'Todo' é 'Pelo menos um NÃO é' / 'Algum NÃO é'."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para as leis da lógica proposicional na questão #15."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Condicional só é FALSA na 'Vera Fischer' (V -> F = F)."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Conjunção (E) exige AMBAS verdadeiras."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Negação da negação volta à proposição original (Dupla Negação)."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Condicional P -> Q só é FALSA quando V -> F (Vera Fischer é Falsa!). Em todos os outros casos é VERDADEIRA!"
-    }
-  },
-  {
-    "id": "rlm-neg-016",
-    "subject": "Raciocínio Lógico",
-    "topic": "1 e 2. Negações e Equivalências #16",
-    "source": "IBFC / IBGE",
-    "difficulty": "Fácil",
-    "statement": "Considerando os princípios da lógica proposicional e tabelas-verdade (Questão #16), assinale a afirmativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "A negação de 'Todo homem é mortal' é 'Nenhum homem é mortal'."
-      },
-      {
-        "key": "B",
-        "text": "A proposição equivalente construída na alternativa B (questão #16) obedece rigorosamente às leis da lógica proposicional."
-      },
-      {
-        "key": "C",
-        "text": "A condicional (P -> Q) só é falsa quando P e Q forem ambas verdadeiras."
-      },
-      {
-        "key": "D",
-        "text": "A conjunção (P e Q) é verdadeira quando pelo menos uma das proposições for verdadeira."
-      },
-      {
-        "key": "E",
-        "text": "A negação da negação de uma proposição P resulta em uma proposição falsa."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Análise de validade de argumentos, negações e equivalências lógicas exigidas pela IBFC.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Negação de 'Todo' é 'Pelo menos um NÃO é' / 'Algum NÃO é'."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para as leis da lógica proposicional na questão #16."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Condicional só é FALSA na 'Vera Fischer' (V -> F = F)."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Conjunção (E) exige AMBAS verdadeiras."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Negação da negação volta à proposição original (Dupla Negação)."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Condicional P -> Q só é FALSA quando V -> F (Vera Fischer é Falsa!). Em todos os outros casos é VERDADEIRA!"
-    }
-  },
-  {
-    "id": "rlm-neg-017",
-    "subject": "Raciocínio Lógico",
-    "topic": "1 e 2. Negações e Equivalências #17",
-    "source": "IBFC / IBGE",
-    "difficulty": "Médio",
-    "statement": "Considerando os princípios da lógica proposicional e tabelas-verdade (Questão #17), assinale a afirmativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "A negação de 'Todo homem é mortal' é 'Nenhum homem é mortal'."
-      },
-      {
-        "key": "B",
-        "text": "A proposição equivalente construída na alternativa B (questão #17) obedece rigorosamente às leis da lógica proposicional."
-      },
-      {
-        "key": "C",
-        "text": "A condicional (P -> Q) só é falsa quando P e Q forem ambas verdadeiras."
-      },
-      {
-        "key": "D",
-        "text": "A conjunção (P e Q) é verdadeira quando pelo menos uma das proposições for verdadeira."
-      },
-      {
-        "key": "E",
-        "text": "A negação da negação de uma proposição P resulta em uma proposição falsa."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Análise de validade de argumentos, negações e equivalências lógicas exigidas pela IBFC.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Negação de 'Todo' é 'Pelo menos um NÃO é' / 'Algum NÃO é'."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para as leis da lógica proposicional na questão #17."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Condicional só é FALSA na 'Vera Fischer' (V -> F = F)."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Conjunção (E) exige AMBAS verdadeiras."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Negação da negação volta à proposição original (Dupla Negação)."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Condicional P -> Q só é FALSA quando V -> F (Vera Fischer é Falsa!). Em todos os outros casos é VERDADEIRA!"
-    }
-  },
-  {
-    "id": "rlm-neg-018",
-    "subject": "Raciocínio Lógico",
-    "topic": "1 e 2. Negações e Equivalências #18",
-    "source": "IBFC / IBGE",
-    "difficulty": "Difícil",
-    "statement": "Considerando os princípios da lógica proposicional e tabelas-verdade (Questão #18), assinale a afirmativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "A negação de 'Todo homem é mortal' é 'Nenhum homem é mortal'."
-      },
-      {
-        "key": "B",
-        "text": "A proposição equivalente construída na alternativa B (questão #18) obedece rigorosamente às leis da lógica proposicional."
-      },
-      {
-        "key": "C",
-        "text": "A condicional (P -> Q) só é falsa quando P e Q forem ambas verdadeiras."
-      },
-      {
-        "key": "D",
-        "text": "A conjunção (P e Q) é verdadeira quando pelo menos uma das proposições for verdadeira."
-      },
-      {
-        "key": "E",
-        "text": "A negação da negação de uma proposição P resulta em uma proposição falsa."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Análise de validade de argumentos, negações e equivalências lógicas exigidas pela IBFC.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Negação de 'Todo' é 'Pelo menos um NÃO é' / 'Algum NÃO é'."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para as leis da lógica proposicional na questão #18."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Condicional só é FALSA na 'Vera Fischer' (V -> F = F)."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Conjunção (E) exige AMBAS verdadeiras."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Negação da negação volta à proposição original (Dupla Negação)."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Condicional P -> Q só é FALSA quando V -> F (Vera Fischer é Falsa!). Em todos os outros casos é VERDADEIRA!"
-    }
-  },
-  {
-    "id": "rlm-neg-019",
-    "subject": "Raciocínio Lógico",
-    "topic": "1 e 2. Negações e Equivalências #19",
-    "source": "IBFC / IBGE",
-    "difficulty": "Fácil",
-    "statement": "Considerando os princípios da lógica proposicional e tabelas-verdade (Questão #19), assinale a afirmativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "A negação de 'Todo homem é mortal' é 'Nenhum homem é mortal'."
-      },
-      {
-        "key": "B",
-        "text": "A proposição equivalente construída na alternativa B (questão #19) obedece rigorosamente às leis da lógica proposicional."
-      },
-      {
-        "key": "C",
-        "text": "A condicional (P -> Q) só é falsa quando P e Q forem ambas verdadeiras."
-      },
-      {
-        "key": "D",
-        "text": "A conjunção (P e Q) é verdadeira quando pelo menos uma das proposições for verdadeira."
-      },
-      {
-        "key": "E",
-        "text": "A negação da negação de uma proposição P resulta em uma proposição falsa."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Análise de validade de argumentos, negações e equivalências lógicas exigidas pela IBFC.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Negação de 'Todo' é 'Pelo menos um NÃO é' / 'Algum NÃO é'."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para as leis da lógica proposicional na questão #19."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Condicional só é FALSA na 'Vera Fischer' (V -> F = F)."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Conjunção (E) exige AMBAS verdadeiras."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Negação da negação volta à proposição original (Dupla Negação)."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Condicional P -> Q só é FALSA quando V -> F (Vera Fischer é Falsa!). Em todos os outros casos é VERDADEIRA!"
-    }
-  },
-  {
-    "id": "rlm-neg-020",
-    "subject": "Raciocínio Lógico",
-    "topic": "1 e 2. Negações e Equivalências #20",
-    "source": "IBFC / IBGE",
-    "difficulty": "Médio",
-    "statement": "Considerando os princípios da lógica proposicional e tabelas-verdade (Questão #20), assinale a afirmativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "A negação de 'Todo homem é mortal' é 'Nenhum homem é mortal'."
-      },
-      {
-        "key": "B",
-        "text": "A proposição equivalente construída na alternativa B (questão #20) obedece rigorosamente às leis da lógica proposicional."
-      },
-      {
-        "key": "C",
-        "text": "A condicional (P -> Q) só é falsa quando P e Q forem ambas verdadeiras."
-      },
-      {
-        "key": "D",
-        "text": "A conjunção (P e Q) é verdadeira quando pelo menos uma das proposições for verdadeira."
-      },
-      {
-        "key": "E",
-        "text": "A negação da negação de uma proposição P resulta em uma proposição falsa."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Análise de validade de argumentos, negações e equivalências lógicas exigidas pela IBFC.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. Negação de 'Todo' é 'Pelo menos um NÃO é' / 'Algum NÃO é'."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Afirmativa válida para as leis da lógica proposicional na questão #20."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Condicional só é FALSA na 'Vera Fischer' (V -> F = F)."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Conjunção (E) exige AMBAS verdadeiras."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Negação da negação volta à proposição original (Dupla Negação)."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Condicional P -> Q só é FALSA quando V -> F (Vera Fischer é Falsa!). Em todos os outros casos é VERDADEIRA!"
+      "bizu": "💡 BIZU IBFC RLM (Leis de De Morgan): Negação do 'E' = Nega tudo e troca por 'OU'! Negação do 'OU' = Nega tudo e troca por 'E'!"
     }
   },
   {
@@ -14887,7 +3107,7 @@ export const QUESTIONS_DATABASE: Question[] = [
     "topic": "1. Tabela Verdade da Bicondicional",
     "source": "IBFC / IBGE",
     "difficulty": "Fácil",
-    "statement": "Uma proposição bicondicional do tipo 'P se e somente se Q' (P <-> Q) possui valor lógico VERDADEIRO quando:",
+    "statement": "Uma proposição bicondicional do tipo 'P se e somente se Q' (P <-> Q) apresenta valor lógico VERDADEIRO quando:",
     "options": [
       {
         "key": "A",
@@ -14903,7 +3123,7 @@ export const QUESTIONS_DATABASE: Question[] = [
       },
       {
         "key": "D",
-        "text": "Uma for verdadeira e a outra for falsa."
+        "text": "Uma proposição for verdadeira e a outra for falsa."
       },
       {
         "key": "E",
@@ -14912,7 +3132,7 @@ export const QUESTIONS_DATABASE: Question[] = [
     ],
     "correctOption": "B",
     "explanation": {
-      "summary": "A bicondicional (<->) é Verdadeira se P e Q tiverem valorações IGUAIS (V e V = V; F e F = V). Se forem diferentes, é Falsa.",
+      "summary": "A bicondicional (P <-> Q) é VERDADEIRA quando ambas as proposições possuem valorações idênticas (V e V = V; F e F = V). Se possuírem valorações opostas, a bicondicional é FALSA.",
       "optionsAnalysis": [
         {
           "key": "A",
@@ -14922,7 +3142,7 @@ export const QUESTIONS_DATABASE: Question[] = [
         {
           "key": "B",
           "isCorrect": true,
-          "reason": "CORRETA. Bicondicional é V quando P e Q possuem o MESMO valor lógico."
+          "reason": "CORRETA. Bicondicional = Verdadeira quando os valores lógicos de P e Q forem IGUAIS."
         },
         {
           "key": "C",
@@ -14932,1193 +3152,15 @@ export const QUESTIONS_DATABASE: Question[] = [
         {
           "key": "D",
           "isCorrect": false,
-          "reason": "Incorreto. Valores diferentes resultam em FALSO."
+          "reason": "Incorreto. Valores opostos resultam em FALSO."
         },
         {
           "key": "E",
           "isCorrect": false,
-          "reason": "Incorreto."
+          "reason": "Incorreto. V e V também resulta em VERDADEIRO."
         }
       ],
-      "bizu": "💡 BIZU IBFC RLM: BICONDICIONAL (P <-> Q) = IGUAIS dá VERDADEIRO (V-V=V, F-F=V) | DIFERENTES dá FALSO!"
-    }
-  },
-  {
-    "id": "rlm-diag-002",
-    "subject": "Raciocínio Lógico",
-    "topic": "1 e 3. Diagramas Lógicos & Quantificadores #2",
-    "source": "IBFC / IBGE",
-    "difficulty": "Médio",
-    "statement": "A respeito de diagramas lógicos, conjuntos e quantificadores (Questão #2), assinale a alternativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "O quantificador 'Todo A é B' significa que os conjuntos A e B são disjuntos."
-      },
-      {
-        "key": "B",
-        "text": "A relação entre conjuntos e diagramas expressa na alternativa B (questão #2) satisfaz as condições do argumento lógico."
-      },
-      {
-        "key": "C",
-        "text": "A negação de 'Algum A é B' é 'Todo A é B'."
-      },
-      {
-        "key": "D",
-        "text": "A disjunção exclusiva (Ou P ou Q) é verdadeira quando ambas são verdadeiras."
-      },
-      {
-        "key": "E",
-        "text": "O número de linhas de uma tabela-verdade com 3 proposições simples é 6."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Cálculo de linhas da tabela-verdade (2^n) e representação por diagramas de Venn.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. 'Todo A é B' significa que o conjunto A está contido no conjunto B."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Representação lógica impecável na alternativa B da questão #2."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Negação de 'Algum A é B' é 'Nenhum A é B'."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Disjunção exclusiva exige valores DIFERENTES."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Número de linhas = 2^n = 2^3 = 8 linhas."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Número de linhas da Tabela Verdade = 2^n (onde n é o número de proposições simples! Ex: 3 proposições = 2^3 = 8 linhas)."
-    }
-  },
-  {
-    "id": "rlm-diag-003",
-    "subject": "Raciocínio Lógico",
-    "topic": "1 e 3. Diagramas Lógicos & Quantificadores #3",
-    "source": "IBFC / IBGE",
-    "difficulty": "Difícil",
-    "statement": "A respeito de diagramas lógicos, conjuntos e quantificadores (Questão #3), assinale a alternativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "O quantificador 'Todo A é B' significa que os conjuntos A e B são disjuntos."
-      },
-      {
-        "key": "B",
-        "text": "A relação entre conjuntos e diagramas expressa na alternativa B (questão #3) satisfaz as condições do argumento lógico."
-      },
-      {
-        "key": "C",
-        "text": "A negação de 'Algum A é B' é 'Todo A é B'."
-      },
-      {
-        "key": "D",
-        "text": "A disjunção exclusiva (Ou P ou Q) é verdadeira quando ambas são verdadeiras."
-      },
-      {
-        "key": "E",
-        "text": "O número de linhas de uma tabela-verdade com 3 proposições simples é 6."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Cálculo de linhas da tabela-verdade (2^n) e representação por diagramas de Venn.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. 'Todo A é B' significa que o conjunto A está contido no conjunto B."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Representação lógica impecável na alternativa B da questão #3."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Negação de 'Algum A é B' é 'Nenhum A é B'."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Disjunção exclusiva exige valores DIFERENTES."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Número de linhas = 2^n = 2^3 = 8 linhas."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Número de linhas da Tabela Verdade = 2^n (onde n é o número de proposições simples! Ex: 3 proposições = 2^3 = 8 linhas)."
-    }
-  },
-  {
-    "id": "rlm-diag-004",
-    "subject": "Raciocínio Lógico",
-    "topic": "1 e 3. Diagramas Lógicos & Quantificadores #4",
-    "source": "IBFC / IBGE",
-    "difficulty": "Fácil",
-    "statement": "A respeito de diagramas lógicos, conjuntos e quantificadores (Questão #4), assinale a alternativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "O quantificador 'Todo A é B' significa que os conjuntos A e B são disjuntos."
-      },
-      {
-        "key": "B",
-        "text": "A relação entre conjuntos e diagramas expressa na alternativa B (questão #4) satisfaz as condições do argumento lógico."
-      },
-      {
-        "key": "C",
-        "text": "A negação de 'Algum A é B' é 'Todo A é B'."
-      },
-      {
-        "key": "D",
-        "text": "A disjunção exclusiva (Ou P ou Q) é verdadeira quando ambas são verdadeiras."
-      },
-      {
-        "key": "E",
-        "text": "O número de linhas de uma tabela-verdade com 3 proposições simples é 6."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Cálculo de linhas da tabela-verdade (2^n) e representação por diagramas de Venn.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. 'Todo A é B' significa que o conjunto A está contido no conjunto B."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Representação lógica impecável na alternativa B da questão #4."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Negação de 'Algum A é B' é 'Nenhum A é B'."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Disjunção exclusiva exige valores DIFERENTES."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Número de linhas = 2^n = 2^3 = 8 linhas."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Número de linhas da Tabela Verdade = 2^n (onde n é o número de proposições simples! Ex: 3 proposições = 2^3 = 8 linhas)."
-    }
-  },
-  {
-    "id": "rlm-diag-005",
-    "subject": "Raciocínio Lógico",
-    "topic": "1 e 3. Diagramas Lógicos & Quantificadores #5",
-    "source": "IBFC / IBGE",
-    "difficulty": "Médio",
-    "statement": "A respeito de diagramas lógicos, conjuntos e quantificadores (Questão #5), assinale a alternativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "O quantificador 'Todo A é B' significa que os conjuntos A e B são disjuntos."
-      },
-      {
-        "key": "B",
-        "text": "A relação entre conjuntos e diagramas expressa na alternativa B (questão #5) satisfaz as condições do argumento lógico."
-      },
-      {
-        "key": "C",
-        "text": "A negação de 'Algum A é B' é 'Todo A é B'."
-      },
-      {
-        "key": "D",
-        "text": "A disjunção exclusiva (Ou P ou Q) é verdadeira quando ambas são verdadeiras."
-      },
-      {
-        "key": "E",
-        "text": "O número de linhas de uma tabela-verdade com 3 proposições simples é 6."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Cálculo de linhas da tabela-verdade (2^n) e representação por diagramas de Venn.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. 'Todo A é B' significa que o conjunto A está contido no conjunto B."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Representação lógica impecável na alternativa B da questão #5."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Negação de 'Algum A é B' é 'Nenhum A é B'."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Disjunção exclusiva exige valores DIFERENTES."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Número de linhas = 2^n = 2^3 = 8 linhas."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Número de linhas da Tabela Verdade = 2^n (onde n é o número de proposições simples! Ex: 3 proposições = 2^3 = 8 linhas)."
-    }
-  },
-  {
-    "id": "rlm-diag-006",
-    "subject": "Raciocínio Lógico",
-    "topic": "1 e 3. Diagramas Lógicos & Quantificadores #6",
-    "source": "IBFC / IBGE",
-    "difficulty": "Difícil",
-    "statement": "A respeito de diagramas lógicos, conjuntos e quantificadores (Questão #6), assinale a alternativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "O quantificador 'Todo A é B' significa que os conjuntos A e B são disjuntos."
-      },
-      {
-        "key": "B",
-        "text": "A relação entre conjuntos e diagramas expressa na alternativa B (questão #6) satisfaz as condições do argumento lógico."
-      },
-      {
-        "key": "C",
-        "text": "A negação de 'Algum A é B' é 'Todo A é B'."
-      },
-      {
-        "key": "D",
-        "text": "A disjunção exclusiva (Ou P ou Q) é verdadeira quando ambas são verdadeiras."
-      },
-      {
-        "key": "E",
-        "text": "O número de linhas de uma tabela-verdade com 3 proposições simples é 6."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Cálculo de linhas da tabela-verdade (2^n) e representação por diagramas de Venn.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. 'Todo A é B' significa que o conjunto A está contido no conjunto B."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Representação lógica impecável na alternativa B da questão #6."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Negação de 'Algum A é B' é 'Nenhum A é B'."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Disjunção exclusiva exige valores DIFERENTES."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Número de linhas = 2^n = 2^3 = 8 linhas."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Número de linhas da Tabela Verdade = 2^n (onde n é o número de proposições simples! Ex: 3 proposições = 2^3 = 8 linhas)."
-    }
-  },
-  {
-    "id": "rlm-diag-007",
-    "subject": "Raciocínio Lógico",
-    "topic": "1 e 3. Diagramas Lógicos & Quantificadores #7",
-    "source": "IBFC / IBGE",
-    "difficulty": "Fácil",
-    "statement": "A respeito de diagramas lógicos, conjuntos e quantificadores (Questão #7), assinale a alternativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "O quantificador 'Todo A é B' significa que os conjuntos A e B são disjuntos."
-      },
-      {
-        "key": "B",
-        "text": "A relação entre conjuntos e diagramas expressa na alternativa B (questão #7) satisfaz as condições do argumento lógico."
-      },
-      {
-        "key": "C",
-        "text": "A negação de 'Algum A é B' é 'Todo A é B'."
-      },
-      {
-        "key": "D",
-        "text": "A disjunção exclusiva (Ou P ou Q) é verdadeira quando ambas são verdadeiras."
-      },
-      {
-        "key": "E",
-        "text": "O número de linhas de uma tabela-verdade com 3 proposições simples é 6."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Cálculo de linhas da tabela-verdade (2^n) e representação por diagramas de Venn.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. 'Todo A é B' significa que o conjunto A está contido no conjunto B."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Representação lógica impecável na alternativa B da questão #7."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Negação de 'Algum A é B' é 'Nenhum A é B'."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Disjunção exclusiva exige valores DIFERENTES."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Número de linhas = 2^n = 2^3 = 8 linhas."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Número de linhas da Tabela Verdade = 2^n (onde n é o número de proposições simples! Ex: 3 proposições = 2^3 = 8 linhas)."
-    }
-  },
-  {
-    "id": "rlm-diag-008",
-    "subject": "Raciocínio Lógico",
-    "topic": "1 e 3. Diagramas Lógicos & Quantificadores #8",
-    "source": "IBFC / IBGE",
-    "difficulty": "Médio",
-    "statement": "A respeito de diagramas lógicos, conjuntos e quantificadores (Questão #8), assinale a alternativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "O quantificador 'Todo A é B' significa que os conjuntos A e B são disjuntos."
-      },
-      {
-        "key": "B",
-        "text": "A relação entre conjuntos e diagramas expressa na alternativa B (questão #8) satisfaz as condições do argumento lógico."
-      },
-      {
-        "key": "C",
-        "text": "A negação de 'Algum A é B' é 'Todo A é B'."
-      },
-      {
-        "key": "D",
-        "text": "A disjunção exclusiva (Ou P ou Q) é verdadeira quando ambas são verdadeiras."
-      },
-      {
-        "key": "E",
-        "text": "O número de linhas de uma tabela-verdade com 3 proposições simples é 6."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Cálculo de linhas da tabela-verdade (2^n) e representação por diagramas de Venn.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. 'Todo A é B' significa que o conjunto A está contido no conjunto B."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Representação lógica impecável na alternativa B da questão #8."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Negação de 'Algum A é B' é 'Nenhum A é B'."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Disjunção exclusiva exige valores DIFERENTES."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Número de linhas = 2^n = 2^3 = 8 linhas."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Número de linhas da Tabela Verdade = 2^n (onde n é o número de proposições simples! Ex: 3 proposições = 2^3 = 8 linhas)."
-    }
-  },
-  {
-    "id": "rlm-diag-009",
-    "subject": "Raciocínio Lógico",
-    "topic": "1 e 3. Diagramas Lógicos & Quantificadores #9",
-    "source": "IBFC / IBGE",
-    "difficulty": "Difícil",
-    "statement": "A respeito de diagramas lógicos, conjuntos e quantificadores (Questão #9), assinale a alternativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "O quantificador 'Todo A é B' significa que os conjuntos A e B são disjuntos."
-      },
-      {
-        "key": "B",
-        "text": "A relação entre conjuntos e diagramas expressa na alternativa B (questão #9) satisfaz as condições do argumento lógico."
-      },
-      {
-        "key": "C",
-        "text": "A negação de 'Algum A é B' é 'Todo A é B'."
-      },
-      {
-        "key": "D",
-        "text": "A disjunção exclusiva (Ou P ou Q) é verdadeira quando ambas são verdadeiras."
-      },
-      {
-        "key": "E",
-        "text": "O número de linhas de uma tabela-verdade com 3 proposições simples é 6."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Cálculo de linhas da tabela-verdade (2^n) e representação por diagramas de Venn.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. 'Todo A é B' significa que o conjunto A está contido no conjunto B."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Representação lógica impecável na alternativa B da questão #9."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Negação de 'Algum A é B' é 'Nenhum A é B'."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Disjunção exclusiva exige valores DIFERENTES."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Número de linhas = 2^n = 2^3 = 8 linhas."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Número de linhas da Tabela Verdade = 2^n (onde n é o número de proposições simples! Ex: 3 proposições = 2^3 = 8 linhas)."
-    }
-  },
-  {
-    "id": "rlm-diag-010",
-    "subject": "Raciocínio Lógico",
-    "topic": "1 e 3. Diagramas Lógicos & Quantificadores #10",
-    "source": "IBFC / IBGE",
-    "difficulty": "Fácil",
-    "statement": "A respeito de diagramas lógicos, conjuntos e quantificadores (Questão #10), assinale a alternativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "O quantificador 'Todo A é B' significa que os conjuntos A e B são disjuntos."
-      },
-      {
-        "key": "B",
-        "text": "A relação entre conjuntos e diagramas expressa na alternativa B (questão #10) satisfaz as condições do argumento lógico."
-      },
-      {
-        "key": "C",
-        "text": "A negação de 'Algum A é B' é 'Todo A é B'."
-      },
-      {
-        "key": "D",
-        "text": "A disjunção exclusiva (Ou P ou Q) é verdadeira quando ambas são verdadeiras."
-      },
-      {
-        "key": "E",
-        "text": "O número de linhas de uma tabela-verdade com 3 proposições simples é 6."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Cálculo de linhas da tabela-verdade (2^n) e representação por diagramas de Venn.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. 'Todo A é B' significa que o conjunto A está contido no conjunto B."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Representação lógica impecável na alternativa B da questão #10."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Negação de 'Algum A é B' é 'Nenhum A é B'."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Disjunção exclusiva exige valores DIFERENTES."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Número de linhas = 2^n = 2^3 = 8 linhas."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Número de linhas da Tabela Verdade = 2^n (onde n é o número de proposições simples! Ex: 3 proposições = 2^3 = 8 linhas)."
-    }
-  },
-  {
-    "id": "rlm-diag-011",
-    "subject": "Raciocínio Lógico",
-    "topic": "1 e 3. Diagramas Lógicos & Quantificadores #11",
-    "source": "IBFC / IBGE",
-    "difficulty": "Médio",
-    "statement": "A respeito de diagramas lógicos, conjuntos e quantificadores (Questão #11), assinale a alternativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "O quantificador 'Todo A é B' significa que os conjuntos A e B são disjuntos."
-      },
-      {
-        "key": "B",
-        "text": "A relação entre conjuntos e diagramas expressa na alternativa B (questão #11) satisfaz as condições do argumento lógico."
-      },
-      {
-        "key": "C",
-        "text": "A negação de 'Algum A é B' é 'Todo A é B'."
-      },
-      {
-        "key": "D",
-        "text": "A disjunção exclusiva (Ou P ou Q) é verdadeira quando ambas são verdadeiras."
-      },
-      {
-        "key": "E",
-        "text": "O número de linhas de uma tabela-verdade com 3 proposições simples é 6."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Cálculo de linhas da tabela-verdade (2^n) e representação por diagramas de Venn.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. 'Todo A é B' significa que o conjunto A está contido no conjunto B."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Representação lógica impecável na alternativa B da questão #11."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Negação de 'Algum A é B' é 'Nenhum A é B'."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Disjunção exclusiva exige valores DIFERENTES."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Número de linhas = 2^n = 2^3 = 8 linhas."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Número de linhas da Tabela Verdade = 2^n (onde n é o número de proposições simples! Ex: 3 proposições = 2^3 = 8 linhas)."
-    }
-  },
-  {
-    "id": "rlm-diag-012",
-    "subject": "Raciocínio Lógico",
-    "topic": "1 e 3. Diagramas Lógicos & Quantificadores #12",
-    "source": "IBFC / IBGE",
-    "difficulty": "Difícil",
-    "statement": "A respeito de diagramas lógicos, conjuntos e quantificadores (Questão #12), assinale a alternativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "O quantificador 'Todo A é B' significa que os conjuntos A e B são disjuntos."
-      },
-      {
-        "key": "B",
-        "text": "A relação entre conjuntos e diagramas expressa na alternativa B (questão #12) satisfaz as condições do argumento lógico."
-      },
-      {
-        "key": "C",
-        "text": "A negação de 'Algum A é B' é 'Todo A é B'."
-      },
-      {
-        "key": "D",
-        "text": "A disjunção exclusiva (Ou P ou Q) é verdadeira quando ambas são verdadeiras."
-      },
-      {
-        "key": "E",
-        "text": "O número de linhas de uma tabela-verdade com 3 proposições simples é 6."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Cálculo de linhas da tabela-verdade (2^n) e representação por diagramas de Venn.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. 'Todo A é B' significa que o conjunto A está contido no conjunto B."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Representação lógica impecável na alternativa B da questão #12."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Negação de 'Algum A é B' é 'Nenhum A é B'."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Disjunção exclusiva exige valores DIFERENTES."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Número de linhas = 2^n = 2^3 = 8 linhas."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Número de linhas da Tabela Verdade = 2^n (onde n é o número de proposições simples! Ex: 3 proposições = 2^3 = 8 linhas)."
-    }
-  },
-  {
-    "id": "rlm-diag-013",
-    "subject": "Raciocínio Lógico",
-    "topic": "1 e 3. Diagramas Lógicos & Quantificadores #13",
-    "source": "IBFC / IBGE",
-    "difficulty": "Fácil",
-    "statement": "A respeito de diagramas lógicos, conjuntos e quantificadores (Questão #13), assinale a alternativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "O quantificador 'Todo A é B' significa que os conjuntos A e B são disjuntos."
-      },
-      {
-        "key": "B",
-        "text": "A relação entre conjuntos e diagramas expressa na alternativa B (questão #13) satisfaz as condições do argumento lógico."
-      },
-      {
-        "key": "C",
-        "text": "A negação de 'Algum A é B' é 'Todo A é B'."
-      },
-      {
-        "key": "D",
-        "text": "A disjunção exclusiva (Ou P ou Q) é verdadeira quando ambas são verdadeiras."
-      },
-      {
-        "key": "E",
-        "text": "O número de linhas de uma tabela-verdade com 3 proposições simples é 6."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Cálculo de linhas da tabela-verdade (2^n) e representação por diagramas de Venn.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. 'Todo A é B' significa que o conjunto A está contido no conjunto B."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Representação lógica impecável na alternativa B da questão #13."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Negação de 'Algum A é B' é 'Nenhum A é B'."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Disjunção exclusiva exige valores DIFERENTES."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Número de linhas = 2^n = 2^3 = 8 linhas."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Número de linhas da Tabela Verdade = 2^n (onde n é o número de proposições simples! Ex: 3 proposições = 2^3 = 8 linhas)."
-    }
-  },
-  {
-    "id": "rlm-diag-014",
-    "subject": "Raciocínio Lógico",
-    "topic": "1 e 3. Diagramas Lógicos & Quantificadores #14",
-    "source": "IBFC / IBGE",
-    "difficulty": "Médio",
-    "statement": "A respeito de diagramas lógicos, conjuntos e quantificadores (Questão #14), assinale a alternativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "O quantificador 'Todo A é B' significa que os conjuntos A e B são disjuntos."
-      },
-      {
-        "key": "B",
-        "text": "A relação entre conjuntos e diagramas expressa na alternativa B (questão #14) satisfaz as condições do argumento lógico."
-      },
-      {
-        "key": "C",
-        "text": "A negação de 'Algum A é B' é 'Todo A é B'."
-      },
-      {
-        "key": "D",
-        "text": "A disjunção exclusiva (Ou P ou Q) é verdadeira quando ambas são verdadeiras."
-      },
-      {
-        "key": "E",
-        "text": "O número de linhas de uma tabela-verdade com 3 proposições simples é 6."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Cálculo de linhas da tabela-verdade (2^n) e representação por diagramas de Venn.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. 'Todo A é B' significa que o conjunto A está contido no conjunto B."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Representação lógica impecável na alternativa B da questão #14."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Negação de 'Algum A é B' é 'Nenhum A é B'."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Disjunção exclusiva exige valores DIFERENTES."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Número de linhas = 2^n = 2^3 = 8 linhas."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Número de linhas da Tabela Verdade = 2^n (onde n é o número de proposições simples! Ex: 3 proposições = 2^3 = 8 linhas)."
-    }
-  },
-  {
-    "id": "rlm-diag-015",
-    "subject": "Raciocínio Lógico",
-    "topic": "1 e 3. Diagramas Lógicos & Quantificadores #15",
-    "source": "IBFC / IBGE",
-    "difficulty": "Difícil",
-    "statement": "A respeito de diagramas lógicos, conjuntos e quantificadores (Questão #15), assinale a alternativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "O quantificador 'Todo A é B' significa que os conjuntos A e B são disjuntos."
-      },
-      {
-        "key": "B",
-        "text": "A relação entre conjuntos e diagramas expressa na alternativa B (questão #15) satisfaz as condições do argumento lógico."
-      },
-      {
-        "key": "C",
-        "text": "A negação de 'Algum A é B' é 'Todo A é B'."
-      },
-      {
-        "key": "D",
-        "text": "A disjunção exclusiva (Ou P ou Q) é verdadeira quando ambas são verdadeiras."
-      },
-      {
-        "key": "E",
-        "text": "O número de linhas de uma tabela-verdade com 3 proposições simples é 6."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Cálculo de linhas da tabela-verdade (2^n) e representação por diagramas de Venn.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. 'Todo A é B' significa que o conjunto A está contido no conjunto B."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Representação lógica impecável na alternativa B da questão #15."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Negação de 'Algum A é B' é 'Nenhum A é B'."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Disjunção exclusiva exige valores DIFERENTES."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Número de linhas = 2^n = 2^3 = 8 linhas."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Número de linhas da Tabela Verdade = 2^n (onde n é o número de proposições simples! Ex: 3 proposições = 2^3 = 8 linhas)."
-    }
-  },
-  {
-    "id": "rlm-diag-016",
-    "subject": "Raciocínio Lógico",
-    "topic": "1 e 3. Diagramas Lógicos & Quantificadores #16",
-    "source": "IBFC / IBGE",
-    "difficulty": "Fácil",
-    "statement": "A respeito de diagramas lógicos, conjuntos e quantificadores (Questão #16), assinale a alternativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "O quantificador 'Todo A é B' significa que os conjuntos A e B são disjuntos."
-      },
-      {
-        "key": "B",
-        "text": "A relação entre conjuntos e diagramas expressa na alternativa B (questão #16) satisfaz as condições do argumento lógico."
-      },
-      {
-        "key": "C",
-        "text": "A negação de 'Algum A é B' é 'Todo A é B'."
-      },
-      {
-        "key": "D",
-        "text": "A disjunção exclusiva (Ou P ou Q) é verdadeira quando ambas são verdadeiras."
-      },
-      {
-        "key": "E",
-        "text": "O número de linhas de uma tabela-verdade com 3 proposições simples é 6."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Cálculo de linhas da tabela-verdade (2^n) e representação por diagramas de Venn.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. 'Todo A é B' significa que o conjunto A está contido no conjunto B."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Representação lógica impecável na alternativa B da questão #16."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Negação de 'Algum A é B' é 'Nenhum A é B'."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Disjunção exclusiva exige valores DIFERENTES."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Número de linhas = 2^n = 2^3 = 8 linhas."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Número de linhas da Tabela Verdade = 2^n (onde n é o número de proposições simples! Ex: 3 proposições = 2^3 = 8 linhas)."
-    }
-  },
-  {
-    "id": "rlm-diag-017",
-    "subject": "Raciocínio Lógico",
-    "topic": "1 e 3. Diagramas Lógicos & Quantificadores #17",
-    "source": "IBFC / IBGE",
-    "difficulty": "Médio",
-    "statement": "A respeito de diagramas lógicos, conjuntos e quantificadores (Questão #17), assinale a alternativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "O quantificador 'Todo A é B' significa que os conjuntos A e B são disjuntos."
-      },
-      {
-        "key": "B",
-        "text": "A relação entre conjuntos e diagramas expressa na alternativa B (questão #17) satisfaz as condições do argumento lógico."
-      },
-      {
-        "key": "C",
-        "text": "A negação de 'Algum A é B' é 'Todo A é B'."
-      },
-      {
-        "key": "D",
-        "text": "A disjunção exclusiva (Ou P ou Q) é verdadeira quando ambas são verdadeiras."
-      },
-      {
-        "key": "E",
-        "text": "O número de linhas de uma tabela-verdade com 3 proposições simples é 6."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Cálculo de linhas da tabela-verdade (2^n) e representação por diagramas de Venn.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. 'Todo A é B' significa que o conjunto A está contido no conjunto B."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Representação lógica impecável na alternativa B da questão #17."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Negação de 'Algum A é B' é 'Nenhum A é B'."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Disjunção exclusiva exige valores DIFERENTES."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Número de linhas = 2^n = 2^3 = 8 linhas."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Número de linhas da Tabela Verdade = 2^n (onde n é o número de proposições simples! Ex: 3 proposições = 2^3 = 8 linhas)."
-    }
-  },
-  {
-    "id": "rlm-diag-018",
-    "subject": "Raciocínio Lógico",
-    "topic": "1 e 3. Diagramas Lógicos & Quantificadores #18",
-    "source": "IBFC / IBGE",
-    "difficulty": "Difícil",
-    "statement": "A respeito de diagramas lógicos, conjuntos e quantificadores (Questão #18), assinale a alternativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "O quantificador 'Todo A é B' significa que os conjuntos A e B são disjuntos."
-      },
-      {
-        "key": "B",
-        "text": "A relação entre conjuntos e diagramas expressa na alternativa B (questão #18) satisfaz as condições do argumento lógico."
-      },
-      {
-        "key": "C",
-        "text": "A negação de 'Algum A é B' é 'Todo A é B'."
-      },
-      {
-        "key": "D",
-        "text": "A disjunção exclusiva (Ou P ou Q) é verdadeira quando ambas são verdadeiras."
-      },
-      {
-        "key": "E",
-        "text": "O número de linhas de uma tabela-verdade com 3 proposições simples é 6."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Cálculo de linhas da tabela-verdade (2^n) e representação por diagramas de Venn.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. 'Todo A é B' significa que o conjunto A está contido no conjunto B."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Representação lógica impecável na alternativa B da questão #18."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Negação de 'Algum A é B' é 'Nenhum A é B'."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Disjunção exclusiva exige valores DIFERENTES."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Número de linhas = 2^n = 2^3 = 8 linhas."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Número de linhas da Tabela Verdade = 2^n (onde n é o número de proposições simples! Ex: 3 proposições = 2^3 = 8 linhas)."
-    }
-  },
-  {
-    "id": "rlm-diag-019",
-    "subject": "Raciocínio Lógico",
-    "topic": "1 e 3. Diagramas Lógicos & Quantificadores #19",
-    "source": "IBFC / IBGE",
-    "difficulty": "Fácil",
-    "statement": "A respeito de diagramas lógicos, conjuntos e quantificadores (Questão #19), assinale a alternativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "O quantificador 'Todo A é B' significa que os conjuntos A e B são disjuntos."
-      },
-      {
-        "key": "B",
-        "text": "A relação entre conjuntos e diagramas expressa na alternativa B (questão #19) satisfaz as condições do argumento lógico."
-      },
-      {
-        "key": "C",
-        "text": "A negação de 'Algum A é B' é 'Todo A é B'."
-      },
-      {
-        "key": "D",
-        "text": "A disjunção exclusiva (Ou P ou Q) é verdadeira quando ambas são verdadeiras."
-      },
-      {
-        "key": "E",
-        "text": "O número de linhas de uma tabela-verdade com 3 proposições simples é 6."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Cálculo de linhas da tabela-verdade (2^n) e representação por diagramas de Venn.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. 'Todo A é B' significa que o conjunto A está contido no conjunto B."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Representação lógica impecável na alternativa B da questão #19."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Negação de 'Algum A é B' é 'Nenhum A é B'."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Disjunção exclusiva exige valores DIFERENTES."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Número de linhas = 2^n = 2^3 = 8 linhas."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Número de linhas da Tabela Verdade = 2^n (onde n é o número de proposições simples! Ex: 3 proposições = 2^3 = 8 linhas)."
-    }
-  },
-  {
-    "id": "rlm-diag-020",
-    "subject": "Raciocínio Lógico",
-    "topic": "1 e 3. Diagramas Lógicos & Quantificadores #20",
-    "source": "IBFC / IBGE",
-    "difficulty": "Médio",
-    "statement": "A respeito de diagramas lógicos, conjuntos e quantificadores (Questão #20), assinale a alternativa correta:",
-    "options": [
-      {
-        "key": "A",
-        "text": "O quantificador 'Todo A é B' significa que os conjuntos A e B são disjuntos."
-      },
-      {
-        "key": "B",
-        "text": "A relação entre conjuntos e diagramas expressa na alternativa B (questão #20) satisfaz as condições do argumento lógico."
-      },
-      {
-        "key": "C",
-        "text": "A negação de 'Algum A é B' é 'Todo A é B'."
-      },
-      {
-        "key": "D",
-        "text": "A disjunção exclusiva (Ou P ou Q) é verdadeira quando ambas são verdadeiras."
-      },
-      {
-        "key": "E",
-        "text": "O número de linhas de uma tabela-verdade com 3 proposições simples é 6."
-      }
-    ],
-    "correctOption": "B",
-    "explanation": {
-      "summary": "Cálculo de linhas da tabela-verdade (2^n) e representação por diagramas de Venn.",
-      "optionsAnalysis": [
-        {
-          "key": "A",
-          "isCorrect": false,
-          "reason": "Incorreto. 'Todo A é B' significa que o conjunto A está contido no conjunto B."
-        },
-        {
-          "key": "B",
-          "isCorrect": true,
-          "reason": "CORRETA. Representação lógica impecável na alternativa B da questão #20."
-        },
-        {
-          "key": "C",
-          "isCorrect": false,
-          "reason": "Incorreto. Negação de 'Algum A é B' é 'Nenhum A é B'."
-        },
-        {
-          "key": "D",
-          "isCorrect": false,
-          "reason": "Incorreto. Disjunção exclusiva exige valores DIFERENTES."
-        },
-        {
-          "key": "E",
-          "isCorrect": false,
-          "reason": "Incorreto. Número de linhas = 2^n = 2^3 = 8 linhas."
-        }
-      ],
-      "bizu": "💡 BIZU IBFC: Número de linhas da Tabela Verdade = 2^n (onde n é o número de proposições simples! Ex: 3 proposições = 2^3 = 8 linhas)."
+      "bizu": "💡 BIZU IBFC RLM: BICONDICIONAL (P <-> Q) = Valores IGUAIS dá VERDADEIRO (V-V=V, F-F=V) | Valores DIFERENTES dá FALSO!"
     }
   }
 ];

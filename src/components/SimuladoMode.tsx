@@ -42,14 +42,40 @@ export const SimuladoMode: React.FC<SimuladoModeProps> = ({
 
   // Inicializar questões para o simulado
   const startSimulado = (count: number) => {
-    const shuffled = [...questions].sort(() => 0.5 - Math.random());
-    const selected = shuffled.slice(0, Math.min(count, questions.length));
+    let selected: Question[] = [];
+
+    if (count === 60) {
+      // Estrutura Oficial Proporcional IBFC: 35 Informática, 15 Português, 10 RLM
+      const infQs = questions.filter(q => q.subject === 'Informática').sort(() => 0.5 - Math.random()).slice(0, 35);
+      const portQs = questions.filter(q => q.subject === 'Língua Portuguesa').sort(() => 0.5 - Math.random()).slice(0, 15);
+      const rlmQs = questions.filter(q => q.subject === 'Raciocínio Lógico').sort(() => 0.5 - Math.random()).slice(0, 10);
+      selected = [...infQs, ...portQs, ...rlmQs];
+    } else {
+      // Seleção proporcional rápida para outros tamanhos (ex: 15, 30)
+      const infCount = Math.round(count * 0.58);
+      const portCount = Math.round(count * 0.25);
+      const rlmCount = Math.max(1, count - infCount - portCount);
+
+      const infQs = questions.filter(q => q.subject === 'Informática').sort(() => 0.5 - Math.random()).slice(0, infCount);
+      const portQs = questions.filter(q => q.subject === 'Língua Portuguesa').sort(() => 0.5 - Math.random()).slice(0, portCount);
+      const rlmQs = questions.filter(q => q.subject === 'Raciocínio Lógico').sort(() => 0.5 - Math.random()).slice(0, rlmCount);
+      selected = [...infQs, ...portQs, ...rlmQs];
+    }
+
+    // Se por acaso alguma lista tiver menos, completa com embaralhamento geral
+    if (selected.length < count) {
+      const remainingNeeded = count - selected.length;
+      const selectedIds = new Set(selected.map(q => q.id));
+      const extras = questions.filter(q => !selectedIds.has(q.id)).sort(() => 0.5 - Math.random()).slice(0, remainingNeeded);
+      selected = [...selected, ...extras];
+    }
     
     setExamQuestionCount(selected.length);
     setSimuladoQuestions(selected);
     setCurrentIndex(0);
     setUserAnswers({});
-    setTimeLeftSeconds(selected.length * 90); // 1.5 min por questão
+    // Tempo oficial IBFC: ~3 a 3.5 minutos por questão (60q = 180 min / 3 horas)
+    setTimeLeftSeconds(selected.length * 180); 
     setExamState('running');
   };
 
@@ -129,8 +155,12 @@ export const SimuladoMode: React.FC<SimuladoModeProps> = ({
   };
 
   const formatTime = (seconds: number) => {
-    const m = Math.floor(seconds / 60);
+    const h = Math.floor(seconds / 3600);
+    const m = Math.floor((seconds % 3600) / 60);
     const s = seconds % 60;
+    if (h > 0) {
+      return `${h}h ${m.toString().padStart(2, '0')}m ${s.toString().padStart(2, '0')}s`;
+    }
     return `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
   };
 
@@ -169,29 +199,50 @@ export const SimuladoMode: React.FC<SimuladoModeProps> = ({
           </div>
 
           {/* ESCOLHA DA QUANTIDADE DE QUESTÕES */}
-          <div className="flex flex-wrap justify-center gap-4 mb-8">
-            {[10, 15, 20].map(count => (
-              <button
-                key={count}
-                onClick={() => startSimulado(count)}
-                className="px-6 py-4 bg-slate-950 hover:bg-indigo-600/20 border border-slate-800 hover:border-indigo-500/50 rounded-2xl text-left transition-all group"
-              >
-                <div className="text-lg font-bold text-white group-hover:text-indigo-300">
-                  {count} Questões
-                </div>
-                <div className="text-xs text-slate-500 font-mono">
-                  Simulado Rápido (~{Math.round(count * 1.5)} min)
-                </div>
-              </button>
-            ))}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8 max-w-2xl mx-auto">
+            <button
+              onClick={() => startSimulado(15)}
+              className="px-4 py-4 bg-slate-950 hover:bg-indigo-600/20 border border-slate-800 hover:border-indigo-500/50 rounded-2xl text-left transition-all group"
+            >
+              <div className="text-base font-bold text-white group-hover:text-indigo-300">
+                15 Questões
+              </div>
+              <div className="text-xs text-slate-500 font-mono mt-0.5">
+                Treino Rápido (~45 min)
+              </div>
+            </button>
+
+            <button
+              onClick={() => startSimulado(30)}
+              className="px-4 py-4 bg-slate-950 hover:bg-indigo-600/20 border border-slate-800 hover:border-indigo-500/50 rounded-2xl text-left transition-all group"
+            >
+              <div className="text-base font-bold text-white group-hover:text-indigo-300">
+                30 Questões
+              </div>
+              <div className="text-xs text-slate-500 font-mono mt-0.5">
+                Meio Simulado (~1h 30m)
+              </div>
+            </button>
+
+            <button
+              onClick={() => startSimulado(60)}
+              className="px-4 py-4 bg-indigo-950/80 hover:bg-indigo-600/30 border border-indigo-500/40 hover:border-indigo-400 rounded-2xl text-left transition-all group ring-2 ring-indigo-500/30"
+            >
+              <div className="text-base font-bold text-indigo-300 group-hover:text-white flex items-center gap-1">
+                🏆 60 Questões
+              </div>
+              <div className="text-xs text-indigo-200/70 font-mono mt-0.5">
+                Prova Completa (3 horas)
+              </div>
+            </button>
           </div>
 
           <button
-            onClick={() => startSimulado(15)}
+            onClick={() => startSimulado(60)}
             className="px-8 py-4 bg-gradient-to-r from-indigo-600 to-indigo-500 hover:from-indigo-500 hover:to-indigo-400 text-white font-bold text-base rounded-2xl shadow-xl shadow-indigo-600/30 border border-indigo-400/30 transition-all flex items-center space-x-2 mx-auto"
           >
             <Play className="w-5 h-5 fill-current" />
-            <span>Iniciar Simulado Proporcional IBFC</span>
+            <span>🏆 Iniciar Simulado Completo (60 Questões Prova Real IBFC)</span>
           </button>
         </div>
       </div>

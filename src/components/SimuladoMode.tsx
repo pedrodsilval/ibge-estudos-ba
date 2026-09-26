@@ -435,14 +435,23 @@ export const SimuladoMode: React.FC<SimuladoModeProps> = ({
             <span>Anterior</span>
           </button>
 
-          <button
-            onClick={() => setCurrentIndex(prev => Math.min(simuladoQuestions.length - 1, prev + 1))}
-            disabled={currentIndex === simuladoQuestions.length - 1}
-            className="px-6 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white border border-indigo-400/30 rounded-xl text-xs font-bold flex items-center space-x-1 shadow-lg shadow-indigo-600/30"
-          >
-            <span>Próxima</span>
-            <ChevronRight className="w-4 h-4" />
-          </button>
+          {currentIndex === simuladoQuestions.length - 1 ? (
+            <button
+              onClick={finishSimulado}
+              className="px-6 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white border border-emerald-400/30 rounded-xl text-xs font-bold flex items-center space-x-1 shadow-lg shadow-emerald-600/30"
+            >
+              <span>Finalizar Prova</span>
+              <Award className="w-4 h-4 ml-1" />
+            </button>
+          ) : (
+            <button
+              onClick={() => setCurrentIndex(prev => Math.min(simuladoQuestions.length - 1, prev + 1))}
+              className="px-6 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white border border-indigo-400/30 rounded-xl text-xs font-bold flex items-center space-x-1 shadow-lg shadow-indigo-600/30"
+            >
+              <span>Próxima</span>
+              <ChevronRight className="w-4 h-4" />
+            </button>
+          )}
         </div>
       </div>
 

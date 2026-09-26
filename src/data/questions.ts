@@ -4355,7 +4355,7 @@ export const QUESTIONS_DATABASE: Question[] = [
       },
       {
         "key": "B",
-        "text": "Entregamos o relatório à ele durante a reunião de planejamento, de acordo com as configurações padrão estabelecidas no sistema operacional."
+        "text": "Entregamos o relatório à ele durante a reunião de planejamento, de acordo com a norma-padrão da Língua Portuguesa."
       },
       {
         "key": "C",
@@ -4417,7 +4417,7 @@ export const QUESTIONS_DATABASE: Question[] = [
       },
       {
         "key": "B",
-        "text": "O posto funciona de 8a 18 horas, visando garantir a integridade total das informações e a segurança do usuário."
+        "text": "O posto funciona de 8a 18 horas, segundo os preceitos da gramática normativa pátria."
       },
       {
         "key": "C",
@@ -4553,7 +4553,7 @@ export const QUESTIONS_DATABASE: Question[] = [
       },
       {
         "key": "E",
-        "text": "Apenas 'às', no plural, considerando a arquitetura padrão dos componentes e seus respectivos drivers."
+        "text": "Apenas 'às', no plural, considerando o sentido denotativo e a coesão textual da frase."
       }
     ],
     "correctOption": "A",
@@ -4603,7 +4603,7 @@ export const QUESTIONS_DATABASE: Question[] = [
       },
       {
         "key": "B",
-        "text": "Eles caminharam a passos lentos durante a tarde, respeitando as diretrizes de governança de dados e controle de acessos."
+        "text": "Eles caminharam a passos lentos durante a tarde, respeitando a pontuação e a estrutura sintática das orações."
       },
       {
         "key": "C",
@@ -4797,7 +4797,7 @@ export const QUESTIONS_DATABASE: Question[] = [
       },
       {
         "key": "D",
-        "text": "Fomos na capital para resolver pendências administrativas, conforme as especificações técnicas de homologação do ambiente de redes."
+        "text": "Fomos na capital para resolver pendências administrativas, em conformidade com as regras de regência e concordância culta."
       },
       {
         "key": "E",
@@ -4863,7 +4863,7 @@ export const QUESTIONS_DATABASE: Question[] = [
       },
       {
         "key": "E",
-        "text": "Eles lembraram-se o código de acesso, considerando a arquitetura padrão dos componentes e seus respectivos drivers."
+        "text": "Eles lembraram-se o código de acesso, considerando o sentido denotativo e a coesão textual da frase."
       }
     ],
     "correctOption": "D",
@@ -4913,7 +4913,7 @@ export const QUESTIONS_DATABASE: Question[] = [
       },
       {
         "key": "B",
-        "text": "O documento é compatível de todas as normas do IBGE, respeitando as diretrizes de governança de dados e controle de acessos."
+        "text": "O documento é compatível de todas as normas do IBGE, respeitando a pontuação e a estrutura sintática das orações."
       },
       {
         "key": "C",
@@ -5103,7 +5103,7 @@ export const QUESTIONS_DATABASE: Question[] = [
       },
       {
         "key": "C",
-        "text": "Apenas 'realizaram', concordando com o termo no plural, conforme as especificações técnicas de homologação do ambiente de redes."
+        "text": "Apenas 'realizaram', concordando com o termo no plural, em conformidade com as regras de regência e concordância culta."
       },
       {
         "key": "D",
@@ -5169,7 +5169,7 @@ export const QUESTIONS_DATABASE: Question[] = [
       },
       {
         "key": "D",
-        "text": "Água de coco é boa para a saúde durante o trabalho no campo, considerando a arquitetura padrão dos componentes e seus respectivos drivers."
+        "text": "Água de coco é boa para a saúde durante o trabalho no campo, considerando o sentido denotativo e a coesão textual da frase."
       },
       {
         "key": "E",
@@ -5297,7 +5297,7 @@ export const QUESTIONS_DATABASE: Question[] = [
       },
       {
         "key": "E",
-        "text": "Estudamos bastante; portanto, seremos aprovados, de acordo com as configurações padrão estabelecidas no sistema operacional."
+        "text": "Estudamos bastante; portanto, seremos aprovados, de acordo com a norma-padrão da Língua Portuguesa."
       }
     ],
     "correctOption": "D",
@@ -5475,7 +5475,7 @@ export const QUESTIONS_DATABASE: Question[] = [
       },
       {
         "key": "C",
-        "text": "Comprei lápis, borracha e caneta, considerando a arquitetura padrão dos componentes e seus respectivos drivers."
+        "text": "Comprei lápis, borracha e caneta, considerando o sentido denotativo e a coesão textual da frase."
       },
       {
         "key": "D",
@@ -5545,7 +5545,7 @@ export const QUESTIONS_DATABASE: Question[] = [
       },
       {
         "key": "E",
-        "text": "O ponto e vírgula é proibido em frases com 'contudo', respeitando as diretrizes de governança de dados e controle de acessos."
+        "text": "O ponto e vírgula é proibido em frases com 'contudo', respeitando a pontuação e a estrutura sintática das orações."
       }
     ],
     "correctOption": "A",
@@ -5607,7 +5607,7 @@ export const QUESTIONS_DATABASE: Question[] = [
       },
       {
         "key": "E",
-        "text": "Comparação (igualdade de fatos), de acordo com as configurações padrão estabelecidas no sistema operacional."
+        "text": "Comparação (igualdade de fatos), de acordo com a norma-padrão da Língua Portuguesa."
       }
     ],
     "correctOption": "B",
@@ -5653,7 +5653,7 @@ export const QUESTIONS_DATABASE: Question[] = [
     "options": [
       {
         "key": "A",
-        "text": "Como estava chovendo, não saímos de casa, visando garantir a integridade total das informações e a segurança do usuário."
+        "text": "Como estava chovendo, não saímos de casa, segundo os preceitos da gramática normativa pátria."
       },
       {
         "key": "B",
@@ -5719,7 +5719,7 @@ export const QUESTIONS_DATABASE: Question[] = [
       },
       {
         "key": "B",
-        "text": "Sem vírgulas, a frase torna-se gramaticalmente errada, conforme as especificações técnicas de homologação do ambiente de redes."
+        "text": "Sem vírgulas, a frase torna-se gramaticalmente errada, em conformidade com as regras de regência e concordância culta."
       },
       {
         "key": "C",
@@ -5781,7 +5781,7 @@ export const QUESTIONS_DATABASE: Question[] = [
       },
       {
         "key": "B",
-        "text": "Ambas são conjunções concessivas equivalentes a *embora*, considerando a arquitetura padrão dos componentes e seus respectivos drivers."
+        "text": "Ambas são conjunções concessivas equivalentes a *embora*, considerando o sentido denotativo e a coesão textual da frase."
       },
       {
         "key": "C",
@@ -5963,7 +5963,7 @@ export const QUESTIONS_DATABASE: Question[] = [
     "options": [
       {
         "key": "A",
-        "text": "Se o trânsito fica lento, então chove em Salvador, visando garantir a integridade total das informações e a segurança do usuário."
+        "text": "Se o trânsito fica lento, então chove em Salvador, segundo as regras formais das tabelas-verdade e conectivos."
       },
       {
         "key": "B",
@@ -6037,7 +6037,7 @@ export const QUESTIONS_DATABASE: Question[] = [
       },
       {
         "key": "D",
-        "text": "Pedro é agente de informática OU a prova é fácil, conforme as especificações técnicas de homologação do ambiente de redes."
+        "text": "Pedro é agente de informática OU a prova é fácil, considerando a valoração lógica e o conjunto universo dos elementos."
       },
       {
         "key": "E",
@@ -6459,7 +6459,7 @@ export const QUESTIONS_DATABASE: Question[] = [
     "options": [
       {
         "key": "A",
-        "text": "Se o servidor é promovido, então não atinge a meta, respeitando as diretrizes de governança de dados e controle de acessos."
+        "text": "Se o servidor é promovido, então não atinge a meta, conforme os postulados da teoria dos conjuntos e quantificadores."
       },
       {
         "key": "B",
@@ -6525,7 +6525,7 @@ export const QUESTIONS_DATABASE: Question[] = [
       },
       {
         "key": "B",
-        "text": "Apenas a segunda proposição Q for verdadeira, de acordo com as configurações padrão estabelecidas no sistema operacional."
+        "text": "Apenas a segunda proposição Q for verdadeira, de acordo com os princípios da lógica proposicional."
       },
       {
         "key": "C",
@@ -6649,7 +6649,7 @@ export const QUESTIONS_DATABASE: Question[] = [
       },
       {
         "key": "B",
-        "text": "Ambas as proposições forem falsas, conforme as especificações técnicas de homologação do ambiente de redes."
+        "text": "Ambas as proposições forem falsas, considerando a valoração lógica e o conjunto universo dos elementos."
       },
       {
         "key": "C",
@@ -6707,7 +6707,7 @@ export const QUESTIONS_DATABASE: Question[] = [
     "options": [
       {
         "key": "A",
-        "text": "Ambas as proposições forem verdadeiras, considerando a arquitetura padrão dos componentes e seus respectivos drivers."
+        "text": "Ambas as proposições forem verdadeiras, respeitando as leis de equivalência e dedução matemática."
       },
       {
         "key": "B",
@@ -6893,7 +6893,7 @@ export const QUESTIONS_DATABASE: Question[] = [
     "options": [
       {
         "key": "A",
-        "text": "20 candidatos, visando garantir a integridade total das informações e a segurança do usuário."
+        "text": "20 candidatos, segundo as regras formais das tabelas-verdade e conectivos."
       },
       {
         "key": "B",
@@ -7017,7 +7017,7 @@ export const QUESTIONS_DATABASE: Question[] = [
     "options": [
       {
         "key": "A",
-        "text": "35, considerando a arquitetura padrão dos componentes e seus respectivos drivers."
+        "text": "35, respeitando as leis de equivalência e dedução matemática."
       },
       {
         "key": "B",
@@ -7087,7 +7087,7 @@ export const QUESTIONS_DATABASE: Question[] = [
       },
       {
         "key": "C",
-        "text": "50% (ou 1/2), respeitando as diretrizes de governança de dados e controle de acessos."
+        "text": "50% (ou 1/2), conforme os postulados da teoria dos conjuntos e quantificadores."
       },
       {
         "key": "D",

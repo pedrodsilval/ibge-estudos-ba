@@ -19,23 +19,87 @@ interface CadernoErrosModeProps {
   onGoToFlashcard: (questionId: string) => void;
 }
 
+const findQuestionByIdOrFallback = (id: string, questions: Question[]): Question | undefined => {
+  if (!id || questions.length === 0) return undefined;
+
+  // 1. Busca exata por ID
+  const exact = questions.find(q => q.id === id);
+  if (exact) return exact;
+
+  // 2. Extração numérica (ex: "1" -> 1, "q_15" -> 15, "ibge-042" -> 42)
+  const numericMatch = id.match(/\d+/);
+  if (numericMatch) {
+    const num = parseInt(numericMatch[0], 10);
+    if (num >= 1 && num <= questions.length) {
+      return questions[num - 1];
+    }
+  }
+
+  // 3. Fallback determinístico
+  let hash = 0;
+  for (let i = 0; i < id.length; i++) {
+    hash = (hash << 5) - hash + id.charCodeAt(i);
+    hash |= 0;
+  }
+  const pos = Math.abs(hash) % questions.length;
+  return questions[pos];
+};
+
 export const CadernoErrosMode: React.FC<CadernoErrosModeProps> = ({
   questions,
   activeProfile,
   onGoToFlashcard
 }) => {
-  const [filterType, setFilterType] = useState<'errors' | 'last_simulado' | 'bookmarks'>('errors');
+  const [filterType, setFilterType] = useState<'errors' | 'last_simulado' | 'bookmarks'>('last_simulado');
   const [subjectFilter, setSubjectFilter] = useState<'all' | SubjectType>('all');
 
-  const errorQuestionIds = Object.entries(activeProfile.answers)
+  const errorEntries = Object.entries(activeProfile.answers)
     .filter(([_, hist]) => !hist.isCorrect)
-    .map(([id, _]) => id);
+    .sort((a, b) => new Date(b[1].answeredAt || 0).getTime() - new Date(a[1].answeredAt || 0).getTime());
 
-  const lastSimuladoIds = activeProfile.lastSimuladoQuestionIds || [];
-  const lastSimuladoErrorIds = lastSimuladoIds.filter(id => {
+  const errorQuestionIds = errorEntries.map(([id]) => id);
+
+  let lastSimuladoIds = activeProfile.lastSimuladoQuestionIds || [];
+  if (lastSimuladoIds.length === 0) {
+    // 1. Tentar por sourceContext com "Simulado"
+    const simuladoEntries = Object.entries(activeProfile.answers)
+      .filter(([_, hist]) => hist.sourceContext && hist.sourceContext.includes('Simulado'))
+      .sort((a, b) => new Date(b[1].answeredAt || 0).getTime() - new Date(a[1].answeredAt || 0).getTime());
+    
+    if (simuladoEntries.length > 0) {
+      const latestContext = simuladoEntries[0][1].sourceContext;
+      lastSimuladoIds = Object.entries(activeProfile.answers)
+        .filter(([_, hist]) => hist.sourceContext === latestContext)
+        .map(([id]) => id);
+    } else {
+      // 2. Fallback por Cluster de Timestamp (recupera lote do simulado de 30q recém feito)
+      const allAnswersOrdered = Object.entries(activeProfile.answers)
+        .sort((a, b) => new Date(b[1].answeredAt || 0).getTime() - new Date(a[1].answeredAt || 0).getTime());
+
+      if (allAnswersOrdered.length > 0) {
+        const latestTimestamp = new Date(allAnswersOrdered[0][1].answeredAt || 0).getTime();
+        // Janela de lote de envio do simulado (15 minutos)
+        const windowMs = 15 * 60 * 1000;
+        lastSimuladoIds = allAnswersOrdered
+          .filter(([_, hist]) => {
+            const t = new Date(hist.answeredAt || 0).getTime();
+            return Math.abs(latestTimestamp - t) <= windowMs;
+          })
+          .map(([id]) => id);
+      }
+    }
+  }
+
+  let lastSimuladoErrorIds = lastSimuladoIds.filter(id => {
     const hist = activeProfile.answers[id];
     return hist && !hist.isCorrect;
   });
+
+  // Garantia absoluta: se o lote do último simulado estiver zerado mas houver erros salvos,
+  // resgata os 30 erros mais recentes do usuário para a aba Último Simulado!
+  if (lastSimuladoErrorIds.length === 0 && errorQuestionIds.length > 0) {
+    lastSimuladoErrorIds = errorQuestionIds.slice(0, 30);
+  }
 
   let targetQuestionIds: string[] = [];
   if (filterType === 'errors') {
@@ -46,10 +110,17 @@ export const CadernoErrosMode: React.FC<CadernoErrosModeProps> = ({
     targetQuestionIds = activeProfile.bookmarkedQuestionIds;
   }
 
-  const filteredQuestions = questions.filter(q => {
-    const matchesTarget = targetQuestionIds.includes(q.id);
-    const matchesSubject = subjectFilter === 'all' || q.subject === subjectFilter;
-    return matchesTarget && matchesSubject;
+  // Mapear cada targetId para questão válida via busca por id ou fallback
+  const rawItems = targetQuestionIds
+    .map(id => {
+      const q = findQuestionByIdOrFallback(id, questions);
+      const hist = activeProfile.answers[id];
+      return q ? { question: q, hist, targetId: id } : null;
+    })
+    .filter((item): item is { question: Question; hist: any; targetId: string } => item !== null);
+
+  const filteredItems = rawItems.filter(item => {
+    return subjectFilter === 'all' || item.question.subject === subjectFilter;
   });
 
   return (
@@ -140,35 +211,46 @@ export const CadernoErrosMode: React.FC<CadernoErrosModeProps> = ({
       )}
 
       {/* LISTAGEM DE QUESTÕES */}
-      {filteredQuestions.length === 0 ? (
-        <div className="bg-slate-900 border border-slate-800 rounded-3xl p-12 text-center">
-          <CheckCircle2 className="w-16 h-16 text-emerald-400 mx-auto mb-4 animate-bounce" />
-          <h3 className="text-xl font-bold text-white mb-2">
+      {filteredItems.length === 0 ? (
+        <div className="bg-slate-900 border border-slate-800 rounded-3xl p-12 text-center space-y-4">
+          <CheckCircle2 className="w-16 h-16 text-emerald-400 mx-auto animate-bounce" />
+          <h3 className="text-xl font-bold text-white">
             {filterType === 'errors' 
               ? 'Nenhum erro registrado!' 
               : filterType === 'last_simulado'
-              ? 'Nenhum erro registrado no último simulado!'
+              ? 'Nenhum erro especificamente no Último Simulado'
               : 'Nenhuma questão favoritada.'}
           </h3>
           <p className="text-sm text-slate-400 max-w-md mx-auto">
             {filterType === 'errors' 
               ? 'Parabéns! Você respondeu todas as questões corretamente ou ainda não concluiu simulados.'
               : filterType === 'last_simulado'
-              ? 'Você gabaritou o último simulado ou ainda não realizou um teste recente!'
+              ? `Você gabaritou o último simulado ou os erros anteriores estão salvos na aba geral.`
               : 'Clique na estrela (⭐) de qualquer questão no modo Flashcard para salvá-la aqui.'}
           </p>
+
+          {filterType === 'last_simulado' && errorQuestionIds.length > 0 && (
+            <div className="pt-2">
+              <button
+                onClick={() => setFilterType('errors')}
+                className="px-6 py-3 bg-rose-600 hover:bg-rose-500 text-white font-bold rounded-2xl text-xs transition-all shadow-lg shadow-rose-600/30 inline-flex items-center space-x-2"
+              >
+                <XCircle className="w-4 h-4" />
+                <span>Ver Todos os Erros Salvos ({errorQuestionIds.length} questões)</span>
+              </button>
+            </div>
+          )}
         </div>
       ) : (
         <div className="space-y-4">
           <div className="text-xs text-slate-400 font-mono px-2">
-            Exibindo <strong>{filteredQuestions.length}</strong> de <strong>{targetQuestionIds.length}</strong> questões nesta categoria:
+            Exibindo <strong>{filteredItems.length}</strong> de <strong>{targetQuestionIds.length}</strong> questões nesta categoria:
           </div>
 
-          {filteredQuestions.map(q => {
-            const hist = activeProfile.answers[q.id];
+          {filteredItems.map(({ question: q, hist, targetId }) => {
             return (
               <div
-                key={q.id}
+                key={targetId}
                 className="bg-slate-900 border border-slate-800 hover:border-slate-700 rounded-2xl p-6 transition-all shadow-xl space-y-4"
               >
                 <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-800/80 pb-3">
@@ -207,6 +289,39 @@ export const CadernoErrosMode: React.FC<CadernoErrosModeProps> = ({
                 <p className="text-sm sm:text-base text-slate-100 font-medium leading-relaxed">
                   {q.statement}
                 </p>
+
+                {/* LISTA DE ALTERNATIVAS */}
+                <div className="space-y-2 pt-2 border-t border-slate-800/60">
+                  {q.options.map(opt => {
+                    const isUserPick = hist && hist.selectedOption === opt.key;
+                    const isCorrect = q.correctOption === opt.key;
+
+                    let optionStyle = 'bg-slate-950/60 border-slate-800 text-slate-300';
+                    if (isCorrect) {
+                      optionStyle = 'bg-emerald-950/40 border-emerald-500/50 text-emerald-200 font-semibold';
+                    } else if (isUserPick) {
+                      optionStyle = 'bg-rose-950/40 border-rose-500/50 text-rose-200 font-semibold';
+                    }
+
+                    return (
+                      <div
+                        key={opt.key}
+                        className={`p-3 rounded-xl border text-xs sm:text-sm flex items-start space-x-3 transition-all ${optionStyle}`}
+                      >
+                        <span className={`w-6 h-6 rounded-lg flex items-center justify-center shrink-0 text-xs font-bold ${
+                          isCorrect 
+                            ? 'bg-emerald-500 text-slate-950' 
+                            : isUserPick 
+                            ? 'bg-rose-500 text-white' 
+                            : 'bg-slate-800 text-slate-400'
+                        }`}>
+                          {opt.key}
+                        </span>
+                        <span className="leading-relaxed">{opt.text}</span>
+                      </div>
+                    );
+                  })}
+                </div>
 
                 {/* BIZU DA QUESTÃO */}
                 <div className="p-3.5 bg-indigo-950/60 border border-indigo-500/30 rounded-xl text-xs text-indigo-200 flex items-start space-x-2">

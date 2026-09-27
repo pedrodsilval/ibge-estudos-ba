@@ -9,10 +9,15 @@ import {
   ChevronRight, 
   ChevronLeft,
   BookOpen,
-  Zap
+  Zap,
+  CheckCircle2,
+  Lightbulb,
+  Filter,
+  Check,
+  X
 } from 'lucide-react';
 import type { Question, UserProfile, SubjectType } from '../types/study';
-import { recordQuestionAnswer } from '../services/storageService';
+import { recordQuestionAnswer, saveLastSimuladoHistory } from '../services/storageService';
 
 interface SimuladoModeProps {
   questions: Question[];
@@ -32,7 +37,13 @@ export const SimuladoMode: React.FC<SimuladoModeProps> = ({
   const [simuladoQuestions, setSimuladoQuestions] = useState<Question[]>([]);
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [userAnswers, setUserAnswers] = useState<Record<string, string>>({});
-  const [timeLeftSeconds, setTimeLeftSeconds] = useState<number>(1200); // 20 minutos
+  const [timeLeftSeconds, setTimeLeftSeconds] = useState<number>(1200);
+  const [currentSimuladoLabel, setCurrentSimuladoLabel] = useState<string>('');
+  
+  // Filtros de Correção do Simulado Finalizado
+  const [reviewFilter, setReviewFilter] = useState<'all' | 'errors' | 'correct'>('all');
+  const [reviewSubject, setReviewSubject] = useState<'all' | SubjectType>('all');
+
   const [scoreResult, setScoreResult] = useState<{
     total: number;
     correct: number;
@@ -45,13 +56,11 @@ export const SimuladoMode: React.FC<SimuladoModeProps> = ({
     let selected: Question[] = [];
 
     if (count === 60) {
-      // Estrutura Oficial Proporcional IBFC: 35 Informática, 15 Português, 10 RLM
       const infQs = questions.filter(q => q.subject === 'Informática').sort(() => 0.5 - Math.random()).slice(0, 35);
       const portQs = questions.filter(q => q.subject === 'Língua Portuguesa').sort(() => 0.5 - Math.random()).slice(0, 15);
       const rlmQs = questions.filter(q => q.subject === 'Raciocínio Lógico').sort(() => 0.5 - Math.random()).slice(0, 10);
       selected = [...infQs, ...portQs, ...rlmQs];
     } else {
-      // Seleção proporcional rápida para outros tamanhos (ex: 15, 30)
       const infCount = Math.round(count * 0.58);
       const portCount = Math.round(count * 0.25);
       const rlmCount = Math.max(1, count - infCount - portCount);
@@ -62,7 +71,6 @@ export const SimuladoMode: React.FC<SimuladoModeProps> = ({
       selected = [...infQs, ...portQs, ...rlmQs];
     }
 
-    // Se por acaso alguma lista tiver menos, completa com embaralhamento geral
     if (selected.length < count) {
       const remainingNeeded = count - selected.length;
       const selectedIds = new Set(selected.map(q => q.id));
@@ -70,13 +78,19 @@ export const SimuladoMode: React.FC<SimuladoModeProps> = ({
       selected = [...selected, ...extras];
     }
     
+    const now = new Date();
+    const dateStr = `${now.toLocaleDateString('pt-BR')} às ${now.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' })}`;
+    const label = `Simulado de ${selected.length}q (${dateStr})`;
+    
+    setCurrentSimuladoLabel(label);
     setExamQuestionCount(selected.length);
     setSimuladoQuestions(selected);
     setCurrentIndex(0);
     setUserAnswers({});
-    // Tempo oficial IBFC: ~3 a 3.5 minutos por questão (60q = 180 min / 3 horas)
     setTimeLeftSeconds(selected.length * 180); 
     setExamState('running');
+    setReviewFilter('all');
+    setReviewSubject('all');
   };
 
   // Contagem regressiva do timer
@@ -117,6 +131,7 @@ export const SimuladoMode: React.FC<SimuladoModeProps> = ({
     };
 
     let updatedProfile = activeProfile;
+    const allSimuladoQuestionIds = simuladoQuestions.map(q => q.id);
 
     simuladoQuestions.forEach(q => {
       const selected = userAnswers[q.id];
@@ -128,10 +143,13 @@ export const SimuladoMode: React.FC<SimuladoModeProps> = ({
       }
 
       if (selected) {
-        updatedProfile = recordQuestionAnswer(q.id, selected, isCorrect);
+        updatedProfile = recordQuestionAnswer(q.id, selected, isCorrect, undefined, currentSimuladoLabel);
         if (isCorrect) correctCount += 1;
       }
     });
+
+    // Salvar o histórico do último simulado no perfil
+    updatedProfile = saveLastSimuladoHistory(allSimuladoQuestionIds, currentSimuladoLabel);
 
     onUpdateProfile(updatedProfile);
 
@@ -312,6 +330,181 @@ export const SimuladoMode: React.FC<SimuladoModeProps> = ({
             })}
           </div>
 
+          {/* GABARITO E CORREÇÃO COMPLETA DESTE SIMULADO */}
+          <div className="bg-slate-950 p-6 rounded-3xl border border-slate-800 space-y-6">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-800/80 pb-4">
+              <div>
+                <h3 className="text-lg font-extrabold text-white flex items-center gap-2">
+                  <CheckCircle2 className="w-5 h-5 text-indigo-400" />
+                  Gabarito & Correção Completa deste Simulado
+                </h3>
+                <p className="text-xs text-slate-400 mt-0.5">
+                  Revise item por item a resposta assinalada e a justificativa da banca IBFC:
+                </p>
+              </div>
+
+              {/* FILTROS DE REVISÃO */}
+              <div className="flex flex-wrap items-center gap-2">
+                <button
+                  onClick={() => setReviewFilter('all')}
+                  className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${
+                    reviewFilter === 'all'
+                      ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/30'
+                      : 'bg-slate-900 text-slate-400 hover:text-white'
+                  }`}
+                >
+                  Todas ({simuladoQuestions.length})
+                </button>
+                <button
+                  onClick={() => setReviewFilter('errors')}
+                  className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${
+                    reviewFilter === 'errors'
+                      ? 'bg-rose-600 text-white shadow-md shadow-rose-600/30'
+                      : 'bg-slate-900 text-slate-400 hover:text-white'
+                  }`}
+                >
+                  Erradas ❌ ({scoreResult.total - scoreResult.correct})
+                </button>
+                <button
+                  onClick={() => setReviewFilter('correct')}
+                  className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${
+                    reviewFilter === 'correct'
+                      ? 'bg-emerald-600 text-white shadow-md shadow-emerald-600/30'
+                      : 'bg-slate-900 text-slate-400 hover:text-white'
+                  }`}
+                >
+                  Acertos ✅ ({scoreResult.correct})
+                </button>
+              </div>
+            </div>
+
+            {/* FILTRO SECUNDÁRIO POR DISCIPLINA */}
+            <div className="flex items-center justify-between bg-slate-900/60 border border-slate-800 px-4 py-2.5 rounded-xl">
+              <div className="flex items-center space-x-1.5 text-xs text-slate-400 font-semibold">
+                <Filter className="w-3.5 h-3.5 text-indigo-400" />
+                <span>Mudar Disciplina:</span>
+              </div>
+              <div className="flex flex-wrap gap-1.5">
+                {(['all', 'Informática', 'Língua Portuguesa', 'Raciocínio Lógico'] as const).map(subj => (
+                  <button
+                    key={subj}
+                    onClick={() => setReviewSubject(subj)}
+                    className={`px-2.5 py-1 rounded-lg text-xs font-medium transition-all ${
+                      reviewSubject === subj
+                        ? 'bg-slate-800 text-indigo-300 font-bold border border-indigo-500/40'
+                        : 'bg-slate-950 text-slate-400 hover:text-slate-200'
+                    }`}
+                  >
+                    {subj === 'all' ? 'Todas' : subj}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* LISTA DAS QUESTÕES DO SIMULADO */}
+            <div className="space-y-6">
+              {simuladoQuestions.map((q, idx) => {
+                const userSel = userAnswers[q.id];
+                const isCorrect = userSel === q.correctOption;
+
+                if (reviewFilter === 'errors' && isCorrect) return null;
+                if (reviewFilter === 'correct' && !isCorrect) return null;
+                if (reviewSubject !== 'all' && q.subject !== reviewSubject) return null;
+
+                return (
+                  <div key={q.id} className="bg-slate-900 border border-slate-800/90 rounded-2xl p-6 space-y-4 shadow-lg">
+                    {/* HEADER DA QUESTÃO */}
+                    <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-800/80 pb-3">
+                      <div className="flex flex-wrap items-center gap-2">
+                        <span className="px-2.5 py-1 bg-slate-800 text-slate-200 rounded-lg text-xs font-mono font-bold">
+                          Questão {idx + 1}
+                        </span>
+                        <span className="px-2.5 py-1 bg-indigo-500/10 text-indigo-400 border border-indigo-500/30 rounded-lg text-xs font-semibold">
+                          {q.subject}
+                        </span>
+                        <span className="px-2.5 py-1 bg-slate-950 text-slate-400 rounded-lg text-xs">
+                          {q.topic}
+                        </span>
+                      </div>
+
+                      <div className={`px-3 py-1 rounded-xl text-xs font-bold flex items-center space-x-1.5 border ${
+                        isCorrect 
+                          ? 'bg-emerald-500/10 border-emerald-500/40 text-emerald-300' 
+                          : 'bg-rose-500/10 border-rose-500/40 text-rose-300'
+                      }`}>
+                        {isCorrect ? (
+                          <>
+                            <Check className="w-4 h-4 text-emerald-400" />
+                            <span>Você acertou! (Opção {userSel})</span>
+                          </>
+                        ) : (
+                          <>
+                            <X className="w-4 h-4 text-rose-400" />
+                            <span>Você marcou {userSel || 'sem resposta'} (Gabarito: {q.correctOption})</span>
+                          </>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* STATEMENT */}
+                    <p className="text-sm sm:text-base text-slate-100 leading-relaxed font-medium">
+                      {q.statement}
+                    </p>
+
+                    {/* OPTIONS */}
+                    <div className="space-y-2">
+                      {q.options.map(opt => {
+                        const isUserChoice = userSel === opt.key;
+                        const isOptionCorrect = opt.key === q.correctOption;
+
+                        let style = "bg-slate-950/70 border-slate-800 text-slate-300";
+                        if (isOptionCorrect) {
+                          style = "bg-emerald-950/40 border-emerald-500/50 text-emerald-200 font-semibold ring-1 ring-emerald-500/30";
+                        } else if (isUserChoice && !isOptionCorrect) {
+                          style = "bg-rose-950/40 border-rose-500/50 text-rose-200 font-semibold ring-1 ring-rose-500/30";
+                        }
+
+                        return (
+                          <div key={opt.key} className={`p-3.5 rounded-xl border text-xs sm:text-sm flex items-start space-x-3 transition-all ${style}`}>
+                            <span className={`w-6 h-6 rounded-lg flex items-center justify-center text-xs font-bold shrink-0 ${
+                              isOptionCorrect 
+                                ? 'bg-emerald-500 text-slate-950' 
+                                : isUserChoice 
+                                ? 'bg-rose-500 text-white' 
+                                : 'bg-slate-800 text-slate-400'
+                            }`}>
+                              {opt.key}
+                            </span>
+                            <div className="flex-1 pt-0.5">
+                              <span>{opt.text}</span>
+                              {isOptionCorrect && (
+                                <span className="ml-2 text-xs font-bold text-emerald-400"> (Gabarito Oficial)</span>
+                              )}
+                              {isUserChoice && !isOptionCorrect && (
+                                <span className="ml-2 text-xs font-bold text-rose-400"> (Sua Escolha)</span>
+                              )}
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+
+                    {/* EXPLICACAO & BIZU */}
+                    <div className="p-4 bg-slate-950/80 border border-slate-800/90 rounded-xl space-y-2 text-xs">
+                      <p className="text-slate-300">
+                        <strong className="text-indigo-400">Explicação:</strong> {q.explanation.summary}
+                      </p>
+                      <div className="p-2.5 bg-indigo-950/50 border border-indigo-500/30 rounded-lg text-indigo-200 flex items-start space-x-2">
+                        <Lightbulb className="w-4 h-4 text-amber-300 shrink-0 mt-0.5" />
+                        <span><strong>Bizu IBFC:</strong> {q.explanation.bizu}</span>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
           {/* AÇÕES FINAIS */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-2">
             <button
@@ -326,7 +519,7 @@ export const SimuladoMode: React.FC<SimuladoModeProps> = ({
               className="px-6 py-3.5 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold rounded-xl transition-all shadow-lg shadow-indigo-600/30 flex items-center justify-center space-x-2"
             >
               <BookOpen className="w-4 h-4" />
-              <span>Revisar Erros nos Flashcards</span>
+              <span>Ir ao Caderno de Erros Geral</span>
             </button>
           </div>
 

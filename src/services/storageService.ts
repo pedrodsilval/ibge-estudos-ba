@@ -98,7 +98,8 @@ export const recordQuestionAnswer = (
   questionId: string,
   selectedOption: string,
   isCorrect: boolean,
-  userRating?: 'easy' | 'medium' | 'hard'
+  userRating?: 'easy' | 'medium' | 'hard',
+  sourceContext?: string
 ) => {
   return updateActiveProfile(profile => {
     const existing = profile.answers[questionId];
@@ -113,9 +114,20 @@ export const recordQuestionAnswer = (
           isCorrect,
           userRating,
           answeredAt: new Date().toISOString(),
-          attemptsCount
+          attemptsCount,
+          sourceContext: sourceContext || existing?.sourceContext || 'Flashcards / Exercícios'
         }
       }
+    };
+  });
+};
+
+export const saveLastSimuladoHistory = (questionIds: string[], contextLabel: string) => {
+  return updateActiveProfile(profile => {
+    return {
+      ...profile,
+      lastSimuladoQuestionIds: questionIds,
+      lastSimuladoDate: contextLabel
     };
   });
 };

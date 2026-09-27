@@ -32,6 +32,7 @@ export interface UserAnswerHistory {
   userRating?: 'easy' | 'medium' | 'hard';
   answeredAt: string;
   attemptsCount: number;
+  sourceContext?: string; // ex: "Simulado de 30q (26/09 21:42)"
 }
 
 export interface UserProfile {
@@ -43,6 +44,8 @@ export interface UserProfile {
   lastStudyDate: string;
   answers: Record<string, UserAnswerHistory>;
   bookmarkedQuestionIds: string[];
+  lastSimuladoQuestionIds?: string[];
+  lastSimuladoDate?: string;
 }
 
 export interface SimuladoResult {

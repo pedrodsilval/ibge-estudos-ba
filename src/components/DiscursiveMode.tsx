@@ -10,11 +10,18 @@ import {
   Sparkles,
   Lightbulb,
   AlertTriangle,
-  Award
+  Award,
+  Bot,
+  Check,
+  XCircle,
+  ThumbsUp,
+  Sliders,
+  RefreshCw
 } from 'lucide-react';
 import type { DiscursiveQuestion, SubjectType, UserProfile } from '../types/study';
 import { DISCURSIVE_QUESTIONS } from '../data/discursiveQuestions';
 import { recordDiscursiveAnswer } from '../services/storageService';
+import { evaluateDiscursiveAnswer, type EvaluationResult } from '../utils/discursiveEvaluator';
 
 interface DiscursiveModeProps {
   selectedSubject: SubjectType;
@@ -37,15 +44,19 @@ export const DiscursiveMode: React.FC<DiscursiveModeProps> = ({
   const [draft, setDraft] = useState<string>('');
   const [checkedKeywords, setCheckedKeywords] = useState<string[]>([]);
   const [selfScore, setSelfScore] = useState<number | null>(null);
+  const [evaluation, setEvaluation] = useState<EvaluationResult | null>(null);
   const [isSpeaking, setIsSpeaking] = useState<boolean>(false);
   const [showHint, setShowHint] = useState<boolean>(false);
   const [saveStatus, setSaveStatus] = useState<string>('idle');
+  const [isEvaluating, setIsEvaluating] = useState<boolean>(false);
+  const [showScoreSlider, setShowScoreSlider] = useState<boolean>(false);
 
   // Ajustar índice se mudar disciplina
   useEffect(() => {
     setCurrentIdx(0);
     setShowAnswer(false);
     setShowHint(false);
+    setShowScoreSlider(false);
     if ('speechSynthesis' in window) {
       window.speechSynthesis.cancel();
       setIsSpeaking(false);
@@ -54,25 +65,36 @@ export const DiscursiveMode: React.FC<DiscursiveModeProps> = ({
 
   const currentQ: DiscursiveQuestion | undefined = filteredQuestions[currentIdx];
 
-  // Carregar rascunho salvo do perfil
+  // Carregar rascunho salvo do perfil de forma 100% segura sem perder nada
   useEffect(() => {
     if (!currentQ) return;
     const saved = activeProfile.discursiveAnswers?.[currentQ.id];
     if (saved) {
-      setDraft(saved.userDraft || '');
+      const savedDraft = saved.userDraft || '';
+      setDraft(savedDraft);
       setCheckedKeywords(saved.checkedKeywords || []);
       setSelfScore(saved.selfScore !== undefined ? saved.selfScore : null);
+      
+      // Se já tem rascunho salvo, pré-avalia para ter o resultado pronto
+      if (savedDraft.trim().length > 0) {
+        const evalRes = evaluateDiscursiveAnswer(savedDraft, currentQ);
+        setEvaluation(evalRes);
+      } else {
+        setEvaluation(null);
+      }
     } else {
       setDraft('');
       setCheckedKeywords([]);
       setSelfScore(null);
+      setEvaluation(null);
     }
     setShowAnswer(false);
     setShowHint(false);
+    setShowScoreSlider(false);
     setSaveStatus('idle');
   }, [currentIdx, currentQ?.id]);
 
-  // Salvar rascunho com debounce automático
+  // Salvar rascunho com debounce automático sem perder histórico
   useEffect(() => {
     if (!currentQ) return;
     const timer = setTimeout(() => {
@@ -81,7 +103,9 @@ export const DiscursiveMode: React.FC<DiscursiveModeProps> = ({
           currentQ.id,
           draft,
           selfScore !== null ? selfScore : undefined,
-          checkedKeywords
+          checkedKeywords,
+          evaluation?.suggestedScore,
+          evaluation?.pedagogicalFeedback
         );
         onUpdateProfile(updated);
         setSaveStatus('saved');
@@ -90,7 +114,41 @@ export const DiscursiveMode: React.FC<DiscursiveModeProps> = ({
     }, 800);
 
     return () => clearTimeout(timer);
-  }, [draft, checkedKeywords, selfScore, currentQ?.id]);
+  }, [draft, checkedKeywords, selfScore, evaluation, currentQ?.id]);
+
+  // Executar correção inteligente automática
+  const handleAutoEvaluate = () => {
+    if (!currentQ) return;
+    setIsEvaluating(true);
+
+    setTimeout(() => {
+      const evalRes = evaluateDiscursiveAnswer(draft, currentQ);
+      setEvaluation(evalRes);
+      
+      // Mesclar palavras-chave encontradas automaticamente com as já marcadas
+      const mergedKeywords = Array.from(new Set([...checkedKeywords, ...evalRes.matchedKeywords]));
+      setCheckedKeywords(mergedKeywords);
+
+      // Se ainda não tinha nota definida ou se solicitou correção, sugere a nota calculada
+      if (selfScore === null) {
+        setSelfScore(evalRes.suggestedScore);
+      }
+
+      // Salva no perfil com os dados da correção
+      const updated = recordDiscursiveAnswer(
+        currentQ.id,
+        draft,
+        selfScore !== null ? selfScore : evalRes.suggestedScore,
+        mergedKeywords,
+        evalRes.suggestedScore,
+        evalRes.pedagogicalFeedback
+      );
+      onUpdateProfile(updated);
+
+      setShowAnswer(true);
+      setIsEvaluating(false);
+    }, 400);
+  };
 
   const toggleKeyword = (kw: string) => {
     const next = checkedKeywords.includes(kw)
@@ -102,9 +160,21 @@ export const DiscursiveMode: React.FC<DiscursiveModeProps> = ({
   const handleSetScore = (score: number) => {
     setSelfScore(score);
     if (currentQ) {
-      const updated = recordDiscursiveAnswer(currentQ.id, draft, score, checkedKeywords);
+      const updated = recordDiscursiveAnswer(
+        currentQ.id, 
+        draft, 
+        score, 
+        checkedKeywords,
+        evaluation?.suggestedScore,
+        evaluation?.pedagogicalFeedback
+      );
       onUpdateProfile(updated);
     }
+  };
+
+  const handleAcceptSuggestedScore = () => {
+    if (!evaluation || !currentQ) return;
+    handleSetScore(evaluation.suggestedScore);
   };
 
   const speakText = (text: string) => {
@@ -136,6 +206,9 @@ export const DiscursiveMode: React.FC<DiscursiveModeProps> = ({
   const keywordPercentage = currentQ.keywords.length > 0
     ? Math.round((checkedKeywords.length / currentQ.keywords.length) * 100)
     : 0;
+
+  const currentAnswerSaved = activeProfile.discursiveAnswers?.[currentQ.id];
+  const hasUserWritten = Boolean(draft.trim());
 
   return (
     <div className="max-w-5xl mx-auto px-4 py-8 space-y-6 animate-fadeIn">
@@ -174,6 +247,26 @@ export const DiscursiveMode: React.FC<DiscursiveModeProps> = ({
         </div>
       </div>
 
+      {/* BANNER PEDAGÓGICO: COMO FUNCIONA A CORREÇÃO AUTOMÁTICA */}
+      <div className="bg-gradient-to-r from-indigo-950/80 via-slate-900 to-purple-950/80 border border-indigo-500/30 rounded-3xl p-4 sm:p-5 shadow-xl">
+        <div className="flex items-start space-x-3.5">
+          <div className="w-10 h-10 rounded-2xl bg-indigo-500/20 border border-indigo-500/40 flex items-center justify-center shrink-0 mt-0.5 text-indigo-300">
+            <Bot className="w-5 h-5 animate-pulse" />
+          </div>
+          <div className="space-y-1.5 text-xs sm:text-sm">
+            <h4 className="font-extrabold text-white flex items-center gap-2">
+              <span>Como Funciona o Corretor de Questões Abertas?</span>
+              <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/40">
+                Correção Inteligente Ativa
+              </span>
+            </h4>
+            <p className="text-slate-300 leading-relaxed">
+              Escreva sua resposta como se estivesse na prova. Quando clicar em <strong className="text-emerald-300 font-bold">"Corrigir Minha Resposta"</strong>, o robô examinador analisa seu texto, identifica os conceitos e termos-chave que o professor exige, calcula sua nota sugerida (0 a 10) e mostra detalhadamente o que você acertou e o que faltou mencionar. Você tem liberdade total para aceitar a nota ou ajustá-la!
+            </p>
+          </div>
+        </div>
+      </div>
+
       {/* CARROSSEL DE SELEÇÃO NUMÉRICA DAS QUESTÕES */}
       <div className="bg-slate-900/70 border border-slate-800 p-4 rounded-3xl space-y-2">
         <div className="flex justify-between items-center text-xs text-slate-400 font-semibold px-1">
@@ -185,7 +278,7 @@ export const DiscursiveMode: React.FC<DiscursiveModeProps> = ({
           {filteredQuestions.map((q, idx) => {
             const isCurrent = idx === currentIdx;
             const qAns = activeProfile.discursiveAnswers?.[q.id];
-            const hasDraft = !!qAns?.userDraft?.trim();
+            const hasDraft = Boolean(qAns?.userDraft?.trim());
             const hasScore = qAns?.selfScore !== undefined && qAns?.selfScore !== null;
 
             return (
@@ -207,7 +300,7 @@ export const DiscursiveMode: React.FC<DiscursiveModeProps> = ({
                 {hasScore ? (
                   <span className="text-[10px] text-emerald-400 font-mono">[{qAns?.selfScore}]</span>
                 ) : hasDraft ? (
-                  <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" title="Rascunho salvo pronto para correção" />
                 ) : null}
               </button>
             );
@@ -235,7 +328,7 @@ export const DiscursiveMode: React.FC<DiscursiveModeProps> = ({
           <div className="flex items-center space-x-2">
             {saveStatus === 'saved' && (
               <span className="text-[11px] text-emerald-400 font-medium flex items-center gap-1 animate-fadeIn">
-                <CheckCircle2 className="w-3.5 h-3.5" /> Salvo
+                <CheckCircle2 className="w-3.5 h-3.5" /> Resposta Salva
               </span>
             )}
 
@@ -281,36 +374,64 @@ export const DiscursiveMode: React.FC<DiscursiveModeProps> = ({
             <span className="flex items-center gap-1.5 text-indigo-300">
               <PenTool className="w-3.5 h-3.5" /> Sua Resposta Escrita:
             </span>
-            <span className="font-mono text-slate-500">
-              {draft.trim() ? `${draft.trim().split(/\s+/).length} palavras` : '0 palavras'}
-            </span>
+            <div className="flex items-center space-x-3">
+              {currentAnswerSaved?.selfScore !== undefined && currentAnswerSaved?.selfScore !== null && (
+                <span className="text-[11px] font-bold text-emerald-400 bg-emerald-500/10 border border-emerald-500/30 px-2 py-0.5 rounded-lg">
+                  Nota Registrada: {currentAnswerSaved.selfScore}/10
+                </span>
+              )}
+              <span className="font-mono text-slate-500">
+                {draft.trim() ? `${draft.trim().split(/\s+/).length} palavras` : '0 palavras'}
+              </span>
+            </div>
           </div>
 
           <textarea
             value={draft}
             onChange={(e) => setDraft(e.target.value)}
-            rows={6}
-            placeholder="Escreva aqui como você responderia na prova discursiva (use a terminologia do professor)..."
+            rows={7}
+            placeholder="Escreva aqui sua resposta discursiva com suas próprias palavras... Ao terminar, clique no botão 'Corrigir Minha Resposta Automaticamente' abaixo."
             className="w-full bg-slate-950 border border-slate-800 focus:border-indigo-500 rounded-2xl p-4 text-sm text-slate-100 placeholder-slate-600 leading-relaxed outline-none transition-all resize-y shadow-inner"
           />
         </div>
 
-        {/* BOTÃO PARA MOSTRAR GABARITO & CORREÇÃO */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-2">
-          <button
-            onClick={() => setShowAnswer(!showAnswer)}
-            className={`w-full sm:w-auto px-6 py-3 rounded-2xl font-bold text-sm transition-all flex items-center justify-center space-x-2 shadow-lg ${
-              showAnswer 
-                ? 'bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700' 
-                : 'bg-gradient-to-r from-emerald-600 to-teal-500 hover:from-emerald-500 hover:to-teal-400 text-white shadow-emerald-600/30'
-            }`}
-          >
-            <Sparkles className="w-4 h-4" />
-            <span>{showAnswer ? 'Ocultar Gabarito Oficial' : 'Revelar Gabarito Oficial & Critérios de Avaliação'}</span>
-          </button>
+        {/* BARRA DE AÇÃO PRINCIPAL: BOTÃO DE CORREÇÃO AUTOMÁTICA */}
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 pt-2">
+          <div className="flex flex-wrap items-center gap-2">
+            <button
+              onClick={handleAutoEvaluate}
+              disabled={!hasUserWritten || isEvaluating}
+              className={`px-6 py-3.5 rounded-2xl font-extrabold text-sm transition-all flex items-center justify-center space-x-2 shadow-xl ${
+                !hasUserWritten
+                  ? 'bg-slate-800 text-slate-500 border border-slate-700/60 cursor-not-allowed'
+                  : isEvaluating
+                  ? 'bg-indigo-600 text-white animate-pulse'
+                  : 'bg-gradient-to-r from-emerald-500 via-teal-500 to-indigo-600 hover:from-emerald-400 hover:to-indigo-500 text-white shadow-emerald-500/25 hover:scale-[1.02]'
+              }`}
+            >
+              {isEvaluating ? (
+                <>
+                  <RefreshCw className="w-4 h-4 animate-spin" />
+                  <span>Avaliando sua resposta...</span>
+                </>
+              ) : (
+                <>
+                  <Sparkles className="w-4 h-4 text-amber-300" />
+                  <span>{evaluation ? '🔄 Recalcular Correção Automática' : '✨ Corrigir Minha Resposta Automaticamente'}</span>
+                </>
+              )}
+            </button>
+
+            <button
+              onClick={() => setShowAnswer(!showAnswer)}
+              className="px-4 py-3.5 rounded-2xl font-bold text-xs bg-slate-950 hover:bg-slate-800 text-slate-300 border border-slate-800 transition-all flex items-center justify-center space-x-1.5"
+            >
+              <span>{showAnswer ? 'Ocultar Gabarito' : 'Ver Gabarito Completo'}</span>
+            </button>
+          </div>
 
           {/* NAVEGAÇÃO ANTERIOR / PRÓXIMA */}
-          <div className="flex items-center space-x-2 w-full sm:w-auto justify-end">
+          <div className="flex items-center space-x-2 justify-end">
             <button
               onClick={() => setCurrentIdx(prev => Math.max(0, prev - 1))}
               disabled={currentIdx === 0}
@@ -331,10 +452,173 @@ export const DiscursiveMode: React.FC<DiscursiveModeProps> = ({
           </div>
         </div>
 
-        {/* SEÇÃO DO GABARITO & CORREÇÃO (REVELADA) */}
+        {/* RELATÓRIO DO CORRETOR INTELIGENTE (QUANDO AVALIADO OU QUANDO GABARITO ESTIVER ABERTO) */}
         {showAnswer && (
           <div className="space-y-6 pt-4 border-t border-slate-800/80 animate-fadeIn">
             
+            {/* BOX DO DIAGNÓSTICO DO CORRETOR AUTOMÁTICO */}
+            {evaluation && hasUserWritten && (
+              <div className="bg-gradient-to-b from-slate-950 to-slate-900 border border-indigo-500/40 rounded-3xl p-6 space-y-5 shadow-2xl relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none" />
+
+                {/* TOPO DO DIAGNÓSTICO: NOTA & CLASSIFICAÇÃO */}
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-800/80">
+                  <div className="flex items-center space-x-3">
+                    <div className="w-12 h-12 rounded-2xl bg-indigo-500/20 border border-indigo-500/30 flex items-center justify-center text-indigo-400 shrink-0">
+                      <Bot className="w-6 h-6" />
+                    </div>
+                    <div>
+                      <div className="text-xs font-bold uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
+                        <span>Resultado da Correção Automática:</span>
+                      </div>
+                      <h4 className="text-base sm:text-lg font-extrabold text-white">
+                        {evaluation.scoreTitle}
+                      </h4>
+                    </div>
+                  </div>
+
+                  {/* NOTA CALCULADA & AÇÕES */}
+                  <div className="flex items-center space-x-3 bg-slate-900/90 border border-slate-800 p-2 sm:px-4 sm:py-2.5 rounded-2xl">
+                    <div className="text-right">
+                      <div className="text-[10px] uppercase font-bold text-slate-400">Nota Sugerida:</div>
+                      <div className="text-xl sm:text-2xl font-black font-mono text-emerald-400">
+                        {evaluation.suggestedScore.toFixed(1)} <span className="text-xs text-slate-500 font-normal">/ 10</span>
+                      </div>
+                    </div>
+
+                    <div className="flex flex-col gap-1">
+                      {selfScore !== evaluation.suggestedScore ? (
+                        <button
+                          onClick={handleAcceptSuggestedScore}
+                          className="px-3 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold transition-all shadow-md flex items-center space-x-1"
+                        >
+                          <Check className="w-3.5 h-3.5" />
+                          <span>Aceitar Nota</span>
+                        </button>
+                      ) : (
+                        <span className="px-2.5 py-1 rounded-xl bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 text-[11px] font-bold flex items-center gap-1">
+                          <CheckCircle2 className="w-3.5 h-3.5" /> Nota Salva
+                        </span>
+                      )}
+
+                      <button
+                        onClick={() => setShowScoreSlider(!showScoreSlider)}
+                        className="text-[11px] text-indigo-300 hover:text-white underline text-center font-medium"
+                      >
+                        {showScoreSlider ? 'Ocultar Ajuste' : 'Ajustar Nota'}
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                {/* PAINEL OPCIONAL DE AJUSTE MANUAL DE NOTA */}
+                {showScoreSlider && (
+                  <div className="p-4 rounded-2xl bg-slate-950 border border-slate-800 space-y-2 animate-fadeIn">
+                    <div className="flex items-center justify-between text-xs text-slate-300 font-bold">
+                      <span className="flex items-center gap-1.5">
+                        <Sliders className="w-4 h-4 text-indigo-400" />
+                        Ajuste Manual da Nota (0 a 10):
+                      </span>
+                      <span className="text-slate-400 text-[11px] font-normal">
+                        Você tem autonomia total para definir sua nota final.
+                      </span>
+                    </div>
+
+                    <div className="flex flex-wrap items-center gap-1.5 pt-1">
+                      {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((num) => (
+                        <button
+                          key={num}
+                          onClick={() => handleSetScore(num)}
+                          className={`w-9 h-9 rounded-xl text-xs font-bold font-mono transition-all border ${
+                            selfScore === num
+                              ? num >= 7
+                                ? 'bg-emerald-600 text-white border-emerald-400 scale-110 shadow-lg shadow-emerald-600/30'
+                                : 'bg-rose-600 text-white border-rose-400 scale-110'
+                              : 'bg-slate-900 border-slate-800 text-slate-400 hover:border-slate-700 hover:text-white'
+                          }`}
+                        >
+                          {num}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* FEEDBACK PEDAGÓGICO EM TEXTO */}
+                <div className="p-4 rounded-2xl bg-indigo-500/10 border border-indigo-500/30 text-xs sm:text-sm text-indigo-100 leading-relaxed">
+                  <span className="font-bold text-indigo-300">Diagnóstico do Examinador: </span>
+                  {evaluation.pedagogicalFeedback}
+                </div>
+
+                {/* PONTOS FORTES E PONTOS A MELHORAR */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {/* PONTOS FORTES (ACERTOS) */}
+                  <div className="p-4 rounded-2xl bg-emerald-950/20 border border-emerald-500/30 space-y-2">
+                    <div className="flex items-center justify-between text-xs font-bold text-emerald-300">
+                      <span className="flex items-center gap-1.5">
+                        <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+                        Conceitos Identificados na Sua Resposta:
+                      </span>
+                      <span className="text-emerald-400 font-mono">
+                        {evaluation.matchedKeywords.length}
+                      </span>
+                    </div>
+
+                    {evaluation.matchedKeywords.length > 0 ? (
+                      <div className="flex flex-wrap gap-1.5 pt-1">
+                        {evaluation.matchedKeywords.map((kw, idx) => (
+                          <span
+                            key={idx}
+                            className="text-[11px] font-medium px-2.5 py-1 rounded-xl bg-emerald-500/15 text-emerald-200 border border-emerald-500/30 leading-snug flex items-center gap-1"
+                          >
+                            <Check className="w-3 h-3 text-emerald-400 shrink-0" />
+                            {kw}
+                          </span>
+                        ))}
+                      </div>
+                    ) : (
+                      <p className="text-xs text-slate-400 italic">
+                        Nenhum termo-chave central foi detectado ainda. Tente enriquecer seu vocabulário técnico com base no gabarito abaixo.
+                      </p>
+                    )}
+                  </div>
+
+                  {/* PONTOS QUE FALTARAM (MELHORIAS) */}
+                  <div className="p-4 rounded-2xl bg-rose-950/20 border border-rose-500/30 space-y-2">
+                    <div className="flex items-center justify-between text-xs font-bold text-rose-300">
+                      <span className="flex items-center gap-1.5">
+                        <XCircle className="w-4 h-4 text-rose-400" />
+                        O que faltou para fechar o 10 na prova:
+                      </span>
+                      <span className="text-rose-400 font-mono">
+                        {evaluation.missingKeywords.length}
+                      </span>
+                    </div>
+
+                    {evaluation.missingKeywords.length > 0 ? (
+                      <div className="flex flex-wrap gap-1.5 pt-1">
+                        {evaluation.missingKeywords.map((kw, idx) => (
+                          <span
+                            key={idx}
+                            className="text-[11px] font-medium px-2.5 py-1 rounded-xl bg-rose-500/15 text-rose-200 border border-rose-500/30 leading-snug flex items-center gap-1"
+                          >
+                            <span className="text-rose-400 shrink-0 font-bold">•</span>
+                            {kw}
+                          </span>
+                        ))}
+                      </div>
+                    ) : (
+                      <div className="text-xs text-emerald-300 font-bold flex items-center gap-1.5 pt-1">
+                        <ThumbsUp className="w-4 h-4" />
+                        Você cobriu todos os conceitos obrigatórios da banca!
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+              </div>
+            )}
+
             {/* CABEÇALHO DO GABARITO + BOTÃO ÁUDIO */}
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-2">
@@ -377,7 +661,7 @@ export const DiscursiveMode: React.FC<DiscursiveModeProps> = ({
                 </span>
               </div>
               <p className="text-xs text-slate-400">
-                Marque abaixo os termos que você incluiu na sua resposta para avaliar sua cobertura:
+                Os termos detectados pelo corretor já estão marcados. Você também pode marcar ou desmarcar manualmente:
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1">
@@ -433,21 +717,25 @@ export const DiscursiveMode: React.FC<DiscursiveModeProps> = ({
               </ul>
             </div>
 
-            {/* AUTOAVALIAÇÃO DA GILVANIA (NOTA 0 A 10) */}
+            {/* AUTOAVALIAÇÃO / AJUSTE FINAL DA NOTA */}
             <div className="bg-slate-950 border border-slate-800 rounded-2xl p-5 space-y-3 text-center sm:text-left">
               <div className="flex flex-col sm:flex-row justify-between items-center gap-2">
                 <div className="flex items-center space-x-2">
                   <Award className="w-5 h-5 text-indigo-400" />
                   <span className="text-xs font-bold text-slate-200 uppercase tracking-wider">
-                    Autoavaliação da Sua Resposta:
+                    Sua Nota Registrada nesta Questão:
                   </span>
                 </div>
                 {selfScore !== null && (
                   <span className="text-xs font-mono font-bold px-3 py-1 bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 rounded-xl">
-                    Sua Nota: {selfScore} / 10
+                    Nota Atual: {selfScore} / 10
                   </span>
                 )}
               </div>
+
+              <p className="text-xs text-slate-400">
+                Se concordar com a nota calculada pelo corretor, ela já foi aplicada. Caso deseje alterá-la para mais ou para menos, clique em um dos números abaixo:
+              </p>
 
               <div className="flex flex-wrap items-center justify-center sm:justify-start gap-1.5 pt-1">
                 {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((num) => (

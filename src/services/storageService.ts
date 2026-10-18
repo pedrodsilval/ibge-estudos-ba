@@ -107,7 +107,9 @@ export const recordDiscursiveAnswer = (
   questionId: string,
   draft: string,
   selfScore?: number,
-  checkedKeywords?: string[]
+  checkedKeywords?: string[],
+  autoScore?: number,
+  autoFeedback?: string
 ): UserProfile => {
   const profiles = getProfilesFromStorage();
   const activeId = getActiveProfileIdFromStorage();
@@ -124,6 +126,8 @@ export const recordDiscursiveAnswer = (
         userDraft: draft,
         selfScore: selfScore !== undefined ? selfScore : prev?.selfScore,
         checkedKeywords: checkedKeywords || prev?.checkedKeywords || [],
+        autoScore: autoScore !== undefined ? autoScore : prev?.autoScore,
+        autoFeedback: autoFeedback !== undefined ? autoFeedback : prev?.autoFeedback,
         savedAt: new Date().toISOString()
       }
     }

@@ -45,6 +45,8 @@ export interface DiscursiveAnswerHistory {
   selfScore?: number; // 0 a 10
   checkedKeywords: string[];
   savedAt: string;
+  autoScore?: number;
+  autoFeedback?: string;
 }
 
 export interface UserAnswerHistory {

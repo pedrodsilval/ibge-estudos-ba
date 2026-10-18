@@ -26,7 +26,7 @@ const findQuestionByIdOrFallback = (id: string, questions: Question[]): Question
   const exact = questions.find(q => q.id === id);
   if (exact) return exact;
 
-  // 2. Extração numérica (ex: "1" -> 1, "q_15" -> 15, "ibge-042" -> 42)
+  // 2. Extração numérica (ex: "1" -> 1, "q_15" -> 15, "unifacs-042" -> 42)
   const numericMatch = id.match(/\d+/);
   if (numericMatch) {
     const num = parseInt(numericMatch[0], 10);
@@ -134,7 +134,7 @@ export const CadernoErrosMode: React.FC<CadernoErrosModeProps> = ({
             Caderno de Erros & Favoritos
           </h2>
           <p className="text-xs sm:text-sm text-slate-400 mt-1">
-            Revisão focalizada por origem e matéria para zerar as dúvidas da banca IBFC.
+            Revisão focalizada por matéria para fechar com nota 10 as provas da UNIFACS.
           </p>
         </div>
 
@@ -186,7 +186,7 @@ export const CadernoErrosMode: React.FC<CadernoErrosModeProps> = ({
         </div>
 
         <div className="flex flex-wrap gap-2">
-          {(['all', 'Informática', 'Língua Portuguesa', 'Raciocínio Lógico'] as const).map(subj => (
+          {(['all', 'Qualidade de Software', 'Banco de Dados'] as const).map(subj => (
             <button
               key={subj}
               onClick={() => setSubjectFilter(subj)}
@@ -196,7 +196,7 @@ export const CadernoErrosMode: React.FC<CadernoErrosModeProps> = ({
                   : 'bg-slate-950 text-slate-400 border-slate-800 hover:bg-slate-800'
               }`}
             >
-              {subj === 'all' ? 'Todas as Matérias' : subj}
+              {subj === 'all' ? 'Todas as Disciplinas' : subj}
             </button>
           ))}
         </div>

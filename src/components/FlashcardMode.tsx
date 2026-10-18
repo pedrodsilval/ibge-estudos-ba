@@ -220,7 +220,7 @@ export const FlashcardMode: React.FC<FlashcardModeProps> = ({
         
         {/* FILTRO DE SUBJECT */}
         <div className="flex flex-wrap items-center gap-2">
-          {['TODAS', 'Informática', 'Língua Portuguesa', 'Raciocínio Lógico'].map(sub => (
+          {(['TODAS', 'Qualidade de Software', 'Banco de Dados'] as const).map(sub => (
             <button
               key={sub}
               onClick={() => setSelectedSubject(sub)}
@@ -230,7 +230,11 @@ export const FlashcardMode: React.FC<FlashcardModeProps> = ({
                   : 'bg-slate-900/90 text-slate-400 hover:text-slate-200 border border-slate-800 hover:border-slate-700'
               }`}
             >
-              {sub === 'Informática' ? '⚡ Informática (Peso 35)' : sub}
+              {sub === 'Qualidade de Software' 
+                ? '🔬 Qualidade de Software (Terça)' 
+                : sub === 'Banco de Dados'
+                ? '🗄️ Banco de Dados (Quarta)'
+                : '📚 Todas as Disciplinas'}
             </button>
           ))}
         </div>
@@ -416,7 +420,7 @@ export const FlashcardMode: React.FC<FlashcardModeProps> = ({
                 
                 {/* BOTÃO OUVIR BIZU */}
                 <button
-                  onClick={() => speakText(`Bizu da Prova IBGE: ${currentQuestion.explanation.bizu}`)}
+                  onClick={() => speakText(`Bizu da Prova UNIFACS: ${currentQuestion.explanation.bizu}`)}
                   className="hidden sm:flex items-center space-x-1 px-3 py-1.5 bg-slate-950 hover:bg-slate-800 text-amber-300 border border-amber-500/30 rounded-xl text-xs font-semibold"
                 >
                   <Volume2 className="w-3.5 h-3.5" />
@@ -476,7 +480,7 @@ export const FlashcardMode: React.FC<FlashcardModeProps> = ({
                 </div>
                 <div className="flex-1">
                   <h4 className="text-xs font-bold text-amber-300 uppercase tracking-wider mb-1 flex items-center gap-1">
-                    Bizu da Prova IBGE
+                    Bizu da Prova UNIFACS
                   </h4>
                   <p className="text-xs sm:text-sm text-indigo-100 leading-relaxed font-medium">
                     {currentQuestion.explanation.bizu}

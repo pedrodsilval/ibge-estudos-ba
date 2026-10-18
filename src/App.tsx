@@ -2,23 +2,32 @@ import { useState, useEffect } from 'react';
 import { 
   getProfilesFromStorage, 
   getActiveProfileIdFromStorage, 
-  saveActiveProfileId,
+  saveActiveProfileId, 
   saveProfilesToStorage 
 } from './services/storageService';
 import { QUESTIONS_DATABASE } from './data/questions';
-import type { UserProfile } from './types/study';
+import type { UserProfile, SubjectType } from './types/study';
 import { Navbar } from './components/Navbar';
+import { CadernosTeoriaMode } from './components/CadernosTeoriaMode';
+import { DiscursiveMode } from './components/DiscursiveMode';
 import { FlashcardMode } from './components/FlashcardMode';
 import { SimuladoMode } from './components/SimuladoMode';
 import { CadernoErrosMode } from './components/CadernoErrosMode';
 import { BizusQuickRead } from './components/BizusQuickRead';
 import { Dashboard } from './components/Dashboard';
 import { AIChatbot } from './components/AIChatbot';
+import { LabPraticoMode } from './components/LabPraticoMode';
 
 export function App() {
   const [profiles, setProfiles] = useState<UserProfile[]>([]);
   const [activeProfileId, setActiveProfileId] = useState<string>('');
-  const [activeTab, setActiveTab] = useState<string>('flashcards');
+  const [activeTab, setActiveTab] = useState<string>('teoria');
+  const [selectedSubject, setSelectedSubject] = useState<SubjectType>(() => {
+    const saved = localStorage.getItem('unifacs_selected_subject');
+    return (saved === 'Banco de Dados' || saved === 'Qualidade de Software') 
+      ? (saved as SubjectType) 
+      : 'Qualidade de Software';
+  });
 
   const refreshProfiles = () => {
     const loadedProfiles = getProfilesFromStorage();
@@ -30,6 +39,11 @@ export function App() {
   useEffect(() => {
     refreshProfiles();
   }, []);
+
+  const handleSelectSubject = (subj: SubjectType) => {
+    setSelectedSubject(subj);
+    localStorage.setItem('unifacs_selected_subject', subj);
+  };
 
   const activeProfile = profiles.find(p => p.id === activeProfileId) || profiles[0];
 
@@ -59,6 +73,8 @@ export function App() {
       <Navbar
         activeTab={activeTab}
         setActiveTab={setActiveTab}
+        selectedSubject={selectedSubject}
+        onSelectSubject={handleSelectSubject}
         profiles={profiles}
         activeProfile={activeProfile}
         onSwitchProfile={handleSwitchProfile}
@@ -67,6 +83,22 @@ export function App() {
 
       {/* CONTEÚDO DA PÁGINA */}
       <main className="flex-1 pb-16">
+        {activeTab === 'teoria' && (
+          <CadernosTeoriaMode
+            selectedSubject={selectedSubject}
+            onSelectSubject={handleSelectSubject}
+          />
+        )}
+
+        {activeTab === 'discursive' && (
+          <DiscursiveMode
+            selectedSubject={selectedSubject}
+            onSelectSubject={handleSelectSubject}
+            activeProfile={activeProfile}
+            onUpdateProfile={handleUpdateProfile}
+          />
+        )}
+
         {activeTab === 'flashcards' && (
           <FlashcardMode
             questions={QUESTIONS_DATABASE}
@@ -82,6 +114,10 @@ export function App() {
             onUpdateProfile={handleUpdateProfile}
             onReviewErrors={() => setActiveTab('caderno_erros')}
           />
+        )}
+
+        {activeTab === 'lab_pratico' && (
+          <LabPraticoMode />
         )}
 
         {activeTab === 'tutor_ia' && (
@@ -115,8 +151,8 @@ export function App() {
       {/* RODAPÉ */}
       <footer className="border-t border-slate-800/80 py-6 text-center text-xs text-slate-500">
         <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-2">
-          <span>IBGE Agente de Informática (Bahia) • Plataforma Reta Final Ultra-Fast</span>
-          <span>Foco nos estudos & Boa Prova neste Domingo! 🚀</span>
+          <span>UNIFACS 2026.2 • Portal de Estudos Intensivos da Gilvania (Campus Tancredo Neves)</span>
+          <span>Qualidade de Software (Terça 20/10) • Banco de Dados (Quarta 21/10) 🚀</span>
         </div>
       </footer>
 

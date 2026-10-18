@@ -1,10 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { 
-  BrainCircuit, 
-  Flame, 
-  Calendar, 
-  Download, 
-  Upload, 
   Sparkles, 
   Clock, 
   BookOpen, 
@@ -14,14 +9,23 @@ import {
   Play,
   Pause,
   RotateCcw,
-  Timer
+  Timer,
+  Download,
+  Upload,
+  Flame,
+  Calendar,
+  Terminal,
+  GraduationCap,
+  PenTool
 } from 'lucide-react';
-import type { UserProfile } from '../types/study';
+import type { UserProfile, SubjectType } from '../types/study';
 import { exportAllDataJSON, importAllDataJSON } from '../services/storageService';
 
 interface NavbarProps {
   activeTab: string;
   setActiveTab: (tab: string) => void;
+  selectedSubject: SubjectType;
+  onSelectSubject: (subj: SubjectType) => void;
   profiles: UserProfile[];
   activeProfile: UserProfile;
   onSwitchProfile: (id: string) => void;
@@ -31,17 +35,20 @@ interface NavbarProps {
 export const Navbar: React.FC<NavbarProps> = ({
   activeTab,
   setActiveTab,
+  selectedSubject,
+  onSelectSubject,
   profiles,
   activeProfile,
   onSwitchProfile,
   onRefreshData
 }) => {
-  const [daysLeft, setDaysLeft] = useState<number>(0);
+  const [daysLeftExam1, setDaysLeftExam1] = useState<number>(0);
+  const [hoursLeftExam1, setHoursLeftExam1] = useState<number>(0);
   const [isExporting, setIsExporting] = useState(false);
 
-  // ESTADO DO POMODORO DE FOCO
+  // POMODORO DE FOCO
   const [showPomodoro, setShowPomodoro] = useState<boolean>(false);
-  const [pomodoroSeconds, setPomodoroSeconds] = useState<number>(1500); // 25 minutos
+  const [pomodoroSeconds, setPomodoroSeconds] = useState<number>(1500); // 25 min
   const [isPomodoroRunning, setIsPomodoroRunning] = useState<boolean>(false);
   const [pomodoroMode, setPomodoroMode] = useState<'focus' | 'break'>('focus');
 
@@ -54,11 +61,11 @@ export const Navbar: React.FC<NavbarProps> = ({
             if (pomodoroMode === 'focus') {
               alert('🔔 Tempo de foco concluído! Faça uma pausa de 5 minutos.');
               setPomodoroMode('break');
-              return 300; // 5 minutos de pausa
+              return 300;
             } else {
               alert('⚡ Pausa concluída! De volta aos estudos de reta final.');
               setPomodoroMode('focus');
-              return 1500; // 25 minutos de foco
+              return 1500;
             }
           }
           return prev - 1;
@@ -68,18 +75,32 @@ export const Navbar: React.FC<NavbarProps> = ({
     return () => clearInterval(interval);
   }, [isPomodoroRunning, pomodoroMode]);
 
+  // CONTADOR REGRESSIVO DINÂMICO
   useEffect(() => {
-    const now = new Date();
-    const sunday = new Date();
-    const dayOfWeek = now.getDay();
-    const distanceToSunday = (7 - dayOfWeek) % 7;
-    sunday.setDate(now.getDate() + (distanceToSunday === 0 ? 0 : distanceToSunday));
-    sunday.setHours(23, 59, 59, 999);
+    const calculateCountdown = () => {
+      const now = new Date();
+      // Prova 1: Terça 20/10/2026 às 08h50 | Prova 2: Quarta 21/10/2026 às 08h50
+      const examDate = selectedSubject === 'Qualidade de Software'
+        ? new Date(2026, 9, 20, 8, 50, 0)
+        : new Date(2026, 9, 21, 8, 50, 0);
+      const diffMs = examDate.getTime() - now.getTime();
+      
+      if (diffMs > 0) {
+        const totalHours = Math.floor(diffMs / (1000 * 60 * 60));
+        const days = Math.floor(totalHours / 24);
+        const hours = totalHours % 24;
+        setDaysLeftExam1(days);
+        setHoursLeftExam1(hours);
+      } else {
+        setDaysLeftExam1(0);
+        setHoursLeftExam1(0);
+      }
+    };
 
-    const diffMs = sunday.getTime() - now.getTime();
-    const diffDays = Math.ceil(diffMs / (1000 * 60 * 60 * 24));
-    setDaysLeft(diffDays <= 0 ? 0 : diffDays);
-  }, []);
+    calculateCountdown();
+    const interval = setInterval(calculateCountdown, 60000);
+    return () => clearInterval(interval);
+  }, [selectedSubject]);
 
   const formatPomodoro = (seconds: number) => {
     const m = Math.floor(seconds / 60);
@@ -94,7 +115,7 @@ export const Navbar: React.FC<NavbarProps> = ({
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = `IBGE_Estudos_${activeProfile.name.replace(/\s+/g, '_')}_${new Date().toISOString().split('T')[0]}.json`;
+    a.download = `UNIFACS_Estudos_${activeProfile.name.replace(/\s+/g, '_')}_${new Date().toISOString().split('T')[0]}.json`;
     a.click();
     URL.revokeObjectURL(url);
     setTimeout(() => setIsExporting(false), 800);
@@ -113,50 +134,74 @@ export const Navbar: React.FC<NavbarProps> = ({
           alert('✅ Progresso importado com sucesso!');
           onRefreshData();
         } else {
-          alert('❌ Formato de arquivo JSON inválido.');
+          alert('❌ Erro ao importar arquivo de backup.');
         }
       }
     };
     reader.readAsText(file);
+    e.target.value = '';
   };
 
   return (
-    <header className="sticky top-0 z-50 bg-slate-900/95 backdrop-blur-md border-b border-slate-800 shadow-xl">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+    <header className="sticky top-0 z-40 bg-[#0d1322]/95 backdrop-blur-md border-b border-slate-800 shadow-xl">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6">
         
-        {/* LINHA SUPERIOR DO HEADER */}
-        <div className="flex items-center justify-between py-3 gap-2 sm:gap-4">
+        {/* BARRA SUPERIOR */}
+        <div className="flex items-center justify-between h-16 gap-3">
           
           {/* LOGO & TITULO */}
-          <div 
-            className="flex items-center space-x-3 cursor-pointer shrink-0 select-none"
-            onClick={() => setActiveTab('flashcards')}
-          >
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 to-emerald-500 p-0.5 shadow-md shadow-indigo-500/20 shrink-0">
-              <div className="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center">
-                <BrainCircuit className="w-5 h-5 text-indigo-400" />
+          <div className="flex items-center space-x-3 cursor-pointer" onClick={() => setActiveTab('discursive')}>
+            <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-indigo-600 via-indigo-500 to-emerald-400 p-0.5 shadow-lg shadow-indigo-600/20 shrink-0">
+              <div className="w-full h-full bg-slate-950 rounded-[14px] flex items-center justify-center">
+                <GraduationCap className="w-5 h-5 text-indigo-400" />
               </div>
             </div>
-
-            <div className="flex flex-col">
+            
+            <div className="leading-tight">
               <div className="flex items-center space-x-2">
-                <h1 className="text-base sm:text-lg font-extrabold text-white tracking-tight whitespace-nowrap">
-                  IBGE Reta Final
+                <h1 className="text-base sm:text-lg font-black tracking-tight text-white flex items-center gap-1.5">
+                  UNIFACS <span className="text-indigo-400 text-xs px-2 py-0.5 rounded-full bg-indigo-500/10 border border-indigo-500/30">2026.2</span>
                 </h1>
-                <span className="hidden sm:inline-block px-2 py-0.5 text-[10px] font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 rounded-full whitespace-nowrap">
-                  Agente de Informática - BA
-                </span>
               </div>
               
               <div className="flex items-center space-x-1.5 text-[11px] text-slate-400">
                 <Calendar className="w-3 h-3 text-amber-400 shrink-0" />
-                <span className="text-amber-300 font-medium whitespace-nowrap">Prova neste Domingo!</span>
-                <span className="text-slate-500 font-mono hidden sm:inline">• {daysLeft} dia(s)</span>
+                <span className="text-amber-300 font-semibold whitespace-nowrap">
+                  {selectedSubject === 'Qualidade de Software' ? 'Prova de Qualidade:' : 'Prova de Banco:'}
+                </span>
+                <span className="text-emerald-400 font-mono font-bold">{daysLeftExam1}d {hoursLeftExam1}h</span>
+                <span className="text-slate-500 hidden sm:inline">
+                  {selectedSubject === 'Qualidade de Software' ? '• Banco na Quarta!' : '• Qualidade na Terça!'}
+                </span>
               </div>
             </div>
           </div>
 
-          {/* PERFIL & POMODORO FOCO - CANTO DIREITO */}
+          {/* SELETOR PRINCIPAL DE DISCIPLINA (SEPARAÇÃO RÍGIDA) */}
+          <div className="hidden md:flex items-center bg-slate-950 p-1 rounded-2xl border border-slate-800 shadow-inner">
+            <button
+              onClick={() => onSelectSubject('Qualidade de Software')}
+              className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center space-x-1.5 ${
+                selectedSubject === 'Qualidade de Software'
+                  ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/30 ring-1 ring-indigo-400/50'
+                  : 'text-slate-400 hover:text-slate-200'
+              }`}
+            >
+              <span>🔬 Qualidade (Terça 20/10)</span>
+            </button>
+            <button
+              onClick={() => onSelectSubject('Banco de Dados')}
+              className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center space-x-1.5 ${
+                selectedSubject === 'Banco de Dados'
+                  ? 'bg-emerald-600 text-white shadow-md shadow-emerald-600/30 ring-1 ring-emerald-400/50'
+                  : 'text-slate-400 hover:text-slate-200'
+              }`}
+            >
+              <span>🗄️ Banco de Dados (Quarta 21/10)</span>
+            </button>
+          </div>
+
+          {/* PERFIL & POMODORO FOCO */}
           <div className="flex items-center space-x-2 shrink-0">
             
             {/* POMODORO CONTROLLER */}
@@ -210,7 +255,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               <span>{activeProfile.streakDays}d</span>
             </div>
 
-            {/* SELETOR DE PERFIL (Pedro / Namorada) */}
+            {/* SELETOR DE PERFIL (Gilvania / Pedro) */}
             <div className="flex items-center bg-slate-950 rounded-xl px-2 py-1 border border-slate-800">
               <span className="text-base mr-1" title="Avatar">{activeProfile.avatar}</span>
               <select
@@ -226,7 +271,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               </select>
             </div>
 
-            {/* BOTÕES DE EXPORTAR E IMPORTAR JSON */}
+            {/* BACKUP */}
             <div className="flex items-center space-x-1">
               <button
                 onClick={handleExport}
@@ -255,25 +300,65 @@ export const Navbar: React.FC<NavbarProps> = ({
 
         </div>
 
-        {/* NAVEGAÇÃO DE TABS (DESKTOP E MOBILE ROLÁVEL COM SEPARADOR) */}
+        {/* NAVEGAÇÃO DE TABS */}
         <div className="border-t border-slate-800/80 py-2">
           <nav className="flex items-center space-x-1.5 overflow-x-auto scrollbar-none pb-0.5">
             
+            {/* TAB: CADERNOS DE TEORIA & SLIDES (ESTUDO DEDICADO DO ASSUNTO) */}
+            <button
+              onClick={() => setActiveTab('teoria')}
+              className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap transition-all ${
+                activeTab === 'teoria'
+                  ? 'bg-gradient-to-r from-indigo-600 via-indigo-500 to-indigo-600 text-white shadow-md shadow-indigo-600/40 ring-1 ring-indigo-400/50'
+                  : 'text-indigo-300/90 hover:text-white hover:bg-slate-800/60'
+              }`}
+            >
+              <BookOpen className="w-3.5 h-3.5 text-indigo-400" />
+              <span>📚 Estudo Teórico</span>
+              <span className="px-1.5 py-0.2 rounded-full bg-indigo-400/20 text-indigo-300 text-[10px]">Slides</span>
+            </button>
+
+            {/* TAB 1: TREINO DISCURSIVO (FOCO PRINCIPAL PEDIDO PELO USUÁRIO) */}
+            <button
+              onClick={() => setActiveTab('discursive')}
+              className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap transition-all ${
+                activeTab === 'discursive'
+                  ? 'bg-gradient-to-r from-emerald-600 to-teal-500 text-white shadow-md shadow-emerald-600/30 ring-1 ring-emerald-400/50'
+                  : 'text-emerald-300/80 hover:text-emerald-200 hover:bg-slate-800/60'
+              }`}
+            >
+              <PenTool className="w-3.5 h-3.5 text-emerald-400" />
+              <span>✍️ Treino Discursivo</span>
+              <span className="px-1.5 py-0.2 rounded-full bg-emerald-400/20 text-emerald-300 text-[10px]">Oficial</span>
+            </button>
+
             <button
               onClick={() => setActiveTab('flashcards')}
-              className={`flex items-center space-x-1.5 px-3.5 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all ${
+              className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all ${
                 activeTab === 'flashcards'
                   ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/30'
                   : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/60'
               }`}
             >
               <Sparkles className="w-3.5 h-3.5" />
-              <span>Questões Flashcards</span>
+              <span>Questões Objetivas</span>
+            </button>
+
+            <button
+              onClick={() => setActiveTab('lab_pratico')}
+              className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all ${
+                activeTab === 'lab_pratico'
+                  ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/30'
+                  : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/60'
+              }`}
+            >
+              <Terminal className="w-3.5 h-3.5 text-emerald-400" />
+              <span>Laboratório Prático (Java & SQL)</span>
             </button>
 
             <button
               onClick={() => setActiveTab('simulado')}
-              className={`flex items-center space-x-1.5 px-3.5 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all ${
+              className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all ${
                 activeTab === 'simulado'
                   ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/30'
                   : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/60'
@@ -284,32 +369,8 @@ export const Navbar: React.FC<NavbarProps> = ({
             </button>
 
             <button
-              onClick={() => setActiveTab('tutor_ia')}
-              className={`flex items-center space-x-1.5 px-3.5 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all ${
-                activeTab === 'tutor_ia'
-                  ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/30'
-                  : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/60'
-              }`}
-            >
-              <Bot className="w-3.5 h-3.5 text-emerald-400" />
-              <span>Tutor IA</span>
-            </button>
-
-            <button
-              onClick={() => setActiveTab('caderno_erros')}
-              className={`flex items-center space-x-1.5 px-3.5 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all ${
-                activeTab === 'caderno_erros'
-                  ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/30'
-                  : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/60'
-              }`}
-            >
-              <BookMarked className="w-3.5 h-3.5" />
-              <span>Caderno de Erros</span>
-            </button>
-
-            <button
               onClick={() => setActiveTab('bizus')}
-              className={`flex items-center space-x-1.5 px-3.5 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all ${
+              className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all ${
                 activeTab === 'bizus'
                   ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/30'
                   : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/60'
@@ -320,8 +381,32 @@ export const Navbar: React.FC<NavbarProps> = ({
             </button>
 
             <button
+              onClick={() => setActiveTab('caderno_erros')}
+              className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all ${
+                activeTab === 'caderno_erros'
+                  ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/30'
+                  : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/60'
+              }`}
+            >
+              <BookMarked className="w-3.5 h-3.5" />
+              <span>Caderno de Erros</span>
+            </button>
+
+            <button
+              onClick={() => setActiveTab('tutor_ia')}
+              className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all ${
+                activeTab === 'tutor_ia'
+                  ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/30'
+                  : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/60'
+              }`}
+            >
+              <Bot className="w-3.5 h-3.5 text-emerald-400" />
+              <span>Tutor IA UNIFACS</span>
+            </button>
+
+            <button
               onClick={() => setActiveTab('dashboard')}
-              className={`flex items-center space-x-1.5 px-3.5 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all ${
+              className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all ${
                 activeTab === 'dashboard'
                   ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/30'
                   : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/60'

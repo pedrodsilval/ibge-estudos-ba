@@ -5,7 +5,8 @@ import {
   Lightbulb, 
   User, 
   RotateCcw,
-  Zap
+  Zap,
+  GraduationCap
 } from 'lucide-react';
 
 interface ChatMessage {
@@ -17,48 +18,84 @@ interface ChatMessage {
 }
 
 const PRESET_QUESTIONS = [
-  'Quais os principais atalhos do Windows 10/11?',
-  'O que mudou nas permissões do Android 13+?',
-  'Diferença entre Backup Full, Incremental e Diferencial?',
-  'Qual a diferença entre `=MÉDIA()` e `=MED()` no Excel?',
-  'Diferença entre os campos Para, Cc e Cco no E-mail?',
-  'Quais são as 4 regras de Crase Proibida?',
-  'Como aplicar a Regra do Mané na negação do "Se...Então"?'
+  'Quais são as 3 decisões formais e os 2 documentos de uma RTF?',
+  'Como calcular a Complexidade Ciclomática V(G)?',
+  'Qual a diferença entre STUB e DRIVER nos testes de integração?',
+  'Como identificar 1FN, 2FN e 3FN em Banco de Dados?',
+  'Por que a divisão (9 / 5) falha em Java?',
+  'Qual a diferença entre DELETE e DROP TABLE?',
+  'Por que telefone é VARCHAR e dinheiro é DECIMAL?'
 ];
 
-// Respostas inteligentes alinhadas 100% ao edital oficial do IBGE (Windows 10/11, Android 13+, Word, Excel, Hardware, Backup, Redes, Português, RLM)
+// Base de conhecimento acadêmica para as provas da UNIFACS (Prof. Enderson Nobre e Prof. Luiz Henrique Souza)
 const KNOWLEDGE_BASE: Record<string, { answer: string; bizu?: string }> = {
-  'windows': {
-    answer: 'Atalhos fundamentais do **Windows 10/11** para a prova:\n- `Ctrl + Shift + N`: Cria uma Nova Pasta\n- `Win + E`: Abre o Explorador de Arquivos\n- `F2`: Renomeia arquivo/pasta selecionada\n- `Shift + Delete`: Exclui arquivo permanentemente (sem mandar para a Lixeira)',
-    bizu: '💡 Lixeira: Arquivos excluídos com `Delete` simples vão para a Lixeira. Com `Shift + Delete` são apagados direto!'
+  'rtf': {
+    answer: 'Uma **Revisão Técnica Formal (RTF)** é uma reunião estática de controle de qualidade:\n- **Duração e Pessoas:** 3 a 5 participantes e menos de 2 horas.\n- **Papéis:** Produtor (apresenta o produto), Líder (controla o tempo e a agenda), Revisores (apontam defeitos) e Registrador (anota tudo na ata).\n- **3 Decisões Formais:** 1. Aceitar sem modificações; 2. Rejeitar por erros graves (exige nova RTF); 3. Aceitar provisoriamente (apenas correções pontuais).\n- **2 Documentos:** *Lista de Problemas de Revisão* (para o desenvolvedor corrigir) e *Relatório Sintetizado da RTF* (para a gestão).',
+    bizu: '💡 Diretriz clássica de Pressman: "Revisa-se o produto, nunca o produtor! Aponte o defeito, mas não tente consertá-lo na reunião."'
   },
-  'android': {
-    answer: 'No **Android 13 ou superior** (usado em pesquisas de campo), o foco do edital é a **Segurança e Permissões**:\n- Controle granular de privacidade para acesso à Câmera, Microfone e Localização (GPS).\n- Permissões específicas de fotos/vídeos e autorização prévia para notificações de aplicativos.',
-    bizu: '💡 Android 13+: O usuário deve autorizar explicitamente cada permissão sensível de mídia e localização.'
+  'mccabe': {
+    answer: 'A **Complexidade Ciclomática V(G)** de Tom McCabe fornece uma métrica da complexidade lógica e define o conjunto-base de caminhos linearmente independentes a serem testados. É calculada de 3 formas equivalentes:\n1. **V(G) = Número de Regiões** (fechadas + 1 externa)\n2. **V(G) = E - N + 2** (Arestas menos Nós mais 2)\n3. **V(G) = P + 1** (Nós predicados de decisão mais 1)',
+    bizu: '💡 Decore a tríade: Regiões, E - N + 2, e P + 1. O resultado é rigorosamente o mesmo!'
   },
-  'excel': {
-    answer: 'Principais funções do **Microsoft Excel** no edital:\n- `=MÉDIA(A1:A3)`: Média Aritmética\n- `=MED(A1:A3)`: Mediana (Valor Central)\n- Sintaxe: Dois pontos `:` significa ATÉ. Ponto e vírgula `;` significa E.\n- O símbolo de cifrão `$` trava a referência (ex: `$A$1` não muda ao arrastar).',
-    bizu: '💡 `=MÉDIA()` = Média Aritmética | `=MED()` = Mediana! Não confundir na prova.'
+  'ciclomática': {
+    answer: 'A **Complexidade Ciclomática V(G)** de Tom McCabe fornece uma métrica da complexidade lógica e define o conjunto-base de caminhos linearmente independentes a serem testados. É calculada de 3 formas equivalentes:\n1. **V(G) = Número de Regiões** (fechadas + 1 externa)\n2. **V(G) = E - N + 2** (Arestas menos Nós mais 2)\n3. **V(G) = P + 1** (Nós predicados de decisão mais 1)',
+    bizu: '💡 Decore a tríade: Regiões, E - N + 2, e P + 1. O resultado é rigorosamente o mesmo!'
   },
-  'word': {
-    answer: 'Atalhos de formatação no **Microsoft Word em Português**:\n- `Ctrl + N`: NEGRITO\n- `Ctrl + I`: ITÁLICO\n- `Ctrl + S`: SUBLINHADO\n- `Ctrl + B`: SALVAR o documento',
-    bizu: '💡 CUIDADO: `Ctrl + B` no Word PT-BR é para SALVAR (Bold é no inglês).'
+  'integracao': {
+    answer: 'No teste de integração incremental, diferenciam-se duas estratégias principais:\n- **Top-Down (Descendente):** Começa no topo (controladores/telas) e desce. Exige **STUBS** (submódulos falsos/simulados que retornam respostas estáticas para isolar a base).\n- **Bottom-Up (Ascendente):** Começa na base (repositórios/utilitários) e sobe. Exige **DRIVERS** (módulos chamadores que disparam as execuções).',
+    bizu: '💡 Top-Down (cima pra baixo) usa STUB. Bottom-Up (baixo pra cima) usa DRIVER.'
   },
-  'backup': {
-    answer: 'Tipos de Backup de Segurança:\n- **Backup Completo (Full):** Copia 100% dos dados selecionados.\n- **Backup Incremental:** Copia apenas o que mudou desde o último backup de qualquer tipo.\n- **Backup Diferencial:** Copia o que mudou desde o último backup FULL.',
-    bizu: '💡 FULL = Copia Tudo | INCREMENTAL = Copia alterado desde último backup | DIFERENCIAL = Copia alterado desde último FULL.'
+  'stub': {
+    answer: 'Um **STUB** é um módulo auxiliar fictício (fake/mock) utilizado na integração **Descendente (Top-Down)** para substituir temporariamente módulos inferiores que ainda não foram desenvolvidos ou conectados.',
+    bizu: '💡 Top-Down usa STUB para simular o que está embaixo!'
   },
-  'email': {
-    answer: 'Campos de envio de Correio Eletrônico:\n- **Para:** Destinatário principal (Visível a todos).\n- **Cc (Com Cópia):** Destinatário secundário (Visível a todos).\n- **Cco (Com Cópia Oculta):** Recebe o e-mail sem revelar seu endereço para os demais.',
-    bizu: '💡 Ninguém nos campos `Para` ou `Cc` consegue enxergar quem está no `Cco`.'
+  'driver': {
+    answer: 'Um **DRIVER** é um programa chamador utilizado na integração **Ascendente (Bottom-Up)** para disparar chamadas e passar parâmetros para módulos da base que estão sendo testados antes dos módulos superiores existirem.',
+    bizu: '💡 Bottom-Up usa DRIVER para pilotar por cima!'
   },
-  'mané': {
-    answer: 'Para negar a condicional $P \\rightarrow Q$ ("Se P, então Q"), usa-se a **Regra do MANÉ**:\n1. **MA**ntém a primeira proposição ($P$).\n2. Troca o "Se...Então" pelo conectivo **E** ($\\land$).\n3. **NE**ga a segunda proposição ($\\neg Q$).',
-    bizu: '💡 Negação de "Se estuda, passa" $\\rightarrow$ "Estuda E NÃO passa".'
+  'caixa-preta': {
+    answer: 'O **Teste Caixa-Preta (Funcional)** avalia o software com base nos requisitos e interfaces, sem analisar o código-fonte interno. Principais técnicas: **Particionamento de Equivalência** e **Análise do Valor Limite**. Erros expostos (Mnemônico **F-I-B-D-T**): Funções incorretas/ausentes, Interface, Banco de dados/estruturas externas, Desempenho e Término/inicialização.',
+    bizu: '💡 Caixa-preta testa o "quê" o sistema faz (entradas e saídas).'
   },
-  'crase': {
-    answer: 'Principais casos de **Crase Proibida** para a prova:\n1. Antes de **Verbos** (ex: "Passou a estudar").\n2. Antes de palavras **Masculinas** (ex: "Andar a pé").\n3. Antes de **Uma/Todas** (ex: "Chegou a uma conclusão").\n4. Entre palavras **Repetidas** (ex: "Dia a dia").',
-    bizu: '💡 NUNCA use crase antes de verbo, palavra masculina ou expressão repetida!'
+  'caixa-branca': {
+    answer: 'O **Teste Caixa-Branca (Estrutural)** analisa o código-fonte interno, desvios e fluxos lógicos. Seus 4 pilares são: 1. Exercitar todos os caminhos independentes; 2. Testar decisões nos estados Verdadeiro e Falso; 3. Executar ciclos em seus limites operacionais; 4. Validar estruturas de dados internas.',
+    bizu: '💡 Caixa-branca testa "como" o código foi construído internamente.'
+  },
+  '1fn': {
+    answer: 'A **Primeira Forma Normal (1FN)** exige **ATOMICIDADE**: nenhum atributo pode armazenar múltiplos valores, listas ou arrays numa única célula (como vários telefones juntos), nem colunas repetitivas (tel1, tel2). Toda tabela na 1FN possui uma Chave Primária (PK) definida.',
+    bizu: '💡 1FN = Tudo atômico e indivisível. Nada de listas numa célula só!'
+  },
+  '2fn': {
+    answer: 'A **Segunda Forma Normal (2FN)** exige estar na 1FN e **eliminar Dependências Parciais**. Um atributo não-chave não pode depender de apenas uma parte de uma Chave Primária COMPOSTA. Toda tabela com PK simples (uma coluna só) já está automaticamente na 2FN!',
+    bizu: '💡 2FN só se aplica a Chave Composta: nenhum campo comum pode depender de só "um pedaço" da chave.'
+  },
+  '3fn': {
+    answer: 'A **Terceira Forma Normal (3FN)** exige estar na 2FN e **eliminar Dependências Transitivas**. Um atributo não-chave não pode depender de outro atributo que também não é chave (A ➔ B ➔ C). Por exemplo: nome e ramal de departamento não podem ficar na tabela de Funcionários se dependerem de id_departamento.',
+    bizu: '💡 3FN = Coluna comum não pode ser "dona" de outra coluna comum.'
+  },
+  'delete': {
+    answer: 'Diferença entre DELETE e DROP:\n- `DELETE FROM tabela WHERE id = 1;`: Comando **DML** que apaga apenas as linhas (tuplas). A estrutura e o esqueleto da tabela permanecem intactos.\n- `DROP TABLE tabela;`: Comando **DDL** que destrói a tabela por completo, removendo sua estrutura, colunas, índices e dados do banco.',
+    bizu: '💡 DELETE tira a mobília de dentro. DROP explode o prédio inteiro!'
+  },
+  'drop': {
+    answer: '`DROP TABLE tabela;` é um comando DDL que remove o objeto tabela permanentemente do esquema do banco de dados, excluindo estrutura e dados simultaneamente.',
+    bizu: '💡 Cuidado: DROP não tem volta!'
+  },
+  'telefone': {
+    answer: 'Campos como Telefone, CPF e CEP devem ser armazenados como **VARCHAR** e não como INT porque:\n1. O tipo INT descarta o zero à esquerda (o DDD 071 vira 71);\n2. Telefones possuem caracteres de máscara (parênteses, hifens);\n3. Não realizam operações matemáticas (ninguém soma dois telefones).',
+    bizu: '💡 Se não faz conta matemática e pode começar com zero, guarde sempre como VARCHAR!'
+  },
+  'dinheiro': {
+    answer: 'Valores financeiros devem ser armazenados com o tipo **DECIMAL(10,2)** (e nunca FLOAT ou DOUBLE) porque tipos de ponto flutuante sofrem de imprecisão binária cumulativa, causando perda de centavos em saldos bancários e faturas.',
+    bizu: '💡 Dinheiro em banco de dados relacional = SEMPRE DECIMAL!'
+  },
+  'divisao': {
+    answer: 'Em Java, `(9 / 5)` é avaliado como divisão inteira porque ambos os números são inteiros literais. O compilador descarta as casas decimais e retorna `1` (em vez de `1.8`). A expressão `celsius * (9 / 5) + 32` vira `celsius * 1 + 32`.\n\n**Correção:** Use literais double: `(9.0 / 5.0)`.',
+    bizu: '💡 Em Java, divisão de int com int dá int! Use 9.0 / 5.0 para obter 1.8.'
+  },
+  'fatorial': {
+    answer: 'No cálculo de fatorial acumulado, a variável deve ser inicializada com `fat = 1` (elemento neutro da multiplicação). Começar com `fat = 0` faz qualquer produto resultar em 0 (`0 * 1 = 0`, `0 * 2 = 0`...).',
+    bizu: '💡 Multiplicação acumulada começa sempre em 1!'
   }
 };
 
@@ -67,107 +104,140 @@ export const AIChatbot: React.FC = () => {
     {
       id: 'welcome',
       sender: 'ai',
-      text: 'Olá! Sou o seu **Tutor IA Reta Final IBGE**. Estou 100% atualizado com o edital oficial de Noções de Informática (Windows 10/11, Android 13+, Word, Excel, Hardware, Backup, Redes), Português e Raciocínio Lógico!',
-      bizu: '💡 Dica: Clique nas perguntas rápidas sugeridas abaixo ou digite sua dúvida.',
-      timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+      text: 'Olá, Gilvania! Sou seu **Tutor Acadêmico UNIFACS**. Estou calibrado com o conteúdo exato das aulas do **Prof. Enderson Nobre (Qualidade de Software)** e do **Prof. Luiz Henrique (Banco de Dados)**.\n\nQual conceito ou exercício você gostaria de revisar agora?',
+      timestamp: new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' })
     }
   ]);
-  const [input, setInput] = useState('');
-  const [isTyping, setIsTyping] = useState(false);
-  const chatEndRef = useRef<HTMLDivElement>(null);
+  const [inputText, setInputText] = useState('');
+  const messagesEndRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    chatEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-  }, [messages, isTyping]);
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [messages]);
 
-  const handleSend = (questionText?: string) => {
-    const textToSend = questionText || input;
-    if (!textToSend.trim()) return;
+  const handleSendMessage = (textToSend?: string) => {
+    const text = textToSend || inputText;
+    if (!text.trim()) return;
 
     const userMsg: ChatMessage = {
-      id: Date.now().toString(),
+      id: `user-${Date.now()}`,
       sender: 'user',
-      text: textToSend,
-      timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+      text,
+      timestamp: new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' })
     };
 
     setMessages(prev => [...prev, userMsg]);
-    if (!questionText) setInput('');
-    setIsTyping(true);
+    if (!textToSend) setInputText('');
 
     setTimeout(() => {
-      const queryLower = textToSend.toLowerCase();
-      let matchKey = Object.keys(KNOWLEDGE_BASE).find(key => queryLower.includes(key));
+      const lower = text.toLowerCase();
+      let match = Object.entries(KNOWLEDGE_BASE).find(([k]) => lower.includes(k));
 
-      let aiText = '';
-      let aiBizu: string | undefined = undefined;
+      let aiResponseText = '';
+      let aiBizu = '';
 
-      if (matchKey && KNOWLEDGE_BASE[matchKey]) {
-        aiText = KNOWLEDGE_BASE[matchKey].answer;
-        aiBizu = KNOWLEDGE_BASE[matchKey].bizu;
-      } else if (queryLower.includes('hardware') || queryLower.includes('cpu')) {
-        aiText = 'Conceitos de Hardware do Edital:\n- **CPU (Processador):** Executa os cálculos e instruções (Cérebro).\n- **Memória RAM:** Memória temporária volátil de trabalho.\n- **SSD / HD:** Armazenamento não volátil permanente.';
-        aiBizu = '💡 Periféricos de Entrada: Teclado, Mouse, Scanner | Saída: Monitor comum, Impressora.';
+      if (match) {
+        aiResponseText = match[1].answer;
+        aiBizu = match[1].bizu || '';
+      } else if (lower.includes('clinica') || lower.includes('veterinaria') || lower.includes('animal')) {
+        aiResponseText = 'Na **Atividade da Clínica Veterinária** projetada em aula:\n- **Tutor (1) ➔ (N) Animal:** Um tutor pode ter vários animais; o animal pertence a um só tutor. A FK `id_tutor` fica na tabela Animal.\n- **Animal e Veterinário ➔ Consulta:** A tabela Consulta é o ponto de encontro das consultas com atributos próprios: data, horário, motivo, valor_cobrado (DECIMAL) e diagnóstico (que pode ser NULL enquanto a consulta não acabar!).';
+        aiBizu = '💡 Lembre-se: Diagnóstico aceita NULL e valor monetário usa DECIMAL(10,2).';
       } else {
-        aiText = `Para **"${textToSend}"**: no edital oficial de Noções de Informática, foque nos aspectos operacionais do **Windows 10/11**, permissões no **Android 13+**, fórmulas no **Excel**, formatação no **Word**, práticas de **Backup/Senhas** e regras de **Crase/Concordância**.`;
-        aiBizu = '💡 Consulte a aba "Paredão de Bizus" para rever as tabelas de alta incidência.';
+        aiResponseText = `Excelente pergunta para as provas da UNIFACS! Recomendo focar nos conceitos prioritários:\n- **Qualidade de Software:** As 15 questões da folha de revisão (RTF, Caixa-Preta F-I-B-D-T, McCabe V(G) = P + 1, e Stubs/Drivers).\n- **Banco de Dados:** As Formas Normais (1FN atômica, 2FN sem dependência parcial, 3FN sem dependência transitiva) e os scripts DDL da Clínica Veterinária.\n\nTente clicar em uma das perguntas rápidas sugeridas acima!`;
+        aiBizu = '💡 Dica: Explore o "Paredão de Bizus" e a aba "Laboratório Prático" no menu superior!';
       }
 
       const aiMsg: ChatMessage = {
-        id: (Date.now() + 1).toString(),
+        id: `ai-${Date.now()}`,
         sender: 'ai',
-        text: aiText,
+        text: aiResponseText,
         bizu: aiBizu,
-        timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+        timestamp: new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' })
       };
 
       setMessages(prev => [...prev, aiMsg]);
-      setIsTyping(false);
-    }, 500);
+    }, 400);
   };
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-8">
+    <div className="max-w-4xl mx-auto px-4 py-6 space-y-6">
       
-      {/* CABEÇALHO DA IA */}
-      <div className="flex items-center justify-between bg-gradient-to-r from-indigo-950 via-slate-900 to-indigo-950 border border-indigo-500/30 rounded-3xl p-6 shadow-2xl mb-6">
-        <div className="flex items-center space-x-4">
-          <div className="w-12 h-12 rounded-2xl bg-indigo-600/20 border border-indigo-500/40 flex items-center justify-center">
-            <Bot className="w-7 h-7 text-indigo-400 animate-pulse" />
+      {/* CABEÇALHO */}
+      <div className="bg-slate-900 border border-slate-800 p-6 rounded-3xl shadow-xl flex items-center justify-between">
+        <div className="flex items-center space-x-3">
+          <div className="p-3 bg-indigo-600/20 text-indigo-400 rounded-2xl border border-indigo-500/30">
+            <GraduationCap className="w-6 h-6" />
           </div>
           <div>
-            <h2 className="text-xl font-extrabold text-white flex items-center gap-2">
-              Tutor IA Reta Final IBGE
-              <span className="px-2 py-0.5 text-[10px] bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 rounded-full">
-                Online
+            <h2 className="text-xl font-bold text-white flex items-center gap-2">
+              Tutor Acadêmico UNIFACS
+              <span className="text-[10px] bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 px-2 py-0.5 rounded-full font-mono">
+                Online 24/7
               </span>
             </h2>
-            <p className="text-xs text-slate-300">
-              Perguntas e bizus 100% alinhados ao edital oficial do concurso.
+            <p className="text-xs text-slate-400">
+              Pronto para tirar dúvidas de Qualidade de Software e Banco de Dados.
             </p>
           </div>
         </div>
 
         <button
           onClick={() => setMessages([messages[0]])}
-          className="p-2.5 text-slate-400 hover:text-slate-200 bg-slate-950 border border-slate-800 rounded-xl transition-all"
+          className="p-2 text-slate-400 hover:text-slate-200 border border-slate-800 rounded-xl hover:bg-slate-800 transition-colors"
           title="Limpar Conversa"
         >
           <RotateCcw className="w-4 h-4" />
         </button>
       </div>
 
-      {/* CHIPS DE PERGUNTAS RÁPIDAS */}
-      <div className="mb-6">
-        <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider block mb-2.5 flex items-center gap-1">
-          <Zap className="w-3.5 h-3.5 text-amber-400" /> Dúvidas Frequentes do Edital:
+      {/* ÁREA DE MENSAGENS */}
+      <div className="bg-slate-900 border border-slate-800 rounded-3xl p-6 shadow-2xl h-[480px] overflow-y-auto space-y-4">
+        {messages.map(m => {
+          const isUser = m.sender === 'user';
+          return (
+            <div key={m.id} className={`flex items-start gap-3 ${isUser ? 'flex-row-reverse' : ''}`}>
+              <div className={`w-8 h-8 rounded-xl flex items-center justify-center shrink-0 text-xs font-bold ${
+                isUser ? 'bg-indigo-600 text-white' : 'bg-slate-800 text-indigo-400 border border-slate-700'
+              }`}>
+                {isUser ? <User className="w-4 h-4" /> : <Bot className="w-4 h-4" />}
+              </div>
+
+              <div className={`max-w-[80%] rounded-2xl p-4 text-xs sm:text-sm space-y-2 leading-relaxed ${
+                isUser 
+                  ? 'bg-indigo-600 text-white rounded-tr-none' 
+                  : 'bg-slate-950 border border-slate-800 text-slate-200 rounded-tl-none'
+              }`}>
+                <div className="whitespace-pre-line">{m.text}</div>
+                
+                {m.bizu && (
+                  <div className="mt-2 p-2.5 bg-amber-500/10 border border-amber-500/30 rounded-xl text-amber-300 text-xs font-medium flex items-center gap-1.5">
+                    <Zap className="w-3.5 h-3.5 shrink-0 text-amber-400" />
+                    <span>{m.bizu}</span>
+                  </div>
+                )}
+
+                <div className={`text-[10px] ${isUser ? 'text-indigo-200 text-right' : 'text-slate-500'}`}>
+                  {m.timestamp}
+                </div>
+              </div>
+            </div>
+          );
+        })}
+        <div ref={messagesEndRef} />
+      </div>
+
+      {/* PERGUNTAS RÁPIDAS PRESET */}
+      <div className="space-y-2">
+        <span className="text-[11px] font-bold text-slate-400 flex items-center gap-1.5 px-1">
+          <Lightbulb className="w-3.5 h-3.5 text-amber-400" />
+          <span>Dúvidas Frequentes nas Provas da UNIFACS:</span>
         </span>
         <div className="flex flex-wrap gap-2">
           {PRESET_QUESTIONS.map((q, idx) => (
             <button
               key={idx}
-              onClick={() => handleSend(q)}
-              className="px-3 py-1.5 bg-slate-900 hover:bg-indigo-600/20 border border-slate-800 hover:border-indigo-500/50 rounded-xl text-xs text-slate-300 hover:text-indigo-200 transition-all text-left"
+              onClick={() => handleSendMessage(q)}
+              className="px-3 py-1.5 bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-white border border-slate-800 text-xs font-medium rounded-xl transition-all"
             >
               {q}
             </button>
@@ -175,76 +245,24 @@ export const AIChatbot: React.FC = () => {
         </div>
       </div>
 
-      {/* ÁREA DE MENSAGENS */}
-      <div className="bg-slate-900 border border-slate-800 rounded-3xl p-6 shadow-2xl min-h-[420px] max-h-[550px] overflow-y-auto space-y-4 mb-4">
-        {messages.map((msg) => {
-          const isUser = msg.sender === 'user';
-          return (
-            <div
-              key={msg.id}
-              className={`flex items-start space-x-3 ${isUser ? 'flex-row-reverse space-x-reverse' : ''}`}
-            >
-              <div className={`w-8 h-8 rounded-xl flex items-center justify-center shrink-0 font-bold text-xs ${
-                isUser ? 'bg-indigo-600 text-white' : 'bg-slate-800 text-indigo-400 border border-indigo-500/30'
-              }`}>
-                {isUser ? <User className="w-4 h-4" /> : <Bot className="w-4 h-4" />}
-              </div>
-
-              <div className={`max-w-[80%] rounded-2xl p-4 text-sm leading-relaxed ${
-                isUser 
-                  ? 'bg-indigo-600 text-white rounded-tr-none' 
-                  : 'bg-slate-950 border border-slate-800 text-slate-200 rounded-tl-none'
-              }`}>
-                <div className="whitespace-pre-wrap">{msg.text}</div>
-
-                {msg.bizu && (
-                  <div className="mt-3 p-3 bg-indigo-950/70 border border-indigo-500/30 rounded-xl text-xs text-indigo-200 flex items-start space-x-2">
-                    <Lightbulb className="w-4 h-4 text-amber-300 shrink-0 mt-0.5 animate-pulse" />
-                    <span>{msg.bizu}</span>
-                  </div>
-                )}
-
-                <span className="text-[10px] text-slate-500 block text-right mt-1.5 font-mono">
-                  {msg.timestamp}
-                </span>
-              </div>
-            </div>
-          );
-        })}
-
-        {isTyping && (
-          <div className="flex items-center space-x-2 text-xs text-slate-400 italic bg-slate-950 px-4 py-2 rounded-xl w-fit border border-slate-800">
-            <Bot className="w-4 h-4 text-indigo-400 animate-spin" />
-            <span>Tutor IA digitando resposta...</span>
-          </div>
-        )}
-
-        <div ref={chatEndRef} />
-      </div>
-
-      {/* CAMPO DE DIGITAÇÃO DE MENSAGEM */}
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          handleSend();
-        }}
-        className="flex items-center space-x-2 bg-slate-900 border border-slate-800 p-2 rounded-2xl shadow-xl"
-      >
+      {/* INPUT BAR */}
+      <div className="flex items-center gap-2 bg-slate-900 border border-slate-800 p-2 rounded-2xl shadow-xl">
         <input
           type="text"
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          placeholder="Digite sua dúvida sobre o edital do IBGE..."
-          className="flex-1 bg-transparent px-4 py-2.5 text-sm text-white placeholder-slate-500 focus:outline-none"
+          value={inputText}
+          onChange={(e) => setInputText(e.target.value)}
+          onKeyDown={(e) => e.key === 'Enter' && handleSendMessage()}
+          placeholder="Pergunte sobre RTF, McCabe, 1FN/2FN/3FN, JUnit 5 ou SQL..."
+          className="flex-1 bg-transparent px-3 py-2 text-sm text-white placeholder-slate-500 focus:outline-none"
         />
         <button
-          type="submit"
-          disabled={!input.trim()}
-          className="p-3 bg-indigo-600 hover:bg-indigo-500 disabled:opacity-40 text-white rounded-xl transition-all shadow-md shadow-indigo-600/30"
+          onClick={() => handleSendMessage()}
+          disabled={!inputText.trim()}
+          className="p-3 bg-indigo-600 hover:bg-indigo-500 disabled:opacity-30 text-white rounded-xl transition-all shadow-md shadow-indigo-600/30"
         >
           <Send className="w-4 h-4" />
         </button>
-      </form>
+      </div>
 
     </div>
   );

@@ -1,4 +1,4 @@
-export type SubjectType = 'Informática' | 'Língua Portuguesa' | 'Raciocínio Lógico';
+export type SubjectType = 'Qualidade de Software' | 'Banco de Dados';
 
 export type DifficultyType = 'Fácil' | 'Médio' | 'Difícil';
 
@@ -17,13 +17,34 @@ export interface QuestionExplanation {
 export interface Question {
   id: string;
   subject: SubjectType;
-  topic: string; // ex: "Redes - TCP/IP", "Linux - Comandos", "SQL", "Crase"
-  source: string; // ex: "FGV / IBGE", "Cesgranrio", "Questão Inédita Reta Final"
+  topic: string; // ex: "Revisões Técnicas (RTF)", "Caixa-Branca / McCabe", "JUnit 5", "Formas Normais", "SQL DDL/DML"
+  source: string; // ex: "UNIFACS - Folha de Revisão Oficial", "Prof. Enderson Nobre", "Prof. Luiz Henrique", "Pressman / Sommerville"
   difficulty: DifficultyType;
   statement: string;
   options: { key: string; text: string }[];
   correctOption: string; // "A", "B", "C", "D" ou "E"
   explanation: QuestionExplanation;
+}
+
+export interface DiscursiveQuestion {
+  id: string;
+  subject: SubjectType;
+  topic: string;
+  source: string;
+  difficulty: DifficultyType;
+  statement: string;
+  contextHint?: string;
+  expectedAnswer: string;
+  keywords: string[];
+  goldenBizu: string;
+  gradingCriteria: string[];
+}
+
+export interface DiscursiveAnswerHistory {
+  userDraft: string;
+  selfScore?: number; // 0 a 10
+  checkedKeywords: string[];
+  savedAt: string;
 }
 
 export interface UserAnswerHistory {
@@ -32,7 +53,7 @@ export interface UserAnswerHistory {
   userRating?: 'easy' | 'medium' | 'hard';
   answeredAt: string;
   attemptsCount: number;
-  sourceContext?: string; // ex: "Simulado de 30q (26/09 21:42)"
+  sourceContext?: string; // ex: "Simulado UNIFACS"
 }
 
 export interface UserProfile {
@@ -43,6 +64,7 @@ export interface UserProfile {
   streakDays: number;
   lastStudyDate: string;
   answers: Record<string, UserAnswerHistory>;
+  discursiveAnswers?: Record<string, DiscursiveAnswerHistory>;
   bookmarkedQuestionIds: string[];
   lastSimuladoQuestionIds?: string[];
   lastSimuladoDate?: string;

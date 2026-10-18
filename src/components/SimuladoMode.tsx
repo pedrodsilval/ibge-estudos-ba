@@ -1,28 +1,27 @@
 import React, { useState, useEffect } from 'react';
-import confetti from 'canvas-confetti';
 import { 
   Clock, 
-  Play, 
+  CheckCircle2, 
+  Check, 
+  X, 
   RotateCcw, 
-  Award, 
-  BarChart2, 
   ChevronRight, 
   ChevronLeft,
-  BookOpen,
-  Zap,
-  CheckCircle2,
-  Lightbulb,
   Filter,
-  Check,
-  X
+  ArrowRight,
+  Zap,
+  Play,
+  Terminal,
+  Database,
+  GraduationCap
 } from 'lucide-react';
+import confetti from 'canvas-confetti';
 import type { Question, UserProfile, SubjectType } from '../types/study';
-import { recordQuestionAnswer, saveLastSimuladoHistory } from '../services/storageService';
 
 interface SimuladoModeProps {
   questions: Question[];
   activeProfile: UserProfile;
-  onUpdateProfile: (updated: UserProfile) => void;
+  onUpdateProfile: (profile: UserProfile) => void;
   onReviewErrors: () => void;
 }
 
@@ -33,7 +32,6 @@ export const SimuladoMode: React.FC<SimuladoModeProps> = ({
   onReviewErrors
 }) => {
   const [examState, setExamState] = useState<'idle' | 'running' | 'finished'>('idle');
-  const [examQuestionCount, setExamQuestionCount] = useState<number>(15);
   const [simuladoQuestions, setSimuladoQuestions] = useState<Question[]>([]);
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [userAnswers, setUserAnswers] = useState<Record<string, string>>({});
@@ -42,7 +40,6 @@ export const SimuladoMode: React.FC<SimuladoModeProps> = ({
   
   // Filtros de Correção do Simulado Finalizado
   const [reviewFilter, setReviewFilter] = useState<'all' | 'errors' | 'correct'>('all');
-  const [reviewSubject, setReviewSubject] = useState<'all' | SubjectType>('all');
 
   const [scoreResult, setScoreResult] = useState<{
     total: number;
@@ -52,45 +49,33 @@ export const SimuladoMode: React.FC<SimuladoModeProps> = ({
   } | null>(null);
 
   // Inicializar questões para o simulado
-  const startSimulado = (count: number) => {
+  const startSimulado = (mode: 'qs' | 'bd' | 'completo') => {
     let selected: Question[] = [];
 
-    if (count === 60) {
-      const infQs = questions.filter(q => q.subject === 'Informática').sort(() => 0.5 - Math.random()).slice(0, 35);
-      const portQs = questions.filter(q => q.subject === 'Língua Portuguesa').sort(() => 0.5 - Math.random()).slice(0, 15);
-      const rlmQs = questions.filter(q => q.subject === 'Raciocínio Lógico').sort(() => 0.5 - Math.random()).slice(0, 10);
-      selected = [...infQs, ...portQs, ...rlmQs];
+    if (mode === 'qs') {
+      selected = questions.filter(q => q.subject === 'Qualidade de Software');
+    } else if (mode === 'bd') {
+      selected = questions.filter(q => q.subject === 'Banco de Dados');
     } else {
-      const infCount = Math.round(count * 0.58);
-      const portCount = Math.round(count * 0.25);
-      const rlmCount = Math.max(1, count - infCount - portCount);
-
-      const infQs = questions.filter(q => q.subject === 'Informática').sort(() => 0.5 - Math.random()).slice(0, infCount);
-      const portQs = questions.filter(q => q.subject === 'Língua Portuguesa').sort(() => 0.5 - Math.random()).slice(0, portCount);
-      const rlmQs = questions.filter(q => q.subject === 'Raciocínio Lógico').sort(() => 0.5 - Math.random()).slice(0, rlmCount);
-      selected = [...infQs, ...portQs, ...rlmQs];
+      selected = [...questions].sort(() => 0.5 - Math.random());
     }
 
-    if (selected.length < count) {
-      const remainingNeeded = count - selected.length;
-      const selectedIds = new Set(selected.map(q => q.id));
-      const extras = questions.filter(q => !selectedIds.has(q.id)).sort(() => 0.5 - Math.random()).slice(0, remainingNeeded);
-      selected = [...selected, ...extras];
-    }
-    
     const now = new Date();
     const dateStr = `${now.toLocaleDateString('pt-BR')} às ${now.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' })}`;
-    const label = `Simulado de ${selected.length}q (${dateStr})`;
+    const labelTitle = mode === 'qs' 
+      ? 'Qualidade de Software (Terça)' 
+      : mode === 'bd' 
+      ? 'Banco de Dados (Quarta)' 
+      : 'Completo UNIFACS';
+    const label = `Simulado: ${labelTitle} - ${selected.length}q (${dateStr})`;
     
     setCurrentSimuladoLabel(label);
-    setExamQuestionCount(selected.length);
     setSimuladoQuestions(selected);
     setCurrentIndex(0);
     setUserAnswers({});
-    setTimeLeftSeconds(selected.length * 180); 
+    setTimeLeftSeconds(selected.length * 120); // 2 min por questão
     setExamState('running');
     setReviewFilter('all');
-    setReviewSubject('all');
   };
 
   // Contagem regressiva do timer
@@ -125,9 +110,8 @@ export const SimuladoMode: React.FC<SimuladoModeProps> = ({
   const finishSimulado = () => {
     let correctCount = 0;
     const subjectStats: Record<SubjectType, { total: number; correct: number }> = {
-      'Informática': { total: 0, correct: 0 },
-      'Língua Portuguesa': { total: 0, correct: 0 },
-      'Raciocínio Lógico': { total: 0, correct: 0 }
+      'Qualidade de Software': { total: 0, correct: 0 },
+      'Banco de Dados': { total: 0, correct: 0 }
     };
 
     let updatedProfile = activeProfile;
@@ -143,19 +127,38 @@ export const SimuladoMode: React.FC<SimuladoModeProps> = ({
       }
 
       if (selected) {
-        updatedProfile = recordQuestionAnswer(q.id, selected, isCorrect, undefined, currentSimuladoLabel);
-        if (isCorrect) correctCount += 1;
+        if (isCorrect) correctCount++;
+        
+        const existingHistory = updatedProfile.answers[q.id];
+        updatedProfile = {
+          ...updatedProfile,
+          answers: {
+            ...updatedProfile.answers,
+            [q.id]: {
+              selectedOption: selected,
+              isCorrect,
+              answeredAt: new Date().toISOString(),
+              attemptsCount: (existingHistory?.attemptsCount || 0) + 1,
+              sourceContext: currentSimuladoLabel
+            }
+          }
+        };
       }
     });
 
-    // Salvar o histórico do último simulado no perfil
-    updatedProfile = saveLastSimuladoHistory(allSimuladoQuestionIds, currentSimuladoLabel);
+    updatedProfile = {
+      ...updatedProfile,
+      lastSimuladoQuestionIds: allSimuladoQuestionIds,
+      lastSimuladoDate: currentSimuladoLabel
+    };
 
     onUpdateProfile(updatedProfile);
 
-    const percentage = Math.round((correctCount / simuladoQuestions.length) * 100);
+    const total = simuladoQuestions.length;
+    const percentage = total > 0 ? Math.round((correctCount / total) * 100) : 0;
+
     setScoreResult({
-      total: simuladoQuestions.length,
+      total,
       correct: correctCount,
       percentage,
       subjectStats
@@ -163,104 +166,115 @@ export const SimuladoMode: React.FC<SimuladoModeProps> = ({
 
     setExamState('finished');
 
-    if (percentage >= 70) {
-      confetti({
-        particleCount: 80,
-        spread: 100,
-        origin: { y: 0.6 }
-      });
+    if (percentage >= 75) {
+      try {
+        confetti({
+          particleCount: 100,
+          spread: 70,
+          origin: { y: 0.6 }
+        });
+      } catch (e) {
+        console.error(e);
+      }
     }
   };
 
   const formatTime = (seconds: number) => {
-    const h = Math.floor(seconds / 3600);
-    const m = Math.floor((seconds % 3600) / 60);
-    const s = seconds % 60;
-    if (h > 0) {
-      return `${h}h ${m.toString().padStart(2, '0')}m ${s.toString().padStart(2, '0')}s`;
-    }
-    return `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+    const mins = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
   };
 
-  // TELA INICIAL DO SIMULADO (IDLE)
+  const currentQ = simuladoQuestions[currentIndex];
+  const answeredCount = Object.keys(userAnswers).length;
+
+  // TELA DE SELEÇÃO INICIAL (IDLE)
   if (examState === 'idle') {
     return (
-      <div className="max-w-4xl mx-auto px-4 py-10">
-        <div className="bg-slate-900 border border-slate-800 rounded-3xl p-8 sm:p-12 text-center shadow-2xl">
+      <div className="max-w-4xl mx-auto px-4 py-8">
+        <div className="bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-10 shadow-2xl text-center">
+          
           <div className="w-16 h-16 rounded-2xl bg-indigo-600/20 border border-indigo-500/30 flex items-center justify-center mx-auto mb-6">
             <Clock className="w-8 h-8 text-indigo-400 animate-pulse" />
           </div>
 
           <div className="inline-flex items-center space-x-2 px-3 py-1 bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 rounded-full text-xs font-bold mb-4">
             <Zap className="w-3.5 h-3.5 text-emerald-400" />
-            <span>Estrutura Oficial Banca IBFC (60 Questões)</span>
+            <span>Simulador de Prova Presencial UNIFACS</span>
           </div>
 
           <h2 className="text-2xl sm:text-3xl font-extrabold text-white mb-3">
-            Simulado IBGE - Agente Censitário de Informática
+            Treino Cronometrado de Prova
           </h2>
-          <p className="text-slate-400 max-w-xl mx-auto mb-6 text-sm sm:text-base leading-relaxed">
-            Prova oficial da banca **IBFC** com 60 questões no total: **35 de Noções de Informática** (peso principal), **15 de Língua Portuguesa** e **10 de Raciocínio Lógico**.
+          <p className="text-slate-400 max-w-xl mx-auto mb-8 text-sm sm:text-base leading-relaxed">
+            Simule o tempo real das provas presenciais. Escolha focar na prova de terça (Qualidade de Software) ou na prova de quarta (Banco de Dados):
           </p>
 
-          {/* ESTRUTURA DA PROVA IBFC */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 max-w-2xl mx-auto mb-8 text-xs font-semibold">
-            <div className="p-3 bg-indigo-950/60 border border-indigo-500/30 rounded-xl text-indigo-200">
-              ⚡ 35 Questões<br/><span className="text-slate-400 font-normal">Informática (60% da Prova)</span>
-            </div>
-            <div className="p-3 bg-slate-950 border border-slate-800 rounded-xl text-slate-300">
-              📝 15 Questões<br/><span className="text-slate-400 font-normal">Língua Portuguesa</span>
-            </div>
-            <div className="p-3 bg-slate-950 border border-slate-800 rounded-xl text-slate-300">
-              📐 10 Questões<br/><span className="text-slate-400 font-normal">Raciocínio Lógico</span>
-            </div>
-          </div>
-
-          {/* ESCOLHA DA QUANTIDADE DE QUESTÕES */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8 max-w-2xl mx-auto">
+          {/* ESCOLHA DA PROVA */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8 max-w-3xl mx-auto">
+            
             <button
-              onClick={() => startSimulado(15)}
-              className="px-4 py-4 bg-slate-950 hover:bg-indigo-600/20 border border-slate-800 hover:border-indigo-500/50 rounded-2xl text-left transition-all group"
+              onClick={() => startSimulado('qs')}
+              className="px-5 py-5 bg-slate-950 hover:bg-indigo-600/20 border border-slate-800 hover:border-indigo-500/50 rounded-2xl text-left transition-all group shadow-lg"
             >
+              <div className="p-2.5 bg-indigo-500/10 text-indigo-400 rounded-xl w-fit mb-3">
+                <Terminal className="w-5 h-5" />
+              </div>
               <div className="text-base font-bold text-white group-hover:text-indigo-300">
-                15 Questões
+                Qualidade de Software
               </div>
-              <div className="text-xs text-slate-500 font-mono mt-0.5">
-                Treino Rápido (~45 min)
+              <div className="text-xs text-amber-400 font-semibold mt-1">
+                Terça (20/10) • Lab 22
               </div>
+              <p className="text-[11px] text-slate-500 mt-2">
+                15 questões da folha oficial + desafios de JUnit 5.
+              </p>
             </button>
 
             <button
-              onClick={() => startSimulado(30)}
-              className="px-4 py-4 bg-slate-950 hover:bg-indigo-600/20 border border-slate-800 hover:border-indigo-500/50 rounded-2xl text-left transition-all group"
+              onClick={() => startSimulado('bd')}
+              className="px-5 py-5 bg-slate-950 hover:bg-emerald-600/20 border border-slate-800 hover:border-emerald-500/50 rounded-2xl text-left transition-all group shadow-lg"
             >
-              <div className="text-base font-bold text-white group-hover:text-indigo-300">
-                30 Questões
+              <div className="p-2.5 bg-emerald-500/10 text-emerald-400 rounded-xl w-fit mb-3">
+                <Database className="w-5 h-5" />
               </div>
-              <div className="text-xs text-slate-500 font-mono mt-0.5">
-                Meio Simulado (~1h 30m)
+              <div className="text-base font-bold text-white group-hover:text-emerald-300">
+                Banco de Dados
               </div>
+              <div className="text-xs text-emerald-400 font-semibold mt-1">
+                Quarta (21/10) • Lab 235
+              </div>
+              <p className="text-[11px] text-slate-500 mt-2">
+                1FN/2FN/3FN, SQL DDL/DML e Clínica Veterinária.
+              </p>
             </button>
 
             <button
-              onClick={() => startSimulado(60)}
-              className="px-4 py-4 bg-indigo-950/80 hover:bg-indigo-600/30 border border-indigo-500/40 hover:border-indigo-400 rounded-2xl text-left transition-all group ring-2 ring-indigo-500/30"
+              onClick={() => startSimulado('completo')}
+              className="px-5 py-5 bg-indigo-950/80 hover:bg-indigo-600/30 border border-indigo-500/40 hover:border-indigo-400 rounded-2xl text-left transition-all group ring-2 ring-indigo-500/30 shadow-xl"
             >
-              <div className="text-base font-bold text-indigo-300 group-hover:text-white flex items-center gap-1">
-                🏆 60 Questões
+              <div className="p-2.5 bg-indigo-500/20 text-indigo-300 rounded-xl w-fit mb-3">
+                <GraduationCap className="w-5 h-5" />
               </div>
-              <div className="text-xs text-indigo-200/70 font-mono mt-0.5">
-                Prova Completa (3 horas)
+              <div className="text-base font-bold text-indigo-300 group-hover:text-white">
+                Simulado Geral
               </div>
+              <div className="text-xs text-indigo-200/80 font-semibold mt-1">
+                Todas as Matérias
+              </div>
+              <p className="text-[11px] text-slate-400 mt-2">
+                Treino completo com todas as 28 questões do banco.
+              </p>
             </button>
+
           </div>
 
           <button
-            onClick={() => startSimulado(60)}
+            onClick={() => startSimulado('qs')}
             className="px-8 py-4 bg-gradient-to-r from-indigo-600 to-indigo-500 hover:from-indigo-500 hover:to-indigo-400 text-white font-bold text-base rounded-2xl shadow-xl shadow-indigo-600/30 border border-indigo-400/30 transition-all flex items-center space-x-2 mx-auto"
           >
             <Play className="w-5 h-5 fill-current" />
-            <span>🏆 Iniciar Simulado Completo (60 Questões Prova Real IBFC)</span>
+            <span>Iniciar Simulado Prioridade 1 (Qualidade de Software)</span>
           </button>
         </div>
       </div>
@@ -270,59 +284,58 @@ export const SimuladoMode: React.FC<SimuladoModeProps> = ({
   // TELA DE RESULTADOS DO SIMULADO (FINISHED)
   if (examState === 'finished' && scoreResult) {
     return (
-      <div className="max-w-4xl mx-auto px-4 py-10">
-        <div className="bg-slate-900 border border-slate-800 rounded-3xl p-8 sm:p-10 shadow-2xl space-y-8">
-          
-          {/* HEADER DO DESEMPENHO */}
-          <div className="text-center">
-            <div className={`w-20 h-20 rounded-full mx-auto flex items-center justify-center border-4 mb-4 ${
-              scoreResult.percentage >= 70 
-                ? 'bg-emerald-500/10 border-emerald-500 text-emerald-400' 
-                : 'bg-amber-500/10 border-amber-500 text-amber-400'
-            }`}>
-              <Award className="w-10 h-10" />
-            </div>
-            <h2 className="text-2xl sm:text-3xl font-bold text-white">Simulado Concluído!</h2>
-            <p className="text-slate-400 text-sm mt-1">Confira seu relatório detalhado da banca IBFC:</p>
+      <div className="max-w-4xl mx-auto px-4 py-8 space-y-8 animate-fadeIn">
+        
+        {/* CARD DO RESULTADO PRINCIPAL */}
+        <div className="bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-10 shadow-2xl text-center relative overflow-hidden">
+          <div className="w-20 h-20 rounded-3xl bg-indigo-600/20 border border-indigo-500/30 flex items-center justify-center mx-auto mb-6 shadow-inner">
+            <CheckCircle2 className="w-10 h-10 text-emerald-400" />
           </div>
 
-          {/* BIG STATS CARDS */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            <div className="bg-slate-950 p-5 rounded-2xl border border-slate-800 text-center">
-              <span className="text-xs text-slate-500 uppercase font-semibold">Nota Final</span>
-              <div className="text-3xl font-extrabold text-white mt-1">{scoreResult.percentage}%</div>
+          <h2 className="text-3xl font-black text-white mb-2">
+            Simulado Concluído!
+          </h2>
+          <p className="text-xs sm:text-sm text-slate-400 mb-6">
+            {currentSimuladoLabel}
+          </p>
+
+          <div className="flex items-center justify-center gap-6 mb-8">
+            <div className="text-center">
+              <div className="text-4xl sm:text-5xl font-black text-emerald-400 font-mono">
+                {scoreResult.correct} / {scoreResult.total}
+              </div>
+              <div className="text-xs text-slate-400 uppercase tracking-wider font-semibold mt-1">
+                Acertos Finais
+              </div>
             </div>
-            <div className="bg-slate-950 p-5 rounded-2xl border border-slate-800 text-center">
-              <span className="text-xs text-slate-500 uppercase font-semibold">Acertos</span>
-              <div className="text-3xl font-extrabold text-emerald-400 mt-1">{scoreResult.correct} / {scoreResult.total}</div>
-            </div>
-            <div className="bg-slate-950 p-5 rounded-2xl border border-slate-800 text-center">
-              <span className="text-xs text-slate-500 uppercase font-semibold">Erros</span>
-              <div className="text-3xl font-extrabold text-rose-400 mt-1">{scoreResult.total - scoreResult.correct}</div>
+
+            <div className="h-12 w-px bg-slate-800" />
+
+            <div className="text-center">
+              <div className="text-4xl sm:text-5xl font-black text-indigo-400 font-mono">
+                {scoreResult.percentage}%
+              </div>
+              <div className="text-xs text-slate-400 uppercase tracking-wider font-semibold mt-1">
+                Aproveitamento
+              </div>
             </div>
           </div>
 
-          {/* DESEMPENHO POR DISCIPLINA */}
-          <div className="bg-slate-950 p-6 rounded-2xl border border-slate-800 space-y-4">
-            <h3 className="text-sm font-bold text-slate-300 uppercase tracking-wider flex items-center gap-2">
-              <BarChart2 className="w-4 h-4 text-indigo-400" />
-              Desempenho por Disciplina (Banca IBFC)
-            </h3>
-            {Object.entries(scoreResult.subjectStats).map(([subj, stat]) => {
-              if (stat.total === 0) return null;
-              const pct = Math.round((stat.correct / stat.total) * 100);
+          {/* STATS POR MATÉRIA */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-xl mx-auto mb-8">
+            {(Object.entries(scoreResult.subjectStats) as [SubjectType, { total: number; correct: number }][]).map(([subj, stats]) => {
+              if (stats.total === 0) return null;
+              const pct = Math.round((stats.correct / stats.total) * 100);
               return (
-                <div key={subj} className="space-y-1.5">
-                  <div className="flex justify-between text-xs font-medium">
-                    <span className="text-slate-300">{subj}</span>
-                    <span className="text-slate-400 font-mono">{stat.correct}/{stat.total} ({pct}%)</span>
+                <div key={subj} className="p-4 bg-slate-950 rounded-2xl border border-slate-800 text-left space-y-2">
+                  <div className="flex justify-between items-center text-xs font-bold text-slate-200">
+                    <span>{subj}</span>
+                    <span className="font-mono text-indigo-400">{stats.correct}/{stats.total} ({pct}%)</span>
                   </div>
-                  <div className="w-full bg-slate-900 h-2.5 rounded-full overflow-hidden border border-slate-800">
-                    <div
-                      className={`h-full rounded-full transition-all ${
-                        pct >= 70 ? 'bg-emerald-500' : pct >= 50 ? 'bg-amber-500' : 'bg-rose-500'
-                      }`}
-                      style={{ width: `${pct}%` }}
+                  <div className="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+                    <div 
+                      className={`h-full rounded-full ${pct >= 70 ? 'bg-emerald-500' : 'bg-rose-500'}`} 
+                      style={{ width: `${pct}%` }} 
                     />
                   </div>
                 </div>
@@ -330,322 +343,234 @@ export const SimuladoMode: React.FC<SimuladoModeProps> = ({
             })}
           </div>
 
-          {/* GABARITO E CORREÇÃO COMPLETA DESTE SIMULADO */}
-          <div className="bg-slate-950 p-6 rounded-3xl border border-slate-800 space-y-6">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-800/80 pb-4">
-              <div>
-                <h3 className="text-lg font-extrabold text-white flex items-center gap-2">
-                  <CheckCircle2 className="w-5 h-5 text-indigo-400" />
-                  Gabarito & Correção Completa deste Simulado
-                </h3>
-                <p className="text-xs text-slate-400 mt-0.5">
-                  Revise item por item a resposta assinalada e a justificativa da banca IBFC:
-                </p>
-              </div>
-
-              {/* FILTROS DE REVISÃO */}
-              <div className="flex flex-wrap items-center gap-2">
-                <button
-                  onClick={() => setReviewFilter('all')}
-                  className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${
-                    reviewFilter === 'all'
-                      ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/30'
-                      : 'bg-slate-900 text-slate-400 hover:text-white'
-                  }`}
-                >
-                  Todas ({simuladoQuestions.length})
-                </button>
-                <button
-                  onClick={() => setReviewFilter('errors')}
-                  className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${
-                    reviewFilter === 'errors'
-                      ? 'bg-rose-600 text-white shadow-md shadow-rose-600/30'
-                      : 'bg-slate-900 text-slate-400 hover:text-white'
-                  }`}
-                >
-                  Erradas ❌ ({scoreResult.total - scoreResult.correct})
-                </button>
-                <button
-                  onClick={() => setReviewFilter('correct')}
-                  className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${
-                    reviewFilter === 'correct'
-                      ? 'bg-emerald-600 text-white shadow-md shadow-emerald-600/30'
-                      : 'bg-slate-900 text-slate-400 hover:text-white'
-                  }`}
-                >
-                  Acertos ✅ ({scoreResult.correct})
-                </button>
-              </div>
-            </div>
-
-            {/* FILTRO SECUNDÁRIO POR DISCIPLINA */}
-            <div className="flex items-center justify-between bg-slate-900/60 border border-slate-800 px-4 py-2.5 rounded-xl">
-              <div className="flex items-center space-x-1.5 text-xs text-slate-400 font-semibold">
-                <Filter className="w-3.5 h-3.5 text-indigo-400" />
-                <span>Mudar Disciplina:</span>
-              </div>
-              <div className="flex flex-wrap gap-1.5">
-                {(['all', 'Informática', 'Língua Portuguesa', 'Raciocínio Lógico'] as const).map(subj => (
-                  <button
-                    key={subj}
-                    onClick={() => setReviewSubject(subj)}
-                    className={`px-2.5 py-1 rounded-lg text-xs font-medium transition-all ${
-                      reviewSubject === subj
-                        ? 'bg-slate-800 text-indigo-300 font-bold border border-indigo-500/40'
-                        : 'bg-slate-950 text-slate-400 hover:text-slate-200'
-                    }`}
-                  >
-                    {subj === 'all' ? 'Todas' : subj}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            {/* LISTA DAS QUESTÕES DO SIMULADO */}
-            <div className="space-y-6">
-              {simuladoQuestions.map((q, idx) => {
-                const userSel = userAnswers[q.id];
-                const isCorrect = userSel === q.correctOption;
-
-                if (reviewFilter === 'errors' && isCorrect) return null;
-                if (reviewFilter === 'correct' && !isCorrect) return null;
-                if (reviewSubject !== 'all' && q.subject !== reviewSubject) return null;
-
-                return (
-                  <div key={q.id} className="bg-slate-900 border border-slate-800/90 rounded-2xl p-6 space-y-4 shadow-lg">
-                    {/* HEADER DA QUESTÃO */}
-                    <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-800/80 pb-3">
-                      <div className="flex flex-wrap items-center gap-2">
-                        <span className="px-2.5 py-1 bg-slate-800 text-slate-200 rounded-lg text-xs font-mono font-bold">
-                          Questão {idx + 1}
-                        </span>
-                        <span className="px-2.5 py-1 bg-indigo-500/10 text-indigo-400 border border-indigo-500/30 rounded-lg text-xs font-semibold">
-                          {q.subject}
-                        </span>
-                        <span className="px-2.5 py-1 bg-slate-950 text-slate-400 rounded-lg text-xs">
-                          {q.topic}
-                        </span>
-                      </div>
-
-                      <div className={`px-3 py-1 rounded-xl text-xs font-bold flex items-center space-x-1.5 border ${
-                        isCorrect 
-                          ? 'bg-emerald-500/10 border-emerald-500/40 text-emerald-300' 
-                          : 'bg-rose-500/10 border-rose-500/40 text-rose-300'
-                      }`}>
-                        {isCorrect ? (
-                          <>
-                            <Check className="w-4 h-4 text-emerald-400" />
-                            <span>Você acertou! (Opção {userSel})</span>
-                          </>
-                        ) : (
-                          <>
-                            <X className="w-4 h-4 text-rose-400" />
-                            <span>Você marcou {userSel || 'sem resposta'} (Gabarito: {q.correctOption})</span>
-                          </>
-                        )}
-                      </div>
-                    </div>
-
-                    {/* STATEMENT */}
-                    <p className="text-sm sm:text-base text-slate-100 leading-relaxed font-medium">
-                      {q.statement}
-                    </p>
-
-                    {/* OPTIONS */}
-                    <div className="space-y-2">
-                      {q.options.map(opt => {
-                        const isUserChoice = userSel === opt.key;
-                        const isOptionCorrect = opt.key === q.correctOption;
-
-                        let style = "bg-slate-950/70 border-slate-800 text-slate-300";
-                        if (isOptionCorrect) {
-                          style = "bg-emerald-950/40 border-emerald-500/50 text-emerald-200 font-semibold ring-1 ring-emerald-500/30";
-                        } else if (isUserChoice && !isOptionCorrect) {
-                          style = "bg-rose-950/40 border-rose-500/50 text-rose-200 font-semibold ring-1 ring-rose-500/30";
-                        }
-
-                        return (
-                          <div key={opt.key} className={`p-3.5 rounded-xl border text-xs sm:text-sm flex items-start space-x-3 transition-all ${style}`}>
-                            <span className={`w-6 h-6 rounded-lg flex items-center justify-center text-xs font-bold shrink-0 ${
-                              isOptionCorrect 
-                                ? 'bg-emerald-500 text-slate-950' 
-                                : isUserChoice 
-                                ? 'bg-rose-500 text-white' 
-                                : 'bg-slate-800 text-slate-400'
-                            }`}>
-                              {opt.key}
-                            </span>
-                            <div className="flex-1 pt-0.5">
-                              <span>{opt.text}</span>
-                              {isOptionCorrect && (
-                                <span className="ml-2 text-xs font-bold text-emerald-400"> (Gabarito Oficial)</span>
-                              )}
-                              {isUserChoice && !isOptionCorrect && (
-                                <span className="ml-2 text-xs font-bold text-rose-400"> (Sua Escolha)</span>
-                              )}
-                            </div>
-                          </div>
-                        );
-                      })}
-                    </div>
-
-                    {/* EXPLICACAO & BIZU */}
-                    <div className="p-4 bg-slate-950/80 border border-slate-800/90 rounded-xl space-y-2 text-xs">
-                      <p className="text-slate-300">
-                        <strong className="text-indigo-400">Explicação:</strong> {q.explanation.summary}
-                      </p>
-                      <div className="p-2.5 bg-indigo-950/50 border border-indigo-500/30 rounded-lg text-indigo-200 flex items-start space-x-2">
-                        <Lightbulb className="w-4 h-4 text-amber-300 shrink-0 mt-0.5" />
-                        <span><strong>Bizu IBFC:</strong> {q.explanation.bizu}</span>
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-
-          {/* AÇÕES FINAIS */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center pt-2">
+          <div className="flex flex-wrap items-center justify-center gap-3">
             <button
-              onClick={() => startSimulado(examQuestionCount)}
-              className="px-6 py-3.5 bg-slate-800 hover:bg-slate-700 text-white font-semibold rounded-xl transition-all border border-slate-700 flex items-center justify-center space-x-2"
+              onClick={() => setExamState('idle')}
+              className="px-6 py-3 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-sm rounded-xl transition-all flex items-center space-x-2"
             >
               <RotateCcw className="w-4 h-4" />
-              <span>Refazer Simulado</span>
+              <span>Fazer Outro Simulado</span>
             </button>
+
             <button
               onClick={onReviewErrors}
-              className="px-6 py-3.5 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold rounded-xl transition-all shadow-lg shadow-indigo-600/30 flex items-center justify-center space-x-2"
+              className="px-6 py-3 bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-sm rounded-xl transition-all shadow-lg shadow-indigo-600/30 flex items-center space-x-2"
             >
-              <BookOpen className="w-4 h-4" />
-              <span>Ir ao Caderno de Erros Geral</span>
+              <span>Ver Caderno de Erros</span>
+              <ArrowRight className="w-4 h-4" />
             </button>
           </div>
-
         </div>
+
+        {/* LISTAGEM DE CORREÇÃO COM FILTRO */}
+        <div className="space-y-4">
+          <div className="flex flex-wrap items-center justify-between gap-3 bg-slate-900 border border-slate-800 p-4 rounded-2xl">
+            <span className="text-xs font-bold text-slate-300 flex items-center space-x-2">
+              <Filter className="w-4 h-4 text-indigo-400" />
+              <span>Filtrar Gabarito do Simulado:</span>
+            </span>
+
+            <div className="flex flex-wrap gap-2">
+              <button
+                onClick={() => setReviewFilter('all')}
+                className={`px-3 py-1.5 rounded-lg text-xs font-semibold ${
+                  reviewFilter === 'all' ? 'bg-slate-800 text-white' : 'text-slate-400 hover:text-slate-200'
+                }`}
+              >
+                Todas ({simuladoQuestions.length})
+              </button>
+              <button
+                onClick={() => setReviewFilter('errors')}
+                className={`px-3 py-1.5 rounded-lg text-xs font-semibold ${
+                  reviewFilter === 'errors' ? 'bg-rose-500/20 text-rose-300 border border-rose-500/30' : 'text-slate-400 hover:text-slate-200'
+                }`}
+              >
+                Erros ({scoreResult.total - scoreResult.correct})
+              </button>
+              <button
+                onClick={() => setReviewFilter('correct')}
+                className={`px-3 py-1.5 rounded-lg text-xs font-semibold ${
+                  reviewFilter === 'correct' ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30' : 'text-slate-400 hover:text-slate-200'
+                }`}
+              >
+                Acertos ({scoreResult.correct})
+              </button>
+            </div>
+          </div>
+
+          {/* ITENS DAS QUESTÕES DO SIMULADO */}
+          <div className="space-y-4">
+            {simuladoQuestions.map((q, idx) => {
+              const userSel = userAnswers[q.id];
+              const isCorrect = userSel === q.correctOption;
+
+              if (reviewFilter === 'errors' && isCorrect) return null;
+              if (reviewFilter === 'correct' && !isCorrect) return null;
+
+              return (
+                <div key={q.id} className="bg-slate-900 border border-slate-800 rounded-2xl p-6 space-y-4 shadow-lg">
+                  <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-800 pb-3">
+                    <div className="flex items-center gap-2">
+                      <span className="px-2 py-0.5 bg-slate-800 text-slate-300 text-xs font-bold rounded">Q{idx + 1}</span>
+                      <span className="px-2 py-0.5 bg-indigo-500/10 text-indigo-400 text-xs font-semibold rounded">{q.subject}</span>
+                      <span className="text-xs text-slate-400">{q.topic}</span>
+                    </div>
+
+                    <div className={`px-2.5 py-1 rounded-lg text-xs font-bold flex items-center space-x-1.5 ${
+                      isCorrect ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/30' : 'bg-rose-500/10 text-rose-400 border border-rose-500/30'
+                    }`}>
+                      {isCorrect ? <Check className="w-3.5 h-3.5" /> : <X className="w-3.5 h-3.5" />}
+                      <span>{isCorrect ? `Acertou (Opção ${userSel})` : `Marcou ${userSel || 'vazio'} (Certo: ${q.correctOption})`}</span>
+                    </div>
+                  </div>
+
+                  <p className="text-sm text-slate-200 font-medium leading-relaxed">
+                    {q.statement}
+                  </p>
+
+                  <div className="space-y-1.5">
+                    {q.options.map(opt => {
+                      const isUserChoice = userSel === opt.key;
+                      const isOptionCorrect = opt.key === q.correctOption;
+
+                      let style = "bg-slate-950/60 border-slate-800 text-slate-400";
+                      if (isOptionCorrect) {
+                        style = "bg-emerald-950/40 border-emerald-500/50 text-emerald-200 font-semibold";
+                      } else if (isUserChoice && !isOptionCorrect) {
+                        style = "bg-rose-950/40 border-rose-500/50 text-rose-300 line-through";
+                      }
+
+                      return (
+                        <div key={opt.key} className={`p-3 rounded-xl border text-xs flex items-center space-x-2.5 ${style}`}>
+                          <span className="font-bold font-mono px-1.5 py-0.5 rounded bg-slate-900 border border-slate-800">{opt.key}</span>
+                          <span className="flex-1">{opt.text}</span>
+                        </div>
+                      );
+                    })}
+                  </div>
+
+                  {q.explanation.bizu && (
+                    <div className="p-3 bg-amber-500/10 border border-amber-500/30 rounded-xl text-xs text-amber-300 font-semibold">
+                      {q.explanation.bizu}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
       </div>
     );
   }
 
-  // INTERFACE DO SIMULADO EM EXECUÇÃO (RUNNING)
-  const currentQ = simuladoQuestions[currentIndex];
-  const selectedOpt = userAnswers[currentQ?.id] || null;
+  // TELA DO SIMULADO EM ANDAMENTO (RUNNING)
+  if (!currentQ) return null;
 
   return (
-    <div className="max-w-5xl mx-auto px-4 py-6 sm:py-8">
+    <div className="max-w-4xl mx-auto px-4 py-6 space-y-6">
       
-      {/* BARRA SUPERIOR DO SIMULADO */}
-      <div className="flex items-center justify-between bg-slate-900 border border-slate-800 p-4 rounded-2xl mb-6 shadow-xl">
+      {/* BARRA SUPERIOR DE TEMPO & PROGRESSO */}
+      <div className="bg-slate-900 border border-slate-800 p-4 rounded-2xl flex items-center justify-between shadow-xl">
         <div className="flex items-center space-x-3">
-          <div className="px-3 py-1 bg-indigo-500/10 text-indigo-400 font-mono text-xs font-bold rounded-lg border border-indigo-500/30">
-            Questão {currentIndex + 1} de {simuladoQuestions.length}
-          </div>
-          <span className="text-xs text-slate-400 hidden sm:inline">{currentQ.subject}</span>
+          <span className="px-2.5 py-1 bg-indigo-500/10 text-indigo-400 border border-indigo-500/30 text-xs font-bold rounded-lg font-mono">
+            {currentIndex + 1} / {simuladoQuestions.length}
+          </span>
+          <span className="text-xs text-slate-400 hidden sm:inline font-semibold">
+            {answeredCount} respondidas
+          </span>
         </div>
 
-        {/* TIMER */}
-        <div className={`flex items-center space-x-2 px-4 py-1.5 rounded-xl font-mono text-sm font-bold border ${
-          timeLeftSeconds < 180 ? 'bg-rose-500/20 text-rose-300 border-rose-500/40 animate-pulse' : 'bg-slate-950 text-amber-400 border-slate-800'
+        <div className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-xl border text-xs font-bold font-mono ${
+          timeLeftSeconds < 300 
+            ? 'bg-rose-500/20 text-rose-300 border-rose-500/40 animate-pulse' 
+            : 'bg-slate-950 text-slate-300 border-slate-800'
         }`}>
-          <Clock className="w-4 h-4" />
+          <Clock className="w-4 h-4 text-indigo-400" />
           <span>{formatTime(timeLeftSeconds)}</span>
         </div>
 
         <button
           onClick={finishSimulado}
-          className="px-4 py-1.5 bg-rose-600 hover:bg-rose-500 text-white text-xs font-bold rounded-xl transition-all shadow-md shadow-rose-600/20"
+          className="px-4 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold rounded-xl transition-all shadow-md shadow-emerald-600/30"
         >
-          Finalizar Prova
+          Finalizar Simulado
         </button>
       </div>
 
-      {/* GRADE DE NAVEGAÇÃO DE QUESTÕES */}
-      <div className="flex flex-wrap gap-2 mb-6 bg-slate-950 p-3 rounded-2xl border border-slate-800/80">
-        {simuladoQuestions.map((q, idx) => {
-          const isCurrent = idx === currentIndex;
-          const isAnswered = userAnswers[q.id] !== undefined;
-          return (
-            <button
-              key={q.id}
-              onClick={() => setCurrentIndex(idx)}
-              className={`w-8 h-8 rounded-lg font-mono text-xs font-bold transition-all border ${
-                isCurrent
-                  ? 'bg-indigo-600 text-white border-indigo-400 shadow-md shadow-indigo-600/40 ring-2 ring-indigo-400/50'
-                  : isAnswered
-                  ? 'bg-emerald-500/20 text-emerald-300 border-emerald-500/40'
-                  : 'bg-slate-900 text-slate-500 border-slate-800 hover:bg-slate-800'
-              }`}
-            >
-              {idx + 1}
-            </button>
-          );
-        })}
-      </div>
-
-      {/* CARD DA QUESTÃO DO SIMULADO */}
-      <div className="bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 shadow-2xl">
-        <div className="mb-6">
-          <p className="text-base sm:text-lg text-slate-100 leading-relaxed">
-            {currentQ.statement}
-          </p>
+      {/* CARD DA QUESTÃO ATUAL */}
+      <div className="bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 space-y-6 shadow-2xl">
+        
+        <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-800 pb-3">
+          <div className="flex items-center gap-2">
+            <span className="px-2.5 py-1 bg-indigo-500/10 text-indigo-400 border border-indigo-500/30 text-xs font-semibold rounded-lg">
+              {currentQ.subject}
+            </span>
+            <span className="px-2.5 py-1 bg-slate-800 text-slate-300 text-xs rounded-lg">
+              {currentQ.topic}
+            </span>
+          </div>
+          <span className="text-[11px] text-slate-500 font-mono">
+            {currentQ.source}
+          </span>
         </div>
 
-        <div className="space-y-3 mb-8">
+        <p className="text-base sm:text-lg text-slate-100 font-medium leading-relaxed">
+          {currentQ.statement}
+        </p>
+
+        {/* ALTERNATIVAS */}
+        <div className="space-y-3">
           {currentQ.options.map(opt => {
-            const isSelected = selectedOpt === opt.key;
+            const isSelected = userAnswers[currentQ.id] === opt.key;
             return (
               <button
                 key={opt.key}
                 onClick={() => handleSelectOption(opt.key)}
-                className={`w-full text-left p-4 rounded-2xl border transition-all flex items-start space-x-3 ${
+                className={`w-full text-left p-4 rounded-2xl border transition-all flex items-center space-x-3 ${
                   isSelected
-                    ? 'bg-indigo-600/20 border-indigo-500 text-indigo-100 font-semibold'
-                    : 'bg-slate-950/80 border-slate-800/90 text-slate-300 hover:border-slate-700'
+                    ? 'bg-indigo-600/20 border-indigo-500 text-white shadow-lg shadow-indigo-600/10'
+                    : 'bg-slate-950/70 border-slate-800 text-slate-300 hover:bg-slate-800/60 hover:border-slate-700'
                 }`}
               >
-                <span className={`w-7 h-7 rounded-xl flex items-center justify-center font-bold text-xs shrink-0 ${
-                  isSelected ? 'bg-indigo-600 text-white' : 'bg-slate-800 text-slate-400'
+                <span className={`w-7 h-7 rounded-xl flex items-center justify-center font-mono font-bold text-xs shrink-0 border ${
+                  isSelected
+                    ? 'bg-indigo-600 text-white border-indigo-400'
+                    : 'bg-slate-900 text-slate-400 border-slate-800'
                 }`}>
                   {opt.key}
                 </span>
-                <span className="text-sm sm:text-base pt-0.5 leading-snug flex-1">
-                  {opt.text}
-                </span>
+                <span className="text-xs sm:text-sm leading-relaxed">{opt.text}</span>
               </button>
             );
           })}
         </div>
 
-        {/* NAVEGAÇÃO DE RODAPÉ */}
-        <div className="flex items-center justify-between border-t border-slate-800/80 pt-6">
+        {/* NAVEGAÇÃO ANTERIOR / PRÓXIMA */}
+        <div className="flex items-center justify-between pt-4 border-t border-slate-800">
           <button
             onClick={() => setCurrentIndex(prev => Math.max(0, prev - 1))}
             disabled={currentIndex === 0}
-            className="px-4 py-2.5 bg-slate-950 hover:bg-slate-800 text-slate-300 disabled:opacity-40 border border-slate-800 rounded-xl text-xs font-semibold flex items-center space-x-1"
+            className="px-4 py-2 bg-slate-950 hover:bg-slate-800 disabled:opacity-30 text-slate-300 text-xs font-bold rounded-xl border border-slate-800 transition-all flex items-center space-x-1.5"
           >
             <ChevronLeft className="w-4 h-4" />
             <span>Anterior</span>
           </button>
 
-          {currentIndex === simuladoQuestions.length - 1 ? (
-            <button
-              onClick={finishSimulado}
-              className="px-6 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white border border-emerald-400/30 rounded-xl text-xs font-bold flex items-center space-x-1 shadow-lg shadow-emerald-600/30"
-            >
-              <span>Finalizar Prova</span>
-              <Award className="w-4 h-4 ml-1" />
-            </button>
-          ) : (
-            <button
-              onClick={() => setCurrentIndex(prev => Math.min(simuladoQuestions.length - 1, prev + 1))}
-              className="px-6 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white border border-indigo-400/30 rounded-xl text-xs font-bold flex items-center space-x-1 shadow-lg shadow-indigo-600/30"
-            >
-              <span>Próxima</span>
-              <ChevronRight className="w-4 h-4" />
-            </button>
-          )}
+          <span className="text-xs text-slate-500 font-mono">
+            {currentIndex + 1} de {simuladoQuestions.length}
+          </span>
+
+          <button
+            onClick={() => setCurrentIndex(prev => Math.min(simuladoQuestions.length - 1, prev + 1))}
+            disabled={currentIndex === simuladoQuestions.length - 1}
+            className="px-4 py-2 bg-slate-950 hover:bg-slate-800 disabled:opacity-30 text-slate-300 text-xs font-bold rounded-xl border border-slate-800 transition-all flex items-center space-x-1.5"
+          >
+            <span>Próxima</span>
+            <ChevronRight className="w-4 h-4" />
+          </button>
         </div>
+
       </div>
 
     </div>

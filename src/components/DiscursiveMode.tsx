@@ -308,18 +308,18 @@ export const DiscursiveMode: React.FC<DiscursiveModeProps> = ({
                   : 'bg-slate-950 text-slate-400 hover:text-white border border-slate-800'
               }`}
             >
-              <span>🔥 10 Questões da Folha de Hoje</span>
+              <span>🔥 10 Questões da Folha de Exercício (PDF 1)</span>
               <span className="px-1.5 py-0.5 rounded-full bg-black/30 text-[10px]">10 Qs</span>
             </button>
             <button
               onClick={() => { setFilterClassroomOnly(false); setCurrentIdx(0); }}
               className={`flex-1 sm:flex-initial px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center justify-center space-x-1.5 ${
                 !filterClassroomOnly
-                  ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/30'
+                  ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/30 font-bold scale-105'
                   : 'bg-slate-950 text-slate-400 hover:text-white border border-slate-800'
               }`}
             >
-              <span>📑 Todas as 16 Questões (UNIFACS)</span>
+              <span>📑 As 15 Questões do Gabarito do Professor (PDF 2)</span>
               <span className="px-1.5 py-0.5 rounded-full bg-black/20 text-[10px]">16 Qs</span>
             </button>
           </div>
@@ -399,6 +399,11 @@ export const DiscursiveMode: React.FC<DiscursiveModeProps> = ({
             {currentQ.isFromClassroomReview && (
               <span className="px-3 py-1 rounded-xl bg-gradient-to-r from-amber-500/20 to-orange-500/20 border border-amber-500/40 text-amber-300 text-xs font-black flex items-center gap-1.5 shadow-sm">
                 <span>🔥 Folha de Sala #{currentQ.classroomOrder}</span>
+              </span>
+            )}
+            {currentQ.pdfMapping && (
+              <span className="px-3 py-1 rounded-xl bg-purple-500/15 border border-purple-500/30 text-purple-200 text-xs font-semibold flex items-center gap-1.5 shadow-sm">
+                <span>📄 {currentQ.pdfMapping}</span>
               </span>
             )}
             <span className="px-3 py-1 rounded-xl bg-indigo-500/10 border border-indigo-500/30 text-indigo-400 text-xs font-bold font-mono">

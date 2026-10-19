@@ -9,6 +9,7 @@ export const DISCURSIVE_QUESTIONS: DiscursiveQuestion[] = [
 
   {
     id: 'disc-sala-01',
+    pdfMapping: 'Folha de Sala (Q1) • Gabarito Oficial (Questão 01)',
     legacyId: 'disc-qs-01',
     isFromClassroomReview: true,
     classroomOrder: 1,
@@ -52,6 +53,7 @@ A principal diferença entre elas está no grau de planejamento, estruturação,
 
   {
     id: 'disc-sala-02',
+    pdfMapping: 'Folha de Sala (Q2) • Gabarito Oficial (Questão 04)',
     legacyId: 'disc-qs-06',
     isFromClassroomReview: true,
     classroomOrder: 2,
@@ -95,6 +97,7 @@ EXEMPLO DE UMA MESMA FUNCIONALIDADE TESTADA PELAS DUAS ABORDAGENS:
 
   {
     id: 'disc-sala-03',
+    pdfMapping: 'Folha de Sala (Q3) • Gabarito Oficial (Questão 07)',
     legacyId: 'disc-qs-07',
     isFromClassroomReview: true,
     classroomOrder: 3,
@@ -135,6 +138,7 @@ Essa definição garante que:
 
   {
     id: 'disc-sala-04',
+    pdfMapping: 'Folha de Sala (Q4) • Gabarito Oficial (Questão 08 - Cálculo E=12, N=10)',
     legacyId: 'disc-qs-08',
     isFromClassroomReview: true,
     classroomOrder: 4,
@@ -183,6 +187,7 @@ O resultado V(G) = 4 traz diretrizes quantitativas diretas para o projetista de 
 
   {
     id: 'disc-sala-05',
+    pdfMapping: 'Folha de Sala (Q5) • Gabarito Oficial (Questão 10 - Idades 18 a 65)',
     legacyId: 'disc-qs-14',
     isFromClassroomReview: true,
     classroomOrder: 5,
@@ -236,6 +241,7 @@ Para a regra de negócio "Idades entre 18 e 65 anos, inclusive" (18 <= idade <= 
 
   {
     id: 'disc-sala-06',
+    pdfMapping: 'Folha de Sala (Q6) • Gabarito Oficial (Questão 11 - Idades 18 a 65)',
     legacyId: 'disc-qs-14-avl',
     isFromClassroomReview: true,
     classroomOrder: 6,
@@ -280,6 +286,7 @@ Resumo dos Casos de Teste: { 17, 18, 19 } e { 64, 65, 66 }.`,
 
   {
     id: 'disc-sala-07',
+    pdfMapping: 'Folha de Sala (Q7) • Gabarito Oficial (Questão 12 - Testes Unitários)',
     legacyId: 'disc-qs-10',
     isFromClassroomReview: true,
     classroomOrder: 7,
@@ -329,6 +336,7 @@ São verificações automáticas das menores unidades testáveis isoladas do có
 
   {
     id: 'disc-sala-08',
+    pdfMapping: 'Folha de Sala (Q8) • Gabarito Oficial (Questão 13 - Integração e Interfaces)',
     legacyId: 'disc-qs-12',
     isFromClassroomReview: true,
     classroomOrder: 8,
@@ -366,6 +374,7 @@ Mesmo que cada módulo funcione com perfeição isolada em sua bancada, a integr
 
   {
     id: 'disc-sala-09',
+    pdfMapping: 'Folha de Sala (Q9) • Gabarito Oficial (Questão 14 - Top-Down e Bottom-Up)',
     legacyId: 'disc-qs-09',
     isFromClassroomReview: true,
     classroomOrder: 9,
@@ -407,6 +416,7 @@ RESUMO COMPARATIVO:
 
   {
     id: 'disc-sala-10',
+    pdfMapping: 'Folha de Sala (Q10) • Gabarito Oficial (Questão 15 - Fumaça e Regressão)',
     legacyId: 'disc-qs-11',
     isFromClassroomReview: true,
     classroomOrder: 10,
@@ -451,6 +461,7 @@ Deve ser executado após a aprovação no teste de fumaça. Roda-se a suíte com
 
   {
     id: 'disc-qs-02',
+    pdfMapping: 'Exclusiva do Gabarito Oficial UNIFACS (Questão 02 - Participantes RTF)',
     legacyId: 'disc-qs-02',
     isFromClassroomReview: false,
     classroomOrder: 11,
@@ -492,6 +503,7 @@ Deve ser executado após a aprovação no teste de fumaça. Roda-se a suíte com
 
   {
     id: 'disc-qs-03',
+    pdfMapping: 'Exclusiva do Gabarito Oficial UNIFACS (Questão 03 - Decisões e Documentos RTF)',
     legacyId: 'disc-qs-03',
     isFromClassroomReview: false,
     classroomOrder: 12,
@@ -529,6 +541,7 @@ DOCUMENTOS PRODUZIDOS:
 
   {
     id: 'disc-qs-05-cb',
+    pdfMapping: 'Exclusiva do Gabarito Oficial UNIFACS (Questão 05 - 4 Objetivos Caixa-Branca)',
     legacyId: 'disc-qs-05',
     isFromClassroomReview: false,
     classroomOrder: 13,
@@ -558,6 +571,7 @@ DOCUMENTOS PRODUZIDOS:
 
   {
     id: 'disc-qs-09-fibdt',
+    pdfMapping: 'Exclusiva do Gabarito Oficial UNIFACS (Questão 09 - 5 Erros FIBDT Caixa-Preta)',
     legacyId: 'disc-qs-09-fibdt',
     isFromClassroomReview: false,
     classroomOrder: 14,
@@ -589,6 +603,7 @@ DOCUMENTOS PRODUZIDOS:
 
   {
     id: 'disc-qs-08-formulas',
+    pdfMapping: 'Exclusiva do Gabarito Oficial UNIFACS (Questão 08 - As 3 Fórmulas de V(G))',
     legacyId: 'disc-qs-08-formulas',
     isFromClassroomReview: false,
     classroomOrder: 15,
@@ -615,6 +630,7 @@ DOCUMENTOS PRODUZIDOS:
 
   {
     id: 'disc-qs-13-vv',
+    pdfMapping: 'Revisão Teórica Complementar (Verificação vs Validação - Boehm)',
     legacyId: 'disc-qs-13',
     isFromClassroomReview: false,
     classroomOrder: 16,

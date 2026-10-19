@@ -41,6 +41,7 @@ export interface DiscursiveQuestion {
   isFromClassroomReview?: boolean;
   classroomOrder?: number;
   legacyId?: string;
+  pdfMapping?: string;
 }
 
 export interface DiscursiveAnswerHistory {

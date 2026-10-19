@@ -36,8 +36,16 @@ export const DiscursiveMode: React.FC<DiscursiveModeProps> = ({
   activeProfile,
   onUpdateProfile
 }) => {
-  // Filtrar questões pela disciplina selecionada
-  const filteredQuestions = DISCURSIVE_QUESTIONS.filter(q => q.subject === selectedSubject);
+  const [filterClassroomOnly, setFilterClassroomOnly] = useState<boolean>(true);
+  
+  // Filtrar questões pela disciplina selecionada e se é foco da folha de sala
+  const filteredQuestions = DISCURSIVE_QUESTIONS.filter(q => {
+    if (q.subject !== selectedSubject) return false;
+    if (selectedSubject === 'Qualidade de Software' && filterClassroomOnly) {
+      return Boolean(q.isFromClassroomReview);
+    }
+    return true;
+  });
   
   const [currentIdx, setCurrentIdx] = useState<number>(0);
   const [showAnswer, setShowAnswer] = useState<boolean>(false);
@@ -65,10 +73,17 @@ export const DiscursiveMode: React.FC<DiscursiveModeProps> = ({
 
   const currentQ: DiscursiveQuestion | undefined = filteredQuestions[currentIdx];
 
+  // Helper para resgatar resposta salva sem risco de perda por ID ou legacyId
+  const getSavedAnswer = (q: DiscursiveQuestion | undefined) => {
+    if (!q) return undefined;
+    return activeProfile.discursiveAnswers?.[q.id] || 
+      (q.legacyId ? activeProfile.discursiveAnswers?.[q.legacyId] : undefined);
+  };
+
   // Carregar rascunho salvo do perfil de forma 100% segura sem perder nada
   useEffect(() => {
     if (!currentQ) return;
-    const saved = activeProfile.discursiveAnswers?.[currentQ.id];
+    const saved = getSavedAnswer(currentQ);
     if (saved) {
       const savedDraft = saved.userDraft || '';
       setDraft(savedDraft);
@@ -99,7 +114,7 @@ export const DiscursiveMode: React.FC<DiscursiveModeProps> = ({
     if (!currentQ) return;
     const timer = setTimeout(() => {
       if (draft.trim() || checkedKeywords.length > 0 || selfScore !== null) {
-        const updated = recordDiscursiveAnswer(
+        let updated = recordDiscursiveAnswer(
           currentQ.id,
           draft,
           selfScore !== null ? selfScore : undefined,
@@ -107,6 +122,16 @@ export const DiscursiveMode: React.FC<DiscursiveModeProps> = ({
           evaluation?.suggestedScore,
           evaluation?.pedagogicalFeedback
         );
+        if (currentQ.legacyId) {
+          updated = recordDiscursiveAnswer(
+            currentQ.legacyId,
+            draft,
+            selfScore !== null ? selfScore : undefined,
+            checkedKeywords,
+            evaluation?.suggestedScore,
+            evaluation?.pedagogicalFeedback
+          );
+        }
         onUpdateProfile(updated);
         setSaveStatus('saved');
         setTimeout(() => setSaveStatus('idle'), 2000);
@@ -134,8 +159,8 @@ export const DiscursiveMode: React.FC<DiscursiveModeProps> = ({
         setSelfScore(evalRes.suggestedScore);
       }
 
-      // Salva no perfil com os dados da correção
-      const updated = recordDiscursiveAnswer(
+      // Salva no perfil com os dados da correção (em id e legacyId se houver)
+      let updated = recordDiscursiveAnswer(
         currentQ.id,
         draft,
         selfScore !== null ? selfScore : evalRes.suggestedScore,
@@ -143,6 +168,16 @@ export const DiscursiveMode: React.FC<DiscursiveModeProps> = ({
         evalRes.suggestedScore,
         evalRes.pedagogicalFeedback
       );
+      if (currentQ.legacyId) {
+        updated = recordDiscursiveAnswer(
+          currentQ.legacyId,
+          draft,
+          selfScore !== null ? selfScore : evalRes.suggestedScore,
+          mergedKeywords,
+          evalRes.suggestedScore,
+          evalRes.pedagogicalFeedback
+        );
+      }
       onUpdateProfile(updated);
 
       setShowAnswer(true);
@@ -160,7 +195,7 @@ export const DiscursiveMode: React.FC<DiscursiveModeProps> = ({
   const handleSetScore = (score: number) => {
     setSelfScore(score);
     if (currentQ) {
-      const updated = recordDiscursiveAnswer(
+      let updated = recordDiscursiveAnswer(
         currentQ.id, 
         draft, 
         score, 
@@ -168,6 +203,16 @@ export const DiscursiveMode: React.FC<DiscursiveModeProps> = ({
         evaluation?.suggestedScore,
         evaluation?.pedagogicalFeedback
       );
+      if (currentQ.legacyId) {
+        updated = recordDiscursiveAnswer(
+          currentQ.legacyId, 
+          draft, 
+          score, 
+          checkedKeywords,
+          evaluation?.suggestedScore,
+          evaluation?.pedagogicalFeedback
+        );
+      }
       onUpdateProfile(updated);
     }
   };
@@ -207,7 +252,7 @@ export const DiscursiveMode: React.FC<DiscursiveModeProps> = ({
     ? Math.round((checkedKeywords.length / currentQ.keywords.length) * 100)
     : 0;
 
-  const currentAnswerSaved = activeProfile.discursiveAnswers?.[currentQ.id];
+  const currentAnswerSaved = getSavedAnswer(currentQ);
   const hasUserWritten = Boolean(draft.trim());
 
   return (
@@ -230,7 +275,7 @@ export const DiscursiveMode: React.FC<DiscursiveModeProps> = ({
             }`}
           >
             <span>🔬 Qualidade de Software (Terça 20/10)</span>
-            <span className="px-1.5 py-0.5 rounded-full bg-black/30 text-[10px]">15 Qs</span>
+            <span className="px-1.5 py-0.5 rounded-full bg-black/30 text-[10px]">16 Qs</span>
           </button>
 
           <button
@@ -246,6 +291,40 @@ export const DiscursiveMode: React.FC<DiscursiveModeProps> = ({
           </button>
         </div>
       </div>
+
+      {/* SELETOR DE FOCO: FOLHA DE HOJE VS TODAS AS QUESTÕES */}
+      {selectedSubject === 'Qualidade de Software' && (
+        <div className="bg-gradient-to-r from-slate-900 via-amber-950/20 to-slate-900 border border-amber-500/40 p-3 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-3 shadow-xl">
+          <div className="flex items-center space-x-2.5 text-xs font-bold text-amber-300 px-1">
+            <span className="w-2.5 h-2.5 rounded-full bg-amber-400 animate-pulse" />
+            <span className="uppercase tracking-wider">Foco na Prova de Amanhã (Aula de Hoje):</span>
+          </div>
+          <div className="flex items-center space-x-2 w-full sm:w-auto">
+            <button
+              onClick={() => { setFilterClassroomOnly(true); setCurrentIdx(0); }}
+              className={`flex-1 sm:flex-initial px-4 py-2 rounded-xl text-xs font-extrabold transition-all flex items-center justify-center space-x-1.5 ${
+                filterClassroomOnly
+                  ? 'bg-gradient-to-r from-amber-500 to-orange-500 text-slate-950 shadow-md shadow-amber-500/30 font-black scale-105'
+                  : 'bg-slate-950 text-slate-400 hover:text-white border border-slate-800'
+              }`}
+            >
+              <span>🔥 10 Questões da Folha de Hoje</span>
+              <span className="px-1.5 py-0.5 rounded-full bg-black/30 text-[10px]">10 Qs</span>
+            </button>
+            <button
+              onClick={() => { setFilterClassroomOnly(false); setCurrentIdx(0); }}
+              className={`flex-1 sm:flex-initial px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center justify-center space-x-1.5 ${
+                !filterClassroomOnly
+                  ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/30'
+                  : 'bg-slate-950 text-slate-400 hover:text-white border border-slate-800'
+              }`}
+            >
+              <span>📑 Todas as 16 Questões (UNIFACS)</span>
+              <span className="px-1.5 py-0.5 rounded-full bg-black/20 text-[10px]">16 Qs</span>
+            </button>
+          </div>
+        </div>
+      )}
 
       {/* BANNER PEDAGÓGICO: COMO FUNCIONA A CORREÇÃO AUTOMÁTICA */}
       <div className="bg-gradient-to-r from-indigo-950/80 via-slate-900 to-purple-950/80 border border-indigo-500/30 rounded-3xl p-4 sm:p-5 shadow-xl">
@@ -277,7 +356,7 @@ export const DiscursiveMode: React.FC<DiscursiveModeProps> = ({
         <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none">
           {filteredQuestions.map((q, idx) => {
             const isCurrent = idx === currentIdx;
-            const qAns = activeProfile.discursiveAnswers?.[q.id];
+            const qAns = getSavedAnswer(q);
             const hasDraft = Boolean(qAns?.userDraft?.trim());
             const hasScore = qAns?.selfScore !== undefined && qAns?.selfScore !== null;
 
@@ -297,6 +376,9 @@ export const DiscursiveMode: React.FC<DiscursiveModeProps> = ({
                 title={`Questão ${idx + 1}: ${q.topic}`}
               >
                 <span>Q{(idx + 1).toString().padStart(2, '0')}</span>
+                {q.isFromClassroomReview && (
+                  <span className="text-[10px]" title="Folha de Sala">🔥</span>
+                )}
                 {hasScore ? (
                   <span className="text-[10px] text-emerald-400 font-mono">[{qAns?.selfScore}]</span>
                 ) : hasDraft ? (
@@ -314,6 +396,11 @@ export const DiscursiveMode: React.FC<DiscursiveModeProps> = ({
         {/* CABEÇALHO DO ENUNCIADO */}
         <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-800 pb-4">
           <div className="flex flex-wrap items-center gap-2">
+            {currentQ.isFromClassroomReview && (
+              <span className="px-3 py-1 rounded-xl bg-gradient-to-r from-amber-500/20 to-orange-500/20 border border-amber-500/40 text-amber-300 text-xs font-black flex items-center gap-1.5 shadow-sm">
+                <span>🔥 Folha de Sala #{currentQ.classroomOrder}</span>
+              </span>
+            )}
             <span className="px-3 py-1 rounded-xl bg-indigo-500/10 border border-indigo-500/30 text-indigo-400 text-xs font-bold font-mono">
               Questão {(currentIdx + 1).toString().padStart(2, '0')}
             </span>

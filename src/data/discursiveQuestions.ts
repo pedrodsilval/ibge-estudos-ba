@@ -1,52 +1,465 @@
 import type { DiscursiveQuestion } from '../types/study';
 
 export const DISCURSIVE_QUESTIONS: DiscursiveQuestion[] = [
-  // ==========================================
-  // DISCIPLINA 1: QUALIDADE DE SOFTWARE (TERÇA)
-  // ==========================================
+  // =========================================================================
+  // DISCIPLINA 1: QUALIDADE DE SOFTWARE (TERÇA 20/10)
+  // FOCO TOTAL: AS 10 QUESTÕES DA ATIVIDADE DE REVISÃO DE SALA (PDF 1)
+  // + GABARITO OFICIAL UNIFACS (PDF 2 - PROF. ENDERSON NOBRE)
+  // =========================================================================
+
   {
-    id: 'disc-qs-01',
+    id: 'disc-sala-01',
+    legacyId: 'disc-qs-01',
+    isFromClassroomReview: true,
+    classroomOrder: 1,
     subject: 'Qualidade de Software',
-    topic: 'Revisões Técnicas (RTF)',
-    source: 'UNIFACS - Folha de Revisão Oficial (Q01) • Pressman 9ª ed.',
+    topic: '1. Revisões Técnicas (Formal vs Informal)',
+    source: 'Folha de Atividade de Sala (Q01) • Gabarito Oficial UNIFACS (Q01)',
     difficulty: 'Fácil',
-    statement: 'Explique as diferenças entre revisões técnicas formais e informais, destacando suas principais características e a maneira como cada uma contribui para a garantia da qualidade do software.',
-    contextHint: 'Lembre-se da definição de atividade estática e do contraste entre o dia a dia ágil e as reuniões estruturadas de auditoria.',
-    expectedAnswer: `As revisões técnicas são atividades de controle estático de qualidade (realizadas sem executar o código) voltadas para a detecção precoce de defeitos. Elas se dividem em:
+    statement: 'Diferencie revisão técnica formal e revisão informal. Explique como cada uma pode contribuir para a qualidade do software.',
+    contextHint: 'Lembre-se da definição de atividade de controle estático de qualidade (sem execução de código) e do contraste de cerimonial, papéis e atas.',
+    expectedAnswer: `As revisões técnicas formais e informais são práticas de Garantia da Qualidade de Software utilizadas para identificar defeitos, inconsistências e problemas em artefatos (como documentos de requisitos, diagramas de projeto e códigos-fonte) antes que comprometam o produto final.
+
+A principal diferença entre elas está no grau de planejamento, estruturação, documentação e controle empregado durante a revisão:
 
 1. Revisões Técnicas Informais:
-• Características: Não exigem agendamento formal prévio, formulários padronizados ou papéis rígidos. Exemplos incluem o teste de mesa individual, o pair programming (programação em pares) e a leitura cruzada rápida de código entre colegas.
-• Contribuição: Oferecem feedback em tempo real com custo e atrito mínimos, agilidade para sanar dúvidas imediatas e melhoria contínua da qualidade no fluxo diário de desenvolvimento.
+• Características: Realizadas de maneira mais flexível, com menor rigor processual e pouca ou nenhuma documentação obrigatória. Não exigem agendamento formal prévio nem formulários padronizados. Exemplos clássicos incluem o teste de mesa individual, o pair programming (programação em pares) e a leitura cruzada rápida de código entre colegas.
+• Como contribui para a qualidade: Oferece feedback imediato em tempo real com custo e atrito mínimos, agilidade para sanar dúvidas pontuais e incentivo à melhoria contínua da qualidade no fluxo diário de desenvolvimento.
 
 2. Revisões Técnicas Formais (RTF):
-• Características: São reuniões estruturadas, convocadas e planejadas com antecedência. Seguem regras rígidas: equipe pequena de 3 a 5 membros, duração máxima de 2 horas, material distribuído previamente com checklists de inspeção, e papéis bem definidos (produtor, líder, revisores e registrador). Produzem atas e relatórios oficiais assinados.
-• Contribuição: Filtram defeitos graves de concepção, arquitetura, lógica e especificação antes que avancem para as fases de teste e homologação (onde o custo de correção pode ser até 100 vezes maior), garantindo rigor técnico e padronização institucional.`,
+• Características: São reuniões estruturadas, convocadas e planejadas com antecedência, seguindo procedimentos previamente estabelecidos. Seguem regras rígidas: equipe pequena de 3 a 5 membros, duração máxima de 2 horas, material distribuído previamente com checklists de inspeção e papéis bem definidos (produtor, líder, revisores e registrador). Produzem atas e relatórios oficiais assinados.
+• Como contribui para a qualidade: Filtra e remove defeitos graves de concepção, arquitetura, lógica e especificação ainda nas fases iniciais de engenharia. Isso evita a amplificação de defeitos e reduz drasticamente o custo de retrabalho (corrigir um defeito na revisão pode ser de 10 a 100 vezes mais barato do que corrigi-lo após a entrega em produção).`,
     keywords: [
-      'Atividade estática (sem execução)',
-      'Informal: teste de mesa / pair programming',
-      'Informal: sem formulários / feedback imediato',
-      'RTF Formal: estruturada / planejada',
-      '3 a 5 participantes / duração < 2 horas',
-      'Checklists antecipados / papéis definidos',
-      'Custo da correção precoce (amplificação de defeitos)',
-      'Ata oficial / relatório sintetizado'
+      'Garantia da Qualidade de Software / controle estático',
+      'Identificar defeitos em requisitos, diagramas e código',
+      'Principal diferença: grau de planejamento, estruturação e documentação',
+      'Revisões informais: flexíveis, menor rigor, sem documentação obrigatória',
+      'Exemplos informais: teste de mesa / pair programming',
+      'Contribuição informal: feedback imediato e agilidade no dia a dia',
+      'Revisões formais (RTF): planejadas, estruturadas e documentadas',
+      'Procedimentos prévios: 3 a 5 membros, até 2 horas, checklists e papéis',
+      'Contribuição formal: filtragem precoce de defeitos e redução do custo de retrabalho'
     ],
-    goldenBizu: 'Informal = dia a dia sem cerimônia (teste de mesa, pair programming). Formal (RTF) = reunião militar (3-5 pessoas, <2h, checklist, papéis definidos e ata oficial).',
+    goldenBizu: 'Informal = dia a dia sem cerimônia (pair programming, teste de mesa, feedback rápido). Formal (RTF) = reunião estruturada (3-5 pessoas, <2h, checklist, papéis definidos e ata oficial). Ambas são estáticas!',
     gradingCriteria: [
-      'Conceituação de revisão estática (sem execução do código).',
-      'Diferenciação clara quanto à cerimônia, planejamento e papéis.',
-      'Citar exemplos reais (pair programming vs reunião com checklist e ata).',
-      'Explicar o impacto no custo de correção precoce dos defeitos.'
+      'Conceituação de prática de qualidade para identificação precoce de defeitos.',
+      'Diferenciação clara quanto ao grau de planejamento, estrutura e documentação.',
+      'Citação de características e exemplos de revisão informal (pair programming/teste de mesa).',
+      'Citação de características da RTF formal (procedimentos, checklists, ata).',
+      'Explicação da contribuição de cada uma para a redução de custos e qualidade.'
     ]
   },
+
+  {
+    id: 'disc-sala-02',
+    legacyId: 'disc-qs-06',
+    isFromClassroomReview: true,
+    classroomOrder: 2,
+    subject: 'Qualidade de Software',
+    topic: '2. Caixa-Preta vs Caixa-Branca',
+    source: 'Folha de Atividade de Sala (Q02) • Gabarito Oficial UNIFACS (Q04)',
+    difficulty: 'Fácil',
+    statement: 'Explique a diferença entre teste de caixa-preta e teste de caixa-branca. Em seguida, dê um exemplo de uma mesma funcionalidade que possa ser testada pelas duas abordagens.',
+    contextHint: 'Caixa-preta foca no comportamento externo (sem ver o código). Caixa-branca foca na estrutura interna (código e branches). Use a tela de Login ou Autenticação como exemplo.',
+    expectedAnswer: `Os testes de caixa-preta e caixa-branca são técnicas fundamentais de teste de software utilizadas para identificar defeitos e verificar a qualidade de um sistema. A principal diferença entre elas está no conhecimento e na análise da estrutura interna do software durante a elaboração dos casos de teste:
+
+1. Teste de Caixa-Preta (Funcional ou Comportamental):
+• Avalia o comportamento externo do software, sem considerar sua implementação interna ou a estrutura do código-fonte.
+• Os casos de teste são derivados diretamente dos requisitos, casos de uso e especificações, fornecendo dados de entrada e comparando as saídas obtidas com as saídas esperadas.
+
+2. Teste de Caixa-Branca (Estrutural):
+• Avalia a estrutura interna e a lógica de implementação do software, considerando o código-fonte e seus possíveis caminhos de execução.
+• O projetista elabora testes para exercitar caminhos independentes, instruções, decisões condicionais (ramos verdadeiro/falso) e limites de laços de repetição.
+
+EXEMPLO DE UMA MESMA FUNCIONALIDADE TESTADA PELAS DUAS ABORDAGENS:
+• Funcionalidade Escolhida: "Autenticação de Usuário (Tela de Login)".
+- Abordagem em Caixa-Preta: O testador acessa a tela de login sem olhar o código. Insere um e-mail válido com senha correta e verifica se o sistema redireciona com sucesso para a Home. Em seguida, insere senha incorreta e valida se o sistema exibe a mensagem de erro esperada.
+- Abordagem em Caixa-Branca: O testador abre o método 'autenticar(email, senha)' no código-fonte. Ele analisa os branches do código e cria casos de teste para exercitar o caminho do 'if (usuario == null)', o caminho do 'if (!senhaEncoder.matches(...))' e o bloco 'catch (BancoDeDadosException e)', garantindo 100% de cobertura das instruções e ramos lógicos internos.`,
+    keywords: [
+      'Caixa-preta: avalia comportamento externo',
+      'Sem considerar implementação interna ou código-fonte',
+      'Caixa-branca: avalia estrutura interna e lógica',
+      'Considerando código-fonte e caminhos de execução',
+      'Exemplo de mesma funcionalidade citado (ex: Login / Autenticação / Cadastro)',
+      'Teste caixa-preta da funcionalidade: entradas e saídas esperadas na tela',
+      'Teste caixa-branca da funcionalidade: exercitar ifs, branches e caminhos do código'
+    ],
+    goldenBizu: 'Caixa-preta testa "o que" o sistema faz pela interface externa (requisitos). Caixa-branca testa "como" o código está construído por dentro (ifs, whiles e branches).',
+    gradingCriteria: [
+      'Definição precisa de teste caixa-preta (comportamento externo sem ver código).',
+      'Definição precisa de teste caixa-branca (estrutura interna e caminhos do código).',
+      'Apresentação de uma funcionalidade concreta (ex: Login/Autenticação).',
+      'Demonstração clara de como essa mesma funcionalidade é abordada em caixa-preta e em caixa-branca.'
+    ]
+  },
+
+  {
+    id: 'disc-sala-03',
+    legacyId: 'disc-qs-07',
+    isFromClassroomReview: true,
+    classroomOrder: 3,
+    subject: 'Qualidade de Software',
+    topic: '3. Teste de Caminho Básico (Tom McCabe)',
+    source: 'Folha de Atividade de Sala (Q03) • Gabarito Oficial UNIFACS (Q07)',
+    difficulty: 'Médio',
+    statement: 'O que é o teste de caminho básico? Explique a relação dessa técnica com a complexidade ciclomática e com a definição de casos de teste.',
+    contextHint: 'Técnica caixa-branca de Tom McCabe. Relacione: grafo de fluxo -> caminhos linearmente independentes -> teto de casos de teste para 100% de cobertura.',
+    expectedAnswer: `1. O que é o Teste de Caminho Básico:
+O teste de caminho básico é uma técnica de teste de caixa-branca (proposta por Tom McCabe) que permite derivar uma medida quantitativa da complexidade lógica de um projeto procedimental (a complexidade ciclomática) e usá-la como guia rigoroso para definir um conjunto-base de caminhos de execução linearmente independentes através do código-fonte.
+
+2. Relação com a Complexidade Ciclomática:
+A complexidade ciclomática V(G) fornece o fundamento matemático da técnica. Ela calcula exatamente o número de caminhos linearmente independentes existentes no grafo de fluxo do programa. Qualquer outro caminho possível de execução no programa pode ser expresso como uma combinação linear dos caminhos desse conjunto-base.
+
+3. Relação com a Definição de Casos de Teste:
+O valor numérico de V(G) estabelece o limite superior (o teto) do número de casos de teste que devem ser obrigatoriamente planejados e executados. 
+Essa definição garante que:
+• Cada instrução/comando executável do código seja percorrido pelo menos uma vez (cobertura de comandos).
+• Todas as decisões condicionais (ifs, loops) sejam exercitadas obrigatoriamente nos seus dois desfechos lógicos: Verdadeiro e Falso (cobertura de ramos).
+• O projetista de testes evite testes redundantes e não deixe lacunas críticas sem verificação.`,
+    keywords: [
+      'Técnica de teste de caixa-branca (Tom McCabe)',
+      'Medida quantitativa da complexidade lógica',
+      'Conjunto-base de caminhos de execução linearmente independentes',
+      'Complexidade ciclomática V(G) determina o número de caminhos independentes',
+      'Limite superior / teto de casos de teste necessários',
+      'Garantir que cada instrução/comando seja executado ao menos uma vez',
+      'Exercitar todas as decisões lógicas nos estados Verdadeiro e Falso'
+    ],
+    goldenBizu: 'Caminho básico é o mapa; Complexidade Ciclomática V(G) é a conta de quantos caminhos existem; Casos de teste são as viagens que você tem que fazer pra passar por todas as linhas do código.',
+    gradingCriteria: [
+      'Definir teste de caminho básico como técnica caixa-branca baseada em caminhos independentes.',
+      'Explicar que a complexidade ciclomática quantifica matematicamente os caminhos do conjunto-base.',
+      'Explicar que V(G) dita o número mínimo/teto de casos de teste para cobertura total de comandos e decisões (V e F).'
+    ]
+  },
+
+  {
+    id: 'disc-sala-04',
+    legacyId: 'disc-qs-08',
+    isFromClassroomReview: true,
+    classroomOrder: 4,
+    subject: 'Qualidade de Software',
+    topic: '4. Complexidade Ciclomática (Cálculo Numérico E=12, N=10)',
+    source: 'Folha de Atividade de Sala (Q04) • Gabarito Oficial UNIFACS (Q08)',
+    difficulty: 'Médio',
+    statement: 'Um grafo de fluxo possui 12 arestas (E) e 10 nós (N). Calcule V(G) pela fórmula E - N + 2. O que o resultado indica para o planejamento dos testes?',
+    contextHint: 'Substitua E=12 e N=10 na fórmula. Interprete o valor 4 em relação a caminhos independentes e número mínimo de casos de teste.',
+    expectedAnswer: `1. CÁLCULO DE V(G):
+Aplicando a fórmula de arestas e nós de Tom McCabe:
+V(G) = E - N + 2
+Onde:
+• E (Edges / Arestas) = 12
+• N (Nodes / Nós) = 10
+
+Substituindo os valores:
+V(G) = 12 - 10 + 2
+V(G) = 2 + 2
+V(G) = 4
+
+2. O QUE O RESULTADO INDICA PARA O PLANEJAMENTO DOS TESTES:
+O resultado V(G) = 4 traz diretrizes quantitativas diretas para o projetista de testes:
+• Existem exatamente 4 caminhos linearmente independentes no grafo de fluxo do módulo.
+• O projetista deve elaborar e executar no mínimo 4 casos de teste distintos para cobrir o conjunto-base.
+• A execução desses 4 casos de teste garante matematicamente a cobertura completa de comandos (100% das instruções do código serão executadas pelo menos uma vez) e a cobertura de todas as ramificações lógicas (todos os nós de decisão serão testados em seus desfechos Verdadeiro e Falso).
+• Elaborar menos de 4 casos de teste significa que haverá caminhos ou decisões sem nenhuma cobertura; elaborar mais de 4 testes no caminho básico gerará redundância na cobertura estrutural.`,
+    keywords: [
+      'V(G) = E - N + 2',
+      '12 - 10 + 2 = 4',
+      'V(G) = 4',
+      '4 caminhos linearmente independentes',
+      'Mínimo de 4 casos de teste necessários',
+      'Garantir 100% de cobertura de instruções / comandos',
+      'Exercitar decisões em Verdadeiro e Falso',
+      'Limite superior / teto de testes sem redundância'
+    ],
+    goldenBizu: 'V(G) = 12 - 10 + 2 = 4. Significa: 4 caminhos independentes no código e obrigação de criar 4 casos de teste para passar por todas as linhas.',
+    gradingCriteria: [
+      'Apresentar o cálculo correto: V(G) = 12 - 10 + 2 = 4.',
+      'Indicar que existem 4 caminhos independentes no grafo.',
+      'Afirmar que são necessários no mínimo 4 casos de teste.',
+      'Explicar que isso garante a cobertura de todos os comandos e decisões lógicas.'
+    ]
+  },
+
+  {
+    id: 'disc-sala-05',
+    legacyId: 'disc-qs-14',
+    isFromClassroomReview: true,
+    classroomOrder: 5,
+    subject: 'Qualidade de Software',
+    topic: '5. Particionamento de Equivalência (Idades 18 a 65)',
+    source: 'Folha de Atividade de Sala (Q05) • Gabarito Oficial UNIFACS (Q10)',
+    difficulty: 'Fácil',
+    statement: 'Um sistema aceita idades entre 18 e 65 anos, inclusive. Defina as classes de equivalência válidas e inválidas e escolha um valor representativo para cada classe.',
+    contextHint: 'Intervalo fechado [18..65]. Uma classe válida e duas classes inválidas (abaixo de 18 e acima de 65). Escolha um número representativo para cada.',
+    expectedAnswer: `O método de particionamento de equivalência divide o domínio de entrada em partições de dados (classes), assumindo que qualquer valor de uma mesma classe gerará o mesmo comportamento pelo sistema.
+
+Para a regra de negócio "Idades entre 18 e 65 anos, inclusive" (18 <= idade <= 65), definimos 3 classes de equivalência:
+
+1. Classe de Equivalência Válida (CE1):
+• Definição: Idades permitidas pelo sistema dentro da faixa legal.
+• Intervalo: 18 <= idade <= 65 anos (números inteiros de 18 a 65).
+• Valor Representativo: 30 anos (ou 25, 40).
+• Resultado Esperado: Entrada aceita e processada com sucesso.
+
+2. Classe de Equivalência Inválida 1 (CE2 — Abaixo do limite inferior):
+• Definição: Idades de menores de idade, fora da faixa mínima.
+• Intervalo: idade < 18 anos.
+• Valor Representativo: 15 anos (ou 10, 12).
+• Resultado Esperado: Entrada rejeitada com mensagem de erro ("Idade inferior ao mínimo permitido de 18 anos").
+
+3. Classe de Equivalência Inválida 2 (CE3 — Acima do limite superior):
+• Definição: Idades acima da faixa etária máxima permitida.
+• Intervalo: idade > 65 anos.
+• Valor Representativo: 70 anos (ou 75, 80).
+• Resultado Esperado: Entrada rejeitada com mensagem de erro ("Idade superior ao limite máximo permitido de 65 anos").
+
+(Opcional de robustez: entradas inválidas não numéricas, como letras, caracteres especiais ou valores nulos).`,
+    keywords: [
+      'Particionamento de equivalência',
+      'Classe válida: 18 a 65 anos inclusive (18 <= idade <= 65)',
+      'Valor representativo válido (ex: 30, 25, 40)',
+      'Classe inválida abaixo: menor que 18 (idade < 18)',
+      'Valor representativo inválido inferior (ex: 12, 15, 10)',
+      'Classe inválida acima: maior que 65 (idade > 65)',
+      'Valor representativo inválido superior (ex: 70, 75, 80)',
+      'Comportamento esperado: aceitar válidos e rejeitar inválidos'
+    ],
+    goldenBizu: 'Equivalência para [18..65]: CE1 Válida = 18 a 65 (testa 30). CE2 Inválida = <18 (testa 12). CE3 Inválida = >65 (testa 70). Um teste por grupo!',
+    gradingCriteria: [
+      'Identificar corretamente a classe válida (18 <= idade <= 65) e escolher valor representativo.',
+      'Identificar a classe inválida abaixo de 18 (idade < 18) e escolher valor representativo.',
+      'Identificar a classe inválida acima de 65 (idade > 65) e escolher valor representativo.',
+      'Indicar os resultados esperados para cada classe.'
+    ]
+  },
+
+  {
+    id: 'disc-sala-06',
+    legacyId: 'disc-qs-14-avl',
+    isFromClassroomReview: true,
+    classroomOrder: 6,
+    subject: 'Qualidade de Software',
+    topic: '6. Análise de Valor Limite (Idades 18 a 65)',
+    source: 'Folha de Atividade de Sala (Q06) • Gabarito Oficial UNIFACS (Q11)',
+    difficulty: 'Médio',
+    statement: 'Para o mesmo campo de idade de 18 a 65 anos, proponha casos de teste utilizando análise de valor limite e justifique sua escolha.',
+    contextHint: 'Foque nas fronteiras exatas (limite inferior 18 e superior 65) e seus valores adjacentes imediatos. Justifique com a alta incidência de erros de borda (<= vs <).',
+    expectedAnswer: `1. JUSTIFICATIVA DA ESCOLHA DA ANÁLISE DE VALOR LIMITE:
+A Análise de Valor Limite (AVL) complementa o particionamento de equivalência ao focar nas fronteiras exatas das classes de entrada. A justificativa técnica para essa escolha fundamenta-se no fato empírico de que a esmagadora maioria dos defeitos de programação (como erros "off-by-one", confusão entre operadores relacionais '<' e '<=' ou '>' e '>=') ocorre exatamente nas bordas e nos pontos de transição entre o que é válido e o que é inválido, e raramente no centro das classes.
+
+2. CASOS DE TESTE PROPOSTOS:
+Para o intervalo fechado [18, 65], analisamos os valores limítrofes e seus vizinhos imediatamente adjacentes (mínimo - 1, mínimo, mínimo + 1, máximo - 1, máximo, máximo + 1):
+
+A. Fronteira Inferior (Limite de 18 anos):
+• Caso 1 (Valor = 17): Imediatamente abaixo da borda inferior -> Resultado Esperado: INVÁLIDO (Rejeitar).
+• Caso 2 (Valor = 18): Exatamente sobre a borda inferior (limite) -> Resultado Esperado: VÁLIDO (Aceitar).
+• Caso 3 (Valor = 19): Imediatamente acima da borda inferior -> Resultado Esperado: VÁLIDO (Aceitar).
+
+B. Fronteira Superior (Limite de 65 anos):
+• Caso 4 (Valor = 64): Imediatamente abaixo da borda superior -> Resultado Esperado: VÁLIDO (Aceitar).
+• Caso 5 (Valor = 65): Exatamente sobre a borda superior (limite) -> Resultado Esperado: VÁLIDO (Aceitar).
+• Caso 6 (Valor = 66): Imediatamente acima da borda superior -> Resultado Esperado: INVÁLIDO (Rejeitar).
+
+Resumo dos Casos de Teste: { 17, 18, 19 } e { 64, 65, 66 }.`,
+    keywords: [
+      'Análise de Valor Limite (AVL)',
+      'Justificativa: erros de programação ocorrem com maior frequência nas fronteiras / bordas',
+      'Erros em operadores relacionais (<, <=, >, >=)',
+      'Fronteira inferior: 17 (inválido), 18 (válido), 19 (válido)',
+      'Fronteira superior: 64 (válido), 65 (válido), 66 (inválido)',
+      'Valores limítrofes e adjacentes'
+    ],
+    goldenBizu: 'Valor Limite testa a cerca e um passo fora da cerca: No 18 -> testa 17 (fora), 18 (na cerca), 19 (dentro). No 65 -> testa 64 (dentro), 65 (na cerca), 66 (fora). Total: 6 testes!',
+    gradingCriteria: [
+      'Justificar a técnica com base na concentração de erros nas fronteiras/condicionais.',
+      'Propor os valores da fronteira inferior: 17, 18 e 19 com seus respectivos resultados esperados.',
+      'Propor os valores da fronteira superior: 64, 65 e 66 com seus respectivos resultados esperados.'
+    ]
+  },
+
+  {
+    id: 'disc-sala-07',
+    legacyId: 'disc-qs-10',
+    isFromClassroomReview: true,
+    classroomOrder: 7,
+    subject: 'Qualidade de Software',
+    topic: '7. Testes Unitários Automatizados',
+    source: 'Folha de Atividade de Sala (Q07) • Gabarito Oficial UNIFACS (Q12)',
+    difficulty: 'Fácil',
+    statement: 'Explique o que são testes unitários automatizados e cite três benefícios. Depois, descreva um exemplo simples de função que poderia ser testada unitariamente.',
+    contextHint: 'Menor componente testável (funções/métodos). Benefícios: detecção precoce, manutenção/refatoração, documentação viva. Exemplo: calcularDesconto.',
+    expectedAnswer: `1. O QUE SÃO TESTES UNITÁRIOS AUTOMATIZADOS:
+São verificações automáticas das menores unidades testáveis isoladas do código-fonte (como métodos, funções ou classes individuais), sem envolver dependências externas complexas (como banco de dados real ou rede), utilizando frameworks de teste (como JUnit 5).
+
+2. TRÊS BENEFÍCIOS PRINCIPAIS:
+• Detecção Precoce de Erros: Identifica e corrige defeitos no exato momento da codificação, onde o custo de correção é exponencialmente mais baixo do que nas etapas posteriores.
+• Facilitação da Manutenção e Refatoração: Oferece uma rede de segurança sólida e imediata; o desenvolvedor pode otimizar e reestruturar o código sabendo que a bateria automatizada confirmará em segundos se alguma funcionalidade existente quebrou.
+• Documentação Viva do Comportamento Esperado: Auxilia desenvolvedores atuais e futuros a compreender com clareza o contrato, as entradas válidas e o comportamento esperado de cada função através dos próprios casos de teste.
+
+3. EXEMPLO SIMPLES DE FUNÇÃO TESTÁVEL UNITARIAMENTE:
+• Função em Java:
+  double calcularDesconto(double valorCompra, boolean isClienteVip) {
+      if (isClienteVip && valorCompra >= 100.0) {
+          return valorCompra * 0.10; // 10% de desconto
+      }
+      return 0.0;
+  }
+
+• Cenários de Teste Unitário (JUnit 5):
+  - Cenário 1 (Cliente VIP com compra de 150): assertEquals(15.0, calcularDesconto(150.0, true), 0.001);
+  - Cenário 2 (Cliente VIP com compra de 80): assertEquals(0.0, calcularDesconto(80.0, true), 0.001);
+  - Cenário 3 (Cliente não-VIP com compra de 200): assertEquals(0.0, calcularDesconto(200.0, false), 0.001);`,
+    keywords: [
+      'Verificações automáticas de pequenas partes isoladas do código',
+      'Métodos ou classes individuais',
+      'Detecção precoce de erros (redução de custo)',
+      'Facilita manutenção e refatoração do código',
+      'Documentação viva do comportamento esperado',
+      'Exemplo de função simples (ex: calcularDesconto, somar, verificarMaioridade)',
+      'Entradas, lógica e saídas esperadas (asserções / assertEquals)'
+    ],
+    goldenBizu: 'Unitário testa a menor peça isolada (método/função). Benefícios: acha erro cedo, dá coragem pra refatorar e serve como manual vivo. Exemplo: método calcularDesconto.',
+    gradingCriteria: [
+      'Conceituar teste unitário automatizado em escopo atômico (métodos/classes isoladas).',
+      'Apresentar 3 benefícios consolidados (detecção precoce, manutenção/refatoração, documentação).',
+      'Descrever um exemplo simples e funcional de método e seus respectivos casos de teste unitários.'
+    ]
+  },
+
+  {
+    id: 'disc-sala-08',
+    legacyId: 'disc-qs-12',
+    isFromClassroomReview: true,
+    classroomOrder: 8,
+    subject: 'Qualidade de Software',
+    topic: '8. Teste de Integração (Defeitos de Interface)',
+    source: 'Folha de Atividade de Sala (Q08) • Gabarito Oficial UNIFACS (Q13)',
+    difficulty: 'Médio',
+    statement: 'Defina teste de integração e explique qual tipo de defeito ele pode revelar mesmo quando os módulos, isoladamente, passam em seus testes unitários.',
+    contextHint: 'Verifica interação e comunicação entre módulos. Explique que partes perfeitas sozinhas podem quebrar na interface, formatos de dados, concorrência ou ordem de execução.',
+    expectedAnswer: `1. DEFINIÇÃO DE TESTE DE INTEGRAÇÃO:
+O teste de integração é um nível de teste de software que tem como finalidade verificar se diferentes módulos, componentes ou subsistemas funcionam corretamente quando são combinados e integrados, avaliando principalmente a comunicação, a troca de dados e as interações entre eles. Seu objetivo primordial é identificar defeitos nas interfaces e conexões entre componentes.
+
+2. TIPOS DE DEFEITOS QUE ELE REVELA (MESMO COM 100% DE SUCESSO NOS TESTES UNITÁRIOS):
+Mesmo que cada módulo funcione com perfeição isolada em sua bancada, a integração pode revelar falhas graves que não são detectadas nos testes unitários:
+• Incompatibilidades de Interface e Tipagem de Dados: Um módulo chamador passa dados em um formato ou unidade (ex: data como String 'DD/MM/YYYY' ou valor em dólares) e o módulo chamado espera outro formato (ex: LocalDate em 'YYYY-MM-DD' ou valor em centavos).
+• Falhas de Comunicação e Perda de Parâmetros: Parâmetros truncados, nulos ou passados em ordem invertida através de chamadas de métodos, barramentos de mensageria ou APIs REST.
+• Inconsistência na Sequência de Execução (Ordem Temporal): O módulo consumidor tenta processar ou ler dados antes que o módulo produtor tenha concluído a transação ou gravação no banco de dados.
+• Concorrência e Bloqueios em Recursos Compartilhados: Disputas simultâneas por tabelas de banco de dados (deadlocks), corrupção de variáveis globais compartilhadas ou esgotamento de conexões de pool de dados que só se manifestam com múltiplos módulos operando juntos.`,
+    keywords: [
+      'Verificar comunicação e troca de dados entre módulos integrados',
+      'Objetivo: identificar defeitos nas interfaces e interações',
+      'Incompatibilidade entre interfaces e formatos de dados',
+      'Falhas na comunicação / perda de parâmetros',
+      'Erros na sequência de execução das operações',
+      'Inconsistência de dados / concorrência em recursos compartilhados',
+      'Módulos funcionam isolados, mas falham combinados'
+    ],
+    goldenBizu: 'Cada peça do motor pode estar perfeita sozinha, mas se o encaixe tiver folga ou o combustível for errado, o motor funde. Integração testa o encaixe, as interfaces e a troca de dados!',
+    gradingCriteria: [
+      'Definir teste de integração com foco em comunicação e interações entre módulos.',
+      'Ressaltar o objetivo principal de identificar falhas em interfaces.',
+      'Listar os defeitos específicos invisíveis ao teste unitário (incompatibilidade de formatos, sequência, concorrência).'
+    ]
+  },
+
+  {
+    id: 'disc-sala-09',
+    legacyId: 'disc-qs-09',
+    isFromClassroomReview: true,
+    classroomOrder: 9,
+    subject: 'Qualidade de Software',
+    topic: '9. Top-Down vs Bottom-Up (Stubs e Drivers)',
+    source: 'Folha de Atividade de Sala (Q09) • Gabarito Oficial UNIFACS (Q14)',
+    difficulty: 'Médio',
+    statement: 'Compare as estratégias de integração top-down e bottom-up. Explique o papel de stubs e drivers nessas abordagens.',
+    contextHint: 'Top-down: desce na hierarquia e usa STUBS (módulos fictícios embaixo). Bottom-up: sobe na hierarquia e usa DRIVERS (pseudocontroladores em cima).',
+    expectedAnswer: `As estratégias de integração estruturada definem a ordem cronológica em que os módulos são combinados:
+
+1. INTEGRAÇÃO TOP-DOWN (DESCENDENTE):
+• Como funciona: Os módulos são integrados deslocando-se para baixo na hierarquia de controle, iniciando pelo módulo principal (controlador do topo da arquitetura) e descendo progressivamente até os módulos subordinados.
+• Papel dos STUBS: Como os módulos de nível inferior ainda não foram implementados ou integrados, utilizam-se STUBS (módulos fictícios ou "cascas" substitutas). O stub simula o comportamento dos componentes inferiores pendentes, recebendo chamadas do módulo de topo e devolvendo respostas estáticas pré-programadas, permitindo testar a lógica do controlador imediatamente.
+
+2. INTEGRAÇÃO BOTTOM-UP (ASCENDENTE):
+• Como funciona: Os módulos são integrados de baixo para cima, iniciando pelos componentes mais atômicos da base da hierarquia (módulos utilitários, rotinas de cálculo e acesso a dados), que são agrupados em agregados (clusters/builds).
+• Papel dos DRIVERS: Como os módulos de nível superior (controladores) ainda não foram integrados para comandar os módulos da base, desenvolvem-se DRIVERS (pseudocontroladores ou "programas condutores"). O driver simula o módulo chamador, enviando dados de teste para a entrada do módulo subordinado e imprimindo ou validando suas saídas. Os drivers são descartados à medida que a integração sobe na hierarquia.
+
+RESUMO COMPARATIVO:
+• Top-Down: Desce na árvore | Inicia no Módulo Principal | Usa STUBS (simula para baixo).
+• Bottom-Up: Sobe na árvore | Inicia nos Módulos Utilitários | Usa DRIVERS (simula para cima).`,
+    keywords: [
+      'Top-down: integração descendente / do topo para baixo',
+      'Inicia pelo módulo principal / controlador',
+      'Papel dos STUBS: módulos fictícios que simulam componentes inferiores pendentes',
+      'Bottom-up: integração ascendente / de baixo para cima',
+      'Inicia por componentes de nível inferior / utilitários da base',
+      'Papel dos DRIVERS: pseudocontroladores que coordenam entradas e saídas para a base',
+      'Drivers são removidos conforme a integração sobe na hierarquia'
+    ],
+    goldenBizu: 'Top-Down desce e usa STUB (módulo fantoche embaixo). Bottom-Up sobe e usa DRIVER (piloto temporário em cima). Top=Stub, Bottom=Driver!',
+    gradingCriteria: [
+      'Diferenciar o sentido de integração (Top-Down inicia no topo; Bottom-Up inicia na base).',
+      'Explicar com precisão o papel dos STUBS na integração descendente.',
+      'Explicar com precisão o papel dos DRIVERS na integração ascendente.'
+    ]
+  },
+
+  {
+    id: 'disc-sala-10',
+    legacyId: 'disc-qs-11',
+    isFromClassroomReview: true,
+    classroomOrder: 10,
+    subject: 'Qualidade de Software',
+    topic: '10. Fumaça e Regressão (Cenário em Loja Virtual)',
+    source: 'Folha de Atividade de Sala (Q10) • Gabarito Oficial UNIFACS (Q15)',
+    difficulty: 'Médio',
+    statement: 'Diferencie teste de fumaça (smoke test) e teste de regressão. Crie um cenário de alteração em uma loja virtual e indique quando cada tipo de teste deveria ser executado.',
+    contextHint: 'Fumaça = teste rápido diário na build para checar o básico. Regressão = reteste amplo após mudança para evitar novos defeitos. Cenário: alteração no cálculo de frete.',
+    expectedAnswer: `1. DIFERENCIAÇÃO ENTRE OS TESTES:
+• Teste de Fumaça (Smoke Test): É uma abordagem de integração contínua executada diariamente ou a cada nova build (versão compilada). Consiste em um conjunto rápido, abrangente e superficial de testes que verifica se as funções mais vitais do sistema operam o suficiente para mantê-lo "de pé". Seu objetivo é expor erros catastróficos que impeçam o funcionamento básico e justifiquem a rejeição imediata da build antes de testes mais profundos.
+• Teste de Regressão: É a reexecução de um subconjunto amplo e detalhado de casos de teste para garantir que modificações recentes no código (correção de bugs, refatoração ou inclusão de novos recursos) não tenham introduzido novos defeitos ("regressões") ou quebrado comportamentos que antes funcionavam perfeitamente.
+
+2. CENÁRIO PRÁTICO EM UMA LOJA VIRTUAL:
+• Alteração Realizada: A equipe de engenharia modificou o módulo de "Cálculo de Frete" para integrar uma nova transportadora com cálculo de prazo por CEP.
+
+• Quando executar o Teste de Fumaça:
+Deve ser executado imediatamente após o pipeline de integração contínua (CI) gerar a nova build no servidor de homologação. O teste de fumaça roda em menos de 3 minutos validando os fluxos vitais: a página inicial carrega? A busca de produtos responde? O usuário consegue fazer login e colocar um item no carrinho? Se o sistema travar na inicialização, a build é imediatamente rejeitada e devolvida aos desenvolvedores.
+
+• Quando executar o Teste de Regressão:
+Deve ser executado após a aprovação no teste de fumaça. Roda-se a suíte completa de testes de regressão sobre todos os módulos adjacentes à compra: testa-se se a alteração no cálculo de frete não afetou o cálculo de cupons de desconto, não gerou divergência no total do pedido, não quebrou as formas de pagamento (cartão, Pix) e não corrompeu a emissão da nota fiscal.`,
+    keywords: [
+      'Teste de fumaça: executado diariamente em uma build para expor erros graves',
+      'Verificar funcionamento básico / rejeição precoce da build',
+      'Teste de regressão: reexecução de testes para garantir que modificações não criaram novos defeitos',
+      'Cenário de loja virtual descrito (ex: alteração no cálculo de frete ou cupom)',
+      'Momento da fumaça: logo após a compilação/build da alteração (login, vitrine, carrinho)',
+      'Momento da regressão: após a fumaça, testando checkout, pagamento e total do pedido sem efeitos colaterais'
+    ],
+    goldenBizu: 'Fumaça = checagem rápida para ver se o paciente está vivo (a build abre sem cair). Regressão = checar se consertar o frete não quebrou o pagamento do carrinho!',
+    gradingCriteria: [
+      'Diferenciar formalmente teste de fumaça (saúde da build) e teste de regressão (ausência de efeitos colaterais).',
+      'Apresentar um cenário realista de alteração em loja virtual (ex: módulo de frete).',
+      'Indicar com precisão o momento da execução do smoke test (logo pós-build).',
+      'Indicar com precisão o momento e abrangência do teste de regressão (pós-fumaça, cobrindo fluxos adjacentes).'
+    ]
+  },
+
+  // =========================================================================
+  // QUESTÕES TEÓRICAS COMPLEMENTARES DO GABARITO OFICIAL UNIFACS (PDF 2)
+  // =========================================================================
+
   {
     id: 'disc-qs-02',
+    legacyId: 'disc-qs-02',
+    isFromClassroomReview: false,
+    classroomOrder: 11,
     subject: 'Qualidade de Software',
-    topic: 'Revisões Técnicas (RTF)',
-    source: 'UNIFACS - Folha de Revisão Oficial (Q02) • Pressman 9ª ed.',
+    topic: 'Revisões Técnicas Formais (RTF)',
+    source: 'Gabarito Oficial UNIFACS (Q02) • Pressman 9ª ed.',
     difficulty: 'Fácil',
     statement: 'Identifique os principais participantes de uma revisão técnica formal e descreva as responsabilidades desempenhadas por cada um deles durante o processo de revisão.',
-    contextHint: 'São exatamente 4 papéis essenciais. Lembre-se da regra de ouro: "Revisa-se o produto, nunca o produtor".',
+    contextHint: 'São exatamente 4 papéis essenciais: Produtor, Líder, Revisores e Registrador. Lembre-se da regra de ouro: "Revisa-se o produto, nunca o produtor".',
     expectedAnswer: `Em uma Revisão Técnica Formal (RTF), o grupo é restrito a 3 a 5 pessoas, distribuídas em 4 papéis fundamentais:
 
 1. Produtor:
@@ -64,9 +477,9 @@ export const DISCURSIVE_QUESTIONS: DiscursiveQuestion[] = [
 • Responsabilidade: Papel assumido por um dos revisores. Tem a função exclusiva de registrar por escrito todas as pendências e problemas identificados, gerando a "Lista de Problemas de Revisão" e a ata da sessão.`,
     keywords: [
       'Produtor (autor do artefato, nunca lidera)',
-      'Líder (planeja, convoca, controla o tempo < 2h)',
-      'Revisores (analisam com checklists, apontam defeitos)',
-      'Registrador / Secretário (anota problemas na ata)',
+      'Líder da Revisão (planeja, convoca, controla o tempo < 2h)',
+      'Revisores (examinam artefato com preparação prévia, apontam defeitos)',
+      'Registrador / Secretário (anota problemas e descobertas na ata)',
       'Revisa-se o produto, nunca o produtor'
     ],
     goldenBizu: 'Produtor apresenta o código; Líder vigia o relógio e a pauta; Revisores caçam os erros; Registrador anota as pendências na ata.',
@@ -76,11 +489,15 @@ export const DISCURSIVE_QUESTIONS: DiscursiveQuestion[] = [
       'Destacar que a função do registrador garante que nenhum defeito seja esquecido.'
     ]
   },
+
   {
     id: 'disc-qs-03',
+    legacyId: 'disc-qs-03',
+    isFromClassroomReview: false,
+    classroomOrder: 12,
     subject: 'Qualidade de Software',
-    topic: 'Revisões Técnicas (RTF)',
-    source: 'UNIFACS - Folha de Revisão Oficial (Q03) • Pressman 9ª ed.',
+    topic: 'Revisões Técnicas Formais (RTF)',
+    source: 'Gabarito Oficial UNIFACS (Q03) • Pressman 9ª ed.',
     difficulty: 'Médio',
     statement: 'Quais são as possíveis decisões formais que podem ser tomadas ao final de uma Revisão Técnica Formal (RTF)? Identifique os principais documentos produzidos durante esse processo e explique suas finalidades.',
     contextHint: 'Existem exatamente 3 decisões consensuais e 2 documentos oficiais produzidos.',
@@ -109,318 +526,116 @@ DOCUMENTOS PRODUZIDOS:
       'Distinguir os 2 documentos e seus públicos-alvo (dev vs gerência).'
     ]
   },
+
   {
-    id: 'disc-qs-04',
+    id: 'disc-qs-05-cb',
+    legacyId: 'disc-qs-05',
+    isFromClassroomReview: false,
+    classroomOrder: 13,
     subject: 'Qualidade de Software',
-    topic: 'Revisões Técnicas (RTF)',
-    source: 'UNIFACS - Folha de Revisão Oficial (Q04) • Pressman 9ª ed.',
+    topic: 'Caixa-Branca (Objetivos Lógicos)',
+    source: 'Gabarito Oficial UNIFACS (Q05) • Pressman 9ª ed.',
+    difficulty: 'Médio',
+    statement: 'Quais são os quatro objetivos lógicos perseguidos pela filosofia do teste caixa-branca?',
+    contextHint: 'Lembre-se dos 4 alvos: caminhos independentes, decisões verdadeiro/falso, limites de laços e estruturas de dados internas.',
+    expectedAnswer: `O teste caixa-branca deriva casos de teste para atingir quatro objetivos lógicos fundamentais:
+1. Garantir que todos os caminhos independentes de um módulo foram exercitados pelo menos uma vez;
+2. Exercitar todas as decisões lógicas nos seus estados verdadeiro e falso;
+3. Executar todos os ciclos (loops) em seus limites operacionais e dentro de suas fronteiras;
+4. Exercitar estruturas de dados internas para garantir sua validade (ex: limites de vetores, ponteiros, variáveis de estado).`,
+    keywords: [
+      '1) Garantir que todos os caminhos independentes foram exercitados',
+      '2) Exercitar todas as decisões lógicas nos estados verdadeiro e falso',
+      '3) Executar todos os ciclos em seus limites e fronteiras',
+      '4) Exercitar estruturas de dados internas'
+    ],
+    goldenBizu: 'Caixa-branca busca: 1) Passar por todos os caminhos; 2) Testar V e F de todo if; 3) Testar bordas de todo loop (while/for); 4) Testar memória/arrays internos.',
+    gradingCriteria: [
+      'Citar os 4 objetivos lógicos clássicos de Pressman.',
+      'Enfatizar a cobertura de caminhos independentes e ramos V/F.'
+    ]
+  },
+
+  {
+    id: 'disc-qs-09-fibdt',
+    legacyId: 'disc-qs-09-fibdt',
+    isFromClassroomReview: false,
+    classroomOrder: 14,
+    subject: 'Qualidade de Software',
+    topic: 'Caixa-Preta (Categorias de Erros - FIBDT)',
+    source: 'Gabarito Oficial UNIFACS (Q09) • Pressman 9ª ed.',
     difficulty: 'Fácil',
-    statement: 'Quais são os principais objetivos das revisões técnicas formais no processo de garantia da qualidade?',
-    contextHint: 'Pense em detecção precoce, redução de custos de retrabalho e nivelamento do time.',
-    expectedAnswer: `Os principais objetivos das Revisões Técnicas Formais (RTF) são:
-1. Descoberta Precoce de Defeitos: Localizar erros de especificação, lógica, cálculo e omissões ainda nas etapas de engenharia (requisitos, modelagem e codificação), impedindo o efeito de amplificação de defeitos.
-2. Redução Drástica dos Custos de Retrabalho: Corrigir um erro durante a revisão custa de 10 a 100 vezes menos do que corrigi-lo em fase de homologação ou após o deploy em produção.
-3. Garantia de Conformidade com Padrões: Assegurar que o código e artefatos sigam os padrões de arquitetura, legibilidade, segurança e boas práticas da organização.
-4. Nivelamento e Disseminação do Conhecimento: Funciona como treinamento prático contínuo, fazendo com que desenvolvedores aprendam com os artefatos revisados e ninguém seja o único detentor do conhecimento sobre um módulo.
-5. Melhoria Contínua do Processo de Software: O histórico de defeitos catalogados nas revisões serve como métrica para aprimorar os checklists e treinamentos futuros da empresa.`,
+    statement: 'Quais são as cinco categorias de erros que o teste caixa-preta busca expor?',
+    contextHint: 'Use o mnemônico oficial F-I-B-D-T: Funções, Interface, Banco de dados, Desempenho, Término.',
+    expectedAnswer: `O teste caixa-preta tenta encontrar erros em cinco categorias principais (Mnemônico F-I-B-D-T):
+1. Funções incorretas ou ausentes (em relação aos requisitos especificados);
+2. Erros de interface (com o usuário, APIs externas ou outros sistemas);
+3. Erros em estruturas de dados ou acesso a bancos de dados externos;
+4. Erros de comportamento ou desempenho (tempo de resposta, lentidão, sobrecarga);
+5. Erros de inicialização e término (falha ao abrir o sistema ou fechamento anormal que deixa processos zumbis).`,
     keywords: [
-      'Descoberta precoce de defeitos',
-      'Redução de custo de retrabalho',
-      'Evitar amplificação de defeitos',
-      'Garantir conformidade com padrões e normas',
-      'Disseminação de conhecimento técnico na equipe'
+      '1) Funções incorretas ou ausentes',
+      '2) Erros de interface',
+      '3) Erros em estruturas de dados ou bancos de dados externos',
+      '4) Erros de comportamento ou desempenho',
+      '5) Erros de inicialização e término',
+      'Mnemônico FIBDT'
     ],
-    goldenBizu: 'RTF serve para achar erro antes que vire desastre caro, garantir que o código segue o padrão da empresa e nivelar o conhecimento da equipe.',
+    goldenBizu: 'F-I-B-D-T: Funções ausentes, Interface com erros, Banco de dados/estruturas, Desempenho lento, Término/inicialização travados.',
     gradingCriteria: [
-      'Mencionar a redução de custo associada à detecção precoce.',
-      'Citar padronização e manutenção do código.',
-      'Mencionar o ganho pedagógico/compartilhamento de conhecimento no time.'
+      'Listar com precisão as cinco categorias de erros de Pressman.'
     ]
   },
+
   {
-    id: 'disc-qs-05',
+    id: 'disc-qs-08-formulas',
+    legacyId: 'disc-qs-08-formulas',
+    isFromClassroomReview: false,
+    classroomOrder: 15,
     subject: 'Qualidade de Software',
-    topic: 'Testes de Sistema',
-    source: 'UNIFACS - Folha de Revisão Oficial (Q05) • Pressman / Sommerville',
-    difficulty: 'Médio',
-    statement: 'Quais os tipos de testes que compõem os testes de sistema? Explique cada um deles.',
-    contextHint: 'Testes de sistema avaliam o software integrado com hardware, rede e dados. Lembre-se de Recuperação, Segurança, Estresse e Desempenho.',
-    expectedAnswer: `Os testes de sistema avaliam o software em sua totalidade, integrado com o hardware, sistemas operacionais e infraestrutura de rede. Os 4 principais tipos descritos por Pressman são:
-
-1. Teste de Recuperação (Recovery Testing):
-• Objetivo: Força a falha intencional do sistema (queda de energia, desconexão de rede, encerramento abrupto do banco de dados) para verificar se o software consegue se recuperar sem perda de integridade dos dados e retornar ao estado operacional no tempo tolerável estabelecido (RTO/RPO).
-
-2. Teste de Segurança (Security Testing):
-• Objetivo: Valida os mecanismos de proteção contra acessos não autorizados, invasões, injeção de dados maliciosos (ex: SQL Injection, XSS) e vazamento de informações confidenciais.
-
-3. Teste de Estresse (Stress Testing):
-• Objetivo: Submete o sistema a cargas anormais e extremas, muito além de sua capacidade operacional máxima especificada (ex: 50.000 requisições simultâneas em um servidor dimensionado para 5.000). O objetivo é observar o comportamento de degradação graciosa ("graceful degradation") e assegurar que o sistema falhe sem corromper a base de dados.
-
-4. Teste de Desempenho (Performance Testing):
-• Objetivo: Avalia o tempo de resposta em tempo de execução, taxa de transferência (throughput) e o consumo de recursos (CPU, memória RAM, I/O de disco) sob condições normais e de pico planejadas.`,
-    keywords: [
-      'Teste de Recuperação: tolerância a falhas / reinício íntegro',
-      'Teste de Segurança: blindagem contra invasão e acessos indevidos',
-      'Teste de Estresse: além do limite / degradação suave sem corrupção',
-      'Teste de Desempenho: tempo de resposta / throughput / consumo de memória e CPU'
-    ],
-    goldenBizu: 'Recuperação = se cair, levanta sem perder dados; Segurança = se tentarem invadir, bloqueia; Estresse = força além do limite pra ver onde quebra; Desempenho = mede velocidade e consumo.',
-    gradingCriteria: [
-      'Conceituar os 4 tipos clássicos de Pressman.',
-      'Diferenciar claramente Estresse (além do limite) de Desempenho (dentro das especificações normais/pico).'
-    ]
-  },
-  {
-    id: 'disc-qs-06',
-    subject: 'Qualidade de Software',
-    topic: 'Caixa-Preta vs Caixa-Branca',
-    source: 'UNIFACS - Folha de Revisão Oficial (Q06) • Pressman 9ª ed.',
+    topic: 'Complexidade Ciclomática (As 3 Fórmulas)',
+    source: 'Gabarito Oficial UNIFACS (Q08) • Tom McCabe',
     difficulty: 'Fácil',
-    statement: 'Diferencie testes de caixa-branca e testes de caixa-preta, destacando o foco de atuação e os tipos de defeitos que cada abordagem tem maior capacidade de revelar.',
-    contextHint: 'Caixa-preta = funcional (olha entradas e saídas). Caixa-branca = estrutural (olha código, loops, branches).',
-    expectedAnswer: `A diferença fundamental entre as duas abordagens reside na visibilidade e dependência da estrutura interna do código:
-
-1. Teste de Caixa-Preta (Teste Funcional ou Comportamental):
-• Foco de Atuação: Examina o software exclusivamente pela sua interface externa, tratando o código-fonte como uma "caixa opaca". Os casos de teste são derivados diretamente dos requisitos e casos de uso, aplicando entradas e comparando as saídas obtidas com as saídas esperadas.
-• Defeitos Revelados (Mnemônico F-I-B-D-T):
-  - Funções incorretas ou ausentes em relação aos requisitos;
-  - Erros de interface com o usuário ou com sistemas externos;
-  - Erros em estruturas de dados ou acesso a banco de dados;
-  - Erros de desempenho e tempo de resposta;
-  - Falhas de inicialização e término de processos.
-
-2. Teste de Caixa-Branca (Teste Estrutural):
-• Foco de Atuação: Baseia-se no conhecimento profundo e minucioso da arquitetura interna e do código-fonte. O analista projeta testes para exercitar caminhos lógicos específicos, instruções, condições verdadeiras/falsas e loops.
-• Defeitos Revelados:
-  - Erros de lógica e algoritmos internos;
-  - Código morto ou caminhos inalcançáveis;
-  - Erros de fronteira em condições lógicas (ex: "<" em vez de "<=");
-  - Inicialização incorreta de variáveis acumuladoras e laços infinitos;
-  - Vulnerabilidades de ponteiros e estouro de limites de memória.`,
+    statement: 'Quais são as três formas equivalentes de calcular a complexidade ciclomática V(G) em um grafo de fluxo?',
+    contextHint: 'Regiões, Arestas e Nós, Nós Predicados.',
+    expectedAnswer: `A complexidade ciclomática V(G) pode ser calculada de três formas matematicamente equivalentes a partir do grafo de fluxo:
+1. O número de regiões do grafo: V(G) = Regiões planas (contando todas as regiões fechadas mais a região externa aberta).
+2. A fórmula de arestas e nós: V(G) = E - N + 2 (onde E é o número de arestas e N é o número de nós).
+3. A fórmula dos nós predicados: V(G) = P + 1 (onde P é o número de pontos de decisão/nós predicados, como ifs e whiles).`,
     keywords: [
-      'Caixa-Preta: funcional / entradas e saídas / ignora código interno',
-      'Erros revelados Caixa-Preta: funções ausentes, interface, requisitos',
-      'Caixa-Branca: estrutural / conhecimento do código-fonte',
-      'Erros revelados Caixa-Branca: caminhos lógicos, decisões V/F, limites de loops, variáveis mal inicializadas'
+      '1. O número de regiões do grafo',
+      '2. V(G) = E - N + 2 (arestas e nós)',
+      '3. V(G) = P + 1 (nós predicados / pontos de decisão)'
     ],
-    goldenBizu: 'Caixa-preta testa "o que" o sistema faz (requisitos e telas). Caixa-branca testa "como" o código está construído por dentro (ifs, whiles e caminhos).',
+    goldenBizu: '3 fórmulas que dão o mesmo resultado: Regiões (fechadas + 1 de fora), E - N + 2, e P + 1 (onde P é quantos ifs/whiles tem).',
     gradingCriteria: [
-      'Diferenciação clara entre funcional (externo) e estrutural (código).',
-      'Indicação dos tipos específicos de defeitos que cada técnica é mais eficiente em encontrar.'
+      'Apresentar corretamente as 3 fórmulas de McCabe.'
     ]
   },
+
   {
-    id: 'disc-qs-07',
-    subject: 'Qualidade de Software',
-    topic: 'Caixa-Branca / Caminho Básico',
-    source: 'UNIFACS - Folha de Revisão Oficial (Q07) • Tom McCabe',
-    difficulty: 'Médio',
-    statement: 'Qual a finalidade do teste de caminho básico na abordagem de testes de caixa-branca?',
-    contextHint: 'Relacione com o grafo de fluxo do programa e a garantia de cobertura de comandos.',
-    expectedAnswer: `A finalidade primordial da técnica de Teste de Caminho Básico (proposta por Tom McCabe) é permitir que o projetista de testes derive um conjunto-base de caminhos de execução independentes através do código-fonte.
-
-Suas principais finalidades são:
-1. Garantir Cobertura Mínima Completa: Assegura que cada comando e instrução executável dentro do módulo seja percorrido pelo menos uma vez durante a bateria de testes.
-2. Exercitar Todas as Decisões Lógicas: Garante que cada condição condicional (if, switch, while) seja testada em ambos os seus desfechos lógicos possíveis (Verdadeiro e Falso).
-3. Determinar o Teto de Testes Necessários: Fornece um critério matemático rigoroso (a Complexidade Ciclomática) que define exatamente o número mínimo de casos de teste necessários e suficientes para atingir 100% de cobertura de comandos, evitando tanto testes redundantes quanto lacunas críticas.`,
-    keywords: [
-      'Conjunto-base de caminhos independentes',
-      'Executar cada comando ao menos uma vez',
-      'Exercitar decisões em Verdadeiro e Falso',
-      'Critério matemático (teto de casos de teste)',
-      'Eliminar testes redundantes e cobrir lacunas'
-    ],
-    goldenBizu: 'Caminho básico serve para criar a menor quantidade de testes possível que consiga passar por 100% das linhas e decisões (V e F) do código sem esquecer nada.',
-    gradingCriteria: [
-      'Definir conjunto-base de caminhos independentes.',
-      'Ressaltar a cobertura de 100% dos comandos e ramos (V/F).',
-      'Citar o papel da complexidade ciclomática como métrica do número de testes.'
-    ]
-  },
-  {
-    id: 'disc-qs-08',
-    subject: 'Qualidade de Software',
-    topic: 'Complexidade Ciclomática',
-    source: 'UNIFACS - Folha de Revisão Oficial (Q08) • Tom McCabe',
-    difficulty: 'Médio',
-    statement: 'O que mede a complexidade ciclomática na abordagem de testes de caminho básico? Como ela pode ser calculada?',
-    contextHint: 'Lembre-se das 3 fórmulas equivalentes: Regiões, Arestas - Nós + 2, e Predicados + 1.',
-    expectedAnswer: `A Complexidade Ciclomática, métrica desenvolvida por Thomas McCabe, mede a complexidade lógica quantitativa de um programa ou método, refletindo diretamente o número de caminhos linearmente independentes presentes no código. Na prática de testes, ela define o limite superior (o teto) de casos de teste que devem ser elaborados para garantir que todos os comandos sejam executados ao menos uma vez.
-
-FORMAS EQUIVALENTES DE CÁLCULO:
-Baseando-se no Grafo de Fluxo do programa, onde nós (N) representam comandos sequenciais e arestas (E) representam o fluxo de controle:
-
-1. Método das Regiões:
-V(G) = Número de Regiões planas delimitadas pelas arestas do grafo (contando todas as regiões fechadas + a região externa aberta).
-
-2. Método Arestas e Nós:
-V(G) = E - N + 2
-Onde E = número de arestas (edges) e N = número de nós (nodes).
-
-3. Método dos Nós Predicados:
-V(G) = P + 1
-Onde P é o número de nós predicados (nós de decisão condicional que bifurcam o fluxo, como ifs, whiles, for, cases).
-
-INTERPRETAÇÃO: Se V(G) = 4, significa que existem exatamente 4 caminhos independentes e são necessários no mínimo 4 casos de teste distintos.`,
-    keywords: [
-      'Complexidade lógica quantitativa',
-      'Número de caminhos linearmente independentes',
-      'Teto máximo de casos de teste necessários',
-      'V(G) = Regiões',
-      'V(G) = E - N + 2',
-      'V(G) = P + 1 (Nós de decisão + 1)'
-    ],
-    goldenBizu: 'V(G) é o número de testes que você TEM que fazer. Pode calcular por: Regiões (fechadas + 1 fora), Arestas - Nós + 2, ou Nós de Decisão (P) + 1.',
-    gradingCriteria: [
-      'Definir que mede a complexidade lógica e quantifica caminhos independentes.',
-      'Apresentar corretamente as 3 fórmulas de McCabe.',
-      'Explicar o significado prático do resultado para o planejamento de testes.'
-    ]
-  },
-  {
-    id: 'disc-qs-09',
-    subject: 'Qualidade de Software',
-    topic: 'Testes de Integração',
-    source: 'UNIFACS - Folha de Revisão Oficial (Q09) • Pressman 9ª ed.',
-    difficulty: 'Médio',
-    statement: 'Explique a diferença entre abordagem top-down e bottom-up nos testes de integração e a função dos stubs e drivers em cada uma delas.',
-    contextHint: 'Top-down começa no topo (controlador) e usa STUB. Bottom-up começa na base (utilitários) e usa DRIVER.',
-    expectedAnswer: `Os testes de integração verificam a correta comunicação e integridade entre os módulos unitários do sistema. As duas estratégias clássicas diferem no sentido de montagem e no tipo de módulo falso utilizado:
-
-1. Abordagem Top-Down (Descendente):
-• Como funciona: A integração inicia no módulo principal (módulo de controle do topo da hierarquia) e desce progressivamente em direção aos módulos subordinados.
-• Uso de STUBS: Como os módulos de nível inferior ainda não foram implementados ou integrados, o testador utiliza STUBS (módulos substitutos para baixo). O stub é uma função simulada ("casca") que recebe as chamadas do módulo de controle e devolve uma resposta estática ou fixa para permitir que o topo seja testado imediatamente.
-• Vantagem: Demonstra as funções principais do sistema logo no início do projeto.
-
-2. Abordagem Bottom-Up (Ascendente):
-• Como funciona: A integração inicia na base da arquitetura (módulos utilitários, operacionais e de acesso a dados) e sobe progressivamente em direção aos módulos controladores superiores.
-• Uso de DRIVERS: Como o controlador principal do topo ainda não foi acionado, o testador desenvolve DRIVERS (módulos condutores para cima). O driver é um programa temporário que simula a chamada ao módulo da base, passando argumentos de teste e capturando os retornos.
-• Vantagem: Testa as partes mais críticas de cálculo e infraestrutura de dados primeiro, sem depender de telas prontas.`,
-    keywords: [
-      'Top-Down: do topo para a base / controladores primeiro',
-      'STUBS: módulos substitutos subordinados (simulam para baixo)',
-      'Bottom-Up: da base para o topo / utilitários primeiro',
-      'DRIVERS: programas condutores simuladores de chamadas (simulam para cima)',
-      'Verificação da interface e passagem de parâmetros'
-    ],
-    goldenBizu: 'Top-Down desce e usa STUB (módulo fantoche embaixo). Bottom-Up sobe e usa DRIVER (programa condutor em cima que chama a base).',
-    gradingCriteria: [
-      'Mapear corretamente: Top-Down usa STUB; Bottom-Up usa DRIVER.',
-      'Explicar o sentido de navegação na árvore de módulos.',
-      'Definir a função de simulação do stub vs driver.'
-    ]
-  },
-  {
-    id: 'disc-qs-10',
-    subject: 'Qualidade de Software',
-    topic: 'Testes de Unidade',
-    source: 'UNIFACS - Folha de Revisão Oficial (Q10) • JUnit 5',
-    difficulty: 'Fácil',
-    statement: 'Qual o objetivo principal dos testes de unidade?',
-    contextHint: 'Pense no menor componente testável (função, método, classe) e na facilidade de isolar a causa raiz do bug.',
-    expectedAnswer: `O objetivo principal dos testes de unidade é verificar e validar o funcionamento isolado do menor componente testável do software (uma função individual, um método ou uma classe específica).
-
-Seus objetivos fundamentais são:
-1. Isolar a Causa Raiz: Ao testar um método de forma estritamente isolada (com mocks/stubs se necessário), qualquer falha detectada aponta com precisão cirúrgica a linha e a lógica com defeito, reduzindo drasticamente o tempo de depuração.
-2. Garantir Correção Lógica das Regras de Negócio: Validar que os algoritmos, tratamentos de exceção, loops e estruturas de dados internas produzem a saída correta para qualquer entrada válida ou inválida.
-3. Prover Rede de Segurança para Refatoração: Permitir que o desenvolvedor refatore e otimize o código com a garantia imediata de que nenhuma funcionalidade anterior foi quebrada.
-4. Documentação Executável: Casos de teste de unidade bem estruturados (como no JUnit 5) atuam como uma especificação viva e executável de como aquele método deve se comportar.`,
-    keywords: [
-      'Menor componente testável (método, função, classe)',
-      'Isolamento da causa raiz de defeitos',
-      'Facilidade de depuração',
-      'Rede de segurança para refatoração de código',
-      'Validação de algoritmos e tratamento de exceções'
-    ],
-    goldenBizu: 'Teste de unidade foca na menor pecinha do sistema (método ou classe isolada) para achar o bug com precisão cirúrgica sem misturar com banco ou rede.',
-    gradingCriteria: [
-      'Definir o escopo atômico (menor parte testável).',
-      'Destacar o isolamento e facilidade de localização de defeitos.',
-      'Citar o papel de suporte à refatoração.'
-    ]
-  },
-  {
-    id: 'disc-qs-11',
-    subject: 'Qualidade de Software',
-    topic: 'Testes de Fumaça & Regressão',
-    source: 'UNIFACS - Folha de Revisão Oficial (Q11) • Pressman 9ª ed.',
-    difficulty: 'Médio',
-    statement: 'Quais os papéis dos testes de regressão e dos testes de fumaça no ciclo de vida do software?',
-    contextHint: 'Smoke test = teste rápido para ver se a nova build fica de pé. Regressão = garantir que novidades não quebraram o passado.',
-    expectedAnswer: `Ambos os testes são vitais para a saúde contínua da aplicação, atuando em momentos complementares:
-
-1. Teste de Fumaça (Smoke Testing):
-• Papel: É uma bateria de testes rápida, abrangente e superficial executada logo após uma nova build (compilação) ser gerada.
-• Finalidade: Verifica se as funções mais vitais do sistema operam o suficiente para manter a aplicação "de pé" (ex: sistema inicializa, conecta ao banco, permite login e abre a tela principal). Se o teste de fumaça falhar ("saiu fumaça"), a build é imediatamente rejeitada e devolvida aos desenvolvedores, economizando o tempo da equipe de testes que não perderá horas tentando testar um sistema que sequer carrega.
-
-2. Teste de Regressão:
-• Papel: É o reteste deliberado de funcionalidades que já estavam funcionando perfeitamente, executado após qualquer modificação de código (correção de um bug, refatoração ou adição de nova funcionalidade).
-• Finalidade: Garantir que a inserção do novo código ou a correção de um defeito não tenha introduzido efeitos colaterais indesejados ("regressões") em partes não relacionadas do sistema.`,
-    keywords: [
-      'Teste de Fumaça: bateria rápida pós-build / checa funções vitais',
-      'Fumaça: rejeição precoce de build instável',
-      'Teste de Regressão: reteste de funcionalidades pré-existentes',
-      'Regressão: evitar efeitos colaterais de novas alterações ou correções'
-    ],
-    goldenBizu: 'Fumaça = checagem rápida para ver se o paciente está respirando (se a build abre). Regressão = checar se consertar o braço não quebrou a perna que estava boa.',
-    gradingCriteria: [
-      'Diferenciar o momento de execução e objetivo de cada teste.',
-      'Explicar a analogia/origem do Smoke Test (estabilidade inicial da build).',
-      'Explicar o conceito de efeito colateral no Teste de Regressão.'
-    ]
-  },
-  {
-    id: 'disc-qs-12',
-    subject: 'Qualidade de Software',
-    topic: 'Testes de Integração',
-    source: 'UNIFACS - Folha de Revisão Oficial (Q12) • Pressman 9ª ed.',
-    difficulty: 'Fácil',
-    statement: 'Por que os testes de integração são fundamentais no desenvolvimento de software, mesmo quando todos os testes de unidade tiveram 100% de sucesso?',
-    contextHint: 'Mesmo que cada módulo funcione perfeitamente sozinho, quando eles se conectam surgem problemas de protocolo, tipos de dados e concorrência.',
-    expectedAnswer: `Os testes de integração são imprescindíveis porque "a soma das partes que funcionam bem isoladamente pode não funcionar quando combinada". O sucesso pleno dos testes de unidade não garante a integridade do sistema integrado pelas seguintes razões:
-
-1. Incompatibilidade nas Interfaces e Contratos:
-• Um módulo pode esperar um tipo de dado específico (ex: formato de data YYYY-MM-DD) e o módulo chamador enviar outro (DD/MM/YYYY), ou haver divergência na ordem dos parâmetros passados.
-2. Perda de Dados e Efeitos Colaterais Globais:
-• Dados podem se perder na passagem de parâmetros através de barramentos, filas ou chamadas HTTP/REST. Variáveis globais modificadas por um módulo podem desestabilizar silenciosamente outro componente.
-3. Concorrência e Bloqueios (Deadlocks):
-• Em ambiente integrado, múltiplos módulos disputam simultaneamente o mesmo recurso compartilhado (banco de dados, arquivos em disco, cache), gerando problemas de concorrência que nunca aparecem em testes de unidade isolados.
-4. Acúmulo de Erros Numéricos:
-• Pequenas imprecisões de arredondamento aceitáveis em um cálculo unitário podem se acumular exponencialmente ao trafegar por uma cadeia integrada de 5 ou 6 módulos.`,
-    keywords: [
-      'A soma de partes boas pode falhar quando combinada',
-      'Incompatibilidade de interfaces e formatos de dados',
-      'Perda de dados em chamadas entre módulos',
-      'Problemas de concorrência, tempo de resposta e travamento de banco',
-      'Efeitos colaterais e acúmulo de imprecisões'
-    ],
-    goldenBizu: 'Cada peça do motor pode estar perfeita na bancada, mas se o encaixe entre elas tiver folga, o motor funde. Integração testa o encaixe e a troca de dados.',
-    gradingCriteria: [
-      'Ressaltar a falha em interfaces como causa primordial.',
-      'Citar exemplos reais (incompatibilidade de dados, concorrência, perda de dados).',
-      'Concluir que testes de unidade e integração são complementares, não substitutos.'
-    ]
-  },
-  {
-    id: 'disc-qs-13',
+    id: 'disc-qs-13-vv',
+    legacyId: 'disc-qs-13',
+    isFromClassroomReview: false,
+    classroomOrder: 16,
     subject: 'Qualidade de Software',
     topic: 'Verificação vs Validação (V&V)',
-    source: 'UNIFACS - Folha de Revisão Oficial (Q13) • Boehm / Pressman',
+    source: 'Gabarito Oficial UNIFACS • Barry Boehm / Pressman',
     difficulty: 'Fácil',
     statement: 'Diferencie teste de verificação e teste de validação, apresentando as perguntas fundamentais de Barry Boehm associadas a cada um.',
-    contextHint: 'Verificação = conformidade com o projeto técnico. Validação = atender às necessidades reais do cliente/usuário.',
+    contextHint: 'Verificação: "Estamos construindo o produto corretamente?". Validação: "Estamos construindo o produto correto?".',
     expectedAnswer: `A distinção canônica estabelecida por Barry Boehm e adotada por Pressman resume-se em duas perguntas clássicas:
 
 1. Verificação:
 • Pergunta de Boehm: "Estamos construindo o produto corretamente?" (Are we building the product right?)
-• Significado: Avalia se o software está sendo construído rigorosamente de acordo com as especificações técnicas, modelos arquiteturais, normas de codificação e documentos de requisitos definidos na fase anterior. É um processo voltado para a conformidade técnica formal.
+• Significado: Avalia se o software está sendo construído rigorosamente de acordo com as especificações técnicas, modelos arquiteturais e normas de codificação. É voltado para a conformidade técnica formal.
 
 2. Validação:
 • Pergunta de Boehm: "Estamos construindo o produto correto?" (Are we building the right product?)
-• Significado: Avalia se o software final atende às reais necessidades, expectativas e regras de negócio do cliente e dos usuários finais no ambiente operacional real. Mesmo que o software esteja 100% livre de bugs e siga toda a especificação (verificado com sucesso), se ele resolver o problema errado ou não servir para o usuário, ele falhou na validação.`,
+• Significado: Avalia se o software final atende às reais necessidades e regras de negócio do cliente e dos usuários finais no ambiente operacional real.`,
     keywords: [
       'Verificação: "Estamos construindo o produto corretamente?" (Building the product right)',
-      'Verificação: conformidade técnica com especificações e normas',
+      'Verificação: conformidade técnica com especificações',
       'Validação: "Estamos construindo o produto correto?" (Building the right product)',
       'Validação: atender às necessidades reais do cliente e usuário final'
     ],
@@ -430,80 +645,9 @@ Seus objetivos fundamentais são:
       'Diferenciar conformidade de especificação (verificação) de atendimento às necessidades do usuário (validação).'
     ]
   },
-  {
-    id: 'disc-qs-14',
-    subject: 'Qualidade de Software',
-    topic: 'Partição de Equivalência & Valor Limite',
-    source: 'UNIFACS - Folha de Revisão Oficial (Q14) • Pressman 9ª ed.',
-    difficulty: 'Médio',
-    statement: 'Explique o conceito de partição de equivalência e a técnica de análise de valor limite na elaboração de casos de teste de caixa-preta.',
-    contextHint: 'Pense em dividir o domínio de entrada em classes válidas/inválidas e testar os números exatamente na cerca (fronteira).',
-    expectedAnswer: `São duas técnicas fundamentais e complementares de teste de caixa-preta:
-
-1. Partição de Equivalência:
-• Conceito: Divide o domínio infinito de entradas de um programa em classes de dados finitas ("partições de equivalência"), partindo do princípio de que todos os valores pertencentes a uma mesma partição serão processados de maneira idêntica pelo sistema.
-• Aplicação: Se um teste com um valor representativo da classe tem sucesso, assume-se que todos os outros da mesma classe teriam. O analista identifica tanto partições válidas (dados aceitáveis) quanto partições inválidas (dados que devem disparar tratamento de erro), reduzindo o número total de testes sem perder qualidade.
-
-2. Análise de Valor Limite (AVL):
-• Conceito: É um refinamento da partição de equivalência baseado na constatação empírica de que a imensa maioria dos erros de programação ocorre exatamente nas bordas (fronteiras) das classes de equivalência, e não no seu centro.
-• Aplicação: Em vez de escolher qualquer número do meio da classe, o projetista de testes escolhe deliberadamente os valores exatamente nos limites e imediatamente adjacentes a eles (mínimo, logo abaixo do mínimo, logo acima do mínimo, máximo, logo abaixo do máximo e logo acima do máximo).
-
-Exemplo Prático: Um campo aceita notas inteiras de 0 a 10.
-• Partição de Equivalência: Válida [0..10], Inválidas [<0] e [>10].
-• Análise de Valor Limite: Testar -1, 0, 1 (fronteira inferior) e 9, 10, 11 (fronteira superior).`,
-    keywords: [
-      'Partição de Equivalência: dividir domínio em classes válidas e inválidas',
-      'Comportamento idêntico de valores da mesma partição',
-      'Análise de Valor Limite: foco nas bordas e extremos',
-      'Erros ocorrem com maior frequência nas fronteiras (<=, >=)',
-      'Exemplo numérico com valores limítrofes e adjacentes'
-    ],
-    goldenBizu: 'Equivalência separa em grupos (válidos e inválidos) pra não precisar testar número por número. Valor Limite testa exatamente na cerca (em cima da fronteira e um passo pra fora).',
-    gradingCriteria: [
-      'Conceituar partição de equivalência (classes válidas e inválidas).',
-      'Conceituar valor limite e justificar por que defeitos se concentram nas bordas.',
-      'Apresentar um exemplo numérico consistente de aplicação.'
-    ]
-  },
-  {
-    id: 'disc-qs-15',
-    subject: 'Qualidade de Software',
-    topic: 'Ciclo de Vida de Teste',
-    source: 'UNIFACS - Folha de Revisão Oficial (Q15) • Pressman / Sommerville',
-    difficulty: 'Fácil',
-    statement: 'Descreva as etapas fundamentais que compõem o ciclo de vida do processo de teste de software.',
-    contextHint: 'Vai desde o planejamento inicial até o relatório de encerramento.',
-    expectedAnswer: `O Ciclo de Vida de Teste de Software (STLC - Software Testing Life Cycle) é um processo estruturado que compreende as seguintes etapas fundamentais:
-
-1. Análise de Requisitos:
-• A equipe de testes estuda a especificação de requisitos e regras de negócio para identificar o escopo testável e esclarecer ambiguidades com os analistas.
-2. Planejamento de Testes:
-• Elaboração do Plano de Testes (documento mestre), definindo escopo, estratégia, recursos humanos e de hardware, prazos, ferramentas (ex: JUnit 5, Postman) e critérios de início e término.
-3. Projeto e Elaboração de Casos de Teste:
-• Criação detalhada dos casos de teste (procedimentos, dados de entrada, pré-condições e saídas esperadas), além da automação de scripts.
-4. Configuração do Ambiente de Testes:
-• Montagem do ambiente integrado de homologação (servidores, bancos de dados com massa de testes populada, rede) simulando o ambiente de produção.
-5. Execução dos Testes:
-• Execução dos casos de teste manuais e automatizados. Registro dos defeitos encontrados em ferramentas de issue tracker (ex: Jira, Bugzilla) com evidências.
-6. Encerramento e Relatório de Testes:
-• Análise das métricas de cobertura, taxa de defeitos resolvidos vs pendentes e emissão do Relatório Sintetizado de Conclusão de Testes com parecer sobre a liberação (deploy) para produção.`,
-    keywords: [
-      '1. Análise de Requisitos',
-      '2. Planejamento de Testes (Plano de Testes)',
-      '3. Projeto e Casos de Teste (entradas/saídas esperadas)',
-      '4. Configuração do Ambiente de Teste',
-      '5. Execução de Testes e Registro de Defeitos',
-      '6. Encerramento e Relatório Final de Teste'
-    ],
-    goldenBizu: 'Planejar -> Projetar casos de teste -> Preparar ambiente -> Executar e caçar bugs -> Emitir relatório de aprovação.',
-    gradingCriteria: [
-      'Apresentar a sequência lógica das fases do STLC.',
-      'Destacar o planejamento prévio e a emissão do relatório final.'
-    ]
-  },
 
   // ==========================================
-  // DISCIPLINA 2: BANCO DE DADOS (QUARTA)
+  // DISCIPLINA 2: BANCO DE DADOS (QUARTA 21/10)
   // ==========================================
   {
     id: 'disc-bd-01',
@@ -538,316 +682,331 @@ Exemplo Prático: Um campo aceita notas inteiras de 0 a 10.
     ],
     goldenBizu: '1FN = cada gaveta só guarda um objeto (atômico). 2FN = se a chave tem 2 pedaços, nada pode depender de meio pedaço só. 3FN = coluna comum não manda em coluna comum.',
     gradingCriteria: [
-      'Conceituar atomicidade na 1FN.',
-      'Explicar que dependência parcial só existe em tabelas com chave composta na 2FN.',
-      'Definir dependência transitiva (atributo não-chave determinando outro não-chave) na 3FN.',
-      'Citar soluções práticas de decomposição em tabelas separadas.'
+      'Conceituar atomicidade e unicidade de chave na 1FN.',
+      'Definir dependência parcial na 2FN e esclarecer que só existe em chaves compostas.',
+      'Definir dependência transitiva na 3FN (atributo não-chave determinando outro não-chave).'
     ]
   },
   {
     id: 'disc-bd-02',
     subject: 'Banco de Dados',
     topic: 'Modelagem da Clínica Veterinária',
-    source: 'UNIFACS - Prof. Luiz Henrique • Atividade de Sala de Aula',
-    difficulty: 'Fácil',
-    statement: 'Com base no estudo de caso da "Clínica Veterinária", descreva as cardinalidades entre as entidades Tutor, Animal, Veterinário e Consulta, e explique por que a tabela Consulta atua como a entidade central do modelo.',
-    contextHint: 'Identifique os lados 1 e N de cada relacionamento e para onde migram as chaves estrangeiras (FK).',
-    expectedAnswer: `A modelagem da Clínica Veterinária estrutura-se a partir de três relacionamentos fundamentais do tipo Um-para-Muitos (1:N):
+    source: 'UNIFACS - Prof. Luiz Henrique • Estudo de Caso Oficial A3',
+    difficulty: 'Difícil',
+    statement: 'Com base no estudo de caso da Clínica Veterinária (VetCare), apresente as entidades principais, as regras de cardinalidade entre elas e justifique por que o relacionamento entre Consulta e Veterinário deve ser 1:N (ou N:1) e para onde migra a Chave Estrangeira (FK).',
+    contextHint: 'Entidades: Veterinario, Cliente, Paciente, Consulta. Na cardinalidade 1:N, a chave primária do lado "1" migra como chave estrangeira (FK) para a tabela do lado "N".',
+    expectedAnswer: `1. Entidades Principais da Clínica Veterinária:
+• Veterinario (id_veterinario PK, nome, crmv, especialidade, telefone, email)
+• Cliente (id_cliente PK, nome, cpf, telefone, email, endereco)
+• Paciente (id_paciente PK, nome, especie, raca, data_nasc, peso, id_cliente FK)
+• Consulta (id_consulta PK, data_hora, motivo, diagnostico, valor, id_paciente FK, id_veterinario FK)
 
-1. Tutor (1) ➔ (N) Animal:
-• Regra: Um tutor pode possuir vários animais cadastrados, mas cada animal pertence a exatamente um tutor.
-• Implementação: A Chave Primária do lado '1' (id_tutor) migra como Chave Estrangeira (FK) para a tabela Animal.
+2. Regras de Cardinalidade:
+• Cliente - Paciente (1:N): Um Cliente pode cadastrar 1 ou muitos Pacientes; cada Paciente pertence obrigatoriamente a exatamente 1 Cliente. A PK 'id_cliente' migra como FK para 'Paciente'.
+• Paciente - Consulta (1:N): Um Paciente pode realizar 0 ou muitas Consultas ao longo da vida; cada Consulta refere-se obrigatoriamente a 1 único Paciente. A PK 'id_paciente' migra como FK para 'Consulta'.
+• Veterinario - Consulta (1:N): Um Veterinário pode realizar 0 ou muitas Consultas; cada Consulta é conduzida por exatamente 1 Veterinário responsável. A PK 'id_veterinario' migra como FK para 'Consulta'.
 
-2. Animal (1) ➔ (N) Consulta:
-• Regra: Um animal pode realizar múltiplas consultas ao longo da vida, mas cada consulta individual refere-se a um único animal.
-• Implementação: id_animal migra como FK para a tabela Consulta.
-
-3. Veterinário (1) ➔ (N) Consulta:
-• Regra: Um veterinário realiza diversas consultas, mas cada atendimento é conduzido por um veterinário responsável.
-• Implementação: id_veterinario migra como FK para a tabela Consulta.
-
-POR QUE A CONSULTA É A ENTIDADE CENTRAL?
-A tabela Consulta atua como a entidade associativa que resolve a relação Muitos-para-Muitos (N:N) entre Animais e Veterinários (um animal é atendido por vários veterinários ao longo do tempo, e um veterinário atende vários animais). A Consulta conecta essas duas pontas e armazena os atributos próprios da ocorrência do serviço: data, horário, motivo, valor cobrado e diagnóstico.`,
+3. Justificativa da Migração de Chave Estrangeira (FK):
+Pelas regras canônicas do Modelo Relacional, em um relacionamento de cardinalidade 1:N, a Chave Primária da entidade do lado "1" (Veterinario) migra obrigatoriamente para a entidade do lado "N" (Consulta) tornando-se Chave Estrangeira (FK).
+Se colocássemos 'id_consulta' dentro de 'Veterinario', o veterinário só poderia fazer uma única consulta em toda a sua carreira, ou teríamos que violar a 1FN criando uma lista de consultas separadas por vírgula na mesma linha. Portanto, a FK 'id_veterinario' fica na tabela 'Consulta'.`,
     keywords: [
-      'Tutor 1:N Animal (FK id_tutor vai em animal)',
-      'Animal 1:N Consulta (FK id_animal vai em consulta)',
-      'Veterinário 1:N Consulta (FK id_veterinario vai em consulta)',
-      'Chave do lado 1 migra como FK para o lado N',
-      'Consulta resolve relação N:N com atributos de transação'
+      'Entidades: Veterinario, Cliente, Paciente, Consulta',
+      'Cardinalidade Cliente-Paciente 1:N (FK id_cliente em Paciente)',
+      'Cardinalidade Veterinario-Consulta 1:N',
+      'Regra relacional: PK do lado 1 migra como FK para o lado N',
+      'FK id_veterinario fica na tabela Consulta',
+      'Evitar violação da 1FN (múltiplas consultas por veterinário)'
     ],
-    goldenBizu: 'Regra de ouro relacional: O lado "1" empresta sua chave para o lado "N". Quem é atendido (Animal) e quem atende (Veterinário) se encontram na Consulta com suas FKs.',
+    goldenBizu: 'Regra infalível do Modelo Relacional: O lado 1 é a mãe, o lado N são os filhos. O ID da mãe migra pro registro do filho. A FK sempre vai pro lado N (Consulta).',
     gradingCriteria: [
-      'Identificar as 3 cardinalidades 1:N com precisão.',
-      'Apontar corretamente a tabela que recebe a Chave Estrangeira (lado Muitos).',
-      'Explicar o papel associativo da tabela Consulta.'
+      'Listar as 4 entidades do domínio da clínica.',
+      'Definir as cardinalidades 1:N com precisão.',
+      'Justificar a migração da FK id_veterinario para a tabela Consulta sob as regras da 1FN.'
     ]
   },
   {
     id: 'disc-bd-03',
     subject: 'Banco de Dados',
     topic: 'Regras de Negócio & DDL',
-    source: 'UNIFACS - Prof. Luiz Henrique • Pegadinha da Clínica Vet',
-    difficulty: 'Fácil',
-    statement: 'No projeto físico da tabela `consulta` da Clínica Veterinária, por que a coluna `diagnostico` deve ser declarada permitindo valores nulos (`NULL`) e como isso reflete a dinâmica do mundo real?',
-    contextHint: 'Pense no ciclo de vida de uma consulta médica veterinária: do momento do agendamento até a conclusão dos exames.',
-    expectedAnswer: `A coluna diagnostico DEVE ser declarada permitindo valores nulos (NULL) pelas seguintes razões de negócio e integridade:
+    source: 'UNIFACS - Prof. Luiz Henrique • Script DDL Oficial',
+    difficulty: 'Médio',
+    statement: 'No projeto físico da tabela `consulta` da Clínica Veterinária, por que a coluna `diagnostico` DEVE permitir valores nulos (NULL), enquanto `data_hora` e `valor` devem ser declarados como NOT NULL?',
+    contextHint: 'Pense no ciclo de vida de um agendamento: uma consulta nasce marcada antes do atendimento começar.',
+    expectedAnswer: `A definição de restrições NULL e NOT NULL no comando DDL de criação da tabela 'consulta' reflete rigorosamente o ciclo de vida e as regras de negócio de um atendimento clínico:
 
-1. Ciclo de Vida da Consulta Médica:
-• O registro da consulta é criado no banco de dados no momento em que o tutor chega à recepção ou quando a consulta é iniciada.
-• Naquele instante inicial, o médico veterinário ainda está examinando o paciente, solicitando exames complementares (raio-x, sangue) ou levantando hipóteses. Logo, o diagnóstico definitivo ainda NÃO EXISTE.
+1. Por que 'diagnostico' DEVE ser NULL:
+• No momento em que uma consulta é AGENDADA pela recepcionista, o animal ainda não foi examinado pelo médico veterinário. O diagnóstico médico não existe fisicamente nesse instante inicial.
+• Se a coluna 'diagnostico' fosse definida como NOT NULL, o sistema obrigaria a recepcionista a digitar um diagnóstico fictício ou prematuro apenas para conseguir salvar o agendamento, violando a integridade dos dados médicos.
+• Somente após a realização da consulta é que o veterinário executará um comando SQL UPDATE para preencher o campo 'diagnostico' com o laudo definitivo.
 
-2. Impacto de uma restrição NOT NULL indevida:
-• Se a coluna fosse configurada como NOT NULL, o sistema da clínica impediria a recepção de cadastrar a consulta no banco de dados antes que o diagnóstico já estivesse preenchido. Isso obrigaria os atendentes a preencherem valores fictícios ou sujos (como '.', 'teste', 'a definir'), violando gravemente a qualidade dos dados.
-
-Portanto, a coluna é criada como "diagnostico TEXT NULL" (ou VARCHAR), permitindo que a consulta seja registrada e, somente após o atendimento ser concluído, o veterinário faça um comando UPDATE preenchendo o diagnóstico.`,
+2. Por que 'data_hora' e 'valor' DEVEM ser NOT NULL:
+• 'data_hora': É impossível conceber um agendamento sem data e horário marcados. O sistema precisa da data/hora para controlar a agenda do veterinário e evitar overbooking (choque de horários).
+• 'valor': Toda prestação de serviço veterinário possui um custo tabelado previamente acordado com o cliente. O campo financeiro não pode ser nulo para garantir o faturamento e a integridade contábil da clínica.`,
     keywords: [
-      'Consulta em andamento ainda não possui diagnóstico',
-      'Restrição NOT NULL impediria abertura do atendimento',
-      'Evita preenchimento de dados fictícios ou lixo no banco',
-      'Permite atualização posterior via UPDATE quando o exame sair'
+      'Ciclo de vida do agendamento vs atendimento',
+      'Diagnostico NULL: no agendamento o animal ainda não foi examinado',
+      'NOT NULL forçaria dados fictícios na recepção',
+      'UPDATE posterior pelo veterinário com o laudo',
+      'Data_hora NOT NULL: controle de agenda e prevenção de choque de horários',
+      'Valor NOT NULL: integridade financeira e contábil do serviço'
     ],
-    goldenBizu: 'Você não pode exigir o resultado do exame antes do médico atender o cachorro! A consulta abre sem diagnóstico (NULL) e o veterinário preenche depois.',
+    goldenBizu: 'Você marca a consulta na recepção na segunda (não tem diagnóstico = NULL). Você vai na quarta e o médico escreve o laudo (dá UPDATE no diagnóstico).',
     gradingCriteria: [
-      'Mencionar a cronologia real do atendimento (abertura vs finalização).',
-      'Explicar o risco de forçar NOT NULL gerando dados inconsistentes.',
-      'Citar o comando UPDATE como mecanismo de preenchimento posterior.'
+      'Explicar a temporalidade do agendamento prévio (diagnóstico inexistente na criação).',
+      'Alertar sobre o risco de dados fictícios caso fosse NOT NULL.',
+      'Justificar a obrigatoriedade de data/hora (agenda) e valor (faturamento).'
     ]
   },
   {
     id: 'disc-bd-04',
     subject: 'Banco de Dados',
     topic: 'Tipos de Dados SQL (Precisão Monetária)',
-    source: 'UNIFACS - Prof. Luiz Henrique • Padrões de Projeto',
+    source: 'UNIFACS - Prof. Luiz Henrique • Padrões de Projeto SQL',
     difficulty: 'Fácil',
-    statement: 'Por que nunca se deve utilizar os tipos de dados `FLOAT` ou `DOUBLE` para representar colunas monetárias (como `valor_cobrado` na Clínica Veterinária), e qual é o tipo de dado correto a ser utilizado?',
-    contextHint: 'Pense na representação binária IEEE 754 de ponto flutuante e na perda de centavos.',
-    expectedAnswer: `Nunca se deve utilizar FLOAT ou DOUBLE para representar valores monetários pelas seguintes razões técnicas:
+    statement: 'Por que nunca se deve utilizar os tipos de dados `FLOAT` ou `DOUBLE` para armazenar valores monetários (moeda/dinheiro) em um banco de dados relacional? Qual é o tipo de dado correto a ser utilizado em SQL e como ele deve ser especificado?',
+    contextHint: 'Pense em ponto flutuante binário (IEEE 754), erros de arredondamento de centavos e precisão decimal exata.',
+    expectedAnswer: `1. Por que NUNCA usar FLOAT ou DOUBLE para valores monetários:
+• Os tipos FLOAT e DOUBLE implementam a representação de ponto flutuante baseada no padrão IEEE 754 (base binária). Em base binária, frações decimais simples (como 0.1 ou 0.01 centavos) não possuem representação finita exata, tornando-se dízimas periódicas binárias aproximadas.
+• Essa aproximação gera pequenos erros de arredondamento cumulativos ao realizar somas, subtrações e multiplicações (ex: 0.1 + 0.2 resultando em 0.30000000000000004).
+• Em sistemas financeiros, comerciais e bancários, a perda ou ganho cumulativo de frações de centavos gera quebra de auditoria contábil, divergência em balancetes fiscais e problemas jurídicos graves.
 
-1. Natureza de Ponto Flutuante Impreciso (IEEE 754):
-• Os tipos FLOAT e DOUBLE utilizam representação binária de ponto flutuante de precisão aproximada. Certas frações decimais simples (como 0.1 ou 0.01) não possuem representação binária exata finita, gerando dízimas como 0.10000000000000000555.
-• Em sistemas contábeis e financeiros, somas repetidas dessas pequenas frações provocam erros cumulativos graves de arredondamento ("sumiço de centavos" em balanços contábeis e relatórios de faturamento).
-
-2. O Tipo Correto: DECIMAL(M, D) ou NUMERIC:
-• Para valores monetários, o padrão obrigatório é o DECIMAL(M, D) — ex: DECIMAL(10, 2).
-• Significado: Armazena números na base decimal exata (ponto fixo). O primeiro número (M = 10) representa a quantidade total de dígitos suportados, e o segundo (D = 2) representa exatamente a quantidade de casas decimais após a vírgula (centavos).
-• Vantagem: Garante 100% de precisão matemática em cálculos de somatório, troco, descontos e tributos sem nenhuma perda de centavos.`,
+2. Tipo de Dado Correto em SQL:
+• O tipo padrão canônico é o DECIMAL (ou NUMERIC).
+• Especificação Correta: DECIMAL(p, s), tipicamente DECIMAL(10, 2).
+  - '10' (precisão): Número total máximo de dígitos suportados (inteiros + decimais).
+  - '2' (escala): Número exato de casas decimais após a vírgula (centavos fixos).
+• Vantagem: O DECIMAL armazena os dígitos em formato decimal exato ("fixed-point arithmetic"), garantindo precisão matemática absoluta sem nenhum desvio em operações aritméticas.`,
     keywords: [
-      'FLOAT e DOUBLE são de precisão aproximada (ponto flutuante IEEE 754)',
-      'Imprecisão em frações decimais (perda de centavos)',
-      'Tipo correto: DECIMAL(M, D) ou NUMERIC',
-      'DECIMAL(10,2) garante ponto fixo com 2 casas de centavos exatas',
-      'Conformidade com auditoria contábil e financeira'
+      'FLOAT e DOUBLE: ponto flutuante aproximado (IEEE 754 binário)',
+      'Erros de arredondamento cumulativos em frações de centavos',
+      'Incompatibilidade com auditoria financeira e contábil',
+      'Tipo correto: DECIMAL ou NUMERIC',
+      'Especificação: DECIMAL(10, 2)',
+      '10 = precisão total / 2 = escala (centavos fixos)',
+      'Armazenamento decimal exato (ponto fixo)'
     ],
-    goldenBizu: 'Dinheiro NUNCA é float! Float perde centavos em contas de padaria e dá cadeia em sistema contábil. Dinheiro é sempre DECIMAL(10,2).',
+    goldenBizu: 'FLOAT e DOUBLE são aproximados (engolem centavos e quebram a contabilidade). Dinheiro SEMPRE se grava com DECIMAL(10,2)!',
     gradingCriteria: [
-      'Explicar a imprecisão intrínseca de FLOAT/DOUBLE.',
-      'Identificar o tipo correto como DECIMAL(10,2) ou NUMERIC.',
-      'Explicar o significado dos parâmetros (precisão e escala).'
+      'Explicar o erro de representação binária aproximada do FLOAT/DOUBLE.',
+      'Identificar o tipo correto: DECIMAL ou NUMERIC.',
+      'Demonstrar a sintaxe correta DECIMAL(10,2) explicando precisão e escala.'
     ]
   },
   {
     id: 'disc-bd-05',
     subject: 'Banco de Dados',
     topic: 'Comandos SQL: DDL vs DML',
-    source: 'UNIFACS - Prof. Luiz Henrique • 25 Exercícios de Caderno',
+    source: 'UNIFACS - Prof. Luiz Henrique • Comandos SQL Básicos',
     difficulty: 'Fácil',
-    statement: 'Diferencie comandos DDL de comandos DML em SQL. Apresente os três principais exemplos de cada categoria e explique por que a omissão da cláusula `WHERE` em um comando `UPDATE` é considerada catastrófica.',
-    contextHint: 'DDL mexe no esqueleto (estrutura). DML mexe no recheio (dados). O que acontece com um UPDATE sem WHERE?',
-    expectedAnswer: `A linguagem SQL é dividida em sublinguagens de acordo com a finalidade de cada instrução:
+    statement: 'Diferencie comandos DDL de comandos DML em SQL. Apresente os três principais comandos de cada categoria e descreva sucintamente suas finalidades.',
+    contextHint: 'DDL define a estrutura (tabelas, colunas). DML manipula os dados (linhas/tuplas).',
+    expectedAnswer: `A linguagem SQL é dividida em sublinguagens especializadas de acordo com o objetivo da instrução:
 
 1. DDL (Data Definition Language — Linguagem de Definição de Dados):
-• Função: Responsável por criar, modificar e excluir a estrutura física e lógica dos objetos do banco de dados (tabelas, índices, visões, esquemas). Opera sobre o "esqueleto" do banco.
-• Exemplos:
-  - CREATE: Cria uma nova tabela ou banco (ex: CREATE TABLE tutor ...);
-  - ALTER: Modifica a estrutura de uma tabela existente (ex: ALTER TABLE cliente ADD COLUMN email VARCHAR(100));
-  - DROP: Exclui permanentemente um objeto e sua estrutura inteira do banco (ex: DROP TABLE consulta).
+• Foco: Manipula a estrutura física, o esquema e os metadados dos objetos do banco de dados (tabelas, índices, visões). Altera o "esqueleto" do banco, não as linhas diretamente.
+• Três Principais Comandos DDL:
+  - CREATE: Cria novos objetos no banco de dados (Ex: CREATE TABLE paciente (...);).
+  - ALTER: Modifica a estrutura de um objeto pré-existente, como adicionar uma nova coluna ou restrição (Ex: ALTER TABLE paciente ADD COLUMN cor VARCHAR(30);).
+  - DROP: Remove permanentemente um objeto completo e toda a sua estrutura do banco de dados (Ex: DROP TABLE consulta;).
 
 2. DML (Data Manipulation Language — Linguagem de Manipulação de Dados):
-• Função: Responsável por gerenciar os registros e informações contidos DENTRO das tabelas. Opera sobre os "dados/recheio" do banco.
-• Exemplos:
-  - INSERT: Insere novas linhas na tabela (ex: INSERT INTO tutor ... VALUES ...);
-  - UPDATE: Modifica dados de registros existentes;
-  - DELETE: Exclui registros (linhas) de uma tabela.
-
-O PERIGO DO UPDATE SEM WHERE:
-A cláusula WHERE especifica o filtro que define quais linhas exatas devem ser alteradas. Quando o comando UPDATE é executado sem WHERE (ex: "UPDATE cliente SET telefone = '7199999-0000';"), o SGBD aplica a alteração a TODAS AS LINHAS da tabela indistintamente. Isso substitui os dados reais de todos os clientes por um único valor, corrompendo a base e causando perda irreversível se não houver backup ou transação aberta.`,
+• Foco: Manipula o conteúdo e os dados armazenados dentro das tabelas (as linhas/tuplas), sem alterar a estrutura das colunas.
+• Três Principais Comandos DML:
+  - INSERT: Insere novas tuplas (linhas de registro) dentro de uma tabela (Ex: INSERT INTO veterinario (nome, crmv) VALUES ('Dr. Pedro', 'BA-1234');).
+  - UPDATE: Altera os valores de registros pré-existentes (Ex: UPDATE consulta SET status = 'Realizada' WHERE id_consulta = 10;).
+  - DELETE: Remove uma ou mais linhas de uma tabela com base em um critério (Ex: DELETE FROM paciente WHERE id_paciente = 5;).
+  *(Nota: O SELECT é classificado por alguns autores como DQL - Data Query Language, mas frequentemente agrupado no DML).*`,
     keywords: [
-      'DDL: estrutura / esqueleto do banco (CREATE, ALTER, DROP)',
-      'DML: dados / manipulação de linhas (INSERT, UPDATE, DELETE)',
-      'UPDATE sem WHERE altera 100% das linhas da tabela',
-      'Corrupção catastrófica de dados em massa'
+      'DDL: Data Definition Language / estrutura e metadados',
+      'Comandos DDL: CREATE, ALTER, DROP',
+      'DML: Data Manipulation Language / manipulação de dados e tuplas',
+      'Comandos DML: INSERT, UPDATE, DELETE',
+      'Diferença: DDL mexe na estrutura da tabela; DML mexe nas linhas de dados'
     ],
-    goldenBizu: 'DDL cria ou destrói a casa (estrutura). DML coloca ou troca os móveis (dados). UPDATE sem WHERE pinta todas as paredes da cidade da mesma cor por engano.',
+    goldenBizu: 'DDL mexe na planta da casa (CREATE, ALTER, DROP a parede). DML mexe nos móveis dentro da casa (INSERT, UPDATE, DELETE o sofá).',
     gradingCriteria: [
-      'Definir DDL e listar CREATE, ALTER, DROP.',
-      'Definir DML e listar INSERT, UPDATE, DELETE.',
-      'Explicar o impacto devastador do UPDATE sem WHERE sobre todas as linhas.'
+      'Diferenciação clara entre estrutura (DDL) e dados (DML).',
+      'Citação correta dos 3 comandos DDL (CREATE, ALTER, DROP).',
+      'Citação correta dos 3 comandos DML (INSERT, UPDATE, DELETE).'
     ]
   },
   {
     id: 'disc-bd-06',
     subject: 'Banco de Dados',
     topic: 'DELETE vs DROP',
-    source: 'UNIFACS - Prof. Luiz Henrique • 25 Exercícios de Caderno (Ex 24)',
+    source: 'UNIFACS - Prof. Luiz Henrique • Boas Práticas SQL',
     difficulty: 'Fácil',
-    statement: 'Qual a diferença essencial entre os comandos `DELETE FROM tabela;` e `DROP TABLE tabela;` no SQL?',
-    contextHint: 'Pense em apagar as pessoas de uma sala vs implodir o prédio da sala.',
-    expectedAnswer: `A diferença fundamental reside no que é destruído (apenas o conteúdo ou o próprio objeto):
+    statement: 'Qual a diferença essencial entre os comandos `DELETE FROM tabela;` e `DROP TABLE tabela;`? O que acontece com a estrutura da tabela e com os dados em cada um desses comandos?',
+    contextHint: 'DELETE limpa os dados da tabela (o esqueleto continua). DROP destrói os dados E o esqueleto da tabela.',
+    expectedAnswer: `A diferença reside no nível de destruição do objeto no banco de dados:
 
-1. Comando DELETE FROM tabela:
-• É uma instrução DML (Data Manipulation Language).
-• Remove apenas os DADOS (as linhas/registros) armazenados na tabela.
-• A estrutura da tabela continua existindo intacta no banco de dados, com todas as suas colunas, restrições (PK, FK, CHECK), gatilhos e permissões de acesso. Após o DELETE, você pode imediatamente fazer um "INSERT INTO tabela" sem precisar recriá-la.
+1. Comando 'DELETE FROM tabela;':
+• Categoria: Comando DML (Data Manipulation Language).
+• O que acontece com os dados: Todas as linhas (tuplas) armazenadas na tabela são excluídas uma a uma.
+• O que acontece com a estrutura: A ESTRUTURA DA TABELA É PRESERVADA INTACTA. As colunas, tipos de dados, chaves primárias, chaves estrangeiras, índices e permissões continuam existindo no catálogo do banco. A tabela continua existindo, porém completamente vazia (pronta para receber novos INSERTs).
+• Controle transacional: Pode ser desfeito via ROLLBACK se estiver dentro de uma transação aberta.
 
-2. Comando DROP TABLE tabela:
-• É uma instrução DDL (Data Definition Language).
-• Remove a TABELA INTEIRA do catálogo do SGBD: apaga tanto todos os dados quanto a sua própria estrutura física, metadados, índices e dependências associadas.
-• Após o DROP, a tabela deixa de existir. Qualquer tentativa posterior de consulta ("SELECT * FROM tabela") retornará o erro "Table does not exist", exigindo um CREATE TABLE completo para que ela volte a existir.`,
+2. Comando 'DROP TABLE tabela;':
+• Categoria: Comando DDL (Data Definition Language).
+• O que acontece com os dados: Todos os dados armazenados são destruídos e desalocados do disco permanentemente.
+• O que acontece com a estrutura: A ESTRUTURA DA TABELA É COMPLETAMENTE DESTRUÍDA E APAGADA. O esquema da tabela é removido do dicionário de dados do SGBD.
+• Consequência: A tabela deixa de existir fisicamente. Qualquer comando 'SELECT * FROM tabela' subsequente resultará em erro fatal ("Table doesn't exist").`,
     keywords: [
-      'DELETE: DML, apaga linhas/dados, mantém a estrutura da tabela',
-      'DROP: DDL, destrói a tabela inteira e sua definição do catálogo',
-      'Após DELETE: a tabela pode receber novos INSERTs',
-      'Após DROP: a tabela deixa de existir no banco de dados'
+      'DELETE: comando DML / apaga as linhas/tuplas',
+      'DELETE: preserva a estrutura da tabela intacta',
+      'A tabela continua existindo vazia para novos INSERTs',
+      'DROP: comando DDL / destrói estrutura e dados',
+      'A tabela é apagada do catálogo do SGBD e deixa de existir',
+      'SELECT após DROP resulta em erro de tabela inexistente'
     ],
-    goldenBizu: 'DELETE limpa os dados de dentro da tabela (esvazia a gaveta). DROP implode a gaveta inteira com madeira e tudo.',
+    goldenBizu: 'DELETE limpa o quadro negro (o quadro continua na parede). DROP arranca o quadro negro da parede e joga no lixo.',
     gradingCriteria: [
-      'Classificar DELETE como DML e DROP como DDL.',
-      'Deixar explícito que DELETE mantém a estrutura e DROP remove estrutura + dados.'
+      'Distinção precisa entre comando DML (DELETE) e DDL (DROP).',
+      'Explicar o destino da estrutura da tabela em cada um (permanece no DELETE, morre no DROP).',
+      'Explicar o destino dos dados em cada um.'
     ]
   },
   {
     id: 'disc-bd-07',
     subject: 'Banco de Dados',
     topic: 'Junções SQL (JOINs)',
-    source: 'UNIFACS - Prof. Luiz Henrique • Laboratório de Consultas',
+    source: 'UNIFACS - Prof. Luiz Henrique • Consultas Relacionais Avançadas',
     difficulty: 'Médio',
-    statement: 'Explique a diferença de comportamento entre `INNER JOIN`, `LEFT JOIN` e `RIGHT JOIN`, utilizando como exemplo prático o relacionamento entre a tabela `veterinario` e a tabela `consulta`.',
-    contextHint: 'Imagine veterinários recém-contratados que ainda não realizaram nenhuma consulta.',
-    expectedAnswer: `As cláusulas JOIN combinam linhas de duas ou mais tabelas com base em uma condição de igualdade entre chaves (FK = PK). Seu comportamento difere em como tratam registros sem correspondência:
+    statement: 'Explique a diferença de comportamento entre `INNER JOIN`, `LEFT JOIN` e `RIGHT JOIN`. Dê um exemplo prático utilizando as tabelas `Veterinario` e `Consulta`.',
+    contextHint: 'INNER JOIN traz apenas a interseção. LEFT JOIN traz todos da esquerda (mesmo sem consulta). RIGHT JOIN traz todos da direita.',
+    expectedAnswer: `Os comandos de junção (JOIN) combinam linhas de duas ou mais tabelas com base em uma condição de relacionamento (geralmente PK = FK):
 
 1. INNER JOIN (Junção Interna):
-• Comportamento: Retorna SOMENTE as linhas que possuem correspondência mútua em ambas as tabelas envolvidas.
-• No Exemplo: "SELECT * FROM veterinario v INNER JOIN consulta c ON v.id_veterinario = c.id_veterinario;"
-  - Retornará apenas os veterinários que já realizaram pelo menos uma consulta. Se um veterinário for recém-contratado e ainda não tiver nenhuma consulta registrada, ele NÃO aparecerá no resultado.
+• Comportamento: Retorna APENAS as linhas que possuem correspondência exata em AMBAS as tabelas (a interseção dos conjuntos).
+• Exemplo Prático:
+  SELECT v.nome, c.data_hora
+  FROM Veterinario v
+  INNER JOIN Consulta c ON v.id_veterinario = c.id_veterinario;
+• Resultado: Lista apenas os veterinários que possuem ao menos uma consulta realizada. Veterinários recém-contratados que ainda não atenderam nenhuma consulta NÃO aparecerão no resultado.
 
-2. LEFT JOIN (ou LEFT OUTER JOIN):
-• Comportamento: Retorna TODAS as linhas da tabela da ESQUERDA (a primeira declarada), mesmo que não haja nenhuma consulta correspondente na tabela da direita. Quando não houver dados correspondentes na direita, as colunas da consulta virão preenchidas com valores NULL.
-• No Exemplo: "SELECT * FROM veterinario v LEFT JOIN consulta c ON v.id_veterinario = c.id_veterinario;"
-  - Trará todos os veterinários da clínica. Os que têm consultas exibirão seus dados; o veterinário novo sem consultas aparecerá na lista com as colunas da consulta exibindo NULL.
+2. LEFT JOIN (ou LEFT OUTER JOIN — Junção Externa à Esquerda):
+• Comportamento: Retorna TODAS as linhas da tabela da esquerda (a primeira tabela declarada), independentemente de haver correspondência na tabela da direita. Quando não houver consulta correspondente, as colunas da direita são preenchidas com 'NULL'.
+• Exemplo Prático:
+  SELECT v.nome, c.data_hora
+  FROM Veterinario v
+  LEFT JOIN Consulta c ON v.id_veterinario = c.id_veterinario;
+• Resultado: Lista TODOS os veterinários cadastrados. Se o 'Dr. Carlos' ainda não atendeu nenhuma consulta, ele aparecerá na lista com 'nome = Dr. Carlos' e 'data_hora = NULL'.
 
-3. RIGHT JOIN (ou RIGHT OUTER JOIN):
-• Comportamento: Retorna TODAS as linhas da tabela da DIREITA (a segunda declarada), preenchendo com NULL onde não houver correspondente na esquerda.
-• No Exemplo: Se for "veterinario v RIGHT JOIN consulta c", trará todas as consultas registradas, mesmo que por alguma inconsistência uma consulta não tivesse veterinário vinculado.`,
+3. RIGHT JOIN (ou RIGHT OUTER JOIN — Junção Externa à Direita):
+• Comportamento: Retorna TODAS as linhas da tabela da direita, mais as correspondências da esquerda. Se uma consulta não tiver veterinário associado, os dados do veterinário virão como 'NULL'.`,
     keywords: [
-      'INNER JOIN: apenas interseção (correspondência em ambas as tabelas)',
-      'LEFT JOIN: todos da esquerda + preenchimento com NULL se não houver na direita',
-      'RIGHT JOIN: todos da direita + preenchimento com NULL',
-      'Exemplo prático: veterinário sem consultas não aparece no INNER, mas aparece no LEFT com NULL'
+      'INNER JOIN: apenas correspondências em ambas as tabelas (interseção)',
+      'LEFT JOIN: todas as linhas da tabela da esquerda + correspondências',
+      'Preenchimento com NULL quando não há correspondência à direita',
+      'RIGHT JOIN: todas as linhas da tabela da direita',
+      'Exemplo com Veterinario e Consulta explicando o caso de veterinário sem consultas'
     ],
-    goldenBizu: 'INNER JOIN = só quem faz par (veterinário que já consultou). LEFT JOIN = traz todo mundo da esquerda sem deixar ninguém de fora, botando NULL pra quem não consultou.',
+    goldenBizu: 'INNER = só os casais (quem tem par nos dois lados). LEFT = todo mundo da esquerda, solteiro ou casado (quem não tem consulta ganha NULL).',
     gradingCriteria: [
-      'Diferenciar interseção exclusiva (INNER) de preservação da tabela esquerda/direita com NULL.',
-      'Aplicar corretamente no cenário de veterinário e consulta.'
+      'Conceituação correta de INNER JOIN (interseção pura).',
+      'Conceituação correta de LEFT JOIN (todos da esquerda + nulos).',
+      'Exemplo prático contextualizado com Veterinario e Consulta.'
     ]
   },
   {
     id: 'disc-bd-08',
     subject: 'Banco de Dados',
     topic: 'Integridade Referencial & Chaves Estrangeiras',
-    source: 'UNIFACS - Prof. Luiz Henrique • DDL e Constraints',
-    difficulty: 'Médio',
-    statement: 'O que é o princípio da Integridade Referencial em bancos de dados relacionais? Explique o que ocorre ao tentar excluir um `tutor` que possui animais cadastrados sob as regras `ON DELETE RESTRICT` versus `ON DELETE CASCADE`.',
-    contextHint: 'A Chave Estrangeira garante que não existam "órfãos" no banco de dados.',
-    expectedAnswer: `A Integridade Referencial é uma regra fundamental do modelo relacional que garante que os relacionamentos entre tabelas permaneçam consistentes. Ela estabelece que o valor de uma Chave Estrangeira (FK) deve obrigatoriamente corresponder a uma Chave Primária (PK) válida e existente na tabela pai, ou então ser NULL (se permitido). Seu objetivo é impedir a existência de registros "órfãos" (ex: um animal apontando para um id_tutor que não existe).
+    source: 'UNIFACS - Prof. Luiz Henrique • Teoria Relacional',
+    difficulty: 'Fácil',
+    statement: 'O que é o princípio da Integridade Referencial em bancos de dados relacionais e qual mecanismo do SQL é utilizado para garanti-lo? O que acontece ao tentar excluir um Cliente que possui Pacientes cadastrados sob a regra RESTRICT?',
+    contextHint: 'Integridade referencial proíbe chave estrangeira órfã (apontando pro nada). FOREIGN KEY garante. RESTRICT impede exclusão da mãe.',
+    expectedAnswer: `1. O PRINCÍPIO DA INTEGRIDADE REFERENCIAL:
+É uma regra fundamental do modelo relacional que garante a consistência lógica entre tabelas relacionadas. Estabelece que um valor de Chave Estrangeira (FK) em uma tabela filha deve OBRIGATORIAMENTE corresponder a um valor de Chave Primária (PK) válido e existente na tabela pai, ou então ser NULL (quando permitido). Em hipótese alguma o banco pode admitir "registros órfãos" (uma FK apontando para uma PK que não existe).
 
-COMPORTAMENTO AO EXCLUIR O PAI (TUTOR):
+2. MECANISMO SQL UTILIZADO:
+A restrição de Chave Estrangeira: 'FOREIGN KEY (coluna_fk) REFERENCES tabela_pai(coluna_pk)'.
 
-1. Com ON DELETE RESTRICT (ou NO ACTION):
-• Comportamento: O SGBD BLOQUEIA imediatamente a exclusão e dispara um erro de violação de chave estrangeira.
-• Resultado: O tutor não é apagado enquanto houver qualquer animal vinculado a ele. Para excluir o tutor, o operador deve primeiro transferir ou excluir todos os seus animais manualmente.
-• Aplicação: Protege os dados contra deleções acidentais graves.
-
-2. Com ON DELETE CASCADE:
-• Comportamento: O SGBD autoriza a exclusão do tutor e AUTOMATICAMENTE apaga em cascata todos os animais vinculados a ele na tabela filha.
-• Resultado: O tutor é removido e todos os seus animais cadastrados são deletados do banco sem aviso adicional.
-• Aplicação: Usado em relacionamentos forte-fraco (ex: Pedido e Itens do Pedido, onde apagar o pedido deve sumir com os itens), mas perigoso em cadastros corporativos de clientes.`,
+3. TENTATIVA DE EXCLUSÃO DE CLIENTE COM PACIENTES (REGRA RESTRICT):
+• Sob a regra padrão 'ON DELETE RESTRICT' (ou NO ACTION), o SGBD bloqueia imediatamente a exclusão e dispara um erro de violação de integridade referencial.
+• O SGBD não permite que o registro do Cliente seja apagado enquanto houver um ou mais Pacientes vinculados a ele.
+• Justificativa: Se o cliente fosse excluído, os animais ficariam "órfãos" no banco, apontando para um 'id_cliente' inexistente. Para conseguir excluir o cliente, o operador precisaria primeiro excluir ou transferir todos os seus pacientes.`,
     keywords: [
-      'Integridade Referencial: impede registros órfãos',
-      'Toda FK deve apontar para uma PK válida e existente',
-      'ON DELETE RESTRICT: bloqueia exclusão do pai se houver filhos vinculados',
-      'ON DELETE CASCADE: apaga automaticamente o pai e todos os filhos em cascata'
+      'Integridade Referencial: consistência entre tabelas relacionadas',
+      'FK deve apontar para uma PK existente (proibição de registros órfãos)',
+      'Mecanismo: restrição FOREIGN KEY ... REFERENCES',
+      'Regra ON DELETE RESTRICT: bloqueia a exclusão do registro pai',
+      'Dispara erro de violação de integridade referencial',
+      'Evita que pacientes fiquem sem dono cadastrado'
     ],
-    goldenBizu: 'RESTRICT é o segurança que diz: "Você não pode apagar o pai porque ele tem filhos dependendo dele!". CASCADE apaga o pai e leva todos os filhos juntos na mesma hora.',
+    goldenBizu: 'Integridade referencial proíbe filho órfão. Com RESTRICT, você não pode deletar a mãe (Cliente) se ela ainda tiver filhos (Pacientes) dependendo dela.',
     gradingCriteria: [
-      'Definir Integridade Referencial e o problema de registros órfãos.',
-      'Explicar o bloqueio de RESTRICT.',
-      'Explicar a propagação automática de exclusão de CASCADE.'
+      'Definir integridade referencial e o conceito de evitar registros órfãos.',
+      'Identificar o mecanismo FOREIGN KEY ... REFERENCES.',
+      'Explicar o bloqueio imposto pela regra RESTRICT.'
     ]
   },
   {
     id: 'disc-bd-09',
     subject: 'Banco de Dados',
     topic: 'Tipagem de Dados (Telefone)',
-    source: 'UNIFACS - Prof. Luiz Henrique • 25 Exercícios de Caderno (Ex 08)',
+    source: 'UNIFACS - Prof. Luiz Henrique • Padrões de Modelagem Física',
     difficulty: 'Fácil',
-    statement: 'Em projetos de bancos de dados relacionais, por que atributos como número de telefone, CPF e CEP devem ser declarados como `VARCHAR` e NUNCA como tipos numéricos (`INT` ou `BIGINT`)?',
-    contextHint: 'Lembre-se do zero à esquerda, da formatação de máscaras e da semântica matemática.',
-    expectedAnswer: `Embora telefones, CPFs e CEPs sejam formados predominantemente por dígitos numéricos, eles devem ser sempre declarados como VARCHAR (texto) pelas seguintes razões técnicas e conceituais:
+    statement: 'Em projetos de bancos de dados relacionais, por que atributos como Telefone, CEP e CPF devem ser armazenados como `VARCHAR` e NUNCA como tipos numéricos (`INT` ou `BIGINT`)?',
+    contextHint: 'Pense em: 1) zeros à esquerda; 2) formatação e máscaras; 3) ausência de operações matemáticas.',
+    expectedAnswer: `Armazenar atributos como Telefone, CEP e CPF como tipos numéricos (INT/BIGINT) é um dos erros clássicos de modelagem física. Eles devem ser SEMPRE armazenados como tipos de texto (VARCHAR/CHAR) pelas seguintes razões técnicas:
 
-1. Descarte do Dígito Zero à Esquerda:
-• Tipos numéricos (INT, BIGINT) tratam números matematicamente e descartam automaticamente os zeros à esquerda (ex: o CEP "01310-000" viraria 1310000; o telefone "0800-700-1234" viraria 8007001234; o DDD "071" viraria 71). Isso quebra a integridade e validação dos documentos.
+1. Perda dos Zeros à Esquerda:
+• Em tipos numéricos, os zeros à esquerda não possuem valor matemático e são automaticamente descartados pelo SGBD.
+• Exemplo: O CEP de São Paulo "01310-100" gravado como INT viraria "1310100" (perda do primeiro dígito). Um telefone com DDD "071" viraria "71".
 
-2. Ausência de Semântica de Cálculo Matemático:
-• Tipos numéricos devem ser reservados exclusivamente para grandezas que participam de operações aritméticas (soma, média, multiplicação). Ninguém soma dois telefones, nem calcula a média de dois CPFs.
+2. Preservação de Formatação, Máscaras e Símbolos:
+• Documentos e contatos frequentemente utilizam máscaras padronizadas com parênteses, hifens, barras e pontos (ex: "(71) 99999-8888", "123.456.789-00", "+55 (11) 98888-7777"). Tipos numéricos rejeitam caracteres não dígitos.
 
-3. Armazenamento de Caracteres Especiais e Formatação (Máscaras):
-• Números de telefone e documentos frequentemente armazenam caracteres como parênteses, traços, pontos, barras e o sinal de mais para DDI internacional (ex: "+55 (71) 99999-8888", "123.456.789-00"). O tipo INT rejeita esses caracteres gerando erro de sintaxe.`,
+3. Semântica de Operações Matemáticas:
+• Regra de ouro da modelagem: Apenas utilize tipos numéricos (INT, FLOAT, DECIMAL) para valores que participarão de cálculos matemáticos (soma, média, multiplicação). Ninguém soma dois CPFs, calcula a média de telefones ou divide um CEP por dois. Eles são identificadores alfanuméricos categóricos.`,
     keywords: [
-      'Descarte de zeros à esquerda em tipos numéricos',
-      'Não participam de operações matemáticas (semântica)',
-      'Suporte a caracteres especiais de máscara (+, -, parênteses)',
-      'Declaração obrigatória como VARCHAR'
+      'Perda de zeros à esquerda em tipos numéricos (ex: CEP 01310 vira 1310)',
+      'Preservação de máscaras, hifens, parênteses e símbolos',
+      'Ausência de sentido em operações matemáticas (não se soma CPF ou telefone)',
+      'Regra semântica: números só para valores quantitativos / cálculos',
+      'Tipo correto: VARCHAR ou CHAR'
     ],
-    goldenBizu: 'Se você não vai somar nem tirar média, não é número: é texto! Telefone com INT come o zero da frente e não aceita parênteses nem traço.',
+    goldenBizu: 'Regra de ouro: Se você não vai somar, subtrair ou tirar média, NÃO é número! Telefone, CPF e CEP são textos (VARCHAR) para não perder o zero à esquerda nem os hifens.',
     gradingCriteria: [
-      'Citar a perda do zero à esquerda.',
-      'Mencionar a ausência de cálculos matemáticos.',
-      'Citar a necessidade de suportar máscaras de caracteres especiais.'
+      'Explicar a perda crítica do zero à esquerda em campos numéricos.',
+      'Citar a necessidade de suportar máscaras de formatação.',
+      'Apresentar a regra semântica de ausência de operações aritméticas.'
     ]
   },
   {
     id: 'disc-bd-10',
     subject: 'Banco de Dados',
     topic: 'Relacionamento N:N e Tabela Associativa',
-    source: 'UNIFACS - Prof. Luiz Henrique • Modelagem Relacional',
+    source: 'UNIFACS - Prof. Luiz Henrique • Modelagem Entidade-Relacionamento',
     difficulty: 'Médio',
-    statement: 'Como um relacionamento de cardinalidade Muitos-para-Muitos (N:N) do Modelo Entidade-Relacionamento (ex: Alunos e Cursos) é implementado fisicamente no Modelo Relacional? Explique o conceito de Tabela Associativa.',
-    contextHint: 'O modelo relacional não suporta relação N:N direta entre duas tabelas. O que é criado no meio?',
-    expectedAnswer: `No Modelo Entidade-Relacionamento (MER), entidades podem se relacionar na proporção Muitos-para-Muitos (N:N). Porém, no Modelo Relacional físico, é tecnicamente impossível implementar um relacionamento N:N direto entre duas tabelas usando apenas Chaves Estrangeiras simples sem violar as regras de normalização (1FN).
+    statement: 'Como um relacionamento de cardinalidade Muitos-para-Muitos (N:N) entre duas entidades (ex: `Consulta` e `Medicamento`) é implementado no Modelo Relacional? O que é uma tabela associativa e como é formada sua Chave Primária?',
+    contextHint: 'O modelo relacional não suporta N:N direto. É obrigatório criar uma tabela associativa (junção) que herda as duas FKs formando uma PK composta.',
+    expectedAnswer: `1. Como o Modelo Relacional implementa relacionamentos N:N:
+O modelo relacional NÃO suporta a implementação física direta de cardinalidades N:N entre duas tabelas, pois isso violaria a 1ª Forma Normal (exigiria campos multivalorados em listas).
+A regra canônica exige a DECOMPOSIÇÃO do relacionamento N:N em dois relacionamentos 1:N interligados por uma terceira tabela intermediária, denominada TABELA ASSOCIATIVA (ou Tabela de Junção/Interseção).
 
-COMO É IMPLEMENTADO:
-O relacionamento N:N é obrigatoriamente decomposto em dois relacionamentos 1:N através da criação de uma terceira tabela intermediária, denominada TABELA ASSOCIATIVA (ou Tabela de Ligação/Junção):
+2. O que é a Tabela Associativa:
+• É a tabela criada especificamente para materializar a relação N:N. No caso de 'Consulta' e 'Medicamento', cria-se a tabela associativa 'Item_Prescricao' (ou 'Consulta_Medicamento').
+• Cada linha dessa tabela registra uma ocorrência específica de medicamento prescrito em uma determinada consulta, podendo conter atributos próprios da relação (como 'dosagem', 'frequencia', 'quantidade').
 
-1. Estrutura da Tabela Associativa:
-• A tabela intermediária (ex: matricula) recebe como Chaves Estrangeiras (FKs) as Chaves Primárias das duas tabelas originais:
-  - id_aluno (FK apontando para aluno);
-  - id_curso (FK apontando para curso).
-2. Chave Primária da Tabela Associativa:
-• Geralmente forma-se uma Chave Primária Composta pelo par (id_aluno, id_curso), garantindo que o mesmo aluno não possa ser matriculado duas vezes exatamente no mesmo curso, ou cria-se uma PK substituta (id_matricula).
-3. Atributos Próprios do Relacionamento:
-• A tabela associativa também é o local correto para guardar atributos que pertencem à relação e não a uma entidade isolada (ex: data_matricula, nota_final, status_conclusao).`,
+3. Como é formada sua Chave Primária (PK):
+• A Chave Primária da tabela associativa é classicamente uma CHAVE PRIMÁRIA COMPOSTA formada pela junção das Chaves Estrangeiras (FKs) das duas tabelas originais:
+  PRIMARY KEY (id_consulta, id_medicamento)
+• Onde 'id_consulta' é FK para Consulta(id_consulta) e 'id_medicamento' é FK para Medicamento(id_medicamento).
+• (Alternativamente, pode-se criar uma PK substituta simples artificial 'id_item_prescricao AUTO_INCREMENT', mantendo a combinação (id_consulta, id_medicamento) como restrição UNIQUE).`,
     keywords: [
-      'Decomposição de N:N em dois relacionamentos 1:N',
-      'Tabela Associativa / Tabela de Ligação',
-      'Herda Chaves Estrangeiras (FK) de ambas as tabelas',
-      'Chave Primária Composta (id_aluno, id_curso)',
-      'Armazena atributos próprios da relação (ex: data, nota)'
+      'Modelo relacional não suporta N:N direto (violação da 1FN)',
+      'Decomposição do N:N em dois relacionamentos 1:N',
+      'Criação de Tabela Associativa / Junção (ex: Item_Prescricao)',
+      'Chave Primária Composta formada pelas duas FKs',
+      'Atributos próprios do relacionamento (dosagem, quantidade, frequência)'
     ],
-    goldenBizu: 'Relação N:N não cabe direto no banco. Cria-se uma tabela intermediária no meio do caminho com a FK de cada lado e os dados da transação.',
+    goldenBizu: 'N:N vira uma tabela no meio! Pega a chave da Consulta e a chave do Medicamento, junta as duas e cria a tabela associativa (ItemPrescricao) com chave composta!',
     gradingCriteria: [
-      'Explicar que N:N se desdobra em dois relacionamentos 1:N.',
-      'Definir tabela associativa/junção.',
-      'Citar o uso das duas FKs formando a chave composta e atributos da relação.'
+      'Explicar a impossibilidade técnica de N:N direto sob as regras relacionais.',
+      'Conceituar a tabela associativa intermediária.',
+      'Demonstrar a composição da Chave Primária Composta a partir das FKs de origem.'
     ]
   }
 ];

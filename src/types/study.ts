@@ -38,6 +38,9 @@ export interface DiscursiveQuestion {
   keywords: string[];
   goldenBizu: string;
   gradingCriteria: string[];
+  isFromClassroomReview?: boolean;
+  classroomOrder?: number;
+  legacyId?: string;
 }
 
 export interface DiscursiveAnswerHistory {

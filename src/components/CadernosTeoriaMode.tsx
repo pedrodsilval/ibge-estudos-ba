@@ -18,7 +18,8 @@ import {
   Copy, 
   Calculator, 
   ChevronRight,
-  Sparkles
+  Sparkles,
+  Flame
 } from 'lucide-react';
 import type { SubjectType } from '../types/study';
 import { THEORY_TOPICS, type TheoryTopic } from '../data/theoryContent';
@@ -36,7 +37,7 @@ export const CadernosTeoriaMode: React.FC<CadernosTeoriaModeProps> = ({
 
   const [activeTopicId, setActiveTopicId] = useState<string>(() => {
     return selectedSubject === 'Qualidade de Software' 
-      ? 'qs-complexidade-ciclomatica' 
+      ? 'qs-revisao-aula-de-hoje' 
       : 'bd-formas-normais';
   });
 
@@ -52,7 +53,7 @@ export const CadernosTeoriaMode: React.FC<CadernosTeoriaModeProps> = ({
   // Sincronizar tópico ativo ao mudar disciplina
   useEffect(() => {
     if (selectedSubject === 'Qualidade de Software') {
-      setActiveTopicId('qs-complexidade-ciclomatica');
+      setActiveTopicId('qs-revisao-aula-de-hoje');
     } else {
       setActiveTopicId('bd-formas-normais');
     }
@@ -96,6 +97,7 @@ export const CadernosTeoriaMode: React.FC<CadernosTeoriaModeProps> = ({
     switch (iconName) {
       case 'Cpu': return <Cpu className="w-5 h-5 text-indigo-400" />;
       case 'ShieldCheck': return <ShieldCheck className="w-5 h-5 text-emerald-400" />;
+      case 'Flame': return <Flame className="w-5 h-5 text-amber-400 animate-pulse" />;
       case 'Box': return <Box className="w-5 h-5 text-amber-400" />;
       case 'Network': return <Network className="w-5 h-5 text-cyan-400" />;
       case 'Terminal': return <Terminal className="w-5 h-5 text-rose-400" />;

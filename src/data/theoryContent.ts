@@ -25,6 +25,250 @@ export interface TheoryTopic {
 
 export const THEORY_TOPICS: TheoryTopic[] = [
   // ==========================================
+  // QUALIDADE DE SOFTWARE: AS 10 QUESTÕES DA FOLHA DE REVISÃO DE HOJE (PDF 1 + GABARITO PDF 2)
+  // ==========================================
+  {
+    id: 'qs-revisao-aula-de-hoje',
+    subject: 'Qualidade de Software',
+    title: '🔥 Super Revisão de Sala (Folha Entregue Hoje pelo Professor)',
+    subtitle: 'Gabarito completo e comentado das 10 questões práticas da atividade de revisão de hoje para a prova de amanhã',
+    iconName: 'Flame',
+    badge: 'A Prova de Amanhã! • 10 Qs de Sala',
+    readingTime: '10 min de leitura',
+    sections: [
+      {
+        title: 'Questão 1: Revisões Técnicas (Formal vs. Informal e Contribuição para a Qualidade)',
+        content: `As revisões técnicas são práticas de controle estático de qualidade de software (realizadas sem executar o código), com o objetivo de identificar defeitos em artefatos (requisitos, diagramas, código-fonte) antes que comprometam o produto final.
+
+DIFERENÇA PRINCIPAL: Grau de planejamento, estruturação, documentação e controle.
+
+1. Revisões Técnicas Informais:
+• Características: Mais flexíveis, com menor rigor processual e pouca ou nenhuma documentação obrigatória. Não exigem agendamento formal prévio nem formulários padronizados.
+• Exemplos Clássicos: Teste de mesa individual, pair programming (programação em pares) e leitura cruzada rápida de código entre colegas de equipe.
+• Contribuição: Oferece feedback em tempo real com custo e atrito mínimos, agilidade para sanar dúvidas imediatas e melhoria contínua da qualidade no fluxo diário de desenvolvimento.
+
+2. Revisões Técnicas Formais (RTF):
+• Características: Reuniões estruturadas, convocadas e planejadas com antecedência. Seguem procedimentos rígidos: equipe pequena (3 a 5 membros), duração máxima de 2 horas, material distribuído previamente com checklists de inspeção e papéis bem definidos (produtor, líder, revisores e registrador). Produzem atas e relatórios oficiais assinados.
+• Contribuição: Filtra e remove defeitos graves de concepção, arquitetura e lógica nas fases iniciais de engenharia. Isso evita a amplificação de defeitos e reduz drasticamente o custo de retrabalho (corrigir um defeito na RTF custa de 10 a 100 vezes menos do que corrigi-lo após o deploy em produção).`,
+        alert: {
+          type: 'tip',
+          title: 'Regra de Ouro da RTF (Pressman)',
+          message: 'Revisa-se o produto, nunca o produtor! O produtor apresenta o artefato e não pode presidir a reunião. O tempo é rigorosamente controlado (< 2 horas).'
+        }
+      },
+      {
+        title: 'Questão 2: Caixa-Preta vs. Caixa-Branca + Exemplo da Mesma Funcionalidade',
+        content: `A diferença essencial entre as duas abordagens está no conhecimento e na análise da estrutura interna do software durante a elaboração dos casos de teste:
+
+1. Teste de Caixa-Preta (Funcional ou Comportamental):
+• Avalia o comportamento externo do software, sem considerar sua implementação interna ou a estrutura do código-fonte.
+• Os casos de teste são derivados diretamente dos requisitos, casos de uso e regras de negócio (entradas fornecidas vs. saídas esperadas).
+
+2. Teste de Caixa-Branca (Estrutural):
+• Avalia a estrutura interna e a lógica de implementação do software, considerando o código-fonte e seus possíveis caminhos de execução.
+• O projetista elabora testes para exercitar caminhos independentes, instruções, ramos lógicos (verdadeiro/falso) e limites de laços de repetição.
+
+EXEMPLO DE UMA MESMA FUNCIONALIDADE TESTADA PELAS DUAS ABORDAGENS:
+• Funcionalidade Escolhida: "Autenticação de Usuário (Tela de Login)".
+- Abordagem em Caixa-Preta: O testador acessa a tela de login sem olhar o código. Insere um e-mail válido com senha correta e verifica se o sistema redireciona com sucesso para a Home. Em seguida, insere senha incorreta e valida se o sistema exibe a mensagem de erro esperada.
+- Abordagem em Caixa-Branca: O testador abre o método 'autenticar(email, senha)' no código-fonte. Ele analisa os branches do código e cria casos de teste para exercitar o caminho do 'if (usuario == null)', o caminho do 'if (!senhaEncoder.matches(...))' e o bloco 'catch (BancoDeDadosException e)', garantindo 100% de cobertura das instruções e ramos lógicos internos.`
+      },
+      {
+        title: 'Questão 3: Teste de Caminho Básico (Tom McCabe)',
+        content: `1. O Que É o Teste de Caminho Básico:
+É uma técnica caixa-branca (proposta por Tom McCabe) que permite derivar uma medida quantitativa da complexidade lógica de um projeto procedimental (a complexidade ciclomática) e usá-la como guia para definir um conjunto-base de caminhos de execução linearmente independentes.
+
+2. Relação com a Complexidade Ciclomática:
+A complexidade ciclomática V(G) define matematicamente o número de caminhos linearmente independentes existentes no grafo de fluxo do programa. Qualquer outro caminho possível no código pode ser formado por uma combinação linear desses caminhos básicos.
+
+3. Relação com a Definição de Casos de Teste:
+O valor de V(G) estabelece o limite superior (o teto) do número de casos de teste que devem ser obrigatoriamente planejados e executados.
+Isso garante que:
+• Cada instrução/comando do código seja percorrido pelo menos uma vez (100% de cobertura de comandos);
+• Todas as decisões condicionais (ifs, whiles) sejam exercitadas obrigatoriamente nos seus dois estados: Verdadeiro e Falso;
+• Evitam-se testes redundantes, ao mesmo tempo em que se assegura que nenhum desvio do fluxo ficou esquecido.`
+      },
+      {
+        title: 'Questão 4: Exercício Numérico de Complexidade Ciclomática (E=12, N=10)',
+        content: `ENUNCIADO DA FOLHA: "Um grafo de fluxo possui 12 arestas (E) e 10 nós (N). Calcule V(G) pela fórmula E - N + 2. O que o resultado indica para o planejamento dos testes?"
+
+1. CÁLCULO PASSO A PASSO:
+Fórmula: V(G) = E - N + 2
+• E (Arestas / Edges) = 12
+• N (Nós / Nodes) = 10
+
+V(G) = 12 - 10 + 2
+V(G) = 2 + 2
+V(G) = 4
+
+2. INTERPRETAÇÃO PARA O PLANEJAMENTO DOS TESTES:
+• O fluxo de controle do módulo possui exatamente 4 caminhos linearmente independentes.
+• O projetista de testes é obrigado a planejar e executar no mínimo 4 casos de teste distintos para garantir a cobertura completa do conjunto-base.
+• A execução desses 4 testes assegura que 100% das instruções do código serão executadas pelo menos uma vez e todas as decisões lógicas passarão por Verdadeiro e Falso.
+• Se a equipe fizer menos de 4 testes, é matematicamente certo que existirá código sem testar; se fizer mais de 4 testes no caminho básico, haverá redundância estrutural.`,
+        alert: {
+          type: 'warning',
+          title: 'Atenção na Prova',
+          message: 'Não escreva apenas "V(G) = 4". Responda também a segunda parte da pergunta: "indica a existência de 4 caminhos independentes e a necessidade de 4 casos de teste mínimos para cobrir 100% dos comandos".'
+        }
+      },
+      {
+        title: 'Questão 5: Particionamento de Equivalência (Idades entre 18 e 65 anos)',
+        content: `ENUNCIADO DA FOLHA: "Um sistema aceita idades entre 18 e 65 anos, inclusive. Defina as classes de equivalência válidas e inválidas e escolha um valor representativo para cada classe."
+
+CONCEITO: Divide o domínio infinito de entradas em partições (classes), assumindo que qualquer valor da mesma partição terá o mesmo tratamento pelo software.
+
+TABELA DE CLASSES DE EQUIVALÊNCIA:
+1. Classe de Equivalência Válida (CE1):
+• Regra: 18 <= idade <= 65 anos (intervalo fechado [18..65]).
+• Valor Representativo Escolhido: 30 anos (ou 25, 40).
+• Saída Esperada: Cadastro aceito com sucesso.
+
+2. Classe de Equivalência Inválida 1 (CE2 — Abaixo do limite):
+• Regra: idade < 18 anos (menores de idade).
+• Valor Representativo Escolhido: 15 anos (ou 10, 12).
+• Saída Esperada: Rejeitar entrada com mensagem de erro ("Idade inferior a 18 anos").
+
+3. Classe de Equivalência Inválida 2 (CE3 — Acima do limite):
+• Regra: idade > 65 anos (acima da idade máxima permitida).
+• Valor Representativo Escolhido: 70 anos (ou 75, 80).
+• Saída Esperada: Rejeitar entrada com mensagem de erro ("Idade superior a 65 anos").
+
+(Opcional de robustez: entradas não numéricas, como letras ou valores nulos).`
+      },
+      {
+        title: 'Questão 6: Análise de Valor Limite (Idades entre 18 e 65 anos)',
+        content: `ENUNCIADO DA FOLHA: "Para o mesmo campo de idade de 18 a 65 anos, proponha casos de teste utilizando análise de valor limite e justifique sua escolha."
+
+1. JUSTIFICATIVA TÉCNICA DA ESCOLHA:
+A Análise de Valor Limite (AVL) complementa o particionamento de equivalência focando nas fronteiras exatas das classes. A justificativa técnica baseia-se no fato empírico de que a esmagadora maioria dos defeitos de programação (como erros "off-by-one" em operadores relacionais como usar "<" em vez de "<=", ou ">" em vez de ">=") ocorre precisamente nos limites e transições entre o que é válido e o que é inválido, e raramente no centro das classes.
+
+2. CASOS DE TESTE PROPOSTOS:
+Para o intervalo fechado [18, 65], testamos os valores limítrofes e seus vizinhos imediatamente adjacentes (mínimo - 1, mínimo, mínimo + 1 e máximo - 1, máximo, máximo + 1):
+
+A. Fronteira Inferior (em torno de 18 anos):
+• Caso 1 (Valor = 17): Logo abaixo do limite -> INVÁLIDO (Rejeitar).
+• Caso 2 (Valor = 18): Exatamente no limite -> VÁLIDO (Aceitar).
+• Caso 3 (Valor = 19): Logo acima do limite -> VÁLIDO (Aceitar).
+
+B. Fronteira Superior (em torno de 65 anos):
+• Caso 4 (Valor = 64): Logo abaixo do limite -> VÁLIDO (Aceitar).
+• Caso 5 (Valor = 65): Exatamente no limite -> VÁLIDO (Aceitar).
+• Caso 6 (Valor = 66): Logo acima do limite -> INVÁLIDO (Rejeitar).
+
+Total de Casos de Teste: { 17, 18, 19 } e { 64, 65, 66 }.`
+      },
+      {
+        title: 'Questão 7: Testes Unitários Automatizados (3 Benefícios e Exemplo de Função)',
+        content: `1. O Que São Testes Unitários Automatizados:
+São verificações automáticas das menores unidades testáveis isoladas do código-fonte (métodos ou classes individuais), sem dependências externas reais (usando mocks/stubs se necessário), executadas via frameworks como JUnit 5.
+
+2. Três Benefícios Principais:
+• Detecção Precoce de Erros: Descobre falhas no exato momento da codificação, onde o custo de correção é mínimo.
+• Facilitação da Manutenção e Refatoração: Oferece uma rede de segurança instantânea; o desenvolvedor altera e otimiza o código com a certeza de que nenhuma funcionalidade existente foi quebrada.
+• Documentação Viva do Comportamento Esperado: Serve como especificação executável de como cada método deve se comportar perante entradas válidas e inválidas.
+
+3. Exemplo de Função Simples e Testável Unitariamente:`,
+        codeSnippet: {
+          language: 'java',
+          code: `// Classe de Negócio
+public class CalculadoraDesconto {
+    public double calcularDesconto(double valorCompra, boolean isClienteVip) {
+        if (isClienteVip && valorCompra >= 100.0) {
+            return valorCompra * 0.10; // 10% de desconto
+        }
+        return 0.0;
+    }
+}
+
+// Classe de Teste Unitário Automatizado (JUnit 5)
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+public class CalculadoraDescontoTest {
+    private final CalculadoraDesconto calc = new CalculadoraDesconto();
+
+    @Test
+    public void deveConcederDescontoParaClienteVipComCompraMaiorOuIgualA100() {
+        double resultado = calc.calcularDesconto(150.0, true);
+        assertEquals(15.0, resultado, 0.001);
+    }
+
+    @Test
+    public void naoDeveConcederDescontoSeClienteVipComprarMenosDe100() {
+        double resultado = calc.calcularDesconto(80.0, true);
+        assertEquals(0.0, resultado, 0.001);
+    }
+
+    @Test
+    public void naoDeveConcederDescontoParaClienteNaoVip() {
+        double resultado = calc.calcularDesconto(200.0, false);
+        assertEquals(0.0, resultado, 0.001);
+    }
+}`,
+          caption: 'Exemplo simples em Java + JUnit 5 demonstrando método atômico e asserções automatizadas.'
+        }
+      },
+      {
+        title: 'Questão 8: Teste de Integração (Por Que Módulos Perfeitos Podem Falhar Juntos?)',
+        content: `1. Definição de Teste de Integração:
+É um nível de teste de software que tem como finalidade verificar se diferentes módulos, componentes ou subsistemas funcionam corretamente quando integrados, avaliando principalmente a comunicação, a troca de dados e as interações entre eles.
+
+2. Objetivo Principal:
+Identificar defeitos nas interfaces e nas interações entre componentes.
+
+3. Defeitos Revelados que os Testes Unitários NÃO Detectam:
+Mesmo que cada módulo passe com 100% de sucesso isoladamente em sua bancada, a integração pode revelar falhas críticas:
+• Incompatibilidades de Interface e Tipagem: Um módulo espera data em formato ISO 'YYYY-MM-DD' e o outro envia 'DD/MM/YYYY', ou divergência na ordem de parâmetros chamados.
+• Perda de Dados na Troca de Parâmetros: Parâmetros truncados ou convertidos incorretamente na travessia de barramentos de mensageria ou chamadas HTTP/REST.
+• Erros na Sequência de Execução (Ordem Temporal): Módulo consumidor tenta processar dados antes que o módulo produtor termine a gravação na base de dados.
+• Concorrência e Bloqueios em Recursos Compartilhados: Disputas simultâneas por tabelas de banco de dados (deadlocks), variáveis globais corrompidas ou esgotamento de pool de conexões.`
+      },
+      {
+        title: 'Questão 9: Top-Down vs. Bottom-Up (Papel de Stubs e Drivers)',
+        content: `1. Integração Descendente (Top-Down):
+• Como Funciona: Os módulos são integrados de cima para baixo na hierarquia de controle, iniciando pelo módulo principal (controlador do topo) e descendo progressivamente até os módulos subordinados.
+• Papel dos STUBS: Como os módulos inferiores subordinados ainda não foram desenvolvidos ou integrados, usam-se STUBS (módulos fictícios ou "cascas" substitutas). O stub simula o componente inferior pendente, recebendo chamadas do módulo de topo e devolvendo respostas estáticas pré-programadas para permitir testar a lógica do controlador imediatamente.
+
+2. Integração Ascendente (Bottom-Up):
+• Como Funciona: Os módulos são integrados de baixo para cima, combinando componentes de nível inferior (utilitários, rotinas de cálculo e acesso a dados) em agregados (clusters/builds).
+• Papel dos DRIVERS: Como os módulos de nível superior (controladores) ainda não foram integrados para comandar os módulos da base, desenvolvem-se DRIVERS (pseudocontroladores ou "programas condutores"). O driver simula o módulo chamador, alimentando os módulos subordinados com entradas de teste e capturando suas saídas. Os drivers são descartados conforme a integração sobe na hierarquia.
+
+RESUMO:
+• Top-Down: Desce na árvore | Começa no Topo | Usa STUBS (embaixo).
+• Bottom-Up: Sobe na árvore | Começa na Base | Usa DRIVERS (em cima).`
+      },
+      {
+        title: 'Questão 10: Fumaça (Smoke Test) vs. Regressão (Cenário em Loja Virtual)',
+        content: `1. Diferenciação Entre os Testes:
+• Teste de Fumaça (Smoke Test): Abordagem de integração contínua executada diariamente em uma build para expor erros graves e catastróficos que impeçam o funcionamento básico. É superficial e rápido (< 5 minutos). Se falhar, a build é imediatamente rejeitada.
+• Teste de Regressão: Reexecução de um subconjunto amplo e detalhado de testes para garantir que modificações recentes no código não introduziram novos defeitos em funcionalidades pré-existentes.
+
+2. Cenário Prático em uma Loja Virtual:
+• Alteração Realizada: A equipe modificou o módulo de "Cálculo de Frete" para incluir uma nova transportadora com cálculo dinâmico por CEP.
+
+• Quando Executar o Teste de Fumaça:
+Imediatamente após a conclusão da build compilada no servidor de homologação. O smoke test roda em 2 minutos checando se a home carrega, se a busca funciona, se o login autentica e se um produto vai para o carrinho. Se o site crashar na inicialização, a build é cancelada na hora.
+
+• Quando Executar o Teste de Regressão:
+Após a aprovação do teste de fumaça. Roda-se a bateria de testes de regressão sobre todo o fluxo de compras para garantir que a alteração no cálculo de frete não afetou a aplicação de cupons de desconto, não gerou divergência no total do pedido, não quebrou o gateway de pagamento (cartão/Pix) e não corrompeu a emissão do pedido.`
+      }
+    ],
+    bizus: [
+      'Q1: Revisões formais e informais são ESTÁTICAS (sem rodar o código). Formal tem ata, líder e checklist; informal é pair programming.',
+      'Q2: Login em caixa-preta = digita e vê se loga; em caixa-branca = abre o código e testa se cada if e catch foram executados.',
+      'Q3: Caminho básico deriva o conjunto-base de caminhos independentes; V(G) define o número mínimo de casos de teste para 100% de cobertura.',
+      'Q4: V(G) = 12 - 10 + 2 = 4. São 4 caminhos independentes e 4 casos de teste obrigatórios.',
+      'Q5: Equivalência [18..65] -> Válida: 30; Inválida inferior: 15; Inválida superior: 70.',
+      'Q6: Limite [18..65] -> Borda inferior: 17, 18, 19; Borda superior: 64, 65, 66.',
+      'Q7: Unitário testa métodos isolados. Benefícios: acha erro cedo, dá coragem pra refatorar e documenta o código.',
+      'Q8: Integração acha incompatibilidade de interfaces e concorrência que testes unitários isolados não conseguem ver.',
+      'Q9: Top-Down desce e usa STUB embaixo. Bottom-Up sobe e usa DRIVER em cima.',
+      'Q10: Fumaça = checa se a nova build fica de pé logo após compilar. Regressão = retesta carrinho e checkout para garantir que alterar o frete não quebrou o pagamento.'
+    ]
+  },
+
+  // ==========================================
   // QUALIDADE DE SOFTWARE: COMPLEXIDADE CICLOMÁTICA (ÊNFASE MÁXIMA)
   // ==========================================
   {

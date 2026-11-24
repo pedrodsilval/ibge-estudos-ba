@@ -14,7 +14,9 @@ import {
   VolumeX,
   ThumbsUp,
   Meh,
-  AlertTriangle
+  AlertTriangle,
+  Brain,
+  Filter
 } from 'lucide-react';
 import type { Question, UserProfile } from '../types/study';
 import { recordQuestionAnswer, toggleBookmarkQuestion } from '../services/storageService';
@@ -31,17 +33,73 @@ export const FlashcardMode: React.FC<FlashcardModeProps> = ({
   onUpdateProfile
 }) => {
   const [selectedSubject, setSelectedSubject] = useState<string>('TODAS');
+  const [selectedTopic, setSelectedTopic] = useState<string>('TODOS');
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
   const [isFlipped, setIsFlipped] = useState<boolean>(false);
-  const [filterMode, setFilterMode] = useState<'all' | 'unanswered' | 'errors'>('all');
+  const [filterMode, setFilterMode] = useState<'all' | 'unanswered' | 'errors' | 'hard'>('all');
   const [isSpeaking, setIsSpeaking] = useState<boolean>(false);
+
+  // Lista de tópicos disponíveis com base na matéria selecionada
+  const availableTopics = React.useMemo(() => {
+    const pool = selectedSubject === 'TODAS'
+      ? questions
+      : questions.filter(q => q.subject === selectedSubject);
+    
+    const map: Record<string, number> = {};
+    pool.forEach(q => {
+      map[q.topic] = (map[q.topic] || 0) + 1;
+    });
+
+    return Object.entries(map)
+      .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
+      .map(([name, count]) => ({ name, count }));
+  }, [questions, selectedSubject]);
+
+  // Contagens para os badges de filtro
+  const { hardCount, errorsCount, unansweredCount, totalInSubject } = React.useMemo(() => {
+    const pool = selectedSubject === 'TODAS'
+      ? questions
+      : questions.filter(q => q.subject === selectedSubject);
+
+    let hard = 0;
+    let errors = 0;
+    let unanswered = 0;
+
+    pool.forEach(q => {
+      const history = activeProfile.answers[q.id];
+      if (!history) {
+        unanswered++;
+      } else {
+        if (!history.isCorrect) errors++;
+        if (history.userRating === 'hard' || (!history.isCorrect && history.attemptsCount > 0)) {
+          hard++;
+        }
+      }
+    });
+
+    return {
+      hardCount: hard,
+      errorsCount: errors,
+      unansweredCount: unanswered,
+      totalInSubject: pool.length
+    };
+  }, [questions, selectedSubject, activeProfile.answers]);
+
+  // Resetar tópico se mudar disciplina
+  useEffect(() => {
+    setSelectedTopic('TODOS');
+  }, [selectedSubject]);
 
   // Filtrar lista de questões conforme seleção
   const filteredQuestions = React.useMemo(() => {
     return questions.filter(q => {
       const matchSubject = selectedSubject === 'TODAS' || q.subject === selectedSubject;
       if (!matchSubject) return false;
+
+      if (selectedTopic !== 'TODOS' && q.topic !== selectedTopic) {
+        return false;
+      }
 
       const history = activeProfile.answers[q.id];
 
@@ -51,9 +109,12 @@ export const FlashcardMode: React.FC<FlashcardModeProps> = ({
       if (filterMode === 'unanswered') {
         return !history;
       }
+      if (filterMode === 'hard') {
+        return history && (history.userRating === 'hard' || (!history.isCorrect && history.attemptsCount > 0));
+      }
       return true;
     });
-  }, [questions, selectedSubject, filterMode, activeProfile.answers]);
+  }, [questions, selectedSubject, selectedTopic, filterMode, activeProfile.answers]);
 
   useEffect(() => {
     setCurrentIndex(0);
@@ -61,7 +122,7 @@ export const FlashcardMode: React.FC<FlashcardModeProps> = ({
     setSelectedOption(null);
     if ('speechSynthesis' in window) window.speechSynthesis.cancel();
     setIsSpeaking(false);
-  }, [selectedSubject, filterMode]);
+  }, [selectedSubject, selectedTopic, filterMode]);
 
   const currentQuestion = filteredQuestions[currentIndex] || null;
   const isBookmarked = currentQuestion ? activeProfile.bookmarkedQuestionIds.includes(currentQuestion.id) : false;
@@ -198,6 +259,7 @@ export const FlashcardMode: React.FC<FlashcardModeProps> = ({
           <button
             onClick={() => {
               setSelectedSubject('TODAS');
+              setSelectedTopic('TODOS');
               setFilterMode('all');
             }}
             className="px-6 py-3 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold rounded-xl transition-all shadow-lg shadow-indigo-600/30"
@@ -216,71 +278,117 @@ export const FlashcardMode: React.FC<FlashcardModeProps> = ({
     <div className="max-w-5xl mx-auto px-4 py-6 sm:py-8">
       
       {/* BARRA SUPERIOR DE FILTROS & NAVEGAÇÃO */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+      <div className="space-y-3 mb-6">
         
-        {/* FILTRO DE SUBJECT */}
-        <div className="flex flex-wrap items-center gap-2">
-          {(['TODAS', 'Língua Portuguesa', 'Noções de Informática', 'Administração Pública', 'Conhecimentos Específicos'] as const).map(sub => (
-            <button
-              key={sub}
-              onClick={() => setSelectedSubject(sub)}
-              className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all ${
-                selectedSubject === sub
-                  ? 'bg-gradient-to-r from-indigo-600 to-indigo-500 text-white shadow-md shadow-indigo-600/30 border border-indigo-400/30'
-                  : 'bg-slate-900/90 text-slate-400 hover:text-slate-200 border border-slate-800 hover:border-slate-700'
-              }`}
-            >
-              {sub === 'Língua Portuguesa' 
-                ? '🇧🇷 Português' 
-                : sub === 'Noções de Informática'
-                ? '💻 Informática'
-                : sub === 'Administração Pública'
-                ? '🏛️ Adm. Pública'
-                : sub === 'Conhecimentos Específicos'
-                ? '📂 Específicas'
-                : '📚 Todas as Matérias'}
-            </button>
-          ))}
-        </div>
-
-        {/* CONTROLES DIREITOS DE FILTRO */}
-        <div className="flex flex-wrap items-center gap-2 text-xs">
-          <div className="bg-slate-900 p-1 rounded-xl border border-slate-800 flex">
-            <button
-              onClick={() => setFilterMode('all')}
-              className={`px-3 py-1 rounded-lg font-medium transition-all ${
-                filterMode === 'all'
-                  ? 'bg-slate-800 text-white shadow-sm'
-                  : 'text-slate-400 hover:text-slate-200'
-              }`}
-            >
-              Todas
-            </button>
-            <button
-              onClick={() => setFilterMode('unanswered')}
-              className={`px-3 py-1 rounded-lg font-medium transition-all ${
-                filterMode === 'unanswered'
-                  ? 'bg-indigo-600 text-white shadow-sm font-semibold'
-                  : 'text-slate-400 hover:text-slate-200'
-              }`}
-            >
-              🆕 Inéditas / Não Feitas
-            </button>
-            <button
-              onClick={() => setFilterMode('errors')}
-              className={`px-3 py-1 rounded-lg font-medium transition-all ${
-                filterMode === 'errors'
-                  ? 'bg-rose-500/20 text-rose-300 border border-rose-500/30 font-semibold'
-                  : 'text-slate-400 hover:text-slate-200'
-              }`}
-            >
-              ❌ Somente Erradas
-            </button>
+        {/* LINHA 1: FILTRO DE MATÉRIA E STATUS */}
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3">
+          
+          {/* FILTRO DE SUBJECT */}
+          <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
+            {(['TODAS', 'Língua Portuguesa', 'Noções de Informática', 'Administração Pública', 'Conhecimentos Específicos'] as const).map(sub => (
+              <button
+                key={sub}
+                onClick={() => setSelectedSubject(sub)}
+                className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all ${
+                  selectedSubject === sub
+                    ? 'bg-gradient-to-r from-indigo-600 to-indigo-500 text-white shadow-md shadow-indigo-600/30 border border-indigo-400/30'
+                    : 'bg-slate-900/90 text-slate-400 hover:text-slate-200 border border-slate-800 hover:border-slate-700'
+                }`}
+              >
+                {sub === 'Língua Portuguesa' 
+                  ? '🇧🇷 Português' 
+                  : sub === 'Noções de Informática'
+                  ? '💻 Informática'
+                  : sub === 'Administração Pública'
+                  ? '🏛️ Adm. Pública'
+                  : sub === 'Conhecimentos Específicos'
+                  ? '📂 Específicas'
+                  : '📚 Todas'}
+              </button>
+            ))}
           </div>
 
-          <span className="text-slate-400 font-mono bg-slate-900 px-3 py-1.5 rounded-xl border border-slate-800">
-            {filteredQuestions.length > 0 ? currentIndex + 1 : 0} / {filteredQuestions.length}
-          </span>
+          {/* CONTROLES DIREITOS DE FILTRO (ALL, UNANSWERED, ERRORS, HARD/SRS) */}
+          <div className="flex flex-wrap items-center gap-2 text-xs">
+            <div className="bg-slate-900 p-1 rounded-xl border border-slate-800 flex flex-wrap gap-1">
+              <button
+                onClick={() => setFilterMode('all')}
+                className={`px-2.5 py-1 rounded-lg font-medium transition-all ${
+                  filterMode === 'all'
+                    ? 'bg-slate-800 text-white shadow-sm'
+                    : 'text-slate-400 hover:text-slate-200'
+                }`}
+              >
+                Todas ({totalInSubject})
+              </button>
+              <button
+                onClick={() => setFilterMode('unanswered')}
+                className={`px-2.5 py-1 rounded-lg font-medium transition-all ${
+                  filterMode === 'unanswered'
+                    ? 'bg-indigo-600 text-white shadow-sm font-semibold'
+                    : 'text-slate-400 hover:text-slate-200'
+                }`}
+              >
+                🆕 Inéditas ({unansweredCount})
+              </button>
+              <button
+                onClick={() => setFilterMode('errors')}
+                className={`px-2.5 py-1 rounded-lg font-medium transition-all ${
+                  filterMode === 'errors'
+                    ? 'bg-rose-500/20 text-rose-300 border border-rose-500/30 font-semibold'
+                    : 'text-slate-400 hover:text-slate-200'
+                }`}
+              >
+                ❌ Erradas ({errorsCount})
+              </button>
+              <button
+                onClick={() => setFilterMode('hard')}
+                className={`px-2.5 py-1 rounded-lg font-medium transition-all flex items-center space-x-1 ${
+                  filterMode === 'hard'
+                    ? 'bg-amber-500/20 text-amber-300 border border-amber-500/30 font-semibold'
+                    : 'text-slate-400 hover:text-slate-200'
+                }`}
+                title="Questões marcadas como difíceis ou que tiveram erros anteriores (Sistema de Repetição Espaçada)"
+              >
+                <Brain className="w-3 h-3 text-amber-400" />
+                <span>Difíceis / SRS ({hardCount})</span>
+              </button>
+            </div>
+
+            <span className="text-slate-400 font-mono bg-slate-900 px-2.5 py-1.5 rounded-xl border border-slate-800 text-xs shrink-0">
+              {filteredQuestions.length > 0 ? currentIndex + 1 : 0} / {filteredQuestions.length}
+            </span>
+          </div>
+
+        </div>
+
+        {/* LINHA 2: DRILL-DOWN POR SUB-TÓPICO */}
+        <div className="flex flex-wrap items-center justify-between gap-2 bg-slate-900/60 border border-slate-800/80 px-3 py-2 rounded-2xl">
+          <div className="flex items-center space-x-2 text-xs">
+            <Filter className="w-3.5 h-3.5 text-indigo-400 shrink-0" />
+            <span className="text-slate-300 font-semibold shrink-0">Drill-down por Tópico:</span>
+            <select
+              value={selectedTopic}
+              onChange={(e) => setSelectedTopic(e.target.value)}
+              className="bg-slate-950 border border-slate-800 text-xs text-indigo-300 font-medium rounded-xl px-2.5 py-1 focus:outline-none focus:border-indigo-500 max-w-[260px] sm:max-w-[340px] truncate"
+            >
+              <option value="TODOS">🎯 Todos os Assuntos ({availableTopics.reduce((acc, t) => acc + t.count, 0)} questões)</option>
+              {availableTopics.map(t => (
+                <option key={t.name} value={t.name}>
+                  {t.name} ({t.count})
+                </option>
+              ))}
+            </select>
+          </div>
+
+          {selectedTopic !== 'TODOS' && (
+            <button
+              onClick={() => setSelectedTopic('TODOS')}
+              className="text-[11px] text-indigo-400 hover:text-indigo-300 underline font-medium"
+            >
+              Limpar filtro de tópico
+            </button>
+          )}
         </div>
 
       </div>
@@ -493,31 +601,48 @@ export const FlashcardMode: React.FC<FlashcardModeProps> = ({
               </div>
             </div>
 
-            {/* RATING DE REPETIÇÃO ESPAÇADA */}
+            {/* RATING DE REPETIÇÃO ESPAÇADA (SRS) */}
             {isAnswered && (
-              <div className="p-4 bg-slate-950 border border-slate-800 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-3">
-                <span className="text-xs text-slate-400 font-semibold">Como foi essa questão para você?</span>
+              <div className="p-4 bg-slate-950/90 border border-slate-800 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-3 shadow-inner">
+                <div className="flex items-center space-x-2 text-xs">
+                  <Brain className="w-4 h-4 text-indigo-400" />
+                  <span className="text-slate-300 font-semibold">Repetição Espaçada (SRS):</span>
+                  {existingAnswer?.userRating && (
+                    <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${
+                      existingAnswer.userRating === 'easy'
+                        ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30'
+                        : existingAnswer.userRating === 'medium'
+                        ? 'bg-amber-500/20 text-amber-300 border border-amber-500/30'
+                        : 'bg-rose-500/20 text-rose-300 border border-rose-500/30'
+                    }`}>
+                      Classificada: {existingAnswer.userRating === 'easy' ? 'Fácil' : existingAnswer.userRating === 'medium' ? 'Média' : 'Difícil'}
+                    </span>
+                  )}
+                </div>
                 <div className="flex items-center space-x-2">
                   <button
                     onClick={() => handleRateDifficulty('easy')}
-                    className="flex items-center space-x-1 px-3 py-1.5 bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 rounded-xl text-xs font-bold transition-all"
+                    className="flex items-center space-x-1.5 px-3 py-1.5 bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 rounded-xl text-xs font-bold transition-all"
+                    title="Dominado! Agendar revisão espaçada longa"
                   >
                     <ThumbsUp className="w-3.5 h-3.5" />
-                    <span>Fácil</span>
+                    <span>Fácil (7d)</span>
                   </button>
                   <button
                     onClick={() => handleRateDifficulty('medium')}
-                    className="flex items-center space-x-1 px-3 py-1.5 bg-amber-500/10 hover:bg-amber-500/20 text-amber-300 border border-amber-500/30 rounded-xl text-xs font-bold transition-all"
+                    className="flex items-center space-x-1.5 px-3 py-1.5 bg-amber-500/10 hover:bg-amber-500/20 text-amber-300 border border-amber-500/30 rounded-xl text-xs font-bold transition-all"
+                    title="Em consolidação. Agendar revisão intermediária"
                   >
                     <Meh className="w-3.5 h-3.5" />
-                    <span>Médio</span>
+                    <span>Médio (2d)</span>
                   </button>
                   <button
                     onClick={() => handleRateDifficulty('hard')}
-                    className="flex items-center space-x-1 px-3 py-1.5 bg-rose-500/10 hover:bg-rose-500/20 text-rose-300 border border-rose-500/30 rounded-xl text-xs font-bold transition-all"
+                    className="flex items-center space-x-1.5 px-3 py-1.5 bg-rose-500/10 hover:bg-rose-500/20 text-rose-300 border border-rose-500/30 rounded-xl text-xs font-bold transition-all"
+                    title="Prioridade Máxima! Revisar com urgência"
                   >
                     <AlertTriangle className="w-3.5 h-3.5" />
-                    <span>Difícil</span>
+                    <span>Difícil (Hoje)</span>
                   </button>
                 </div>
               </div>

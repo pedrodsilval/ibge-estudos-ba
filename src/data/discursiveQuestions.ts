@@ -198,5 +198,93 @@ A criticidade não tem relação obrigatória com o preço de compra. Um reagent
       'Justificar a prioridade dos itens Z independente do valor financeiro.',
       'Diferenciar inventário rotativo e periódico destacando o impacto na rotina da repartição.'
     ]
+  },
+
+  // =========================================================================
+  // TEMA 5: SEGURANÇA DA INFORMAÇÃO, PHISHING & LGPD NA UNIVERSIDADE
+  // =========================================================================
+  {
+    id: 'ufba-disc-05',
+    subject: 'Noções de Informática',
+    topic: 'Segurança da Informação: Phishing, Ransomware e Proteção de Dados (LGPD)',
+    source: 'Edital UFBA • Segurança da Informação & Lei nº 13.709/2018',
+    difficulty: 'Médio',
+    statement: 'Um Assistente em Administração que atua no Colegiado de Graduação da UFBA recebeu um e-mail com remetente aparente "suporte-ti@ufba-atendimento.com" com o assunto "URGENTE: Sua conta institucional será desativada em 2 horas. Clique no link para revalidar sua senha e planilha de matrículas". Ao clicar desavisadamente no link e abrir o arquivo baixado, as pastas de documentos de alunos começaram a ficar com extensões desconhecidas e surgiu uma mensagem exigindo pagamento para desbloqueio (ransomware). Descreva qual modalidade de ataque cibernético ocorreu, quais providências técnicas imediatas o servidor deve tomar para contenção de danos e quais princípios da LGPD e regras de boas práticas de segurança institucional foram vulnerados.',
+    contextHint: 'Identifique engenharia social / phishing seguido de ransomware. Imediata desconexão física da rede (cabo/Wi-Fi), acionamento do Núcleo de TI e backup 3-2-1.',
+    expectedAnswer: `1. IDENTIFICAÇÃO DO ATAQUE (ENGENHARIA SOCIAL / PHISHING & RANSOMWARE):
+O incidente iniciou-se por meio de Phishing (engenharia social): o atacante utilizou uma mensagem ardilosa com senso de urgência e um domínio falso (@ufba-atendimento.com em vez do domínio oficial @ufba.br) para enganar o servidor. O arquivo executado continha um Ransomware (código malicioso de extorsão que sequestra e criptografa os dados da instituição, exigindo resgate).
+
+2. PROVIDÊNCIAS TÉCNICAS IMEDIATAS DO SERVIDOR (CONTENÇÃO DO DANO):
+Ao perceber o ataque, o servidor deve agir com rapidez para mitigar o dano:
+• Desconexão Física Imediata da Rede: Desplugar imediatamente o cabo de rede Ethernet ou desligar o Wi-Fi do computador para impedir que o ransomware se propague pela rede local e infecte os servidores e estações de outros setores da UFBA;
+• NÃO Desligar abruptamente na tomada se for possível apenas desconectar da rede (a fim de preservar logs de memória volátil para perícia técnica do órgão);
+• Acionamento Imediato da Superintendência de Tecnologia da Informação (STI/UFBA): Notificar imediatamente a equipe de segurança cibernética da universidade e a chefia imediata;
+• JAMAIS Pagar o Resgate: Órgãos públicos são expressamente proibidos de pagar resgates de extorsão cibernética. A recuperação dos sistemas deve ser realizada exclusivamente a partir de rotinas de cópias de segurança (Backup 3-2-1 seguro e isolado).
+
+3. PRINCÍPIOS DA LGPD E REGRAS INSTITUCIONAIS VULNERADOS:
+• Princípio da Segurança e da Prevenção (Art. 6º da Lei nº 13.709/2018 - LGPD): A universidade e seus agentes devem adotar medidas técnicas e administrativas aptas a proteger os dados pessoais de acessos não autorizados e de situações acidentais ou ilícitas de destruição, perda ou alteração.
+• Princípio da Responsabilização e Prestação de Contas: Obrigação de comunicar o incidente de segurança à Autoridade Nacional de Proteção de Dados (ANPD) e aos titulares afetados (alunos cujos dados foram comprometidos).
+• Regras de Navegação Segura: O servidor público jamais deve clicar em links externos suspeitos, deve sempre checar o domínio do remetente (apenas @ufba.br é legítimo) e utilizar autenticação em dois fatores (2FA).`,
+    keywords: [
+      'Engenharia social e Phishing (e-mail fraudulento com senso de urgência)',
+      'Ransomware (malware de sequestro e criptografia de dados)',
+      'Desconexão física imediata da rede (cabo/Wi-Fi para evitar propagação)',
+      'Comunicação imediata à STI/UFBA e chefia imediata',
+      'Vedação expressa ao pagamento de resgate',
+      'Restauração de dados a partir de Backup (Estratégia 3-2-1)',
+      'Princípio da Segurança e da Prevenção da LGPD (Lei 13.709/2018)',
+      'Notificação de incidente de segurança à ANPD e aos titulares'
+    ],
+    goldenBizu: 'Clicou no link e pegou Ransomware? Despluga o cabo de rede NA HORA para o vírus não espalhar pela UFBA, chama a TI e restaura o Backup 3-2-1! Jamais pague resgate!',
+    gradingCriteria: [
+      'Identificar o ataque inicial como phishing/engenharia social e o malware como ransomware.',
+      'Descrever a ação prioritária de isolamento (desconexão da rede) e acionamento da equipe de TI.',
+      'Fundamentar a obrigação de proteção de dados pessoais conforme a LGPD e a importância do backup.'
+    ]
+  },
+
+  // =========================================================================
+  // TEMA 6: NOVA LEI DE LICITAÇÕES (14.133/21) & COMPRAS DIRETAS NA UFBA
+  // =========================================================================
+  {
+    id: 'ufba-disc-06',
+    subject: 'Administração Pública',
+    topic: 'Licitações e Contratos (Lei nº 14.133/2021): Fase Preparatória & Dispensa de Licitação',
+    source: 'Edital UFBA • Lei nº 14.133/2021 (Nova Lei de Licitações)',
+    difficulty: 'Médio',
+    statement: 'A coordenação de um instituto da UFBA necessita adquirir materiais de consumo de escritório e didáticos para o início do semestre letivo, totalizando um valor estimado de R$ 38.000,00. O diretor solicitou que você, como Assistente em Administração, instrua o processo administrativo de aquisição. Esclareça se essa compra pode ser realizada por Dispensa de Licitação em razão do valor segundo a Lei nº 14.133/2021, cite os documentos essenciais que devem compor a fase preparatória da instrução processual (ETP e TR) e aponte a importância da pesquisa de preços no Painel de Preços do Governo Federal.',
+    contextHint: 'Verifique o limite de dispensa para compras/serviços comuns (Art. 75, II da Lei 14.133/2021), a necessidade de Estudo Técnico Preliminar (ETP), Termo de Referência (TR) e pesquisa de preços.',
+    expectedAnswer: `1. CABIMENTO DA DISPENSA DE LICITAÇÃO POR VALOR (LEI Nº 14.133/2021):
+Sim, a contratação pode ser realizada mediante Dispensa de Licitação em razão do baixo valor:
+• O Artigo 75, inciso II, da Nova Lei de Licitações autoriza a dispensa para a contratação de compras e outros serviços cujo valor total seja inferior ao teto legal (valor originário de R$ 50.000,00, atualizado periodicamente por Decreto Federal para mais de R$ 59.000,00).
+• Como o montante estimado é de R$ 38.000,00, a aquisição enquadra-se com folga no limite legal, desde que não configure fracionamento indevido de despesa no mesmo exercício financeiro para o mesmo objeto no órgão.
+
+2. DOCUMENTOS ESSENCIAIS DA FASE PREPARATÓRIA (INSTRUÇÃO PROCESSUAL):
+Mesmo na contratação direta por dispensa, a Lei nº 14.133/2021 exige planejamento formal na fase preparatória:
+• Documento de Formalização de Demanda (DFD): Registro inicial da necessidade pelo setor requisitante;
+• Estudo Técnico Preliminar (ETP): Documento que caracteriza o interesse público envolvido e avalia a viabilidade técnica e econômica da melhor solução para suprir a demanda da universidade;
+• Termo de Referência (TR): Documento que define de forma clara, precisa e impessoal as especificações do objeto (descrição dos itens de escritório, quantitativos, prazos e locais de entrega na UFBA, critérios de aceitação e garantias);
+• Estimativa do Valor da Contratação: Elaborada com ampla pesquisa de preços.
+
+3. IMPORTÂNCIA DA PESQUISA DE PREÇOS (PAINEL DE PREÇOS GOV.BR):
+A pesquisa ampla de mercado é obrigatória para assegurar a vantajosidade e impedir sobrepreço ou superfaturamento do erário público (Art. 23 da Lei 14.133/2021):
+• O servidor deve priorizar fontes oficiais, notadamente o Painel de Preços do Governo Federal e contratações similares de outros órgãos públicos da União;
+• Permite estabelecer o valor de referência real e transparente, garantindo a economicidade e a conformidade aos princípios da moralidade e da eficiência administrativa.`,
+    keywords: [
+      'Dispensa de Licitação em razão do valor (Lei nº 14.133/2021, Art. 75, II)',
+      'Valor estimado de R$ 38.000,00 dentro do limite legal',
+      'Vedação ao fracionamento ilegal de despesas no exercício financeiro',
+      'Fase preparatória do processo licitatório/contratação direta',
+      'Estudo Técnico Preliminar (ETP) demonstrando a viabilidade',
+      'Termo de Referência (TR) com especificação clara do objeto',
+      'Pesquisa de preços ampla (Art. 23) via Painel de Preços do Governo Federal',
+      'Princípios da economicidade, vantajosidade e eficiência'
+    ],
+    goldenBizu: 'Compra de material até o teto da Lei 14.133 (Art. 75, II) pode ser feita por DISPENSA de licitação, mas exige TR, ETP e pesquisa no Painel de Preços! Não pode fracionar despesa!',
+    gradingCriteria: [
+      'Identificar o fundamento da dispensa de licitação por valor (Art. 75, II da Lei 14.133/21).',
+      'Mencionar a necessidade do Estudo Técnico Preliminar (ETP) e do Termo de Referência (TR).',
+      'Explicar o papel da pesquisa ampla de preços e consulta ao Painel de Preços oficial.'
+    ]
   }
 ];

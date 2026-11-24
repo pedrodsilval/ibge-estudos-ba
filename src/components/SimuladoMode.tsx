@@ -6,15 +6,21 @@ import {
   X, 
   RotateCcw, 
   ChevronRight, 
-  ChevronLeft,
-  Filter,
-  ArrowRight,
-  Zap,
-  Play,
-  Terminal,
-  Database,
-  BookOpen,
-  ShieldCheck
+  ChevronLeft, 
+  Filter, 
+  ArrowRight, 
+  Zap, 
+  Play, 
+  Terminal, 
+  Database, 
+  BookOpen, 
+  ShieldCheck,
+  Award,
+  AlertTriangle,
+  TrendingUp,
+  Sparkles,
+  Target,
+  Brain
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import type { Question, UserProfile, SubjectType } from '../types/study';
@@ -338,27 +344,140 @@ export const SimuladoMode: React.FC<SimuladoModeProps> = ({
             </div>
           </div>
 
-          {/* STATS POR MATÉRIA */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-xl mx-auto mb-8">
-            {(Object.entries(scoreResult.subjectStats) as [SubjectType, { total: number; correct: number }][]).map(([subj, stats]) => {
-              if (stats.total === 0) return null;
-              const pct = Math.round((stats.correct / stats.total) * 100);
-              return (
-                <div key={subj} className="p-4 bg-slate-950 rounded-2xl border border-slate-800 text-left space-y-2">
-                  <div className="flex justify-between items-center text-xs font-bold text-slate-200">
-                    <span>{subj}</span>
-                    <span className="font-mono text-indigo-400">{stats.correct}/{stats.total} ({pct}%)</span>
-                  </div>
-                  <div className="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
-                    <div 
-                      className={`h-full rounded-full ${pct >= 70 ? 'bg-emerald-500' : 'bg-rose-500'}`} 
-                      style={{ width: `${pct}%` }} 
-                    />
+          {/* DIAGNÓSTICO ESTATÍSTICO & ORIENTAÇÕES DE ESTUDO */}
+          {(() => {
+            const activeStats = (Object.entries(scoreResult.subjectStats) as [SubjectType, { total: number; correct: number }][])
+              .filter(([_, stats]) => stats.total > 0)
+              .map(([subj, stats]) => ({
+                subject: subj,
+                total: stats.total,
+                correct: stats.correct,
+                pct: Math.round((stats.correct / stats.total) * 100)
+              }));
+
+            const sortedByPct = [...activeStats].sort((a, b) => b.pct - a.pct);
+            const strongest = sortedByPct.length > 0 ? sortedByPct[0] : null;
+            const weakest = sortedByPct.length > 1 ? sortedByPct[sortedByPct.length - 1] : null;
+
+            const missedTopics = Array.from(new Set(
+              simuladoQuestions
+                .filter(q => userAnswers[q.id] !== q.correctOption)
+                .map(q => q.topic)
+            ));
+
+            const isHigh = scoreResult.percentage >= 80;
+            const isMedium = scoreResult.percentage >= 60 && scoreResult.percentage < 80;
+
+            return (
+              <div className="space-y-6 max-w-2xl mx-auto mb-8 text-left">
+                {/* BANNER PEDAGÓGICO DE CLASSIFICAÇÃO */}
+                <div className={`p-4 sm:p-5 rounded-2xl border ${
+                  isHigh 
+                    ? 'bg-emerald-950/40 border-emerald-500/40 text-emerald-200' 
+                    : isMedium 
+                    ? 'bg-amber-950/40 border-amber-500/40 text-amber-200' 
+                    : 'bg-indigo-950/40 border-indigo-500/40 text-indigo-200'
+                }`}>
+                  <div className="flex items-start space-x-3">
+                    <div className="p-2 bg-slate-900/80 rounded-xl shrink-0 mt-0.5">
+                      {isHigh ? (
+                        <Award className="w-5 h-5 text-emerald-400" />
+                      ) : isMedium ? (
+                        <TrendingUp className="w-5 h-5 text-amber-400" />
+                      ) : (
+                        <Target className="w-5 h-5 text-indigo-400" />
+                      )}
+                    </div>
+                    <div className="space-y-1">
+                      <div className="font-bold text-sm sm:text-base flex items-center gap-2">
+                        <span>
+                          {isHigh
+                            ? '🏆 Zona de Classificação & Nomeação Direta!'
+                            : isMedium
+                            ? '⚡ Zona de Alta Competitividade — Ajuste os Detalhes!'
+                            : '🎯 Fase de Construção e Fortalecimento de Base!'}
+                        </span>
+                      </div>
+                      <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                        {isHigh
+                          ? 'Excelente aproveitamento! Seu ritmo de prova e fixação de conceitos estão no nível dos primeiros colocados da UFBA. Mantenha os simulados periódicos até o dia 20/12.'
+                          : isMedium
+                          ? 'Muito bom desempenho! Você já domina a estrutura das matérias. Revise os tópicos pontuais abaixo onde ocorreram erros para subir sua nota para 80%+.'
+                          : 'Continue firme! Errar no simulado é o melhor aprendizado para acertar no dia oficial. Use os Bizus de Ouro e revise as questões erradas no Caderno de Erros.'}
+                      </p>
+                    </div>
                   </div>
                 </div>
-              );
-            })}
-          </div>
+
+                {/* DESTAQUES: PONTO FORTE & PONTO DE ATENÇÃO */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  {strongest && (
+                    <div className="p-3.5 bg-slate-950/80 border border-slate-800 rounded-xl flex items-center space-x-3">
+                      <div className="p-2 bg-emerald-500/10 text-emerald-400 rounded-lg shrink-0">
+                        <Sparkles className="w-4 h-4" />
+                      </div>
+                      <div className="text-xs">
+                        <span className="text-slate-400 block">Ponto Mais Forte:</span>
+                        <span className="font-bold text-slate-100">{strongest.subject} ({strongest.pct}%)</span>
+                      </div>
+                    </div>
+                  )}
+
+                  {weakest && weakest.pct < (strongest?.pct || 100) && (
+                    <div className="p-3.5 bg-slate-950/80 border border-slate-800 rounded-xl flex items-center space-x-3">
+                      <div className="p-2 bg-rose-500/10 text-rose-400 rounded-lg shrink-0">
+                        <AlertTriangle className="w-4 h-4" />
+                      </div>
+                      <div className="text-xs">
+                        <span className="text-slate-400 block">Atenção Prioritária:</span>
+                        <span className="font-bold text-rose-300">{weakest.subject} ({weakest.pct}%)</span>
+                      </div>
+                    </div>
+                  )}
+                </div>
+
+                {/* STATS POR MATÉRIA COM BARRAS */}
+                <div className="space-y-3">
+                  <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400">
+                    Desempenho por Disciplina
+                  </h4>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    {activeStats.map(s => (
+                      <div key={s.subject} className="p-3.5 bg-slate-950 rounded-xl border border-slate-800 space-y-2">
+                        <div className="flex justify-between items-center text-xs font-bold text-slate-200">
+                          <span className="truncate pr-2">{s.subject}</span>
+                          <span className="font-mono text-indigo-400 shrink-0">{s.correct}/{s.total} ({s.pct}%)</span>
+                        </div>
+                        <div className="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+                          <div 
+                            className={`h-full rounded-full transition-all duration-500 ${s.pct >= 75 ? 'bg-emerald-500' : s.pct >= 50 ? 'bg-amber-500' : 'bg-rose-500'}`} 
+                            style={{ width: `${s.pct}%` }} 
+                          />
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* TÓPICOS ESPECÍFICOS QUE REQUEREM REVISÃO */}
+                {missedTopics.length > 0 && (
+                  <div className="p-4 bg-slate-950 border border-slate-800 rounded-2xl space-y-2">
+                    <span className="text-xs font-bold text-slate-300 flex items-center space-x-1.5">
+                      <Brain className="w-3.5 h-3.5 text-indigo-400" />
+                      <span>Assuntos com erros neste simulado para reforçar:</span>
+                    </span>
+                    <div className="flex flex-wrap gap-1.5 pt-1">
+                      {missedTopics.map(top => (
+                        <span key={top} className="px-2.5 py-1 bg-slate-900 border border-slate-800 text-rose-300 text-[11px] rounded-lg font-medium">
+                          • {top}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            );
+          })()}
 
           <div className="flex flex-wrap items-center justify-center gap-3">
             <button
@@ -370,10 +489,17 @@ export const SimuladoMode: React.FC<SimuladoModeProps> = ({
             </button>
 
             <button
+              onClick={() => setReviewFilter('errors')}
+              className="px-6 py-3 bg-rose-600/20 hover:bg-rose-600/30 text-rose-300 border border-rose-500/40 font-bold text-sm rounded-xl transition-all flex items-center space-x-2"
+            >
+              <span>Revisar Erros Abaixo</span>
+            </button>
+
+            <button
               onClick={onReviewErrors}
               className="px-6 py-3 bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-sm rounded-xl transition-all shadow-lg shadow-indigo-600/30 flex items-center space-x-2"
             >
-              <span>Ver Caderno de Erros</span>
+              <span>Caderno de Erros Geral</span>
               <ArrowRight className="w-4 h-4" />
             </button>
           </div>

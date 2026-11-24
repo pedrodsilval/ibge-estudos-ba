@@ -274,10 +274,68 @@ export const DiscursiveMode: React.FC<DiscursiveModeProps> = ({
     window.speechSynthesis.speak(u);
   };
 
+  const renderSubjectSelector = () => (
+    <div className="bg-slate-900/90 border border-slate-800 p-2 sm:p-3 rounded-3xl shadow-xl flex flex-col sm:flex-row items-center justify-between gap-3">
+      <div className="flex items-center space-x-2 text-xs font-bold text-slate-300 px-2">
+        <PenTool className="w-4 h-4 text-emerald-400" />
+        <span>Redação & Estudos de Caso:</span>
+      </div>
+
+      <div className="grid grid-cols-2 sm:flex items-center gap-2 w-full sm:w-auto">
+        <button
+          onClick={() => onSelectSubject('Língua Portuguesa')}
+          className={`px-3 py-2 rounded-2xl text-xs font-bold transition-all flex items-center justify-center space-x-1.5 ${
+            selectedSubject === 'Língua Portuguesa'
+              ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg shadow-blue-600/30'
+              : 'bg-slate-950 text-slate-400 hover:text-slate-200 border border-slate-800'
+          }`}
+        >
+          <span>🇧🇷 Português</span>
+        </button>
+
+        <button
+          onClick={() => onSelectSubject('Noções de Informática')}
+          className={`px-3 py-2 rounded-2xl text-xs font-bold transition-all flex items-center justify-center space-x-1.5 ${
+            selectedSubject === 'Noções de Informática'
+              ? 'bg-gradient-to-r from-cyan-600 to-teal-600 text-white shadow-lg shadow-cyan-600/30'
+              : 'bg-slate-950 text-slate-400 hover:text-slate-200 border border-slate-800'
+          }`}
+        >
+          <span>💻 Informática</span>
+        </button>
+
+        <button
+          onClick={() => onSelectSubject('Administração Pública')}
+          className={`px-3 py-2 rounded-2xl text-xs font-bold transition-all flex items-center justify-center space-x-1.5 ${
+            selectedSubject === 'Administração Pública'
+              ? 'bg-gradient-to-r from-amber-600 to-orange-600 text-white shadow-lg shadow-amber-600/30'
+              : 'bg-slate-950 text-slate-400 hover:text-slate-200 border border-slate-800'
+          }`}
+        >
+          <span>🏛️ Adm. Pública</span>
+        </button>
+
+        <button
+          onClick={() => onSelectSubject('Conhecimentos Específicos')}
+          className={`px-3 py-2 rounded-2xl text-xs font-bold transition-all flex items-center justify-center space-x-1.5 ${
+            selectedSubject === 'Conhecimentos Específicos'
+              ? 'bg-gradient-to-r from-emerald-600 to-green-600 text-white shadow-lg shadow-emerald-600/30'
+              : 'bg-slate-950 text-slate-400 hover:text-slate-200 border border-slate-800'
+          }`}
+        >
+          <span>📂 Específicas</span>
+        </button>
+      </div>
+    </div>
+  );
+
   if (!currentQ) {
     return (
-      <div className="max-w-4xl mx-auto px-4 py-12 text-center text-slate-400">
-        Nenhuma questão discursiva encontrada para esta matéria.
+      <div className="max-w-5xl mx-auto px-4 py-8 space-y-6">
+        {renderSubjectSelector()}
+        <div className="bg-slate-900 border border-slate-800 rounded-3xl p-10 text-center text-slate-400">
+          Nenhuma questão discursiva encontrada para esta matéria. Selecione outra disciplina acima.
+        </div>
       </div>
     );
   }
@@ -293,58 +351,7 @@ export const DiscursiveMode: React.FC<DiscursiveModeProps> = ({
     <div className="max-w-5xl mx-auto px-4 py-8 space-y-6 animate-fadeIn">
       
       {/* SELETOR DE MATÉRIA NO TOPO (SEPARAÇÃO RÍGIDA) */}
-      <div className="bg-slate-900/90 border border-slate-800 p-2 sm:p-3 rounded-3xl shadow-xl flex flex-col sm:flex-row items-center justify-between gap-3">
-        <div className="flex items-center space-x-2 text-xs font-bold text-slate-300 px-2">
-          <PenTool className="w-4 h-4 text-emerald-400" />
-          <span>Redação & Estudos de Caso:</span>
-        </div>
-
-        <div className="grid grid-cols-2 sm:flex items-center gap-2 w-full sm:w-auto">
-          <button
-            onClick={() => onSelectSubject('Língua Portuguesa')}
-            className={`px-3 py-2 rounded-2xl text-xs font-bold transition-all flex items-center justify-center space-x-1.5 ${
-              selectedSubject === 'Língua Portuguesa'
-                ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg shadow-blue-600/30'
-                : 'bg-slate-950 text-slate-400 hover:text-slate-200 border border-slate-800'
-            }`}
-          >
-            <span>🇧🇷 Português</span>
-          </button>
-
-          <button
-            onClick={() => onSelectSubject('Noções de Informática')}
-            className={`px-3 py-2 rounded-2xl text-xs font-bold transition-all flex items-center justify-center space-x-1.5 ${
-              selectedSubject === 'Noções de Informática'
-                ? 'bg-gradient-to-r from-cyan-600 to-teal-600 text-white shadow-lg shadow-cyan-600/30'
-                : 'bg-slate-950 text-slate-400 hover:text-slate-200 border border-slate-800'
-            }`}
-          >
-            <span>💻 Informática</span>
-          </button>
-
-          <button
-            onClick={() => onSelectSubject('Administração Pública')}
-            className={`px-3 py-2 rounded-2xl text-xs font-bold transition-all flex items-center justify-center space-x-1.5 ${
-              selectedSubject === 'Administração Pública'
-                ? 'bg-gradient-to-r from-amber-600 to-orange-600 text-white shadow-lg shadow-amber-600/30'
-                : 'bg-slate-950 text-slate-400 hover:text-slate-200 border border-slate-800'
-            }`}
-          >
-            <span>🏛️ Adm. Pública</span>
-          </button>
-
-          <button
-            onClick={() => onSelectSubject('Conhecimentos Específicos')}
-            className={`px-3 py-2 rounded-2xl text-xs font-bold transition-all flex items-center justify-center space-x-1.5 ${
-              selectedSubject === 'Conhecimentos Específicos'
-                ? 'bg-gradient-to-r from-emerald-600 to-green-600 text-white shadow-lg shadow-emerald-600/30'
-                : 'bg-slate-950 text-slate-400 hover:text-slate-200 border border-slate-800'
-            }`}
-          >
-            <span>📂 Específicas</span>
-          </button>
-        </div>
-      </div>
+      {renderSubjectSelector()}
 
       {/* BANNER PEDAGÓGICO: COMO FUNCIONA A CORREÇÃO AUTOMÁTICA */}
       <div className="bg-gradient-to-r from-indigo-950/80 via-slate-900 to-purple-950/80 border border-indigo-500/30 rounded-3xl p-4 sm:p-5 shadow-xl">

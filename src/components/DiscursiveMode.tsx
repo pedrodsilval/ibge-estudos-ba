@@ -694,7 +694,7 @@ export const DiscursiveMode: React.FC<DiscursiveModeProps> = ({
               <div className="flex items-center space-x-2">
                 <span className="w-3 h-3 rounded-full bg-emerald-400 animate-pulse" />
                 <h4 className="text-base font-extrabold text-white">
-                  Resposta Padrão Esperada (Padrão Nota 10 UNIFACS)
+                  Resposta Padrão Esperada (Padrão Nota 10 UFBA)
                 </h4>
               </div>
 

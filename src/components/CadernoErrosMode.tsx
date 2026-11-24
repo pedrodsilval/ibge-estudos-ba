@@ -134,7 +134,7 @@ export const CadernoErrosMode: React.FC<CadernoErrosModeProps> = ({
             Caderno de Erros & Favoritos
           </h2>
           <p className="text-xs sm:text-sm text-slate-400 mt-1">
-            Revisão focalizada por matéria para fechar com nota 10 as provas da UNIFACS.
+            Revisão focalizada por matéria para gabaritar a prova da UFBA.
           </p>
         </div>
 

@@ -335,7 +335,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             >
               <BookOpen className="w-3.5 h-3.5 text-indigo-400" />
               <span>📚 Estudo Teórico</span>
-              <span className="px-1.5 py-0.2 rounded-full bg-indigo-400/20 text-indigo-300 text-[10px]">Slides</span>
+              <span className="px-1.5 py-0.2 rounded-full bg-indigo-400/20 text-indigo-300 text-[10px]">Teoria</span>
             </button>
 
             {/* TAB 1: TREINO DISCURSIVO & REDAÇÃO */}

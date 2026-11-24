@@ -60,7 +60,7 @@ export const Dashboard: React.FC<DashboardProps> = ({
           <div>
             <div className="inline-flex items-center space-x-2 px-3 py-1 bg-indigo-500/10 border border-indigo-500/30 text-indigo-400 rounded-full text-xs font-bold mb-3">
               <Trophy className="w-3.5 h-3.5" />
-              <span>Painel de Rendimento Acadêmico • UNIFACS</span>
+              <span>Painel de Rendimento Oficial • Concurso UFBA 2026</span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-black text-white">
               Olá, {activeProfile.name}! 🚀

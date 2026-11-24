@@ -424,7 +424,7 @@ export const FlashcardMode: React.FC<FlashcardModeProps> = ({
                 
                 {/* BOTÃO OUVIR BIZU */}
                 <button
-                  onClick={() => speakText(`Bizu da Prova UNIFACS: ${currentQuestion.explanation.bizu}`)}
+                  onClick={() => speakText(`Bizu da Prova UFBA: ${currentQuestion.explanation.bizu}`)}
                   className="hidden sm:flex items-center space-x-1 px-3 py-1.5 bg-slate-950 hover:bg-slate-800 text-amber-300 border border-amber-500/30 rounded-xl text-xs font-semibold"
                 >
                   <Volume2 className="w-3.5 h-3.5" />
@@ -484,7 +484,7 @@ export const FlashcardMode: React.FC<FlashcardModeProps> = ({
                 </div>
                 <div className="flex-1">
                   <h4 className="text-xs font-bold text-amber-300 uppercase tracking-wider mb-1 flex items-center gap-1">
-                    Bizu da Prova UNIFACS
+                    Bizu da Prova UFBA
                   </h4>
                   <p className="text-xs sm:text-sm text-indigo-100 leading-relaxed font-medium">
                     {currentQuestion.explanation.bizu}

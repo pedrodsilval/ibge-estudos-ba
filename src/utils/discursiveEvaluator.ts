@@ -155,7 +155,7 @@ export function evaluateDiscursiveAnswer(
 
   if (finalScore >= 9.0) {
     scoreTier = 'excellent';
-    scoreTitle = '🏆 Excelente! Padrão Nota 10 UNIFACS';
+    scoreTitle = '🏆 Excelente! Padrão Nota 10 UFBA';
     pedagogicalFeedback = 'Parabéns! Sua resposta abordou os principais pilares teóricos exigidos pelos professores. Você utilizou a terminologia técnica correta e fundamentou bem o raciocínio.';
   } else if (finalScore >= 7.0) {
     scoreTier = 'good';

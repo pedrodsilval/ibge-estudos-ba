@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { 
   Trophy, 
   Target, 
@@ -8,7 +8,12 @@ import {
   XCircle, 
   Database, 
   Terminal,
-  BookOpen
+  BookOpen,
+  Calendar,
+  CheckSquare,
+  Square,
+  Sparkles,
+  PenTool
 } from 'lucide-react';
 import type { Question, UserProfile, SubjectType } from '../types/study';
 
@@ -23,6 +28,20 @@ export const Dashboard: React.FC<DashboardProps> = ({
   activeProfile,
   onNavigateTab
 }) => {
+  const [dailyGoals, setDailyGoals] = useState<Record<string, boolean>>(() => {
+    try {
+      const saved = localStorage.getItem('ufba_daily_goals');
+      return saved ? JSON.parse(saved) : { q15: false, teoria: false, redacao: false };
+    } catch {
+      return { q15: false, teoria: false, redacao: false };
+    }
+  });
+
+  const toggleGoal = (k: string) => {
+    const updated = { ...dailyGoals, [k]: !dailyGoals[k] };
+    setDailyGoals(updated);
+    localStorage.setItem('ufba_daily_goals', JSON.stringify(updated));
+  };
   const answeredEntries = Object.entries(activeProfile.answers);
   const totalAnswered = answeredEntries.length;
   const correctCount = answeredEntries.filter(([_, h]) => h.isCorrect).length;
@@ -66,7 +85,7 @@ export const Dashboard: React.FC<DashboardProps> = ({
               Olá, {activeProfile.name}! 🚀
             </h2>
             <p className="text-slate-400 text-xs sm:text-sm mt-1 max-w-xl">
-              Foco cirúrgico nas duas provas da semana. Seu objetivo é fixar as 15 questões oficiais e o laboratório para fechar com nota 10!
+              Plano de aprovação para o Concurso da UFBA (Cargo 201: Assistente em Administração). Treine questões, domine os bizus e pratique a redação de 30 linhas!
             </p>
           </div>
 
@@ -100,10 +119,10 @@ export const Dashboard: React.FC<DashboardProps> = ({
           <div>
             <h3 className="text-lg font-bold text-white flex items-center space-x-2">
               <Target className="w-5 h-5 text-indigo-400" />
-              <span>Meta das Avaliações Presenciais</span>
+              <span>Metas Oficiais do Concurso UFBA</span>
             </h3>
             <p className="text-xs text-slate-400">
-              Campus Tancredo Neves • Média esperada para aprovação direta $\ge 8.5$.
+              Prova Objetiva & Redação: 20 de dezembro de 2026 (4h) • Meta de rendimento: $\ge 85\%$ de acertos.
             </p>
           </div>
 
@@ -275,6 +294,102 @@ export const Dashboard: React.FC<DashboardProps> = ({
         </div>
       </div>
 
+      {/* META DIÁRIA DE ESTUDOS */}
+      <div className="bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 space-y-4 shadow-xl">
+        <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-800 pb-3">
+          <div className="flex items-center space-x-2">
+            <span className="p-2 bg-amber-500/10 text-amber-400 rounded-xl border border-amber-500/20">
+              <CheckSquare className="w-5 h-5" />
+            </span>
+            <div>
+              <h3 className="text-base font-bold text-white flex items-center gap-1.5">
+                Metas de Estudo Diário de Gilvania
+                <Sparkles className="w-4 h-4 text-amber-400" />
+              </h3>
+              <p className="text-xs text-slate-400">
+                Mantenha a constância diária para cobrir o edital completo da UFBA
+              </p>
+            </div>
+          </div>
+
+          <div className="text-xs font-bold text-amber-300 bg-amber-500/10 border border-amber-500/30 px-3 py-1 rounded-xl font-mono">
+            {Object.values(dailyGoals).filter(Boolean).length} / 3 concluídas
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+          {[
+            { key: 'q15', label: '15 Questões Resolvidas', desc: 'Nos Flashcards ou Simulado' },
+            { key: 'teoria', label: '1 Caderno Lido / Podcast', desc: 'No Estudo Teórico ou Bizus' },
+            { key: 'redacao', label: '1 Treino na Folha 30 Linhas', desc: 'Na aba Redação & Discursivas' }
+          ].map((item) => (
+            <button
+              key={item.key}
+              onClick={() => toggleGoal(item.key)}
+              className={`p-4 rounded-2xl border text-left transition-all flex items-start space-x-3 ${
+                dailyGoals[item.key]
+                  ? 'bg-emerald-500/10 border-emerald-500/30 text-emerald-200'
+                  : 'bg-slate-950 border-slate-800 text-slate-400 hover:bg-slate-800/60'
+              }`}
+            >
+              {dailyGoals[item.key] ? (
+                <CheckSquare className="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" />
+              ) : (
+                <Square className="w-5 h-5 text-slate-600 shrink-0 mt-0.5" />
+              )}
+              <div>
+                <span className={`text-xs font-bold block ${dailyGoals[item.key] ? 'text-white' : 'text-slate-300'}`}>
+                  {item.label}
+                </span>
+                <span className="text-[11px] text-slate-500">
+                  {item.desc}
+                </span>
+              </div>
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* CICLO SEMANAL DE ESTUDOS */}
+      <div className="bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 space-y-4 shadow-xl">
+        <div className="flex items-center space-x-2 border-b border-slate-800 pb-3">
+          <span className="p-2 bg-indigo-500/10 text-indigo-400 rounded-xl border border-indigo-500/20">
+            <Calendar className="w-5 h-5" />
+          </span>
+          <div>
+            <h3 className="text-base font-bold text-white flex items-center gap-1.5">
+              Trilha e Ciclo Semanal de Estudos da UFBA
+            </h3>
+            <p className="text-xs text-slate-400">
+              Distribuição semanal equilibrada das 4 matérias do cargo de Assistente em Administração
+            </p>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+          {[
+            { dia: 'Segunda-feira', m1: '🇧🇷 Português (Crase & Concordância)', m2: '🏛️ Lei 8.112/90 (Prazos de Posse)' },
+            { dia: 'Terça-feira', m1: '💻 Informática (Excel 365 & Fórmulas)', m2: '📂 Materiais (Curva ABC & Estoque)' },
+            { dia: 'Quarta-feira', m1: '🏛️ CF/88 (LIMPE e Art. 37 a 41)', m2: '📂 Arquivologia (3 Idades Documentais)' },
+            { dia: 'Quinta-feira', m1: '🏛️ Estatuto da UFBA (CONSUNI/CONSEPE)', m2: '🇧🇷 Redação Oficial (Manual PR 3ª ed.)' },
+            { dia: 'Sexta-feira', m1: '🏛️ Ética (Dec. 1.171) & Licitações', m2: '📖 Revisão Geral no Caderno de Erros' },
+            { dia: 'Sábado & Domingo', m1: '⏱️ Sáb: Simulado 4h + 1 Redação', m2: '🎧 Dom: Descanso & Podcast de Bizus' }
+          ].map((item, idx) => (
+            <div key={idx} className="p-4 bg-slate-950 rounded-2xl border border-slate-800 space-y-1.5">
+              <span className="text-[11px] font-bold uppercase tracking-wider text-indigo-400 block">
+                {item.dia}
+              </span>
+              <p className="text-xs font-semibold text-slate-200">
+                {item.m1}
+              </p>
+              <p className="text-xs text-slate-400">
+                {item.m2}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+
       {/* AÇÕES RÁPIDAS DE ESTUDO */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         
@@ -294,17 +409,17 @@ export const Dashboard: React.FC<DashboardProps> = ({
         </button>
 
         <button
-          onClick={() => onNavigateTab('lab_pratico')}
+          onClick={() => onNavigateTab('discursive')}
           className="p-5 bg-slate-900 hover:bg-slate-800/80 border border-slate-800 rounded-3xl text-left transition-all hover:scale-[1.02] shadow-xl group"
         >
           <div className="p-3 bg-emerald-500/10 text-emerald-400 rounded-2xl w-fit mb-3">
-            <Terminal className="w-6 h-6" />
+            <PenTool className="w-6 h-6" />
           </div>
           <h4 className="text-base font-bold text-white group-hover:text-emerald-300 transition-colors">
-            Oficina Prática & SQL
+            Redação & Discursivas
           </h4>
           <p className="text-xs text-slate-400 mt-1">
-            Ache o Bug em Java e copie o script DDL da Clínica Veterinária.
+            Simulador de folha de 30 linhas com avaliação pedagógica automática.
           </p>
         </button>
 

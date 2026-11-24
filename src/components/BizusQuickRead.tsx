@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   ShieldCheck, 
   Database, 
@@ -6,76 +6,210 @@ import {
   BookOpen, 
   Volume2, 
   VolumeX, 
-  CheckCircle,
-  Lightbulb
+  CheckCircle, 
+  Lightbulb,
+  Headphones,
+  Play,
+  Pause
 } from 'lucide-react';
 
 export const BizusQuickRead: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState<'port' | 'info' | 'adm' | 'esp'>('port');
   const [isSpeaking, setIsSpeaking] = useState<boolean>(false);
+  const [audioSpeed, setAudioSpeed] = useState<number>(1.1);
+  const [isPlayingPlaylist, setIsPlayingPlaylist] = useState<boolean>(false);
+  const [playlistCategory, setPlaylistCategory] = useState<'port' | 'info' | 'adm' | 'esp'>('port');
 
-  const speakText = (text: string) => {
-    if (!('speechSynthesis' in window)) return;
-
-    if (isSpeaking) {
-      window.speechSynthesis.cancel();
-      setIsSpeaking(false);
-      return;
+  const BIZUS_TEXTS: Record<'port' | 'info' | 'adm' | 'esp', { title: string; text: string }> = {
+    port: {
+      title: 'Língua Portuguesa',
+      text: "Bizus de Língua Portuguesa para o Concurso da UFBA. Regra da crase: troque a palavra feminina por masculina; se virar AO, tem crase obrigatória. Antes de verbo e palavra masculina a crase é proibida. Crase facultativa antes de pronome possessivo feminino singular, nome próprio feminino e após a palavra até. Na redação oficial do Manual da Presidência, aviso e memorando foram extintos, tudo agora é padrão ofício. Fechos oficiais são apenas dois: Respeitosamente para autoridades de hierarquia superior, e Atenciosamente para mesma hierarquia ou subordinados. Concordância verbal: verbo haver no sentido de existir e fazer indicando tempo decorrido ficam sempre no singular."
+    },
+    info: {
+      title: 'Noções de Informática',
+      text: "Bizus de Noções de Informática para a UFBA. Os cinco pilares da segurança são: Confidencialidade, Integridade, Disponibilidade, Autenticidade e Legalidade. Vírus precisa de hospedeiro e do clique do usuário. Worm se espalha sozinho pela rede sem precisar de ninguém. Ransomware sequestra e criptografa arquivos exigindo pagamento de resgate. Phishing é a pescaria de dados por e-mail falso. No Excel 365, o cifrão trava e congela referências absolutas. Na função PROCV, o quarto argumento deve ser FALSO ou zero para busca exata de matrículas e CPFs. A regra três dois um de backup exige três cópias, em duas mídias distintas, com uma cópia fora do prédio na nuvem."
+    },
+    adm: {
+      title: 'Administração Pública',
+      text: "Bizus de Administração Pública para a UFBA. Princípios constitucionais do artigo trinta e sete: Legalidade, Impessoalidade, Moralidade, Publicidade e Eficiência. Na Lei oito mil cento e doze: da nomeação para a posse são trinta dias; da posse para o exercício são quinze dias. Estabilidade após três anos de efetivo exercício e avaliação de desempenho. Na estrutura da UFBA: o CONSUNI é o órgão deliberativo supremo máximo; o CONSEPE cuida das matérias acadêmicas de ensino, pesquisa e extensão; e o Conselho de Curadores fiscaliza o patrimônio financeiro e contábil. A Nova Lei de Licitações extinguiu Convite e Tomada de Preços; as cinco modalidades oficiais são Pregão, Concorrência, Concurso, Leilão e Diálogo Competitivo. A Comissão de Ética do Decreto um mil cento e setenta e um só aplica a pena de censura."
+    },
+    esp: {
+      title: 'Conhecimentos Específicos',
+      text: "Bizus de Conhecimentos Específicos de Assistente em Administração. Na Arquivologia, a Teoria das Três Idades define: arquivo corrente para documentos em uso frequente; arquivo intermediário para documentos aguardando prazos na tabela de temporalidade; e arquivo permanente para guarda histórica perpétua, que nunca pode ser eliminado. Na gestão de estoques, a Curva ABC baseia-se em Pareto: Classe A são vinte por cento dos itens que concentram oitenta por cento do valor financeiro investido. A classificação XYZ mede criticidade: Classe Z é o item vital cuja falta paralisa a operação. As quatro funções administrativas do processo organizacional são Planejar, Organizar, Dirigir e Controlar. No atendimento ao público, empatia é colocar-se no lugar do cidadão com presteza e cortesia."
     }
+  };
 
-    window.speechSynthesis.cancel();
-    const cleanText = text.replace(/[*_#$`\\~]/g, '');
-    const utterance = new SpeechSynthesisUtterance(cleanText);
+  const stopAudio = () => {
+    if ('speechSynthesis' in window) {
+      window.speechSynthesis.cancel();
+    }
+    setIsSpeaking(false);
+    setIsPlayingPlaylist(false);
+  };
+
+  const playSingle = (category: 'port' | 'info' | 'adm' | 'esp') => {
+    if (!('speechSynthesis' in window)) return;
+    stopAudio();
+
+    const utterance = new SpeechSynthesisUtterance(BIZUS_TEXTS[category].text);
     utterance.lang = 'pt-BR';
-    utterance.rate = 1.05;
-    
-    utterance.onend = () => setIsSpeaking(false);
-    utterance.onerror = () => setIsSpeaking(false);
+    utterance.rate = audioSpeed;
+    utterance.onend = () => {
+      setIsSpeaking(false);
+    };
+    utterance.onerror = () => {
+      setIsSpeaking(false);
+    };
 
     setIsSpeaking(true);
     window.speechSynthesis.speak(utterance);
   };
 
+  const playContinuousPodcast = () => {
+    if (!('speechSynthesis' in window)) return;
+    if (isPlayingPlaylist) {
+      stopAudio();
+      return;
+    }
+
+    stopAudio();
+    setIsPlayingPlaylist(true);
+    setIsSpeaking(true);
+
+    const categories: ('port' | 'info' | 'adm' | 'esp')[] = ['port', 'info', 'adm', 'esp'];
+    let idx = 0;
+
+    const playNext = () => {
+      if (idx >= categories.length) {
+        setIsPlayingPlaylist(false);
+        setIsSpeaking(false);
+        return;
+      }
+
+      const cat = categories[idx];
+      setPlaylistCategory(cat);
+      setActiveCategory(cat);
+
+      const utterance = new SpeechSynthesisUtterance(BIZUS_TEXTS[cat].text);
+      utterance.lang = 'pt-BR';
+      utterance.rate = audioSpeed;
+      utterance.onend = () => {
+        idx++;
+        setTimeout(playNext, 800);
+      };
+      utterance.onerror = () => {
+        setIsPlayingPlaylist(false);
+        setIsSpeaking(false);
+      };
+
+      window.speechSynthesis.speak(utterance);
+    };
+
+    playNext();
+  };
+
+  useEffect(() => {
+    return () => {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+      }
+    };
+  }, []);
+
   return (
     <div className="max-w-6xl mx-auto px-4 py-8 animate-fadeIn">
       
-      {/* HEADER */}
-      <div className="text-center mb-8">
-        <div className="inline-flex items-center space-x-2 px-3 py-1 bg-amber-500/10 border border-amber-500/30 text-amber-300 rounded-full text-xs font-bold mb-3">
+      {/* HEADER & PODCAST PLAYER CARD */}
+      <div className="text-center mb-8 space-y-4">
+        <div className="inline-flex items-center space-x-2 px-3 py-1 bg-amber-500/10 border border-amber-500/30 text-amber-300 rounded-full text-xs font-bold">
           <Lightbulb className="w-3.5 h-3.5 text-amber-400" />
           <span>Memorização Relâmpago • Concurso UFBA 2026</span>
         </div>
         
-        <div className="flex items-center justify-center space-x-3 mb-2">
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-white">
-            Paredão de Bizus de Alta Incidência
-          </h2>
-          
-          <button
-            onClick={() => {
-              const textToSpeak = activeCategory === 'port'
-                ? "Bizus de Língua Portuguesa: Troca por masculino, se deu AO tem crase. Antes de verbo e palavra masculina a crase é proibida. Crase facultativa antes de pronome possessivo feminino singular, nome próprio feminino e após até. Na redação oficial, memorando e aviso foram extintos, tudo agora é ofício. Fechos são apenas dois: respeitosamente para autoridades superiores e atenciosamente para iguais ou subordinados."
-                : activeCategory === 'info'
-                ? "Bizus de Informática: Pilares da segurança são confidencialidade, integridade, disponibilidade e autenticidade. Vírus precisa de hospedeiro e de clique do usuário. Worm se espalha sozinho pela rede sem precisar de ninguém. Ransomware sequestra e criptografa arquivos exigindo resgate. Phishing é pescaria de senhas. No Excel, quem tem cifrão fica travado e não muda ao arrastar."
-                : activeCategory === 'adm'
-                ? "Bizus de Administração Pública: Princípios expressos são Legalidade, Impessoalidade, Moralidade, Publicidade e Eficiência. Na Lei 8112, nomeação para posse são 30 dias; posse para exercício são 15 dias. Estabilidade após 3 anos. CONSUNI é o órgão máximo da UFBA; CONSEPE cuida do acadêmico. As modalidades de licitação da 14133 são Pregão, Concorrência, Concurso, Leilão e Diálogo Competitivo."
-                : "Bizus de Conhecimentos Específicos: Arquivo corrente é uso diário. Arquivo intermediário aguarda prazos na tabela de temporalidade. Arquivo permanente tem valor histórico e NUNCA pode ser eliminado. Curva ABC mede valor financeiro; Classe A são 20 por cento dos itens que custam 80 por cento do estoque. Classificação XYZ mede criticidade operacional; Classe Z é vital e não pode faltar. PODC é planejar, organizar, dirigir e controlar.";
-              speakText(textToSpeak);
-            }}
-            className={`p-2 rounded-xl border transition-all ${
-              isSpeaking 
-                ? 'bg-rose-500/20 text-rose-300 border-rose-500/40 animate-pulse' 
-                : 'bg-slate-800 text-slate-300 border-slate-700 hover:text-white'
-            }`}
-            title="Ouvir Narração em Áudio do Bizu"
-          >
-            {isSpeaking ? <VolumeX className="w-5 h-5" /> : <Volume2 className="w-5 h-5" />}
-          </button>
-        </div>
+        <h2 className="text-2xl sm:text-3xl font-extrabold text-white">
+          Paredão de Bizus de Alta Incidência
+        </h2>
         
         <p className="text-slate-400 text-sm max-w-2xl mx-auto">
-          Resumos mnemônicos ultracondensados para memorizar as pegadinhas das bancas federais.
+          Resumos mnemônicos ultracondensados com áudio narrado para estudar com fones de ouvido no dia a dia.
         </p>
+
+        {/* REPRODUTOR DE PODCAST CONTÍNUO */}
+        <div className="max-w-2xl mx-auto bg-gradient-to-r from-slate-900 via-indigo-950/40 to-slate-900 border border-indigo-500/30 rounded-3xl p-5 shadow-2xl space-y-4 text-left">
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <div className="flex items-center space-x-3">
+              <div className={`p-3 rounded-2xl border transition-all ${
+                isSpeaking 
+                  ? 'bg-emerald-500/20 text-emerald-400 border-emerald-500/40 animate-pulse' 
+                  : 'bg-indigo-600/20 text-indigo-400 border-indigo-500/30'
+              }`}>
+                <Headphones className="w-5 h-5" />
+              </div>
+              <div>
+                <span className="text-xs font-bold text-white flex items-center gap-1.5">
+                  Modo Podcast de Estudos
+                  {isSpeaking && (
+                    <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 animate-pulse">
+                      ● Reproduzindo
+                    </span>
+                  )}
+                </span>
+                <p className="text-[11px] text-slate-400">
+                  {isPlayingPlaylist 
+                    ? `Playlist em andamento: ${BIZUS_TEXTS[playlistCategory].title}`
+                    : `Áudio individual: ${BIZUS_TEXTS[activeCategory].title}`}
+                </p>
+              </div>
+            </div>
+
+            {/* SELETOR DE VELOCIDADE (1.0x / 1.25x / 1.5x) */}
+            <div className="flex items-center space-x-1 bg-slate-950 border border-slate-800 rounded-xl p-1 text-xs">
+              <span className="text-[10px] text-slate-500 px-1 font-bold">Vel:</span>
+              {[1.0, 1.2, 1.4].map(spd => (
+                <button
+                  key={spd}
+                  onClick={() => setAudioSpeed(spd)}
+                  className={`px-2 py-0.5 rounded-lg font-bold text-[10px] transition-all ${
+                    audioSpeed === spd 
+                      ? 'bg-indigo-600 text-white shadow-sm' 
+                      : 'text-slate-400 hover:text-white'
+                  }`}
+                >
+                  {spd}x
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* BOTÕES DE CONTROLE DO PODCAST */}
+          <div className="flex flex-wrap items-center gap-2 pt-1 border-t border-slate-800/60">
+            <button
+              onClick={playContinuousPodcast}
+              className={`flex-1 min-w-[200px] py-2.5 px-4 rounded-xl text-xs font-bold transition-all flex items-center justify-center space-x-2 shadow-lg ${
+                isPlayingPlaylist
+                  ? 'bg-rose-600 hover:bg-rose-500 text-white shadow-rose-600/30'
+                  : 'bg-gradient-to-r from-emerald-600 to-teal-500 hover:from-emerald-500 hover:to-teal-400 text-white shadow-emerald-600/30'
+              }`}
+            >
+              {isPlayingPlaylist ? <Pause className="w-4 h-4 fill-current" /> : <Play className="w-4 h-4 fill-current" />}
+              <span>{isPlayingPlaylist ? 'Pausar Podcast Completo' : '🎧 Tocar Todas as Matérias em Sequência'}</span>
+            </button>
+
+            <button
+              onClick={() => {
+                if (isSpeaking && !isPlayingPlaylist) {
+                  stopAudio();
+                } else {
+                  playSingle(activeCategory);
+                }
+              }}
+              className="py-2.5 px-4 rounded-xl text-xs font-bold bg-slate-950 hover:bg-slate-800 text-slate-200 border border-slate-800 transition-all flex items-center justify-center space-x-1.5"
+            >
+              {isSpeaking && !isPlayingPlaylist ? <VolumeX className="w-4 h-4 text-rose-400" /> : <Volume2 className="w-4 h-4 text-indigo-400" />}
+              <span>{isSpeaking && !isPlayingPlaylist ? 'Parar Áudio' : 'Ouvir Apenas Esta Matéria'}</span>
+            </button>
+          </div>
+        </div>
       </div>
 
       {/* SELETOR DE ABAS */}

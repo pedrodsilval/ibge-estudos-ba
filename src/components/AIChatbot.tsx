@@ -6,7 +6,9 @@ import {
   User, 
   RotateCcw,
   Zap,
-  GraduationCap
+  GraduationCap,
+  Target,
+  Sparkles
 } from 'lucide-react';
 
 interface ChatMessage {
@@ -92,21 +94,71 @@ const KNOWLEDGE_BASE: Record<string, { answer: string; bizu?: string }> = {
   }
 };
 
+const QUIZ_QUESTIONS = [
+  {
+    question: '🎯 Desafio Rápido da Banca UFBA:\n\nSegundo a Lei nº 8.112/1990, qual é o prazo para o servidor tomar posse após a publicação da nomeação, e qual o prazo para entrar em exercício após a posse?',
+    expectedKeywords: ['30', '15', 'trinta', 'quinze'],
+    feedback: '✅ Excelente acerto!\n- Da publicação da Nomeação até a Posse: **30 dias** (se não tomar posse, a nomeação é tornada sem efeito).\n- Da data da Posse até o Exercício: **15 dias** (se não entrar em exercício, o servidor é exonerado).',
+    bizu: '💡 Linha do tempo: Nomeação ➔ [30d] ➔ Posse ➔ [15d] ➔ Exercício efetivo!'
+  },
+  {
+    question: '🎯 Desafio Rápido da Banca UFBA:\n\nNo Manual de Redação da Presidência da República (3ª ed.), quais são os dois únicos fechos oficiais de correspondência e para quem cada um deve ser enviado?',
+    expectedKeywords: ['respeitosamente', 'atenciosamente'],
+    feedback: '✅ Na mosca!\n1. **Respeitosamente,** ➔ Para autoridades de hierarquia SUPERIOR.\n2. **Atenciosamente,** ➔ Para autoridades de mesma hierarquia ou subordinadas.\nTodos os outros fechos (Cordialmente, Saudações, etc.) foram totalmente abolidos!',
+    bizu: '💡 Superior = Respeitosamente. Igual ou subordinado = Atenciosamente.'
+  },
+  {
+    question: '🎯 Desafio Rápido da Banca UFBA:\n\nNa Arquivologia, qual é a regra de ouro em relação aos documentos pertencentes à 3ª Idade (Arquivo Permanente ou Histórico)? Eles podem ser eliminados após 30 anos?',
+    expectedKeywords: ['nunca', 'não', 'jamais', 'elimina', 'perpétuo', 'definitivo', 'permanente'],
+    feedback: '✅ Resposta impecável!\nDocumentos do Arquivo Permanente **NUNCA PODEM SER ELIMINADOS!** Eles possuem valor secundário (histórico, probatório e científico) e têm guarda definitiva perpétua, sendo inalienáveis e imprescritíveis.',
+    bizu: '💡 Cai sempre em prova: Documento permanente NUNCA é descartado!'
+  },
+  {
+    question: '🎯 Desafio Rápido da Banca UFBA:\n\nQual a diferença entre a Curva ABC e a Classificação XYZ na gestão de estoques e materiais?',
+    expectedKeywords: ['abc', 'xyz', 'valor', 'financeiro', 'criticidade', 'pareto'],
+    feedback: '✅ Perfeito!\n- **Curva ABC (Pareto):** Classifica por **VALOR FINANCEIRO / CUSTO** (Classe A = 20% dos itens que concentram 80% do investimento financeiro).\n- **Classificação XYZ:** Classifica por **CRITICIDADE OPERACIONAL** (Classe Z = item vital cuja falta paralisa as atividades).',
+    bizu: '💡 ABC = Custo/Dinheiro. XYZ = Criticidade/Parada da operação.'
+  },
+  {
+    question: '🎯 Desafio Rápido da Banca UFBA:\n\nQual é a penalidade máxima que a Comissão de Ética do Poder Executivo Federal (Decreto nº 1.171/1994) pode aplicar a um servidor?',
+    expectedKeywords: ['censura'],
+    feedback: '✅ Acerto total!\nA Comissão de Ética instituída pelo Decreto 1.171/94 **SÓ PODE APLICAR A PENALIDADE DE CENSURA ÉTICA**.\nEla não tem competência para demitir, suspender ou multar o servidor.',
+    bizu: '💡 Comissão de Ética SÓ aplica Censura e nada mais!'
+  }
+];
+
 export const AIChatbot: React.FC = () => {
   const [messages, setMessages] = useState<ChatMessage[]>([
     {
       id: 'welcome',
       sender: 'ai',
-      text: 'Olá, Gilvania! Sou seu **Tutor Especialista no Concurso UFBA 2026** para o cargo de **Assistente em Administração (Classe D)**.\n\nEstou calibrado com todo o conteúdo programático do edital:\n- 🇧🇷 **Língua Portuguesa** (Crase, Concordância, Regência, Manual da Presidência 3ª ed.)\n- 💻 **Noções de Informática** (Excel 365, Segurança CIDAL, Malware, Backup)\n- 🏛️ **Administração Pública** (CF/88 Art. 37-41, Lei 8.112/90, Estatuto da UFBA, Lei 14.133, LAI/LGPD)\n- 📂 **Conhecimentos Específicos** (PODC, Gestão de Materiais / Curva ABC, Arquivologia 3 Idades, Atendimento ao Público)\n\nQual dúvida ou conceito você gostaria de revisar agora?',
+      text: 'Olá, Gilvania! Sou seu **Tutor Especialista no Concurso UFBA 2026** para o cargo de **Assistente em Administração (Classe D)**.\n\nEstou calibrado com todo o conteúdo programático do edital:\n- 🇧🇷 **Língua Portuguesa** (Crase, Concordância, Regência, Manual da Presidência 3ª ed.)\n- 💻 **Noções de Informática** (Excel 365, Segurança CIDAL, Malware, Backup)\n- 🏛️ **Administração Pública** (CF/88 Art. 37-41, Lei 8.112/90, Estatuto da UFBA, Lei 14.133, LAI/LGPD)\n- 📂 **Conhecimentos Específicos** (PODC, Gestão de Materiais / Curva ABC, Arquivologia 3 Idades, Atendimento ao Público)\n\nQual dúvida ou conceito você gostaria de revisar agora? Você também pode clicar no botão **"Me Interrogue!"** para eu testar seus conhecimentos!',
       timestamp: new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' })
     }
   ]);
   const [inputText, setInputText] = useState('');
+  const [activeQuizIdx, setActiveQuizIdx] = useState<number | null>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
+
+  const startQuiz = () => {
+    const nextIdx = activeQuizIdx === null ? 0 : (activeQuizIdx + 1) % QUIZ_QUESTIONS.length;
+    setActiveQuizIdx(nextIdx);
+    const quizItem = QUIZ_QUESTIONS[nextIdx];
+
+    const quizMsg: ChatMessage = {
+      id: `quiz-q-${Date.now()}`,
+      sender: 'ai',
+      text: quizItem.question + '\n\n*Digite sua resposta abaixo com suas próprias palavras:*',
+      bizu: '🎯 Modo Quiz Ativo: Responda do seu jeito que vou avaliar sua resposta!',
+      timestamp: new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' })
+    };
+
+    setMessages(prev => [...prev, quizMsg]);
+  };
 
   const handleSendMessage = (textToSend?: string) => {
     const text = textToSend || inputText;
@@ -124,6 +176,33 @@ export const AIChatbot: React.FC = () => {
 
     setTimeout(() => {
       const lower = text.toLowerCase();
+
+      // SE ESTIVER EM MODO QUIZ ATIVO
+      if (activeQuizIdx !== null) {
+        const currentQuiz = QUIZ_QUESTIONS[activeQuizIdx];
+        const hasHitKeyword = currentQuiz.expectedKeywords.some(kw => lower.includes(kw.toLowerCase()));
+
+        let feedbackText = '';
+        if (hasHitKeyword) {
+          feedbackText = `${currentQuiz.feedback}\n\n🎉 **Excelente domínio do assunto!** Quer tentar outra pergunta? Clique no botão **"🎯 Próxima Pergunta do Quiz"** abaixo!`;
+        } else {
+          feedbackText = `Quase lá! Vamos reforçar esse conceito fundamental para a UFBA:\n\n${currentQuiz.feedback}\n\nClique no botão **"🎯 Próxima Pergunta do Quiz"** para praticar mais!`;
+        }
+
+        const aiFeedbackMsg: ChatMessage = {
+          id: `ai-quiz-ans-${Date.now()}`,
+          sender: 'ai',
+          text: feedbackText,
+          bizu: currentQuiz.bizu,
+          timestamp: new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' })
+        };
+
+        setMessages(prev => [...prev, aiFeedbackMsg]);
+        setActiveQuizIdx(null); // libera para próximo
+        return;
+      }
+
+      // MODO NORMAL DE PERGUNTAS E RESPOSTAS
       let match = Object.entries(KNOWLEDGE_BASE).find(([k]) => lower.includes(k));
 
       let aiResponseText = '';
@@ -136,7 +215,7 @@ export const AIChatbot: React.FC = () => {
         aiResponseText = 'Sobre a organização interna da **UFBA**:\n- **CONSUNI:** Órgão deliberativo superior máximo da Universidade, responsável pelas diretrizes políticas e orçamentárias gerais.\n- **CONSEPE:** Responsável pelas diretrizes acadêmicas (ensino de graduação/pós, pesquisa e projetos de extensão).\n- **Conselho de Curadores:** Responsável pela fiscalização orçamentária, financeira e contábil do patrimônio da instituição.\n- **Reitoria:** Órgão executivo central chefiado pelo Reitor.';
         aiBizu = '💡 Lembre-se: O CONSUNI é o órgão superior máximo da UFBA!';
       } else {
-        aiResponseText = `Excelente pergunta para o concurso da UFBA! Para o cargo de Assistente em Administração, recomendo focar nas 4 disciplinas fundamentais:\n- **Língua Portuguesa:** Crase (troca pelo masculino "AO"), concordância verbal com partícula "se", e Padrão Ofício do Manual da PR 3ª ed.\n- **Informática:** Fórmulas no Excel (cifrão $, PROCV exato com 0), malware (Ransomware vs Worm vs Trojan) e backup 3-2-1.\n- **Administração Pública:** Prazos da Lei 8.112 (posse 30d, exercício 15d) e os 3 conselhos da UFBA (CONSUNI, CONSEPE e Curadores).\n- **Específicas:** Teoria das 3 Idades na Arquivologia e Curva ABC na gestão de materiais.\n\nExperimente clicar em uma das perguntas rápidas acima ou digite palavras-chave como **crase**, **8112**, **consuni**, **fecho**, **curva abc** ou **arquivologia**!`;
+        aiResponseText = `Excelente pergunta para o concurso da UFBA! Para o cargo de Assistente em Administração, recomendo focar nas 4 disciplinas fundamentais:\n- **Língua Portuguesa:** Crase (troca pelo masculino "AO"), concordância verbal com partícula "se", e Padrão Ofício do Manual da PR 3ª ed.\n- **Informática:** Fórmulas no Excel (cifrão $, PROCV exato com 0), malware (Ransomware vs Worm vs Trojan) e backup 3-2-1.\n- **Administração Pública:** Prazos da Lei 8.112 (posse 30d, exercício 15d) e os 3 conselhos da UFBA (CONSUNI, CONSEPE e Curadores).\n- **Específicas:** Teoria das 3 Idades na Arquivologia e Curva ABC na gestão de materiais.\n\nExperimente clicar em uma das perguntas rápidas acima ou clique em **"🎯 Me Interrogue!"** para ser testada!`;
         aiBizu = '💡 Dica: Pratique a redação oficial na aba "Redação & Discursivas" e faça simulados cronometrados!';
       }
 
@@ -174,13 +253,27 @@ export const AIChatbot: React.FC = () => {
           </div>
         </div>
 
-        <button
-          onClick={() => setMessages([messages[0]])}
-          className="p-2 text-slate-400 hover:text-slate-200 border border-slate-800 rounded-xl hover:bg-slate-800 transition-colors"
-          title="Limpar Conversa"
-        >
-          <RotateCcw className="w-4 h-4" />
-        </button>
+        <div className="flex items-center space-x-2">
+          <button
+            onClick={startQuiz}
+            className="px-4 py-2 bg-gradient-to-r from-amber-500 via-teal-500 to-indigo-600 hover:from-amber-400 hover:to-indigo-500 text-white font-bold text-xs rounded-xl shadow-lg shadow-indigo-600/30 flex items-center space-x-1.5 transition-all"
+            title="A IA faz uma pergunta surpresa para você responder!"
+          >
+            <Target className="w-4 h-4 text-amber-200" />
+            <span>🎯 Me Interrogue!</span>
+          </button>
+
+          <button
+            onClick={() => {
+              setActiveQuizIdx(null);
+              setMessages([messages[0]]);
+            }}
+            className="p-2 text-slate-400 hover:text-slate-200 border border-slate-800 rounded-xl hover:bg-slate-800 transition-colors"
+            title="Limpar Conversa"
+          >
+            <RotateCcw className="w-4 h-4" />
+          </button>
+        </div>
       </div>
 
       {/* ÁREA DE MENSAGENS */}
@@ -219,12 +312,21 @@ export const AIChatbot: React.FC = () => {
         <div ref={messagesEndRef} />
       </div>
 
-      {/* PERGUNTAS RÁPIDAS PRESET */}
+      {/* PERGUNTAS RÁPIDAS PRESET & QUIZ LAUNCHER */}
       <div className="space-y-2">
-        <span className="text-[11px] font-bold text-slate-400 flex items-center gap-1.5 px-1">
-          <Lightbulb className="w-3.5 h-3.5 text-amber-400" />
-          <span>Tópicos de Maior Incidência no Edital UFBA:</span>
-        </span>
+        <div className="flex justify-between items-center px-1">
+          <span className="text-[11px] font-bold text-slate-400 flex items-center gap-1.5">
+            <Lightbulb className="w-3.5 h-3.5 text-amber-400" />
+            <span>Tópicos de Maior Incidência no Edital UFBA:</span>
+          </span>
+          <button
+            onClick={startQuiz}
+            className="text-[11px] font-bold text-amber-300 hover:text-amber-200 flex items-center gap-1"
+          >
+            <Sparkles className="w-3 h-3 text-amber-400" />
+            <span>{activeQuizIdx !== null ? 'Próximo Desafio' : 'Lançar Pergunta Surpresa'}</span>
+          </button>
+        </div>
         <div className="flex flex-wrap gap-2">
           {PRESET_QUESTIONS.map((q, idx) => (
             <button

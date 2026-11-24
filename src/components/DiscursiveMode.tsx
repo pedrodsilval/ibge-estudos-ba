@@ -16,7 +16,11 @@ import {
   XCircle,
   ThumbsUp,
   Sliders,
-  RefreshCw
+  RefreshCw,
+  Clock,
+  AlignLeft,
+  FileText,
+  ListChecks
 } from 'lucide-react';
 import type { DiscursiveQuestion, SubjectType, UserProfile } from '../types/study';
 import { DISCURSIVE_QUESTIONS } from '../data/discursiveQuestions';
@@ -50,6 +54,44 @@ export const DiscursiveMode: React.FC<DiscursiveModeProps> = ({
   const [saveStatus, setSaveStatus] = useState<string>('idle');
   const [isEvaluating, setIsEvaluating] = useState<boolean>(false);
   const [showScoreSlider, setShowScoreSlider] = useState<boolean>(false);
+
+  // CRONÔMETRO DE REDAÇÃO (1h15 = 4500s)
+  const [redacaoSeconds, setRedacaoSeconds] = useState<number>(4500);
+  const [isTimerActive, setIsTimerActive] = useState<boolean>(false);
+  const [showChecklist, setShowChecklist] = useState<boolean>(false);
+  const [checklist, setChecklist] = useState<Record<string, boolean>>({
+    intro: false,
+    desenv1: false,
+    desenv2: false,
+    conclusao: false,
+    impessoalidade: false
+  });
+
+  useEffect(() => {
+    let interval: ReturnType<typeof setInterval>;
+    if (isTimerActive && redacaoSeconds > 0) {
+      interval = setInterval(() => {
+        setRedacaoSeconds(prev => (prev > 0 ? prev - 1 : 0));
+      }, 1000);
+    }
+    return () => clearInterval(interval);
+  }, [isTimerActive, redacaoSeconds]);
+
+  const estimatedLines = React.useMemo(() => {
+    if (!draft.trim()) return 0;
+    const rawLines = draft.split('\n');
+    let total = 0;
+    for (const line of rawLines) {
+      total += Math.max(1, Math.ceil((line.length || 1) / 68));
+    }
+    return total;
+  }, [draft]);
+
+  const formatTimer = (s: number) => {
+    const mins = Math.floor(s / 60);
+    const secs = s % 60;
+    return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+  };
 
   // Ajustar índice se mudar disciplina
   useEffect(() => {
@@ -438,31 +480,132 @@ export const DiscursiveMode: React.FC<DiscursiveModeProps> = ({
           </div>
         )}
 
-        {/* ÁREA DE RESPOSTA DA GILVANIA */}
-        <div className="space-y-2">
-          <div className="flex justify-between items-center text-xs text-slate-400 font-semibold px-1">
-            <span className="flex items-center gap-1.5 text-indigo-300">
-              <PenTool className="w-3.5 h-3.5" /> Sua Resposta Escrita:
-            </span>
-            <div className="flex items-center space-x-3">
+        {/* ÁREA DE RESPOSTA DA GILVANIA - FOLHA DE REDAÇÃO OFICIAL */}
+        <div className="space-y-3 bg-slate-900/90 border border-slate-800 rounded-3xl p-5 shadow-2xl">
+          <div className="flex flex-wrap justify-between items-center gap-2 border-b border-slate-800/80 pb-3">
+            <div className="flex items-center space-x-2">
+              <span className="p-2 bg-emerald-500/10 text-emerald-400 rounded-xl border border-emerald-500/20">
+                <FileText className="w-4 h-4" />
+              </span>
+              <div>
+                <span className="text-xs font-bold text-white flex items-center gap-1.5">
+                  Folha Oficial de Resposta • Linhas 1 a 30
+                </span>
+                <span className="text-[10px] text-slate-400">
+                  Simulação do espaço real da folha definitiva da UFBA
+                </span>
+              </div>
+            </div>
+
+            <div className="flex items-center space-x-2">
               {currentAnswerSaved?.selfScore !== undefined && currentAnswerSaved?.selfScore !== null && (
                 <span className="text-[11px] font-bold text-emerald-400 bg-emerald-500/10 border border-emerald-500/30 px-2 py-0.5 rounded-lg">
                   Nota Registrada: {currentAnswerSaved.selfScore}/10
                 </span>
               )}
-              <span className="font-mono text-slate-500">
-                {draft.trim() ? `${draft.trim().split(/\s+/).length} palavras` : '0 palavras'}
+              {/* STATUS DE LINHAS */}
+              <span className={`px-2.5 py-1 rounded-xl text-xs font-bold border ${
+                estimatedLines === 0
+                  ? 'bg-slate-800 text-slate-400 border-slate-700'
+                  : estimatedLines < 15
+                  ? 'bg-amber-500/10 text-amber-300 border-amber-500/30'
+                  : estimatedLines <= 30
+                  ? 'bg-emerald-500/10 text-emerald-300 border-emerald-500/30'
+                  : 'bg-rose-500/10 text-rose-300 border-rose-500/30'
+              }`}>
+                {estimatedLines === 0
+                  ? '0 / 30 linhas'
+                  : estimatedLines < 15
+                  ? `⚠️ ${estimatedLines}/30 linhas (mínimo: 20)`
+                  : estimatedLines <= 30
+                  ? `✅ ${estimatedLines}/30 linhas (tamanho ideal)`
+                  : `🛑 ${estimatedLines}/30 linhas (ultrapassou!)`}
               </span>
+
+              {/* CRONÔMETRO DE REDAÇÃO 1h15 */}
+              <button
+                onClick={() => setIsTimerActive(!isTimerActive)}
+                className={`flex items-center space-x-1.5 px-3 py-1 rounded-xl text-xs font-bold border transition-all ${
+                  isTimerActive
+                    ? 'bg-indigo-600 text-white border-indigo-400 animate-pulse'
+                    : 'bg-slate-950 text-indigo-300 border-slate-800 hover:bg-slate-800'
+                }`}
+                title="Meta de tempo para a redação na prova: 1h15"
+              >
+                <Clock className="w-3.5 h-3.5" />
+                <span className="font-mono">{formatTimer(redacaoSeconds)}</span>
+                <span className="text-[10px]">{isTimerActive ? 'Pausar' : 'Treinar 1h15'}</span>
+              </button>
+
+              {/* CHECKLIST TOGGLE */}
+              <button
+                onClick={() => setShowChecklist(!showChecklist)}
+                className={`p-1.5 rounded-xl border text-xs transition-all ${
+                  showChecklist
+                    ? 'bg-indigo-600/20 text-indigo-300 border-indigo-500/40'
+                    : 'bg-slate-950 text-slate-400 border-slate-800 hover:text-white'
+                }`}
+                title="Checklist Estrutural da Banca"
+              >
+                <ListChecks className="w-4 h-4" />
+              </button>
             </div>
           </div>
 
-          <textarea
-            value={draft}
-            onChange={(e) => setDraft(e.target.value)}
-            rows={7}
-            placeholder="Escreva aqui sua resposta discursiva com suas próprias palavras... Ao terminar, clique no botão 'Corrigir Minha Resposta Automaticamente' abaixo."
-            className="w-full bg-slate-950 border border-slate-800 focus:border-indigo-500 rounded-2xl p-4 text-sm text-slate-100 placeholder-slate-600 leading-relaxed outline-none transition-all resize-y shadow-inner"
-          />
+          {/* CHECKLIST ESTRUTURAL DA BANCA (SE ABERTO) */}
+          {showChecklist && (
+            <div className="p-4 bg-slate-950 border border-slate-800 rounded-2xl space-y-2 text-xs animate-fadeIn">
+              <span className="font-bold text-slate-300 flex items-center gap-1.5 text-xs mb-2">
+                <AlignLeft className="w-4 h-4 text-indigo-400" />
+                Checklist dos 5 Critérios da Banca Examinadora:
+              </span>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-slate-300">
+                {[
+                  { key: 'intro', label: '1. Introdução: Contextualização do tema e tese objetiva (3-5 linhas)' },
+                  { key: 'desenv1', label: '2. Desenvolvimento 1: Fundamento legal e doutrina administrativa (6-8 linhas)' },
+                  { key: 'desenv2', label: '3. Desenvolvimento 2: Exemplo prático e rotina do Assistente (6-8 linhas)' },
+                  { key: 'conclusao', label: '4. Conclusão: Desfecho coeso com proposta resolutiva (4-6 linhas)' },
+                  { key: 'impessoalidade', label: '5. Norma Culta e Impessoalidade: Sem gírias nem uso de "eu acho"' }
+                ].map((item) => (
+                  <button
+                    key={item.key}
+                    onClick={() => setChecklist(prev => ({ ...prev, [item.key]: !prev[item.key] }))}
+                    className={`flex items-start space-x-2 p-2 rounded-xl border text-left transition-all ${
+                      checklist[item.key]
+                        ? 'bg-emerald-500/10 border-emerald-500/30 text-emerald-300'
+                        : 'bg-slate-900 border-slate-800 text-slate-400 hover:bg-slate-800'
+                    }`}
+                  >
+                    <CheckCircle2 className={`w-4 h-4 shrink-0 mt-0.5 ${checklist[item.key] ? 'text-emerald-400' : 'text-slate-600'}`} />
+                    <span>{item.label}</span>
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* SIMULADOR DE FOLHA PAUTADA COM LINHAS NUMERADAS */}
+          <div className="relative rounded-2xl overflow-hidden border border-slate-800 bg-slate-950 shadow-inner">
+            <textarea
+              value={draft}
+              onChange={(e) => setDraft(e.target.value)}
+              rows={12}
+              placeholder="Escreva sua redação ou resposta discursiva aqui (objetivo: entre 20 e 30 linhas)... Lembre-se de organizar em parágrafos claros e impessoais. Ao concluir, clique em 'Corrigir Minha Resposta Automaticamente'."
+              className="w-full bg-transparent p-4 text-sm font-sans text-slate-100 placeholder-slate-600 leading-[1.8] outline-none transition-all resize-y"
+              style={{
+                lineHeight: '1.8rem'
+              }}
+            />
+          </div>
+
+          <div className="flex justify-between items-center text-[11px] text-slate-500 px-1">
+            <span>
+              {draft.trim() ? `${draft.trim().split(/\s+/).length} palavras digitadas` : '0 palavras'}
+            </span>
+            <span>
+              Dica: Na prova real, letra legível e recuo de parágrafo valem pontos preciosos.
+            </span>
+          </div>
         </div>
 
         {/* BARRA DE AÇÃO PRINCIPAL: BOTÃO DE CORREÇÃO AUTOMÁTICA */}

@@ -15,7 +15,8 @@ import {
   Flame,
   Calendar,
   GraduationCap,
-  PenTool
+  PenTool,
+  Printer
 } from 'lucide-react';
 import type { UserProfile, SubjectType } from '../types/study';
 import { exportAllDataJSON, importAllDataJSON } from '../services/storageService';
@@ -422,6 +423,18 @@ export const Navbar: React.FC<NavbarProps> = ({
             >
               <Award className="w-3.5 h-3.5" />
               <span>Desempenho</span>
+            </button>
+
+            <button
+              onClick={() => setActiveTab('fichas_impressao')}
+              className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap transition-all ${
+                activeTab === 'fichas_impressao'
+                  ? 'bg-gradient-to-r from-amber-500 to-amber-600 text-white shadow-md shadow-amber-600/40 ring-1 ring-amber-400/50'
+                  : 'text-amber-300/80 hover:text-amber-200 hover:bg-slate-800/60'
+              }`}
+            >
+              <Printer className="w-3.5 h-3.5 text-amber-400" />
+              <span>📄 Fichas de Bolso (PDF)</span>
             </button>
 
           </nav>

@@ -16,6 +16,7 @@ import { CadernoErrosMode } from './components/CadernoErrosMode';
 import { BizusQuickRead } from './components/BizusQuickRead';
 import { Dashboard } from './components/Dashboard';
 import { AIChatbot } from './components/AIChatbot';
+import { FichasImpressaoMode } from './components/FichasImpressaoMode';
 
 export function App() {
   const [profiles, setProfiles] = useState<UserProfile[]>([]);
@@ -146,6 +147,10 @@ export function App() {
             activeProfile={activeProfile}
             onNavigateTab={setActiveTab}
           />
+        )}
+
+        {activeTab === 'fichas_impressao' && (
+          <FichasImpressaoMode />
         )}
       </main>
 

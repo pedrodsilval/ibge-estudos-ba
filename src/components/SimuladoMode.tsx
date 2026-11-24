@@ -13,7 +13,8 @@ import {
   Play,
   Terminal,
   Database,
-  GraduationCap
+  BookOpen,
+  ShieldCheck
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import type { Question, UserProfile, SubjectType } from '../types/study';
@@ -49,24 +50,32 @@ export const SimuladoMode: React.FC<SimuladoModeProps> = ({
   } | null>(null);
 
   // Inicializar questões para o simulado
-  const startSimulado = (mode: 'qs' | 'bd' | 'completo') => {
+  const startSimulado = (mode: 'port' | 'info' | 'adm' | 'esp' | 'completo') => {
     let selected: Question[] = [];
 
-    if (mode === 'qs') {
-      selected = questions.filter(q => q.subject === 'Qualidade de Software');
-    } else if (mode === 'bd') {
-      selected = questions.filter(q => q.subject === 'Banco de Dados');
+    if (mode === 'port') {
+      selected = questions.filter(q => q.subject === 'Língua Portuguesa');
+    } else if (mode === 'info') {
+      selected = questions.filter(q => q.subject === 'Noções de Informática');
+    } else if (mode === 'adm') {
+      selected = questions.filter(q => q.subject === 'Administração Pública');
+    } else if (mode === 'esp') {
+      selected = questions.filter(q => q.subject === 'Conhecimentos Específicos');
     } else {
       selected = [...questions].sort(() => 0.5 - Math.random());
     }
 
     const now = new Date();
     const dateStr = `${now.toLocaleDateString('pt-BR')} às ${now.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' })}`;
-    const labelTitle = mode === 'qs' 
-      ? 'Qualidade de Software (Terça)' 
-      : mode === 'bd' 
-      ? 'Banco de Dados (Quarta)' 
-      : 'Completo UNIFACS';
+    const labelTitle = mode === 'port' 
+      ? 'Língua Portuguesa' 
+      : mode === 'info' 
+      ? 'Noções de Informática' 
+      : mode === 'adm'
+      ? 'Administração Pública'
+      : mode === 'esp'
+      ? 'Conhecimentos Específicos'
+      : 'Simulado Geral UFBA';
     const label = `Simulado: ${labelTitle} - ${selected.length}q (${dateStr})`;
     
     setCurrentSimuladoLabel(label);
@@ -110,8 +119,10 @@ export const SimuladoMode: React.FC<SimuladoModeProps> = ({
   const finishSimulado = () => {
     let correctCount = 0;
     const subjectStats: Record<SubjectType, { total: number; correct: number }> = {
-      'Qualidade de Software': { total: 0, correct: 0 },
-      'Banco de Dados': { total: 0, correct: 0 }
+      'Língua Portuguesa': { total: 0, correct: 0 },
+      'Noções de Informática': { total: 0, correct: 0 },
+      'Administração Pública': { total: 0, correct: 0 },
+      'Conhecimentos Específicos': { total: 0, correct: 0 }
     };
 
     let updatedProfile = activeProfile;
@@ -200,81 +211,87 @@ export const SimuladoMode: React.FC<SimuladoModeProps> = ({
 
           <div className="inline-flex items-center space-x-2 px-3 py-1 bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 rounded-full text-xs font-bold mb-4">
             <Zap className="w-3.5 h-3.5 text-emerald-400" />
-            <span>Simulador de Prova Presencial UNIFACS</span>
+            <span>Simulador de Prova Oficial • Concurso UFBA 2026</span>
           </div>
 
           <h2 className="text-2xl sm:text-3xl font-extrabold text-white mb-3">
-            Treino Cronometrado de Prova
+            Treino Cronometrado: Prova Objetiva
           </h2>
           <p className="text-slate-400 max-w-xl mx-auto mb-8 text-sm sm:text-base leading-relaxed">
-            Simule o tempo real das provas presenciais. Escolha focar na prova de terça (Qualidade de Software) ou na prova de quarta (Banco de Dados):
+            Simule o tempo real da prova da UFBA (4 horas de duração total). Escolha treinar uma disciplina isolada ou o Simulado Completo:
           </p>
 
           {/* ESCOLHA DA PROVA */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8 max-w-3xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8 max-w-4xl mx-auto">
             
             <button
-              onClick={() => startSimulado('qs')}
-              className="px-5 py-5 bg-slate-950 hover:bg-indigo-600/20 border border-slate-800 hover:border-indigo-500/50 rounded-2xl text-left transition-all group shadow-lg"
+              onClick={() => startSimulado('port')}
+              className="px-4 py-4 bg-slate-950 hover:bg-blue-600/20 border border-slate-800 hover:border-blue-500/50 rounded-2xl text-left transition-all group shadow-lg"
             >
-              <div className="p-2.5 bg-indigo-500/10 text-indigo-400 rounded-xl w-fit mb-3">
-                <Terminal className="w-5 h-5" />
+              <div className="p-2 bg-blue-500/10 text-blue-400 rounded-xl w-fit mb-2">
+                <BookOpen className="w-4 h-4" />
               </div>
-              <div className="text-base font-bold text-white group-hover:text-indigo-300">
-                Qualidade de Software
+              <div className="text-sm font-bold text-white group-hover:text-blue-300">
+                Português
               </div>
-              <div className="text-xs text-amber-400 font-semibold mt-1">
-                Terça (20/10) • Lab 22
+              <div className="text-xs text-blue-400 font-semibold mt-0.5">
+                Crase, Concordância e Redação
               </div>
-              <p className="text-[11px] text-slate-500 mt-2">
-                15 questões da folha oficial + desafios de JUnit 5.
-              </p>
             </button>
 
             <button
-              onClick={() => startSimulado('bd')}
-              className="px-5 py-5 bg-slate-950 hover:bg-emerald-600/20 border border-slate-800 hover:border-emerald-500/50 rounded-2xl text-left transition-all group shadow-lg"
+              onClick={() => startSimulado('info')}
+              className="px-4 py-4 bg-slate-950 hover:bg-cyan-600/20 border border-slate-800 hover:border-cyan-500/50 rounded-2xl text-left transition-all group shadow-lg"
             >
-              <div className="p-2.5 bg-emerald-500/10 text-emerald-400 rounded-xl w-fit mb-3">
-                <Database className="w-5 h-5" />
+              <div className="p-2 bg-cyan-500/10 text-cyan-400 rounded-xl w-fit mb-2">
+                <Terminal className="w-4 h-4" />
               </div>
-              <div className="text-base font-bold text-white group-hover:text-emerald-300">
-                Banco de Dados
+              <div className="text-sm font-bold text-white group-hover:text-cyan-300">
+                Informática
               </div>
-              <div className="text-xs text-emerald-400 font-semibold mt-1">
-                Quarta (21/10) • Lab 235
+              <div className="text-xs text-cyan-400 font-semibold mt-0.5">
+                Segurança, Excel e Windows
               </div>
-              <p className="text-[11px] text-slate-500 mt-2">
-                1FN/2FN/3FN, SQL DDL/DML e Clínica Veterinária.
-              </p>
             </button>
 
             <button
-              onClick={() => startSimulado('completo')}
-              className="px-5 py-5 bg-indigo-950/80 hover:bg-indigo-600/30 border border-indigo-500/40 hover:border-indigo-400 rounded-2xl text-left transition-all group ring-2 ring-indigo-500/30 shadow-xl"
+              onClick={() => startSimulado('adm')}
+              className="px-4 py-4 bg-slate-950 hover:bg-amber-600/20 border border-slate-800 hover:border-amber-500/50 rounded-2xl text-left transition-all group shadow-lg"
             >
-              <div className="p-2.5 bg-indigo-500/20 text-indigo-300 rounded-xl w-fit mb-3">
-                <GraduationCap className="w-5 h-5" />
+              <div className="p-2 bg-amber-500/10 text-amber-400 rounded-xl w-fit mb-2">
+                <ShieldCheck className="w-4 h-4" />
               </div>
-              <div className="text-base font-bold text-indigo-300 group-hover:text-white">
-                Simulado Geral
+              <div className="text-sm font-bold text-white group-hover:text-amber-300">
+                Adm. Pública
               </div>
-              <div className="text-xs text-indigo-200/80 font-semibold mt-1">
-                Todas as Matérias
+              <div className="text-xs text-amber-400 font-semibold mt-0.5">
+                CF/88, Lei 8.112 e UFBA
               </div>
-              <p className="text-[11px] text-slate-400 mt-2">
-                Treino completo com todas as 28 questões do banco.
-              </p>
+            </button>
+
+            <button
+              onClick={() => startSimulado('esp')}
+              className="px-4 py-4 bg-slate-950 hover:bg-emerald-600/20 border border-slate-800 hover:border-emerald-500/50 rounded-2xl text-left transition-all group shadow-lg"
+            >
+              <div className="p-2 bg-emerald-500/10 text-emerald-400 rounded-xl w-fit mb-2">
+                <Database className="w-4 h-4" />
+              </div>
+              <div className="text-sm font-bold text-white group-hover:text-emerald-300">
+                Específicas
+              </div>
+              <div className="text-xs text-emerald-400 font-semibold mt-0.5">
+                Arquivos, Estoques e PODC
+              </div>
             </button>
 
           </div>
 
           <button
-            onClick={() => startSimulado('qs')}
+            onClick={() => startSimulado('completo')}
             className="px-8 py-4 bg-gradient-to-r from-indigo-600 to-indigo-500 hover:from-indigo-500 hover:to-indigo-400 text-white font-bold text-base rounded-2xl shadow-xl shadow-indigo-600/30 border border-indigo-400/30 transition-all flex items-center space-x-2 mx-auto"
           >
             <Play className="w-5 h-5 fill-current" />
-            <span>Iniciar Simulado Prioridade 1 (Qualidade de Software)</span>
+            <span>Iniciar Simulado Geral Oficial UFBA</span>
           </button>
         </div>
       </div>

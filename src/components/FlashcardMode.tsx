@@ -220,21 +220,25 @@ export const FlashcardMode: React.FC<FlashcardModeProps> = ({
         
         {/* FILTRO DE SUBJECT */}
         <div className="flex flex-wrap items-center gap-2">
-          {(['TODAS', 'Qualidade de Software', 'Banco de Dados'] as const).map(sub => (
+          {(['TODAS', 'Língua Portuguesa', 'Noções de Informática', 'Administração Pública', 'Conhecimentos Específicos'] as const).map(sub => (
             <button
               key={sub}
               onClick={() => setSelectedSubject(sub)}
-              className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all ${
+              className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all ${
                 selectedSubject === sub
                   ? 'bg-gradient-to-r from-indigo-600 to-indigo-500 text-white shadow-md shadow-indigo-600/30 border border-indigo-400/30'
                   : 'bg-slate-900/90 text-slate-400 hover:text-slate-200 border border-slate-800 hover:border-slate-700'
               }`}
             >
-              {sub === 'Qualidade de Software' 
-                ? '🔬 Qualidade de Software (Terça)' 
-                : sub === 'Banco de Dados'
-                ? '🗄️ Banco de Dados (Quarta)'
-                : '📚 Todas as Disciplinas'}
+              {sub === 'Língua Portuguesa' 
+                ? '🇧🇷 Português' 
+                : sub === 'Noções de Informática'
+                ? '💻 Informática'
+                : sub === 'Administração Pública'
+                ? '🏛️ Adm. Pública'
+                : sub === 'Conhecimentos Específicos'
+                ? '📂 Específicas'
+                : '📚 Todas as Matérias'}
             </button>
           ))}
         </div>

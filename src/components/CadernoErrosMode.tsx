@@ -186,7 +186,7 @@ export const CadernoErrosMode: React.FC<CadernoErrosModeProps> = ({
         </div>
 
         <div className="flex flex-wrap gap-2">
-          {(['all', 'Qualidade de Software', 'Banco de Dados'] as const).map(subj => (
+          {(['all', 'Língua Portuguesa', 'Noções de Informática', 'Administração Pública', 'Conhecimentos Específicos'] as const).map(subj => (
             <button
               key={subj}
               onClick={() => setSubjectFilter(subj)}

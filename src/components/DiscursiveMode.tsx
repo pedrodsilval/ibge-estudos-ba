@@ -36,16 +36,8 @@ export const DiscursiveMode: React.FC<DiscursiveModeProps> = ({
   activeProfile,
   onUpdateProfile
 }) => {
-  const [filterClassroomOnly, setFilterClassroomOnly] = useState<boolean>(true);
-  
-  // Filtrar questões pela disciplina selecionada e se é foco da folha de sala
-  const filteredQuestions = DISCURSIVE_QUESTIONS.filter(q => {
-    if (q.subject !== selectedSubject) return false;
-    if (selectedSubject === 'Qualidade de Software' && filterClassroomOnly) {
-      return Boolean(q.isFromClassroomReview);
-    }
-    return true;
-  });
+  // Filtrar questões pela disciplina selecionada
+  const filteredQuestions = DISCURSIVE_QUESTIONS.filter(q => q.subject === selectedSubject);
   
   const [currentIdx, setCurrentIdx] = useState<number>(0);
   const [showAnswer, setShowAnswer] = useState<boolean>(false);
@@ -262,69 +254,55 @@ export const DiscursiveMode: React.FC<DiscursiveModeProps> = ({
       <div className="bg-slate-900/90 border border-slate-800 p-2 sm:p-3 rounded-3xl shadow-xl flex flex-col sm:flex-row items-center justify-between gap-3">
         <div className="flex items-center space-x-2 text-xs font-bold text-slate-300 px-2">
           <PenTool className="w-4 h-4 text-emerald-400" />
-          <span>Caderno Discursivo:</span>
+          <span>Redação & Estudos de Caso:</span>
         </div>
 
-        <div className="flex items-center space-x-2 w-full sm:w-auto">
+        <div className="grid grid-cols-2 sm:flex items-center gap-2 w-full sm:w-auto">
           <button
-            onClick={() => onSelectSubject('Qualidade de Software')}
-            className={`flex-1 sm:flex-initial px-4 py-2 rounded-2xl text-xs font-bold transition-all flex items-center justify-center space-x-2 ${
-              selectedSubject === 'Qualidade de Software'
-                ? 'bg-gradient-to-r from-indigo-600 to-indigo-500 text-white shadow-lg shadow-indigo-600/30'
+            onClick={() => onSelectSubject('Língua Portuguesa')}
+            className={`px-3 py-2 rounded-2xl text-xs font-bold transition-all flex items-center justify-center space-x-1.5 ${
+              selectedSubject === 'Língua Portuguesa'
+                ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg shadow-blue-600/30'
                 : 'bg-slate-950 text-slate-400 hover:text-slate-200 border border-slate-800'
             }`}
           >
-            <span>🔬 Qualidade de Software (Terça 20/10)</span>
-            <span className="px-1.5 py-0.5 rounded-full bg-black/30 text-[10px]">16 Qs</span>
+            <span>🇧🇷 Português</span>
           </button>
 
           <button
-            onClick={() => onSelectSubject('Banco de Dados')}
-            className={`flex-1 sm:flex-initial px-4 py-2 rounded-2xl text-xs font-bold transition-all flex items-center justify-center space-x-2 ${
-              selectedSubject === 'Banco de Dados'
-                ? 'bg-gradient-to-r from-emerald-600 to-teal-500 text-white shadow-lg shadow-emerald-600/30'
+            onClick={() => onSelectSubject('Noções de Informática')}
+            className={`px-3 py-2 rounded-2xl text-xs font-bold transition-all flex items-center justify-center space-x-1.5 ${
+              selectedSubject === 'Noções de Informática'
+                ? 'bg-gradient-to-r from-cyan-600 to-teal-600 text-white shadow-lg shadow-cyan-600/30'
                 : 'bg-slate-950 text-slate-400 hover:text-slate-200 border border-slate-800'
             }`}
           >
-            <span>🗄️ Banco de Dados (Quarta 21/10)</span>
-            <span className="px-1.5 py-0.5 rounded-full bg-black/30 text-[10px]">10 Qs</span>
+            <span>💻 Informática</span>
+          </button>
+
+          <button
+            onClick={() => onSelectSubject('Administração Pública')}
+            className={`px-3 py-2 rounded-2xl text-xs font-bold transition-all flex items-center justify-center space-x-1.5 ${
+              selectedSubject === 'Administração Pública'
+                ? 'bg-gradient-to-r from-amber-600 to-orange-600 text-white shadow-lg shadow-amber-600/30'
+                : 'bg-slate-950 text-slate-400 hover:text-slate-200 border border-slate-800'
+            }`}
+          >
+            <span>🏛️ Adm. Pública</span>
+          </button>
+
+          <button
+            onClick={() => onSelectSubject('Conhecimentos Específicos')}
+            className={`px-3 py-2 rounded-2xl text-xs font-bold transition-all flex items-center justify-center space-x-1.5 ${
+              selectedSubject === 'Conhecimentos Específicos'
+                ? 'bg-gradient-to-r from-emerald-600 to-green-600 text-white shadow-lg shadow-emerald-600/30'
+                : 'bg-slate-950 text-slate-400 hover:text-slate-200 border border-slate-800'
+            }`}
+          >
+            <span>📂 Específicas</span>
           </button>
         </div>
       </div>
-
-      {/* SELETOR DE FOCO: FOLHA DE HOJE VS TODAS AS QUESTÕES */}
-      {selectedSubject === 'Qualidade de Software' && (
-        <div className="bg-gradient-to-r from-slate-900 via-amber-950/20 to-slate-900 border border-amber-500/40 p-3 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-3 shadow-xl">
-          <div className="flex items-center space-x-2.5 text-xs font-bold text-amber-300 px-1">
-            <span className="w-2.5 h-2.5 rounded-full bg-amber-400 animate-pulse" />
-            <span className="uppercase tracking-wider">Foco na Prova de Amanhã (Aula de Hoje):</span>
-          </div>
-          <div className="flex items-center space-x-2 w-full sm:w-auto">
-            <button
-              onClick={() => { setFilterClassroomOnly(true); setCurrentIdx(0); }}
-              className={`flex-1 sm:flex-initial px-4 py-2 rounded-xl text-xs font-extrabold transition-all flex items-center justify-center space-x-1.5 ${
-                filterClassroomOnly
-                  ? 'bg-gradient-to-r from-amber-500 to-orange-500 text-slate-950 shadow-md shadow-amber-500/30 font-black scale-105'
-                  : 'bg-slate-950 text-slate-400 hover:text-white border border-slate-800'
-              }`}
-            >
-              <span>🔥 10 Questões da Folha de Exercício (PDF 1)</span>
-              <span className="px-1.5 py-0.5 rounded-full bg-black/30 text-[10px]">10 Qs</span>
-            </button>
-            <button
-              onClick={() => { setFilterClassroomOnly(false); setCurrentIdx(0); }}
-              className={`flex-1 sm:flex-initial px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center justify-center space-x-1.5 ${
-                !filterClassroomOnly
-                  ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/30 font-bold scale-105'
-                  : 'bg-slate-950 text-slate-400 hover:text-white border border-slate-800'
-              }`}
-            >
-              <span>📑 As 15 Questões do Gabarito do Professor (PDF 2)</span>
-              <span className="px-1.5 py-0.5 rounded-full bg-black/20 text-[10px]">16 Qs</span>
-            </button>
-          </div>
-        </div>
-      )}
 
       {/* BANNER PEDAGÓGICO: COMO FUNCIONA A CORREÇÃO AUTOMÁTICA */}
       <div className="bg-gradient-to-r from-indigo-950/80 via-slate-900 to-purple-950/80 border border-indigo-500/30 rounded-3xl p-4 sm:p-5 shadow-xl">

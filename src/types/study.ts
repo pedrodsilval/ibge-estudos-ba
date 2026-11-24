@@ -1,4 +1,8 @@
-export type SubjectType = 'Qualidade de Software' | 'Banco de Dados';
+export type SubjectType = 
+  | 'Língua Portuguesa' 
+  | 'Noções de Informática' 
+  | 'Administração Pública' 
+  | 'Conhecimentos Específicos';
 
 export type DifficultyType = 'Fácil' | 'Médio' | 'Difícil';
 

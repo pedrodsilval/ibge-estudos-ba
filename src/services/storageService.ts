@@ -1,23 +1,13 @@
 import type { UserProfile, BackupData } from '../types/study';
 
-const PROFILES_STORAGE_KEY = 'unifacs_study_profiles_v2';
-const ACTIVE_PROFILE_KEY = 'unifacs_study_active_profile_v2';
+const PROFILES_STORAGE_KEY = 'ufba_study_profiles_v1';
+const ACTIVE_PROFILE_KEY = 'ufba_study_active_profile_v1';
 
 const DEFAULT_PROFILES: UserProfile[] = [
   {
     id: 'user-gilvania',
     name: 'Gilvania',
     avatar: '👩‍🎓',
-    createdAt: new Date().toISOString(),
-    streakDays: 1,
-    lastStudyDate: new Date().toISOString().split('T')[0],
-    answers: {},
-    bookmarkedQuestionIds: []
-  },
-  {
-    id: 'user-pedro',
-    name: 'Pedro',
-    avatar: '👨‍💻',
     createdAt: new Date().toISOString(),
     streakDays: 1,
     lastStudyDate: new Date().toISOString().split('T')[0],

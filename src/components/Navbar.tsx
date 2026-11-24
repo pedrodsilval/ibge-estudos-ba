@@ -14,7 +14,6 @@ import {
   Upload,
   Flame,
   Calendar,
-  Terminal,
   GraduationCap,
   PenTool
 } from 'lucide-react';
@@ -79,10 +78,8 @@ export const Navbar: React.FC<NavbarProps> = ({
   useEffect(() => {
     const calculateCountdown = () => {
       const now = new Date();
-      // Prova 1: Terça 20/10/2026 às 08h50 | Prova 2: Quarta 21/10/2026 às 08h50
-      const examDate = selectedSubject === 'Qualidade de Software'
-        ? new Date(2026, 9, 20, 8, 50, 0)
-        : new Date(2026, 9, 21, 8, 50, 0);
+      // Prova Objetiva e Redação UFBA: Domingo 20/12/2026 às 08h00
+      const examDate = new Date(2026, 11, 20, 8, 0, 0);
       const diffMs = examDate.getTime() - now.getTime();
       
       if (diffMs > 0) {
@@ -115,7 +112,7 @@ export const Navbar: React.FC<NavbarProps> = ({
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = `UNIFACS_Estudos_${activeProfile.name.replace(/\s+/g, '_')}_${new Date().toISOString().split('T')[0]}.json`;
+    a.download = `UFBA_Estudos_${activeProfile.name.replace(/\s+/g, '_')}_${new Date().toISOString().split('T')[0]}.json`;
     a.click();
     URL.revokeObjectURL(url);
     setTimeout(() => setIsExporting(false), 800);
@@ -150,54 +147,77 @@ export const Navbar: React.FC<NavbarProps> = ({
         <div className="flex items-center justify-between h-16 gap-3">
           
           {/* LOGO & TITULO */}
-          <div className="flex items-center space-x-3 cursor-pointer" onClick={() => setActiveTab('discursive')}>
-            <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-indigo-600 via-indigo-500 to-emerald-400 p-0.5 shadow-lg shadow-indigo-600/20 shrink-0">
+          <div className="flex items-center space-x-3 cursor-pointer" onClick={() => setActiveTab('teoria')}>
+            <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-sky-600 via-blue-500 to-emerald-400 p-0.5 shadow-lg shadow-sky-600/20 shrink-0">
               <div className="w-full h-full bg-slate-950 rounded-[14px] flex items-center justify-center">
-                <GraduationCap className="w-5 h-5 text-indigo-400" />
+                <GraduationCap className="w-5 h-5 text-sky-400" />
               </div>
             </div>
             
             <div className="leading-tight">
               <div className="flex items-center space-x-2">
                 <h1 className="text-base sm:text-lg font-black tracking-tight text-white flex items-center gap-1.5">
-                  UNIFACS <span className="text-indigo-400 text-xs px-2 py-0.5 rounded-full bg-indigo-500/10 border border-indigo-500/30">2026.2</span>
+                  UFBA <span className="text-sky-400 text-xs px-2 py-0.5 rounded-full bg-sky-500/10 border border-sky-500/30">2026</span>
                 </h1>
+                <span className="text-[11px] text-slate-400 hidden lg:inline font-medium">
+                  Assistente em Administração
+                </span>
               </div>
               
               <div className="flex items-center space-x-1.5 text-[11px] text-slate-400">
                 <Calendar className="w-3 h-3 text-amber-400 shrink-0" />
                 <span className="text-amber-300 font-semibold whitespace-nowrap">
-                  {selectedSubject === 'Qualidade de Software' ? 'Prova de Qualidade:' : 'Prova de Banco:'}
+                  Prova Objetiva & Redação:
                 </span>
                 <span className="text-emerald-400 font-mono font-bold">{daysLeftExam1}d {hoursLeftExam1}h</span>
                 <span className="text-slate-500 hidden sm:inline">
-                  {selectedSubject === 'Qualidade de Software' ? '• Banco na Quarta!' : '• Qualidade na Terça!'}
+                  • 20/Dez • 4 horas
                 </span>
               </div>
             </div>
           </div>
 
-          {/* SELETOR PRINCIPAL DE DISCIPLINA (SEPARAÇÃO RÍGIDA) */}
-          <div className="hidden md:flex items-center bg-slate-950 p-1 rounded-2xl border border-slate-800 shadow-inner">
+          {/* SELETOR PRINCIPAL DE DISCIPLINA (4 DISCIPLINAS UFBA) */}
+          <div className="hidden xl:flex items-center bg-slate-950 p-1 rounded-2xl border border-slate-800 shadow-inner">
             <button
-              onClick={() => onSelectSubject('Qualidade de Software')}
-              className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center space-x-1.5 ${
-                selectedSubject === 'Qualidade de Software'
-                  ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/30 ring-1 ring-indigo-400/50'
+              onClick={() => onSelectSubject('Língua Portuguesa')}
+              className={`px-2.5 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center space-x-1.5 ${
+                selectedSubject === 'Língua Portuguesa'
+                  ? 'bg-blue-600 text-white shadow-md shadow-blue-600/30 ring-1 ring-blue-400/50'
                   : 'text-slate-400 hover:text-slate-200'
               }`}
             >
-              <span>🔬 Qualidade (Terça 20/10)</span>
+              <span>🇧🇷 Português</span>
             </button>
             <button
-              onClick={() => onSelectSubject('Banco de Dados')}
-              className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center space-x-1.5 ${
-                selectedSubject === 'Banco de Dados'
+              onClick={() => onSelectSubject('Noções de Informática')}
+              className={`px-2.5 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center space-x-1.5 ${
+                selectedSubject === 'Noções de Informática'
+                  ? 'bg-cyan-600 text-white shadow-md shadow-cyan-600/30 ring-1 ring-cyan-400/50'
+                  : 'text-slate-400 hover:text-slate-200'
+              }`}
+            >
+              <span>💻 Informática</span>
+            </button>
+            <button
+              onClick={() => onSelectSubject('Administração Pública')}
+              className={`px-2.5 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center space-x-1.5 ${
+                selectedSubject === 'Administração Pública'
+                  ? 'bg-amber-600 text-white shadow-md shadow-amber-600/30 ring-1 ring-amber-400/50'
+                  : 'text-slate-400 hover:text-slate-200'
+              }`}
+            >
+              <span>🏛️ Adm. Pública</span>
+            </button>
+            <button
+              onClick={() => onSelectSubject('Conhecimentos Específicos')}
+              className={`px-2.5 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center space-x-1.5 ${
+                selectedSubject === 'Conhecimentos Específicos'
                   ? 'bg-emerald-600 text-white shadow-md shadow-emerald-600/30 ring-1 ring-emerald-400/50'
                   : 'text-slate-400 hover:text-slate-200'
               }`}
             >
-              <span>🗄️ Banco de Dados (Quarta 21/10)</span>
+              <span>📂 Específicas</span>
             </button>
           </div>
 
@@ -318,7 +338,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               <span className="px-1.5 py-0.2 rounded-full bg-indigo-400/20 text-indigo-300 text-[10px]">Slides</span>
             </button>
 
-            {/* TAB 1: TREINO DISCURSIVO (FOCO PRINCIPAL PEDIDO PELO USUÁRIO) */}
+            {/* TAB 1: TREINO DISCURSIVO & REDAÇÃO */}
             <button
               onClick={() => setActiveTab('discursive')}
               className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap transition-all ${
@@ -328,8 +348,8 @@ export const Navbar: React.FC<NavbarProps> = ({
               }`}
             >
               <PenTool className="w-3.5 h-3.5 text-emerald-400" />
-              <span>✍️ Treino Discursivo</span>
-              <span className="px-1.5 py-0.2 rounded-full bg-emerald-400/20 text-emerald-300 text-[10px]">Oficial</span>
+              <span>✍️ Redação & Discursivas</span>
+              <span className="px-1.5 py-0.2 rounded-full bg-emerald-400/20 text-emerald-300 text-[10px]">Edital</span>
             </button>
 
             <button
@@ -341,19 +361,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               }`}
             >
               <Sparkles className="w-3.5 h-3.5" />
-              <span>Questões Objetivas</span>
-            </button>
-
-            <button
-              onClick={() => setActiveTab('lab_pratico')}
-              className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all ${
-                activeTab === 'lab_pratico'
-                  ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/30'
-                  : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/60'
-              }`}
-            >
-              <Terminal className="w-3.5 h-3.5 text-emerald-400" />
-              <span>Laboratório Prático (Java & SQL)</span>
+              <span>Flashcards & Treino</span>
             </button>
 
             <button
@@ -401,7 +409,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               }`}
             >
               <Bot className="w-3.5 h-3.5 text-emerald-400" />
-              <span>Tutor IA UNIFACS</span>
+              <span>Tutor IA UFBA</span>
             </button>
 
             <button

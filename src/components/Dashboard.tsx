@@ -7,7 +7,8 @@ import {
   AlertTriangle, 
   XCircle, 
   Database, 
-  Terminal
+  Terminal,
+  BookOpen
 } from 'lucide-react';
 import type { Question, UserProfile, SubjectType } from '../types/study';
 
@@ -29,8 +30,10 @@ export const Dashboard: React.FC<DashboardProps> = ({
 
   // Estatísticas por disciplina
   const subjectStats: Record<SubjectType, { total: number; answered: number; correct: number }> = {
-    'Qualidade de Software': { total: 0, answered: 0, correct: 0 },
-    'Banco de Dados': { total: 0, answered: 0, correct: 0 }
+    'Língua Portuguesa': { total: 0, answered: 0, correct: 0 },
+    'Noções de Informática': { total: 0, answered: 0, correct: 0 },
+    'Administração Pública': { total: 0, answered: 0, correct: 0 },
+    'Conhecimentos Específicos': { total: 0, answered: 0, correct: 0 }
   };
 
   questions.forEach(q => {
@@ -130,80 +133,142 @@ export const Dashboard: React.FC<DashboardProps> = ({
           </div>
         </div>
 
-        {/* CARDS DAS MATÉRIAS */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {/* CARDS DAS 4 MATÉRIAS UFBA */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           
-          {/* QUALIDADE DE SOFTWARE */}
-          <div className="p-5 bg-slate-950 rounded-2xl border border-indigo-500/30 space-y-3">
+          {/* LÍNGUA PORTUGUESA */}
+          <div className="p-4 bg-slate-950 rounded-2xl border border-blue-500/30 space-y-2">
             <div className="flex justify-between items-center">
-              <span className="text-xs font-bold text-indigo-300 flex items-center space-x-1.5">
-                <Terminal className="w-4 h-4" />
-                <span>Garantia da Qualidade de Software</span>
+              <span className="text-xs font-bold text-blue-300 flex items-center space-x-1.5">
+                <BookOpen className="w-4 h-4" />
+                <span>Português</span>
               </span>
-              <span className="text-[11px] font-mono text-amber-400 bg-amber-500/10 border border-amber-500/20 px-2 py-0.5 rounded-md font-bold">
-                Terça (20/10) • Lab 22
+              <span className="text-[10px] font-mono text-blue-400 bg-blue-500/10 border border-blue-500/20 px-1.5 py-0.5 rounded-md font-bold">
+                11 Tópicos
               </span>
             </div>
-            
             <div className="flex items-baseline justify-between">
-              <div className="text-xl font-black text-white">
-                {subjectStats['Qualidade de Software'].correct} / {subjectStats['Qualidade de Software'].answered} acertos
+              <div className="text-lg font-black text-white">
+                {subjectStats['Língua Portuguesa'].correct} / {subjectStats['Língua Portuguesa'].answered} acertos
               </div>
               <div className="text-xs text-slate-400">
-                Total no banco: {subjectStats['Qualidade de Software'].total}
+                Banco: {subjectStats['Língua Portuguesa'].total}
               </div>
             </div>
-
-            <div className="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+            <div className="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
               <div 
-                className="bg-indigo-500 h-full rounded-full transition-all"
+                className="bg-blue-500 h-full rounded-full transition-all"
                 style={{ 
-                  width: `${subjectStats['Qualidade de Software'].answered > 0 
-                    ? Math.round((subjectStats['Qualidade de Software'].correct / subjectStats['Qualidade de Software'].answered) * 100) 
+                  width: `${subjectStats['Língua Portuguesa'].answered > 0 
+                    ? Math.round((subjectStats['Língua Portuguesa'].correct / subjectStats['Língua Portuguesa'].answered) * 100) 
                     : 0}%` 
                 }}
               />
             </div>
-
-            <p className="text-[11px] text-slate-400">
-              Prof. Enderson Nobre Santos • RTF, Caixa-Preta, Caminho Básico (McCabe) e JUnit 5.
+            <p className="text-[10px] text-slate-400">
+              Crase, concordância, regência e Redação Oficial (Manual PR).
             </p>
           </div>
 
-          {/* BANCO DE DADOS */}
-          <div className="p-5 bg-slate-950 rounded-2xl border border-emerald-500/30 space-y-3">
+          {/* INFORMÁTICA */}
+          <div className="p-4 bg-slate-950 rounded-2xl border border-cyan-500/30 space-y-2">
             <div className="flex justify-between items-center">
-              <span className="text-xs font-bold text-emerald-300 flex items-center space-x-1.5">
-                <Database className="w-4 h-4" />
-                <span>Banco de Dados</span>
+              <span className="text-xs font-bold text-cyan-300 flex items-center space-x-1.5">
+                <Terminal className="w-4 h-4" />
+                <span>Informática</span>
               </span>
-              <span className="text-[11px] font-mono text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 rounded-md font-bold">
-                Quarta (21/10) • Lab 235
+              <span className="text-[10px] font-mono text-cyan-400 bg-cyan-500/10 border border-cyan-500/20 px-1.5 py-0.5 rounded-md font-bold">
+                12 Tópicos
               </span>
             </div>
-            
             <div className="flex items-baseline justify-between">
-              <div className="text-xl font-black text-white">
-                {subjectStats['Banco de Dados'].correct} / {subjectStats['Banco de Dados'].answered} acertos
+              <div className="text-lg font-black text-white">
+                {subjectStats['Noções de Informática'].correct} / {subjectStats['Noções de Informática'].answered} acertos
               </div>
               <div className="text-xs text-slate-400">
-                Total no banco: {subjectStats['Banco de Dados'].total}
+                Banco: {subjectStats['Noções de Informática'].total}
               </div>
             </div>
-
-            <div className="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+            <div className="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
               <div 
-                className="bg-emerald-500 h-full rounded-full transition-all"
+                className="bg-cyan-500 h-full rounded-full transition-all"
                 style={{ 
-                  width: `${subjectStats['Banco de Dados'].answered > 0 
-                    ? Math.round((subjectStats['Banco de Dados'].correct / subjectStats['Banco de Dados'].answered) * 100) 
+                  width: `${subjectStats['Noções de Informática'].answered > 0 
+                    ? Math.round((subjectStats['Noções de Informática'].correct / subjectStats['Noções de Informática'].answered) * 100) 
                     : 0}%` 
                 }}
               />
             </div>
+            <p className="text-[10px] text-slate-400">
+              Windows, Office 365, Excel fórmulas e Segurança CIDAL.
+            </p>
+          </div>
 
-            <p className="text-[11px] text-slate-400">
-              Prof. Luiz Henrique Souza • 1FN/2FN/3FN, DER Clínica Veterinária e SQL (DDL/DML).
+          {/* ADM PÚBLICA */}
+          <div className="p-4 bg-slate-950 rounded-2xl border border-amber-500/30 space-y-2">
+            <div className="flex justify-between items-center">
+              <span className="text-xs font-bold text-amber-300 flex items-center space-x-1.5">
+                <ShieldCheck className="w-4 h-4" />
+                <span>Adm. Pública</span>
+              </span>
+              <span className="text-[10px] font-mono text-amber-400 bg-amber-500/10 border border-amber-500/20 px-1.5 py-0.5 rounded-md font-bold">
+                20 Tópicos
+              </span>
+            </div>
+            <div className="flex items-baseline justify-between">
+              <div className="text-lg font-black text-white">
+                {subjectStats['Administração Pública'].correct} / {subjectStats['Administração Pública'].answered} acertos
+              </div>
+              <div className="text-xs text-slate-400">
+                Banco: {subjectStats['Administração Pública'].total}
+              </div>
+            </div>
+            <div className="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+              <div 
+                className="bg-amber-500 h-full rounded-full transition-all"
+                style={{ 
+                  width: `${subjectStats['Administração Pública'].answered > 0 
+                    ? Math.round((subjectStats['Administração Pública'].correct / subjectStats['Administração Pública'].answered) * 100) 
+                    : 0}%` 
+                }}
+              />
+            </div>
+            <p className="text-[10px] text-slate-400">
+              CF/88, Lei 8.112/90, Licitações 14.133 e Estatuto UFBA.
+            </p>
+          </div>
+
+          {/* ESPECÍFICAS */}
+          <div className="p-4 bg-slate-950 rounded-2xl border border-emerald-500/30 space-y-2">
+            <div className="flex justify-between items-center">
+              <span className="text-xs font-bold text-emerald-300 flex items-center space-x-1.5">
+                <Database className="w-4 h-4" />
+                <span>Específicas</span>
+              </span>
+              <span className="text-[10px] font-mono text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-1.5 py-0.5 rounded-md font-bold">
+                Cargo 201
+              </span>
+            </div>
+            <div className="flex items-baseline justify-between">
+              <div className="text-lg font-black text-white">
+                {subjectStats['Conhecimentos Específicos'].correct} / {subjectStats['Conhecimentos Específicos'].answered} acertos
+              </div>
+              <div className="text-xs text-slate-400">
+                Banco: {subjectStats['Conhecimentos Específicos'].total}
+              </div>
+            </div>
+            <div className="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+              <div 
+                className="bg-emerald-500 h-full rounded-full transition-all"
+                style={{ 
+                  width: `${subjectStats['Conhecimentos Específicos'].answered > 0 
+                    ? Math.round((subjectStats['Conhecimentos Específicos'].correct / subjectStats['Conhecimentos Específicos'].answered) * 100) 
+                    : 0}%` 
+                }}
+              />
+            </div>
+            <p className="text-[10px] text-slate-400">
+              Arquivologia (3 idades), Estoques (ABC/XYZ) e PODC.
             </p>
           </div>
 

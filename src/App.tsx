@@ -16,17 +16,22 @@ import { CadernoErrosMode } from './components/CadernoErrosMode';
 import { BizusQuickRead } from './components/BizusQuickRead';
 import { Dashboard } from './components/Dashboard';
 import { AIChatbot } from './components/AIChatbot';
-import { LabPraticoMode } from './components/LabPraticoMode';
 
 export function App() {
   const [profiles, setProfiles] = useState<UserProfile[]>([]);
   const [activeProfileId, setActiveProfileId] = useState<string>('');
   const [activeTab, setActiveTab] = useState<string>('teoria');
   const [selectedSubject, setSelectedSubject] = useState<SubjectType>(() => {
-    const saved = localStorage.getItem('unifacs_selected_subject');
-    return (saved === 'Banco de Dados' || saved === 'Qualidade de Software') 
-      ? (saved as SubjectType) 
-      : 'Qualidade de Software';
+    const saved = localStorage.getItem('ufba_selected_subject');
+    const validSubjects: SubjectType[] = [
+      'Língua Portuguesa',
+      'Noções de Informática',
+      'Administração Pública',
+      'Conhecimentos Específicos'
+    ];
+    return validSubjects.includes(saved as SubjectType)
+      ? (saved as SubjectType)
+      : 'Língua Portuguesa';
   });
 
   const refreshProfiles = () => {
@@ -42,7 +47,7 @@ export function App() {
 
   const handleSelectSubject = (subj: SubjectType) => {
     setSelectedSubject(subj);
-    localStorage.setItem('unifacs_selected_subject', subj);
+    localStorage.setItem('ufba_selected_subject', subj);
   };
 
   const activeProfile = profiles.find(p => p.id === activeProfileId) || profiles[0];
@@ -116,10 +121,6 @@ export function App() {
           />
         )}
 
-        {activeTab === 'lab_pratico' && (
-          <LabPraticoMode />
-        )}
-
         {activeTab === 'tutor_ia' && (
           <AIChatbot />
         )}
@@ -151,8 +152,8 @@ export function App() {
       {/* RODAPÉ */}
       <footer className="border-t border-slate-800/80 py-6 text-center text-xs text-slate-500">
         <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-2">
-          <span>UNIFACS 2026.2 • Portal de Estudos Intensivos da Gilvania (Campus Tancredo Neves)</span>
-          <span>Qualidade de Software (Terça 20/10) • Banco de Dados (Quarta 21/10) 🚀</span>
+          <span>UFBA 2026 • Portal de Preparação da Gilvania • Cargo 201: Assistente em Administração</span>
+          <span>Prova Objetiva & Redação: 20 de dezembro de 2026 (4h) 🎯</span>
         </div>
       </footer>
 

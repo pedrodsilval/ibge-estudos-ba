@@ -18,84 +18,77 @@ interface ChatMessage {
 }
 
 const PRESET_QUESTIONS = [
-  'Quais são as 3 decisões formais e os 2 documentos de uma RTF?',
-  'Como calcular a Complexidade Ciclomática V(G)?',
-  'Qual a diferença entre STUB e DRIVER nos testes de integração?',
-  'Como identificar 1FN, 2FN e 3FN em Banco de Dados?',
-  'Por que a divisão (9 / 5) falha em Java?',
-  'Qual a diferença entre DELETE e DROP TABLE?',
-  'Por que telefone é VARCHAR e dinheiro é DECIMAL?'
+  'Quais as regras de ouro da Crase (proibida, obrigatória e facultativa)?',
+  'Quais os prazos da Lei 8.112 para posse e exercício?',
+  'Qual a diferença entre CONSUNI, CONSEPE e Curadores da UFBA?',
+  'Como funciona a Teoria das Três Idades na Arquivologia?',
+  'Qual a diferença entre Vírus, Worm e Ransomware em Informática?',
+  'Como interpretar a Curva ABC e a Classificação XYZ de materiais?',
+  'Quais as modalidades de licitação da Lei 14.133/2021?',
+  'Quais são os fechos oficiais segundo o Manual de Redação da PR?'
 ];
 
-// Base de conhecimento acadêmica para as provas da UNIFACS (Prof. Enderson Nobre e Prof. Luiz Henrique Souza)
+// Base de conhecimento calibrada com o Edital UFBA 2026 - Assistente em Administração
 const KNOWLEDGE_BASE: Record<string, { answer: string; bizu?: string }> = {
-  'rtf': {
-    answer: 'Uma **Revisão Técnica Formal (RTF)** é uma reunião estática de controle de qualidade:\n- **Duração e Pessoas:** 3 a 5 participantes e menos de 2 horas.\n- **Papéis:** Produtor (apresenta o produto), Líder (controla o tempo e a agenda), Revisores (apontam defeitos) e Registrador (anota tudo na ata).\n- **3 Decisões Formais:** 1. Aceitar sem modificações; 2. Rejeitar por erros graves (exige nova RTF); 3. Aceitar provisoriamente (apenas correções pontuais).\n- **2 Documentos:** *Lista de Problemas de Revisão* (para o desenvolvedor corrigir) e *Relatório Sintetizado da RTF* (para a gestão).',
-    bizu: '💡 Diretriz clássica de Pressman: "Revisa-se o produto, nunca o produtor! Aponte o defeito, mas não tente consertá-lo na reunião."'
+  'crase': {
+    answer: 'A **Crase** é a fusão da preposição "a" com o artigo definido feminino "a" (ou pronomes aquele/aquela/aquilo):\n\n1. **Regra de Troca Prática:** Troque a palavra feminina por uma masculina equivalente. Se virar "AO", tem crase! (Ex: Fui à praia ➔ Fui ao clube).\n2. **Casos Proibidos:** Antes de verbo ("disposto a lutar"), palavra masculina ("a pé", "a prazo"), pronomes de tratamento e indefinidos ("a ela", "a todos"), e entre palavras repetidas ("cara a cara").\n3. **Casos Facultativos (Mnemônico "Até Minha Maria"):**\n   - Após a preposição **Até**;\n   - Antes de pronome possessivo feminino singular (**Minha, tua, sua**);\n   - Antes de nome próprio feminino (**Maria, Paula**).',
+    bizu: '💡 Decore: "Antes de verbo e masculino, crase é veneno! Se trocou por masculino e deu AO, crase no A sem medo!"'
   },
-  'mccabe': {
-    answer: 'A **Complexidade Ciclomática V(G)** de Tom McCabe fornece uma métrica da complexidade lógica e define o conjunto-base de caminhos linearmente independentes a serem testados. É calculada de 3 formas equivalentes:\n1. **V(G) = Número de Regiões** (fechadas + 1 externa)\n2. **V(G) = E - N + 2** (Arestas menos Nós mais 2)\n3. **V(G) = P + 1** (Nós predicados de decisão mais 1)',
-    bizu: '💡 Decore a tríade: Regiões, E - N + 2, e P + 1. O resultado é rigorosamente o mesmo!'
+  'fecho': {
+    answer: 'Segundo a **3ª edição do Manual de Redação da Presidência da República (2018)**, existem **APENAS DOIS FECHOS** em toda a correspondência oficial federal:\n\n1. **Respeitosamente,** ➔ Para autoridades de hierarquia SUPERIOR à do emissor (incluindo o Presidente da República).\n2. **Atenciosamente,** ➔ Para autoridades de MESMA hierarquia ou hierarquia INFERIOR, ou entre particulares.\n\n⚠️ Foram totalmente extintos fechos como "Cordialmente", "Saudações acadêmicas", "Sem mais para o momento", etc.',
+    bizu: '💡 Hierarquia superior = Respeitosamente. Mesma hierarquia ou subordinado = Atenciosamente. Só existem esses dois!'
   },
-  'ciclomática': {
-    answer: 'A **Complexidade Ciclomática V(G)** de Tom McCabe fornece uma métrica da complexidade lógica e define o conjunto-base de caminhos linearmente independentes a serem testados. É calculada de 3 formas equivalentes:\n1. **V(G) = Número de Regiões** (fechadas + 1 externa)\n2. **V(G) = E - N + 2** (Arestas menos Nós mais 2)\n3. **V(G) = P + 1** (Nós predicados de decisão mais 1)',
-    bizu: '💡 Decore a tríade: Regiões, E - N + 2, e P + 1. O resultado é rigorosamente o mesmo!'
+  'manual': {
+    answer: 'O **Manual de Redação da Presidência da República (3ª Edição)** unificou as comunicações federais:\n- **Padrão Ofício:** Substituiu e unificou o antigo Aviso, Memorando e Ofício sob uma única estrutura diagramada.\n- **Princípios Fundamentais:** Clareza, concisão, impessoalidade, formalidade e padronização.\n- **Pronomes de Tratamento:** Concordância gramatical SEMPRE em 3ª pessoa ("Vossa Excelência solicitou...", e nunca "solicitastes"). "Vossa Excelência" é reservado aos chefes dos 3 Poderes, ministros, governadores e reitores de universidades federais.',
+    bizu: '💡 O pronome de tratamento é de 2ª pessoa, mas os verbos e pronomes possessivos vão SEMPRE para a 3ª pessoa!'
   },
-  'integracao': {
-    answer: 'No teste de integração incremental, diferenciam-se duas estratégias principais:\n- **Top-Down (Descendente):** Começa no topo (controladores/telas) e desce. Exige **STUBS** (submódulos falsos/simulados que retornam respostas estáticas para isolar a base).\n- **Bottom-Up (Ascendente):** Começa na base (repositórios/utilitários) e sobe. Exige **DRIVERS** (módulos chamadores que disparam as execuções).',
-    bizu: '💡 Top-Down (cima pra baixo) usa STUB. Bottom-Up (baixo pra cima) usa DRIVER.'
+  'posse': {
+    answer: 'Na **Lei nº 8.112/1990** (Regime Jurídico dos Servidores Federais):\n- **Nomeação ➔ Posse:** Prazo improrrogável de **30 DIAS** contados da publicação oficial. Se não tomar posse, o ato de nomeação é tornado sem efeito!\n- **Posse ➔ Exercício:** Prazo de **15 DIAS** contados da posse. Se não entrar em exercício, o servidor é **EXONERADO**!\n\n⚠️ Atenção de prova: A posse pode ocorrer por procuração específica; o exercício exige presença física no cargo.',
+    bizu: '💡 Linha do tempo: Nomeação ➔ [30 dias] ➔ Posse ➔ [15 dias] ➔ Exercício efetivo.'
   },
-  'stub': {
-    answer: 'Um **STUB** é um módulo auxiliar fictício (fake/mock) utilizado na integração **Descendente (Top-Down)** para substituir temporariamente módulos inferiores que ainda não foram desenvolvidos ou conectados.',
-    bizu: '💡 Top-Down usa STUB para simular o que está embaixo!'
+  '8112': {
+    answer: 'Pontos mais cobrados da **Lei 8.112/1990** na UFBA:\n- **Formas de Provimento (Mnemônico PANRRRA):** Promoção, Aproveitamento, Nomeação (única originária!), Readaptação, Recondução, Reintegração e Reversão.\n- **Estabilidade:** Exige **3 anos de efetivo exercício** + aprovação em Avaliação Especial de Desempenho.\n- **Penalidades Disciplinares:** Advertência (prescreve em 180 dias), Suspensão de até 90 dias (prescreve em 2 anos) e Demissão/Cassação de aposentadoria (prescreve em 5 anos).',
+    bizu: '💡 Demissão é punição disciplinar (perda do cargo por falta grave). Exoneração NÃO é punição (é mero desligamento a pedido ou de ofício)!'
   },
-  'driver': {
-    answer: 'Um **DRIVER** é um programa chamador utilizado na integração **Ascendente (Bottom-Up)** para disparar chamadas e passar parâmetros para módulos da base que estão sendo testados antes dos módulos superiores existirem.',
-    bizu: '💡 Bottom-Up usa DRIVER para pilotar por cima!'
+  'consuni': {
+    answer: 'Estrutura máxima da **Universidade Federal da Bahia (UFBA)** conforme seu Estatuto e Regimento:\n\n1. **CONSUNI (Conselho Universitário):** É o **ÓRGÃO SUPREMO** e soberano de deliberação coletiva e supervisão geral da UFBA. Fixa a política universitária, diretrizes econômico-financeiras e alterações estatutárias.\n2. **CONSEPE (Conselho de Ensino, Pesquisa e Extensão):** Órgão superior de deliberação em matéria puramente **ACADÊMICA**, pedagógica e curricular.\n3. **Conselho de Curadores:** Órgão deliberativo e de fiscalização **ECONÔMICA E FINANCEIRA** (analisa contas, patrimônio e balanço anual).\n4. **Reitoria:** Órgão executivo superior administrado pelo Reitor.',
+    bizu: '💡 Não confunda: CONSUNI = Política Geral e Deliberação Máxima. CONSEPE = Ensino, Pesquisa e Extensão. Curadores = Dinheiro e Fiscalização Contábil!'
   },
-  'caixa-preta': {
-    answer: 'O **Teste Caixa-Preta (Funcional)** avalia o software com base nos requisitos e interfaces, sem analisar o código-fonte interno. Principais técnicas: **Particionamento de Equivalência** e **Análise do Valor Limite**. Erros expostos (Mnemônico **F-I-B-D-T**): Funções incorretas/ausentes, Interface, Banco de dados/estruturas externas, Desempenho e Término/inicialização.',
-    bizu: '💡 Caixa-preta testa o "quê" o sistema faz (entradas e saídas).'
+  'ufba': {
+    answer: 'A **UFBA** é uma autarquia federal vinculada ao Ministério da Educação (MEC), dotada de autonomia didático-científica, administrativa e de gestão financeira e patrimonial (CF/88 Art. 207).\n- **Estrutura de topo:** Reitor e Vice-Reitor nomeados pelo Presidente da República a partir de lista tríplice.\n- **Órgãos Deliberativos Superiores:** CONSUNI (máximo), CONSEPE (acadêmico) e Conselho de Curadores (fiscalização financeira).',
+    bizu: '💡 O CONSUNI é presidido pelo Reitor e reúne representação de professores, servidores técnico-administrativos e estudantes!'
   },
-  'caixa-branca': {
-    answer: 'O **Teste Caixa-Branca (Estrutural)** analisa o código-fonte interno, desvios e fluxos lógicos. Seus 4 pilares são: 1. Exercitar todos os caminhos independentes; 2. Testar decisões nos estados Verdadeiro e Falso; 3. Executar ciclos em seus limites operacionais; 4. Validar estruturas de dados internas.',
-    bizu: '💡 Caixa-branca testa "como" o código foi construído internamente.'
+  'arquivologia': {
+    answer: 'A **Teoria das Três Idades (Ciclo Vital dos Documentos)** é o coração da Arquivologia:\n\n1. **Arquivo Corrente (1ª Idade):** Documentos em tramitação, frequentemente consultados e de uso contínuo (fica no setor de trabalho imediato).\n2. **Arquivo Intermediário (2ª Idade):** Documentos que perderam a frequência de consulta, mas aguardam prazos prescricionais/jurídicos da Tabela de Temporalidade. Ficam em depósito central.\n3. **Arquivo Permanente ou Histórico (3ª Idade):** Documentos de valor histórico, cultural, probatório ou de pesquisa. **NUNCA PODEM SER ELIMINADOS!** São imprescritíveis e inalienáveis.',
+    bizu: '💡 O descarte só acontece nas fases corrente ou intermediária, de acordo com a Tabela de Temporalidade. Documento de 3ª idade é ETERNO!'
   },
-  '1fn': {
-    answer: 'A **Primeira Forma Normal (1FN)** exige **ATOMICIDADE**: nenhum atributo pode armazenar múltiplos valores, listas ou arrays numa única célula (como vários telefones juntos), nem colunas repetitivas (tel1, tel2). Toda tabela na 1FN possui uma Chave Primária (PK) definida.',
-    bizu: '💡 1FN = Tudo atômico e indivisível. Nada de listas numa célula só!'
+  'curva abc': {
+    answer: 'A **Curva ABC (Princípio de Pareto ou Regra 80/20)** classifica estoques por valor financeiro investido:\n- **Classe A:** Poucos itens (~20% do total de itens), mas que concentram a maior parte do investimento financeiro (~80% do valor). Exigem controle diário e rigoroso!\n- **Classe B:** Itens intermediários (~30% dos itens e ~15% do valor financeiro).\n- **Classe C:** Grande quantidade de itens (~50% do total), mas com baixíssimo impacto financeiro (~5% do valor). Podem ter controles mais flexíveis.\n\n⚠️ Não confunda com a **Classificação XYZ**, que mede a **CRITICIDADE** (X = não crítico; Y = média criticidade; Z = vital cuja falta para a operação).',
+    bizu: '💡 ABC mede VALOR FINANCEIRO (custo). XYZ mede CRITICIDADE (parada de operação).'
   },
-  '2fn': {
-    answer: 'A **Segunda Forma Normal (2FN)** exige estar na 1FN e **eliminar Dependências Parciais**. Um atributo não-chave não pode depender de apenas uma parte de uma Chave Primária COMPOSTA. Toda tabela com PK simples (uma coluna só) já está automaticamente na 2FN!',
-    bizu: '💡 2FN só se aplica a Chave Composta: nenhum campo comum pode depender de só "um pedaço" da chave.'
+  'podc': {
+    answer: 'As **Funções Administrativas (Processo Organizacional - PODC)**:\n\n1. **Planejar:** Definir a missão, visão, objetivos e determinar os cursos de ação para o futuro.\n2. **Organizar:** Distribuir tarefas, autoridade e alocar recursos entre departamentos e cargos.\n3. **Dirigir (Liderar):** Coordenar, liderar, motivar e orientar as pessoas na execução diária.\n4. **Controlar:** Monitorar o desempenho atual, comparar com os padrões planejados e aplicar ações corretivas caso haja desvios.',
+    bizu: '💡 Se a questão falar em "comparar o padrão com o executado e corrigir desvios", a resposta é SEMPRE a função CONTROLE!'
   },
-  '3fn': {
-    answer: 'A **Terceira Forma Normal (3FN)** exige estar na 2FN e **eliminar Dependências Transitivas**. Um atributo não-chave não pode depender de outro atributo que também não é chave (A ➔ B ➔ C). Por exemplo: nome e ramal de departamento não podem ficar na tabela de Funcionários se dependerem de id_departamento.',
-    bizu: '💡 3FN = Coluna comum não pode ser "dona" de outra coluna comum.'
+  'licitacao': {
+    answer: 'A **Nova Lei de Licitações (Lei nº 14.133/2021)** extinguiu Convite e Tomada de Preços. Agora existem **5 MODALIDADES OFICIAIS**:\n1. **Pregão:** Obrigatório para bens e serviços comuns (critério: menor preço ou maior desconto);\n2. **Concorrência:** Para contratações de grande complexidade técnica ou obras de engenharia;\n3. **Concurso:** Escolha de trabalho técnico, científico ou artístico (concessão de prêmio ou remuneração);\n4. **Leilão:** Alienação de bens móveis ou imóveis inservíveis (maior lance);\n5. **Diálogo Competitivo:** Inovação onde a administração dialoga previamente com licitantes para encontrar a solução técnica.',
+    bizu: '💡 Licitação na Nova Lei = Pregão, Concorrência, Concurso, Leilão e Diálogo Competitivo. Convite e Tomada de Preços NÃO existem mais!'
   },
-  'delete': {
-    answer: 'Diferença entre DELETE e DROP:\n- `DELETE FROM tabela WHERE id = 1;`: Comando **DML** que apaga apenas as linhas (tuplas). A estrutura e o esqueleto da tabela permanecem intactos.\n- `DROP TABLE tabela;`: Comando **DDL** que destrói a tabela por completo, removendo sua estrutura, colunas, índices e dados do banco.',
-    bizu: '💡 DELETE tira a mobília de dentro. DROP explode o prédio inteiro!'
+  'seguranca': {
+    answer: 'Na **Segurança da Informação**, os 5 Princípios Básicos formam o mnemônico **CIDAL**:\n- **Confidencialidade:** Sigilo contra acesso não autorizado;\n- **Integridade:** Garantia de que a informação não foi alterada ou adulterada;\n- **Disponibilidade:** Informação acessível sempre que o usuário legítimo precisar;\n- **Autenticidade:** Garantia da identidade de quem enviou ou gerou a informação;\n- **Legalidade / Não Repúdio (Irretratabilidade):** O autor não pode negar a autoria da transação.',
+    bizu: '💡 Guarde o CIDAL: Confidencialidade, Integridade, Disponibilidade, Autenticidade e Legalidade.'
   },
-  'drop': {
-    answer: '`DROP TABLE tabela;` é um comando DDL que remove o objeto tabela permanentemente do esquema do banco de dados, excluindo estrutura e dados simultaneamente.',
-    bizu: '💡 Cuidado: DROP não tem volta!'
+  'malware': {
+    answer: 'Diferenças essenciais de **Ameaças Virtuais** para a prova:\n- **Vírus:** Precisa de um arquivo HOSPEDEIRO e de execução humana explícita para se propagar.\n- **Worm:** É autossuficiente e NÃO precisa de hospedeiro nem de ação do usuário; replica-se automaticamente pela rede explorando vulnerabilidades.\n- **Cavalo de Troia (Trojan):** Disfarça-se de programa útil (jogo, utilitário), mas carrega código malicioso em segundo plano.\n- **Ransomware:** Sequestra e CRIPTOGRAFA arquivos do disco, exigindo pagamento de resgate (geralmente em Bitcoin/criptomoedas).\n- **Spyware:** Programa espião que monitora atividades (keylogger captura teclas, screenlogger telas).',
+    bizu: '💡 Worm anda sozinho na rede; Vírus pega carona em outro arquivo; Ransomware criptografa e cobra resgate!'
   },
-  'telefone': {
-    answer: 'Campos como Telefone, CPF e CEP devem ser armazenados como **VARCHAR** e não como INT porque:\n1. O tipo INT descarta o zero à esquerda (o DDD 071 vira 71);\n2. Telefones possuem caracteres de máscara (parênteses, hifens);\n3. Não realizam operações matemáticas (ninguém soma dois telefones).',
-    bizu: '💡 Se não faz conta matemática e pode começar com zero, guarde sempre como VARCHAR!'
+  'excel': {
+    answer: 'Pontos vitais de **Excel 365** em concursos:\n- **Cifrão `$ ` (Trava / Fixação):** `$A$1` fixa coluna e linha (absoluta). `$A1` fixa apenas a coluna A. `A$1` fixa apenas a linha 1.\n- **Função SE:** `=SE(teste_lógico; valor_se_verdadeiro; valor_se_falso)`.\n- **PROCV:** `=PROCV(valor_procurado; matriz_tabela; num_indice_coluna; [procurar_intervalo])`. Use `FALSO` ou `0` para correspondência EXATA!\n- Se arrastar a fórmula `=$A$1+B1` da linha 1 para a linha 2, vira `=$A$1+B2` (o `$A$1` não muda, mas B1 vira B2).',
+    bizu: '💡 Onde tem cifrão `$`, fica congelado ao arrastar a alça de preenchimento!'
   },
-  'dinheiro': {
-    answer: 'Valores financeiros devem ser armazenados com o tipo **DECIMAL(10,2)** (e nunca FLOAT ou DOUBLE) porque tipos de ponto flutuante sofrem de imprecisão binária cumulativa, causando perda de centavos em saldos bancários e faturas.',
-    bizu: '💡 Dinheiro em banco de dados relacional = SEMPRE DECIMAL!'
-  },
-  'divisao': {
-    answer: 'Em Java, `(9 / 5)` é avaliado como divisão inteira porque ambos os números são inteiros literais. O compilador descarta as casas decimais e retorna `1` (em vez de `1.8`). A expressão `celsius * (9 / 5) + 32` vira `celsius * 1 + 32`.\n\n**Correção:** Use literais double: `(9.0 / 5.0)`.',
-    bizu: '💡 Em Java, divisão de int com int dá int! Use 9.0 / 5.0 para obter 1.8.'
-  },
-  'fatorial': {
-    answer: 'No cálculo de fatorial acumulado, a variável deve ser inicializada com `fat = 1` (elemento neutro da multiplicação). Começar com `fat = 0` faz qualquer produto resultar em 0 (`0 * 1 = 0`, `0 * 2 = 0`...).',
-    bizu: '💡 Multiplicação acumulada começa sempre em 1!'
+  'etica': {
+    answer: 'No **Decreto Federal nº 1.171/1994** (Código de Ética do Servidor Civil Federal):\n- **Penalidade Máxima da Comissão de Ética:** É EXCLUSIVAMENTE a pena de **CENSURA ÉTICA**. A comissão de ética NÃO pode demitir, suspender ou multar ninguém! Para punição grave, encaminha ao órgão disciplinar competente.\n- **Primados Maiores:** Dignidade, decoro, zelo, eficácia e consciência dos princípios morais.\n- A publicidade dos atos é a regra; o sigilo é exceção justificada por segurança da sociedade e do Estado.',
+    bizu: '💡 Cai sempre em prova: Comissão de Ética só aplica a pena de CENSURA e nada mais!'
   }
 };
 
@@ -104,7 +97,7 @@ export const AIChatbot: React.FC = () => {
     {
       id: 'welcome',
       sender: 'ai',
-      text: 'Olá, Gilvania! Sou seu **Tutor Acadêmico UNIFACS**. Estou calibrado com o conteúdo exato das aulas do **Prof. Enderson Nobre (Qualidade de Software)** e do **Prof. Luiz Henrique (Banco de Dados)**.\n\nQual conceito ou exercício você gostaria de revisar agora?',
+      text: 'Olá, Gilvania! Sou seu **Tutor Especialista no Concurso UFBA 2026** para o cargo de **Assistente em Administração (Classe D)**.\n\nEstou calibrado com todo o conteúdo programático do edital:\n- 🇧🇷 **Língua Portuguesa** (Crase, Concordância, Regência, Manual da Presidência 3ª ed.)\n- 💻 **Noções de Informática** (Excel 365, Segurança CIDAL, Malware, Backup)\n- 🏛️ **Administração Pública** (CF/88 Art. 37-41, Lei 8.112/90, Estatuto da UFBA, Lei 14.133, LAI/LGPD)\n- 📂 **Conhecimentos Específicos** (PODC, Gestão de Materiais / Curva ABC, Arquivologia 3 Idades, Atendimento ao Público)\n\nQual dúvida ou conceito você gostaria de revisar agora?',
       timestamp: new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' })
     }
   ]);
@@ -139,12 +132,12 @@ export const AIChatbot: React.FC = () => {
       if (match) {
         aiResponseText = match[1].answer;
         aiBizu = match[1].bizu || '';
-      } else if (lower.includes('clinica') || lower.includes('veterinaria') || lower.includes('animal')) {
-        aiResponseText = 'Na **Atividade da Clínica Veterinária** projetada em aula:\n- **Tutor (1) ➔ (N) Animal:** Um tutor pode ter vários animais; o animal pertence a um só tutor. A FK `id_tutor` fica na tabela Animal.\n- **Animal e Veterinário ➔ Consulta:** A tabela Consulta é o ponto de encontro das consultas com atributos próprios: data, horário, motivo, valor_cobrado (DECIMAL) e diagnóstico (que pode ser NULL enquanto a consulta não acabar!).';
-        aiBizu = '💡 Lembre-se: Diagnóstico aceita NULL e valor monetário usa DECIMAL(10,2).';
+      } else if (lower.includes('ufba') || lower.includes('estatuto') || lower.includes('reitor')) {
+        aiResponseText = 'Sobre a organização interna da **UFBA**:\n- **CONSUNI:** Órgão deliberativo superior máximo da Universidade, responsável pelas diretrizes políticas e orçamentárias gerais.\n- **CONSEPE:** Responsável pelas diretrizes acadêmicas (ensino de graduação/pós, pesquisa e projetos de extensão).\n- **Conselho de Curadores:** Responsável pela fiscalização orçamentária, financeira e contábil do patrimônio da instituição.\n- **Reitoria:** Órgão executivo central chefiado pelo Reitor.';
+        aiBizu = '💡 Lembre-se: O CONSUNI é o órgão superior máximo da UFBA!';
       } else {
-        aiResponseText = `Excelente pergunta para as provas da UNIFACS! Recomendo focar nos conceitos prioritários:\n- **Qualidade de Software:** As 15 questões da folha de revisão (RTF, Caixa-Preta F-I-B-D-T, McCabe V(G) = P + 1, e Stubs/Drivers).\n- **Banco de Dados:** As Formas Normais (1FN atômica, 2FN sem dependência parcial, 3FN sem dependência transitiva) e os scripts DDL da Clínica Veterinária.\n\nTente clicar em uma das perguntas rápidas sugeridas acima!`;
-        aiBizu = '💡 Dica: Explore o "Paredão de Bizus" e a aba "Laboratório Prático" no menu superior!';
+        aiResponseText = `Excelente pergunta para o concurso da UFBA! Para o cargo de Assistente em Administração, recomendo focar nas 4 disciplinas fundamentais:\n- **Língua Portuguesa:** Crase (troca pelo masculino "AO"), concordância verbal com partícula "se", e Padrão Ofício do Manual da PR 3ª ed.\n- **Informática:** Fórmulas no Excel (cifrão $, PROCV exato com 0), malware (Ransomware vs Worm vs Trojan) e backup 3-2-1.\n- **Administração Pública:** Prazos da Lei 8.112 (posse 30d, exercício 15d) e os 3 conselhos da UFBA (CONSUNI, CONSEPE e Curadores).\n- **Específicas:** Teoria das 3 Idades na Arquivologia e Curva ABC na gestão de materiais.\n\nExperimente clicar em uma das perguntas rápidas acima ou digite palavras-chave como **crase**, **8112**, **consuni**, **fecho**, **curva abc** ou **arquivologia**!`;
+        aiBizu = '💡 Dica: Pratique a redação oficial na aba "Redação & Discursivas" e faça simulados cronometrados!';
       }
 
       const aiMsg: ChatMessage = {
@@ -156,11 +149,11 @@ export const AIChatbot: React.FC = () => {
       };
 
       setMessages(prev => [...prev, aiMsg]);
-    }, 400);
+    }, 350);
   };
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-6 space-y-6">
+    <div className="max-w-4xl mx-auto px-4 py-6 space-y-6 animate-fadeIn">
       
       {/* CABEÇALHO */}
       <div className="bg-slate-900 border border-slate-800 p-6 rounded-3xl shadow-xl flex items-center justify-between">
@@ -170,13 +163,13 @@ export const AIChatbot: React.FC = () => {
           </div>
           <div>
             <h2 className="text-xl font-bold text-white flex items-center gap-2">
-              Tutor Acadêmico UNIFACS
+              Tutor IA UFBA 2026
               <span className="text-[10px] bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 px-2 py-0.5 rounded-full font-mono">
-                Online 24/7
+                Assistente em Administração
               </span>
             </h2>
             <p className="text-xs text-slate-400">
-              Pronto para tirar dúvidas de Qualidade de Software e Banco de Dados.
+              Calibrado com o conteúdo programático oficial do Concurso da UFBA.
             </p>
           </div>
         </div>
@@ -230,7 +223,7 @@ export const AIChatbot: React.FC = () => {
       <div className="space-y-2">
         <span className="text-[11px] font-bold text-slate-400 flex items-center gap-1.5 px-1">
           <Lightbulb className="w-3.5 h-3.5 text-amber-400" />
-          <span>Dúvidas Frequentes nas Provas da UNIFACS:</span>
+          <span>Tópicos de Maior Incidência no Edital UFBA:</span>
         </span>
         <div className="flex flex-wrap gap-2">
           {PRESET_QUESTIONS.map((q, idx) => (
@@ -252,7 +245,7 @@ export const AIChatbot: React.FC = () => {
           value={inputText}
           onChange={(e) => setInputText(e.target.value)}
           onKeyDown={(e) => e.key === 'Enter' && handleSendMessage()}
-          placeholder="Pergunte sobre RTF, McCabe, 1FN/2FN/3FN, JUnit 5 ou SQL..."
+          placeholder="Pergunte sobre Crase, Fecho de Ofício, Lei 8.112, CONSUNI, Curva ABC, Arquivologia..."
           className="flex-1 bg-transparent px-3 py-2 text-sm text-white placeholder-slate-500 focus:outline-none"
         />
         <button

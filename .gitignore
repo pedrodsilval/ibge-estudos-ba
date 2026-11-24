@@ -24,3 +24,6 @@ dist-ssr
 *.sw?
 
 .vercel
+
+# Projetos isolados
+assistente_langgraph_ollama/

@@ -42,6 +42,8 @@ export interface DiscursiveQuestion {
   keywords: string[];
   goldenBizu: string;
   gradingCriteria: string[];
+  promptType?: 'dissertativa' | 'estudo_de_caso' | 'padrao_oficio';
+  templateSkeleton?: string;
   isFromClassroomReview?: boolean;
   classroomOrder?: number;
   legacyId?: string;

@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { 
-  PenTool, 
-  CheckCircle2, 
-  HelpCircle, 
-  Volume2, 
-  VolumeX, 
-  ChevronLeft, 
-  ChevronRight, 
+import {
+  PenTool,
+  CheckCircle2,
+  HelpCircle,
+  Volume2,
+  VolumeX,
+  ChevronLeft,
+  ChevronRight,
   Sparkles,
   Lightbulb,
   AlertTriangle,
@@ -20,12 +20,41 @@ import {
   Clock,
   AlignLeft,
   FileText,
-  ListChecks
+  ListChecks,
+  Copy,
+  Layers,
+  Link2,
+  ShieldAlert,
+  SplitSquareHorizontal
 } from 'lucide-react';
 import type { DiscursiveQuestion, SubjectType, UserProfile } from '../types/study';
 import { DISCURSIVE_QUESTIONS } from '../data/discursiveQuestions';
 import { recordDiscursiveAnswer } from '../services/storageService';
 import { evaluateDiscursiveAnswer, type EvaluationResult } from '../utils/discursiveEvaluator';
+
+const UNIVERSAL_DISSERTATIVE_SKELETON = `1. INTRODUÇÃO (Apresentação da Tese):
+A Constituição Federal de 1988 assegura o [tema central] como direito fundamental intrínseco à cidadania e à dignidade da pessoa humana. Contudo, no contexto da Administração Pública universitária, observam-se entraves estruturais que desafiam a plena efetivação desse preceito. Nesse prisma, torna-se premente examinar tanto [Argumento 1: o dever legal e regulamentar do Estado] quanto [Argumento 2: a atuação ética e transformadora do servidor público].
+
+2. DESENVOLVIMENTO 1 (Fundamentação Legal e Teórica):
+Em primeiro plano, cabe salientar que a legislação federal impõe diretrizes estritas para a garantia de [tema/problema]. Conforme os princípios da legalidade, moralidade e eficiência (Art. 37 da CF/88), a ausência de mecanismos efetivos vulnera a isonomia e o interesse público. Logo, a observância às normas administrativas não constitui mera formalidade, mas sim garantia indispensável ao Estado Democrático de Direito.
+
+3. DESENVOLVIMENTO 2 (Rotina do Servidor e Atendimento ao Cidadão):
+Ademais, é imperioso destacar o papel decisivo do Assistente em Administração no acolhimento diário da comunidade universitária. Na condição de agente público pautado pelo dever de urbanidade e presteza (Lei nº 8.112/1990 e Decreto nº 1.171/1994), cabe ao servidor atuar com empatia, simplificação procedimental e busca ativa por soluções céleres. Assim, a conduta humanizada no balcão de atendimento materializa a verdadeira função social da universidade pública.
+
+4. CONCLUSÃO (Proposta Resolutiva Completa):
+Infere-se, portanto, a urgência de medidas articuladas para aperfeiçoar essa realidade. Cabe à Reitoria da UFBA, mediante aporte orçamentário e planejamento estratégico contínuo, promover capacitações periódicas aos técnico-administrativos e modernizar os fluxos de trabalho institucionais, com o objetivo de assegurar um serviço público acessível, transparente e equânime a toda a sociedade.`;
+
+const UNIVERSAL_CASE_SKELETON = `1. IDENTIFICAÇÃO DO FATO E DIAGNÓSTICO JURÍDICO:
+Da análise da situação hipotética narrada, depreende-se que [descrever resumidamente a irregularidade ou fato apresentado]. Sob o ponto de vista do direito administrativo e dos princípios constitucionais aplicáveis ao serviço público federal, tal conduta configura [indicar a ilicitude / conformidade legal], violando os preceitos de [citar princípios ou deveres envolvidos].
+
+2. FUNDAMENTAÇÃO LEGAL ESTATUTÁRIA:
+Com fulcro na legislação de regência [citar a Lei aplicável: Lei 8.112/90, Lei 14.133/21, Lei 12.527/11 ou Dec. 1.171/94], estabelece o ordenamento jurídico que [explicar a regra da lei e os prazos]. Dessa forma, resta inequívoco que a atuação do órgão público deve pautar-se estritamente pela legalidade estrita e pela supremacia do interesse público.
+
+3. PROVIDÊNCIAS ADMINISTRATIVAS E CONCLUSÃO DO PROCESSO:
+Diante do exposto, compete à autoridade administrativa da UFBA adotar as seguintes providências imediatas:
+• [Medida 1: Notificação, instauração de processo ou saneamento processual];
+• [Medida 2: Aplicação da sanção disciplinar cabível ou encaminhamento técnico];
+• [Medida 3: Medidas preventivas para evitar reincidência no âmbito da unidade].`;
 
 interface DiscursiveModeProps {
   selectedSubject: SubjectType;
@@ -42,7 +71,7 @@ export const DiscursiveMode: React.FC<DiscursiveModeProps> = ({
 }) => {
   // Filtrar questões pela disciplina selecionada
   const filteredQuestions = DISCURSIVE_QUESTIONS.filter(q => q.subject === selectedSubject);
-  
+
   const [currentIdx, setCurrentIdx] = useState<number>(0);
   const [showAnswer, setShowAnswer] = useState<boolean>(false);
   const [draft, setDraft] = useState<string>('');
@@ -66,6 +95,35 @@ export const DiscursiveMode: React.FC<DiscursiveModeProps> = ({
     conclusao: false,
     impessoalidade: false
   });
+
+  // RECURSOS AVANÇADOS DE REDAÇÃO
+  const [showSkeletonDrawer, setShowSkeletonDrawer] = useState<boolean>(false);
+  const [showConnectivesDrawer, setShowConnectivesDrawer] = useState<boolean>(false);
+  const [showAntiZeroGuide, setShowAntiZeroGuide] = useState<boolean>(false);
+  const [isSideBySide, setIsSideBySide] = useState<boolean>(false);
+  const [copiedStatus, setCopiedStatus] = useState<string | null>(null);
+
+  const copyToClipboard = (text: string, label: string) => {
+    if (navigator?.clipboard) {
+      navigator.clipboard.writeText(text);
+    }
+    setCopiedStatus(label);
+    setTimeout(() => setCopiedStatus(null), 2500);
+  };
+
+  const handleApplySkeleton = (skeletonText: string) => {
+    if (draft.trim() && !window.confirm('Deseja substituir o conteúdo atual da folha pelo esqueleto estrutural?')) {
+      return;
+    }
+    setDraft(skeletonText);
+    setShowSkeletonDrawer(false);
+  };
+
+  const handleInsertConnective = (conn: string) => {
+    setDraft(prev => prev.trim() ? `${prev.trim()} ${conn} ` : `${conn} `);
+    setCopiedStatus(`Inserido: ${conn}`);
+    setTimeout(() => setCopiedStatus(null), 1800);
+  };
 
   useEffect(() => {
     let interval: ReturnType<typeof setInterval>;
@@ -110,7 +168,7 @@ export const DiscursiveMode: React.FC<DiscursiveModeProps> = ({
   // Helper para resgatar resposta salva sem risco de perda por ID ou legacyId
   const getSavedAnswer = (q: DiscursiveQuestion | undefined) => {
     if (!q) return undefined;
-    return activeProfile.discursiveAnswers?.[q.id] || 
+    return activeProfile.discursiveAnswers?.[q.id] ||
       (q.legacyId ? activeProfile.discursiveAnswers?.[q.legacyId] : undefined);
   };
 
@@ -123,7 +181,7 @@ export const DiscursiveMode: React.FC<DiscursiveModeProps> = ({
       setDraft(savedDraft);
       setCheckedKeywords(saved.checkedKeywords || []);
       setSelfScore(saved.selfScore !== undefined ? saved.selfScore : null);
-      
+
       // Se já tem rascunho salvo, pré-avalia para ter o resultado pronto
       if (savedDraft.trim().length > 0) {
         const evalRes = evaluateDiscursiveAnswer(savedDraft, currentQ);
@@ -183,7 +241,7 @@ export const DiscursiveMode: React.FC<DiscursiveModeProps> = ({
     setTimeout(() => {
       const evalRes = evaluateDiscursiveAnswer(draft, currentQ);
       setEvaluation(evalRes);
-      
+
       // Mesclar palavras-chave encontradas automaticamente com as já marcadas
       const mergedKeywords = Array.from(new Set([...checkedKeywords, ...evalRes.matchedKeywords]));
       setCheckedKeywords(mergedKeywords);
@@ -230,18 +288,18 @@ export const DiscursiveMode: React.FC<DiscursiveModeProps> = ({
     setSelfScore(score);
     if (currentQ) {
       let updated = recordDiscursiveAnswer(
-        currentQ.id, 
-        draft, 
-        score, 
+        currentQ.id,
+        draft,
+        score,
         checkedKeywords,
         evaluation?.suggestedScore,
         evaluation?.pedagogicalFeedback
       );
       if (currentQ.legacyId) {
         updated = recordDiscursiveAnswer(
-          currentQ.legacyId, 
-          draft, 
-          score, 
+          currentQ.legacyId,
+          draft,
+          score,
           checkedKeywords,
           evaluation?.suggestedScore,
           evaluation?.pedagogicalFeedback
@@ -274,68 +332,10 @@ export const DiscursiveMode: React.FC<DiscursiveModeProps> = ({
     window.speechSynthesis.speak(u);
   };
 
-  const renderSubjectSelector = () => (
-    <div className="bg-slate-900/90 border border-slate-800 p-2 sm:p-3 rounded-3xl shadow-xl flex flex-col sm:flex-row items-center justify-between gap-3">
-      <div className="flex items-center space-x-2 text-xs font-bold text-slate-300 px-2">
-        <PenTool className="w-4 h-4 text-emerald-400" />
-        <span>Redação & Estudos de Caso:</span>
-      </div>
-
-      <div className="grid grid-cols-2 sm:flex items-center gap-2 w-full sm:w-auto">
-        <button
-          onClick={() => onSelectSubject('Língua Portuguesa')}
-          className={`px-3 py-2 rounded-2xl text-xs font-bold transition-all flex items-center justify-center space-x-1.5 ${
-            selectedSubject === 'Língua Portuguesa'
-              ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg shadow-blue-600/30'
-              : 'bg-slate-950 text-slate-400 hover:text-slate-200 border border-slate-800'
-          }`}
-        >
-          <span>🇧🇷 Português</span>
-        </button>
-
-        <button
-          onClick={() => onSelectSubject('Noções de Informática')}
-          className={`px-3 py-2 rounded-2xl text-xs font-bold transition-all flex items-center justify-center space-x-1.5 ${
-            selectedSubject === 'Noções de Informática'
-              ? 'bg-gradient-to-r from-cyan-600 to-teal-600 text-white shadow-lg shadow-cyan-600/30'
-              : 'bg-slate-950 text-slate-400 hover:text-slate-200 border border-slate-800'
-          }`}
-        >
-          <span>💻 Informática</span>
-        </button>
-
-        <button
-          onClick={() => onSelectSubject('Administração Pública')}
-          className={`px-3 py-2 rounded-2xl text-xs font-bold transition-all flex items-center justify-center space-x-1.5 ${
-            selectedSubject === 'Administração Pública'
-              ? 'bg-gradient-to-r from-amber-600 to-orange-600 text-white shadow-lg shadow-amber-600/30'
-              : 'bg-slate-950 text-slate-400 hover:text-slate-200 border border-slate-800'
-          }`}
-        >
-          <span>🏛️ Adm. Pública</span>
-        </button>
-
-        <button
-          onClick={() => onSelectSubject('Conhecimentos Específicos')}
-          className={`px-3 py-2 rounded-2xl text-xs font-bold transition-all flex items-center justify-center space-x-1.5 ${
-            selectedSubject === 'Conhecimentos Específicos'
-              ? 'bg-gradient-to-r from-emerald-600 to-green-600 text-white shadow-lg shadow-emerald-600/30'
-              : 'bg-slate-950 text-slate-400 hover:text-slate-200 border border-slate-800'
-          }`}
-        >
-          <span>📂 Específicas</span>
-        </button>
-      </div>
-    </div>
-  );
-
   if (!currentQ) {
     return (
-      <div className="max-w-5xl mx-auto px-4 py-8 space-y-6">
-        {renderSubjectSelector()}
-        <div className="bg-slate-900 border border-slate-800 rounded-3xl p-10 text-center text-slate-400">
-          Nenhuma questão discursiva encontrada para esta matéria. Selecione outra disciplina acima.
-        </div>
+      <div className="max-w-4xl mx-auto px-4 py-12 text-center text-slate-400">
+        Nenhuma questão discursiva encontrada para esta matéria.
       </div>
     );
   }
@@ -349,9 +349,56 @@ export const DiscursiveMode: React.FC<DiscursiveModeProps> = ({
 
   return (
     <div className="max-w-5xl mx-auto px-4 py-8 space-y-6 animate-fadeIn">
-      
+
       {/* SELETOR DE MATÉRIA NO TOPO (SEPARAÇÃO RÍGIDA) */}
-      {renderSubjectSelector()}
+      <div className="bg-slate-900/90 border border-slate-800 p-2 sm:p-3 rounded-3xl shadow-xl flex flex-col sm:flex-row items-center justify-between gap-3">
+        <div className="flex items-center space-x-2 text-xs font-bold text-slate-300 px-2">
+          <PenTool className="w-4 h-4 text-emerald-400" />
+          <span>Redação & Estudos de Caso:</span>
+        </div>
+
+        <div className="grid grid-cols-2 sm:flex items-center gap-2 w-full sm:w-auto">
+          <button
+            onClick={() => onSelectSubject('Língua Portuguesa')}
+            className={`px-3 py-2 rounded-2xl text-xs font-bold transition-all flex items-center justify-center space-x-1.5 ${selectedSubject === 'Língua Portuguesa'
+              ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg shadow-blue-600/30'
+              : 'bg-slate-950 text-slate-400 hover:text-slate-200 border border-slate-800'
+              }`}
+          >
+            <span>🇧🇷 Português</span>
+          </button>
+
+          <button
+            onClick={() => onSelectSubject('Noções de Informática')}
+            className={`px-3 py-2 rounded-2xl text-xs font-bold transition-all flex items-center justify-center space-x-1.5 ${selectedSubject === 'Noções de Informática'
+              ? 'bg-gradient-to-r from-cyan-600 to-teal-600 text-white shadow-lg shadow-cyan-600/30'
+              : 'bg-slate-950 text-slate-400 hover:text-slate-200 border border-slate-800'
+              }`}
+          >
+            <span>💻 Informática</span>
+          </button>
+
+          <button
+            onClick={() => onSelectSubject('Administração Pública')}
+            className={`px-3 py-2 rounded-2xl text-xs font-bold transition-all flex items-center justify-center space-x-1.5 ${selectedSubject === 'Administração Pública'
+              ? 'bg-gradient-to-r from-amber-600 to-orange-600 text-white shadow-lg shadow-amber-600/30'
+              : 'bg-slate-950 text-slate-400 hover:text-slate-200 border border-slate-800'
+              }`}
+          >
+            <span>🏛️ Adm. Pública</span>
+          </button>
+
+          <button
+            onClick={() => onSelectSubject('Conhecimentos Específicos')}
+            className={`px-3 py-2 rounded-2xl text-xs font-bold transition-all flex items-center justify-center space-x-1.5 ${selectedSubject === 'Conhecimentos Específicos'
+              ? 'bg-gradient-to-r from-emerald-600 to-green-600 text-white shadow-lg shadow-emerald-600/30'
+              : 'bg-slate-950 text-slate-400 hover:text-slate-200 border border-slate-800'
+              }`}
+          >
+            <span>📂 Específicas</span>
+          </button>
+        </div>
+      </div>
 
       {/* BANNER PEDAGÓGICO: COMO FUNCIONA A CORREÇÃO AUTOMÁTICA */}
       <div className="bg-gradient-to-r from-indigo-950/80 via-slate-900 to-purple-950/80 border border-indigo-500/30 rounded-3xl p-4 sm:p-5 shadow-xl">
@@ -379,7 +426,7 @@ export const DiscursiveMode: React.FC<DiscursiveModeProps> = ({
           <span>Selecione a Questão Discursiva:</span>
           <span>{currentIdx + 1} de {filteredQuestions.length}</span>
         </div>
-        
+
         <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none">
           {filteredQuestions.map((q, idx) => {
             const isCurrent = idx === currentIdx;
@@ -391,15 +438,14 @@ export const DiscursiveMode: React.FC<DiscursiveModeProps> = ({
               <button
                 key={q.id}
                 onClick={() => setCurrentIdx(idx)}
-                className={`flex-shrink-0 px-3 py-2 rounded-2xl text-xs font-bold transition-all border flex items-center space-x-1.5 ${
-                  isCurrent
-                    ? 'bg-indigo-600 text-white border-indigo-400 shadow-md shadow-indigo-600/40 scale-105'
-                    : hasScore
+                className={`flex-shrink-0 px-3 py-2 rounded-2xl text-xs font-bold transition-all border flex items-center space-x-1.5 ${isCurrent
+                  ? 'bg-indigo-600 text-white border-indigo-400 shadow-md shadow-indigo-600/40 scale-105'
+                  : hasScore
                     ? 'bg-emerald-950/40 text-emerald-300 border-emerald-500/40 hover:bg-emerald-900/30'
                     : hasDraft
-                    ? 'bg-amber-950/40 text-amber-300 border-amber-500/40 hover:bg-amber-900/30'
-                    : 'bg-slate-950 text-slate-400 border-slate-800 hover:border-slate-700 hover:text-slate-200'
-                }`}
+                      ? 'bg-amber-950/40 text-amber-300 border-amber-500/40 hover:bg-amber-900/30'
+                      : 'bg-slate-950 text-slate-400 border-slate-800 hover:border-slate-700 hover:text-slate-200'
+                  }`}
                 title={`Questão ${idx + 1}: ${q.topic}`}
               >
                 <span>Q{(idx + 1).toString().padStart(2, '0')}</span>
@@ -419,7 +465,7 @@ export const DiscursiveMode: React.FC<DiscursiveModeProps> = ({
 
       {/* CARD DA QUESTÃO ATUAL */}
       <div className="bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 space-y-6 shadow-2xl relative">
-        
+
         {/* CABEÇALHO DO ENUNCIADO */}
         <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-800 pb-4">
           <div className="flex flex-wrap items-center gap-2">
@@ -453,11 +499,10 @@ export const DiscursiveMode: React.FC<DiscursiveModeProps> = ({
 
             <button
               onClick={() => setShowHint(!showHint)}
-              className={`p-2 rounded-xl border text-xs font-bold transition-all flex items-center space-x-1 ${
-                showHint 
-                  ? 'bg-amber-500/20 text-amber-300 border-amber-500/40' 
-                  : 'bg-slate-950 text-slate-400 border-slate-800 hover:text-amber-300'
-              }`}
+              className={`p-2 rounded-xl border text-xs font-bold transition-all flex items-center space-x-1 ${showHint
+                ? 'bg-amber-500/20 text-amber-300 border-amber-500/40'
+                : 'bg-slate-950 text-slate-400 border-slate-800 hover:text-amber-300'
+                }`}
               title="Dica de Abordagem do Professor"
             >
               <HelpCircle className="w-4 h-4" />
@@ -511,32 +556,30 @@ export const DiscursiveMode: React.FC<DiscursiveModeProps> = ({
                 </span>
               )}
               {/* STATUS DE LINHAS */}
-              <span className={`px-2.5 py-1 rounded-xl text-xs font-bold border ${
-                estimatedLines === 0
-                  ? 'bg-slate-800 text-slate-400 border-slate-700'
-                  : estimatedLines < 15
+              <span className={`px-2.5 py-1 rounded-xl text-xs font-bold border ${estimatedLines === 0
+                ? 'bg-slate-800 text-slate-400 border-slate-700'
+                : estimatedLines < 15
                   ? 'bg-amber-500/10 text-amber-300 border-amber-500/30'
                   : estimatedLines <= 30
-                  ? 'bg-emerald-500/10 text-emerald-300 border-emerald-500/30'
-                  : 'bg-rose-500/10 text-rose-300 border-rose-500/30'
-              }`}>
+                    ? 'bg-emerald-500/10 text-emerald-300 border-emerald-500/30'
+                    : 'bg-rose-500/10 text-rose-300 border-rose-500/30'
+                }`}>
                 {estimatedLines === 0
                   ? '0 / 30 linhas'
                   : estimatedLines < 15
-                  ? `⚠️ ${estimatedLines}/30 linhas (mínimo: 20)`
-                  : estimatedLines <= 30
-                  ? `✅ ${estimatedLines}/30 linhas (tamanho ideal)`
-                  : `🛑 ${estimatedLines}/30 linhas (ultrapassou!)`}
+                    ? `⚠️ ${estimatedLines}/30 linhas (mínimo: 20)`
+                    : estimatedLines <= 30
+                      ? `✅ ${estimatedLines}/30 linhas (tamanho ideal)`
+                      : `🛑 ${estimatedLines}/30 linhas (ultrapassou!)`}
               </span>
 
               {/* CRONÔMETRO DE REDAÇÃO 1h15 */}
               <button
                 onClick={() => setIsTimerActive(!isTimerActive)}
-                className={`flex items-center space-x-1.5 px-3 py-1 rounded-xl text-xs font-bold border transition-all ${
-                  isTimerActive
-                    ? 'bg-indigo-600 text-white border-indigo-400 animate-pulse'
-                    : 'bg-slate-950 text-indigo-300 border-slate-800 hover:bg-slate-800'
-                }`}
+                className={`flex items-center space-x-1.5 px-3 py-1 rounded-xl text-xs font-bold border transition-all ${isTimerActive
+                  ? 'bg-indigo-600 text-white border-indigo-400 animate-pulse'
+                  : 'bg-slate-950 text-indigo-300 border-slate-800 hover:bg-slate-800'
+                  }`}
                 title="Meta de tempo para a redação na prova: 1h15"
               >
                 <Clock className="w-3.5 h-3.5" />
@@ -547,17 +590,317 @@ export const DiscursiveMode: React.FC<DiscursiveModeProps> = ({
               {/* CHECKLIST TOGGLE */}
               <button
                 onClick={() => setShowChecklist(!showChecklist)}
-                className={`p-1.5 rounded-xl border text-xs transition-all ${
-                  showChecklist
-                    ? 'bg-indigo-600/20 text-indigo-300 border-indigo-500/40'
-                    : 'bg-slate-950 text-slate-400 border-slate-800 hover:text-white'
-                }`}
+                className={`p-1.5 rounded-xl border text-xs transition-all ${showChecklist
+                  ? 'bg-indigo-600/20 text-indigo-300 border-indigo-500/40'
+                  : 'bg-slate-950 text-slate-400 border-slate-800 hover:text-white'
+                  }`}
                 title="Checklist Estrutural da Banca"
               >
                 <ListChecks className="w-4 h-4" />
               </button>
             </div>
           </div>
+
+          {/* SUB-BARRA DE RECURSOS AVANÇADOS DE REDAÇÃO */}
+          <div className="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-slate-800/60">
+            <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
+              <button
+                onClick={() => {
+                  setShowSkeletonDrawer(!showSkeletonDrawer);
+                  setShowConnectivesDrawer(false);
+                  setShowAntiZeroGuide(false);
+                }}
+                className={`px-3 py-1.5 rounded-xl text-xs font-bold border transition-all flex items-center space-x-1.5 ${showSkeletonDrawer
+                  ? 'bg-amber-500/20 text-amber-300 border-amber-500/40 shadow-md shadow-amber-500/10'
+                  : 'bg-slate-950 text-slate-300 border-slate-800 hover:border-slate-700'
+                  }`}
+              >
+                <Layers className="w-3.5 h-3.5 text-amber-400" />
+                <span>Esqueletos Coringas</span>
+              </button>
+
+              <button
+                onClick={() => {
+                  setShowConnectivesDrawer(!showConnectivesDrawer);
+                  setShowSkeletonDrawer(false);
+                  setShowAntiZeroGuide(false);
+                }}
+                className={`px-3 py-1.5 rounded-xl text-xs font-bold border transition-all flex items-center space-x-1.5 ${showConnectivesDrawer
+                  ? 'bg-blue-500/20 text-blue-300 border-blue-500/40 shadow-md shadow-blue-500/10'
+                  : 'bg-slate-950 text-slate-300 border-slate-800 hover:border-slate-700'
+                  }`}
+              >
+                <Link2 className="w-3.5 h-3.5 text-blue-400" />
+                <span>Banco de Conectivos</span>
+              </button>
+
+              <button
+                onClick={() => {
+                  setShowAntiZeroGuide(!showAntiZeroGuide);
+                  setShowSkeletonDrawer(false);
+                  setShowConnectivesDrawer(false);
+                }}
+                className={`px-3 py-1.5 rounded-xl text-xs font-bold border transition-all flex items-center space-x-1.5 ${showAntiZeroGuide
+                  ? 'bg-rose-500/20 text-rose-300 border-rose-500/40 shadow-md shadow-rose-500/10'
+                  : 'bg-slate-950 text-slate-300 border-slate-800 hover:border-slate-700'
+                  }`}
+              >
+                <ShieldAlert className="w-3.5 h-3.5 text-rose-400" />
+                <span>Manual Anti-Zero</span>
+              </button>
+            </div>
+
+            <div className="flex items-center gap-2">
+              {copiedStatus && (
+                <span className="text-[11px] font-bold text-emerald-400 bg-emerald-500/10 border border-emerald-500/30 px-2.5 py-1 rounded-xl animate-fadeIn">
+                  ✓ {copiedStatus}
+                </span>
+              )}
+
+              <button
+                onClick={() => setIsSideBySide(!isSideBySide)}
+                className={`px-3 py-1.5 rounded-xl text-xs font-bold border transition-all flex items-center space-x-1.5 ${isSideBySide
+                  ? 'bg-emerald-600 text-white border-emerald-400 shadow-md shadow-emerald-600/30'
+                  : 'bg-slate-950 text-slate-400 border-slate-800 hover:text-white'
+                  }`}
+                title="Dividir tela: Seu rascunho à esquerda e Gabarito oficial à direita"
+              >
+                <SplitSquareHorizontal className="w-3.5 h-3.5" />
+                <span>{isSideBySide ? 'Modo Normal' : 'Ver Lado a Lado'}</span>
+              </button>
+            </div>
+          </div>
+
+          {/* GAVETA 1: ESQUELETOS CORINGAS DE REDAÇÃO */}
+          {showSkeletonDrawer && (
+            <div className="p-4 bg-slate-950 border border-amber-500/30 rounded-2xl space-y-4 animate-fadeIn">
+              <div className="flex items-center justify-between border-b border-slate-800 pb-2">
+                <span className="font-bold text-xs text-amber-300 flex items-center gap-1.5">
+                  <Layers className="w-4 h-4 text-amber-400" />
+                  Modelos de Estrutura & Esqueletos Coringas Prontos:
+                </span>
+                <span className="text-[11px] text-slate-400 hidden sm:inline">
+                  Copie ou insira diretamente na folha para acelerar sua redação
+                </span>
+              </div>
+
+              {currentQ.templateSkeleton && (
+                <div className="p-3.5 bg-slate-900 border border-indigo-500/30 rounded-xl space-y-2">
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs font-bold text-indigo-300">
+                      🎯 Esqueleto Específico Desta Questão ({currentQ.promptType === 'padrao_oficio' ? 'Padrão Ofício' : currentQ.promptType === 'dissertativa' ? 'Dissertação 4 Parágrafos' : 'Estudo de Caso'})
+                    </span>
+                    <div className="flex items-center gap-2">
+                      <button
+                        onClick={() => copyToClipboard(currentQ.templateSkeleton!, 'Esqueleto Copiado')}
+                        className="px-2.5 py-1 bg-slate-800 hover:bg-slate-700 text-slate-200 text-[11px] font-bold rounded-lg transition-all"
+                      >
+                        Copiar
+                      </button>
+                      <button
+                        onClick={() => handleApplySkeleton(currentQ.templateSkeleton!)}
+                        className="px-2.5 py-1 bg-indigo-600 hover:bg-indigo-500 text-white text-[11px] font-bold rounded-lg transition-all flex items-center gap-1 shadow-sm"
+                      >
+                        <Copy className="w-3 h-3" />
+                        <span>Colar na Folha</span>
+                      </button>
+                    </div>
+                  </div>
+                  <pre className="text-[11px] text-slate-300 font-mono whitespace-pre-wrap leading-relaxed max-h-48 overflow-y-auto bg-slate-950 p-2.5 rounded-lg border border-slate-800">
+                    {currentQ.templateSkeleton}
+                  </pre>
+                </div>
+              )}
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+                <div className="p-3.5 bg-slate-900 border border-slate-800 rounded-xl space-y-2">
+                  <div className="flex items-center justify-between">
+                    <span className="font-bold text-slate-200">🏗️ Esqueleto Dissertativo (4 Parágrafos)</span>
+                    <button
+                      onClick={() => handleApplySkeleton(UNIVERSAL_DISSERTATIVE_SKELETON)}
+                      className="text-[11px] text-indigo-400 hover:underline font-bold"
+                    >
+                      Colar na Folha
+                    </button>
+                  </div>
+                  <p className="text-[11px] text-slate-400 leading-relaxed">
+                    • <strong>§1 Introdução:</strong> Contextualização constitucional + Tese + 2 argumentos centrais.<br/>
+                    • <strong>§2 D1:</strong> "Em primeiro plano," + Fundamento legal (CF/88, leis federais).<br/>
+                    • <strong>§3 D2:</strong> "Ademais," + A atuação do Assistente em Administração na UFBA.<br/>
+                    • <strong>§4 Conclusão:</strong> "Infere-se, portanto," + Proposta interventiva completa.
+                  </p>
+                </div>
+
+                <div className="p-3.5 bg-slate-900 border border-slate-800 rounded-xl space-y-2">
+                  <div className="flex items-center justify-between">
+                    <span className="font-bold text-slate-200">📜 Esqueleto Estudo de Caso (3 Parágrafos)</span>
+                    <button
+                      onClick={() => handleApplySkeleton(UNIVERSAL_CASE_SKELETON)}
+                      className="text-[11px] text-indigo-400 hover:underline font-bold"
+                    >
+                      Colar na Folha
+                    </button>
+                  </div>
+                  <p className="text-[11px] text-slate-400 leading-relaxed">
+                    • <strong>§1 Diagnóstico:</strong> Identificação técnica da irregularidade ou situação apresentada.<br/>
+                    • <strong>§2 Fundamentação:</strong> Artigos da Lei 8.112/90, 14.133/21, LAI ou Dec. 1.171/94.<br/>
+                    • <strong>§3 Conclusão:</strong> Medidas administrativas, prazos legais e saneamento processual.
+                  </p>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* GAVETA 2: BANCO DE CONECTIVOS & OPERADORES ARGUMENTATIVOS */}
+          {showConnectivesDrawer && (
+            <div className="p-4 bg-slate-950 border border-blue-500/30 rounded-2xl space-y-3 animate-fadeIn text-xs">
+              <div className="flex items-center justify-between border-b border-slate-800 pb-2">
+                <span className="font-bold text-xs text-blue-300 flex items-center gap-1.5">
+                  <Link2 className="w-4 h-4 text-blue-400" />
+                  Banco de Conectivos da Redação Nota 10 (Clique para inserir no rascunho):
+                </span>
+                <span className="text-[11px] text-slate-400">
+                  Operadores argumentativos valorizados pela banca examinadora
+                </span>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                <div className="p-3 bg-slate-900 border border-slate-800 rounded-xl space-y-1.5">
+                  <span className="font-bold text-emerald-300 text-[11px] block">🟢 Introdução & Abertura:</span>
+                  <div className="flex flex-wrap gap-1">
+                    {['Com efeito,', 'É cediço que', 'Sob a ótica constitucional,', 'Historicamente, nota-se que', 'No contexto contemporâneo,'].map(c => (
+                      <button
+                        key={c}
+                        onClick={() => handleInsertConnective(c)}
+                        className="px-2 py-0.5 bg-slate-950 hover:bg-emerald-500/20 text-slate-300 hover:text-emerald-200 border border-slate-800 rounded-md text-[11px] transition-all"
+                      >
+                        {c}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="p-3 bg-slate-900 border border-slate-800 rounded-xl space-y-1.5">
+                  <span className="font-bold text-blue-300 text-[11px] block">🔵 Continuação & Adição (D1 e D2):</span>
+                  <div className="flex flex-wrap gap-1">
+                    {['Em primeiro plano,', 'Ademais,', 'Outrossim,', 'Vale ressaltar ainda que', 'Paralelamente a isso,', 'Além do mais,'].map(c => (
+                      <button
+                        key={c}
+                        onClick={() => handleInsertConnective(c)}
+                        className="px-2 py-0.5 bg-slate-950 hover:bg-blue-500/20 text-slate-300 hover:text-blue-200 border border-slate-800 rounded-md text-[11px] transition-all"
+                      >
+                        {c}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="p-3 bg-slate-900 border border-slate-800 rounded-xl space-y-1.5">
+                  <span className="font-bold text-amber-300 text-[11px] block">🟠 Contraste & Ressalva:</span>
+                  <div className="flex flex-wrap gap-1">
+                    {['Não obstante,', 'Contudo,', 'Entretanto,', 'Em contrapartida,', 'A despeito disso,', 'Todavia,'].map(c => (
+                      <button
+                        key={c}
+                        onClick={() => handleInsertConnective(c)}
+                        className="px-2 py-0.5 bg-slate-950 hover:bg-amber-500/20 text-slate-300 hover:text-amber-200 border border-slate-800 rounded-md text-[11px] transition-all"
+                      >
+                        {c}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="p-3 bg-slate-900 border border-slate-800 rounded-xl space-y-1.5">
+                  <span className="font-bold text-purple-300 text-[11px] block">🟣 Causa, Efeito & Explicação:</span>
+                  <div className="flex flex-wrap gap-1">
+                    {['Por conseguinte,', 'Haja vista que', 'Dessa forma,', 'Nesse sentido,', 'Sob essa perspectiva,', 'Visto que'].map(c => (
+                      <button
+                        key={c}
+                        onClick={() => handleInsertConnective(c)}
+                        className="px-2 py-0.5 bg-slate-950 hover:bg-purple-500/20 text-slate-300 hover:text-purple-200 border border-slate-800 rounded-md text-[11px] transition-all"
+                      >
+                        {c}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="p-3 bg-slate-900 border border-slate-800 rounded-xl space-y-1.5 sm:col-span-2">
+                  <span className="font-bold text-rose-300 text-[11px] block">🔴 Conclusão & Proposta Interventiva:</span>
+                  <div className="flex flex-wrap gap-1">
+                    {['Infere-se, portanto, que', 'Dessarte,', 'Em suma,', 'Torna-se imperioso, pois,', 'Diante do exposto,', 'Assim sendo,'].map(c => (
+                      <button
+                        key={c}
+                        onClick={() => handleInsertConnective(c)}
+                        className="px-2 py-0.5 bg-slate-950 hover:bg-rose-500/20 text-slate-300 hover:text-rose-200 border border-slate-800 rounded-md text-[11px] transition-all"
+                      >
+                        {c}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* GAVETA 3: MANUAL ANTI-ZERO DA REDAÇÃO UFBA */}
+          {showAntiZeroGuide && (
+            <div className="p-4 bg-slate-950 border border-rose-500/30 rounded-2xl space-y-3 animate-fadeIn text-xs">
+              <div className="flex items-center justify-between border-b border-slate-800 pb-2">
+                <span className="font-bold text-xs text-rose-300 flex items-center gap-1.5">
+                  <ShieldAlert className="w-4 h-4 text-rose-400" />
+                  Manual Anti-Zero da Redação UFBA (Os 6 Mandamentos da Banca):
+                </span>
+                <span className="text-[11px] text-slate-400">
+                  Evite desclassificação e perda de pontos fáceis
+                </span>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 text-slate-300">
+                <div className="p-3 bg-slate-900 border border-slate-800 rounded-xl space-y-1">
+                  <span className="font-bold text-amber-300 text-[11px] block">1. Linhas: Entre 20 e 30 Linhas</span>
+                  <p className="text-[11px] text-slate-400 leading-relaxed">
+                    Menos de 15 a 20 linhas resulta em pontuação zero ou corte de 50%. Mais de 30 linhas é desconsiderado pelo corretor.
+                  </p>
+                </div>
+
+                <div className="p-3 bg-slate-900 border border-slate-800 rounded-xl space-y-1">
+                  <span className="font-bold text-rose-300 text-[11px] block">2. Impessoalidade Obrigatória</span>
+                  <p className="text-[11px] text-slate-400 leading-relaxed">
+                    NUNCA use 1ª pessoa: "eu acho", "vejo que", "na minha opinião". Use 3ª pessoa e verbos impessoais: "Constata-se", "É imperioso".
+                  </p>
+                </div>
+
+                <div className="p-3 bg-slate-900 border border-slate-800 rounded-xl space-y-1">
+                  <span className="font-bold text-blue-300 text-[11px] block">3. Recuo de Parágrafo & Margens</span>
+                  <p className="text-[11px] text-slate-400 leading-relaxed">
+                    Dê recuo de cerca de 2 cm no início de cada parágrafo e escreva até o final da linha. Não ultrapasse as margens laterais.
+                  </p>
+                </div>
+
+                <div className="p-3 bg-slate-900 border border-slate-800 rounded-xl space-y-1">
+                  <span className="font-bold text-emerald-300 text-[11px] block">4. Como Tratar Rasuras</span>
+                  <p className="text-[11px] text-slate-400 leading-relaxed">
+                    Errou uma palavra? Não faça borrões nem parênteses. Passe um traço simples sobre a palavra e escreva a certa ao lado: ~exemplo~ modelo.
+                  </p>
+                </div>
+
+                <div className="p-3 bg-slate-900 border border-slate-800 rounded-xl space-y-1">
+                  <span className="font-bold text-purple-300 text-[11px] block">5. Sem Pronome no Início de Frase</span>
+                  <p className="text-[11px] text-slate-400 leading-relaxed">
+                    É proibido iniciar períodos com pronome oblíquo átono ("Me parece que", "Se tem observado"). Escreva "Parece-me", "Tem-se observado".
+                  </p>
+                </div>
+
+                <div className="p-3 bg-slate-900 border border-slate-800 rounded-xl space-y-1">
+                  <span className="font-bold text-teal-300 text-[11px] block">6. Divida em 4 Parágrafos Equilibrados</span>
+                  <p className="text-[11px] text-slate-400 leading-relaxed">
+                    Parágrafo único ou blocos desproporcionais causam reprovação. Mantenha 1 introdução (~4 linhas), 2 desenvolvimentos (~7 linhas cada) e 1 conclusão (~5 linhas).
+                  </p>
+                </div>
+              </div>
+            </div>
+          )}
 
           {/* CHECKLIST ESTRUTURAL DA BANCA (SE ABERTO) */}
           {showChecklist && (
@@ -577,11 +920,10 @@ export const DiscursiveMode: React.FC<DiscursiveModeProps> = ({
                   <button
                     key={item.key}
                     onClick={() => setChecklist(prev => ({ ...prev, [item.key]: !prev[item.key] }))}
-                    className={`flex items-start space-x-2 p-2 rounded-xl border text-left transition-all ${
-                      checklist[item.key]
-                        ? 'bg-emerald-500/10 border-emerald-500/30 text-emerald-300'
-                        : 'bg-slate-900 border-slate-800 text-slate-400 hover:bg-slate-800'
-                    }`}
+                    className={`flex items-start space-x-2 p-2 rounded-xl border text-left transition-all ${checklist[item.key]
+                      ? 'bg-emerald-500/10 border-emerald-500/30 text-emerald-300'
+                      : 'bg-slate-900 border-slate-800 text-slate-400 hover:bg-slate-800'
+                      }`}
                   >
                     <CheckCircle2 className={`w-4 h-4 shrink-0 mt-0.5 ${checklist[item.key] ? 'text-emerald-400' : 'text-slate-600'}`} />
                     <span>{item.label}</span>
@@ -591,19 +933,58 @@ export const DiscursiveMode: React.FC<DiscursiveModeProps> = ({
             </div>
           )}
 
-          {/* SIMULADOR DE FOLHA PAUTADA COM LINHAS NUMERADAS */}
-          <div className="relative rounded-2xl overflow-hidden border border-slate-800 bg-slate-950 shadow-inner">
-            <textarea
-              value={draft}
-              onChange={(e) => setDraft(e.target.value)}
-              rows={12}
-              placeholder="Escreva sua redação ou resposta discursiva aqui (objetivo: entre 20 e 30 linhas)... Lembre-se de organizar em parágrafos claros e impessoais. Ao concluir, clique em 'Corrigir Minha Resposta Automaticamente'."
-              className="w-full bg-transparent p-4 text-sm font-sans text-slate-100 placeholder-slate-600 leading-[1.8] outline-none transition-all resize-y"
-              style={{
-                lineHeight: '1.8rem'
-              }}
-            />
-          </div>
+          {/* SIMULADOR DE FOLHA PAUTADA COM OPÇÃO DE MODO LADO A LADO */}
+          {isSideBySide ? (
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 animate-fadeIn">
+              {/* COLUNA 1: FOLHA DA GILVANIA */}
+              <div className="space-y-2">
+                <div className="flex items-center justify-between text-xs font-bold text-slate-300 px-1">
+                  <span>Sua Redação em Construção:</span>
+                  <span className="font-mono text-emerald-400">{estimatedLines}/30 linhas</span>
+                </div>
+                <div className="relative rounded-2xl overflow-hidden border border-slate-800 bg-slate-950 shadow-inner">
+                  <textarea
+                    value={draft}
+                    onChange={(e) => setDraft(e.target.value)}
+                    rows={14}
+                    placeholder="Escreva sua redação ou resposta aqui... Compare linha a linha com o padrão esperado ao lado."
+                    className="w-full bg-transparent p-4 text-xs sm:text-sm font-sans text-slate-100 placeholder-slate-600 leading-[1.8] outline-none transition-all resize-y"
+                    style={{ lineHeight: '1.8rem' }}
+                  />
+                </div>
+              </div>
+
+              {/* COLUNA 2: RESPOSTA PADRÃO ESPERADA (GABARITO DA BANCA) */}
+              <div className="space-y-2">
+                <div className="flex items-center justify-between text-xs font-bold text-emerald-400 px-1">
+                  <span>Gabarito Oficial Esperado (Espelho Nota 10):</span>
+                  <button
+                    onClick={() => speakText(currentQ.expectedAnswer)}
+                    className="text-[11px] text-slate-400 hover:text-white flex items-center gap-1"
+                  >
+                    {isSpeaking ? <VolumeX className="w-3.5 h-3.5 text-rose-400" /> : <Volume2 className="w-3.5 h-3.5 text-indigo-400" />}
+                    <span>{isSpeaking ? 'Pausar' : 'Ouvir'}</span>
+                  </button>
+                </div>
+                <div className="bg-slate-950 border border-slate-800 rounded-2xl p-4 text-xs sm:text-sm text-slate-300 leading-relaxed whitespace-pre-line overflow-y-auto max-h-[380px] shadow-inner font-sans">
+                  {currentQ.expectedAnswer}
+                </div>
+              </div>
+            </div>
+          ) : (
+            <div className="relative rounded-2xl overflow-hidden border border-slate-800 bg-slate-950 shadow-inner">
+              <textarea
+                value={draft}
+                onChange={(e) => setDraft(e.target.value)}
+                rows={12}
+                placeholder="Escreva sua redação ou resposta discursiva aqui (objetivo: entre 20 e 30 linhas)... Lembre-se de organizar em parágrafos claros e impessoais. Ao concluir, clique em 'Corrigir Minha Resposta Automaticamente'."
+                className="w-full bg-transparent p-4 text-sm font-sans text-slate-100 placeholder-slate-600 leading-[1.8] outline-none transition-all resize-y"
+                style={{
+                  lineHeight: '1.8rem'
+                }}
+              />
+            </div>
+          )}
 
           <div className="flex justify-between items-center text-[11px] text-slate-500 px-1">
             <span>
@@ -621,13 +1002,12 @@ export const DiscursiveMode: React.FC<DiscursiveModeProps> = ({
             <button
               onClick={handleAutoEvaluate}
               disabled={!hasUserWritten || isEvaluating}
-              className={`px-6 py-3.5 rounded-2xl font-extrabold text-sm transition-all flex items-center justify-center space-x-2 shadow-xl ${
-                !hasUserWritten
-                  ? 'bg-slate-800 text-slate-500 border border-slate-700/60 cursor-not-allowed'
-                  : isEvaluating
+              className={`px-6 py-3.5 rounded-2xl font-extrabold text-sm transition-all flex items-center justify-center space-x-2 shadow-xl ${!hasUserWritten
+                ? 'bg-slate-800 text-slate-500 border border-slate-700/60 cursor-not-allowed'
+                : isEvaluating
                   ? 'bg-indigo-600 text-white animate-pulse'
                   : 'bg-gradient-to-r from-emerald-500 via-teal-500 to-indigo-600 hover:from-emerald-400 hover:to-indigo-500 text-white shadow-emerald-500/25 hover:scale-[1.02]'
-              }`}
+                }`}
             >
               {isEvaluating ? (
                 <>
@@ -675,7 +1055,7 @@ export const DiscursiveMode: React.FC<DiscursiveModeProps> = ({
         {/* RELATÓRIO DO CORRETOR INTELIGENTE (QUANDO AVALIADO OU QUANDO GABARITO ESTIVER ABERTO) */}
         {showAnswer && (
           <div className="space-y-6 pt-4 border-t border-slate-800/80 animate-fadeIn">
-            
+
             {/* BOX DO DIAGNÓSTICO DO CORRETOR AUTOMÁTICO */}
             {evaluation && hasUserWritten && (
               <div className="bg-gradient-to-b from-slate-950 to-slate-900 border border-indigo-500/40 rounded-3xl p-6 space-y-5 shadow-2xl relative overflow-hidden">
@@ -749,13 +1129,12 @@ export const DiscursiveMode: React.FC<DiscursiveModeProps> = ({
                         <button
                           key={num}
                           onClick={() => handleSetScore(num)}
-                          className={`w-9 h-9 rounded-xl text-xs font-bold font-mono transition-all border ${
-                            selfScore === num
-                              ? num >= 7
-                                ? 'bg-emerald-600 text-white border-emerald-400 scale-110 shadow-lg shadow-emerald-600/30'
-                                : 'bg-rose-600 text-white border-rose-400 scale-110'
-                              : 'bg-slate-900 border-slate-800 text-slate-400 hover:border-slate-700 hover:text-white'
-                          }`}
+                          className={`w-9 h-9 rounded-xl text-xs font-bold font-mono transition-all border ${selfScore === num
+                            ? num >= 7
+                              ? 'bg-emerald-600 text-white border-emerald-400 scale-110 shadow-lg shadow-emerald-600/30'
+                              : 'bg-rose-600 text-white border-rose-400 scale-110'
+                            : 'bg-slate-900 border-slate-800 text-slate-400 hover:border-slate-700 hover:text-white'
+                            }`}
                         >
                           {num}
                         </button>
@@ -850,11 +1229,10 @@ export const DiscursiveMode: React.FC<DiscursiveModeProps> = ({
 
               <button
                 onClick={() => speakText(currentQ.expectedAnswer)}
-                className={`p-2 rounded-xl border text-xs font-bold transition-all flex items-center space-x-1.5 ${
-                  isSpeaking
-                    ? 'bg-rose-500/20 text-rose-300 border-rose-500/40 animate-pulse'
-                    : 'bg-slate-950 text-slate-300 border-slate-800 hover:text-white'
-                }`}
+                className={`p-2 rounded-xl border text-xs font-bold transition-all flex items-center space-x-1.5 ${isSpeaking
+                  ? 'bg-rose-500/20 text-rose-300 border-rose-500/40 animate-pulse'
+                  : 'bg-slate-950 text-slate-300 border-slate-800 hover:text-white'
+                  }`}
                 title="Ouvir Resposta Padrão em Áudio"
               >
                 {isSpeaking ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
@@ -874,9 +1252,8 @@ export const DiscursiveMode: React.FC<DiscursiveModeProps> = ({
                   <CheckCircle2 className="w-4 h-4 text-emerald-400" />
                   Checklist de Palavras-Chave da Banca:
                 </h5>
-                <span className={`text-xs font-bold px-2.5 py-0.5 rounded-full font-mono ${
-                  keywordPercentage >= 80 ? 'bg-emerald-500/20 text-emerald-300' : 'bg-amber-500/20 text-amber-300'
-                }`}>
+                <span className={`text-xs font-bold px-2.5 py-0.5 rounded-full font-mono ${keywordPercentage >= 80 ? 'bg-emerald-500/20 text-emerald-300' : 'bg-amber-500/20 text-amber-300'
+                  }`}>
                   {checkedKeywords.length} / {currentQ.keywords.length} marcadas ({keywordPercentage}%)
                 </span>
               </div>
@@ -891,15 +1268,13 @@ export const DiscursiveMode: React.FC<DiscursiveModeProps> = ({
                     <button
                       key={i}
                       onClick={() => toggleKeyword(kw)}
-                      className={`p-2.5 rounded-xl border text-left text-xs transition-all flex items-start space-x-2.5 ${
-                        isChecked
-                          ? 'bg-emerald-500/10 border-emerald-500/40 text-emerald-200 font-semibold shadow-inner'
-                          : 'bg-slate-900 border-slate-800 text-slate-400 hover:border-slate-700'
-                      }`}
+                      className={`p-2.5 rounded-xl border text-left text-xs transition-all flex items-start space-x-2.5 ${isChecked
+                        ? 'bg-emerald-500/10 border-emerald-500/40 text-emerald-200 font-semibold shadow-inner'
+                        : 'bg-slate-900 border-slate-800 text-slate-400 hover:border-slate-700'
+                        }`}
                     >
-                      <span className={`w-4 h-4 rounded-md flex items-center justify-center text-[10px] mt-0.5 shrink-0 ${
-                        isChecked ? 'bg-emerald-500 text-slate-950 font-bold' : 'border border-slate-700'
-                      }`}>
+                      <span className={`w-4 h-4 rounded-md flex items-center justify-center text-[10px] mt-0.5 shrink-0 ${isChecked ? 'bg-emerald-500 text-slate-950 font-bold' : 'border border-slate-700'
+                        }`}>
                         {isChecked ? '✓' : ''}
                       </span>
                       <span className="leading-snug">{kw}</span>
@@ -962,13 +1337,12 @@ export const DiscursiveMode: React.FC<DiscursiveModeProps> = ({
                   <button
                     key={num}
                     onClick={() => handleSetScore(num)}
-                    className={`w-9 h-9 rounded-xl text-xs font-bold font-mono transition-all border ${
-                      selfScore === num
-                        ? num >= 7
-                          ? 'bg-emerald-600 text-white border-emerald-400 scale-110 shadow-lg shadow-emerald-600/30'
-                          : 'bg-rose-600 text-white border-rose-400 scale-110'
-                        : 'bg-slate-900 border-slate-800 text-slate-400 hover:border-slate-700 hover:text-white'
-                    }`}
+                    className={`w-9 h-9 rounded-xl text-xs font-bold font-mono transition-all border ${selfScore === num
+                      ? num >= 7
+                        ? 'bg-emerald-600 text-white border-emerald-400 scale-110 shadow-lg shadow-emerald-600/30'
+                        : 'bg-rose-600 text-white border-rose-400 scale-110'
+                      : 'bg-slate-900 border-slate-800 text-slate-400 hover:border-slate-700 hover:text-white'
+                      }`}
                   >
                     {num}
                   </button>
